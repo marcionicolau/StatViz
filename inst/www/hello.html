@@ -17,11 +17,12 @@
         var myname = $("#namefield").val();
         
         //perform the request
-        var req = opencpu.r_fun_call("meanFinder", {
-          distribution: ""
-        }, function(output){
-          $("#output").text(output.message);
-        });
+        //calls the function "rnorm" in the current package
+var req = opencpu.r_fun_call("rnorm", {n:10, mean:5}, function(session) {
+  alert("Success! " + session.getLoc());
+}).fail(function(){
+  alert("Failure: " + jqxhr.responseText);
+});
         
         //if R returns an error, alert the error message
         req.fail(function(){
