@@ -21,7 +21,7 @@
 var req = opencpu.r_fun_call("rnorm", {n:10, mean:5}, function(session) {
   alert("Success! " + session.getLoc());
 }).fail(function(){
-  alert("Failure: " + jqxhr.responseText);
+  alert("Failure: " + req.responseText);
 });
         
         //if R returns an error, alert the error message
