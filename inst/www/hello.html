@@ -17,7 +17,7 @@
         var myname = $("#namefield").val();
         
         //perform the request
-        var req = opencpu.r_fun_json("mean", {
+        var req = opencpu.r_fun_call("meanFinder", {
           distribution: ""
         }, function(output){
           $("#output").text(output.message);
