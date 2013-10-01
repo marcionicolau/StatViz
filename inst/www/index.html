@@ -38,7 +38,7 @@
         
         //perform the request
         //calls the function "rnorm" in the current package
-        req = opencpu.r_fun_json("rnorm", {
+        req = opencpu.r_fun_call(rnorm, {
                    n : 10, mean : 5}, function(output) {
                       $("#RFunction").text(output);
                       alert(output.message);
