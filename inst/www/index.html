@@ -21,7 +21,7 @@
         //perform the request
         //calls the function "rnorm" in the current package
         var req = opencpu.r_fun_json("getMean", {
-                  distribution : rnorm(50,mean=5,sd=1.5)}, function(output) {
+                  distribution : 'rnorm(50,mean=5,sd=1.5)'}, function(output) {
                       alert("Success! Mean is " + output.value);
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
