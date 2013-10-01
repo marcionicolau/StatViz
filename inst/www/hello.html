@@ -18,7 +18,7 @@
         
         //perform the request
         //calls the function "rnorm" in the current package
-        var req = opencpu.r_fun_call("meanFinder", {
+        var req = opencpu.r_fun_json("meanFinder", {
                   distribution : ""}, function(output) {
                       alert("Success! Mean is " + output.message);
                       console.log(req.message);
