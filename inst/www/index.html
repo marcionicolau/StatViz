@@ -36,7 +36,7 @@
         //   $("#submitbutton").removeAttr("disabled")
         // });
         
-        var req = opencpu.r_fun_json("rnorm", {n : 10, mean : 5}, function(output) {
+        var req = opencpu.r_fun_json("curl https://public.opencpu.org/ocpu/library/stats/R/cor/json", {n : 10, mean : 5}, function(output) {
                                                                                       alert(output);
                                                                                    });
         
