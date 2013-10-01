@@ -1,11 +1,19 @@
-    getMean <- function(distribution = "") 
+    getMean <- function(dataset,columnName) 
     {
-        if(distribution == "")
-        {
-            stop("no distribution entered!");
+        if(dataset == "")
+        {   
+            dataset = beaver1;
+            columnName = "time";
         }
-        else
+        else if(columnName == "")
         {
-            list(value = mean(eval(parse(text = distribution))))
+            dataset = eval(parse(text = dataset));
+            
+            # Load the first column name by default
+            columnName = names(dataset)[1]; 
         }
+        
+        distribution = dataset$eval(parse(columnName));
+        
+        list(value = mean(distribution));
     }
