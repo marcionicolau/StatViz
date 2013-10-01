@@ -21,6 +21,7 @@
         var req = opencpu.r_fun_json("meanFinder", {
                   distribution : ""}, function(output) {
                       $("#output").text(output.message);
+                      alert(output.message);
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
         });
