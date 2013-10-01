@@ -27,7 +27,7 @@
         //perform the request
         //calls the function "rnorm" in the current package
         var req = opencpu.r_fun_json("runThisRCode", {
-                  code: "rnorm(50, mean=25, sd=5)"}, function(output) {
+                  code: "x = rnorm(50, mean=25, sd=5); mean(x);"}, function(output) {
                       $("#output").val(output.value)
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
