@@ -5,4 +5,5 @@
         }
         
          message = mean(distribution)
+         print(message)
     }
