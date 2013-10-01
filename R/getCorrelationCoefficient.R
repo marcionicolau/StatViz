@@ -21,5 +21,5 @@
             method = "pearson";
         }
         
-        list(correlationCoefficient = cor(X = distributionX, Y = distributionY, method = method));
+        list(correlationCoefficient = cor(distributionX, distributionY, method = method));
     }
