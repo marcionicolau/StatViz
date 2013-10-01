@@ -32,7 +32,7 @@
                   columnNameX : columnNameX,
                   columnNameY : columnNameY
                   }, function(output) {
-                      $("#output").val(output.RSquared.r.squared)
+                      $("#output").val(output.RSquared)
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
         });
