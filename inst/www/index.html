@@ -46,23 +46,25 @@
   </head>
     
   <body>
-    <h1>-----Statistics communicator-----</h1>
+    <h1><center>----- Statistics Communicator -----</center></h1>
+    <hr>
     
-    <!--Make this into a dropdown list-->
-    Enter dataset name: &nbsp; <input type="text" id="dataset">
+    <table>
+      <tr>
+        <td>Enter dataset name:</td>
+        <td><input type="text" id="dataset"></td>
+      </tr>
+      
+      <tr>
+        <td>Enter variable (column) name:</td>
+        <td><input type="text" id="columnName"></td>
+      </tr>
     
-    <br/>
-    
-    <!--Make this appear based on the dataset selected-->
-    Enter variable (column) name: &nbsp; <input type="text" id="columnName">
-    
-    <br/>
-    
-    <button id="submitbutton" type="button">Mean!</button> &nbsp; &nbsp;
-    
-    <input id="output" type="text">
-    
-    <br />
+      <tr>
+        <td><button id="submitbutton" type="button">Mean!</button></td>
+        <td><input id="output" type="text"></td>
+      </tr>
+    </table>
 
   </body>
 </html>
