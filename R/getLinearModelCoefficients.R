@@ -18,5 +18,7 @@
         
         model = lm(distributionX ~ distributionY);
         
-        list(xIntercept = model$coefficients[["(Intercept)"]], yIntercept = model$coefficients[[columnNameY]]);
+        yInterceptCoefficientString = paste(dataset,"$",columnNameY);
+        
+        list(xIntercept = model$coefficients[["(Intercept)"]], yIntercept = model$coefficients[[yInterceptCoefficientString]]);
     }
