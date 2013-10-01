@@ -38,10 +38,8 @@
         
         var req = opencpu.r_fun_json("rnorm", {
                   n : 10, mean : 5}, function(output) {
-                   $("#customFunction").text(output);
-                  }).fail(function(){
-                      alert("Failure: " + req.responseText);
-                      
+                  alert(output)
+                  }
         });
         
         //if R returns an error, alert the error message
