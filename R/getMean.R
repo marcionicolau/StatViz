@@ -13,5 +13,5 @@
         
         distribution = eval(parse(text = paste(dataset,"$",columnName)));
         
-        list(value = mean(distribution));
+        list(mean = mean(distribution), median = median(distribution);
     }
