@@ -1,1 +1,1 @@
-export(meanFinder)
+export(getMean)
