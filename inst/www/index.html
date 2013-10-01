@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello</title>
+    <title>openCPU-R-Communicator</title>
     
     <!-- Include order: first jquery, then opencpu.js, and then your code -->
     <script src="opencpu/jquery-1.10.1.min.js"></script>
     <script src="opencpu/opencpu.js"></script>
+    
     <script>
     //init this script when the page has loaded
     $(document).ready(function(){
       $("#submitbutton").on("click", function(){
+        
         //disable the button to prevent multiple clicks
         $("#submitbutton").attr("disabled", "disabled");
         
-        //read the value for 'myname'
-        var myname = $("#namefield").val();
         
         //perform the request
         //calls the function "rnorm" in the current package
         var req = opencpu.r_fun_json("meanFinder", {
                   distribution : ""}, function(output) {
-                      alert("Success! Mean is " + output.mean);
+                      $("#output").text(output.message);
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
         });
@@ -34,6 +34,7 @@
         req.always(function(){
           $("#submitbutton").removeAttr("disabled")
         });
+        
       });    
     });
     </script>
@@ -50,9 +51,7 @@
   </head>
     
   <body>
-    <h1>Hello, world!</h1>
-    
-    <b>Your name: </b> <input type="text" id="namefield">
+    <h1>Test Application</h1>
     
     <button id="submitbutton" type="button">Submit to server!</button>
     
@@ -60,16 +59,5 @@
   
     <br />
 
-    <p>
-     This is a basic JSON RPC call to OpenCPU. We use <tt>r_fun_json</tt> from the <tt>opencpu.js</tt> library to call the R function called <tt>hello</tt> included in this R package. 
-    </p>
-    
-    <p>Have a look at the HTML source code! Some things to notice:</p>
-    <ul>
-      <li>We can always see the source code of the R function using the API, e.g <a href="../R/hello">here</a>.</li>
-      <li>If the R function has a manual page, it we can find it <a href="../man/hello">here</a></li>
-      <li>When the name field is empty, the R function raises an error. Notice how we deal with this in javascript.</li>
-    </ul>
-    
   </body>
 </html>
