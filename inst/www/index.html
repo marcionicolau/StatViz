@@ -22,6 +22,7 @@
         var req = opencpu.r_fun_json("getMean", {
                   distribution : dist}, function(output) {
                       $("#output").text(output.value);
+                      alert(output);
                   }.fail(function(){
                       alert("Failure: " + req.responseText);
                       
