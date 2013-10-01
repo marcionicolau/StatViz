@@ -15,13 +15,14 @@
         //disable the button to prevent multiple clicks
         $("#submitbutton").attr("disabled", "disabled");
         
-        var dist = $("#dist").val();
+        var dataset = $("#dataset").val();
+        var columnName = $("#columnName").val();
         
         
         //perform the request
         //calls the function "rnorm" in the current package
         var req = opencpu.r_fun_json("getMean", {
-                  distribution : 'rnorm(50,mean=5,sd=1.5)'}, function(output) {
+                  dataset : dataset, columnName : columnName}, function(output) {
                       alert("Success! Mean is " + output.value);
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
@@ -47,7 +48,8 @@
   <body>
     <h1>Test Application</h1>
     
-    Enter distribution: <input type="text" id="dist">
+    Enter dataset name: <input type="text" id="dataset">
+    Select variable: <input type="text" id="columnName">
     
     <button id="submitbutton" type="button">Calculate mean!</button>
     
