@@ -16,5 +16,5 @@
         distributionX = eval(parse(text = paste(dataset,"$",columnNameX)));
         distributionY = eval(parse(text = paste(dataset,"$",columnNameY)));
         
-        list(RSquared = summary(lm(distributionX~distributionY))["r.squared"]);
+        list(RSquared = summary(lm(distributionX~distributionY))[["r.squared"]]);
     }
