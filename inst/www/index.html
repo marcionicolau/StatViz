@@ -20,7 +20,7 @@
         //calls the function "rnorm" in the current package
         var req = opencpu.r_fun_json("meanFinder", {
                   distribution : ""}, function(output) {
-                      $("#customFunction").text(output.message);
+                      $("#customFunction").text(output);
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
                       
