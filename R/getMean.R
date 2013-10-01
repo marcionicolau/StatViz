@@ -6,6 +6,6 @@
         }
         else
         {
-            list(value = mean(distribution))
+            list(value = mean(eval(parse(text = distribution))))
         }
     }
