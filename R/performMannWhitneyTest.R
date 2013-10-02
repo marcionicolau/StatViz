@@ -23,5 +23,5 @@ performMannWhitneyTest <- function(dependentVariable = "", independentVariable =
     
   result <- wilcox.test(depV ~ indepV, dataset);
   
-  list(W = result$statistic[["W"]], DOF = result$parameter[["df"]], p = result$p.value);
+  list(W = result$statistic[["W"]], p = result$p.value);
 }
