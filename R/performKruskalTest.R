@@ -21,9 +21,8 @@ performKruskalTest <- function(dependentVariable = "", independentVariable = "",
     dependentVariable = eval(parse(text = paste(dataset,"$",dependentVariable)));
     independentVariable = eval(parse(text = paste(dataset,"$",independentVariable)));
   }  
-  dataset$indepV <- as.factor(dataset$indepV);  
     
-  result <- kruskal.test(dependentVariable ~ independentVariable, dataset);
+  result <- kruskal.test(depV ~ indepV, dataset);
   
   list(ChiSquared = result$statistic[["Kruskal-Wallis chi-squared"]], DOF = result$parameter[["df"]], p = result$p.value);
 }
