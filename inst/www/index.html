@@ -32,7 +32,7 @@
                   columnNameX : columnNameX,
                   columnNameY : columnNameY
                   }, function(output) {
-                      $("#output").val(output.p)  
+                      $("#output").val("p-value = " + output.p + "\nt = " + output.t + "\nDOF = " + output.DOF + "\nCI_mean = {" + output.CI_mean + "}\nmethod = " + output.method)  
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
         });
