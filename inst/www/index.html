@@ -27,9 +27,9 @@
         
         //perform the request
         //calls the function "rnorm" in the current package
-        var req = opencpu.r_fun_json("performHomoscedasticityTest", {
+        var req = opencpu.r_fun_json("drawQQPlot", {
                   }, function(output) {
-                      $("#output").val("Test stat = " + output.testStatistic + "\np = " + output.p + "\nMethod = " + output.method)
+                      $("#output").val("Success?")
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
         });
