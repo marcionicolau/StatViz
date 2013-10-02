@@ -1,4 +1,4 @@
-performMannWhitneyTest <- function(dependentVariable = "", independentVariable = "", dataset = "")
+performWilcoxonTest <- function(dependentVariable = "", independentVariable = "", dataset = "", paired = "FALSE")
 {
   # Get distributions
   
@@ -21,7 +21,8 @@ performMannWhitneyTest <- function(dependentVariable = "", independentVariable =
     independentVariable = eval(parse(text = paste(dataset,"$",independentVariable)));
   }  
     
-  result <- wilcox.test(depV ~ indepV, dataset);
+  paired = eval(parse(text = paired));  
+  result <- wilcox.test(depV ~ indepV, dataset, paired = paired);
   
   list(W = result$statistic[["W"]], p = result$p.value);
 }
