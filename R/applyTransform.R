@@ -12,8 +12,8 @@ applyTransform <- function(dataset = "", columnName = "", type = "squareRoot")
   }
         
   distribution = eval(parse(text = paste(dataset,"$",columnName)));
-  
-  switch(eval(parse(text = type)),
+  type = eval(parse(text = type));
+  switch(type,
   
   squareRoot = {
     list( distribution = sqrt(distribution) );
