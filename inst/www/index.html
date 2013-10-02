@@ -28,9 +28,6 @@
         //perform the request
         //calls the function "rnorm" in the current package
         var req = opencpu.r_fun_json("performANOVA", {
-                  dataset : dataset, 
-                  columnNameX : columnNameX,
-                  columnNameY : columnNameY
                   }, function(output) {
                       $("#output").val("F = " + output.F + "\nDOF = " + output.DOF)  
                   }).fail(function(){
