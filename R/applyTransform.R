@@ -29,7 +29,7 @@ applyTransform <- function(dataset = "", columnName = "", type = "squareRoot")
   
   logarithm = {
     list( distribution = log10(distribution) );
-  }
+  })
 }
   
   
