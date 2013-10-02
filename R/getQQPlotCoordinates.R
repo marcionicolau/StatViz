@@ -15,5 +15,5 @@ getQQPlotCoordinates <- function(dataset = "", columnName = "")
   
   coordinates = qqnorm(distribution);
   
-  list(x = coordinates[["x"]], y = coordinates[["y"]], summary = "hi there, you look splendid");
+  list(x = coordinates[["x"]], y = coordinates[["y"]]);
 }
