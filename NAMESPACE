@@ -9,5 +9,6 @@ export(getCI)
 export(performTTest)
 export(performANOVA)
 export(performKruskalTest)
+export(performMannWhitneyTest)
 
 export(runThisRCode)
