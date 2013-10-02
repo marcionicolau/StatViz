@@ -21,6 +21,7 @@ performKruskalTest <- function(dependentVariable = "", independentVariable = "",
     dependentVariable = eval(parse(text = paste(dataset,"$",dependentVariable)));
     independentVariable = eval(parse(text = paste(dataset,"$",independentVariable)));
   }  
+  dataset$independentVariable <- as.factor(dataset.independentVariable);  
     
   result <- kruskal.test(dependentVariable ~ independentVariable, dataset);
   
