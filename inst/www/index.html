@@ -27,9 +27,9 @@
         
         //perform the request
         //calls the function "rnorm" in the current package
-        var req = opencpu.r_fun_call("getQQPlotCoordinates"), {
+        var req = opencpu.r_fun_call("getQQPlotCoordinates", {
                                 dataset: dataset, columnName: columnNameX                  
-                              }, function(output) {
+                              }), function(output) {
                       $("#output").val("X : " + output.x + "\nY : " + output.y)
                   }.fail(function(){
                       alert("Failure: " + req.responseText);
