@@ -27,9 +27,9 @@
         
         //perform the request
         //calls the function "rnorm" in the current package
-        var req = opencpu.r_fun_json("performKruskalTest", {
+        var req = opencpu.r_fun_json("performMannWhitneyTest", {
                   }, function(output) {
-                      $("#output").val("Chi-squared = " + output.ChiSquared + "\np = " + output.p + "\nDOF = " + output.DOF)  
+                      $("#output").val("W = " + output.W + "\np = " + output.p + "\nDOF = " + output.DOF)  
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
         });
