@@ -20,7 +20,7 @@ performTTest <- function(dataset = "", columnNameX = "", columnNameY = "", paire
   
   # Do T-test
   
-  result = t.test(x=distributionX, y=distributionY, alternative=tailed, paired=eval(parse(text = paired)), conf.level=eval(parse(text = alpha)))
+  result = t.test(x=distributionX, y=distributionY, alternative=tailed, paired=eval(parse(text = paired)), var.equal="TRUE", conf.level=eval(parse(text = alpha)))
   
   
   # Interpret T-test
