@@ -38,3 +38,4 @@ getCI <- function(dataset = "", columnName = "", alpha = "0.95")
   error <- qnorm(0.975)*sigma/sqrt(n);
   
   list(min = mean - error, max = mean + error);
+}
