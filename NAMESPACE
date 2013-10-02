@@ -9,7 +9,7 @@ export(getCI)
 export(performTTest)
 export(performANOVA)
 export(performKruskalTest)
-export(performMannWhitneyTest)
+export(performWilcoxonTest)
 export(performHomoscedasticityTest)
 
 export(runThisRCode)
