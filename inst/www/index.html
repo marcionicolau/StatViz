@@ -31,7 +31,7 @@
                                 dataset: dataset, columnName: columnNameX                  
                               }, function(output) {
                       $("#output").val("X : " + output.x + "\nY : " + output.y)
-                  }).fail(function(){
+                  }.fail(function(){
                       alert("Failure: " + req.responseText);
         });
         
