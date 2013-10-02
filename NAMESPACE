@@ -8,5 +8,6 @@ export(getCI)
 
 export(performTTest)
 export(performANOVA)
+export(performKruskalTest)
 
 export(runThisRCode)
