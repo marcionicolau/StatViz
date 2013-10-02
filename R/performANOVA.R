@@ -22,7 +22,7 @@ performANOVA <- function(dependentVariable = "", independentVariable = "", datas
     independentVariable = eval(parse(text = paste(dataset,"$",independentVariable)));
   }  
     
-  fit <- lm(dependentVariable ~ independentVariable, dataset);
+  fit <- lm(depV ~ indepV, dataset);
   
   result <- anova(fit);
   
