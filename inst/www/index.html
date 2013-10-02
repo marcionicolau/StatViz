@@ -29,7 +29,7 @@
         //calls the function "rnorm" in the current package
         var req = opencpu.r_fun_json("performANOVA", {
                   }, function(output) {
-                      $("#output").val("F = " + output.F + "\nDOF = " + output.DOF)  
+                      $("#output").val("F = " + output.F + "\np = " + output.p + "\nDOF = " + output.DOF)  
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
         });
