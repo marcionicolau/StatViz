@@ -30,7 +30,7 @@
         var req = opencpu.r_fun_json("getQQPlotCoordinates", {
                                 dataset: dataset, columnName: columnNameX                  
                               }, function(output) {
-                      $("#output").val("X : " + output.x + "\nY : " + output.y + "\nsummary : " + output.summary)
+                      $("#output").val("X : " + output.x + "\n\nY : " + output.y)
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
         });
