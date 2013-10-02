@@ -6,6 +6,6 @@ export(getRSquared)
 export(getLinearModelCoefficients)
 export(getCI)
 
-export(performTTest.R)
+export(performTTest)
 
 export(runThisRCode)
