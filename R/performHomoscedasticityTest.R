@@ -36,5 +36,5 @@ performHomoscedasticityTest <- function(dependentVariable = "", independentVaria
   
   result <- levene.test(dataset$depV, dataset$indepV, location = method);
   
-  list(testStatistic = result$statistic, p = result$p.value, method = result$method);
+  list(testStatistic = result$statistic[["Test Statistic"]], p = result$p.value, method = result$method);
 }
