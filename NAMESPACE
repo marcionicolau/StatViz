@@ -10,5 +10,6 @@ export(performTTest)
 export(performANOVA)
 export(performKruskalTest)
 export(performMannWhitneyTest)
+export(performHomoscedasticityTest)
 
 export(runThisRCode)
