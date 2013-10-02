@@ -27,10 +27,10 @@
         
         //perform the request
         //calls the function "rnorm" in the current package
-        var req = opencpu.r_fun_json("getQQPlotCoordinates", {
+        var req = opencpu.r_fun_json("applyTransform", {
                                 dataset: dataset, columnName: columnNameX                  
                               }, function(output) {
-                      $("#output").val("X : " + output.x + "\n\nY : " + output.y)
+                      $("#output").val("Transformed distribution: " + output.distribution)
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
         });
