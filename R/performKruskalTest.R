@@ -24,5 +24,5 @@ performKruskalTest <- function(dependentVariable = "", independentVariable = "",
     
   result <- kruskal.test(dependentVariable ~ independentVariable, dataset);
   
-  list(ChiSquared = result$statistic[[""Kruskal-Wallis chi-squared""]], DOF = result$parameter[["df"]], p = result$p.value);
+  list(ChiSquared = result$statistic[["Kruskal-Wallis chi-squared"]], DOF = result$parameter[["df"]], p = result$p.value);
 }
