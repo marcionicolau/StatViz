@@ -12,4 +12,6 @@ export(performKruskalTest)
 export(performWilcoxonTest)
 export(performHomoscedasticityTest)
 
+export(drawQQPlot)
+
 export(runThisRCode)
