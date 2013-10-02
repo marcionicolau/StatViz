@@ -7,5 +7,6 @@ export(getLinearModelCoefficients)
 export(getCI)
 
 export(performTTest)
+export(performANOVA)
 
 export(runThisRCode)
