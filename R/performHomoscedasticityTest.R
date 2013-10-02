@@ -34,7 +34,7 @@ performHomoscedasticityTest <- function(dependentVariable = "", independentVaria
     method = "median";
   }
   
-  result <- levene.test(depVindepV, dataset, paired = paired);
+  result <- levene.test(dataset$depV, dataset$indepV, location = method);
   
-  list(W = result$statistic[["W"]], p = result$p.value);
+  list(testStatistic = result$statistic, p = result$p.value, method = result$method);
 }
