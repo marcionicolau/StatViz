@@ -1,4 +1,4 @@
-getESFromF <- function(TVal = "", n1 = "", n2 = "")
+getESFromT <- function(TVal = "", n1 = "", n2 = "")
 {
   
   install.packages("compute.es");
