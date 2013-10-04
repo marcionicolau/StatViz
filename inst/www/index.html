@@ -376,6 +376,37 @@
         });
         
       })
+      
+      $("#ANOVA").on("click", function(){
+        
+      
+       $("#ANOVA").attr("disabled", "disabled");
+        
+        var method = $("#method.ANOVA").val();
+        
+        //perform the request
+        //calls the function "rnorm" in the current package
+        var req = opencpu.r_fun_json("performANOVA", {                                
+                              }, function(output) {
+                      $("#p.ANOVA").val(output.p);                    
+                      $("#F.ANOVA").val(output.F);    
+                      $("#DF.ANOVA").val(output.DOF);    
+                      $("#data.ANOVA").val(output.data);                                                            
+                  }).fail(function(){
+                      alert("Failure: " + req.responseText);
+        });
+        
+        //if R returns an error, alert the error message
+        req.fail(function(){
+          alert("Server error: " + req.responseText);
+        });
+        
+        //after request complete, re-enable the button 
+        req.always(function(){
+          $("#ANOVA").removeAttr("disabled")
+        });
+        
+      })
     })
     </script>
 
@@ -769,6 +800,40 @@
       </tr>
       
     </table>
+    
+    <hr>
+    <table cellspacing="50" width="100%">
+        <col width = "50%">
+        <col width = "50%">
+      
+      <tr>
+        <td colspan="2" align="center"><button id="ANOVA" type="button" style="font-size: 24px;" class="submitButton">Apply ANOVA</button></td>       
+      </tr>
+      
+      <tr>
+        <td align = "center" colspan="2">Dataset</td>
+      </tr>
+      
+      <tr>
+        <td align = "center" colspan="2"><textarea id="data" class="ANOVA" rows="25" cols="50"></textarea></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">F: </td>
+        <td><input type="text" id="F" class="ANOVA"></td>
+      </tr>
+
+      <tr>
+        <td align = "right">p: </td>
+        <td><input type="text" id="p" class="ANOVA"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right"> Degrees of Freedom: </td>
+        <td><input type="text" id="DF" class="ANOVA"></td>
+      </tr>
+    </table>
+    
     
     <div id="plot" style="position: absolute; width: 300px; height: 300px;"></div>
 
