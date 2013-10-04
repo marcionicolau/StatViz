@@ -205,7 +205,7 @@
         //perform the request
         //calls the function "rnorm" in the current package
         var req = opencpu.r_fun_json("getRSquared", {
-                                dataset: dataset, columnName1: columnName1, columnName2: columnName2
+                                dataset: dataset, columnNameX: columnName1, columnNameY: columnName2
                               }, function(output) {
                       $("#RSquared.RSquared").val(output.RSquared);                      
                       $("#dataset.RSquared").val(output.dataset);
