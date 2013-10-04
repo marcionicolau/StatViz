@@ -122,6 +122,42 @@
         });
         
       })
+      
+         $("#linearModelCoefficients").on("click", function(){
+        
+        
+        //disable the button to prevent multiple clicks
+        $("#linearModelCoefficients").attr("disabled", "disabled");
+        
+        var dataset = $("#dataset.linearModelCoefficients").val();
+        var columnName1 = $("#columnName1.linearModelCoefficients").val();        
+        var columnName2 = $("#columnName2.linearModelCoefficients").val();        
+        
+        //perform the request
+        //calls the function "rnorm" in the current package
+        var req = opencpu.r_fun_json("getLinearModelCoefficients", {
+                                dataset: dataset, columnNameX: columnName1, columnNameY:columnName2
+                              }, function(output) {
+                      $("#xInt.linearModelCoefficients").val(output.xIntercept);
+                      $("#yInt.linearModelCoefficients").val(output.yIntercept);
+                      $("#dataset.linearModelCoefficients").val(output.dataset);
+                      $("#columnName1.linearModelCoefficients").val(output.columnName1);
+                      $("#columnName2.linearModelCoefficients").val(output.columnName2);
+                  }).fail(function(){
+                      alert("Failure: " + req.responseText);
+        });
+        
+        //if R returns an error, alert the error message
+        req.fail(function(){
+          alert("Server error: " + req.responseText);
+        });
+        
+        //after request complete, re-enable the button 
+        req.always(function(){
+          $("#linearModelCoefficients").removeAttr("disabled")
+        });
+        
+      })
     })
     </script>
 
@@ -232,6 +268,42 @@
       <tr>
         <td align = "right">Correlation coefficient</td>
         <td><input type="text" id="correlationCoefficient" class="correlationCoefficient"></td>
+      </tr>
+      
+    </table>
+    
+    <hr> 
+    
+    <table cellspacing="50" width="100%">
+        <col width = "50%">
+        <col width = "50%">
+      <tr>
+        <td align = "right">Enter dataset name:</td>
+        <td><input type="text" id="dataset" class="linearModelCoefficients"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Enter variable name 1:</td>
+        <td><input type="text" id="columnName1" class="linearModelCoefficients"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Enter variable name 2:</td>
+        <td><input type="text" id="columnName2" class="linearModelCoefficients"></td>
+      </tr>
+    
+      <tr>
+        <td colspan="2" align="center"><button id="linearModelCoefficients" type="button" style="font-size: 24px;" class="submitButton">Find X-intercept and Y-intercept</button></td>       
+      </tr>
+
+      <tr>
+        <td align = "right">Correlation coefficient</td>
+        <td><input type="text" id="xInt" class="linearModelCoefficients"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Correlation coefficient</td>
+        <td><input type="text" id="yInt" class="linearModelCoefficients"></td>
       </tr>
       
     </table>
