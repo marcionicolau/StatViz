@@ -8,29 +8,29 @@
       }
     </style>
     
-    <!-- Include order: first jquery, then opencpu.js, and then your code -->
-    <script src="opencpu/jquery-1.10.1.min.js"></script>
+    Include order: first jquery, then opencpu.js, and then your code    <script src="opencpu/jquery-1.10.1.min.js"></script>
     <script src="opencpu/opencpu.js"></script>
     
     <script>
-    //init this script when the page has loaded
+    
+    
     $(document).ready(function(){
-      $("#submitbutton").on("click", function(){
+      $("#meanAndMedian").on("click", function(){
+        
         
         //disable the button to prevent multiple clicks
-        $("#submitbutton").attr("disabled", "disabled");
+        $("#meanAndMedian").attr("disabled", "disabled");
         
         var dataset = $("#dataset").val();
-        var columnNameX = $("#columnNameX").val();
-        var columnNameY = $("#columnNameY").val();
-        
+        var columnName = $("#columnName").val();        
         
         //perform the request
         //calls the function "rnorm" in the current package
-        var req = opencpu.r_fun_json("applyTransform", {
-                                dataset: dataset, columnName: columnNameX                  
+        var req = opencpu.r_fun_json("getMeanAndMedian", {
+                                dataset: dataset, columnName: columnName                 
                               }, function(output) {
-                      $("#output").val("Transformed distribution: " + output.distribution)
+                      $("#mean").val(output.mean);
+                      $("#median").val(output.median);
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
         });
@@ -48,33 +48,42 @@
       })
     })
     </script>
+
   </head>
     
   <body>
     <h1><center>----- Statistics Communicator -----</center></h1>
     <hr>
     
-    <table cellspacing="50">
+    <table cellspacing="50" width="100%">
+        <col width = "50%">
+        <col width = "50%">
       <tr>
-        <td>Enter dataset name:</td>
-        <td><input type="text" id="dataset"></td>
+        <td align = "right">Enter dataset name:</td>
+        <td><input type="text" id="dataset" class="meanAndMedian"></td>
       </tr>
       
       <tr>
-        <td>Enter variable (column) name 1:</td>
-        <td><input type="text" id="columnNameX"></td>
+        <td align = "right">Enter variable name:</td>
+        <td><input type="text" id="columnName" class="meanAndMedian"></td>
       </tr>
-      
+
       <tr>
-        <td>Enter variable (column) name 2:</td>
-        <td><input type="text" id="columnNameY"></td>
+        <td colspan="2" align="center"><button id="meanAndMedian" type="button" style="font-size: 24px;" class="submitButton">Find mean & median</button></td>       
       </tr>
-    
+
       <tr>
-        <td><button id="submitbutton" type="button" style="font-size: 16px;">Mean!</button></td>
-        <td><textarea id="output" rows="10" cols="50"></textarea></td>
+        <td align = "right">Mean: </td>
+        <td><input type="text" id="mean" class="meanAndMedian"></td>
+      </tr>
+
+      <tr>
+        <td align = "right">Median: </td>
+        <td><input type="text" id="median" class="meanAndMedian"></td>
       </tr>
     </table>
+    
+    <hr>
     
     <div id="plot" style="position: absolute; width: 300px; height: 300px;"></div>
 
