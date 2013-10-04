@@ -1,4 +1,4 @@
-performTTest <- function(dataset = "", columnNameX = "", columnNameY = "", paired = "FALSE", tailed = "two.sided", alpha = "0.95")
+performTTest <- function(dataset = "", columnNameX = "", columnNameY = "", paired = "FALSE", alternative = "two.sided", alpha = "0.95")
 {
   # Get distributions
   
