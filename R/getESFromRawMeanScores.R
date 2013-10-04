@@ -16,7 +16,8 @@ getESFromRawMeanScores <- function(m1 = "", m2 = "",  sd1 = "", sd2 = "", n1 = "
   }
   
   
-  result = mes(eval(parse(text = m1)), eval(parse(text = m2)), eval(parse(text = sd1)), eval(parse(text = sd2)), eval(parse(text = n1)), eval(parse(text = n2)));
+  # result = mes(eval(parse(text = m1)), eval(parse(text = m2)), eval(parse(text = sd1)), eval(parse(text = sd2)), eval(parse(text = n1)), eval(parse(text = n2)));
+  result = mes(2.4, 5.4, 5, 3, 40, 40);
   
   list(d = result$MeanDifference[["d"]], g = result$MeanDifference[["g"]], r = result$Correlation[["r"]], m1 = m1, m2 = m2, sd1 = sd1, sd2 = sd2, n1 = n1, n2 = n2);
 }
