@@ -561,6 +561,55 @@
         });
         
       })
+      
+      $("#MES").on("click", function(){
+        
+      
+       $("#MES").attr("disabled", "disabled");
+        
+        var m1 = $("#m1.MES").val();
+        var m1 = $("#m2.MES").val();
+        
+        var n1 = $("#n1.MES").val();
+        var n2 = $("#n2.MES").val();
+        
+        var sd1 = $("#sd1.MES").val();
+        var sd2 = $("#sd2.MES").val();
+                
+        //perform the request
+        //calls the function "rnorm" in the current package
+        var req = opencpu.r_fun_json("getESFromRawMeanScores", { 
+                                    m1: m1,
+                                    m2: m2,
+                                    sd1: sd1,
+                                    sd2: sd2,
+                                    n1: n1,
+                                    n2: n2
+                              }, function(output) {
+                      $("#d.MES").val(output.d);                    
+                      $("#g.MES").val(output.g);                    
+                      $("#r.MES").val(output.r);                    
+                      $("#m1.MES").val(output.m1);    
+                      $("#m2.MES").val(output.m2);    
+                      $("#n1.MES").val(output.n1);
+                      $("#n2.MES").val(output.n2);   
+                      $("#sd1.MES").val(output.sd1);
+                      $("#sd2.MES").val(output.sd2);      
+                  }).fail(function(){
+                      alert("Failure: " + req.responseText);
+        });
+        
+        //if R returns an error, alert the error message
+        req.fail(function(){
+          alert("Server error: " + req.responseText);
+        });
+        
+        //after request complete, re-enable the button 
+        req.always(function(){
+          $("#MES").removeAttr("disabled")
+        });
+        
+      })
     })
     </script>
 
@@ -1161,6 +1210,64 @@
       <tr>
         <td align = "right">Pearson's r: </td>
         <td><input type="text" id="r" class="PES"></td>
+      </tr>
+      
+    </table>
+    
+    <hr>
+    <p align="center">ES from raw mean scores</p>
+    
+    <table cellspacing="50" width="100%">
+        <col width = "50%">
+        <col width = "50%">
+      
+    <tr>
+        <td align="right">Enter the mean for group 1: </td>
+        <td><input type="text" id="m1" class="MES"></td>
+    </tr>
+    
+    <tr>
+        <td align="right">Enter the mean for group 2: </td>
+        <td><input type="text" id="m2" class="MES"></td>
+    </tr>
+
+    <tr>
+        <td align="right">Enter the SD for group 1: </td>
+        <td><input type="text" id="sd1" class="MES"></td>
+    </tr>
+    
+    <tr>
+        <td align="right">Enter the SD for group 2: </td>
+        <td><input type="text" id="sd2" class="MES"></td>
+    </tr>
+    
+    <tr>
+        <td align="right">Enter the sample size for group 1: </td>
+        <td><input type="text" id="n1" class="MES"></td>
+    </tr>
+    
+    <tr>
+        <td align="right">Enter the sample size for group 2: </td>
+        <td><input type="text" id="n2" class="MES"></td>
+    </tr>
+          
+    <tr>
+        <td colspan="2" align="center"><button id="MES" type="button" style="font-size: 24px;" class="submitButton">Calculate ESs</button></td>       
+    </tr>
+      
+      <tr>
+        <td align = "right">Cohen's d: </td>
+        <td><input type="text" id="d" class="MES"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Hedges's g: </td>
+        <td><input type="text" id="g" class="MES"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Pearson's r: </td>
+        <td><input type="text" id="r" class="MES"></td>
       </tr>
       
     </table>
