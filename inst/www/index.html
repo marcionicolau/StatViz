@@ -445,6 +445,44 @@
         });
         
       })
+      
+      $("#ES").on("click", function(){
+        
+      
+       $("#TES").attr("disabled", "disabled");
+        
+        var T = $("#T.TES").val();
+        var n1 = $("#n1.TES").val();
+        var n2 = $("#n2.TES").val();
+        
+        //perform the request
+        //calls the function "rnorm" in the current package
+        var req = opencpu.r_fun_json("getESFromT", { 
+                                    TVal: T,
+                                    n1: n1,
+                                    n2: n2                               
+                              }, function(output) {
+                      $("#d.TES").val(output.d);                    
+                      $("#g.TES").val(output.g);                    
+                      $("#r.TES").val(output.r);                    
+                      $("#T.TES").val(output.TVal);    
+                      $("#n1.TES").val(output.n1);    
+                      $("#n2.TES").val(output.n2);                                                            
+                  }).fail(function(){
+                      alert("Failure: " + req.responseText);
+        });
+        
+        //if R returns an error, alert the error message
+        req.fail(function(){
+          alert("Server error: " + req.responseText);
+        });
+        
+        //after request complete, re-enable the button 
+        req.always(function(){
+          $("#TES").removeAttr("disabled")
+        });
+        
+      })
     })
     </script>
 
@@ -911,6 +949,49 @@
       <tr>
         <td align = "right">Pearson's r: </td>
         <td><input type="text" id="r" class="ES"></td>
+      </tr>
+      
+    </table>
+    
+    <hr>
+    <p align="center">ES from T-value</p>
+    
+    <table cellspacing="50" width="100%">
+        <col width = "50%">
+        <col width = "50%">
+      
+    <tr>
+        <td align="right">Enter the T-value: </td>
+        <td><input type="text" id="T" class="TES"></td>
+    </tr>
+    
+    <tr>
+        <td align="right">Enter the sample size of treatment group: </td>
+        <td><input type="text" id="n1" class="TES"></td>
+    </tr>
+    
+    <tr>
+        <td align="right">Enter the sample size of control group: </td>
+        <td><input type="text" id="n2" class="TES"></td>
+    </tr>
+      
+    <tr>
+        <td colspan="2" align="center"><button id="TES" type="button" style="font-size: 24px;" class="submitButton">Calculate ESs</button></td>       
+    </tr>
+      
+      <tr>
+        <td align = "right">Cohen's d: </td>
+        <td><input type="text" id="d" class="TES"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Hedges's g: </td>
+        <td><input type="text" id="g" class="TES"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Pearson's r: </td>
+        <td><input type="text" id="r" class="TES"></td>
       </tr>
       
     </table>
