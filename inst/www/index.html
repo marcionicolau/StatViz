@@ -483,6 +483,42 @@
         });
         
       })
+      
+       $("#ChiES").on("click", function(){
+        
+      
+       $("#ChiES").attr("disabled", "disabled");
+        
+        var ChiSquared = $("#ChiSquared.ChiES").val();
+        var n = $("#n.ChiES").val();
+
+        
+        //perform the request
+        //calls the function "rnorm" in the current package
+        var req = opencpu.r_fun_json("getESFromChiSquared", { 
+                                    ChiSquared: ChiSquared,
+                                    n: n                                    
+                              }, function(output) {
+                      $("#d.ChiES").val(output.d);                    
+                      $("#g.ChiES").val(output.g);                    
+                      $("#r.ChiES").val(output.r);                    
+                      $("#T.ChiES").val(output.ChiSquared);    
+                      $("#n.ChiES").val(output.n);    
+                  }).fail(function(){
+                      alert("Failure: " + req.responseText);
+        });
+        
+        //if R returns an error, alert the error message
+        req.fail(function(){
+          alert("Server error: " + req.responseText);
+        });
+        
+        //after request complete, re-enable the button 
+        req.always(function(){
+          $("ChiES").removeAttr("disabled")
+        });
+        
+      })
     })
     </script>
 
@@ -992,6 +1028,44 @@
       <tr>
         <td align = "right">Pearson's r: </td>
         <td><input type="text" id="r" class="TES"></td>
+      </tr>
+      
+    </table>
+    
+    <hr>
+    <p align="center">ES from Chi Squared value</p>
+    
+    <table cellspacing="50" width="100%">
+        <col width = "50%">
+        <col width = "50%">
+      
+    <tr>
+        <td align="right">Enter the Chi Squared value: </td>
+        <td><input type="text" id="ChiSquared" class="ChiES"></td>
+    </tr>
+    
+    <tr>
+        <td align="right">Enter the sample size of the group: </td>
+        <td><input type="text" id="n" class="ChiES"></td>
+    </tr>
+      
+    <tr>
+        <td colspan="2" align="center"><button id="ChiES" type="button" style="font-size: 24px;" class="submitButton">Calculate ESs</button></td>       
+    </tr>
+      
+      <tr>
+        <td align = "right">Cohen's d: </td>
+        <td><input type="text" id="d" class="ChiES"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Hedges's g: </td>
+        <td><input type="text" id="g" class="ChiES"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Pearson's r: </td>
+        <td><input type="text" id="r" class="ChiES"></td>
       </tr>
       
     </table>
