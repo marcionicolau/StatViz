@@ -297,6 +297,54 @@
         });
         
       })
+      
+      $("#tTest").on("click", function(){
+        
+      
+       $("#tTest").attr("disabled", "disabled");
+        
+        var dataset = $("#dataset.tTest").val();
+        var columnName1 = $("#columnName1.tTest").val();        
+        var columnName2 = $("#columnName2.tTest").val();
+        var paired = $("#pairedType.tTest").val();
+        var alternative = $("#alternativeType.tTest").val();        
+        var alpha = $("#alpha.tTest").val();        
+        
+        //perform the request
+        //calls the function "rnorm" in the current package
+        var req = opencpu.r_fun_json("performTTest", {
+                                dataset: dataset, 
+                                columnNameX: columnName1,
+                                columnNameY: columnName2,
+                                paired: paired,
+                                alternative: alternative,
+                                alpha: alpha
+                              }, function(output) {
+                      $("#p.tTest").val(output.p);                    
+                      $("#t.tTest").val(output.t);                      
+                      $("#DF.tTest").val(output.DOF);
+                      $("#CIMean.tTest").val(output.CI_mean);
+                      $("#method.tTest").val(output.method);
+                      $("#dataset.tTest").val(output.dataset);
+                      $("#columnName1.tTest").val(output.columnName1);
+                      $("#columnName2.tTest").val(output.columnName2);    
+                      $("#alpha.tTest").val(output.alpha);    
+                                                            
+                  }).fail(function(){
+                      alert("Failure: " + req.responseText);
+        });
+        
+        //if R returns an error, alert the error message
+        req.fail(function(){
+          alert("Server error: " + req.responseText);
+        });
+        
+        //after request complete, re-enable the button 
+        req.always(function(){
+          $("#tTest").removeAttr("disabled")
+        });
+        
+      })
     })
     </script>
 
@@ -572,6 +620,82 @@
       <tr>
         <td align = "center"> <textarea id="XCoordinates" class="QQPlot" rows="20" cols = "50"> </textarea> </td>
         <td align = "center"> <textarea id="YCoordinates" class="QQPlot" rows="20" cols = "50"> </textarea> </td>
+      </tr>
+      
+    </table>
+    
+     <hr>
+    <table cellspacing="50" width="100%">
+        <col width = "50%">
+        <col width = "50%">
+      <tr>
+        <td align = "right">Enter dataset name:</td>
+        <td><input type="text" id="dataset" class="tTest"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Enter variable name 1:</td>
+        <td><input type="text" id="columnName1" class="tTest"></td>
+      </tr>
+
+      <tr>
+        <td align = "right">Enter variable name 2:</td>
+        <td><input type="text" id="columnName2" class="tTest"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Choose observation type:</td>
+        <td>
+        <select id="pairedType" class="tTest">
+            <option value="TRUE"> Dependent/paired </option>
+            <option value="FALSE"> Independent/unpaired </option>
+        </select>
+        </td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Choose alternative hypothesis:</td>
+        <td>
+        <select id="alternativeType" class="tTest">
+            <option value="two.sided">Two-tailed</option>
+            <option value="greater">Greater</option>
+            <option value="lesser">Lesser</option>
+        </select>
+        </td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Enter confidence level (0-1): </td>
+        <td> <input type="text" id="alpha" class="tTest"></td>
+      </tr>
+     
+      <tr>
+        <td colspan="2" align="center"><button id="tTest" type="button" style="font-size: 24px;" class="submitButton">Apply T-test</button></td>       
+      </tr>
+
+      <tr>
+        <td align = "right">Test used: </td>
+        <td><input type="text" id="method" class="tTest"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">t: </td>
+        <td><input type="text" id="t" class="tTest"></td>
+      </tr>
+
+      <tr>
+        <td align = "right">p: </td>
+        <td><input type="text" id="p" class="tTest"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Degrees of freedom: </td>
+        <td><input type="text" id="DF" class="tTest"></td>
+      </tr>
+
+      <tr>
+        <td align = "right">Confidence Interval of Mean: </td>
+        <td><input type="text" id="CIMean" class="tTest"></td>
       </tr>
       
     </table>
