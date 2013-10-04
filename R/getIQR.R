@@ -13,5 +13,5 @@
         
         distribution = eval(parse(text = paste(dataset,"$",columnName)));
         
-        list(IQR = IQR(distribution));
+        list(IQR = IQR(distribution), dataset = dataset, columnName = columnName);
     }
