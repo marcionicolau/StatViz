@@ -58,11 +58,12 @@
         
         var dataset = $("#dataset.CI").val();
         var columnName = $("#columnName.CI").val();        
+        var alpha = $("#alpha.CI").val();
         
         //perform the request
         //calls the function "rnorm" in the current package
         var req = opencpu.r_fun_json("getCI", {
-                                dataset: dataset, columnName: columnName                 
+                                dataset: dataset, columnName: columnName, alpha: alpha                
                               }, function(output) {
                       $("#minimum.CI").val(output.min);
                       $("#maximum.CI").val(output.max);
