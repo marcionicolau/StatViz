@@ -16,4 +16,6 @@ export(applyTransform)
 
 export(drawQQPlot)
 
+export(getESFromF)
+
 export(runThisRCode)
