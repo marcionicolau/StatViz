@@ -579,6 +579,12 @@
         //perform the request
         //calls the function "rnorm" in the current package
         var req = opencpu.r_fun_json("getESFromRawMeanScores", { 
+                                m1: m1,
+                                m2: m2,
+                                sd1: sd1,
+                                sd2: sd2,
+                                n1: n1,
+                                n2: n2
                               }, function(output) {
                       $("#d.MES").val(output.d);                    
                       $("#g.MES").val(output.g);                    
