@@ -158,6 +158,39 @@
         });
         
       })
+      
+       $("#IQR").on("click", function(){
+        
+        
+        //disable the button to prevent multiple clicks
+        $("#IQR").attr("disabled", "disabled");
+        
+        var dataset = $("#dataset.IQR").val();
+        var columnName = $("#columnName.linearModelCoefficients").val();        
+        
+        //perform the request
+        //calls the function "rnorm" in the current package
+        var req = opencpu.r_fun_json("getIQR", {
+                                dataset: dataset, columnName: columnName
+                              }, function(output) {
+                      $("#iqr.IQR").val(output.IQR);                      
+                      $("#dataset.linearModelCoefficients").val(output.dataset);
+                      $("#columnName.linearModelCoefficients").val(output.columnName);
+                  }).fail(function(){
+                      alert("Failure: " + req.responseText);
+        });
+        
+        //if R returns an error, alert the error message
+        req.fail(function(){
+          alert("Server error: " + req.responseText);
+        });
+        
+        //after request complete, re-enable the button 
+        req.always(function(){
+          $("#IQR").removeAttr("disabled")
+        });
+        
+      })
     })
     </script>
 
@@ -304,6 +337,32 @@
       <tr>
         <td align = "right">Correlation coefficient</td>
         <td><input type="text" id="yInt" class="linearModelCoefficients"></td>
+      </tr>
+      
+    </table>
+    
+     <hr> 
+    
+    <table cellspacing="50" width="100%">
+        <col width = "50%">
+        <col width = "50%">
+      <tr>
+        <td align = "right">Enter dataset name:</td>
+        <td><input type="text" id="dataset" class="IQR"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Enter variable name:</td>
+        <td><input type="text" id="columnName1" class="IQR"></td>
+      </tr>
+
+      <tr>
+        <td colspan="2" align="center"><button id="IQR" type="button" style="font-size: 24px;" class="submitButton">Find IQR</button></td>       
+      </tr>
+
+      <tr>
+        <td align = "right">IQR</td>
+        <td><input type="text" id="iqr" class="IQR"></td>
       </tr>
       
     </table>
