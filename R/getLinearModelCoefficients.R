@@ -1,4 +1,4 @@
-    getLinearModelCoefficients <- function(dataset = "",columnNameX = "", columnNameY = "", method = "") 
+    getLinearModelCoefficients <- function(dataset = "",columnNameX = "", columnNameY = "") 
     {
         if(dataset == "")
         {   
@@ -18,5 +18,5 @@
         
         model = lm(distributionX ~ distributionY);
         
-        list(xIntercept = model$coefficients[[1]], yIntercept = model$coefficients[[2]]);
+        list(xIntercept = model$coefficients[[1]], yIntercept = model$coefficients[[2]], dataset = dataset, columnName1 = columnNameX, columnName2 = columnNameY);
     }
