@@ -85,6 +85,43 @@
         });
         
       })
+      
+      $("#correlationCoefficient").on("click", function(){
+        
+        
+        //disable the button to prevent multiple clicks
+        $("#correlationCoefficient").attr("disabled", "disabled");
+        
+        var dataset = $("#dataset.correlationCoefficient").val();
+        var columnName1 = $("#columnName1.correlationCoefficient").val();        
+        var columnName2 = $("#columnName2.correlationCoefficient").val();        
+        var alpha = $("#method.correlationCoefficient").val();
+        
+        //perform the request
+        //calls the function "rnorm" in the current package
+        var req = opencpu.r_fun_json("getCorrelationCoefficient", {
+                                dataset: dataset, columnName: columnName, method: method                
+                              }, function(output) {
+                      $("#correlationCoefficient.correlationCoefficient").val(output.correlationCoefficient);
+                      $("#dataset.correlationCoefficient").val(output.dataset);
+                      $("#columnName1.correlationCoefficient").val(output.columnName1);
+                      $("#columnName2.correlationCoefficient").val(output.columnName2);
+                      $("#method.correlationCoefficient").val(output.method);
+                  }).fail(function(){
+                      alert("Failure: " + req.responseText);
+        });
+        
+        //if R returns an error, alert the error message
+        req.fail(function(){
+          alert("Server error: " + req.responseText);
+        });
+        
+        //after request complete, re-enable the button 
+        req.always(function(){
+          $("#correlationCoefficient").removeAttr("disabled")
+        });
+        
+      })
     })
     </script>
 
@@ -155,6 +192,48 @@
         <td align = "right">Maximum: </td>
         <td><input type="text" id="maximum" class="CI"></td>
       </tr>
+    </table>
+    
+    <hr> 
+    
+    <table cellspacing="50" width="100%">
+        <col width = "50%">
+        <col width = "50%">
+      <tr>
+        <td align = "right">Enter dataset name:</td>
+        <td><input type="text" id="dataset" class="correlationCoefficient"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Enter variable name 1:</td>
+        <td><input type="text" id="columnName1" class="correlationCoefficient"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Enter variable name 2:</td>
+        <td><input type="text" id="columnName2" class="correlationCoefficient"></td>
+      </tr>
+    
+      <tr>
+        <td align = "right">Choose method:</td>
+        <td>
+        <select id="method" class="correlationCoefficient">
+            <option value="pearson">Pearson's r</option>
+            <option value="kendall">Kendall's Tau</option>
+            <option value="spearman">Spearman's Rho</option>            
+        </select>        
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" align="center"><button id="correlationCoefficient" type="button" style="font-size: 24px;" class="submitButton">Find Correlation Coefficient</button></td>       
+      </tr>
+
+      <tr>
+        <td align = "right">Correlation coefficient</td>
+        <td><input type="text" id="minimum" class="correlationCoefficient"></td>
+      </tr>
+      
     </table>
     
     <div id="plot" style="position: absolute; width: 300px; height: 300px;"></div>
