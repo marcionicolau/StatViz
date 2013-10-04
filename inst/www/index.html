@@ -174,8 +174,8 @@
                                 dataset: dataset, columnName: columnName
                               }, function(output) {
                       $("#iqr.IQR").val(output.IQR);                      
-                      $("#dataset.linearModelCoefficients").val(output.dataset);
-                      $("#columnName.linearModelCoefficients").val(output.columnName);
+                      $("#dataset.IQR").val(output.dataset);
+                      $("#columnName.IQR").val(output.columnName);
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
         });
