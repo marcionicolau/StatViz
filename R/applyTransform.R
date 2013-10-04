@@ -15,18 +15,18 @@ applyTransform <- function(dataset = "", columnName = "", type = "squareRoot")
   # type = eval(parse(text = type));
   switch(type,
   squareRoot = {
-    _distribution = sqrt(distribution);
+    Distribution = sqrt(distribution);
   },
   cubeRoot = {
-    _distribution = distribution^(1/3);
+    Distribution = distribution^(1/3);
   },
   reciprocal = {
-    _distribution = 1/distribution;
+    Distribution = 1/distribution;
   },
   logarithm = {
-    _distribution = log10(distribution);
+    Distribution = log10(distribution);
   })
   
-  list(beforeTransform = distribution, afterTransform = _distribution, dataset = dataset, columnName = columnName);
+  list(beforeTransform = distribution, afterTransform = Distribution, dataset = dataset, columnName = columnName);
 }
   
