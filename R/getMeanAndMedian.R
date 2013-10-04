@@ -1,4 +1,4 @@
-    getMean <- function(dataset = "",columnName = "") 
+    getMeanAndMedian <- function(dataset = "",columnName = "") 
     {
         if(dataset == "")
         {   
