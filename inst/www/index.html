@@ -519,6 +519,48 @@
         });
         
       })
+      
+      $("#ChiES").on("click", function(){
+        
+      
+       $("#ChiES").attr("disabled", "disabled");
+        
+        var p = $("#p.PES").val();
+        var n1 = $("#n1.PES").val();
+        var n2 = $("#n2.PES").val();
+        var type = $("#type.PES").val();
+
+        
+        //perform the request
+        //calls the function "rnorm" in the current package
+        var req = opencpu.r_fun_json("getESFromP", { 
+                                    p: p,
+                                    n1: n1,
+                                    n2: n2,
+                                    type: type                                    
+                              }, function(output) {
+                      $("#d.PES").val(output.d);                    
+                      $("#g.PES").val(output.g);                    
+                      $("#r.PES").val(output.r);                    
+                      $("#p.PES").val(output.p);    
+                      $("#n1.PES").val(output.n1);
+                      $("#n2.PES").val(output.n2);    
+                      $("#type.PES").val(output.type);    
+                  }).fail(function(){
+                      alert("Failure: " + req.responseText);
+        });
+        
+        //if R returns an error, alert the error message
+        req.fail(function(){
+          alert("Server error: " + req.responseText);
+        });
+        
+        //after request complete, re-enable the button 
+        req.always(function(){
+          $("#PES").removeAttr("disabled")
+        });
+        
+      })
     })
     </script>
 
@@ -1066,6 +1108,59 @@
       <tr>
         <td align = "right">Pearson's r: </td>
         <td><input type="text" id="r" class="ChiES"></td>
+      </tr>
+      
+    </table>
+    
+    <hr>
+    <p align="center">ES from p-value</p>
+    
+    <table cellspacing="50" width="100%">
+        <col width = "50%">
+        <col width = "50%">
+      
+    <tr>
+        <td align="right">Enter the p-value: </td>
+        <td><input type="text" id="p" class="PES"></td>
+    </tr>
+    
+    <tr>
+        <td align="right">Enter the sample size of the treatment group: </td>
+        <td><input type="text" id="n1" class="PES"></td>
+    </tr>
+    
+    <tr>
+        <td align="right">Enter the sample size of the control group: </td>
+        <td><input type="text" id="n2" class="PES"></td>
+    </tr>
+    
+    <tr>
+        <td align="right">Select the type of test used: </td>
+        <td>
+            <select id="type">
+                <option value="one">One-tailed t-test</option>
+                <option value="two">Two-tailed t-test</option>
+            </select>
+        </td>
+    </tr>
+      
+    <tr>
+        <td colspan="2" align="center"><button id="PES" type="button" style="font-size: 24px;" class="submitButton">Calculate ESs</button></td>       
+    </tr>
+      
+      <tr>
+        <td align = "right">Cohen's d: </td>
+        <td><input type="text" id="d" class="PES"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Hedges's g: </td>
+        <td><input type="text" id="g" class="PES"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Pearson's r: </td>
+        <td><input type="text" id="r" class="PES"></td>
       </tr>
       
     </table>
