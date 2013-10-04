@@ -278,10 +278,10 @@
                                 dataset: dataset, 
                                 columnName: columnName
                               }, function(output) {
-                      $("#XCoordinates.transform").val(output.x);                    
-                      $("#YCoordinates.transform").val(output.y);                      
-                      $("#dataset.transform").val(output.dataset);
-                      $("#columnName.transform").val(output.columnName);                                          
+                      $("#XCoordinates.QQPlot").val(output.x);                    
+                      $("#YCoordinates.QQPlot").val(output.y);                      
+                      $("#dataset.QQPlot").val(output.dataset);
+                      $("#columnName.QQPlot").val(output.columnName);                                          
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
         });
