@@ -8,7 +8,7 @@ getESFromRawMeanScores <- function(m1 = "", m2 = "",  sd1 = "", sd2 = "", n1 = "
   if(m1 == "")
   {
     m1 = "2.4";
-    m1 = "5.4";
+    m2 = "5.4";
     n1 = "40";
     n2 = "40";
     sd1 = "5";
