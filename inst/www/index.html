@@ -264,6 +264,8 @@
         
       })
       
+      $("#QQPlot").on("click", function(){
+        
       
        $("#QQPlot").attr("disabled", "disabled");
         
@@ -291,7 +293,7 @@
         
         //after request complete, re-enable the button 
         req.always(function(){
-          $("#transform").removeAttr("disabled")
+          $("#QQPlot").removeAttr("disabled")
         });
         
       })
