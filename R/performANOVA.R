@@ -26,5 +26,5 @@ performANOVA <- function(dependentVariable = "", independentVariable = "", datas
   
   result <- anova(fit);
   
-  list(F = result[["F value"]][1], DOF = result[["Df"]][1], p = result[["Pr(>F)"]][1]);
+  list(F = result[["F value"]][1], DOF = result[["Df"]][1], p = result[["Pr(>F)"]][1], data = paste(dependentVariable, independentVariable));
 }
