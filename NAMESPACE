@@ -20,5 +20,6 @@ export(getESFromF)
 export(getESFromT)
 export(getESFromChiSquared)
 export(getESFromP)
+export(getESFromRawMeanScores)
 
 export(runThisRCode)
