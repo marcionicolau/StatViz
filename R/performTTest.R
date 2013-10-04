@@ -25,5 +25,5 @@ performTTest <- function(dataset = "", columnNameX = "", columnNameY = "", paire
   
   # Interpret T-test
   
-  list(p=result$p.value, t=result$statistic[["t"]], DOF=result$parameter[["df"]], CI_mean=result$conf.int, method=result$method);
+  list(p=result$p.value, t=result$statistic[["t"]], DOF=result$parameter[["df"]], CI_mean=result$conf.int, method=result$method, dataset = dataset, columnName1 = columnNameX, columnName2 = columnNameY);
 }
