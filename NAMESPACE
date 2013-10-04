@@ -1,5 +1,4 @@
-export(getMean)
-export(getMedian)
+export(getMeanAndMedian)
 export(getIQR)
 export(getCorrelationCoefficient)
 export(getRSquared)
