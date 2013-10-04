@@ -100,7 +100,7 @@
         //perform the request
         //calls the function "rnorm" in the current package
         var req = opencpu.r_fun_json("getCorrelationCoefficient", {
-                                dataset: dataset, columnName: columnName, method: method                
+                                dataset: dataset, columnNameX: columnName1, columnNameY:columnName2, method: method                
                               }, function(output) {
                       $("#correlationCoefficient.correlationCoefficient").val(output.correlationCoefficient);
                       $("#dataset.correlationCoefficient").val(output.dataset);
