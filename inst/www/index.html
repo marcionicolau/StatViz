@@ -420,14 +420,14 @@
         //perform the request
         //calls the function "rnorm" in the current package
         var req = opencpu.r_fun_json("getESFromF", { 
-                                    F: F,
+                                    FVal: F,
                                     n1: n1,
                                     n2: n2                               
                               }, function(output) {
                       $("#d.ES").val(output.d);                    
                       $("#g.ES").val(output.g);                    
                       $("#r.ES").val(output.r);                    
-                      $("#F.ES").val(output.F);    
+                      $("#F.ES").val(output.FVal);    
                       $("#n1.ES").val(output.n1);    
                       $("#n2.ES").val(output.n2);                                                            
                   }).fail(function(){
