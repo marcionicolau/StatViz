@@ -19,8 +19,9 @@ performTTest <- function(dataset = "", columnNameX = "", columnNameY = "", paire
   distributionY = eval(parse(text = paste(dataset,"$",columnNameY)));
   
   # Do T-test
+  alpha = eval(parse(text = alpha));
   
-  result = t.test(x=distributionX, y=distributionY, alternative=alternative, paired=eval(parse(text = paired)), var.equal=TRUE, conf.level=eval(parse(text = alpha)))
+  result = t.test(x=distributionX, y=distributionY, alternative=alternative, paired=eval(parse(text = paired)), var.equal=TRUE, conf.level=alpha)
   
   
   # Interpret T-test
