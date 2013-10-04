@@ -226,6 +226,43 @@
         });
         
       })
+      
+       $("#transform").on("click", function(){
+        
+        
+        //disable the button to prevent multiple clicks
+        $("#transform").attr("disabled", "disabled");
+        
+        var dataset = $("#dataset.transform").val();
+        var columnName = $("#columnName.transform").val();        
+        var type = $("#type.transform").val();        
+        
+        //perform the request
+        //calls the function "rnorm" in the current package
+        var req = opencpu.r_fun_json("applyTransform", {
+                                dataset: dataset, 
+                                columnName: columnName, 
+                                type: type
+                              }, function(output) {
+                      $("#beforeTransform.transform").val(output.beforeTransform);                    
+                      $("#afterTransform.transform").val(output.afterTransform);                      
+                      $("#dataset.transform").val(output.dataset);
+                      $("#columnName.transform").val(output.columnName);                                          
+                  }).fail(function(){
+                      alert("Failure: " + req.responseText);
+        });
+        
+        //if R returns an error, alert the error message
+        req.fail(function(){
+          alert("Server error: " + req.responseText);
+        });
+        
+        //after request complete, re-enable the button 
+        req.always(function(){
+          $("#transform").removeAttr("disabled")
+        });
+        
+      })
     })
     </script>
 
@@ -429,6 +466,48 @@
       <tr>
         <td align = "right">R Squared</td>
         <td><input type="text" id="rsq" class="RSquared"></td>
+      </tr>
+      
+    </table>
+    
+    <hr>
+    <table cellspacing="50" width="100%">
+        <col width = "50%">
+        <col width = "50%">
+      <tr>
+        <td align = "right">Enter dataset name:</td>
+        <td><input type="text" id="dataset" class="transform"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Enter variable name:</td>
+        <td><input type="text" id="columnName" class="transform"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Choose transformation type:</td>
+        <td>
+        <select id="type" class="transform">
+            <option value="squareRoot">Square root</option>
+            <option value="cubeRoot">Cube root</option>
+            <option value="reciprocal">Reciprocal</option>            
+            <option value="logarithm">Logarithm</option>            
+        </select> 
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" align="center"><button id="transform" type="button" style="font-size: 24px;" class="submitButton">Apply transformation</button></td>       
+      </tr>
+
+      <tr>
+        <td align = "center">Before</td>
+        <td align = "center">After</td>
+      </tr>
+      
+      <tr>
+        <td align = "center"> <textarea id="beforeTransform" class="transform" rows="50" cols = "50"> </textarea> </td>
+        <td align = "center"> <textarea id="afterTransform" class="transform" rows="50" cols = "50"> </textarea> </td>
       </tr>
       
     </table>
