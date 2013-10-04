@@ -13,7 +13,7 @@ getESFromChiSquared <- function(ChiSquared = "", n = "")
   }
   
   
-  result = tes(eval(parse(text = ChiSquared)), eval(parse(text = n)));
+  result = chies(eval(parse(text = ChiSquared)), eval(parse(text = n)));
   
   # result = tes(3.14, 40, 40);
   
