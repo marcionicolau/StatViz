@@ -1,4 +1,4 @@
-getESFromChiSquared <- function(TVal = "", n1 = "", n2 = "")
+getESFromChiSquared <- function(ChiSquared = "", n = "")
 {
   
   install.packages("compute.es");
@@ -6,17 +6,16 @@ getESFromChiSquared <- function(TVal = "", n1 = "", n2 = "")
   library(compute.es);
   
   
-  if(TVal == "")
+  if(ChiSquared == "")
   {
-    TVal = "3.14";
-    n1 = "40";
-    n2 = "40";
+    ChiSquared = "3.14";
+    n = "40";
   }
   
   
-  result = tes(eval(parse(text = TVal)), eval(parse(text = n1)), eval(parse(text = n2)));
+  result = tes(eval(parse(text = ChiSquared)), eval(parse(text = n)));
   
   # result = tes(3.14, 40, 40);
   
-  list(d = result$MeanDifference[["d"]], g = result$MeanDifference[["g"]], r = result$Correlation[["r"]], TVal= TVal, n1 = n1, n2 = n2);
+  list(d = result$MeanDifference[["d"]], g = result$MeanDifference[["g"]], r = result$Correlation[["r"]], ChiSquared = ChiSquared, n = n);
 }
