@@ -8,7 +8,8 @@
       }
     </style>
     
-    Include order: first jquery, then opencpu.js, and then your code    <script src="opencpu/jquery-1.10.1.min.js"></script>
+    <!--Include order: first jquery, then opencpu.js, and then your code    -->
+    <script src="opencpu/jquery-1.10.1.min.js"></script>
     <script src="opencpu/opencpu.js"></script>
     
     <script>
@@ -31,6 +32,8 @@
                               }, function(output) {
                       $("#mean").val(output.mean);
                       $("#median").val(output.median);
+                      $("#dataset").val(output.dataset);
+                      $("#columnName").val(output.columnName);
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
         });
