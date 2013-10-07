@@ -37,7 +37,7 @@ getCI <- function(dataset = "", columnName = "", alpha = "0.95")
   alpha = eval(parse(text = alpha));
   z = 1 - (alpha/2);
   
-  error <- qnorm(z)*sigma/sqrt(n);
+  error <- qnorm(0.975)*sigma/sqrt(n);
   
   list(min = mean - error, max = mean + error, dataset = dataset, columnName = columnName, alpha = alpha);
 }
