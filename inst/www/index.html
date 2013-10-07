@@ -610,6 +610,35 @@
         });
         
       })
+      
+      $("#friedman").on("click", function(){
+        
+      
+       $("#friedman").attr("disabled", "disabled");
+                
+        //perform the request
+        //calls the function "rnorm" in the current package
+        var req = opencpu.r_fun_json("performFriedmanTest", {                              
+                              }, function(output) {
+                      $("#p.friedman").val(output.p);                    
+                      $("#ChiSquared.friedman").val(output.ChiSquared);                    
+                      $("#DF.friedman").val(output.DF);                    
+                      $("#data.friedman").val(output.data);                                
+                  }).fail(function(){
+                      alert("Failure: " + req.responseText);
+        });
+        
+        //if R returns an error, alert the error message
+        req.fail(function(){
+          alert("Server error: " + req.responseText);
+        });
+        
+        //after request complete, re-enable the button 
+        req.always(function(){
+          $("#friedman").removeAttr("disabled")
+        });
+        
+      })
     })
     </script>
 
@@ -1268,6 +1297,34 @@
       <tr>
         <td align = "right">Pearson's r: </td>
         <td><input type="text" id="r" class="MES"></td>
+      </tr>
+      
+    </table>
+    
+    <hr>   
+    
+    <tr>
+        <td colspan="2" align="center"><button id="friedman" type="button" style="font-size: 24px;" class="submitButton">Perform Friedman's Analysis</button></td>       
+    </tr>
+    
+      <tr>
+        <td align = "right">Data: </td>
+        <td><textarea id="data" class="friedman" rows="25" cols="25"></textarea></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Friedman's Chi-squared: </td>
+        <td><input type="text" id="ChiSquared" class="friedman"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">Degrees of freedom: </td>
+        <td><input type="text" id="DF" class="friedman"></td>
+      </tr>
+      
+      <tr>
+        <td align = "right">p-value: </td>
+        <td><input type="text" id="p" class="friedman"></td>
       </tr>
       
     </table>
