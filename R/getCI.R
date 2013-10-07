@@ -1,9 +1,10 @@
-getCI <- function(dataset = "", columnName = "", alpha = "0.95")
+getCI <- function(dataset = "", columnName = "", alpha = "")
 {
   if(dataset == "")
   {   
     dataset = "beaver1";
     columnName = "time";
+    alpha = "0.95";
   }
   else if(columnName == "")
   {
