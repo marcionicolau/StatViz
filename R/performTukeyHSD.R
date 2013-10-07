@@ -12,5 +12,5 @@ performTukeyHSD <- function(dataset = "")
   
   result = TukeyHSD(aov(price ~ store, data = groceries2), "store");
   
-  list(p = result$store[,4][["storeB-storeA"]], comparison = "storeB - storeA");
+  list(p = result$store[,4][["storeB-storeA"]], comparison = "storeB - storeA", data = groceries2);
 }
