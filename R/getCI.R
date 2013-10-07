@@ -34,7 +34,7 @@ getCI <- function(dataset = "", columnName = "", alpha = "0.95")
   
   
   # Find CI
-  alpha = eval(parse(text = alpha);
+  alpha = eval(parse(text = alpha));
   z = 1 - (alpha/2);
   
   error <- qnorm(z)*sigma/sqrt(n);
