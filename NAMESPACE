@@ -8,6 +8,7 @@ export(getQQPlotCoordinates)
 
 export(performTTest)
 export(performANOVA)
+export(performFriedmanTest)
 export(performKruskalTest)
 export(performWilcoxonTest)
 export(performHomoscedasticityTest)
