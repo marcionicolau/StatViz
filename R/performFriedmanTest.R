@@ -12,6 +12,6 @@ performFriedmanTest <- function(dataset = "")
   
   result = friedman.test(price ~ store | subject, data = groceries2);
   
-  list(ChiSquared = result$statistic[["Friedman chi-squared"]], DF = result$parameter[["df"]], p = result$p.value, data = groceries2);
+  list(ChiSquared = result$statistic[["Friedman chi-squared"]], DF = result$parameter[["df"]], p = result$p.value, data = print(groceries2));
 }
   
