@@ -1,4 +1,4 @@
-performTTest <- function(dataset = "", columnNameX = "", columnNameY = "", paired = "FALSE", alternative = "two.sided", alpha = "0.95")
+performTTest <- function(dataset = "", columnNameX = "", columnNameY = "", paired = "FALSE", alternative = "two.sided", alpha = "")
 {
   # Get distributions
   
@@ -7,6 +7,7 @@ performTTest <- function(dataset = "", columnNameX = "", columnNameY = "", paire
     dataset = "beaver1";
     columnNameX = "time";
     columnNameY = "temp";
+    alpha = "0.95";
   }
   else if(columnNameX == "")
   {
