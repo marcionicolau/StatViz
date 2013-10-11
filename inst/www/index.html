@@ -27,8 +27,11 @@
                 // Load dataset variables
                 getVariables("beaver1");
                 
+                var variables = $("#variables");
+                jQuery.data(variables, "columnNames", "test");
                 
-                console.log("variables: " + jQuery.data($("#variables"), "columnNames"));
+                
+                console.log("variables: " + jQuery.data(variables, "columnNames"));
                 // Populate visualizations panel
             }
             
