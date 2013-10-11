@@ -27,13 +27,14 @@
                 getVariables("beaver1");
                 
                 // Populate visualizations panel
+                var colNames;
                 
-                setTimeout(function(){
+                do{
                     var variables = $("#variables");
-                    console.log("On top: " + jQuery.data(variables, "columnNames")); 
-                }, 500);
+                    colNames = jQuery.data(variables, "columnNames") 
+                }while(typeof(colNames) === 'undefined'));
                 
-                
+                console.log("whew");
             }
             
             function getVariables(dataset)
