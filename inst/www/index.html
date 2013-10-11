@@ -26,13 +26,6 @@
                 
                 // Load dataset variables
                 getVariables("beaver1");
-                
-                setTimeout(function(){
-                    var variables = $("#variables");
-                    console.log("variables: " + jQuery.data(variables, "columnNames"));    
-                }, 5000);
-                
-            
                 // Populate visualizations panel
             }
             
@@ -53,9 +46,8 @@
                   alert("Server error: " + req.responseText);
                 });
                 
-                var variables = $("#variables");
-                jQuery.data(variables, "columnNames", "test");
-                console.log("variables: " + jQuery.data(variables, "columnNames"));    
+                $("#variables").text("test");
+    
             }
         </script>
         
