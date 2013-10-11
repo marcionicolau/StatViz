@@ -17,14 +17,17 @@
             window.onload = function()
             { 
                 // Set the width and height of panels
-                variablesPanel = d3.select("#variables.panel");
-                visualizationsPanel = d3.select("#visualizations.panel");
+                variablePanel = d3.select("#variable.panel");
+                visualizationPanel = d3.select("#visualization.panel");
         
-                variablesPanel.attr("style", "width: " + width*0.2 + "px; height: " + height + "px;");    
-                visualizationsPanel.attr("style", "width: " + width*0.8 + "px; height: " + height/3 + "px; top: " + height*(2/3) + "px; left: " + width*0.2 + "px;");    
+                variablePanel.attr("style", "width: " + width*0.2 + "px; height: " + height + "px;");    
+                visualizationPanel.attr("style", "width: " + width*0.8 + "px; height: " + height/3 + "px; top: " + height*(2/3) + "px; left: " + width*0.2 + "px;");    
                 
                 // Load dataset variables
                 getVariables("longley");
+                
+                // Populate visualizations
+                renderVisualizations();                
             }
             
             function getVariables(dataset)
@@ -46,49 +49,67 @@
             
             function renderVariableNames(variableNames)
             {   
-                var variablesPanel = d3.select("#variables.panel");                
-                var variablesPanelWidth = variablesPanel.style("width");
+                var variablePanel = d3.select("#variable.panel");                
+                var variablePanelWidth = variablePanel.style("width");
                 
-                var variableNameHolderPadding = 10;
+                var variableNameHolderPadding = 15;
                 var radius = "15px";
-                var variableNameHolderWidth = ExtractNumber(variablesPanelWidth) - 2*variableNameHolderPadding;                
+                var variableNameHolderWidth = getNumber(variablePanelWidth) - 2*variableNameHolderPadding;                
                 
                 // TODO: Find this dynamically based on number of variable names (75 is the maximum), do this for font-size as well
                 var variableNameHolderHeight = 75;
                 
-                var variablesPanelSVG = variablesPanel.append("svg");                
-                variablesPanelSVG.attr("id","variablesPanelSVG")
-                                            .attr("height", variablesPanel.style("height"))
-                                            .attr("width", variablesPanelWidth)
+                var variablePanelSVG = variablePanel.append("svg");                
+                variablePanelSVG.attr("id","variablePanelSVG")
+                                            .attr("height", variablePanel.style("height"))
+                                            .attr("width", variablePanelWidth)
                                             .attr("left", variablesPanel.style("left"))
-                                            .attr("top", variablesPanel.style("top"));  
+                                            .attr("top", variablePanel.style("top"));  
                 
                 
                 for(var i=0; i<variableNames.length; i++)
                 {
-                    variablesPanelSVG.append("rect")
+                    variablePanelSVG.append("rect")
                                                     .attr("x", variableNameHolderPadding)
                                                     .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding))                                                   
                                                     .attr("height", variableNameHolderHeight)
                                                     .attr("width",  variableNameHolderWidth)     
-                                                    .attr("rx", radius)
-                                                    .attr("ry", radius)
                                                     .attr("id", i)
                                                     .attr("class", "variableNameHolder");
                                                 
-                    variablesPanelSVG.append("text")
+                    variablePanelSVG.append("text")
                                                     .attr("x", variableNameHolderPadding + variableNameHolderWidth/2)
                                                     .attr("y", variableNameHolderPadding + variableNameHolderHeight/2 + 15 + i*(variableNameHolderHeight + variableNameHolderPadding))
                                                     .attr("fill", "black")
                                                     .attr("font-size", "36px")
                                                     .attr("text-anchor", "middle")
-                                                    .text(variableNames[i])
-                                                    .attr("id",i)
-                                                    .attr("class", "variableName");
+                                                    .text(variableNames[i]);
                 }                         
             }
             
-            function ExtractNumber(value)
+            function renderVisualizations()
+            {
+                visualizationPanel = d3.select("#visualization.panel");
+                var visualizationPanelHeight = visualizationPanel.style("height");
+                var visualizationPanelWidth = visualizationPanel.style("height");
+                
+                var visualizationHolderPadding = 15;
+                var radius = "15px";
+                var visualizationHolderHeight = getNumber(visualizationPanelHeight) - 2*visualizationHolderPadding;                
+                
+                // TODO: Find this dynamically based on number of variable names (75 is the maximum), do this for font-size as well
+                var visualizationHolderWidth = getNumber(visualizationPanelWidth)/3 - 3*visualizationHolderPadding;
+                
+                var visualizationPanelSVG = visualizationPanel.append("svg");                
+                visualizationPanelSVG.attr("id","visualizationPanelSVG")
+                                            .attr("height", visualizationPanelHeight)
+                                            .attr("width", visualizationPanelWidth)
+                                            .attr("left", visualizationPanel.style("left"))
+                                            .attr("top", visualizationPanel.style("top"));  
+                
+            }
+            
+            function getNumber(value)
             {
                     var n = parseInt(value);
 
@@ -96,7 +117,7 @@
             }
         </script>
         
-        <div id="variables" class="panel"></div>
-        <div id="visualizations" class="panel"></div>        
+        <div id="variable" class="panel"></div>
+        <div id="visualization" class="panel"></div>        
     </body>
 </html>   
