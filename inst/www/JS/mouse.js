@@ -29,31 +29,7 @@ function OnMouseDown(e)
    
     if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "variableNameHolder")
     {
-        // grab the mouse position
-        _startX = e.clientX;
-        _startY = e.clientY;
-
-        // grab the clicked element's position
-        _offsetX = getNumber(target.style.left);
-        _offsetY = getNumber(target.style.top);      
-
-        // bring the clicked element to the front while it is being dragged
-        _oldZIndex = target.style.zIndex;
-        target.style.zIndex = +1;
-
-        // we need to access the element in OnMouseMove
-        _dragElement = target;
-
-        // tell our code to start moving the element with the mouse
-        document.onmousemove = OnMouseMove;
-
-        // cancel out any text selections
-        document.body.focus();
-
-        // prevent text selection in IE
-        document.onselectstart = function () { return false; };
-        // prevent IE from trying to drag an image
-        target.ondragstart = function() { return false; };	
+        setup(e, target);
     }
 }
  
@@ -83,31 +59,7 @@ function OnMouseOver(e)
 
     if(target.className.baseVal == "variableNameHolder")
     {		
-        // grab the mouse position
-        _startX = e.clientX;
-        _startY = e.clientY;
-
-        // grab the clicked element's position
-        _offsetX = getNumber(target.style.left);
-        _offsetY = getNumber(target.style.top);      
-
-        // bring the clicked element to the front while it is being dragged
-        _oldZIndex = target.style.zIndex;
-        target.style.zIndex = +1;
-
-        // we need to access the element in OnMouseMove
-        _dragElement = target;
-
-        // tell our code to start moving the element with the mouse
-        document.onmousemove = OnMouseMove;
-
-        // cancel out any text selections
-        document.body.focus();
-
-        // prevent text selection in IE
-        document.onselectstart = function () { return false; };
-        // prevent IE from trying to drag an image
-        target.ondragstart = function() { return false; };	
+        setup(e, target);
     }
 }
 
@@ -119,4 +71,33 @@ function OnMouseOut(e)
     {
        
     }
-}			
+}		
+
+function setup(e, target)
+{
+    // grab the mouse position
+    _startX = e.clientX;
+    _startY = e.clientY;
+
+    // grab the clicked element's position
+    _offsetX = getNumber(target.style.left);
+    _offsetY = getNumber(target.style.top);      
+
+    // bring the clicked element to the front while it is being dragged
+    _oldZIndex = target.style.zIndex;
+    target.style.zIndex = +1;
+
+    // we need to access the element in OnMouseMove
+    _dragElement = target;
+
+    // tell our code to start moving the element with the mouse
+    document.onmousemove = OnMouseMove;
+
+    // cancel out any text selections
+    document.body.focus();
+
+    // prevent text selection in IE
+    document.onselectstart = function () { return false; };
+    // prevent IE from trying to drag an image
+    target.ondragstart = function() { return false; };		
+}
