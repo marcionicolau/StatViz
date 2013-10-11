@@ -54,8 +54,6 @@ function OnMouseDown(e)
         document.onselectstart = function () { return false; };
         // prevent IE from trying to drag an image
         target.ondragstart = function() { return false; };	
-        
-        console.log("clicked");
     }
 }
  
@@ -91,7 +89,7 @@ function OnMouseOver(e)
 
         // grab the clicked element's position
         _offsetX = getNumber(target.style.left);
-        _offsetY = getNumber(target.style.top);
+        _offsetY = getNumber(target.style.top);      
 
         // bring the clicked element to the front while it is being dragged
         _oldZIndex = target.style.zIndex;
@@ -100,6 +98,9 @@ function OnMouseOver(e)
         // we need to access the element in OnMouseMove
         _dragElement = target;
 
+        // tell our code to start moving the element with the mouse
+        document.onmousemove = OnMouseMove;
+
         // cancel out any text selections
         document.body.focus();
 
@@ -107,8 +108,6 @@ function OnMouseOver(e)
         document.onselectstart = function () { return false; };
         // prevent IE from trying to drag an image
         target.ondragstart = function() { return false; };	
-        
-        console.log("hover");
     }
 }
 
@@ -118,6 +117,6 @@ function OnMouseOut(e)
                 
     if(target.className.baseVal == "variableNameHolder")                
     {
-        console.log("moved out");
+       
     }
 }			
