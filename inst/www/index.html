@@ -32,7 +32,8 @@
                 do{
                     var variables = $("#variables");
                     colNames = jQuery.data(variables, "columnNames") 
-                }while(typeof(colNames) === 'undefined'));
+                }
+                while(typeof(colNames) === 'undefined');
                 
                 console.log("whew");
             }
