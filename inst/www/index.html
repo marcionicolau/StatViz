@@ -111,26 +111,26 @@
                 
                 var visualizations = ["Histogram", "Box-plot", "Scatter-plot"];
                 
-//                 for(var i=0; i<visualizations.length; i++)
-//                 {
+                for(var i=0; i<visualizations.length; i++)
+                {
                     visualizationPanelSVG.append("rect")
-                                                    .attr("x", visualizationHolderPadding)
+                                                    .attr("x", visualizationHolderPadding + i*(visualizationHolderWidth + visualizationHolderPadding))
                                                     .attr("y", visualizationHolderPadding )
                                                     .attr("height", visualizationHolderHeight)
                                                     .attr("width",  visualizationHolderWidth)     
                                                     .attr("rx", radius)
                                                     .attr("ry", radius)
-                                                    .attr("id", 0)
+                                                    .attr("id", i)
                                                     .attr("class", "visualizationHolder");
                                                 
                     visualizationPanelSVG.append("text")
-                                                    .attr("x", visualizationHolderPadding + visualizationHolderWidth/2)
-                                                    .attr("y", visualizationHolderPadding + visualizationHolderHeight/2 + 15 + 0*(visualizationHolderHeight + visualizationHolderPadding))
+                                                    .attr("x", visualizationHolderPadding + visualizationHolderWidth/2 + i*(visualizationHolderWidth + visualizationHolderPadding))
+                                                    .attr("y", visualizationHolderPadding + visualizationHolderHeight/2)
                                                     .attr("fill", "black")
                                                     .attr("font-size", "36px")
                                                     .attr("text-anchor", "middle")
-                                                    .text(visualizations[0]);
-//                 }       
+                                                    .text(visualizations[i]);
+                }       
             }
             
             function getNumber(value)
