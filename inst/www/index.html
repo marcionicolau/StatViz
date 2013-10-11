@@ -55,9 +55,9 @@
                 var variablesPanel = d3.select("#variables.panel");                
                 var variablesPanelWidth = variablesPanel.style("width");
                 
-                var variableNameHolder.padding = 10;
-                var variableNameHolder.width = variablesPanelWidth - 2*variableNameHolder.padding;                
-                var variableNameHolder.height = 50;
+                var variableNameHolderPadding = 10;
+                var variableNameHolderWidth = variablesPanelWidth - 2*variableNameHolderPadding;                
+                var variableNameHolderHeight = 50;
                 
                 var variablesPanelSVG = variablesPanel.append("svg");                
                 variablesPanelSVG.attr("id","variablesPanelSVG")
@@ -67,10 +67,10 @@
                                             .attr("top", variablesPanel.style("top"));  
                 
                 variablesPanelSVG.append("rect")
-                                                .attr("x", variableNameHolder.padding)
-                                                .attr("y", variableNameHolder.padding)
-                                                .attr("height", variableNameHolder.height)
-                                                .attr("width",  variableNameHolder.width)     
+                                                .attr("x", variableNameHolderPadding)
+                                                .attr("y", variableNameHolderPadding)
+                                                .attr("height", variableNameHolderHeight)
+                                                .attr("width",  variableNameHolderWidth)     
                                                 .attr("fill", "silver");                                     
             }
         </script>
