@@ -23,10 +23,9 @@
                 variablesPanel.attr("style", "width: " + width*0.25 + "px; height: " + height + "px;");    
                 visualizationsPanel.attr("style", "width: " + width*0.75 + "px; height: " + height/3 + "px; top: " + height*(2/3) + "px; left: " + width*0.25 + "px;");    
                 
-                jQuery.data($("#test"), test, "i like icecreams");
-                
                 // Load dataset variables
                 getVariables("beaver1");
+                
                 // Populate visualizations panel
                 
                 
@@ -38,9 +37,10 @@
                 var req = opencpu.r_fun_json("getColumnNames", {
                                 dataset: dataset
                               }, function(output) {
-                      var variables = $("#variables");
-                      jQuery.data(variables, "columnNames", "test");
-                      $("#variables").text(output.colNames);
+                    var variables = $("#variables");
+                    jQuery.data(variables,"columnNames",output.colNames);
+                    
+                    console.log(jQuery.data(variables, "columnNames"));
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
                 });
