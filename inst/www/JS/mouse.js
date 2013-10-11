@@ -63,8 +63,8 @@ function OnMouseOver(e)
     {		
         setup(e, target);
         
-        var variableNameHolder = d3.select("#" + target.id + "." + target.className.baseVal);
-        variableNameHolder.style("cursor","pointer");
+        var variableNameHolder = d3.select("#0.variableNameHolder");
+//         variableNameHolder.style("cursor","pointer");
         
         console.log("aloha there");
     }
