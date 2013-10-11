@@ -73,14 +73,14 @@
                 {
                     variablesPanelSVG.append("rect")
                                                     .attr("x", variableNameHolderPadding)
-                                                    .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding))//
+                                                    .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding))
                                                     .attr("height", variableNameHolderHeight)
                                                     .attr("width",  variableNameHolderWidth)     
                                                     .attr("fill", "silver");
                                                 
                     variablesPanelSVG.append("text")
                                                     .attr("x", variableNameHolderPadding + variableNameHolderWidth/2)
-                                                    .attr("y", variableNameHolderPadding + variableNameHolderHeight/2 + 15 + i*variableNameHolderHeight + 2*variableNameHolderPadding)//
+                                                    .attr("y", variableNameHolderPadding + variableNameHolderHeight/2 + 15 + i*(variableNameHolderHeight + variableNameHolderPadding))
                                                     .attr("fill", "black")
                                                     .attr("font-size", "36px")
                                                     .attr("text-anchor", "middle")
