@@ -34,8 +34,8 @@ function OnMouseDown(e)
         _startY = e.clientY;
 
         // grab the clicked element's position
-        _offsetX = ExtractNumber(target.style.left);
-        _offsetY = ExtractNumber(target.style.top);      
+        _offsetX = getNumber(target.style.left);
+        _offsetY = getNumber(target.style.top);      
 
         // bring the clicked element to the front while it is being dragged
         _oldZIndex = target.style.zIndex;
@@ -90,8 +90,8 @@ function OnMouseOver(e)
         _startY = e.clientY;
 
         // grab the clicked element's position
-        _offsetX = ExtractNumber(target.style.left);
-        _offsetY = ExtractNumber(target.style.top);
+        _offsetX = getNumber(target.style.left);
+        _offsetY = getNumber(target.style.top);
 
         // bring the clicked element to the front while it is being dragged
         _oldZIndex = target.style.zIndex;
