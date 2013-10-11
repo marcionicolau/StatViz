@@ -63,6 +63,9 @@ function OnMouseOver(e)
     {		
         setup(e, target);
         
+        var variableNameHolder = d3.select("#" + target.id + "." + target.className.baseVal);
+        variableNameHolder.style("cursor","pointer");
+        
         console.log("aloha there");
     }
 }
@@ -73,7 +76,7 @@ function OnMouseOut(e)
                 
     if(target.className.baseVal == "variableNameHolder")                
     {
-       
+        var variableNameHolder = d3.select("#" + target.id + "." + target.className.baseVal);        
     }
 }		
 
