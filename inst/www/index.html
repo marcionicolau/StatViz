@@ -28,6 +28,11 @@
                 
                 // Populate visualizations panel
                 
+                setTimeout(function(){
+                    var variables = $("#variables");
+                    console.log("On top: " + jQuery.data(variables, "columnNames")); 
+                }, 500);
+                
                 
             }
             
