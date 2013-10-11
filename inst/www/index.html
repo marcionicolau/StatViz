@@ -79,7 +79,7 @@
                                                     .attr("width",  variableNameHolderWidth)     
                                                     .attr("rx", radius)
                                                     .attr("ry", radius)
-                                                    .attr("id", i)
+                                                    .attr("id", variableNames[i])
                                                     .attr("class", "variableNameHolder");
 
                                                 
@@ -126,7 +126,7 @@
                                                     .attr("width",  visualizationHolderWidth)     
                                                     .attr("rx", radius)
                                                     .attr("ry", radius)
-                                                    .attr("id", i)
+                                                    .attr("id", visualizations[i])
                                                     .attr("class", "visualizationHolder");
                     
                     visualizationPanelSVG.append("image")
@@ -136,7 +136,7 @@
                                                     .attr("height", imageSize)
                                                     .attr("width", imageSize)
                                                     .attr("style", "opacity: 0.5;")
-                                                    .attr("id", i)
+                                                    .attr("id", visualizations[i])
                                                     .attr("class", "visualizationHolderImage");
                                                 
                     visualizationPanelSVG.append("text")
@@ -146,7 +146,7 @@
                                                     .attr("font-size", "36px")
                                                     .attr("text-anchor", "middle")
                                                     .text(visualizations[i])
-                                                    .attr("id", i)
+                                                    .attr("id", visualizations[i])
                                                     .attr("class", "visualizationHolderText");
                                                     
                 } 
