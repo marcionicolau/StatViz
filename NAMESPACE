@@ -26,3 +26,5 @@ export(getESFromP)
 export(getESFromRawMeanScores)
 
 export(runThisRCode)
+
+export(getColumnNames)
