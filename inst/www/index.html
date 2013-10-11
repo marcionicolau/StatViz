@@ -100,7 +100,7 @@
                 var visualizationHolderHeight = getNumber(visualizationPanelHeight) - 2*visualizationHolderPadding;                
                 
                 // TODO: Find this dynamically based on number of variable names (75 is the maximum), do this for font-size as well
-                var visualizationHolderWidth = getNumber(visualizationPanelWidth)/3 - 3*visualizationHolderPadding;
+                var visualizationHolderWidth = getNumber(visualizationPanelWidth)/3;
                 
                 var visualizationPanelSVG = visualizationPanel.append("svg");                
                 visualizationPanelSVG.attr("id","visualizationPanelSVG")
