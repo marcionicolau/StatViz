@@ -29,13 +29,10 @@
                 // Populate visualizations panel
                 var colNames;
                 
-                do{
-                    var variables = $("#variables");
-                    colNames = jQuery.data(variables, "columnNames") 
-                }
-                while(typeof(colNames) === 'undefined');
                 
-                console.log("whew");
+                var variables = $("#variables");
+                colNames = jQuery.data(variables, "columnNames");
+                console.log(colNames);
             }
             
             function getVariables(dataset)
