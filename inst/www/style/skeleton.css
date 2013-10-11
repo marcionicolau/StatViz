@@ -30,9 +30,8 @@ div.panel
 
 rect.variableNameHolder
 {
-    radius = 15px;
-    rx: radius;
-    ry: radius;
+    rx: 15px;
+    ry: 15px;
     
     fill: silver;
 } 
