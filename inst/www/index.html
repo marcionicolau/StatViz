@@ -56,7 +56,7 @@
                 var variablesPanelWidth = variablesPanel.style("width");
                 
                 var variableNameHolderPadding = 10;
-                var variableNameHolderWidth = variablesPanelWidth - 2*variableNameHolderPadding;                
+                var variableNameHolderWidth = ExtractNumber(variablesPanelWidth) - 2*variableNameHolderPadding;                
                 var variableNameHolderHeight = 50;
                 
                 var variablesPanelSVG = variablesPanel.append("svg");                
@@ -72,6 +72,13 @@
                                                 .attr("height", variableNameHolderHeight)
                                                 .attr("width",  variableNameHolderWidth)     
                                                 .attr("fill", "silver");                                     
+            }
+            
+            function ExtractNumber(value)
+            {
+                    var n = parseInt(value);
+
+                    return n == null || isNaN(n) ? 0 : n;
             }
         </script>
         
