@@ -30,11 +30,13 @@ div.panel
 
 rect.variableNameHolder
 {
-    rx: 15px;
-    ry: 15px;
-    
-    fill: blue;
+    fill: silver;
 } 
+
+text.variableName
+{
+    fill: black;
+}
 
 
     
