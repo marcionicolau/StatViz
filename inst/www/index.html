@@ -68,21 +68,24 @@
                                             .attr("left", variablesPanel.style("left"))
                                             .attr("top", variablesPanel.style("top"));  
                 
-                variablesPanelSVG.append("rect")
-                                                .attr("x", variableNameHolderPadding)
-                                                .attr("y", variableNameHolderPadding)
-                                                .attr("height", variableNameHolderHeight)
-                                                .attr("width",  variableNameHolderWidth)     
-                                                .attr("fill", "silver");
+                
+                for(var i=0; i<variableNames.length; i++)
+                {
+                    variablesPanelSVG.append("rect")
+                                                    .attr("x", variableNameHolderPadding)
+                                                    .attr("y", variableNameHolderPadding + i*variableNameHolderHeight)//
+                                                    .attr("height", variableNameHolderHeight)
+                                                    .attr("width",  variableNameHolderWidth)     
+                                                    .attr("fill", "silver");
                                                 
-                variablesPanelSVG.append("text")
-                                                .attr("x", variableNameHolderPadding + variableNameHolderWidth/2)
-                                                .attr("y", variableNameHolderPadding + variableNameHolderHeight/2)
-                                                .attr("fill", "black")
-                                                .attr("font-size", "48px")
-                                                .attr("text-anchor", "middle")
-                                                .text(variableNames[0]);
-                         
+                    variablesPanelSVG.append("text")
+                                                    .attr("x", variableNameHolderPadding + variableNameHolderWidth/2)
+                                                    .attr("y", variableNameHolderPadding + variableNameHolderHeight/2 + 15 + i*variableNameHolderHeight)//
+                                                    .attr("fill", "black")
+                                                    .attr("font-size", "36px")
+                                                    .attr("text-anchor", "middle")
+                                                    .text(variableNames[i]);
+                }                         
             }
             
             function ExtractNumber(value)
