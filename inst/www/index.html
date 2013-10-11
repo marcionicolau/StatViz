@@ -13,6 +13,7 @@
         <script type="text/javascript">
             var width = document.width;
             var height = document.height;
+            var global;
         
             window.onload = function()
             { 
@@ -43,8 +44,9 @@
                 var req = opencpu.r_fun_json("getColumnNames", {
                                 dataset: dataset
                               }, function(output) {
+                    global = output.colNames;
                     var variables = $("#variables");
-                    jQuery.data(variables,"columnNames",output.colNames);
+                    jQuery.data(variables,"columnNames",global);
                     
                     console.log(jQuery.data(variables, "columnNames"));
                   }).fail(function(){
@@ -55,6 +57,8 @@
                 req.fail(function(){
                   alert("Server error: " + req.responseText);
                 });
+                
+                console.log("global: " + global);
             }
         </script>
         
