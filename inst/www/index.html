@@ -29,10 +29,12 @@
                 // Populate visualizations panel
                 var colNames;
                 
+                setTimeout(function(){
+                    var variables = $("#variables");
+                    colNames = jQuery.data(variables, "columnNames");
+                    console.log(colNames);    
+                }, 10000);
                 
-                var variables = $("#variables");
-                colNames = jQuery.data(variables, "columnNames");
-                console.log(colNames);
             }
             
             function getVariables(dataset)
@@ -53,9 +55,6 @@
                 req.fail(function(){
                   alert("Server error: " + req.responseText);
                 });
-                
-                
-    
             }
         </script>
         
