@@ -89,7 +89,9 @@
                                                     .attr("fill", "black")
                                                     .attr("font-size", "36px")
                                                     .attr("text-anchor", "middle")
-                                                    .text(variableNames[i]);
+                                                    .text(variableNames[i])
+                                                    .attr("id", "Variable" + i)
+                                                    .attr("class", "variableNameHolder");
                 }                         
             }
             
@@ -137,7 +139,7 @@
                                                     .attr("width", imageSize)
                                                     .attr("style", "opacity: 0.5;")
                                                     .attr("id", visualizations[i])
-                                                    .attr("class", "visualizationHolderImage");
+                                                    .attr("class", "visualizationHolder");
                                                 
                     visualizationPanelSVG.append("text")
                                                     .attr("x", visualizationHolderPadding + visualizationHolderWidth/2 + i*(visualizationHolderWidth + visualizationHolderPadding))
@@ -147,7 +149,7 @@
                                                     .attr("text-anchor", "middle")
                                                     .text(visualizations[i])
                                                     .attr("id", visualizations[i])
-                                                    .attr("class", "visualizationHolderText");
+                                                    .attr("class", "visualizationHolder");
                                                     
                 } 
             }       

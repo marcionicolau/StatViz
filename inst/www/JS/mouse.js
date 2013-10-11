@@ -29,9 +29,8 @@ function OnMouseDown(e)
    
     if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "variableNameHolder")
     {
-        setup(e, target);
-        
-        console.log("hi there");
+        setup(e, target);        
+     
     }
 }
  
@@ -65,8 +64,13 @@ function OnMouseOver(e)
         
         var variableNameHolder = d3.selectAll("#" + target.id + ".variableNameHolder");
         variableNameHolder.attr("cursor","pointer");
+    }
+    else if(target.className.baseVal == "visualizationHolder")
+    {		
+        setup(e, target);
         
-        console.log("aloha there");
+        var visualizationHolder = d3.selectAll("#" + target.id + ".visualizationHolder");
+        visualizationHolder.attr("cursor","pointer");
     }
 }
 
@@ -77,6 +81,10 @@ function OnMouseOut(e)
     if(target.className.baseVal == "variableNameHolder")                
     {
         var variableNameHolder = d3.selectAll("#" + target.id + ".variableNameHolder");
+    }
+    else if(target.className.baseVal == "visualizationHolder")                
+    {
+        var visualizationHolder = d3.selectAll("#" + target.id + ".visualizationHolder");
     }
 }		
 
