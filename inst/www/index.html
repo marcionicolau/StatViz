@@ -26,16 +26,6 @@
                 
                 // Load dataset variables
                 getVariables("beaver1");
-                
-                // Populate visualizations panel
-                var colNames;
-                
-                setTimeout(function(){
-                    var variables = $("#variables");
-                    colNames = jQuery.data(variables, "columnNames");
-                    console.log(colNames);    
-                }, 10000);
-                
             }
             
             function getVariables(dataset)
@@ -44,11 +34,7 @@
                 var req = opencpu.r_fun_json("getColumnNames", {
                                 dataset: dataset
                               }, function(output) {
-                    global = output.colNames;
-                    var variables = $("#variables");
-                    jQuery.data(variables,"columnNames",global);
-                    
-                    console.log(jQuery.data(variables, "columnNames"));
+                   $("#test").text(output.colNames);
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
                 });
