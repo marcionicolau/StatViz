@@ -25,10 +25,10 @@
                 
                 
                 // Load dataset variables
-                var variables = getVariables("beaver1");
+                getVariables("beaver1");
                 
                 
-                console.log("variables: " + variables);
+                console.log("variables: " + jQuery.data($("#variables"), "columnNames"));
                 // Populate visualizations panel
             }
             
@@ -39,7 +39,8 @@
                 var req = opencpu.r_fun_json("getColumnNames", {
                                 dataset: dataset
                               }, function(output) {
-                      $("#test").text(output.colNames);
+                      var variables = $("#variables");
+                      jQuery.data(variables, "columnNames", output.colNames);
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
                 });
