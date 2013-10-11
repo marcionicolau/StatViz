@@ -23,12 +23,13 @@
                 variablesPanel.attr("style", "width: " + width*0.25 + "px; height: " + height + "px;");    
                 visualizationsPanel.attr("style", "width: " + width*0.75 + "px; height: " + height/3 + "px; top: " + height*(2/3) + "px; left: " + width*0.25 + "px;");    
                 
+                jQuery.data($("#test"), test, "i like icecreams");
                 
                 // Load dataset variables
                 getVariables("beaver1");
                 // Populate visualizations panel
                 
-                jQuery.data($("#test"), test, "i like icecreams");
+                
             }
             
             function getVariables(dataset)
