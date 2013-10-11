@@ -73,8 +73,15 @@
                                                 .attr("y", variableNameHolderPadding)
                                                 .attr("height", variableNameHolderHeight)
                                                 .attr("width",  variableNameHolderWidth)     
-                                                .attr("fill", "silver")
-                                                .text("Hi");                                     
+                                                .attr("fill", "silver");
+                                                
+                variablePanelSVG.append("text")
+                                                .attr("x", variableNameHolderPadding)
+                                                .attr("y", variableNameHolderPadding)
+                                                .attr("fill", "black")
+                                                .attr("font-size", "24px")
+                                                .text(variableNames[0]);
+                         
             }
             
             function ExtractNumber(value)
