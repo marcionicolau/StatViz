@@ -4,7 +4,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="style/skeleton.css">
         <meta charset="utf-8">
-        <title>VizStat</title>
+        <title>StatViz</title>
         <script type="text/javascript" src="d3/d3.v3.js"></script>
         <script src="opencpu/jquery-1.10.1.min.js"></script>
         <script src="opencpu/opencpu.js"></script>
@@ -45,9 +45,7 @@
             }
             
             function renderVariableNames(variableNames)
-            {
-                console.log("Rendering " + variableNames);
-                
+            {   
                 var variablesPanel = d3.select("#variables.panel");                
                 var variablesPanelWidth = variablesPanel.style("width");
                 
@@ -70,12 +68,11 @@
                 {
                     variablesPanelSVG.append("rect")
                                                     .attr("x", variableNameHolderPadding)
-                                                    .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding))
-                                                    .attr("rx", radius)
-                                                    .attr("ry", radius)
+                                                    .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding))                                                   
                                                     .attr("height", variableNameHolderHeight)
                                                     .attr("width",  variableNameHolderWidth)     
-                                                    .attr("fill", "silver");
+                                                    .attr("id", i)
+                                                    .attr("class", "variableNameHolder");
                                                 
                     variablesPanelSVG.append("text")
                                                     .attr("x", variableNameHolderPadding + variableNameHolderWidth/2)
