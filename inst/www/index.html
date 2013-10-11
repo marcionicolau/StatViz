@@ -35,12 +35,11 @@
             function getVariables(dataset)
             {   
                 // Get variable names and their data type
-                var data = "";
                 var req = opencpu.r_fun_json("getColumnNames", {
                                 dataset: dataset
                               }, function(output) {
                       var variables = $("#variables");
-                      jQuery.data(variables, "columnNames", output.colNames);
+                      jQuery.data(variables, "columnNames", "test");
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
                 });
@@ -50,7 +49,6 @@
                   alert("Server error: " + req.responseText);
                 });
                 
-                console.log(req);
                 return data;
                 
             }
