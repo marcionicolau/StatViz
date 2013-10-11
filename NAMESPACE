@@ -27,4 +27,4 @@ export(getESFromRawMeanScores)
 
 export(runThisRCode)
 
-export(getColumnNames)
+export(getVariableNames)
