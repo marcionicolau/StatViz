@@ -30,6 +30,8 @@ function OnMouseDown(e)
     if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "variableNameHolder")
     {
         setup(e, target);
+        
+        console.log("hi there");
     }
 }
  
@@ -60,6 +62,8 @@ function OnMouseOver(e)
     if(target.className.baseVal == "variableNameHolder")
     {		
         setup(e, target);
+        
+        console.log("aloha there");
     }
 }
 
