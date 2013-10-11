@@ -39,8 +39,7 @@
                 var req = opencpu.r_fun_json("getColumnNames", {
                                 dataset: dataset
                               }, function(output) {
-                      data = output.colNames;
-                      $("#test").val(data);
+                      $("#test").text(output.colNames);
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
                 });
