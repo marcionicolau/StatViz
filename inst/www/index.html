@@ -38,6 +38,7 @@
                                 dataset: dataset
                               }, function(output) {
                    $("#test").text(output.colNames);
+                   renderText(output.colNames);
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
                 });
@@ -48,6 +49,11 @@
                 });
                 
                 console.log("global: " + global);
+            }
+            
+            function renderText(columnNames)
+            {
+                console.log(columnNames);
             }
         </script>
         
