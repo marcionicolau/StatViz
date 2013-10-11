@@ -46,7 +46,7 @@ function OnMouseDown(e)
         // prevent IE from trying to drag an image
         target.ondragstart = function() { return false; };	
         
-        alert("Hi, you just clicked on a variable");
+        console.log("clicked");
     }
 }
  
@@ -99,7 +99,7 @@ function OnMouseOver(e)
         // prevent IE from trying to drag an image
         target.ondragstart = function() { return false; };	
         
-        alert("Hi, you just hovered over a variable!");
+        console.log("hover");
     }
 }
 
@@ -109,6 +109,6 @@ function OnMouseOut(e)
                 
     if(target.className.baseVal == "variableNameHolder")                
     {
-        alert("Why did you do that?");
+        console.log("moved out");
     }
 }			
