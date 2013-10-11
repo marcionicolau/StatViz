@@ -111,7 +111,7 @@
                 
                 var visualizations = ["Histogram", "Box-plot", "Scatter-plot"];
                 
-                var imageSize = 150;
+                var imageSize = 250;
                 
                 for(var i=0; i<visualizations.length; i++)
                 {                    
@@ -131,6 +131,7 @@
                                                     .attr("xlink:href", "images/" + (i+1) + ".png")
                                                     .attr("height", imageSize)
                                                     .attr("width", imageSize)
+                                                    .attr("style", "opacity: 0.5;")
                                                     .attr("id", i)
                                                     .attr("class", "visualizationHolderImage");
                                                 
