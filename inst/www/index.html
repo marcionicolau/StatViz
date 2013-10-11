@@ -57,6 +57,8 @@
                 
                 var variableNameHolderPadding = 10;
                 var variableNameHolderWidth = ExtractNumber(variablesPanelWidth) - 2*variableNameHolderPadding;                
+                
+                // TODO: Find this dynamically based on number of variable names (75 is the maximum), do this for font-size as well
                 var variableNameHolderHeight = 75;
                 
                 var variablesPanelSVG = variablesPanel.append("svg");                
@@ -71,7 +73,8 @@
                                                 .attr("y", variableNameHolderPadding)
                                                 .attr("height", variableNameHolderHeight)
                                                 .attr("width",  variableNameHolderWidth)     
-                                                .attr("fill", "silver");                                     
+                                                .attr("fill", "silver")
+                                                .text("Hi");                                     
             }
             
             function ExtractNumber(value)
