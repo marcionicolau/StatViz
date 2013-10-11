@@ -112,7 +112,7 @@
                 var visualizations = ["Histogram", "Box-plot", "Scatter-plot"];
                 
                 for(var i=0; i<visualizations.length; i++)
-                {
+                {                    
                     visualizationPanelSVG.append("rect")
                                                     .attr("x", visualizationHolderPadding + i*(visualizationHolderWidth + visualizationHolderPadding))
                                                     .attr("y", visualizationHolderPadding )
@@ -130,6 +130,13 @@
                                                     .attr("font-size", "36px")
                                                     .attr("text-anchor", "middle")
                                                     .text(visualizations[i]);
+                                                    
+                    visualizationPanelSVG.append("image")
+                                                    .attr("x", 25)
+                                                    .attr("y", 25)
+                                                    .attr("xlink:href", "images/" + (i+1) + ".jpg")
+                                                    .attr("height", "150")
+                                                    .attr("width", "150");
                 }       
             }
             
