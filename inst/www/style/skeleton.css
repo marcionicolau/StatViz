@@ -1,0 +1,32 @@
+/* Add filters, color gradients; */
+div.panel
+{    
+    background: grey;
+}
+
+#variables
+{
+    position: absolute;
+    
+    left: 0px;
+    top: 0px;
+    
+    height: 576px;
+    width: 256px;
+}
+
+#visualizations
+{
+    position: absolute;
+    
+    left: 256px;
+    top: 576px;
+    
+    height: 192px;
+    width: 1024px;
+    
+    background: darkgrey;
+}
+
+
+    
