@@ -4,7 +4,7 @@ div.panel
     background: grey;
 }
 
-#variables
+#variable
 {
     position: absolute;
     
@@ -15,7 +15,7 @@ div.panel
     width: 256px;
 }
 
-#visualizations
+#visualization
 {
     position: absolute;
     
@@ -30,13 +30,9 @@ div.panel
 
 rect.variableNameHolder
 {
+    radius = 15px;
+    rx: radius;
+    ry: radius;
+    
     fill: silver;
 } 
-
-text.variableName
-{
-    fill: black;
-}
-
-
-    
