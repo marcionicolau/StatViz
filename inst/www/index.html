@@ -12,8 +12,7 @@
     <body>        
         <script type="text/javascript">
             var width = document.width;
-            var height = document.height;
-            var global;
+            var height = document.height;        
         
             window.onload = function()
             { 
@@ -33,8 +32,7 @@
                 // Get variable names and their data type
                 var req = opencpu.r_fun_json("getVariableNames", {
                                 dataset: dataset
-                              }, function(output) {
-                   $("#test").text(output.varNames);
+                              }, function(output) {                   
                    renderVariableNames(output.varNames);
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
@@ -44,8 +42,6 @@
                 req.fail(function(){
                   alert("Server error: " + req.responseText);
                 });
-                
-                console.log("global: " + global);
             }
             
             function renderVariableNames(variableNames)
@@ -97,9 +93,6 @@
         </script>
         
         <div id="variables" class="panel"></div>
-        <div id="visualizations" class="panel"></div>
-        <p id="test"></p>
-        
-        <span id="variableList"></span>
+        <div id="visualizations" class="panel"></div>        
     </body>
 </html>   
