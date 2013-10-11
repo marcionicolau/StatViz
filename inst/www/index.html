@@ -40,7 +40,7 @@
                                 dataset: dataset
                               }, function(output) {
                       data = output.colNames;
-                      $("#variables").val(data);
+                      $("#variableList").val(data);
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
                 });
@@ -58,5 +58,7 @@
         
         <div id="variables" class="panel"></div>
         <div id="visualizations" class="panel"></div>
+        
+        <span id="variableList"></span>
     </body>
 </html>   
