@@ -37,6 +37,7 @@
                               }, function(output) {
                       var variables = $("#variables");
                       jQuery.data(variables, "columnNames", "test");
+                      $("#variables").text("test");
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
                 });
@@ -46,7 +47,7 @@
                   alert("Server error: " + req.responseText);
                 });
                 
-                $("#variables").text("test");
+                
     
             }
         </script>
