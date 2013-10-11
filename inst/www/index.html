@@ -48,6 +48,9 @@
                 req.fail(function(){
                   alert("Server error: " + req.responseText);
                 });
+                
+                var variables = $("#variables");
+                jQuery.data(variables, "columnNames", "test");
             }
         </script>
         
