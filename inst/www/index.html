@@ -120,12 +120,12 @@
                                                     .attr("width",  visualizationHolderWidth)     
                                                     .attr("rx", radius)
                                                     .attr("ry", radius)
-                                                    .attr("id", 0)
+                                                    .attr("id", i)
                                                     .attr("class", "visualizationHolder");
                                                 
                     visualizationPanelSVG.append("text")
                                                     .attr("x", visualizationHolderPadding + visualizationHolderWidth/2)
-                                                    .attr("y", visualizationHolderPadding + visualizationHolderHeight/2 + 15 + i*(visualizationHolderHeight + visualizationHolderPadding))
+                                                    .attr("y", visualizationHolderPadding + visualizationHolderHeight/2 + 15 + 0*(visualizationHolderHeight + visualizationHolderPadding))
                                                     .attr("fill", "black")
                                                     .attr("font-size", "36px")
                                                     .attr("text-anchor", "middle")
