@@ -11,7 +11,7 @@ function InitMouseGestures()
 {
     document.onmousedown = OnMouseDown;
     document.onmousemove = OnMouseMove;
-    //document.onmouseover = OnMouseOver;
+    document.onmouseover = OnMouseOver;
     document.onmouseout = OnMouseOut;
 }
 
