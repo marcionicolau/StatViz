@@ -76,10 +76,11 @@
                                                 .attr("fill", "silver");
                                                 
                 variablesPanelSVG.append("text")
-                                                .attr("x", variableNameHolderPadding)
-                                                .attr("y", variableNameHolderPadding)
+                                                .attr("x", variableNameHolderPadding + variableNameHolderWidth/2)
+                                                .attr("y", variableNameHolderPadding + variableNameHolderHeight/2)
                                                 .attr("fill", "black")
                                                 .attr("font-size", "24px")
+                                                .attr("text-anchor", "middle")
                                                 .text(variableNames[0]);
                          
             }
