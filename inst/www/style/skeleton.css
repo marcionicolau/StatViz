@@ -28,5 +28,14 @@ div.panel
     background: darkgrey;
 }
 
+rect.variableNameHolder
+{
+    radius = 15px;
+    rx: radius;
+    ry: radius;
+    
+    fill: silver;
+} 
+
 
     
