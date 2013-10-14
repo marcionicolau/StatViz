@@ -32,10 +32,9 @@ function OnMouseDown(e)
         setup(e, target);        
         
         var variable = d3.select("#" + target.id + "." + target.className.baseVal);
+        console.log(variable);
         
-        console.log(variable.attr("text"));
-        console.dir(variables)
-     
+        console.dir(variable);
     }
 }
  
