@@ -12,20 +12,17 @@ function getNumber(value)
 }
 
 function addToArray(array, element)
-{
-    array.forEach(function(value)
+{   
+    if(array.indexOf(element) == -1)
     {
-        if(element.indexOf(value) == -1)
-        {
-            console.log(array + "\n adding");
-            array.push(element);
-        }
-        else
-        {
-            console.log(array + "\n removing");
-            array.splice(element.indexOf(value), 1);
-        }
-    });
-    
+        console.log(array + "\n adding");
+        array.push(element);
+    }
+    else
+    {
+        console.log(array + "\n removing");
+        array.splice(element.indexOf(value), 1);
+    }
+
     return array;
 }
