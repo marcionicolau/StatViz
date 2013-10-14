@@ -60,6 +60,7 @@ function makeBoxPlot(variableName)
     }
     
     // median
+    console.log("median=" + median(data) + "; frac=" + median(data)/(max - min));
     
     canvas.append("line")
                 .attr("x1", canvasWidth/2 - boxWidth/2)
