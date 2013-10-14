@@ -89,6 +89,17 @@ function makeHistogram(variableName)//nbins
                     .attr("class", "yAxisGrooveText");
     }
     
+    //bars
+    for(i=0; i<nBins; i++)
+    {
+        canvas.append("rect")
+                    .attr("x", canvasWidth/2 - size/2 + i*xStep)
+                    .attr("y", canvasHeight/2 + size/2 - (bins[i]/Array.max(bins))*size)
+                    .attr("height", (bins[i]/Array.max(bins))*size)
+                    .attr("width", size/(nBins-1))
+                    .attr("stroke", "black");
+    }
+    
     
 }
 
