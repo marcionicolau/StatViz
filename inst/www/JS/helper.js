@@ -1,11 +1,12 @@
 function remove(id)
 {
-    return (elem=document.getElementById(id)).parentNode.removeChild(elem);
+    var element = document.getElementById(id);
+    element.parentNode.removeChild(element);
 }
 
- function getNumber(value)
- {
-         var n = parseInt(value);
+function getNumber(value)
+{
+    var n = parseInt(value);
 
-         return n == null || isNaN(n) ? 0 : n;
- }
+    return n == null || isNaN(n) ? 0 : n;
+}
