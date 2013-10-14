@@ -118,7 +118,7 @@
                                                     .attr("width",  variableNameHolderWidth)     
                                                     .attr("rx", radius)
                                                     .attr("ry", radius)
-                                                    .attr("id", "Variable" + i)
+                                                    .attr("id", variableNames[i])
                                                     .attr("class", "variableNameHolder");
 
                                                 
@@ -129,7 +129,7 @@
                                                     .attr("font-size", "36px")
                                                     .attr("text-anchor", "middle")
                                                     .text(variableNames[i])
-                                                    .attr("id", "Variable" + i)
+                                                    .attr("id", variableNames[i])
                                                     .attr("class", "variableNameHolder");
                                                     
                     variablePanelSVG.append("image")
@@ -138,7 +138,7 @@
                                                     .attr("xlink:href", "images/" + imageNames[flags[i]])
                                                     .attr("height", imageSize)
                                                     .attr("width", imageSize)
-                                                    .attr("id", "Variable" + i)
+                                                    .attr("id", variableNames[i])
                                                     .attr("class", "variableNameHolder");
                 }    
                 
