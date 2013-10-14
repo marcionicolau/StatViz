@@ -28,6 +28,8 @@ function makeHistogram(variableName)//nbins
     console.log("histogram: " + bins);
     
     var size = 350;
+    var nGroovesX = 10;
+    var nGroovesY = Array.max(bins) > 10 ? 10 : Array.max(bins);
     
     //draw axes
     var xAxis = canvas.append("line")
@@ -43,6 +45,19 @@ function makeHistogram(variableName)//nbins
                                     .attr("x2", canvasWidth/2 + size/2)
                                     .attr("y2", canvasHeight/2 + size/2)
                                     .attr("stroke", "black");
+    var xStep = size/nGroovesX;
+    
+    //grooves
+    for(i=0; i<nGroovesX; i++)
+    {
+        canvas.append("line")
+                    .attr("x1", canvasWidth/2 - size/2 + i*xStep)
+                    .attr("y1", canvasHeight/2 - size/2 - 5)
+                    .attr("x2", canvasWidth/2 - size/2 + i*xStep)
+                    .attr("y2", canvasHeight/2 - size/2 + 5)
+                    .attr("stroke", "black");
+    }
+    
     
 }
 
