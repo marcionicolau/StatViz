@@ -3,3 +3,8 @@
     stroke: black;
     fill: lightgrey;
 }
+
+.xAxisGrooves, .yAxisGrooves
+{
+    stroke: black;
+}
