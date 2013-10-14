@@ -22,6 +22,7 @@ Array.add = function(array, element)
         else
         {
             array.splice(element.indexOf(value), 1);
+        }
     });
     
     return array;
