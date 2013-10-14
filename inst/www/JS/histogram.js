@@ -31,6 +31,8 @@ function makeHistogram(variableName)//nbins
     var nGroovesX = 10;
     var nGroovesY = Array.max(bins) > 10 ? 10 : Array.max(bins);
     
+    console.log(nGroovesY);
+    
     //draw axes
     var xAxis = canvas.append("line")
                                     .attr("x1", canvasWidth/2 - size/2)
