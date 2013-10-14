@@ -32,8 +32,7 @@ function OnMouseDown(e)
         setup(e, target);        
         
         var variable = d3.select("#" + target.id + "." + target.className.baseVal);
-        
-        console.log("Data : " + variables[target.id]);
+        makeHistogram(target.id);
     }
 }
  
