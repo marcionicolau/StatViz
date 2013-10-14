@@ -24,3 +24,8 @@
 {
     stroke: grey;
 }
+
+#mean.boxplot
+{
+    fill = red;
+}

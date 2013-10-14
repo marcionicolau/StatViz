@@ -112,8 +112,12 @@ function makeBoxPlot(variableName)
                 .attr("id", "bottomFringeConnector")
                 .attr("class", "boxplot");
     
-    
-    
+    canvas.append("circle")
+                .attr("cx", canvasWidth/2)
+                .attr("cy", canvasHeight/2 + size/2 - getValue(mean(data))*size)
+                .attr("r", "5px")
+                .attr("id", "mean")
+                .attr("class", "boxplot");
 }
 
 function getValue(number)

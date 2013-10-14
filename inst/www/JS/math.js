@@ -20,3 +20,12 @@ function median(values)
     else
         return (values[half-1] + values[half]) / 2.0;
 }
+
+function mean(values)
+{ 
+    var total = 0, i;
+    for (i = 0; i < numbers.length; i += 1) {
+        total += numbers[i];
+    }
+    return total / numbers.length;
+}
