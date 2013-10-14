@@ -31,6 +31,13 @@
                 variablePanel.attr("style", "width: " + width*0.2 + "px; height: " + height + "px;");    
                 visualizationPanel.attr("style", "width: " + width*0.8 + "px; height: " + height/3 + "px; top: " + height*(2/3) + "px; left: " + width*0.2 + "px;");    
                 
+                var svgCanvas = d3.select("body").append("svg");
+    
+                svgCanvas.attr("x", width*0.2)
+                                .attr("y", 0)
+                                .attr("height", height*(2/3))
+                                .attr("width", width*0.8);
+                
                 // Load dataset variables
                 getVariables("longley");
                 
