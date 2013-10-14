@@ -27,7 +27,7 @@ function makeHistogram(variableName)//nbins
     
     console.log("histogram: " + bins);
     
-    var size = 250;
+    var size = 350;
     
     //draw axes
     var xAxis = canvas.append("line")
@@ -39,9 +39,9 @@ function makeHistogram(variableName)//nbins
     
     var yAxis = canvas.append("line")
                                     .attr("x1", canvasWidth/2 - size/2)
-                                    .attr("y1", canvasHeight/2 - size/2)
+                                    .attr("y1", canvasHeight/2 + size/2)
                                     .attr("x2", canvasWidth/2 + size/2)
-                                    .attr("y2", canvasHeight/2 - size/2)
+                                    .attr("y2", canvasHeight/2 + size/2)
                                     .attr("stroke", "black");
     
 }
