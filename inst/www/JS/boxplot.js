@@ -5,7 +5,7 @@ function makeBoxPlot(variableName)
 
     // changeable
     var size = 500;
-    var nGroovesX = 10;
+    var nGroovesY = 10;
 
     //draw axes
     var xAxis = canvas.append("line")
@@ -37,25 +37,25 @@ function makeBoxPlot(variableName)
     
 
     
-    var xStep = size/(nGroovesX-1);
-    var slice = (max - min)/(nGroovesX-1);    
+    var yStep = size/(nGroovesY-1);
+    var slice = (max - min)/(nGroovesY-1);    
     
-    for(i=0; i<nGroovesX; i++)
+    for(i=0; i<nGroovesY; i++)
     {
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 - size/2 + i*xStep)
-                    .attr("y1", canvasHeight/2 + size/2 - 5)
-                    .attr("x2", canvasWidth/2 - size/2 + i*xStep)
-                    .attr("y2", canvasHeight/2 + size/2 + 5)
+                    .attr("x1", canvasWidth/2 - size/2 - 5)
+                    .attr("y1", canvasHeight/2 + size/2 - i*yStep)
+                    .attr("x2", canvasWidth/2 - size/2 + 5)
+                    .attr("y2", canvasHeight/2 + size/2 - i*yStep)
                     .attr("id", "groove" + i)
-                    .attr("class", "xAxisGrooves");
+                    .attr("class", "yAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", canvasWidth/2 - size/2 + i*xStep)
-                    .attr("y", canvasHeight/2 + size/2 + 25)                    
+                    .attr("x", canvasWidth/2 - size/2 - 25)
+                    .attr("y", canvasHeight/2 + size/2 - i*yStep + 10)                    
                     .text(Math.round(min + i*slice))
                     .attr("id", "groove" + i)
-                    .attr("class", "xAxisGrooveText");
+                    .attr("class", "yAxisGrooveText");
     }
     
     
