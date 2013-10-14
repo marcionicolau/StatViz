@@ -96,8 +96,8 @@
                                                     .attr("class", "variableNameHolder");
                                                     
                     variablePanelSVG.append("image")
-                                                    .attr("x", variableNameHolderPadding + variableNameHolderWidth/2)
-                                                    .attr("y", variableNameHolderPadding + variableNameHolderHeight/2 + 15 + i*(variableNameHolderHeight + variableNameHolderPadding))
+                                                    .attr("x", variableNameHolderPadding + variableNameHolderWidth - imageSize - 15)
+                                                    .attr("y", variableNameHolderPadding + variableNameHolderHeight/2 + i*(variableNameHolderHeight + variableNameHolderPadding))
                                                     .attr("xlink:href", "images/knob-independent-variable.png")
                                                     .attr("height", imageSize)
                                                     .attr("width", imageSize)
