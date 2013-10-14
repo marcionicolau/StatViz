@@ -15,7 +15,7 @@ function makeHistogram(variableName)//nbins
     
     var bins = [];
     
-    for(var i=0; i<nBbins; i++)
+    for(var i=0; i<nBins; i++)
     {
         bins[i] = 0;
     }   
