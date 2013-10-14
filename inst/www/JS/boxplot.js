@@ -1,15 +1,20 @@
 var max;
 var min;
 
+var data;
+var IQR;
+
 function makeBoxPlot(variableName)
 {
-    var data = variables[variableName];
+    data = variables[variableName];
     var canvas = d3.select("#svgCanvas");
 
     // changeable
     var size = 500;
     var nGroovesY = 10;
     var boxWidth = 100;
+    
+    IQR = IQR[variableName];
 
     //draw axes
     var xAxis = canvas.append("line")
@@ -65,8 +70,8 @@ function makeBoxPlot(variableName)
     
     canvas.append("rect")
                 .attr("x", canvasWidth/2 - boxWidth/2)
-                .attr("y", canvasHeight/2 + size/2 - getValue(median(data) + IQR[variableName]/2)*size)
-                .attr("height", getValue(median(data) + IQR[variableName]/2)*size - getValue(median(data) - IQR[variableName]/2)*size)
+                .attr("y", canvasHeight/2 + size/2 - getValue(median(data) + IQR/2)*size)
+                .attr("height", getValue(median(data) + IQR/2)*size - getValue(median(data) - IQR/2)*size)
                 .attr("width", boxWidth)
                 .attr("id", "IQR")
                 .attr("class", "boxplot");
@@ -82,33 +87,33 @@ function makeBoxPlot(variableName)
     
     canvas.append("line")
                 .attr("x1", canvasWidth/2 - boxWidth/4)
-                .attr("y1", canvasHeight/2 + size/2 - getValue(median(data) + 1.5*IQR[variableName])*size)
+                .attr("y1", canvasHeight/2 + size/2 - getValue(median(data) + 1.5*IQR)*size)
                 .attr("x2", canvasWidth/2 + boxWidth/4)
-                .attr("y2", canvasHeight/2 + size/2 - getValue(median(data) + 1.5*IQR[variableName])*size)
+                .attr("y2", canvasHeight/2 + size/2 - getValue(median(data) + 1.5*IQR)*size)
                 .attr("id", "topFringe")
                 .attr("class", "boxplot");
     
     canvas.append("line")
                 .attr("x1", canvasWidth/2)
-                .attr("y1", canvasHeight/2 + size/2 - getValue(median(data) + 1.5*IQR[variableName])*size)
+                .attr("y1", canvasHeight/2 + size/2 - getValue(median(data) + 1.5*IQR)*size)
                 .attr("x2", canvasWidth/2)
-                .attr("y2", canvasHeight/2 + size/2- getValue(median(data) + IQR[variableName]/2)*size)
+                .attr("y2", canvasHeight/2 + size/2- getValue(median(data) + IQR/2)*size)
                 .attr("id", "topFringeConnector")
                 .attr("class", "boxplot");    
     
     canvas.append("line")
                 .attr("x1", canvasWidth/2 - boxWidth/4)
-                .attr("y1", canvasHeight/2 + size/2 - getValue(median(data) - 1.5*IQR[variableName])*size)
+                .attr("y1", canvasHeight/2 + size/2 - getValue(median(data) - 1.5*IQR)*size)
                 .attr("x2", canvasWidth/2 + boxWidth/4)
-                .attr("y2", canvasHeight/2 + size/2 - getValue(median(data) - 1.5*IQR[variableName])*size)
+                .attr("y2", canvasHeight/2 + size/2 - getValue(median(data) - 1.5*IQR)*size)
                 .attr("id", "bottomFringe")
                 .attr("class", "boxplot");
                 
     canvas.append("line")
                 .attr("x1", canvasWidth/2)
-                .attr("y1", canvasHeight/2 + size/2 - getValue(median(data) - 1.5*IQR[variableName])*size)
+                .attr("y1", canvasHeight/2 + size/2 - getValue(median(data) - 1.5*IQR)*size)
                 .attr("x2", canvasWidth/2)
-                .attr("y2", canvasHeight/2 + size/2 - getValue(median(data) - IQR[variableName]/2)*size)
+                .attr("y2", canvasHeight/2 + size/2 - getValue(median(data) - IQR/2)*size)
                 .attr("id", "bottomFringeConnector")
                 .attr("class", "boxplot");
     
@@ -118,9 +123,36 @@ function makeBoxPlot(variableName)
                 .attr("r", "5px")
                 .attr("id", "mean")
                 .attr("class", "boxplot");
+    
+    var outliers = getOutliers();
+    
+    for(var i=0; i<outliers.length; i++)
+    {
+        canvas.append("circle")
+                .attr("cx", canvasWidth/2)
+                .attr("cy", canvasHeight/2 + size/2 - getValue(outliers[i])*size)
+                .attr("r", "3px")
+                .attr("id", "outliers")
+                .attr("class", "boxplot");
+    }
+        
 }
 
 function getValue(number)
 {
     return (number - min)/(max - min);
+}
+
+function getOutliers()
+{
+    var outliers = [];
+    
+    for(var i=0; i<data.length; i++)
+    {
+        if((data[i] > (median(data) + 1.5*IQR) )|| (data[i] < (median(data) - 1.5*IQR) ))
+        {
+            outliers.push(data[i]);
+        }
+    }   
+    return outliers;
 }
