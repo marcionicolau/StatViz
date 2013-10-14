@@ -62,6 +62,15 @@ function makeBoxPlot(variableName)
                     .attr("class", "yAxisGrooveText");
     }
     
+    
+    canvas.append("rect")
+                .attr("x", canvasWidth/2 - boxWidth/2)
+                .attr("y", canvasHeight/2 + size/2 - getValue(median(data) + IQR[variableName]/2)*size)
+                .attr("height", getValue(median(data) + IQR[variableName]/2)*size - getValue(median(data) - IQR[variableName]/2)*size)
+                .attr("width", boxWidth)
+                .attr("id", "IQR")
+                .attr("class", "boxplot");
+                
     // median
     canvas.append("line")
                 .attr("x1", canvasWidth/2 - boxWidth/2)
@@ -69,16 +78,6 @@ function makeBoxPlot(variableName)
                 .attr("x2", canvasWidth/2 + boxWidth/2)
                 .attr("y2", canvasHeight/2 + size/2 - getValue(median(data))*size)
                 .attr("id", "median")
-                .attr("class", "boxplot");
-    
-    
-    console.log(IQR[variableName]);
-    canvas.append("rect")
-                .attr("x", canvasWidth/2 - boxWidth/2)
-                .attr("y", canvasHeight/2 + size/2 - getValue(median(data) + IQR[variableName]/2)*size)
-                .attr("height", getValue(median(data) + IQR[variableName]/2)*size - getValue(median(data) - IQR[variableName]/2)*size)
-                .attr("width", boxWidth)
-                .attr("id", "IQR")
                 .attr("class", "boxplot");
 }
 
