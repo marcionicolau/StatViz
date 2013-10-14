@@ -64,9 +64,9 @@ function makeBoxPlot(variableName)
     
     canvas.append("line")
                 .attr("x1", canvasWidth/2 - boxWidth/2)
-                .attr("y1", canvasHeight/2 + size/2 - (median(data)/(max-min))*size)
+                .attr("y1", canvasHeight/2 + size/2 - ((median(data) - min)/(max-min))*size)
                 .attr("x2", canvasWidth/2 + boxWidth/2)
-                .attr("y2", canvasHeight/2 + size/2 - (median(data)/(max-min))*size)
+                .attr("y2", canvasHeight/2 + size/2 - ((median(data) - min)/(max-min))*size)
                 .attr("id", "median")
                 .attr("class", "boxplot");
     
