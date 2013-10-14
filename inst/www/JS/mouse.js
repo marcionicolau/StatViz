@@ -33,7 +33,7 @@ function OnMouseDown(e)
         
         var variable = d3.select("#" + target.id + "." + target.className.baseVal);
         
-        console.log(d3.select("#svgCanvas").length);
+        console.log(document.getElementById("svgCanvas").length);
         if(d3.select("#svgCanvas").length != 0)
             remove("svgCanvas");
             
