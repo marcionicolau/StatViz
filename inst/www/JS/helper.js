@@ -17,10 +17,12 @@ Array.add = function(array, element)
     {
         if(element.indexOf(value) == -1)
         {
+            console.log(array + "\n adding");
             array.push(element);
         }
         else
         {
+            console.log(array + "\n removing");
             array.splice(element.indexOf(value), 1);
         }
     });
