@@ -15,7 +15,7 @@ function makeHistogram(variableName)//nbins
     
     for(var i=0; i<data.length; i++)
     {
-        console.log((data - min)/slice + "for " + data[i]);
+        console.log((data[i] - min)/slice + "for " + data[i]);
     }
 }
 
