@@ -69,7 +69,9 @@
                                 columnName: variableName
                               }, function(output) {                   
                 console.log(variableName + "\n" + output.data);                    
-                variable[variableName] = output.data;
+                variables[variableName] = output.data;
+                
+                console.dir(variables);
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
                 });
