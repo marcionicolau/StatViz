@@ -18,6 +18,9 @@
             var width = document.width;
             var height = document.height;  
             
+            var canvasHeight = height*(2/3);
+            var canvasWidth = width*0.8;
+            
             var variables = new Object();      
         
             window.onload = function()
@@ -30,18 +33,19 @@
                 
                 canvas = d3.select("#canvas");
         
-                variablePanel.attr("style", "width: " + width*0.2 + "px; height: " + height + "px;");    
-                visualizationPanel.attr("style", "width: " + width*0.8 + "px; height: " + height/3 + "px; top: " + height*(2/3) + "px; left: " + width*0.2 + "px;");    
+                variablePanel.attr("style", "width: " + (width - canvasWidth) + "px; height: " + height + "px;");    
+                visualizationPanel.attr("style", "width: " + canvasWidth + "px; height: " + height/3 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth) + "px;");    
                 
                 
-                canvas.attr("style", "position: absolute; width: " + width*0.8 + "px; height: " + 2*(height/3) + "px; top: 0px; left: " + width*0.2 + "px;");    
+                canvas.attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth) + "px;");    
+                
                 
                 var svgCanvas = canvas.append("svg");
                 svgCanvas.attr("id", "svgCanvas")
                                 .attr("x", 0)
                                 .attr("y", 0)
-                                .attr("height", height*(2/3))
-                                .attr("width", width*0.8);
+                                .attr("height", canvasHeight)
+                                .attr("width", canvasWidth);
                 
                 // Load dataset variables
                 getVariables("longley");
