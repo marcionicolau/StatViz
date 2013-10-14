@@ -57,7 +57,7 @@ function makeBoxPlot(variableName)
         canvas.append("text")
                     .attr("x", canvasWidth/2 - size/2 - 35)
                     .attr("y", canvasHeight/2 + size/2 - i*yStep + 10)                    
-                    .text(Math.round(min + i*slice))
+                    .text(Math.round(min + i*slice,2))
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooveText");
     }
