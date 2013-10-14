@@ -34,10 +34,10 @@
                 var svgCanvas = d3.select("body").append("svg");
     
                 svgCanvas.attr("id", "canvas")
-                                .attr("height", height*(2/3))
-                                .attr("width", width*0.8)
                                 .attr("x", "100px")
-                                .attr("y", "200px");
+                                .attr("y", "200px")
+                                .attr("height", height*(2/3))
+                                .attr("width", width*0.8);
                 
                 // Load dataset variables
                 getVariables("longley");
