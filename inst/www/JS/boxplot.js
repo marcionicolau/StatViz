@@ -71,6 +71,8 @@ function makeBoxPlot(variableName)
                 .attr("id", "median")
                 .attr("class", "boxplot");
     
+    
+    console.log(IQR[variableName]);
     canvas.append("line")
                 .attr("x1", canvasWidth/2 - boxWidth/2)
                 .attr("y1", canvasHeight/2 + size/2 - getValue(median(data) + IQR[variableName])*size)
