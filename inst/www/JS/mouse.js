@@ -31,6 +31,10 @@ function OnMouseDown(e)
     {
         setup(e, target);        
         
+        //add to list of variables selected
+        currentVariablesSelected.push(target.id);
+        console.log(currentVariablesSelected);
+        
         var variable = d3.select("#" + target.id + "." + target.className.baseVal);
 
         if(document.getElementById("svgCanvas") != null)
