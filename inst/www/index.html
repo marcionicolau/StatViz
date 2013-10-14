@@ -71,6 +71,9 @@
                 
                 var imageSize = 50;
                 
+                flags = [0,0,1,0,0,0,1];
+                imageNames = ["knob-independent-variable.png", "meter-dependent-variable"];
+                
                 
                 for(var i=0; i<variableNames.length; i++)
                 {
@@ -98,7 +101,7 @@
                     variablePanelSVG.append("image")
                                                     .attr("x", variableNameHolderPadding + variableNameHolderWidth - imageSize - 15)
                                                     .attr("y", variableNameHolderPadding + variableNameHolderHeight/5 + i*(variableNameHolderHeight + variableNameHolderPadding))
-                                                    .attr("xlink:href", "images/knob-independent-variable.png")
+                                                    .attr("xlink:href", "images/" + imageNames[i])
                                                     .attr("height", imageSize)
                                                     .attr("width", imageSize)
                                                     .attr("style", "opacity: 0.8;")
