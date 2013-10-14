@@ -32,16 +32,16 @@
         
                 variablePanel.attr("style", "width: " + width*0.2 + "px; height: " + height + "px;");    
                 visualizationPanel.attr("style", "width: " + width*0.8 + "px; height: " + height/3 + "px; top: " + height*(2/3) + "px; left: " + width*0.2 + "px;");    
+                
+                
                 canvas.attr("style", "position: absolute; width: " + width*0.8 + "px; height: " + 2*(height/3) + "px; top: 0px; left: " + width*0.2 + "px;");    
                 
-                    
-                // var svgCanvas = d3.select("body").append("svg");
-//     
-//                 svgCanvas.attr("id", "canvas")
-//                                 .attr("x", 100)
-//                                 .attr("y", 250)
-//                                 .attr("height", height*(2/3))
-//                                 .attr("width", width*0.8);
+                var svgCanvas = canvas.append("svg");
+                svgCanvas.attr("id", "svgCanvas")
+                                .attr("x", 0)
+                                .attr("y", 0)
+                                .attr("height", height*(2/3))
+                                .attr("width", width*0.8);
                 
                 // Load dataset variables
                 getVariables("longley");
