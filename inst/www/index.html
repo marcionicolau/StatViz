@@ -69,6 +69,8 @@
                                             .attr("left", variablePanel.style("left"))
                                             .attr("top", variablePanel.style("top"));  
                 
+                var imageSize = 50;
+                
                 
                 for(var i=0; i<variableNames.length; i++)
                 {
@@ -92,7 +94,19 @@
                                                     .text(variableNames[i])
                                                     .attr("id", "Variable" + i)
                                                     .attr("class", "variableNameHolder");
-                }                         
+                                                    
+                    variablePanelSVG.append("image")
+                                                    .attr("x", variableNameHolderPadding + variableNameHolderWidth/2)
+                                                    .attr("y", variableNameHolderPadding + variableNameHolderHeight/2 + 15 + i*(variableNameHolderHeight + variableNameHolderPadding))
+                                                    .attr("xlink:href", "images/knob-independent-variable.png")
+                                                    .attr("height", imageSize)
+                                                    .attr("width", imageSize)
+                                                    .attr("style", "opacity: 0.8;")
+                                                    .attr("id", "Variable" + i)
+                                                    .attr("class", "variableNameHolder");
+                }    
+                
+                                     
             }
             
             function renderVisualizations()
