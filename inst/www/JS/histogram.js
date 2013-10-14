@@ -7,11 +7,12 @@ function makeHistogram(variableName)//nbins
     var max = Array.max(data);
     
     // Should be changeable
-    var nBins = 10;
+    var nBins = 10;   
+    var size = 500;
+    var nGroovesX = 10;
     
-    var slice = (max - min)/nBins;
-    
-    console.log("min=" + min + "; max=" + max +"; slice=" + slice);
+     
+    var slice = (max - min)/nBins;    
     
     var bins = [];
     
@@ -25,11 +26,9 @@ function makeHistogram(variableName)//nbins
         bins[Math.ceil((data[i] - min)/slice)]++;
     }
     
-    bins.length = nBins;
-    console.log("histogram: " + bins);
+    bins.length = nBins; 
     
-    var size = 500;
-    var nGroovesX = 10;
+    
     var nGroovesY = Array.max(bins) > 10 ? 10 : Array.max(bins)+1;
     
     console.log(nGroovesY);
@@ -40,14 +39,19 @@ function makeHistogram(variableName)//nbins
                                     .attr("y1", canvasHeight/2 - size/2)
                                     .attr("x2", canvasWidth/2 - size/2)
                                     .attr("y2", canvasHeight/2 + size/2)
-                                    .attr("stroke", "black");
+                                    .attr("stroke", "black")
+                                    .attr("id", "xAxis")
+                                    .attr("class", "axes");
     
     var yAxis = canvas.append("line")
                                     .attr("x1", canvasWidth/2 - size/2)
                                     .attr("y1", canvasHeight/2 + size/2)
                                     .attr("x2", canvasWidth/2 + size/2)
                                     .attr("y2", canvasHeight/2 + size/2)
-                                    .attr("stroke", "black");
+                                    .attr("stroke", "black")
+                                    .attr("id", "yAxis")
+                                    .attr("class", "axes");
+                                    
     var xStep = size/nGroovesX;
     
     //grooves
@@ -58,14 +62,14 @@ function makeHistogram(variableName)//nbins
                     .attr("y1", canvasHeight/2 + size/2 - 5)
                     .attr("x2", canvasWidth/2 - size/2 + i*xStep)
                     .attr("y2", canvasHeight/2 + size/2 + 5)
-                    .attr("stroke", "black")
+                    .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooves");
         
         canvas.append("text")
                     .attr("x", canvasWidth/2 - size/2 + i*xStep)
                     .attr("y", canvasHeight/2 + size/2 + 25)                    
-                    .attr("fill", "black")
                     .text(Math.round(min + i*slice))
+                    .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooveText");
     }
     
@@ -78,14 +82,14 @@ function makeHistogram(variableName)//nbins
                     .attr("y1", canvasHeight/2 + size/2 - i*yStep)
                     .attr("x2", canvasWidth/2 - size/2 + 5)
                     .attr("y2", canvasHeight/2 + size/2 - i*yStep)
-                    .attr("stroke", "black")
+                    .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooves");
         
         canvas.append("text")
                     .attr("x", canvasWidth/2 - size/2 - 25)
-                    .attr("y", canvasHeight/2 + size/2 - i*yStep + 10)                    
-                    .attr("fill", "black")
+                    .attr("y", canvasHeight/2 + size/2 - i*yStep + 10)                                        
                     .text(0+i)
+                    .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooveText");
     }
     
@@ -98,7 +102,9 @@ function makeHistogram(variableName)//nbins
                     .attr("height", (bins[i]/Array.max(bins))*size)
                     .attr("width", size/nBins)
                     .attr("stroke", "black")
-                    .attr("fill", "white");
+                    .attr("fill", "white")
+                    .attr("id", "bin" + i)
+                    .attr("class", "bins");
     }
     
 }
