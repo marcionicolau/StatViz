@@ -1,7 +1,6 @@
 function makeHistogram(variableName)//nbins
 {
     var data = variables[variableName];
-    
     var canvas = d3.select("#svgCanvas");
     
     var min = Array.min(data);
@@ -9,6 +8,7 @@ function makeHistogram(variableName)//nbins
     
     // Should be changeable
     var nBins = 10;
+    
     var slice = (max - min)/nBins;
     
     console.log("min=" + min + "; max=" + max +"; slice=" + slice);
@@ -26,6 +26,24 @@ function makeHistogram(variableName)//nbins
     }
     
     console.log("histogram: " + bins);
+    
+    var size = 250;
+    
+    //draw axes
+    var xAxis = canvas.append("line")
+                                    .attr("x1", canvasWidth/2 - size/2)
+                                    .attr("y1", canvasHeight/2 - size/2)
+                                    .attr("x2", canvasWidth/2 - size/2)
+                                    .attr("y2", canvasHeight/2 + size/2)
+                                    .attr("stroke", "black");
+    
+    var yAxis = canvas.append("line")
+                                    .attr("x1", canvasWidth/2 - size/2)
+                                    .attr("y1", canvasHeight/2 - size/2)
+                                    .attr("x2", canvasWidth/2 + size/2)
+                                    .attr("y2", canvasHeight/2 - size/2)
+                                    .attr("stroke", "black");
+    
 }
 
 Array.max = function( array )
