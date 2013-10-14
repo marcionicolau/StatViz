@@ -96,7 +96,7 @@ function makeHistogram(variableName)//nbins
                     .attr("x", canvasWidth/2 - size/2 + i*xStep)
                     .attr("y", canvasHeight/2 + size/2 - (bins[i]/Array.max(bins))*size)
                     .attr("height", (bins[i]/Array.max(bins))*size)
-                    .attr("width", size/(nBins-1))
+                    .attr("width", size/nBins)
                     .attr("stroke", "black")
                     .attr("fill", "white");
     }
