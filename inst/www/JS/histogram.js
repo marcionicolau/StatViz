@@ -52,9 +52,21 @@ function makeHistogram(variableName)//nbins
     {
         canvas.append("line")
                     .attr("x1", canvasWidth/2 - size/2 + i*xStep)
-                    .attr("y1", canvasHeight/2 - size/2 - 5)
+                    .attr("y1", canvasHeight/2 + size/2 - 5)
                     .attr("x2", canvasWidth/2 - size/2 + i*xStep)
-                    .attr("y2", canvasHeight/2 - size/2 + 5)
+                    .attr("y2", canvasHeight/2 + size/2 + 5)
+                    .attr("stroke", "black");
+    }
+    
+    var yStep = size/nGroovesY;
+    
+    for(i=0; i<nGroovesY; i++)
+    {
+        canvas.append("line")
+                    .attr("x1", canvasWidth/2 - size/2 - 5)
+                    .attr("y1", canvasHeight/2 + size/2 - i*yStep)
+                    .attr("x2", canvasWidth/2 - size/2 + 5)
+                    .attr("y2", canvasHeight/2 + size/2 - i*yStep)
                     .attr("stroke", "black");
     }
     
