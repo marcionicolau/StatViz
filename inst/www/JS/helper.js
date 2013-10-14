@@ -10,3 +10,19 @@ function getNumber(value)
 
     return n == null || isNaN(n) ? 0 : n;
 }
+
+Array.add = function(array, element)
+{
+    array.forEach(function(value)
+    {
+        if(element.indexOf(value) == -1)
+        {
+            array.push(element);
+        }
+        else
+        {
+            array.splice(element.indexOf(value), 1);
+    });
+    
+    return array;
+}
