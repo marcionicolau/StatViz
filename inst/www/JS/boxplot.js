@@ -1,3 +1,6 @@
+var max;
+var min;
+
 function makeBoxPlot(variableName)
 {
     var data = variables[variableName];
@@ -33,8 +36,8 @@ function makeBoxPlot(variableName)
     //todo: x-axis grooves
     
     //y-axis grooves
-    var min = Array.min(data);
-    var max = Array.max(data);
+    min =Array.min(data);
+    max = Array.max(data);
     
 
     
@@ -60,16 +63,25 @@ function makeBoxPlot(variableName)
     }
     
     // median
-    console.log("median=" + median(data) + "; frac=" + median(data)/(max - min) + "max-min=" + (max-min));
-    
     canvas.append("line")
                 .attr("x1", canvasWidth/2 - boxWidth/2)
-                .attr("y1", canvasHeight/2 + size/2 - ((median(data) - min)/(max-min))*size)
+                .attr("y1", canvasHeight/2 + size/2 - getValue(median(data))*size)
                 .attr("x2", canvasWidth/2 + boxWidth/2)
-                .attr("y2", canvasHeight/2 + size/2 - ((median(data) - min)/(max-min))*size)
+                .attr("y2", canvasHeight/2 + size/2 - getValue(median(data))*size)
                 .attr("id", "median")
                 .attr("class", "boxplot");
     
+    canvas.append("line")
+                .attr("x1", canvasWidth/2 - boxWidth/2)
+                .attr("y1", canvasHeight/2 + size/2 - getValue(median(data) + IQR[variableName])*size)
+                .attr("x2", canvasWidth/2 + boxWidth/2)
+                .attr("y2", canvasHeight/2 + size/2 - getValue(median(data) + IQR[variableName])*size)
+                .attr("id", "something")
+                .attr("class", "boxplot");
     
-    
+}
+
+function getValue(number)
+{
+    return (number - min)/(max - min);
 }
