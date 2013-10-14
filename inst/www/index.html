@@ -28,8 +28,8 @@
                 variablePanel = d3.select("#variable.panel");
                 visualizationPanel = d3.select("#visualization.panel");
         
-                variablePanel.attr("style", "width: " + width*0.2 + "px; height: " + height + "px;");    
-                visualizationPanel.attr("style", "width: " + width*0.8 + "px; height: " + height/3 + "px; top: " + height*(2/3) + "px; left: " + width*0.2 + "px;");    
+//                 variablePanel.attr("style", "width: " + width*0.2 + "px; height: " + height + "px;");    
+//                 visualizationPanel.attr("style", "width: " + width*0.8 + "px; height: " + height/3 + "px; top: " + height*(2/3) + "px; left: " + width*0.2 + "px;");    
                 
                 var svgCanvas = d3.select("body").append("svg");
     
@@ -40,10 +40,10 @@
                                 .attr("width", width*0.8);
                 
                 // Load dataset variables
-                getVariables("longley");
+//                 getVariables("longley");
                 
                 // Populate visualizations
-                renderVisualizations();                
+//                 renderVisualizations();                
             }
             
             function getVariables(dataset)
