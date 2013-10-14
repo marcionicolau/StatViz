@@ -28,7 +28,7 @@ function makeHistogram(variableName)//nbins
     bins.length = nBins;
     console.log("histogram: " + bins);
     
-    var size = 350;
+    var size = 500;
     var nGroovesX = 10;
     var nGroovesY = Array.max(bins) > 10 ? 10 : Array.max(bins)+1;
     
@@ -63,7 +63,7 @@ function makeHistogram(variableName)//nbins
         
         canvas.append("text")
                     .attr("x", canvasWidth/2 - size/2 + i*xStep)
-                    .attr("y", canvasHeight/2 + size/2 + 15)                    
+                    .attr("y", canvasHeight/2 + size/2 + 25)                    
                     .attr("fill", "black")
                     .text(Math.round(min + i*slice))
                     .attr("class", "xAxisGrooveText");
@@ -82,8 +82,8 @@ function makeHistogram(variableName)//nbins
                     .attr("class", "yAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", canvasWidth/2 - size/2 - 5)
-                    .attr("y", canvasHeight/2 + size/2 - i*yStep)                    
+                    .attr("x", canvasWidth/2 - size/2 - 25)
+                    .attr("y", canvasHeight/2 + size/2 - i*yStep + 10)                    
                     .attr("fill", "black")
                     .text(0+i)
                     .attr("class", "yAxisGrooveText");
