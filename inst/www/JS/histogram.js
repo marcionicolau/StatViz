@@ -30,7 +30,7 @@ function makeHistogram(variableName)//nbins
     
     var size = 350;
     var nGroovesX = 10;
-    var nGroovesY = Array.max(bins) > 10 ? 10 : Array.max(bins);
+    var nGroovesY = Array.max(bins) > 10 ? 10 : Array.max(bins)+1;
     
     console.log(nGroovesY);
     
@@ -60,6 +60,13 @@ function makeHistogram(variableName)//nbins
                     .attr("y2", canvasHeight/2 + size/2 + 5)
                     .attr("stroke", "black")
                     .attr("class", "xAxisGrooves");
+        
+        canvas.append("text")
+                    .attr("x", canvasWidth/2 - size/2 + i*xStep)
+                    .attr("y", canvasHeight/2 + size/2 + 15)                    
+                    .attr("fill", "black")
+                    .text(Math.round(min + i*slice))
+                    .attr("class", "xAxisGrooveText");
     }
     
     var yStep = size/nGroovesY;
@@ -72,7 +79,14 @@ function makeHistogram(variableName)//nbins
                     .attr("x2", canvasWidth/2 - size/2 + 5)
                     .attr("y2", canvasHeight/2 + size/2 - i*yStep)
                     .attr("stroke", "black")
-                    .attr("class", "yAxisGrooves")
+                    .attr("class", "yAxisGrooves");
+        
+        canvas.append("text")
+                    .attr("x1", canvasWidth/2 - size/2 - 5)
+                    .attr("y1", canvasHeight/2 + size/2 - i*yStep)                    
+                    .attr("fill", "black")
+                    .text(0+i)
+                    .attr("class", "yAxisGrooves");
     }
     
     
