@@ -30,6 +30,10 @@ function OnMouseDown(e)
     if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "variableNameHolder")
     {
         setup(e, target);        
+        
+        var variable = d3.select("#" + target.id + "." + target.className.baseVal);
+        
+        console.log("values: " + variables[variable.text()]);
      
     }
 }
