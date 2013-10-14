@@ -3,6 +3,10 @@ function makeBoxPlot(variableName)
     var data = variables[variableName];
     var canvas = d3.select("#svgCanvas");
 
+    // changeable
+    var size = 500;
+    var nGroovesX = 10;
+
     //draw axes
     var xAxis = canvas.append("line")
                                     .attr("x1", canvasWidth/2 - size/2)
@@ -31,9 +35,7 @@ function makeBoxPlot(variableName)
     var min = Array.min(data);
     var max = Array.max(data);
     
-    // changeable
-    var size = 500;
-    var nGroovesX = 10;
+
     
     var xStep = size/(nGroovesX-1);
     var slice = (max - min)/(nGroovesX-1);    
