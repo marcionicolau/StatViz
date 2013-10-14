@@ -22,9 +22,10 @@ function makeHistogram(variableName)//nbins
     
     for(var i=0; i<data.length; i++)
     { 
-        bins[Math.floor((data[i] - min)/slice)]++;
+        bins[Math.ceil((data[i] - min)/slice)]++;
     }
     
+    bins.length = nBins;
     console.log("histogram: " + bins);
     
     var size = 350;
