@@ -11,7 +11,7 @@ function getNumber(value)
     return n == null || isNaN(n) ? 0 : n;
 }
 
-Array.add = function(array, element)
+function addToArray(array, element)
 {
     array.forEach(function(value)
     {

@@ -32,7 +32,7 @@ function OnMouseDown(e)
         setup(e, target);        
         
         //add to list of variables selected
-        currentVariableSelection = Array.add(currentVariableSelection, target.id);
+        currentVariableSelection = addToArray(currentVariableSelection, target.id);
         console.log(currentVariableSelection);
         
         var variable = d3.select("#" + target.id + "." + target.className.baseVal);
