@@ -33,7 +33,7 @@ function OnMouseDown(e)
         
         var variable = d3.select("#" + target.id + "." + target.className.baseVal);
         
-        console.log(variable.text());
+        console.log(variable.attr("id"));
         console.log("values: " + variables[variable.text()]);
      
     }
