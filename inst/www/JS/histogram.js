@@ -67,7 +67,7 @@ function makeHistogram(variableName)//nbins
         
         canvas.append("text")
                     .attr("x", canvasWidth/2 - size/2 + i*xStep)
-                    .attr("y", canvasHeight/2 + size/2 + 25)                    
+                    .attr("y", canvasHeight/2 + size/2 + 35)                    
                     .text(Math.round(min + i*slice))
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooveText");
@@ -86,7 +86,7 @@ function makeHistogram(variableName)//nbins
                     .attr("class", "yAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", canvasWidth/2 - size/2 - 25)
+                    .attr("x", canvasWidth/2 - size/2 - 35)
                     .attr("y", canvasHeight/2 + size/2 - i*yStep + 10)                                        
                     .text(0+i)
                     .attr("id", "groove" + i)
