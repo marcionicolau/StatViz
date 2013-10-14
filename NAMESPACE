@@ -1,3 +1,4 @@
+export(getData)
 export(getMeanAndMedian)
 export(getIQR)
 export(getCorrelationCoefficient)
