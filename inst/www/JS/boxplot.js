@@ -73,22 +73,13 @@ function makeBoxPlot(variableName)
     
     
     console.log(IQR[variableName]);
-    canvas.append("line")
-                .attr("x1", canvasWidth/2 - boxWidth/2)
-                .attr("y1", canvasHeight/2 + size/2 - getValue(median(data) + IQR[variableName]/2)*size)
-                .attr("x2", canvasWidth/2 + boxWidth/2)
-                .attr("y2", canvasHeight/2 + size/2 - getValue(median(data) + IQR[variableName]/2)*size)
+    canvas.append("rect")
+                .attr("x", canvasWidth/2 - boxWidth/2)
+                .attr("y", canvasHeight/2 + size/2 - getValue(median(data) + IQR[variableName]/2)*size)
+                .attr("height", getValue(median(data) + IQR[variableName]/2)*size - getValue(median(data) - IQR[variableName]/2)*size)
+                .attr("width", boxWidth)
                 .attr("id", "IQR")
                 .attr("class", "boxplot");
-                
-    canvas.append("line")
-                .attr("x1", canvasWidth/2 - boxWidth/2)
-                .attr("y1", canvasHeight/2 + size/2 - getValue(median(data) - IQR[variableName]/2)*size)
-                .attr("x2", canvasWidth/2 + boxWidth/2)
-                .attr("y2", canvasHeight/2 + size/2 - getValue(median(data) - IQR[variableName]/2)*size)
-                .attr("id", "IQR")
-                .attr("class", "boxplot");
-    
 }
 
 function getValue(number)
