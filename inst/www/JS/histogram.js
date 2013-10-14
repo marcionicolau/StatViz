@@ -48,7 +48,7 @@ function makeHistogram(variableName)//nbins
                                     .attr("x2", canvasWidth/2 + size/2)
                                     .attr("y2", canvasHeight/2 + size/2)
                                     .attr("stroke", "black");
-    var xStep = size/(nGroovesX-1);
+    var xStep = size/nGroovesX;
     
     //grooves
     for(i=0; i<=nGroovesX; i++)
