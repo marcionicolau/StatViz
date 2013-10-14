@@ -24,8 +24,8 @@ function median(values)
 function mean(values)
 { 
     var total = 0, i;
-    for (i = 0; i < numbers.length; i += 1) {
-        total += numbers[i];
+    for (i = 0; i < values.length; i += 1) {
+        total += values[i];
     }
-    return total / numbers.length;
+    return total / values.length;
 }
