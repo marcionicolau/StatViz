@@ -101,7 +101,6 @@ function makeHistogram(variableName)//nbins
                     .attr("fill", "white");
     }
     
-    
 }
 
 Array.max = function( array )

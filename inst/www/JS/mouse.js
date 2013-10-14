@@ -32,6 +32,17 @@ function OnMouseDown(e)
         setup(e, target);        
         
         var variable = d3.select("#" + target.id + "." + target.className.baseVal);
+        
+        if(d3.select("#svgCanvas").length != 0)
+            remove("svgCanvas");
+            
+        var svgCanvas = canvas.append("svg");
+        
+        svgCanvas.attr("id", "svgCanvas")
+                                .attr("x", 0)
+                                .attr("y", 0)
+                                .attr("height", canvasHeight)
+                                .attr("width", canvasWidth);
         makeHistogram(target.id);
     }
 }

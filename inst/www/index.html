@@ -9,6 +9,7 @@
         
         <script type="text/javascript" src="JS/mouse.js"></script>
         <script type="text/javascript" src="JS/histogram.js"></script>
+        <script type="text/javascript" src="JS/helper.js"></script>
         
         <script src="opencpu/jquery-1.10.1.min.js"></script>
         <script src="opencpu/opencpu.js"></script>
@@ -40,12 +41,7 @@
                 canvas.attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth) + "px;");    
                 
                 
-                var svgCanvas = canvas.append("svg");
-                svgCanvas.attr("id", "svgCanvas")
-                                .attr("x", 0)
-                                .attr("y", 0)
-                                .attr("height", canvasHeight)
-                                .attr("width", canvasWidth);
+                
                 
                 // Load dataset variables
                 getVariables("longley");
@@ -222,12 +218,7 @@
             }       
                 
             
-            function getNumber(value)
-            {
-                    var n = parseInt(value);
-
-                    return n == null || isNaN(n) ? 0 : n;
-            }
+           
         </script>
         
         <div id="variable" class="panel"></div>
