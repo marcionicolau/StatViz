@@ -78,7 +78,7 @@ function makeBoxPlot(variableName)
                 .attr("y1", canvasHeight/2 + size/2 - getValue(median(data) + IQR[variableName]/2)*size)
                 .attr("x2", canvasWidth/2 + boxWidth/2)
                 .attr("y2", canvasHeight/2 + size/2 - getValue(median(data) + IQR[variableName]/2)*size)
-                .attr("id", "something")
+                .attr("id", "IQR")
                 .attr("class", "boxplot");
                 
     canvas.append("line")
@@ -86,7 +86,7 @@ function makeBoxPlot(variableName)
                 .attr("y1", canvasHeight/2 + size/2 - getValue(median(data) - IQR[variableName]/2)*size)
                 .attr("x2", canvasWidth/2 + boxWidth/2)
                 .attr("y2", canvasHeight/2 + size/2 - getValue(median(data) - IQR[variableName]/2)*size)
-                .attr("id", "something")
+                .attr("id", "IQR")
                 .attr("class", "boxplot");
     
 }
