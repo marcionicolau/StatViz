@@ -15,6 +15,8 @@ function makeBoxPlot(variableName)
     var boxWidth = 100;
     
     IQR = IQR[variableName];
+    
+    console.log("IQR: " + IQR);
 
     //draw axes
     var xAxis = canvas.append("line")
