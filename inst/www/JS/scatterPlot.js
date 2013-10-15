@@ -67,9 +67,9 @@ function makeScatterplot()
     {
         canvas.append("line")
                     .attr("x1", canvasWidth/2 - size/2 + i*step)
-                    .attr("y1", canvasHeight/2 + size/2 - 5 + axesOffset)
+                    .attr("y1", canvasHeight/2 + size/2 + axesOffset)
                     .attr("x2", canvasWidth/2 - size/2 + i*step)
-                    .attr("y2", canvasHeight/2 + size/2 + 5 + axesOffset)
+                    .attr("y2", canvasHeight/2 + size/2 + 10 + axesOffset)
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooves");
         
@@ -84,9 +84,9 @@ function makeScatterplot()
     for(i=0; i<nGrooves; i++)
     {
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 - size/2 - 5 - axesOffset)
+                    .attr("x1", canvasWidth/2 - size/2 - 10 - axesOffset)
                     .attr("y1", canvasHeight/2 + size/2 - i*step)
-                    .attr("x2", canvasWidth/2 - size/2 + 5 - axesOffset)
+                    .attr("x2", canvasWidth/2 - size/2  - axesOffset)
                     .attr("y2", canvasHeight/2 + size/2 - i*step)
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooves");
