@@ -7,7 +7,7 @@ var iqr;
 var topFringe;
 var bottomFringe;
 
-function makeBoxPlot()
+function makeBoxplot()
 {
     var data = [];
     var mins = [];

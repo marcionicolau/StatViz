@@ -1,4 +1,4 @@
-function makeScatter()
+function makeScatterplot()
 {
     var data = new Object();
     var mins = new Object();
@@ -100,7 +100,7 @@ function makeScatter()
     {
         canvas.append("circle")
                     .attr("cx", canvasWidth/2 - size/2 + getValue(data["X"][i], "X")*size)
-                    .attr("cy", canvasHeight/2 - size/2 + getValue(data["Y"][i]., "Y")*size)
+                    .attr("cy", canvasHeight/2 - size/2 + getValue(data["Y"][i], "Y")*size)
                     .attr("r", "2px")
                     .attr("fill", "grey");     
     }

@@ -80,12 +80,12 @@ function makePlot()
                                     }
         case "Box-plot":
                                     {            
-                                        makeBoxPlot();
+                                        makeBoxplot();
                                         break;
                                     }
         case "Scatter-plot":
                                     {
-                                        makeScatter();
+                                        makeScatterplot();
                                         break;
                                     }
     }
