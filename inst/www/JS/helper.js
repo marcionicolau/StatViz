@@ -17,12 +17,12 @@ function addToArray(array, element)
     if(array.indexOf(element) == -1)
     {
         array.push(element);
-        variable.attr("fill", panel.active);
+        variable.attr("fill", panelColors.active);
     }
     else
     {     
         array.splice(array.indexOf(element), 1);
-        variable.attr("fill", panel.normal);    
+        variable.attr("fill", panelColors.normal);    
     }
 
     return array;
