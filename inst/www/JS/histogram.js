@@ -5,7 +5,8 @@ function makeHistogram()//nbins
     for(var i=0; i<currentVariableSelection.length; i++)
     {
         console.log(currentVariableSelection[i]);
-        data[i] = variables[currentVariableSelection[i]];        
+        data[i] = variables[currentVariableSelection[i]];      
+        console.log(variables[currentVariableSelection[i]]);  
     }
     
     var canvas = d3.select("#svgCanvas");
