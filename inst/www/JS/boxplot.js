@@ -83,7 +83,7 @@ function makeBoxPlot()
     {
         canvas.append("rect")
                     .attr("x", canvasWidth/2 - size/2 + (i+1)*widthSlice)
-                    .attr("y", canvasHeight/2 + size/2 - getValue(median(data) + iqr/2)*size)
+                    .attr("y", canvasHeight/2 + size/2 - getValue(medians[i] + iqrs[i]/2)*size)
                     .attr("height", getValue(medians[i] + iqrs[i]/2)*size - getValue(medians[i] - iqrs[i]/2)*size)
                     .attr("width", boxWidth)
                     .attr("id", "iqr")
