@@ -32,6 +32,7 @@ function makeHistogram()//nbins
     
     for(var i=0; i<currentVariableSelection.length; i++)
     {
+        bins[currentVariableSelection[i]] = new Array();
         for(var j=0; j<nBins; j++)
         {
             bins[currentVariableSelection[i]][j] = 0;
