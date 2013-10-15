@@ -86,8 +86,8 @@ function makeBoxplot()
     {
         canvas.append("rect")
                     .attr("x", canvasWidth/2 - size/2 + (i+1)*widthSlice - boxWidth/2)
-                    .attr("y", canvasHeight/2 + size/2 - getValue(medians[i] + iqrs[i]/2)*size)
-                    .attr("height", getValue(medians[i] + iqrs[i]/2)*size - getValue(medians[i] - iqrs[i]/2)*size)
+                    .attr("y", canvasHeight/2 + size/2 - getFraction(medians[i] + iqrs[i]/2)*size)
+                    .attr("height", getFraction(medians[i] + iqrs[i]/2)*size - getFraction(medians[i] - iqrs[i]/2)*size)
                     .attr("width", boxWidth)
                     .attr("id", currentVariableSelection[i])
                     .attr("class", "IQRs");
@@ -95,9 +95,9 @@ function makeBoxplot()
         // median
         canvas.append("line")
                     .attr("x1", canvasWidth/2 - size/2 + (i+1)*widthSlice - boxWidth/2)
-                    .attr("y1", canvasHeight/2 + size/2 - getValue(medians[i])*size)
+                    .attr("y1", canvasHeight/2 + size/2 - getFraction(medians[i])*size)
                     .attr("x2", canvasWidth/2 - size/2 + (i+1)*widthSlice + boxWidth/2)
-                    .attr("y2", canvasHeight/2 + size/2 - getValue(medians[i])*size)
+                    .attr("y2", canvasHeight/2 + size/2 - getFraction(medians[i])*size)
                     .attr("id", currentVariableSelection[i])
                     .attr("class", "medians");
     
@@ -107,39 +107,39 @@ function makeBoxplot()
     
         canvas.append("line")
                     .attr("x1", canvasWidth/2 - boxWidth/4 + (i+1)*widthSlice - size/2)
-                    .attr("y1", canvasHeight/2 + size/2 - getValue(topFringe)*size)
+                    .attr("y1", canvasHeight/2 + size/2 - getFraction(topFringe)*size)
                     .attr("x2", canvasWidth/2 + boxWidth/4 + (i+1)*widthSlice - size/2)
-                    .attr("y2", canvasHeight/2 + size/2 - getValue(topFringe)*size)
+                    .attr("y2", canvasHeight/2 + size/2 - getFraction(topFringe)*size)
                     .attr("id", currentVariableSelection[i])
                     .attr("class", "topFringes");
     
         canvas.append("line")
                     .attr("x1", canvasWidth/2 + (i+1)*widthSlice - size/2)
-                    .attr("y1", canvasHeight/2 + size/2 - getValue(topFringe)*size)
+                    .attr("y1", canvasHeight/2 + size/2 - getFraction(topFringe)*size)
                     .attr("x2", canvasWidth/2 + (i+1)*widthSlice - size/2)
-                    .attr("y2", canvasHeight/2 + size/2- getValue(medians[i] + iqrs[i]/2)*size)
+                    .attr("y2", canvasHeight/2 + size/2- getFraction(medians[i] + iqrs[i]/2)*size)
                     .attr("id", currentVariableSelection[i])
                     .attr("class", "topFringeConnectors");    
     
         canvas.append("line")
                     .attr("x1", canvasWidth/2 - boxWidth/4 + (i+1)*widthSlice - size/2)
-                    .attr("y1", canvasHeight/2 + size/2 - getValue(bottomFringe)*size)
+                    .attr("y1", canvasHeight/2 + size/2 - getFraction(bottomFringe)*size)
                     .attr("x2", canvasWidth/2 + boxWidth/4 + (i+1)*widthSlice - size/2)
-                    .attr("y2", canvasHeight/2 + size/2 - getValue(bottomFringe)*size)
+                    .attr("y2", canvasHeight/2 + size/2 - getFraction(bottomFringe)*size)
                     .attr("id", currentVariableSelection[i])
                     .attr("class", "bottomFringes");
                 
         canvas.append("line")
                     .attr("x1", canvasWidth/2 + (i+1)*widthSlice - size/2)
-                    .attr("y1", canvasHeight/2 + size/2 - getValue(bottomFringe)*size)
+                    .attr("y1", canvasHeight/2 + size/2 - getFraction(bottomFringe)*size)
                     .attr("x2", canvasWidth/2 + (i+1)*widthSlice - size/2)
-                    .attr("y2", canvasHeight/2 + size/2 - getValue(medians[i] - iqrs[i]/2)*size)
+                    .attr("y2", canvasHeight/2 + size/2 - getFraction(medians[i] - iqrs[i]/2)*size)
                     .attr("id", currentVariableSelection[i])
                     .attr("class", "bottomFringeConnectors");
     
         canvas.append("circle")
                     .attr("cx", canvasWidth/2 + (i+1)*widthSlice - size/2)
-                    .attr("cy", canvasHeight/2 + size/2 - getValue(means[i])*size)
+                    .attr("cy", canvasHeight/2 + size/2 - getFraction(means[i])*size)
                     .attr("r", "5px")
                     .attr("id", currentVariableSelection[i])
                     .attr("class", "means");
@@ -150,7 +150,7 @@ function makeBoxplot()
         {
             canvas.append("circle")
                     .attr("cx", canvasWidth/2 + (i+1)*widthSlice - size/2)
-                    .attr("cy", canvasHeight/2 + size/2 - getValue(outliers[j])*size)
+                    .attr("cy", canvasHeight/2 + size/2 - getFraction(outliers[j])*size)
                     .attr("r", "3px")
                     .attr("id",currentVariableSelection[i])
                     .attr("class", "outliers");
@@ -158,7 +158,7 @@ function makeBoxplot()
     }        
 }
 
-function getValue(number)
+function getFraction(number)
 {
     return (number - min)/(max - min);
 }
