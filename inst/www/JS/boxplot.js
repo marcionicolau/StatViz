@@ -13,9 +13,7 @@ function makeBoxPlot(variableName)
     var canvas = d3.select("#svgCanvas");
 
     // changeable
-    var size = 500;
     var nGroovesY = 10;
-    var boxWidth = 100;
     
     iqr = IQR[variableName];
     

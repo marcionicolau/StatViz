@@ -5,6 +5,8 @@
         <link rel="stylesheet" type="text/css" href="style/skeleton.css">
         <link rel="stylesheet" type="text/css" href="style/visualizations.css">
         <meta charset="utf-8">
+        
+<!--         Title - change if possible -->
         <title>StatViz</title>
         <script type="text/javascript" src="d3/d3.v3.js"></script>
         
@@ -14,8 +16,8 @@
         <script type="text/javascript" src="JS/boxplot.js"></script>
         
         <script type="text/javascript" src="JS/helper.js"></script>
-        
         <script type="text/javascript" src="JS/math.js"></script>
+        <script type="text/javascript" src="JS/settings.js"></script>
         
         <script src="opencpu/jquery-1.10.1.min.js"></script>
         <script src="opencpu/opencpu.js"></script>
@@ -28,8 +30,10 @@
             var canvasHeight = height*(2/3);
             var canvasWidth = width*0.8;
             
+// Define format for displaying text (this depends on the dataset)            
             var format = d3.format(".1f");	
             
+//  Global variables that store statistics
             var variables = new Object();     
             var IQR = new Object();   
             var MIN = new Object();
@@ -49,15 +53,10 @@
         
                 variablePanel.attr("style", "width: " + (width - canvasWidth) + "px; height: " + height + "px;");    
                 visualizationPanel.attr("style", "width: " + canvasWidth + "px; height: " + height/3 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth) + "px;");    
-                
-                
                 canvas.attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth) + "px;");    
                 
-                
-                
-                
-                // Load dataset variables
-                getVariables("longley");
+                // Load dataset variables and their data (into global variable "variables") and IQR (into IQR)
+                getVariables(dataset);
                 
                 // Populate visualizations
                 renderVisualizations();                
@@ -70,24 +69,18 @@
                                 dataset: dataset
                               }, function(output) {                   
                 renderVariableNames(output.varNames);
-                   
                 for(var i=0; i<output.varNames.length; i++)
                 {
                     getData(dataset, output.varNames[i]);                 
                     getIQR(dataset, output.varNames[i]);                    
-                }
-                
-                
-                
-                  }).fail(function(){
+                } }).fail(function(){
                       alert("Failure: " + req.responseText);
                 });
         
                 //if R returns an error, alert the error message
                 req.fail(function(){
                   alert("Server error: " + req.responseText);
-                });                
-                
+                });   
             }
             
             function getData(dataset, variableName)
@@ -182,7 +175,7 @@
                                                     .attr("id", variableNames[i])
                                                     .attr("class", "variableNameHolder");
                                                     
-                   //  variablePanelSVG.append("image")
+//                     variablePanelSVG.append("image")
 //                                                     .attr("x", variableNameHolderPadding + variableNameHolderWidth - imageSize - 15)
 //                                                     .attr("y", variableNameHolderPadding + variableNameHolderHeight/5 + i*(variableNameHolderHeight + variableNameHolderPadding))
 //                                                     .attr("xlink:href", "images/" + imageNames[flags[i]])
