@@ -47,7 +47,7 @@ function OnMouseDown(e)
                                 .attr("y", 0)
                                 .attr("height", canvasHeight)
                                 .attr("width", canvasWidth);
-        makeBoxPlot(target.id);
+        makeHistogram(target.id);
     }
     
 }
