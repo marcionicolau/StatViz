@@ -39,15 +39,16 @@ function makeHistogram()//nbins
         }  
     }
     
-    console.dir(bins);
+    for(var i=0; i<currentVariableSelection.length; i++)
+    {
+        for(var j=0; j<data[i].length; j++)
+        { 
+            bins[currentVariableSelection[i]][Math.ceil((data[j] - min)/slice)]++;
+        }
+
+    }
     
-//     for(var i=0; i<data.length; i++)
-//     { 
-//         bins[Math.ceil((data[i] - min)/slice)]++;
-//     }
-//     
-//     bins.length = nBins; 
-//     
+    console.dir(bins);
     
 //     var nGroovesY = Array.max(bins) > 10 ? 10 : Array.max(bins)+1;
 //     
