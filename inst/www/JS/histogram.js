@@ -130,7 +130,7 @@ function makeHistogram()//nbins
     }
     
     //bars
-    for(i=0; i<currentVariableSelection; i++)
+    for(i=0; i<currentVariableSelection.length; i++)
     {
         for(j=0; j<nBins; j++)
         {
