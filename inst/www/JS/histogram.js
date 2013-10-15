@@ -1,18 +1,20 @@
 function makeHistogram()//nbins
 {    
     var data = [];
+    var mins = [];
+    var maxs = [];
     
     for(var i=0; i<currentVariableSelection.length; i++)
-    {
-        console.log(currentVariableSelection[i]);
+    {        
         data[i] = variables[currentVariableSelection[i]];      
-        console.log(variables[currentVariableSelection[i]]);  
+        mins[i] = MIN[currentVariableSelection[i]];      
+        maxs[i] = MAX[currentVariableSelection[i]];      
+        console.log(variables[currentVariableSelection[i]] + "min=" + mins[i] + ", max=" + maxs[i]);  
     }
     
-    var canvas = d3.select("#svgCanvas");
-    
-    var min = Array.min(data);
-    var max = Array.max(data);
+
+    var min = Array.min(mins);
+    var max = Array.max(maxs);
 
     
     // Should be changeable
@@ -26,6 +28,8 @@ function makeHistogram()//nbins
     var slice = (max - min)/nBins;    
     
     var bins = [];
+    
+    var canvas = d3.select("#svgCanvas");
     
     // for(var i=0; i<nBins; i++)
 //     {
