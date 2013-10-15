@@ -148,11 +148,11 @@ function makeBoxPlot()
 //     
 //         console.log("median =" + medians[i] + ", iqrs[i] = " + iqrs[i] + ", range = [" + (medians[i] - iqrs[i]/2) + ", " + (medians[i] + iqrs[i]/2) + "], end: [" + (bottomFringe) + ", " + (topFringe) + "]");   
     
-        for(var i=0; i<outliers.length; i++)
+        for(var j=0; j<outliers.length; j++)
         {
             canvas.append("circle")
                     .attr("cx", canvasWidth/2 + (i+1)*widthSlice - size/2)
-                    .attr("cy", canvasHeight/2 + size/2 - getValue(outliers[i])*size)
+                    .attr("cy", canvasHeight/2 + size/2 - getValue(outliers[j])*size)
                     .attr("r", "3px")
                     .attr("id",currentVariableSelection[i])
                     .attr("class", "outliers");
