@@ -52,7 +52,7 @@ function findTicks(number)
 function toggleFillColors()
 {
     var visualizations = d3.selectAll(".visualizationHolder");
-    
+    console.log(visualizations);
     for(var i=0; i<visualizations.length; i++)
     {
         console.log(visualizations.length);
