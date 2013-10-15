@@ -84,7 +84,7 @@ function makeBoxPlot()
     for(var i=0; i<currentVariableSelection.length; i++)
     {
         canvas.append("rect")
-                    .attr("x", canvasWidth/2 - size/2 + (i+1)*widthSlice)
+                    .attr("x", canvasWidth/2 - size/2 + (i+1)*widthSlice - boxWidth/2)
                     .attr("y", canvasHeight/2 + size/2 - getValue(medians[i] + iqrs[i]/2)*size)
                     .attr("height", getValue(medians[i] + iqrs[i]/2)*size - getValue(medians[i] - iqrs[i]/2)*size)
                     .attr("width", boxWidth)
@@ -93,9 +93,9 @@ function makeBoxPlot()
                 
         // median
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 - boxWidth/2 + (i+1)*widthSlice)
+                    .attr("x1", canvasWidth/2 - size/2 + (i+1)*widthSlice - boxWidth/2)
                     .attr("y1", canvasHeight/2 + size/2 - getValue(medians[i])*size)
-                    .attr("x2", canvasWidth/2 + boxWidth/2 + (i+1)*widthSlice)
+                    .attr("x2", canvasWidth/2 + size/2 + (i+1)*widthSlice - boxWidth/2)
                     .attr("y2", canvasHeight/2 + size/2 - getValue(medians[i])*size)
                     .attr("id", "median")
                     .attr("class", "boxplot");
@@ -105,39 +105,39 @@ function makeBoxPlot()
         topFringe = (medians[i] + 1.5*iqrs[i]) > max ? max : (medians[i] + 1.5*iqrs[i]);
     
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 - boxWidth/4 + (i+1)*widthSlice)
+                    .attr("x1", canvasWidth/2 - boxWidth/4 + (i+1)*widthSlice - size/2)
                     .attr("y1", canvasHeight/2 + size/2 - getValue(topFringe)*size)
-                    .attr("x2", canvasWidth/2 + boxWidth/4 + (i+1)*widthSlice)
+                    .attr("x2", canvasWidth/2 + boxWidth/4 + (i+1)*widthSlice - size/2)
                     .attr("y2", canvasHeight/2 + size/2 - getValue(topFringe)*size)
                     .attr("id", "topFringe")
                     .attr("class", "boxplot");
     
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 + (i+1)*widthSlice)
+                    .attr("x1", canvasWidth/2 + (i+1)*widthSlice - size/2)
                     .attr("y1", canvasHeight/2 + size/2 - getValue(topFringe)*size)
-                    .attr("x2", canvasWidth/2 + (i+1)*widthSlice)
+                    .attr("x2", canvasWidth/2 + (i+1)*widthSlice - size/2)
                     .attr("y2", canvasHeight/2 + size/2- getValue(medians[i] + iqrs[i]/2)*size)
                     .attr("id", "topFringeConnector")
                     .attr("class", "boxplot");    
     
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 - boxWidth/4 + (i+1)*widthSlice)
+                    .attr("x1", canvasWidth/2 - boxWidth/4 + (i+1)*widthSlice - size/2)
                     .attr("y1", canvasHeight/2 + size/2 - getValue(bottomFringe)*size)
-                    .attr("x2", canvasWidth/2 + boxWidth/4 + (i+1)*widthSlice)
+                    .attr("x2", canvasWidth/2 + boxWidth/4 + (i+1)*widthSlice - size/2)
                     .attr("y2", canvasHeight/2 + size/2 - getValue(bottomFringe)*size)
                     .attr("id", "bottomFringe")
                     .attr("class", "boxplot");
                 
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 + (i+1)*widthSlice)
+                    .attr("x1", canvasWidth/2 + (i+1)*widthSlice - size/2)
                     .attr("y1", canvasHeight/2 + size/2 - getValue(bottomFringe)*size)
-                    .attr("x2", canvasWidth/2 + (i+1)*widthSlice)
+                    .attr("x2", canvasWidth/2 + (i+1)*widthSlice - size/2)
                     .attr("y2", canvasHeight/2 + size/2 - getValue(medians[i] - iqrs[i]/2)*size)
                     .attr("id", "bottomFringeConnector")
                     .attr("class", "boxplot");
     
         canvas.append("circle")
-                    .attr("cx", canvasWidth/2 + (i+1)*widthSlice)
+                    .attr("cx", canvasWidth/2 + (i+1)*widthSlice - size/2)
                     .attr("cy", canvasHeight/2 + size/2 - getValue(means[i])*size)
                     .attr("r", "5px")
                     .attr("id", "mean")
