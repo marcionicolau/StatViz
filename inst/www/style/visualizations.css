@@ -27,10 +27,11 @@
 
 #mean.boxplot
 {
-    fill: red;    
+    fill: purple;    
 }
 
 #outliers.boxplot
 {
-    fill: red;
+    fill: none;    
+    stroke: red;
 }
