@@ -12,13 +12,14 @@ function makeBoxPlot()
     var data = [];
     var mins = [];
     var maxs = [];
-    
+    var iqrs = [];
     //Get data, minimums and maximums for each selected variable
     for(var i=0; i<currentVariableSelection.length; i++)
     {        
         data[i] = variables[currentVariableSelection[i]];      
         mins[i] = MIN[currentVariableSelection[i]];      
         maxs[i] = MAX[currentVariableSelection[i]];      
+        iqrs[i] = IQR[currentVariableSelection[i]];      
     }
     min = Array.min(mins);
     max = Array.max(maxs);
@@ -27,8 +28,6 @@ function makeBoxPlot()
 
     // changeable
     var nGroovesY = 10;
-    
-    iqr = IQR[variableName];
     
     //draw axes
     var xAxis = canvas.append("line")
