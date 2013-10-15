@@ -24,3 +24,24 @@ function addToArray(array, element)
 
     return array;
 }
+
+function findTicks(number)
+{
+    var factor = 0;
+    if(isPrime(number))
+    {
+        number = number + 1;      
+    }
+    
+    //we now have a non-prime number
+    for(var i=1; i<=number/2; i++)
+    {
+        if((number%i == 0) && (number/i <= 10))
+        {
+            factor = i;
+            break;
+        }
+    }
+    
+    return number/factor;
+};

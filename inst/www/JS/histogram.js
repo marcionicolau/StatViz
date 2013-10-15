@@ -63,27 +63,8 @@ function makeHistogram()//nbins
         binMaxs[i] = Array.max(bins[currentVariableSelection[i]]);        
     }
         
-    var factor;        
-    var nGroovesY = Array.max(binMaxs) > 10 ? 10 : function()
-    {
-        var number = Array.max(binMaxs);
-        if(isPrime(number))
-        {
-            number = number + 1;      
-        }
-        
-        //we now have a non-prime number
-        for(var i=2; i<=number/2; i++)
-        {
-            if((number%i == 0) && (number/i <= 10))
-            {
-                factor = i;
-                break;
-            }
-        }
-        
-        return number/factor;
-    };
+    var nGroovesY = findTicks(Array.max(binMaxs));
+    
     
     console.log(nGroovesY);
     
