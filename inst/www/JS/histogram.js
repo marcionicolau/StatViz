@@ -60,14 +60,13 @@ function makeHistogram()//nbins
     
     for(var i=0; i<currentVariableSelection.length; i++)
     {
-        binMaxs[i] = Array.max(bins[currentVariableSelection[i]]);
-        binMins[i] = Array.min(bins[currentVariableSelection[i]]);
+        binMaxs[i] = Array.max(bins[currentVariableSelection[i]]);        
     }
             
     var nGroovesY = Array.max(binMaxs) > 10 ? 10 : Array.max(binMaxs)+1;
     console.log(nGroovesY);
     
-    var binSlice = (Array.max(binMaxs) - Array.min(binMins))/(nGroovesY-1);
+    var binSlice = Array.max(binMaxs)/(nGroovesY-1);
     
     //draw axes
     var xAxis = canvas.append("line")
@@ -122,12 +121,12 @@ function makeHistogram()//nbins
                     .attr("class", "yAxisGrooves");
         
         
-        console.log((Array.max(binMins) + i*binSlice));
+        console.log(i*binSlice);
         
         canvas.append("text")
                     .attr("x", canvasWidth/2 - size/2 - 35)
                     .attr("y", canvasHeight/2 + size/2 - i*yStep + 10)                                        
-                    .text(Math.round(Array.max(binMins) + i*binSlice))
+                    .text(Math.round(i*binSlice))
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooveText");
     }
