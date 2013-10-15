@@ -129,6 +129,7 @@ function makeBoxPlot(variableName)
                 .attr("class", "boxplot");
     
     var outliers = getOutliers();
+    console.log("outliers : " + outliers);
     
     console.log("median =" + median(data) + ", iqr = " + iqr + ", range = [" + (median(data) - iqr/2) + ", " + (median(data) + iqr/2) + "], end: [" + (bottomFringe) + ", " + (topFringe) + "]");   
     
