@@ -67,7 +67,7 @@ function makeHistogram()//nbins
     var nGroovesY = Array.max(binMaxs) > 10 ? 10 : Array.max(binMaxs)+1;
     console.log(nGroovesY);
     
-    var binSlice = (Array.max(binMaxs) - Array.min(binMins))/nGroovesY;
+    var binSlice = (Array.max(binMaxs) - Array.min(binMins))/(nGroovesY-1);
     
     //draw axes
     var xAxis = canvas.append("line")
