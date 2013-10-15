@@ -66,7 +66,7 @@ function makeHistogram()//nbins
     var nGroovesY = findTicks(Array.max(binMaxs));
     
     
-    console.log(nGroovesY);
+    console.log("number of ticks in y = " + nGroovesY);
     
     var binSlice = Array.max(binMaxs)/(nGroovesY-1);
     

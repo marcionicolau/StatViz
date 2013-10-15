@@ -43,5 +43,5 @@ function findTicks(number)
         }
     }
     
-    return number/factor;
+    return (number/factor)+1;
 };
