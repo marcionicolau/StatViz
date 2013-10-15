@@ -51,18 +51,18 @@ function findTicks(number)
 
 function toggleFillColors()
 {
-    var visualizations = d3.selectAll(".visualizationHolder");
-    console.log(visualizations);
+    var visualizations = document.getElementsByClassName("visualizationHolder");
+    
     for(var i=0; i<visualizations.length; i++)
     {
         console.log(visualizations.length);
-        if(visualizations[i].attr("id") == currentVisualizationSelection)
+        if(visualizations[i].getAttribute("id") == currentVisualizationSelection)
         {
-            visualizations[i].attr("fill", panelColors.active);
+            visualizations[i].setAttribute("fill", panelColors.active);
         }
         else
         {
-            visualizations[i].attr("fill", panelColors.normal);
+            visualizations[i].setAttribute("fill", panelColors.normal);
         }
     }
 }
