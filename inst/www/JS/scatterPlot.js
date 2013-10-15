@@ -108,5 +108,5 @@ function makeScatterplot()
 
 function getValue(number, type)
 {
-    return (number - min[type])/(max[type] - min[type]);
+    return (number - mins[type])/(maxs[type] - mins[type]);
 }
