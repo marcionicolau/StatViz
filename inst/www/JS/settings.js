@@ -3,6 +3,9 @@ var dataset = "longley";
 var width = document.width;
 var height = document.height;  
 
+var panelColors = new Object();
+
+
 var canvasHeight = height*(2/3);
 var canvasWidth = width*0.8;      
       
@@ -18,9 +21,7 @@ var nBins = 10;
 // Boxplots
 var boxWidth = 75;
 
-var variableColors = new Object();
-
-variableColors.normal = "white";
-variableColors.active = "darkgrey";
+panelColors.normal = "white";
+panelColors.active = "darkgrey";
 
 

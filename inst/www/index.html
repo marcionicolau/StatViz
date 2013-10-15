@@ -35,6 +35,7 @@
             var MAX = new Object();
             
             var currentVariableSelection = [];
+            var currentVisualizationSelection = "Histogram"; //by default
         
             window.onload = function()
             { 
@@ -156,7 +157,7 @@
                                                     .attr("width",  variableNameHolderWidth)     
                                                     .attr("rx", radius)
                                                     .attr("ry", radius)
-                                                    .attr("fill", variableColors.normal)
+                                                    .attr("fill", panelColors.normal)
                                                     .attr("id", variableNames[i])
                                                     .attr("class", "variableNameHolder");
 
@@ -218,6 +219,7 @@
                                                     .attr("rx", radius)
                                                     .attr("ry", radius)
                                                     .attr("id", visualizations[i])
+                                                    .attr("fill", panelColors.normal)
                                                     .attr("class", "visualizationHolder");
                     
                     visualizationPanelSVG.append("image")
@@ -228,7 +230,7 @@
                                                     .attr("width", imageSize)
                                                     .attr("style", "opacity: 0.75;")
                                                     .attr("id", visualizations[i])
-                                                    .attr("class", "visualizationHolder");
+                                                    .attr("class", "visualizationHolderImage");
                                                 
                     visualizationPanelSVG.append("text")
                                                     .attr("x", visualizationHolderPadding + visualizationHolderWidth/2 + i*(visualizationHolderWidth + visualizationHolderPadding))
@@ -238,7 +240,7 @@
                                                     .attr("text-anchor", "middle")
                                                     .text(visualizations[i])
                                                     .attr("id", visualizations[i])
-                                                    .attr("class", "visualizationHolder");
+                                                    .attr("class", "visualizationHolderText");
                                                     
                 } 
             }       

@@ -17,12 +17,12 @@ function addToArray(array, element)
     if(array.indexOf(element) == -1)
     {
         array.push(element);
-        variable.attr("fill", variableColors.active);
+        variable.attr("fill", panel.active);
     }
     else
     {     
         array.splice(array.indexOf(element), 1);
-        variable.attr("fill", variableColors.normal);    
+        variable.attr("fill", panel.normal);    
     }
 
     return array;
@@ -48,3 +48,22 @@ function findTicks(number)
     
     return (number/factor)+1;
 };
+
+function toggleFillColors()
+{
+    var visualizations = d3.selectAll(".visualizationHolder");
+    
+    for(var i=0; i<visualizations.length; i++)
+    {
+        if(visualizations[i].attr("id") == currentVisualizationSelection)
+        {
+            visualizations[i].attr("fill", panelColors.active);
+        }
+        else
+        {
+            visualizations[i].attr("fill", panelColors.normal);
+        }
+    }
+}
+        
+        

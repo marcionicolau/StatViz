@@ -50,6 +50,18 @@ function OnMouseDown(e)
         makeBoxPlot();
     }
     
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "visualizationHolder")
+    {
+        setup(e, target);    
+        
+        currentVisualizationSelection = target.id;
+        
+        toggleFillColors();
+    }
+    
+    
+    
+    
 }
  
 function OnMouseMove(e)
