@@ -145,7 +145,7 @@ function makeHistogram()//nbins
                         .attr("y", canvasHeight/2 + size/2 - (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size)
                         .attr("height", (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size)
                         .attr("width", size/nBins)               
-                        .attr("fill", colors[i])         
+                        .attr("fill", "blue")         
                         .attr("id", currentVariableSelection[i])
                         .attr("class", "bins");
         }
