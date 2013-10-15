@@ -1,4 +1,4 @@
-var colors = ["rgba(255,0,0,0.5)","rgba(0,255,0,0.5)","rgba(0,0,255,0.5)"];
+var colors = ["red","rgba(255,0,0,0.5)","rgba(0,255,0,0.5)","rgba(0,0,255,0.5)"];
 
 function makeHistogram()//nbins
 {    
