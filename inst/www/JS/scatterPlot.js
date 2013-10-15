@@ -60,7 +60,7 @@ function makeScatterPlot()
     var ySlice = (maxs["Y"] - mins["Y"])/(nGrooves-1);    
     
     //grooves
-    for(i=0; i<=nGrooves; i++)
+    for(i=0; i<nGrooves; i++)
     {
         canvas.append("line")
                     .attr("x1", canvasWidth/2 - size/2 + i*step)
