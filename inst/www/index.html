@@ -32,8 +32,6 @@
             
             var variables = new Object();     
             var IQR = new Object();   
-            var MIN = new Object();  
-            var MAX = new Object();
             
             var currentVariableSelection = [];
         
@@ -74,9 +72,7 @@
                 for(var i=0; i<output.varNames.length; i++)
                 {
                     getData(dataset, output.varNames[i]);                 
-                    getIQR(dataset, output.varNames[i]);
-                    MIN.push(Array.min(variables[output.varNames[i]]));
-                    MAX.push(Array.max(variables[output.varNames[i]]));
+                    getIQR(dataset, output.varNames[i]);                    
                 }
                 
                 
