@@ -65,15 +65,15 @@ function makeBoxplot()
     for(i=0; i<nGroovesY; i++)
     {
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 - size/2 - 5)
+                    .attr("x1", canvasWidth/2 - size/2 - 5 - axesOffset)
                     .attr("y1", canvasHeight/2 + size/2 - i*yStep)
-                    .attr("x2", canvasWidth/2 - size/2 + 5)
+                    .attr("x2", canvasWidth/2 - size/2 + 5 - axesOffset)
                     .attr("y2", canvasHeight/2 + size/2 - i*yStep)
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", canvasWidth/2 - size/2 - 55)
+                    .attr("x", canvasWidth/2 - size/2 - 55 - axesOffset)
                     .attr("y", canvasHeight/2 + size/2 - i*yStep)                    
                     .text(format(min + i*slice))
                     .attr("id", "groove" + i)
