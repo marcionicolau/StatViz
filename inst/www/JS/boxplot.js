@@ -143,20 +143,20 @@ function makeBoxPlot()
                     .attr("id", currentVariableSelection[i])
                     .attr("class", "means");
     
-        // var outliers = getOutliers();
+        var outliers = getOutliers(data[i], topFringe, bottomFringe);
 //         console.log("outliers : " + outliers);
 //     
 //         console.log("median =" + medians[i] + ", iqrs[i] = " + iqrs[i] + ", range = [" + (medians[i] - iqrs[i]/2) + ", " + (medians[i] + iqrs[i]/2) + "], end: [" + (bottomFringe) + ", " + (topFringe) + "]");   
-//     
-//         for(var i=0; i<outliers.length; i++)
-//         {
-//             canvas.append("circle")
-//                     .attr("cx", canvasWidth/2)
-//                     .attr("cy", canvasHeight/2 + size/2 - getValue(outliers[i])*size)
-//                     .attr("r", "3px")
-//                     .attr("id", "outliers")
-//                     .attr("class", "boxplot");
-//         }
+    
+        for(var i=0; i<outliers.length; i++)
+        {
+            canvas.append("circle")
+                    .attr("cx", canvasWidth/2)
+                    .attr("cy", canvasHeight/2 + size/2 - getValue(outliers[i])*size)
+                    .attr("r", "3px")
+                    .attr("id",currentVariableSelection[i])
+                    .attr("class", "outliers");
+        }
     }        
 }
 
@@ -165,7 +165,7 @@ function getValue(number)
     return (number - min)/(max - min);
 }
 
-function getOutliers()
+function getOutliers(data, topFringe, bottomFringe)
 {
     var outliers = [];
     

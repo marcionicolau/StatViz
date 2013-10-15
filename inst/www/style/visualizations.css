@@ -24,6 +24,10 @@
     stroke: grey;
 }
 
+.topFringes, .bottomFringes
+{
+    stroke: black;
+}
 .means
 {
     fill: purple;    
