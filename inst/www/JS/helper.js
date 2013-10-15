@@ -28,7 +28,7 @@ function addToArray(array, element)
 function findTicks(number)
 {
     var factor = 0;
-    if(isPrime(number))
+    if((isPrime(number)) && (number > 10))
     {
         number = number + 1;      
     }
