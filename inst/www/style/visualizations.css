@@ -14,7 +14,7 @@
     stroke: black;
 }
 
-#IQR.boxplot, #topFringe.boxplot, #bottomFringe.boxplot
+#iqr.boxplot, #topFringe.boxplot, #bottomFringe.boxplot
 {
     stroke: black;
     fill: lightgrey;
