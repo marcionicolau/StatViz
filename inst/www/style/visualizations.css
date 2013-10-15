@@ -16,6 +16,7 @@
 .IQRs
 {
     stroke: black;
+    fill: lightgrey;
 }
 
 #topFringeConnector.boxplot, #bottomFringeConnector.boxplot
