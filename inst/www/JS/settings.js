@@ -18,3 +18,9 @@ var nBins = 10;
 // Boxplots
 var boxWidth = 75;
 
+var variableColors = new Object();
+
+variableColors.normal = "grey";
+variableColors.active = "darkgrey";
+
+
