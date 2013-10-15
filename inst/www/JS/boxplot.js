@@ -85,6 +85,10 @@ function makeBoxPlot(variableName)
                 .attr("id", "median")
                 .attr("class", "boxplot");
     
+    //end fringes
+    var bottomFringe = (median(data) - 1.5*IQR) < min ? min : (median(data) - 1.5*IQR);
+    var topFringe = (median(data) + 1.5*IQR) > max ? max : (median(data) + 1.5*IQR);
+    
     canvas.append("line")
                 .attr("x1", canvasWidth/2 - boxWidth/4)
                 .attr("y1", canvasHeight/2 + size/2 - getValue(topFringe)*size)
@@ -92,10 +96,6 @@ function makeBoxPlot(variableName)
                 .attr("y2", canvasHeight/2 + size/2 - getValue(topFringe)*size)
                 .attr("id", "topFringe")
                 .attr("class", "boxplot");
-    
-    //end fringes
-    var bottomFringe = (median(data) - 1.5*IQR) < min ? min : (median(data) - 1.5*IQR);
-    var topFringe = (median(data) + 1.5*IQR) > max ? max : (median(data) + 1.5*IQR);
     
     canvas.append("line")
                 .attr("x1", canvasWidth/2)
