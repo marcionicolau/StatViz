@@ -1,3 +1,5 @@
+var colors = ["rgba(255,0,0,0.5)","rgba(0,255,0,0.5)","rgba(0,0,255,0.5)"];
+
 function makeHistogram()//nbins
 {    
     var data = [];
@@ -142,10 +144,9 @@ function makeHistogram()//nbins
                         .attr("x", canvasWidth/2 - size/2 + j*xStep)
                         .attr("y", canvasHeight/2 + size/2 - (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size)
                         .attr("height", (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size)
-                        .attr("width", size/nBins)
-                        .attr("stroke", "black")
-                        .attr("fill", "white")
-                        .attr("id", "bin" + i + j)
+                        .attr("width", size/nBins)               
+                        .attr("fill", colors[i])         
+                        .attr("id", currentVariableSelection[i])
                         .attr("class", "bins");
         }
     }
