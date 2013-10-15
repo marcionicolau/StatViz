@@ -31,7 +31,9 @@
             var format = d3.format(".1f");	
             
             var variables = new Object();     
-            var IQR = new Object();     
+            var IQR = new Object();   
+            var MIN = new Object();  
+            var MAX = new Object();
             
             var currentVariableSelection = [];
         
@@ -73,6 +75,8 @@
                 {
                     getData(dataset, output.varNames[i]);                 
                     getIQR(dataset, output.varNames[i]);
+                    MIN.push(Array.min(variables[output.varNames[i]]));
+                    MAX.push(Array.max(variables[output.varNames[i]]));
                 }
                 
                 
