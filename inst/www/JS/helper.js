@@ -84,7 +84,10 @@ function makePlot()
                                         break;
                                     }
         case "Scatter-plot":
-            makeScatterPlot();
+                                    {
+                                        makeScatterPlot();
+                                        break;
+                                    }
     }
 }
 
