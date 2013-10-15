@@ -64,23 +64,25 @@ function makeHistogram()
     var binSlice = Array.max(binMaxs)/(nGroovesY-1);
     
     // Draw axes
+        
     var xAxis = canvas.append("line")
                                     .attr("x1", canvasWidth/2 - size/2)
-                                    .attr("y1", canvasHeight/2 - size/2)
-                                    .attr("x2", canvasWidth/2 - size/2)
-                                    .attr("y2", canvasHeight/2 + size/2)
+                                    .attr("y1", canvasHeight/2 + size/2 + axesOffset)
+                                    .attr("x2", canvasWidth/2 + size/2)
+                                    .attr("y2", canvasHeight/2 + size/2 + axesOffset) 
                                     .attr("stroke", "black")
                                     .attr("id", "xAxis")
                                     .attr("class", "axes");
     
     var yAxis = canvas.append("line")
-                                    .attr("x1", canvasWidth/2 - size/2)
-                                    .attr("y1", canvasHeight/2 + size/2)
-                                    .attr("x2", canvasWidth/2 + size/2)
+                                    .attr("x1", canvasWidth/2 - size/2 - axesOffset)
+                                    .attr("y1", canvasHeight/2 - size/2)
+                                    .attr("x2", canvasWidth/2 - size/2 - axesOffset)
                                     .attr("y2", canvasHeight/2 + size/2)
                                     .attr("stroke", "black")
                                     .attr("id", "yAxis")
                                     .attr("class", "axes");
+
                                     
     var xStep = size/nGroovesX;
     

@@ -24,4 +24,6 @@ var boxWidth = 75;
 panelColors.normal = "white";
 panelColors.active = "darkgrey";
 
+var axesOffset = 25;
+
 
