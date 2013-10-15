@@ -68,7 +68,9 @@ function toggleFillColors()
 }
 
 function makePlot()
-{
+{   
+    resetSVGCanvas();
+    
     switch(currentVisualizationSelection)
     {
         case "Histogram":

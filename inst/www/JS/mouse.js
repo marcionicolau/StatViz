@@ -34,8 +34,6 @@ function OnMouseDown(e)
         //add to list of variables selected
         currentVariableSelection = addToArray(currentVariableSelection, target.id);
         console.log(currentVariableSelection);
-        
-        resetSVGCanvas();
                             
         makePlot();
     }
@@ -45,8 +43,6 @@ function OnMouseDown(e)
         setup(e, target);    
         currentVisualizationSelection = target.id;
         toggleFillColors();
-        
-        resetSVGCanvas();
         
         makePlot();
     }
