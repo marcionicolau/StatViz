@@ -123,6 +123,7 @@ function makeHistogram()//nbins
         
         
         console.log((Array.max(binMins) + i*binSlice));
+        
         canvas.append("text")
                     .attr("x", canvasWidth/2 - size/2 - 35)
                     .attr("y", canvasHeight/2 + size/2 - i*yStep + 10)                                        
