@@ -1,8 +1,10 @@
+var mins = new Object();
+var maxs = new Object();
+   
+   
 function makeScatterplot()
 {
     var data = new Object();
-    var mins = new Object();
-    var maxs = new Object();
     
     
     //Get data, minimums and maximums for each selected variable
