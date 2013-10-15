@@ -21,7 +21,7 @@ function makeBoxPlot()
         mins[i] = MIN[currentVariableSelection[i]];      
         maxs[i] = MAX[currentVariableSelection[i]];      
         iqrs[i] = IQR[currentVariableSelection[i]];      
-        medians[i] = median(currentVariableSelection[i]);      
+        medians[i] = median(data[i]);      
     }
     min = Array.min(mins);
     max = Array.max(maxs);
