@@ -2,7 +2,7 @@ var max;
 var min;
 
 var data;
-var IQR;
+var iqr;
 
 function makeBoxPlot(variableName)
 {
@@ -14,7 +14,7 @@ function makeBoxPlot(variableName)
     var nGroovesY = 10;
     var boxWidth = 100;
     
-    IQR = IQR[variableName];
+    iqr = IQR[variableName];
     
     //draw axes
     var xAxis = canvas.append("line")
@@ -70,10 +70,10 @@ function makeBoxPlot(variableName)
     
     canvas.append("rect")
                 .attr("x", canvasWidth/2 - boxWidth/2)
-                .attr("y", canvasHeight/2 + size/2 - getValue(median(data) + IQR/2)*size)
-                .attr("height", getValue(median(data) + IQR/2)*size - getValue(median(data) - IQR/2)*size)
+                .attr("y", canvasHeight/2 + size/2 - getValue(median(data) + iqr/2)*size)
+                .attr("height", getValue(median(data) + iqr/2)*size - getValue(median(data) - iqr/2)*size)
                 .attr("width", boxWidth)
-                .attr("id", "IQR")
+                .attr("id", "iqr")
                 .attr("class", "boxplot");
                 
     // median
@@ -86,8 +86,8 @@ function makeBoxPlot(variableName)
                 .attr("class", "boxplot");
     
     //end fringes
-    var bottomFringe = (median(data) - 1.5*IQR) < min ? min : (median(data) - 1.5*IQR);
-    var topFringe = (median(data) + 1.5*IQR) > max ? max : (median(data) + 1.5*IQR);
+    var bottomFringe = (median(data) - 1.5*iqr) < min ? min : (median(data) - 1.5*iqr);
+    var topFringe = (median(data) + 1.5*iqr) > max ? max : (median(data) + 1.5*iqr);
     
     canvas.append("line")
                 .attr("x1", canvasWidth/2 - boxWidth/4)
@@ -101,7 +101,7 @@ function makeBoxPlot(variableName)
                 .attr("x1", canvasWidth/2)
                 .attr("y1", canvasHeight/2 + size/2 - getValue(topFringe)*size)
                 .attr("x2", canvasWidth/2)
-                .attr("y2", canvasHeight/2 + size/2- getValue(median(data) + IQR/2)*size)
+                .attr("y2", canvasHeight/2 + size/2- getValue(median(data) + iqr/2)*size)
                 .attr("id", "topFringeConnector")
                 .attr("class", "boxplot");    
     
@@ -117,7 +117,7 @@ function makeBoxPlot(variableName)
                 .attr("x1", canvasWidth/2)
                 .attr("y1", canvasHeight/2 + size/2 - getValue(bottomFringe)*size)
                 .attr("x2", canvasWidth/2)
-                .attr("y2", canvasHeight/2 + size/2 - getValue(median(data) - IQR/2)*size)
+                .attr("y2", canvasHeight/2 + size/2 - getValue(median(data) - iqr/2)*size)
                 .attr("id", "bottomFringeConnector")
                 .attr("class", "boxplot");
     
@@ -130,7 +130,7 @@ function makeBoxPlot(variableName)
     
     var outliers = getOutliers();
     
-    console.log("median =" + median(data) + ", IQR = " + IQR + ", range = [" + (median(data) - IQR/2) + ", " + (median(data) + IQR/2) + "], end: [" + (bottomFringe) + ", " + (topFringe) + "]");   
+    console.log("median =" + median(data) + ", iqr = " + iqr + ", range = [" + (median(data) - iqr/2) + ", " + (median(data) + iqr/2) + "], end: [" + (bottomFringe) + ", " + (topFringe) + "]");   
     
     for(var i=0; i<outliers.length; i++)
     {
