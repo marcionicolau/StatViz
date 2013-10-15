@@ -102,7 +102,7 @@ function makeHistogram()//nbins
                     .attr("class", "xAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", canvasWidth/2 - size/2 + i*xStep - 25)
+                    .attr("x", canvasWidth/2 - size/2 + i*xStep - 15)
                     .attr("y", canvasHeight/2 + size/2 + 30)                    
                     .text(format(min + i*slice))
                     .attr("id", "groove" + i)
