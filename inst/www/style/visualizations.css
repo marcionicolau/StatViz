@@ -8,7 +8,7 @@
     stroke: black;
 }
 
-#median.boxplot
+.medians
 {
     stroke: black;
 }
@@ -19,17 +19,17 @@
     fill: lightgrey;
 }
 
-#topFringeConnector.boxplot, #bottomFringeConnector.boxplot
+.topFringeConnectors,.bottomFringeConnectors
 {
     stroke: grey;
 }
 
-#mean.boxplot
+.means
 {
     fill: purple;    
 }
 
-#outliers.boxplot
+.outliers
 {
     fill: none;    
     stroke: red;
