@@ -144,10 +144,7 @@ function makeBoxPlot()
                     .attr("class", "means");
     
         var outliers = getOutliers(data[i], topFringe, bottomFringe);
-//         console.log("outliers : " + outliers);
-//     
-//         console.log("median =" + medians[i] + ", iqrs[i] = " + iqrs[i] + ", range = [" + (medians[i] - iqrs[i]/2) + ", " + (medians[i] + iqrs[i]/2) + "], end: [" + (bottomFringe) + ", " + (topFringe) + "]");   
-    
+            
         for(var j=0; j<outliers.length; j++)
         {
             canvas.append("circle")
