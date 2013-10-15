@@ -151,7 +151,7 @@ function makeBoxPlot()
         for(var i=0; i<outliers.length; i++)
         {
             canvas.append("circle")
-                    .attr("cx", canvasWidth/2)
+                    .attr("cx", canvasWidth/2 + (i+1)*widthSlice - size/2)
                     .attr("cy", canvasHeight/2 + size/2 - getValue(outliers[i])*size)
                     .attr("r", "3px")
                     .attr("id",currentVariableSelection[i])
