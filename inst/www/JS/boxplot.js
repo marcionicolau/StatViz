@@ -16,8 +16,6 @@ function makeBoxPlot(variableName)
     
     IQR = IQR[variableName];
     
-    console.log("IQR: " + IQR);
-
     //draw axes
     var xAxis = canvas.append("line")
                                     .attr("x1", canvasWidth/2 - size/2)
@@ -128,7 +126,7 @@ function makeBoxPlot(variableName)
     
     var outliers = getOutliers();
     
-    console.log("median =" + median(data) + ", IQR = " + IQR[variableName] + ", range = [" + (median(data) - IQR[variableName]/2) + ", " + (median(data) + IQR[variableName]/2) + "], end: [" + (median(data) - 1.5*IQR[variableName]) + ", " + (median(data) + 1.5*IQR[variableName]) + "]");   
+    console.log("median =" + median(data) + ", IQR = " + IQR + ", range = [" + (median(data) - IQR/2) + ", " + (median(data) + IQR/2) + "], end: [" + (median(data) - 1.5*IQR) + ", " + (median(data) + 1.5*IQR) + "]");   
     
     for(var i=0; i<outliers.length; i++)
     {
