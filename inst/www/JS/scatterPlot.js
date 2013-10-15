@@ -1,4 +1,4 @@
-function makeScatterPlot()
+function makeScatter()
 {
     var data = new Object();
     var mins = new Object();
