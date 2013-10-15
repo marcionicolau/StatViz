@@ -14,6 +14,7 @@ function makeBoxPlot()
     var maxs = [];
     var iqrs = [];
     var medians = [];
+    var means = [];
     //Get data, minimums and maximums for each selected variable
     for(var i=0; i<currentVariableSelection.length; i++)
     {        
@@ -22,6 +23,7 @@ function makeBoxPlot()
         maxs[i] = MAX[currentVariableSelection[i]];      
         iqrs[i] = IQR[currentVariableSelection[i]];      
         medians[i] = median(data[i]);      
+        means[i] = mean(data[i]);  
     }
     min = Array.min(mins);
     max = Array.max(maxs);
@@ -90,61 +92,61 @@ function makeBoxPlot()
                     .attr("class", "IQRs");
                 
         // median
-//         canvas.append("line")
-//                     .attr("x1", canvasWidth/2 - boxWidth/2)
-//                     .attr("y1", canvasHeight/2 + size/2 - getValue(median(data))*size)
-//                     .attr("x2", canvasWidth/2 + boxWidth/2)
-//                     .attr("y2", canvasHeight/2 + size/2 - getValue(median(data))*size)
-//                     .attr("id", "median")
-//                     .attr("class", "boxplot");
-//     
-//         //end fringes
-//         bottomFringe = (median(data) - 1.5*iqr) < min ? min : (median(data) - 1.5*iqr);
-//         topFringe = (median(data) + 1.5*iqr) > max ? max : (median(data) + 1.5*iqr);
-//     
-//         canvas.append("line")
-//                     .attr("x1", canvasWidth/2 - boxWidth/4)
-//                     .attr("y1", canvasHeight/2 + size/2 - getValue(topFringe)*size)
-//                     .attr("x2", canvasWidth/2 + boxWidth/4)
-//                     .attr("y2", canvasHeight/2 + size/2 - getValue(topFringe)*size)
-//                     .attr("id", "topFringe")
-//                     .attr("class", "boxplot");
-//     
-//         canvas.append("line")
-//                     .attr("x1", canvasWidth/2)
-//                     .attr("y1", canvasHeight/2 + size/2 - getValue(topFringe)*size)
-//                     .attr("x2", canvasWidth/2)
-//                     .attr("y2", canvasHeight/2 + size/2- getValue(median(data) + iqr/2)*size)
-//                     .attr("id", "topFringeConnector")
-//                     .attr("class", "boxplot");    
-//     
-//         canvas.append("line")
-//                     .attr("x1", canvasWidth/2 - boxWidth/4)
-//                     .attr("y1", canvasHeight/2 + size/2 - getValue(bottomFringe)*size)
-//                     .attr("x2", canvasWidth/2 + boxWidth/4)
-//                     .attr("y2", canvasHeight/2 + size/2 - getValue(bottomFringe)*size)
-//                     .attr("id", "bottomFringe")
-//                     .attr("class", "boxplot");
-//                 
-//         canvas.append("line")
-//                     .attr("x1", canvasWidth/2)
-//                     .attr("y1", canvasHeight/2 + size/2 - getValue(bottomFringe)*size)
-//                     .attr("x2", canvasWidth/2)
-//                     .attr("y2", canvasHeight/2 + size/2 - getValue(median(data) - iqr/2)*size)
-//                     .attr("id", "bottomFringeConnector")
-//                     .attr("class", "boxplot");
-//     
-//         canvas.append("circle")
-//                     .attr("cx", canvasWidth/2)
-//                     .attr("cy", canvasHeight/2 + size/2 - getValue(mean(data))*size)
-//                     .attr("r", "5px")
-//                     .attr("id", "mean")
-//                     .attr("class", "boxplot");
-//     
-//         var outliers = getOutliers();
+        canvas.append("line")
+                    .attr("x1", canvasWidth/2 - boxWidth/2)
+                    .attr("y1", canvasHeight/2 + size/2 - getValue(medians[i])*size)
+                    .attr("x2", canvasWidth/2 + boxWidth/2)
+                    .attr("y2", canvasHeight/2 + size/2 - getValue(medians[i])*size)
+                    .attr("id", "median")
+                    .attr("class", "boxplot");
+    
+        //end fringes
+        bottomFringe = (medians[i] - 1.5*iqrs[i]) < min ? min : (medians[i] - 1.5*iqrs[i]);
+        topFringe = (medians[i] + 1.5*iqrs[i]) > max ? max : (medians[i] + 1.5*iqrs[i]);
+    
+        canvas.append("line")
+                    .attr("x1", canvasWidth/2 - boxWidth/4)
+                    .attr("y1", canvasHeight/2 + size/2 - getValue(topFringe)*size)
+                    .attr("x2", canvasWidth/2 + boxWidth/4)
+                    .attr("y2", canvasHeight/2 + size/2 - getValue(topFringe)*size)
+                    .attr("id", "topFringe")
+                    .attr("class", "boxplot");
+    
+        canvas.append("line")
+                    .attr("x1", canvasWidth/2)
+                    .attr("y1", canvasHeight/2 + size/2 - getValue(topFringe)*size)
+                    .attr("x2", canvasWidth/2)
+                    .attr("y2", canvasHeight/2 + size/2- getValue(medians[i] + iqrs[i]/2)*size)
+                    .attr("id", "topFringeConnector")
+                    .attr("class", "boxplot");    
+    
+        canvas.append("line")
+                    .attr("x1", canvasWidth/2 - boxWidth/4)
+                    .attr("y1", canvasHeight/2 + size/2 - getValue(bottomFringe)*size)
+                    .attr("x2", canvasWidth/2 + boxWidth/4)
+                    .attr("y2", canvasHeight/2 + size/2 - getValue(bottomFringe)*size)
+                    .attr("id", "bottomFringe")
+                    .attr("class", "boxplot");
+                
+        canvas.append("line")
+                    .attr("x1", canvasWidth/2)
+                    .attr("y1", canvasHeight/2 + size/2 - getValue(bottomFringe)*size)
+                    .attr("x2", canvasWidth/2)
+                    .attr("y2", canvasHeight/2 + size/2 - getValue(medians[i] - iqrs[i]/2)*size)
+                    .attr("id", "bottomFringeConnector")
+                    .attr("class", "boxplot");
+    
+        canvas.append("circle")
+                    .attr("cx", canvasWidth/2)
+                    .attr("cy", canvasHeight/2 + size/2 - getValue(means[i])*size)
+                    .attr("r", "5px")
+                    .attr("id", "mean")
+                    .attr("class", "boxplot");
+    
+        // var outliers = getOutliers();
 //         console.log("outliers : " + outliers);
 //     
-//         console.log("median =" + median(data) + ", iqr = " + iqr + ", range = [" + (median(data) - iqr/2) + ", " + (median(data) + iqr/2) + "], end: [" + (bottomFringe) + ", " + (topFringe) + "]");   
+//         console.log("median =" + medians[i] + ", iqrs[i] = " + iqrs[i] + ", range = [" + (medians[i] - iqrs[i]/2) + ", " + (medians[i] + iqrs[i]/2) + "], end: [" + (bottomFringe) + ", " + (topFringe) + "]");   
 //     
 //         for(var i=0; i<outliers.length; i++)
 //         {

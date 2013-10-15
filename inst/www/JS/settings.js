@@ -16,5 +16,5 @@ var size = 500;
 var nBins = 10;   
 
 // Boxplots
-var boxWidth = 50;
+var boxWidth = 75;
 
