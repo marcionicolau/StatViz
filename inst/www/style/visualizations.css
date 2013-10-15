@@ -13,7 +13,7 @@
     stroke: black;
 }
 
-#iqr.boxplot, #topFringe.boxplot, #bottomFringe.boxplot
+.IQRs
 {
     stroke: black;
 }

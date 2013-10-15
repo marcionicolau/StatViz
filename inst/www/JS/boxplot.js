@@ -86,8 +86,8 @@ function makeBoxPlot()
                     .attr("y", canvasHeight/2 + size/2 - getValue(medians[i] + iqrs[i]/2)*size)
                     .attr("height", getValue(medians[i] + iqrs[i]/2)*size - getValue(medians[i] - iqrs[i]/2)*size)
                     .attr("width", boxWidth)
-                    .attr("id", "iqr")
-                    .attr("class", "boxplot");
+                    .attr("id", currentVariableSelection[i])
+                    .attr("class", "IQRs");
                 
         // median
 //         canvas.append("line")
