@@ -72,9 +72,15 @@ function makePlot()
     switch(currentVisualizationSelection)
     {
         case "Histogram":
-            makeHistogram();
+                                    {
+                                        makeHistogram();
+                                        break;
+                                    }
         case "Box-plot":
-            makeBoxPlot();
+                                    {            
+                                        makeBoxPlot();
+                                        break;
+                                    }
         case "Scatter-plot":
             makeScatterPlot();
     }
