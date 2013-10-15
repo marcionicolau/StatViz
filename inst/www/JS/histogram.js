@@ -17,7 +17,7 @@ function makeHistogram()//nbins
 
     
     // Should be changeable
-    var nBins = 10;   
+    var nBins = 15;   
     var size = 500;
     var nGroovesX = 10;
     
@@ -44,7 +44,13 @@ function makeHistogram()//nbins
         for(var j=0; j<data[i].length; j++)
         { 
             console.log(Math.ceil((data[i][j] - min)/slice) + ", data=" + data[i][j]);
-            bins[currentVariableSelection[i]][Math.ceil((data[i][j] - min)/slice)]++;
+            
+            var index = Math.ceil((data[i][j] - min)/slice);
+            
+            if(index >= nBins)
+                index = nBins - 1;
+                
+            bins[currentVariableSelection[i]][index]++;
         }
     }
     
