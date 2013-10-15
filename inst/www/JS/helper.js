@@ -85,6 +85,20 @@ function makePlot()
             makeScatterPlot();
     }
 }
+
+function resetSVGCanvas()
+{
+      if(document.getElementById("svgCanvas") != null)
+            remove("svgCanvas");
+            
+        var svgCanvas = canvas.append("svg");
+        
+        svgCanvas.attr("id", "svgCanvas")
+                                .attr("x", 0)
+                                .attr("y", 0)
+                                .attr("height", canvasHeight)
+                                .attr("width", canvasWidth);
+}
             
         
         

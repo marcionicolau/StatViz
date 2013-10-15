@@ -35,17 +35,7 @@ function OnMouseDown(e)
         currentVariableSelection = addToArray(currentVariableSelection, target.id);
         console.log(currentVariableSelection);
         
-        
-        if(document.getElementById("svgCanvas") != null)
-            remove("svgCanvas");
-            
-        var svgCanvas = canvas.append("svg");
-        
-        svgCanvas.attr("id", "svgCanvas")
-                                .attr("x", 0)
-                                .attr("y", 0)
-                                .attr("height", canvasHeight)
-                                .attr("width", canvasWidth);
+        resetSVGCanvas();
                             
         makePlot();
     }
@@ -53,10 +43,11 @@ function OnMouseDown(e)
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "visualizationHolder")
     {
         setup(e, target);    
-        
         currentVisualizationSelection = target.id;
-        
         toggleFillColors();
+        
+        resetSVGCanvas();
+        
         makePlot();
     }
     
