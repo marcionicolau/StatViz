@@ -13,13 +13,16 @@ function getNumber(value)
 
 function addToArray(array, element)
 {   
+    var variable = d3.select("#" + element + ".variableNameHolder");
     if(array.indexOf(element) == -1)
     {
         array.push(element);
+        variable.attr("fill", variableColors.active);
     }
     else
     {     
         array.splice(array.indexOf(element), 1);
+        variable.attr("fill", variableColors.normal);    
     }
 
     return array;
