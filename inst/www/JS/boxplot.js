@@ -126,6 +126,8 @@ function makeBoxPlot(variableName)
     
     var outliers = getOutliers();
     
+    console.log("median =" + median(data) + ", IQR = " + IQR(data) + ", range = [" + (median(data) - IQR(data)/2) + ", " + (median(data) + IQR(data)/2) + "], end: [" + (median(data) - 1.5*IQR(data)) + ", " + (median(data) + 1.5*IQR(data)) + "]");   
+    
     for(var i=0; i<outliers.length; i++)
     {
         canvas.append("circle")
