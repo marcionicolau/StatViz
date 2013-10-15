@@ -17,9 +17,9 @@ function makeHistogram()//nbins
 
     
     // Should be changeable
-    var nBins = 15;   
+    var nBins = 10;   
     var size = 500;
-    var nGroovesX = 15;
+    var nGroovesX = 10;
     
     
 //     console.log("data:{" + data +"}, \nmin: " + min + ", \nmax: " + max + "\n\n");
