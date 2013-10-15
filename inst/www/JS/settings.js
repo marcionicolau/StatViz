@@ -20,7 +20,7 @@ var boxWidth = 75;
 
 var variableColors = new Object();
 
-variableColors.normal = "grey";
+variableColors.normal = "white";
 variableColors.active = "darkgrey";
 
 
