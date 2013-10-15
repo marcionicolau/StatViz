@@ -9,7 +9,6 @@ function makeHistogram()//nbins
         data[i] = variables[currentVariableSelection[i]];      
         mins[i] = MIN[currentVariableSelection[i]];      
         maxs[i] = MAX[currentVariableSelection[i]];      
-        console.log(variables[currentVariableSelection[i]] + "min=" + mins[i] + ", max=" + maxs[i]);  
     }
     
 
@@ -23,19 +22,24 @@ function makeHistogram()//nbins
     var nGroovesX = 10;
     
     
-    console.log("data:" + data +", min: " + min + ", max: " + max);
+    console.log("data:{" + data +"}, \nmin: " + min + ", \nmax: " + max + "\n\n");
      
     var slice = (max - min)/nBins;    
     
-    var bins = [];
+    var bins = new Object();
     
     var canvas = d3.select("#svgCanvas");
     
-    // for(var i=0; i<nBins; i++)
-//     {
-//         bins[i] = 0;
-//     }   
-//     
+    for(var i=0; i<currentVariableSelection.length; i++)
+    {
+        for(var j=0; j<nBins; j++)
+        {
+            bins[currentVariableSelection[i]][j] = 0;
+        }  
+    }
+    
+    console.dir(bins);
+    
 //     for(var i=0; i<data.length; i++)
 //     { 
 //         bins[Math.ceil((data[i] - min)/slice)]++;
@@ -43,7 +47,7 @@ function makeHistogram()//nbins
 //     
 //     bins.length = nBins; 
 //     
-//     
+    
 //     var nGroovesY = Array.max(bins) > 10 ? 10 : Array.max(bins)+1;
 //     
 //     console.log(nGroovesY);
