@@ -43,9 +43,9 @@ function makeHistogram()//nbins
     {
         for(var j=0; j<data[i].length; j++)
         { 
+            console.log(Math.ceil((data[j] - min)/slice) + ", data=" + data[j]);
             bins[currentVariableSelection[i]][Math.ceil((data[j] - min)/slice)]++;
         }
-
     }
     
     console.dir(bins);
