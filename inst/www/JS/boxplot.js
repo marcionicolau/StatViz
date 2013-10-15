@@ -126,7 +126,7 @@ function makeBoxPlot(variableName)
     
     var outliers = getOutliers();
     
-    console.log("median =" + median(data) + ", IQR = " + IQR(data) + ", range = [" + (median(data) - IQR(data)/2) + ", " + (median(data) + IQR(data)/2) + "], end: [" + (median(data) - 1.5*IQR(data)) + ", " + (median(data) + 1.5*IQR(data)) + "]");   
+    console.log("median =" + median(data) + ", IQR = " + IQR[variableName] + ", range = [" + (median(data) - IQR[variableName]/2) + ", " + (median(data) + IQR[variableName]/2) + "], end: [" + (median(data) - 1.5*IQR[variableName]) + ", " + (median(data) + 1.5*IQR[variableName]) + "]");   
     
     for(var i=0; i<outliers.length; i++)
     {
