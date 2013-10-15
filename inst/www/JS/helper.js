@@ -66,5 +66,19 @@ function toggleFillColors()
         }
     }
 }
+
+function makePlot()
+{
+    switch(currentVisualizationSelection)
+    {
+        case "Histogram":
+            makeHistogram();
+        case "Box-plot":
+            makeBoxPlot();
+        case "Scatter-plot":
+            makeScatterPlot();
+    }
+}
+            
         
         
