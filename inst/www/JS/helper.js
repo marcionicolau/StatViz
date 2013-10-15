@@ -55,6 +55,7 @@ function toggleFillColors()
     
     for(var i=0; i<visualizations.length; i++)
     {
+        console.log(visualizations.length);
         if(visualizations[i].attr("id") == currentVisualizationSelection)
         {
             visualizations[i].attr("fill", panelColors.active);
