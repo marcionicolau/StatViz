@@ -36,6 +36,7 @@ function OnMouseDown(e)
         console.log(currentVariableSelection);
         
         var variable = d3.select("#" + target.id + "." + target.className.baseVal);
+        variable.attr("fill", "darkgrey");
 
         if(document.getElementById("svgCanvas") != null)
             remove("svgCanvas");

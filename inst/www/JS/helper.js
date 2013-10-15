@@ -16,8 +16,6 @@ function addToArray(array, element)
     if(array.indexOf(element) == -1)
     {
         array.push(element);
-        
-        d3.select("#" + element + ".variableNameHolder").attr("fill", "orange");
     }
     else
     {     
