@@ -1,4 +1,4 @@
-var dataset = "longley";
+var dataset = "CO2";
 
 var width = document.width;
 var height = document.height;  
