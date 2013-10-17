@@ -107,7 +107,7 @@ function resetSVGCanvas()
 
 function processStrings(strings)
 {
-    console.log(strings.replace("."," "));
+    console.log(strings.replace(".",""));
     return strings.replace("."," ");
 }
             
