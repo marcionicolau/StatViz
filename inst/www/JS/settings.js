@@ -1,4 +1,4 @@
-var dataset = "Indometh";
+var dataset = "mtcars";
 
 var width = document.width;
 var height = document.height;  
