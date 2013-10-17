@@ -1,4 +1,4 @@
-var dataset = "faithful";
+var dataset = "UKDriverDeaths";
 
 var width = document.width;
 var height = document.height;  
