@@ -1,4 +1,4 @@
-var dataset = "CO2";
+var dataset = "faithful";
 
 var width = document.width;
 var height = document.height;  
