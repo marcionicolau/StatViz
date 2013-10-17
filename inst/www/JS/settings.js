@@ -1,4 +1,4 @@
-var dataset = "UKDriverDeaths";
+var dataset = "Indometh";
 
 var width = document.width;
 var height = document.height;  
