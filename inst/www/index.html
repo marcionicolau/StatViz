@@ -65,7 +65,7 @@
                 var req = opencpu.r_fun_json("getVariableNames", {
                                 dataset: dataset
                               }, function(output) {                   
-                renderVariableNames(processStrings(output.varNames));
+                renderVariableNames(output.varNames);
                 for(var i=0; i<output.varNames.length; i++)
                 {
                     getData(dataset, output.varNames[i]);                 
@@ -151,6 +151,7 @@
                 
                 for(var i=0; i<variableNames.length; i++)
                 {
+                    variableNames[i] = processStrings(variableNames[i]);
                     variablePanelSVG.append("rect")
                                                     .attr("x", variableNameHolderPadding)
                                                     .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding))                                                   
