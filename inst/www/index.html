@@ -148,10 +148,11 @@
                 flags = [0,0,1,0,0,0,1];
                 imageNames = ["knob-independent-variable.png", "meter-dependent-variable-alternative.png"];
                 
+                var displayNames = variableNames;
                 
                 for(var i=0; i<variableNames.length; i++)
                 {
-                    variableNames[i] = processStrings(variableNames[i]);
+                    displayNames[i] = processStrings(displayNames[i]);
                     variablePanelSVG.append("rect")
                                                     .attr("x", variableNameHolderPadding)
                                                     .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding))                                                   
@@ -160,7 +161,7 @@
                                                     .attr("rx", radius)
                                                     .attr("ry", radius)
                                                     .attr("fill", panelColors.normal)
-                                                    .attr("id", variableNames[i])
+                                                    .attr("id", displayNames[i])
                                                     .attr("class", "variableNameHolder");
 
                                                 
@@ -171,7 +172,7 @@
                                                     .attr("font-size", "36px")
                                                     .attr("text-anchor", "middle")
                                                     .text(variableNames[i])
-                                                    .attr("id", variableNames[i])
+                                                    .attr("id", displayNames[i])
                                                     .attr("class", "variableNameHolder");
                                                     
 //                     variablePanelSVG.append("image")
@@ -180,7 +181,7 @@
 //                                                     .attr("xlink:href", "images/" + imageNames[flags[i]])
 //                                                     .attr("height", imageSize)
 //                                                     .attr("width", imageSize)
-//                                                     .attr("id", variableNames[i])
+//                                                     .attr("id", displayNames[i])
 //                                                     .attr("class", "variableNameHolder");
                 }    
                 
