@@ -65,7 +65,7 @@
                 var req = opencpu.r_fun_json("getVariableNames", {
                                 dataset: dataset
                               }, function(output) {                   
-                renderVariableNames(output.varNames);
+                renderVariableNames(processStrings(output.varNames));
                 for(var i=0; i<output.varNames.length; i++)
                 {
                     getData(dataset, output.varNames[i]);                 

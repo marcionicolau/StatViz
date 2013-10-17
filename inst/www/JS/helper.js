@@ -104,6 +104,11 @@ function resetSVGCanvas()
                                 .attr("height", canvasHeight)
                                 .attr("width", canvasWidth);
 }
+
+function processStrings(strings)
+{
+    return strings.replace("."," ");
+}
             
         
         
