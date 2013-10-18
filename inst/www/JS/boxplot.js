@@ -28,6 +28,8 @@ function makeBoxplot()
     min = Array.min(mins);
     max = Array.max(maxs);
     
+    console.dir("data: " + data);
+    
     var canvas = d3.select("#svgCanvas");
 
     // changeable
