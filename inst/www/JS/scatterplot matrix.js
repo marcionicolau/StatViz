@@ -69,7 +69,7 @@ function makeScatterplotInCell(variablesToPlot, size)
      
     var canvas = d3.select("#svgCanvas");
     
-    
+    console.dir(data);
     
     
 
