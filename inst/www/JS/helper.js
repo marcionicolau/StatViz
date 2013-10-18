@@ -78,14 +78,19 @@ function makePlot()
                                         makeHistogram();
                                         break;
                                     }
-        case "Box-plot":
+        case "Boxplot":
                                     {            
                                         makeBoxplot();
                                         break;
                                     }
-        case "Scatter-plot":
+        case "Scatterplot":
                                     {
                                         makeScatterplot();
+                                        break;
+                                    }
+        case "Scatterplot-matrix":
+                                    {
+                                        makeScatterplotMatrix();
                                         break;
                                     }
     }
