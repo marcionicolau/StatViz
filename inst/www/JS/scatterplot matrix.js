@@ -85,12 +85,14 @@ function makeScatterplotInCell(variablesToPlot, transform, scaleFactor)
     var nGrooves = 3;
     
     // Draw axes
-    canvas.append("circle")
+    var cir = canvas.append("circle")
                 .attr("cx", canvasWidth/2)
                 .attr("cy", canvasHeight/2)
                 .attr("r", "50px")
                 .attr("transform", transform)
                 .attr("fill", "magenta");
+        
+    console.log(cir.attr("cx") + "," + cir.attr("cy"));
     
     // var xAxis = canvas.append("line")
 //                                     .attr("x1", canvasWidth/2 - size/2)
