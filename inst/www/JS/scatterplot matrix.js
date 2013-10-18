@@ -23,12 +23,12 @@ function makeScatterplotMatrix()
     if(n % 2 == 0)
     {
         //even
-        factor = (n-1)/(2*n);
+        factor = -(n-1)/(2*n);
     }
     else
     {
         //odd
-        factor = Math.floor(n/2)/n;
+        factor = -Math.floor(n/2)/n;
     }
     
     for(i=0; i<currentVariableSelection.length; i++)
