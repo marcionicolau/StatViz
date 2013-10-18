@@ -37,7 +37,7 @@ function makeScatterplotMatrix()
         {
             if(j != i)
             {
-                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], "scale(" + 1/n + " " + 1/n + ") translate(" + (factor*size + j*(size/n)) + " " + (factor*size + i*(size/n)) + ")");
+                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], "translate(" + (factor*size + j*(size/n)) + " " + (factor*size + i*(size/n)) + ")");
             }
         }
     }
