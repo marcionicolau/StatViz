@@ -22,12 +22,23 @@ function makeScatterplot()
             mins["Y"] = MIN[currentVariableSelection[i]];      
             maxs["Y"] = MAX[currentVariableSelection[i]];      
         }
+        if(i == 2)
+        {
+            data["color"] = variables[currentVariableSelection[i]];
+            mins["color"] = MIN[currentVariableSelection[i]];      
+            maxs["color"] = MAX[currentVariableSelection[i]];      
+        }
+    }
+     
+    var canvas = d3.select("#svgCanvas");
+    var uniqueData = data["colors"].unique();
+    
+    var colorsForPlot = new Object();
+    for(var i=0; i<uniqueData.length; i++)
+    {
+        colorsForPlot[uniqueData[i]] = colors[i];
     }
     
-    min = Array.min([mins["X"], mins["Y"]]);
-    max = Array.max([maxs["X"], maxs["Y"]]);
-    
-    var canvas = d3.select("#svgCanvas");
 
     // changeable
     var nGrooves = 10;
@@ -105,7 +116,7 @@ function makeScatterplot()
                     .attr("cx", canvasWidth/2 - size/2 + getValue(data["X"][i], "X")*size)
                     .attr("cy", canvasHeight/2 - size/2 + getValue(data["Y"][i], "Y")*size)
                     .attr("r", "2px")
-                    .attr("fill", "grey");     
+                    .attr("fill", colorsForPlot[data["colors"][i]);     
     }
 }
 
