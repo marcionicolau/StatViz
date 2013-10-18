@@ -7,9 +7,12 @@ function makeScatterplot()
     var data = new Object();
     
     
+    var colorsForPlot = new Object();
+    
     //Get data, minimums and maximums for each selected variable
     for(var i=0; i<currentVariableSelection.length; i++)
-    {        
+    {    
+            
         if(i == 0)
         {
             data["X"] = variables[currentVariableSelection[i]];      
@@ -27,17 +30,18 @@ function makeScatterplot()
             data["color"] = variables[currentVariableSelection[i]];
             mins["color"] = MIN[currentVariableSelection[i]];      
             maxs["color"] = MAX[currentVariableSelection[i]];      
+            
+            for(var i=0; i<uniqueData.length; i++)
+            {
+                colorsForPlot[uniqueData[i]] = colors[i];
+            }
         }
     }
      
     var canvas = d3.select("#svgCanvas");
     var uniqueData = data["colors"].unique();
     
-    var colorsForPlot = new Object();
-    for(var i=0; i<uniqueData.length; i++)
-    {
-        colorsForPlot[uniqueData[i]] = colors[i];
-    }
+    
     
 
     // changeable
