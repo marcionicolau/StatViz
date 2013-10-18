@@ -37,13 +37,13 @@ function makeScatterplotMatrix()
         {
             if(j != i)
             {
-                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]],  cellSize, "translate(" + (factor*size + j*(size/n)) + " " + (factor*size + i*(size/n)) + ")");
+                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], "translate(" + (factor*size + j*(size/n)) + " " + (factor*size + i*(size/n)) + ") scale(" + 1/n + " " + 1/n + ") ");
             }
         }
     }
 }
 
-function makeScatterplotInCell(variablesToPlot, size, transform)
+function makeScatterplotInCell(variablesToPlot, transform)
 {
     var data = new Object();
     var colorsForPlot = new Object();
