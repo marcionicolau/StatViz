@@ -23,7 +23,7 @@ function makeScatterplotMatrix()
         {
             if(j != i)
             {
-                makeScatterplotInCell(c[currentVariableSelection[i], currentVariableSelection[j]], cellSize);
+                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], cellSize);
             }
         }
     }
