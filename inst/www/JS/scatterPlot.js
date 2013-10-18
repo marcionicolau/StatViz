@@ -31,7 +31,7 @@ function makeScatterplot()
             mins["color"] = MIN[currentVariableSelection[i]];      
             maxs["color"] = MAX[currentVariableSelection[i]];      
             
-            var uniqueData = data["colors"].unique();
+            var uniqueData = data["color"].unique();
             
             for(var i=0; i<uniqueData.length; i++)
             {
@@ -122,7 +122,7 @@ function makeScatterplot()
                     .attr("cx", canvasWidth/2 - size/2 + getValue(data["X"][i], "X")*size)
                     .attr("cy", canvasHeight/2 - size/2 + getValue(data["Y"][i], "Y")*size)
                     .attr("r", "2px")
-                    .attr("fill", colorsForPlot[data["colors"][i]]);     
+                    .attr("fill", colorsForPlot[data["color"][i]]);     
     }
 }
 
