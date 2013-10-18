@@ -37,18 +37,16 @@ function makeScatterplotMatrix()
         {
             if(j != i)
             {
-                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], cellSize, "translate(" + (factor*size + j*(size/n)) + " " + (factor*size + i*(size/n)) + ")", 1/n);
+                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], "translate(" + (factor*size + j*(size/n)) + " " + (factor*size + i*(size/n)) + ") scale=0.5");
             }
         }
     }
 }
 
-function makeScatterplotInCell(variablesToPlot, size,transform, scaleFactor)
+function makeScatterplotInCell(variablesToPlot, transform, scaleFactor)
 {
     var data = new Object();
     var colorsForPlot = new Object();
-    
-    var offset = axesOffset*scaleFactor;
     
     //Get data, minimums and maximums for each selected variable
     for(var i=0; i<variablesToPlot.length; i++)
@@ -87,95 +85,93 @@ function makeScatterplotInCell(variablesToPlot, size,transform, scaleFactor)
     var nGrooves = 3;
     
     // Draw axes
-    // canvas.append("circle")
-//                 .attr("cx", canvasWidth/2)
-//                 .attr("cy", canvasHeight/2)
-//                 .attr("r", "50px")
-//                 .attr("transform", transform)
-//                 .attr("fill", "magenta");
+    canvas.append("circle")
+                .attr("cx", canvasWidth/2)
+                .attr("cy", canvasHeight/2)
+                .attr("r", "50px")
+                .attr("transform", transform)
+                .attr("fill", "magenta");
     
-    var xAxis = canvas.append("line")
-                                    .attr("x1", canvasWidth/2 - size/2)
-                                    .attr("y1", canvasHeight/2 + size/2 + offset)
-                                    .attr("x2", canvasWidth/2 + size/2)
-                                    .attr("y2", canvasHeight/2 + size/2 + offset) 
-                                    .attr("stroke", "black")
-                                    .attr("transform", transform)
-                                    .attr("id", "xAxis")
-                                    .attr("class", "axes");
-    
-    var yAxis = canvas.append("line")
-                                    .attr("x1", canvasWidth/2 - size/2 - offset)
-                                    .attr("y1", canvasHeight/2 - size/2)
-                                    .attr("x2", canvasWidth/2 - size/2 - offset)
-                                    .attr("y2", canvasHeight/2 + size/2)
-                                    .attr("stroke", "black")
-                                    .attr("transform", transform)
-                                    .attr("id", "yAxis")
-                                    .attr("class", "axes");
-                                    
-    
-    //grooves
-    
-    //todo: x-axis grooves
-    
-    //y-axis grooves
-    var step = size/(nGrooves-1);
-    var xSlice = (maxs["X"] - mins["X"])/(nGrooves-1);    
-    var ySlice = (maxs["Y"] - mins["Y"])/(nGrooves-1);    
-    
-    //grooves
-    for(i=0; i<nGrooves; i++)
-    {
-        canvas.append("line")
-                    .attr("x1", canvasWidth/2 - size/2 + i*step)
-                    .attr("y1", canvasHeight/2 + size/2 + offset)
-                    .attr("x2", canvasWidth/2 - size/2 + i*step)
-                    .attr("y2", canvasHeight/2 + size/2 + 10 + offset)
-                    .attr("transform", transform)
-                    .attr("id", "groove" + i)
-                    .attr("class", "xAxisGrooves");
-        
-        canvas.append("text")
-                    .attr("x", canvasWidth/2 - size/2 + i*step - 15)
-                    .attr("y", canvasHeight/2 + size/2 + offset)                    
-                    .text(format(mins["X"] + i*xSlice))
-                    .attr("style", "font-size: " + 24*scaleFactor + "px;")
-                    .attr("transform", transform)
-                    .attr("id", "groove" + i)
-                    .attr("class", "xAxisGrooveText");
-    }
-    
-    for(i=0; i<nGrooves; i++)
-    {
-        canvas.append("line")
-                    .attr("x1", canvasWidth/2 - size/2 - 10 - offset)
-                    .attr("y1", canvasHeight/2 + size/2 - i*step)
-                    .attr("x2", canvasWidth/2 - size/2  - offset)
-                    .attr("y2", canvasHeight/2 + size/2 - i*step)
-                    .attr("transform", transform)
-                    .attr("id", "groove" + i)
-                    .attr("class", "yAxisGrooves");
-        
-        canvas.append("text")
-                    .attr("x", canvasWidth/2 - size/2 - 15 - offset)
-                    .attr("y", canvasHeight/2 + size/2 - i*step)                    
-                    .text(format(mins["Y"] + i*ySlice))
-                    .attr("transform", transform)
-                    .attr("style", "font-size: " + 24*scaleFactor + "px;")
-                    .attr("id", "groove" + i)
-                    .attr("class", "yAxisGrooveText");
-    }
-    
-    for(var i=0; i<data["X"].length; i++)
-    {
-        canvas.append("circle")
-                    .attr("cx", canvasWidth/2 - size/2 + getValue(data["X"][i], "X")*size)
-                    .attr("cy", canvasHeight/2 - size/2 + getValue(data["Y"][i], "Y")*size)
-                    .attr("transform", transform)
-                    .attr("r", "2px")
-                    .attr("fill", "black");     
-    }
+    // var xAxis = canvas.append("line")
+//                                     .attr("x1", canvasWidth/2 - size/2)
+//                                     .attr("y1", canvasHeight/2 + size/2 + axesOffset)
+//                                     .attr("x2", canvasWidth/2 + size/2)
+//                                     .attr("y2", canvasHeight/2 + size/2 + axesOffset) 
+//                                     .attr("stroke", "black")
+//                                     .attr("transform", transform)
+//                                     .attr("id", "xAxis")
+//                                     .attr("class", "axes");
+//     
+//     var yAxis = canvas.append("line")
+//                                     .attr("x1", canvasWidth/2 - size/2 - axesOffset)
+//                                     .attr("y1", canvasHeight/2 - size/2)
+//                                     .attr("x2", canvasWidth/2 - size/2 - axesOffset)
+//                                     .attr("y2", canvasHeight/2 + size/2)
+//                                     .attr("stroke", "black")
+//                                     .attr("transform", transform)
+//                                     .attr("id", "yAxis")
+//                                     .attr("class", "axes");
+//                                     
+//     
+//     //grooves
+//     
+//     //todo: x-axis grooves
+//     
+//     //y-axis grooves
+//     var step = size/(nGrooves-1);
+//     var xSlice = (maxs["X"] - mins["X"])/(nGrooves-1);    
+//     var ySlice = (maxs["Y"] - mins["Y"])/(nGrooves-1);    
+//     
+//     //grooves
+//     for(i=0; i<nGrooves; i++)
+//     {
+//         canvas.append("line")
+//                     .attr("x1", canvasWidth/2 - size/2 + i*step)
+//                     .attr("y1", canvasHeight/2 + size/2 + axesOffset)
+//                     .attr("x2", canvasWidth/2 - size/2 + i*step)
+//                     .attr("y2", canvasHeight/2 + size/2 + 10 + axesOffset)
+//                     .attr("transform", transform)
+//                     .attr("id", "groove" + i)
+//                     .attr("class", "xAxisGrooves");
+//         
+//         canvas.append("text")
+//                     .attr("x", canvasWidth/2 - size/2 + i*step - 15)
+//                     .attr("y", canvasHeight/2 + size/2 + 30 + axesOffset)                    
+//                     .text(format(mins["X"] + i*xSlice))
+//                     .attr("transform", transform)
+//                     .attr("id", "groove" + i)
+//                     .attr("class", "xAxisGrooveText");
+//     }
+//     
+//     for(i=0; i<nGrooves; i++)
+//     {
+//         canvas.append("line")
+//                     .attr("x1", canvasWidth/2 - size/2 - 10 - axesOffset)
+//                     .attr("y1", canvasHeight/2 + size/2 - i*step)
+//                     .attr("x2", canvasWidth/2 - size/2  - axesOffset)
+//                     .attr("y2", canvasHeight/2 + size/2 - i*step)
+//                     .attr("transform", transform)
+//                     .attr("id", "groove" + i)
+//                     .attr("class", "yAxisGrooves");
+//         
+//         canvas.append("text")
+//                     .attr("x", canvasWidth/2 - size/2 - 55 - axesOffset)
+//                     .attr("y", canvasHeight/2 + size/2 - i*step)                    
+//                     .text(format(mins["Y"] + i*ySlice))
+//                     .attr("transform", transform)
+//                     .attr("id", "groove" + i)
+//                     .attr("class", "yAxisGrooveText");
+//     }
+//     
+//     for(var i=0; i<data["X"].length; i++)
+//     {
+//         canvas.append("circle")
+//                     .attr("cx", canvasWidth/2 - size/2 + getValue(data["X"][i], "X")*size)
+//                     .attr("cy", canvasHeight/2 - size/2 + getValue(data["Y"][i], "Y")*size)
+//                     .attr("transform", transform)
+//                     .attr("r", "2px")
+//                     .attr("fill", "black");     
+//     }
 }
 
 function getValue(number, type)
