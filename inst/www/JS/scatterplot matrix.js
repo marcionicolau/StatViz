@@ -81,6 +81,8 @@ function makeScatterplotInCell(variablesToPlot, transform, scaleFactor)
      
     var canvas = d3.select("#svgCanvas");
     
+    console.log("style: " + canvas.attr("style"));
+    
     // changeable
     var nGrooves = 3;
     
