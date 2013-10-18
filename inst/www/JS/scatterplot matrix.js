@@ -89,6 +89,7 @@ function makeScatterplotInCell(variablesToPlot, transform)
                 .attr("cx", canvasWidth/2)
                 .attr("cy", canvasHeight/2)
                 .attr("r", "50px")
+                .attr("transform", transform)
                 .attr("fill", "magenta");
     
     // var xAxis = canvas.append("line")
