@@ -88,7 +88,7 @@ function makeScatterplotInCell(variablesToPlot, transform)
     canvas.append("circle")
                 .attr("cx", canvasWidth/2)
                 .attr("cy", canvasHeight/2)
-                .attr("r", width + "px")
+                .attr("r", "50px")
                 .attr("fill", "magenta");
     
     // var xAxis = canvas.append("line")
