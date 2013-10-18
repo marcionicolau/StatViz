@@ -119,6 +119,13 @@ Array.prototype.unique = function() {
     }
     return arr; 
 }
+
+Array.prototype.contains = function(v) {
+   for(var i = 0; i < this.length; i++) {
+       if(this[i] === v) return true;
+   }
+   return false;
+};
             
         
         
