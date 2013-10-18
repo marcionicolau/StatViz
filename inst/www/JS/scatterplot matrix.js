@@ -4,40 +4,67 @@ var maxs = new Object();
    
 function makeScatterplotMatrix()
 {
+    var data = new Array();
+    
+    //Get data, minimums and maximums for each selected variable
+    for(var i=0; i<currentVariableSelection.length; i++)
+    {   
+       data[i] = variables[currentVariableSelection[i]];
+       mins[i] = MIN[currentVariableSelection[i]];      
+       maxs[i] = MAX[currentVariableSelection[i]];      
+       
+    }
+    
+    cellSize = size/(currentVariableSelection.length^2);
+    
+    for(i=0; i<currentVariableSelection.length; i++)
+    {
+        for(j=0; j<currentVariableSelection.length; j++)
+        {
+            if(j != i)
+            {
+                makeScatterplotInCell(c[currentVariableSelection[i], currentVariableSelection[j]], cellSize);
+            }
+        }
+    }
+}
+
+function makeScatterplotInCell(variablesToPlot, size)
+{
     var data = new Object();
     
     
     var colorsForPlot = new Object();
     
     //Get data, minimums and maximums for each selected variable
-    for(var i=0; i<currentVariableSelection.length; i++)
+    for(var i=0; i<variablesToPlot.length; i++)
     {    
             
         if(i == 0)
         {
-            data["X"] = variables[currentVariableSelection[i]];      
-            mins["X"] = MIN[currentVariableSelection[i]];      
-            maxs["X"] = MAX[currentVariableSelection[i]];      
+            data["X"] = variables[variablesToPlot[i]];      
+            mins["X"] = MIN[variablesToPlot[i]];      
+            maxs["X"] = MAX[variablesToPlot[i]];      
         }
         if(i == 1)
         {
-            data["Y"] = variables[currentVariableSelection[i]];      
-            mins["Y"] = MIN[currentVariableSelection[i]];      
-            maxs["Y"] = MAX[currentVariableSelection[i]];      
+            data["Y"] = variables[variablesToPlot[i]];      
+            mins["Y"] = MIN[variablesToPlot[i]];      
+            maxs["Y"] = MAX[variablesToPlot[i]];      
         }
-        if(i == 2)
-        {
-            data["color"] = variables[currentVariableSelection[i]];
-            mins["color"] = MIN[currentVariableSelection[i]];      
-            maxs["color"] = MAX[currentVariableSelection[i]];      
-            
-            var uniqueData = data["color"].unique();
-            
-            for(var i=0; i<uniqueData.length; i++)
-            {
-                colorsForPlot[uniqueData[i]] = colors[i];
-            }
-        }
+        // if(i == 2)
+//         {
+//             data["color"] = variables[currentVariableSelection[i]];
+//             mins["color"] = MIN[currentVariableSelection[i]];      
+//             maxs["color"] = MAX[currentVariableSelection[i]];      
+//             
+//             var uniqueData = data["color"].unique();
+//             
+//             for(var i=0; i<uniqueData.length; i++)
+//             {
+//                 colorsForPlot[uniqueData[i]] = colors[i];
+//             }
+//         }
     }
      
     var canvas = d3.select("#svgCanvas");
@@ -122,7 +149,7 @@ function makeScatterplotMatrix()
                     .attr("cx", canvasWidth/2 - size/2 + getValue(data["X"][i], "X")*size)
                     .attr("cy", canvasHeight/2 - size/2 + getValue(data["Y"][i], "Y")*size)
                     .attr("r", "2px")
-                    .attr("fill", colorsForPlot[data["color"][i]]);     
+                    .attr("fill", "black");     
     }
 }
 
