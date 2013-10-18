@@ -21,8 +21,8 @@ function makeBoxplot()
         data[i] = variables[currentVariableSelection[i]];      
         mins[i] = MIN[currentVariableSelection[i]];      
         maxs[i] = MAX[currentVariableSelection[i]];      
-        iqrs[i] = IQR[currentVariableSelection[i]];      
-        medians[i] = median(data[i]);      
+        medians[i] = median(data[i]);
+        iqrs[i] = IQR[currentVariableSelection[i]];                    
         means[i] = mean(data[i]);  
     }
     min = Array.min(mins);
@@ -86,10 +86,13 @@ function makeBoxplot()
     
     for(var i=0; i<currentVariableSelection.length; i++)
     {
+        bottomFringe = (medians[i] - iqrs[i]/2) < min ? min : (medians[i] - iqrs[i]/2);
+        topFringe = (medians[i] + iqrs[i]/2) > max ? max : (medians[i] + iqrs[i]/2);
+        
         canvas.append("rect")
                     .attr("x", canvasWidth/2 - size/2 + (i+1)*widthSlice - boxWidth/2)
-                    .attr("y", canvasHeight/2 + size/2 - getFraction(medians[i] + iqrs[i]/2)*size)
-                    .attr("height", getFraction(medians[i] + iqrs[i]/2)*size - getFraction(medians[i] - iqrs[i]/2)*size)
+                    .attr("y", canvasHeight/2 + size/2 - getFraction(topFringe)*size)
+                    .attr("height", getFraction(topFringe)*size - getFraction(bottomFringe)*size)
                     .attr("width", boxWidth)
                     .attr("id", currentVariableSelection[i])
                     .attr("class", "IQRs");
