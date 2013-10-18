@@ -88,7 +88,7 @@ function makeScatterplotInCell(variablesToPlot, size, transform)
     
 
     // changeable
-    var nGrooves = 10;
+    var nGrooves = 3;
     
     // Draw axes
         
@@ -138,6 +138,7 @@ function makeScatterplotInCell(variablesToPlot, size, transform)
                     .attr("x", canvasWidth/2 - size/2 + i*step - 15)
                     .attr("y", canvasHeight/2 + size/2 + 30 + axesOffset)                    
                     .text(format(mins["X"] + i*xSlice))
+                    .attr("style", "font-size: 10px;")
                     .attr("transform", transform)
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooveText");
@@ -157,6 +158,7 @@ function makeScatterplotInCell(variablesToPlot, size, transform)
         canvas.append("text")
                     .attr("x", canvasWidth/2 - size/2 - 55 - axesOffset)
                     .attr("y", canvasHeight/2 + size/2 - i*step)                    
+                    .attr("style", "font-size: 10px;")
                     .text(format(mins["Y"] + i*ySlice))
                     .attr("transform", transform)
                     .attr("id", "groove" + i)
