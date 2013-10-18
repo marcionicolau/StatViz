@@ -13,7 +13,7 @@ var canvasWidth = width*0.8;
 var format = d3.format(".1f");	
 
 // Plots (general)
-var size = 750;
+var size = 600;
 
 // Histogram
 var nBins = 10;   
