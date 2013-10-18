@@ -31,6 +31,8 @@ function makeScatterplot()
             mins["color"] = MIN[currentVariableSelection[i]];      
             maxs["color"] = MAX[currentVariableSelection[i]];      
             
+            var uniqueData = data["colors"].unique();
+            
             for(var i=0; i<uniqueData.length; i++)
             {
                 colorsForPlot[uniqueData[i]] = colors[i];
@@ -39,7 +41,7 @@ function makeScatterplot()
     }
      
     var canvas = d3.select("#svgCanvas");
-    var uniqueData = data["colors"].unique();
+    
     
     
     
