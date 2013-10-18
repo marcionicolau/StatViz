@@ -15,7 +15,7 @@ function makeScatterplotMatrix()
        
     }
     
-    cellSize = size/(currentVariableSelection.length^2);
+    cellSize = size/(currentVariableSelection.length*currentVariableSelection.length);
     
     for(i=0; i<currentVariableSelection.length; i++)
     {
