@@ -138,7 +138,7 @@ function makeScatterplotInCell(variablesToPlot, size,transform, scaleFactor)
         
         canvas.append("text")
                     .attr("x", canvasWidth/2 - size/2 + i*step - 15)
-                    .attr("y", canvasHeight/2 + size/2 + 30 + offset)                    
+                    .attr("y", canvasHeight/2 + size/2 + offset)                    
                     .text(format(mins["X"] + i*xSlice))
                     .attr("style", "font-size: " + 24*scaleFactor + "px;")
                     .attr("transform", transform)
@@ -158,7 +158,7 @@ function makeScatterplotInCell(variablesToPlot, size,transform, scaleFactor)
                     .attr("class", "yAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", canvasWidth/2 - size/2 - 55 - offset)
+                    .attr("x", canvasWidth/2 - size/2 - 15 - offset)
                     .attr("y", canvasHeight/2 + size/2 - i*step)                    
                     .text(format(mins["Y"] + i*ySlice))
                     .attr("transform", transform)
