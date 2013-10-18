@@ -86,13 +86,13 @@ function makeBoxplot()
     
     for(var i=0; i<currentVariableSelection.length; i++)
     {
-        bottomFringe = (medians[i] - iqrs[i]/2) < min ? min : (medians[i] - iqrs[i]/2);
-        topFringe = (medians[i] + iqrs[i]/2) > max ? max : (medians[i] + iqrs[i]/2);
+        var rectBottom = (medians[i] - iqrs[i]/2) < min ? min : (medians[i] - iqrs[i]/2);
+        var rectTop = (medians[i] + iqrs[i]/2) > max ? max : (medians[i] + iqrs[i]/2);
         
         canvas.append("rect")
                     .attr("x", canvasWidth/2 - size/2 + (i+1)*widthSlice - boxWidth/2)
-                    .attr("y", canvasHeight/2 + size/2 - getFraction(topFringe)*size)
-                    .attr("height", getFraction(topFringe)*size - getFraction(bottomFringe)*size)
+                    .attr("y", canvasHeight/2 + size/2 - getFraction(rectTop)*size)
+                    .attr("height", getFraction(rectTop)*size - getFraction(rectBottom)*size)
                     .attr("width", boxWidth)
                     .attr("id", currentVariableSelection[i])
                     .attr("class", "IQRs");
@@ -138,7 +138,7 @@ function makeBoxplot()
                     .attr("x1", canvasWidth/2 + (i+1)*widthSlice - size/2)
                     .attr("y1", canvasHeight/2 + size/2 - getFraction(bottomFringe)*size)
                     .attr("x2", canvasWidth/2 + (i+1)*widthSlice - size/2)
-                    .attr("y2", canvasHeight/2 + size/2 - getFraction(medians[i] - iqrs[i]/2)*size)
+                    .attr("y2", canvasHeight/2 + size/2 - getFraction(rectBottom)*size)
                     .attr("id", currentVariableSelection[i])
                     .attr("class", "bottomFringeConnectors");
     
