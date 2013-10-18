@@ -23,7 +23,7 @@ function makeScatterplotMatrix()
     if(n % 2 == 0)
     {
         //even
-        factor = (n-1)/2n;
+        factor = (n-1)/(2*n);
     }
     else
     {
