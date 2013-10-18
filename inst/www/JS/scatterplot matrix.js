@@ -37,7 +37,8 @@ function makeScatterplotMatrix()
         {
             if(j != i)
             {
-                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], "translate(-" + canvasWidth/2  + "," + -canvasHeight/2 + ") scale(2,2)");// translate(" + canvasWidth/2 + " " + canvasHeight/2 + ") translate(" + (factor*size + j*(size/n)) + " " + (factor*size + i*(size/n)) + ")");
+//                 makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], "translate(-" + canvasWidth/2  + "," + -canvasHeight/2 + ") scale(2,2)");// translate(" + canvasWidth/2 + " " + canvasHeight/2 + ") translate(" + (factor*size + j*(size/n)) + " " + (factor*size + i*(size/n)) + ")");
+                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], "matrix(1.5, 0, 0, 1.5, " + canvasWidth/2 + "-1.5* " + canvasWidth/2 + ", " + canvasHeight/2 + " -1.5*" + canvasHeight/2 + ")");
             }
         }
     }
@@ -83,7 +84,7 @@ function makeScatterplotInCell(variablesToPlot, transform, scaleFactor)
     
     var svg = document.getElementById('svgCanvas');
     
-    console.log(svg.getAttribute("transform-origin"));
+    console.log(svg);
 //     .setAttribute('transform-origin', '75,240');
     
     console.log("style: " + canvas.attr("style"));
