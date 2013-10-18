@@ -17,13 +17,27 @@ function makeScatterplotMatrix()
     
     cellSize = size/(currentVariableSelection.length*currentVariableSelection.length);
     
+    var factor;
+    var n = currentVariableSelection.length;
+    
+    if(n % 2 == 0)
+    {
+        //even
+        factor = (n-1)/2n;
+    }
+    else
+    {
+        //odd
+        factor = Math.floor(n/2)/n;
+    }
+    
     for(i=0; i<currentVariableSelection.length; i++)
     {
         for(j=0; j<currentVariableSelection.length; j++)
         {
             if(j != i)
             {
-                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], cellSize, "translate(30)");
+                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], cellSize, "translate(" + (factor*size + j*(size/n)) + " " + (factor*size + i*(size/n)) + ")");
             }
         }
     }
