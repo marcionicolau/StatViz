@@ -23,13 +23,13 @@ function makeScatterplotMatrix()
         {
             if(j != i)
             {
-                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], cellSize);
+                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], cellSize, "translate(30)");
             }
         }
     }
 }
 
-function makeScatterplotInCell(variablesToPlot, size)
+function makeScatterplotInCell(variablesToPlot, size, transform)
 {
     var data = new Object();
     
@@ -84,6 +84,7 @@ function makeScatterplotInCell(variablesToPlot, size)
                                     .attr("x2", canvasWidth/2 + size/2)
                                     .attr("y2", canvasHeight/2 + size/2 + axesOffset) 
                                     .attr("stroke", "black")
+                                    .attr("transform", transform)
                                     .attr("id", "xAxis")
                                     .attr("class", "axes");
     
@@ -93,6 +94,7 @@ function makeScatterplotInCell(variablesToPlot, size)
                                     .attr("x2", canvasWidth/2 - size/2 - axesOffset)
                                     .attr("y2", canvasHeight/2 + size/2)
                                     .attr("stroke", "black")
+                                    .attr("transform", transform)
                                     .attr("id", "yAxis")
                                     .attr("class", "axes");
                                     
@@ -114,6 +116,7 @@ function makeScatterplotInCell(variablesToPlot, size)
                     .attr("y1", canvasHeight/2 + size/2 + axesOffset)
                     .attr("x2", canvasWidth/2 - size/2 + i*step)
                     .attr("y2", canvasHeight/2 + size/2 + 10 + axesOffset)
+                    .attr("transform", transform)
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooves");
         
@@ -121,6 +124,7 @@ function makeScatterplotInCell(variablesToPlot, size)
                     .attr("x", canvasWidth/2 - size/2 + i*step - 15)
                     .attr("y", canvasHeight/2 + size/2 + 30 + axesOffset)                    
                     .text(format(mins["X"] + i*xSlice))
+                    .attr("transform", transform)
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooveText");
     }
@@ -132,6 +136,7 @@ function makeScatterplotInCell(variablesToPlot, size)
                     .attr("y1", canvasHeight/2 + size/2 - i*step)
                     .attr("x2", canvasWidth/2 - size/2  - axesOffset)
                     .attr("y2", canvasHeight/2 + size/2 - i*step)
+                    .attr("transform", transform)
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooves");
         
@@ -139,6 +144,7 @@ function makeScatterplotInCell(variablesToPlot, size)
                     .attr("x", canvasWidth/2 - size/2 - 55 - axesOffset)
                     .attr("y", canvasHeight/2 + size/2 - i*step)                    
                     .text(format(mins["Y"] + i*ySlice))
+                    .attr("transform", transform)
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooveText");
     }
@@ -148,6 +154,7 @@ function makeScatterplotInCell(variablesToPlot, size)
         canvas.append("circle")
                     .attr("cx", canvasWidth/2 - size/2 + getValue(data["X"][i], "X")*size)
                     .attr("cy", canvasHeight/2 - size/2 + getValue(data["Y"][i], "Y")*size)
+                    .attr("transform", transform)
                     .attr("r", "2px")
                     .attr("fill", "black");     
     }
