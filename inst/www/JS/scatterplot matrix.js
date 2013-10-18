@@ -40,7 +40,7 @@ function makeScatterplotMatrix()
             if(j != i)
             {
 //                 makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], "translate(-" + canvasWidth/2  + "," + -canvasHeight/2 + ") scale(2,2)");// translate(" + canvasWidth/2 + " " + canvasHeight/2 + ") translate(" + (factor*size + j*(size/n)) + " " + (factor*size + i*(size/n)) + ")");
-                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], "matrix(" + scale + ", 0, 0, " + scale + ", " + (canvasWidth/2 - scale * canvasWidth/2) + ", " + (canvasHeight/2 - scale * canvasHeight/2) + ")");
+                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], "matrix(" + scale + ", 0, 0, " + scale + ", " + (canvasWidth/2 - scale * canvasWidth/2) + ", " + (canvasHeight/2 - scale * canvasHeight/2) + ") translate(" + (factor*size + j*(size/n)) + " " + (factor*size + i*(size/n)) + ")");
             }
         }
     }
