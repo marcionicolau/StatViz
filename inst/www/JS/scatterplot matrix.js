@@ -31,6 +31,8 @@ function makeScatterplotMatrix()
         factor = -Math.floor(n/2)/n;
     }
     
+    var scale = 1/n;
+    
     for(i=0; i<currentVariableSelection.length; i++)
     {
         for(j=0; j<currentVariableSelection.length; j++)
@@ -38,7 +40,7 @@ function makeScatterplotMatrix()
             if(j != i)
             {
 //                 makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], "translate(-" + canvasWidth/2  + "," + -canvasHeight/2 + ") scale(2,2)");// translate(" + canvasWidth/2 + " " + canvasHeight/2 + ") translate(" + (factor*size + j*(size/n)) + " " + (factor*size + i*(size/n)) + ")");
-                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], "matrix(2.5, 0, 0, 1.5, " + (canvasWidth/2 -2.5 * canvasWidth/2) + ", " + (canvasHeight/2 -1.5 * canvasHeight/2) + ")");
+                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], "matrix(" + scale + ", 0, 0, " + scale + ", " + (canvasWidth/2 - scale * canvasWidth/2) + ", " + (canvasHeight/2 - scale * canvasHeight/2) + ")");
             }
         }
     }
