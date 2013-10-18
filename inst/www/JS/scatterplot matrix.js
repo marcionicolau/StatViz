@@ -81,6 +81,11 @@ function makeScatterplotInCell(variablesToPlot, transform, scaleFactor)
      
     var canvas = d3.select("#svgCanvas");
     
+    var svg = svg.getDocumentById('svgCanvas');
+    
+    console.log(svg.getAttribute("transform-origin");
+//     .setAttribute('transform-origin', '75,240');
+    
     console.log("style: " + canvas.attr("style"));
     
     // changeable
