@@ -37,13 +37,13 @@ function makeScatterplotMatrix()
         {
             if(j != i)
             {
-                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]], "scale(" + 1/n + " " + 1/n + ") translate(" + (factor*size + j*(size/n)) + " " + (factor*size + i*(size/n)) + ")");
+                makeScatterplotInCell([currentVariableSelection[i], currentVariableSelection[j]],  cellSize, "translate(" + (factor*size + j*(size/n)) + " " + (factor*size + i*(size/n)) + ")");
             }
         }
     }
 }
 
-function makeScatterplotInCell(variablesToPlot, transform)
+function makeScatterplotInCell(variablesToPlot, size, transform)
 {
     var data = new Object();
     var colorsForPlot = new Object();
@@ -85,7 +85,9 @@ function makeScatterplotInCell(variablesToPlot, transform)
     var nGrooves = 3;
     
     // Draw axes
-        
+//     canvas.append("circle")
+//                 .attr("cx", canvasWidth
+    
     var xAxis = canvas.append("line")
                                     .attr("x1", canvasWidth/2 - size/2)
                                     .attr("y1", canvasHeight/2 + size/2 + axesOffset)
