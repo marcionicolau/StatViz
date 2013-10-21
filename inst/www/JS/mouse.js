@@ -65,7 +65,7 @@ function OnMouseDown(e)
                     .attr("y1", meanCircle.attr("cy"))
                     .attr("x2", meanCircle.attr("cx"))
                     .attr("y2", meanCircle.attr("cy"))
-                    .attr("stroke", meanColors["hover"])
+                    .attr("stroke", meanColors["normal"])
                     .attr("id", meanCircle.attr("id"))
                     .attr("class", "incompleteLines");
             
@@ -87,7 +87,7 @@ function OnMouseMove(e)
     var incompleteLines = d3.selectAll(".incompleteLines");
     if((_dragElement.className.baseVal == 'means') && (incompleteLines.length > 0))
     {
-        incompleteLines.attr("x2", e.pageX)
+        incompleteLines.attr("x2", e.pageX - (width - canvasWidth))
                         .attr("y2", e.pageY);
         
     }
