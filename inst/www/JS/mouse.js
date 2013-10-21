@@ -145,7 +145,7 @@ function OnMouseOver(e)
                              .attr("class", "loops");
 
                loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.65").attr("stroke","white");
-               loop.transition().delay(2500).attr("display", "none");
+               loop.transition().delay(2500).attr("opacity", "0");
             },700);
         }
     }
