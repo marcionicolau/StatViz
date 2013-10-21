@@ -187,6 +187,7 @@ function highlightBinWithId(ID)
             
             if(binText.length > 0)
             {
+                binText.attr("opacity", "1.0");
                 binText.attr("display", "inline");
             }
         }
