@@ -195,6 +195,7 @@ function unhighlightBins()
     for(var i=0; i<bins.length; i++)
     {   
         bins[i].setAttribute("opacity", "1.0");
+        console.log(binTexts[i]);
         binTexts[i].setAttribute("display", "none");
     }
 }
