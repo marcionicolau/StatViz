@@ -106,9 +106,11 @@ function OnMouseOver(e)
     {		
         setup(e, target);
         
+        var meanCircle = d3.selectAll("#" + target.id + ".means");
+        
         if(meanCircle.attr("fill") == "purple")
         {
-            var meanCircle = d3.selectAll("#" + target.id + ".means");
+            
             meanCircle.attr("cursor","pointer");
         
             //change color of the mean circle
