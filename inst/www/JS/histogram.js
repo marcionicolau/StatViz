@@ -127,6 +127,20 @@ function makeHistogram()
     {
         for(j=0; j<nBins; j++)
         {           
+            if(bins[currentVariableSelection[i]][j] != 0)
+            {
+                canvas.append("text")
+                            .attr("x", canvasWidth/2 - size/2 + j*xStep + (size/nBins)/2)                        
+                            .attr("y", canvasHeight/2 + size/2 - (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size + 20)
+                            .attr("fill", "black")
+                            .attr("text-anchor", "middle")
+                            .attr("font-size", "24px")
+                            .attr("display", "none")
+                            .text(bins[currentVariableSelection[i]][j])
+                            .attr("id", currentVariableSelection[i] + j)
+                            .attr("class", "binTexts");
+            }
+                        
             canvas.append("rect")
                         .attr("x", canvasWidth/2 - size/2 + j*xStep)
                         .attr("y", canvasHeight/2 + size/2 - (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size)
@@ -135,16 +149,7 @@ function makeHistogram()
                         .attr("fill", colors[i])         
                         .attr("id", currentVariableSelection[i] + j)
                         .attr("class", "bins");
-            canvas.append("text")
-                        .attr("x", canvasWidth/2 - size/2 + j*xStep + (size/nBins)/2)                        
-                        .attr("y", canvasHeight/2 + size/2 - (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size + 15)
-                        .attr("fill", "black")
-                        .attr("text-anchor", "middle")
-                        .attr("font-size", "24px")
-                        .attr("display", "none")
-                        .text(bins[currentVariableSelection[i]][j])
-                        .attr("id", currentVariableSelection[i] + j)
-                        .attr("class", "binTexts");
+            
                         
         }
     }

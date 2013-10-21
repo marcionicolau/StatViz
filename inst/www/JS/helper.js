@@ -187,6 +187,18 @@ function highlightBinWithId(ID)
     }
 }
 
+function unhighlightBins()
+{
+    var bins = document.getElementsByClassName("bins");
+    var binTexts = document.getElementsByClassName("binTexts");
+    
+    for(var i=0; i<bins.length; i++)
+    {   
+        bins[i].setAttribute("opacity", "1.0");
+        binTexts[i].setAttribute("display", "none");
+    }
+}
+
 function getNumber(string)
 {
     return string.replace(/[A-z]/g, '');
