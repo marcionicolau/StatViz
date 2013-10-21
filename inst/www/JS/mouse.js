@@ -126,7 +126,7 @@ function OnMouseOver(e)
                           .attr("r", "0px")
                           .attr("fill", "none")
                           .attr("stroke", "black")
-                          .attr("stroke-width", "2px")				
+                          .attr("stroke-width", "5px")				
                           .attr("class", "loops");
 
             loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.65").attr("stroke","white");
@@ -140,7 +140,7 @@ function OnMouseOver(e)
                              .attr("r", "0px")
                              .attr("fill", "none")
                              .attr("stroke", "black")
-                             .attr("stroke-width", "2px")				
+                             .attr("stroke-width", "5px")				
                              .attr("class", "loops");
 
                loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.65").attr("stroke","white");
