@@ -179,6 +179,15 @@ function OnMouseOver(e)
         var datapoint = d3.select("#" + target.id + ".datapoints");
         
         datapoint.transition().duration(700).attr("r", "5px").attr("fill", meanColors["normal"]);
+        
+        d3.select("#svgCanvas")
+            .append("text")
+                .attr("x", e.pageX + 10)
+                .attr("y", e.pageY + 15)
+                .attr("fill", meanColors["normal"])
+                .text(variables[currentVariableSelection[0]][getNumber(datapoint.attr("id"))] + "," + variables[currentVariableSelection[1]][getNumber(datapoint.attr("id"))])
+                .attr("class", "hoverText");
+        
     }   
 }
 
@@ -220,6 +229,14 @@ function OnMouseOut(e)
         
         unhighlightBins();
     }
+    else if(target.className.baseVal == "datapoints")                
+    {
+        var datapoint = d3.select("#" + target.id + ".datapoints");
+        
+        datapoint.transition().duration(700).attr("r", "2px").attr("fill", "black");
+        removeElementsByClass("hoverText");
+    }
+    
 }	
 	
 
