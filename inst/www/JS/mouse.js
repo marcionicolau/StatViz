@@ -203,7 +203,7 @@ function setup(e, target)
     _dragElement = target;
 
     // tell our code to start moving the element with the mouse
-    document.onmousemove = OnMouseMove;
+//     document.onmousemove = OnMouseMove;
 
     // cancel out any text selections
     document.body.focus();
