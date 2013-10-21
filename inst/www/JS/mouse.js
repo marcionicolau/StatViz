@@ -170,10 +170,9 @@ function OnMouseOver(e)
     {		
         setup(e, target);
         
-        var bin = d3.select("#" + target.id + ".bins");
+        var bin = d3.select("#" + target.id + "." + className);
         
-        console.log("number = " + getNumber(target.id));
-        highlightBinWithId(target.id);
+        highlightBinWithX(bin.attr("x"));
     }   
 }
 

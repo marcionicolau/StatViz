@@ -175,13 +175,13 @@ function startLoopAnimation(meanCircle)
     },700);
 }
 
-function highlightBinWithId(id)
+function highlightBinWithX(X)
 {
     var bins = document.getElementsByClassName("bins");
     
     for(var i=0; i<bins.length; i++)
     {    
-        if(getNumber(bins[i].getAttribute("id")) != getNumber(id))
+        if(bins[i].getAttribute("x") != X)
         {
             bins[i].setAttribute("opacity", "0.4");
         }
