@@ -131,12 +131,12 @@ function OnMouseOver(e)
                              .attr("fill", "none")
                              .attr("style", "z-index: -1;")
                              .attr("stroke", "black")
-                             .attr("stroke-width", "2px")				
+                             .attr("stroke-width", "1px")				
                              .attr("class", "loops");
 
                loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.5").attr("stroke","lightgrey");
                loop.transition().delay(2500).attr("opacity", "0");
-            },700);
+            },500);
         }
     }
 }
