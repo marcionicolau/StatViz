@@ -120,7 +120,7 @@ function OnMouseOver(e)
             meanCircle.attr("fill", meanColors["hover"]);
         
             //insert animation
-            var loop = svg.append("circle")
+            var loop = canvas.append("circle")
                           .attr("cx", meanCircle.attr("cx"))
                           .attr("cy", meanCircle.attr("cy"))
                           .attr("r", "0px")
@@ -134,7 +134,7 @@ function OnMouseOver(e)
 
             timerId_initial = setInterval(function()
             {						
-               var loop = svg.append("circle")
+               var loop = canvas.append("circle")
                              .attr("cx", meanCircle.attr("cx"))
                              .attr("cy", meanCircle.attr("cy"))
                              .attr("r", "0px")
