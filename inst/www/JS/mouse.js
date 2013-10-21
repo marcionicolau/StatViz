@@ -126,6 +126,7 @@ function OnMouseOver(e)
                           .attr("cy", meanCircle.attr("cy"))
                           .attr("r", "0px")
                           .attr("fill", "none")
+                          .attr("style", "z-index: -1;")
                           .attr("stroke", "black")
                           .attr("stroke-width", "2px")				
                           .attr("class", "loops");
