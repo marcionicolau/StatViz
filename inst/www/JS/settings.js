@@ -1,4 +1,4 @@
-var classList = ["
+
 var dataset = "mtcars";
 
 var width = document.width;
