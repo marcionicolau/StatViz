@@ -124,7 +124,7 @@ function makeScatterplot()
                     .attr("cy", canvasHeight/2 - size/2 + getValue(data["Y"][i], "Y")*size)
                     .attr("r", "2px")
                     .attr("fill", color)
-                    .attr("id", currentVariableSelection[0] + "-" + data["X"][i] + " " currentVariableSelection[1] + "-" + data["Y"][i])
+                    .attr("id", currentVariableSelection[0] + "-" + data["X"][i] + " " + currentVariableSelection[1] + "-" + data["Y"][i])
                     .attr("class", "datapoints");     
     }
 }
