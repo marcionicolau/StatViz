@@ -111,6 +111,7 @@ function OnMouseOver(e)
         
         if(meanCircle.attr("fill") == "purple")
         {
+            console.log("test");
             
             meanCircle.attr("cursor","pointer");
         
