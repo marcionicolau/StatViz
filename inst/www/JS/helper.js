@@ -176,7 +176,11 @@ function highlightBinWithId(ID)
     {    
         if(getNumber(bins[i].getAttribute("id")) != getNumber(ID))
         {
-            bins[i].setAttribute("opacity", "0.4");
+            bins[i].setAttribute("opacity", "0.25");
+        }
+        else
+        {
+            bins[i].setAttribute("opacity", "1.0");
         }
     }
 }
