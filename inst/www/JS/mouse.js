@@ -119,8 +119,6 @@ function OnMouseOver(e)
             //change color of the mean circle
             meanCircle.attr("fill", meanColors["hover"]);
             var canvas = d3.select("#svgCanvas");
-            
-            console.log(canvas);
         
             //insert animation
             var loop = canvas.append("circle")
@@ -129,7 +127,7 @@ function OnMouseOver(e)
                           .attr("r", "0px")
                           .attr("fill", "none")
                           .attr("stroke", "black")
-                          .attr("stroke-width", "5px")				
+                          .attr("stroke-width", "2px")				
                           .attr("class", "loops");
 
             loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.65").attr("stroke","white");
@@ -143,11 +141,11 @@ function OnMouseOver(e)
                              .attr("r", "0px")
                              .attr("fill", "none")
                              .attr("stroke", "black")
-                             .attr("stroke-width", "5px")				
+                             .attr("stroke-width", "2px")				
                              .attr("class", "loops");
 
                loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.65").attr("stroke","white");
-               //loop.transition().delay(2500).attr("display", "none");
+               loop.transition().delay(2500).attr("display", "none");
             },700);
         }
     }
