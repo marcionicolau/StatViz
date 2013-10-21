@@ -53,9 +53,9 @@ function OnMouseDown(e)
         
         var meanCircle = d3.selectAll("#" + target.id + ".means");
         
-        if(meanCircle.attr("fill") == "lightgreen")
+        if(meanCircle.attr("fill") == meanColors["hover"])
         {
-            meanCircle.attr("fill","darkgreen");
+            meanCircle.attr("fill", meanColors["click"]);
         }   
     }
     
@@ -107,16 +107,15 @@ function OnMouseOver(e)
         setup(e, target);
         
         var meanCircle = d3.select("#" + target.id + ".means");
-        console.log("color on hover = "  + meanCircle.attr("fill"));
         
-        if(meanCircle.attr("fill") == "purple")
+        if(meanCircle.attr("fill") == meanColors["normal"])
         {
             console.log("test");
             
             meanCircle.attr("cursor","pointer");
         
             //change color of the mean circle
-            meanCircle.attr("fill", "red");
+            meanCircle.attr("fill", meanColors["hover"]);
         
             //insert animation
         }
@@ -139,9 +138,9 @@ function OnMouseOut(e)
     {
         var meanCircle = d3.selectAll("#" + target.id + ".means");
         
-        if(meanCircle.attr("fill") != "darkgreen")
+        if(meanCircle.attr("fill") != meanColors["click"])
         {
-            meanCircle.attr("fill", "purple");
+            meanCircle.attr("fill", meanColors["normal"]);
         }
     }
 }		
