@@ -182,9 +182,12 @@ function highlightBinWithId(ID)
         else
         {
             bins[i].setAttribute("opacity", "1.0");
-            if(binTexts[i] != undefined)
+            
+            binText = d3.select("#" + bins[i].getAttribute("id") + ".binTexts");
+            
+            if(binText.length > 0)
             {
-                binTexts[i].setAttribute("display", "inline");
+                binText.attr("display", "inline");
             }
         }
     }
@@ -198,9 +201,12 @@ function unhighlightBins()
     for(var i=0; i<bins.length; i++)
     {   
         bins[i].setAttribute("opacity", "1.0");
-        if(binTexts[i] != undefined)
+
+        binTexts = d3.selectAll(".binTexts");
+            
+        if(binTexts.length > 0)
         {
-            binTexts[i].setAttribute("display", "none");
+            binTexts.attr("display", "none");
         }
     }
 }
