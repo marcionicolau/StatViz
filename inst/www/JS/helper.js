@@ -47,7 +47,7 @@ function toggleFillColors()
     var visualizations = document.getElementsByClassName("visualizationHolder");
     
     for(var i=0; i<visualizations.length; i++)
-    {l        
+    {        
         if(visualizations[i].getAttribute("id") == currentVisualizationSelection)
         {
             visualizations[i].setAttribute("fill", panelColors.active);
@@ -186,8 +186,7 @@ function highlightBinWithId(ID)
             binText = d3.select("#" + bins[i].getAttribute("id") + ".binTexts");
             
             if(binText.length > 0)
-            {
-                binText.attr("opacity", "1.0");
+            {                
                 binText.attr("display", "inline");
             }
         }
