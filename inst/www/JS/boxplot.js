@@ -146,7 +146,7 @@ function makeBoxplot()
                     .attr("cx", canvasWidth/2 + (i+1)*widthSlice - size/2)
                     .attr("cy", canvasHeight/2 + size/2 - getFraction(means[i])*size)
                     .attr("r", "7px")
-                    .attr("fill", meanColors["normal"]);
+                    .attr("fill", meanColors["normal"])
                     .attr("id", currentVariableSelection[i])
                     .attr("class", "means");
     
