@@ -116,7 +116,7 @@ function OnMouseOver(e)
             meanCircle.attr("cursor","pointer");
         
             //change color of the mean circle
-            meanCircle.attr("fill", "lightgreen");
+            meanCircle.attr("fill", "red");
         
             //insert animation
         }
