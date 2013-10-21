@@ -135,6 +135,15 @@ function makeHistogram()
                         .attr("fill", colors[i])         
                         .attr("id", currentVariableSelection[i] + j)
                         .attr("class", "bins");
+            canvas.append("text")
+                        .attr("x", canvasWidth/2 - size/2 + j*xStep)
+                        .attr("y", canvasHeight/2 + size/2 - (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size)
+                        .attr("fill", "black")
+                        .attr("text-anchor", "middle")
+                        .text(bins[currentVariableSelection[i]][j])
+                        .attr("id", currentVariableSelection[i] + j)
+                        .attr("class", "binText");
+                        
         }
     }
 }
