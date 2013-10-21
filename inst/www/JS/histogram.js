@@ -130,7 +130,7 @@ function makeHistogram()
             var z = "z-index: auto;";
             if(i > 0)
             {   
-                console.log("i: " + bins[currentVariableSelection[i]][j] + ", i-1: " + bins[currentVariableSelection[i-1]][j] d);
+                console.log("i: " + bins[currentVariableSelection[i]][j] + ", i-1: " + bins[currentVariableSelection[i-1]][j]);
                 if(bins[currentVariableSelection[i]][j] > bins[currentVariableSelection[i-1]][j])                
                 {
                     z = "z-index: 3";
