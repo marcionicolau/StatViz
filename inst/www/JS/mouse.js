@@ -182,10 +182,10 @@ function OnMouseOver(e)
         
         d3.select("#svgCanvas")
             .append("text")
-                .attr("x", e.pageX + 10)
+                .attr("x", e.pageX + 10 - (width - canvasWidth))
                 .attr("y", e.pageY + 15)
                 .attr("fill", meanColors["normal"])
-                .text(variables[currentVariableSelection[0]][getNumber(datapoint.attr("id"))] + "," + variables[currentVariableSelection[1]][getNumber(datapoint.attr("id"))])
+                .text(variables[currentVariableSelection[0]][getNumber(datapoint.attr("id"))] + ", " + variables[currentVariableSelection[1]][getNumber(datapoint.attr("id"))])
                 .attr("class", "hoverText");
         
     }   
