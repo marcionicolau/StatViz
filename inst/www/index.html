@@ -56,12 +56,28 @@
                 canvas.attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth) + "px;");    
                 
                 // Load dataset variables and their data (into global variable "variables") and IQR (into IQR)
-                getVariables(dataset);
+                getVariables(loadFile("/Users/krishnasubramanian/Documents/Coursera/Statistics One/Datasets/datafiles-Stats1.13.Lab.02.txt"));
                 
                 // Populate visualizations
                 renderVisualizations();                
             }
             
+            function loadFile(filePath)
+            {
+                var req = opencpu.r_fun_json("loadFile", {
+                                filePath: filePath
+                              }, function(output) {                   
+                dataset = output.dataset;
+                console.log("dataset: " + dataset);
+                 }).fail(function(){
+                      alert("Failure: " + req.responseText);
+                });
+        
+                //if R returns an error, alert the error message
+                req.fail(function(){
+                  alert("Server error: " + req.responseText);
+                }); 
+                
             function getVariables(dataset)
             {   
                 // Get variable names and their data type
