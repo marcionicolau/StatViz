@@ -58,6 +58,17 @@ function OnMouseDown(e)
         if(meanCircle.attr("fill") == meanColors["hover"])
         {
             meanCircle.attr("fill", meanColors["click"]);
+            
+            var canvas = d3.select("#svgCanvas");
+            canvas.append("line")
+                    .attr("x1", meanCircle.attr("cx"))
+                    .attr("y1", meanCircle.attr("cy"))
+                    .attr("x2", meanCircle.attr("cx"))
+                    .attr("y2", meanCircle.attr("cy"))
+                    .attr("stroke", meanColors["hover"])
+                    .attr("id", meanCircle.attr("id')
+                    .attr("class", "incompleteLines");
+            
         }   
     }
     
@@ -73,9 +84,12 @@ function OnMouseMove(e)
 
     // this is the actual "drag code"
     
-    if(_dragElement != undefined)
+    var incompleteLines = d3.selectAll(".incompleteLines");
+    if((_dragElement.className.baseVal == 'means') && (incompleteLines.length > 0))
     {
-        // yet to find a mouse move :)
+        incompleteLines.attr("x2", e.pageX)
+                        .attr("y2", e.pageY);
+        
     }
 }
 
@@ -146,23 +160,6 @@ function OnMouseOut(e)
         }
         removeElementsByClass("loops");
         
-        var allTags = document.body.getElementsByTagName('*');
-        var classNames = {};
-        for (var tg = 0; tg< allTags.length; tg++) {
-            var tag = allTags[tg];
-            if (tag.className) {
-              var classes = tag.className.baseVal.split(" ");
-            for (var cn = 0; cn < classes.length; cn++){
-              var cName = classes[cn];
-              if (! classNames[cName]) {
-                classNames[cName] = true;
-              }
-            }
-            }   
-        }
-        var classList = [];
-        for (var name in classNames) classList.push(name);
-        console.log("classes: " + classList);
         
         clearInterval(intervals[meanCircle.attr("id")]);
     }
