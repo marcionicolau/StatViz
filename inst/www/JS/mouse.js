@@ -63,7 +63,7 @@ function OnMouseDown(e)
             
             var incompleteLines = d3.selectAll(".incompleteLines");
             
-            if(incompleteLines.length > 0)
+            if(document.getElementsByClassName("incompleteLines").length > 0)
             {
                 incompleteLines.attr("x2", meanCircle.attr("cx"))
                                 .attr("y2", meanCircle.attr("cy"))
@@ -72,8 +72,8 @@ function OnMouseDown(e)
             }
             
             var completeLines = d3.selectAll(".completeLines");
-            console.log("complete lines = " + completeLines.length);
-            console.log("means = " + d3.selectAll(".means").length);
+            console.log("complete lines = " + document.getElementsByClassName("means").length);
+            console.log("means = " + document.getElementsByClassName("means").length);
             
             if(completeLines.length < (d3.selectAll(".means").length - 1))
             {
