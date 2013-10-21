@@ -171,6 +171,7 @@ function startLoopAnimation(meanCircle)
 function highlightBinWithId(ID)
 {
     var bins = document.getElementsByClassName("bins");
+    var binTexts = document.getElementsByClassName("binTexts");
     
     for(var i=0; i<bins.length; i++)
     {    
@@ -181,6 +182,7 @@ function highlightBinWithId(ID)
         else
         {
             bins[i].setAttribute("opacity", "1.0");
+            binTexts[i].setAttribute("display", "inline");
         }
     }
 }
