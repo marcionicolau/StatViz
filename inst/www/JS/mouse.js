@@ -47,6 +47,18 @@ function OnMouseDown(e)
         makePlot();
     }
     
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "means")
+    {
+        setup(e, target);    
+        
+        var meanCircle = d3.selectAll("#" + target.id + ".means");
+        
+        if(meanCircle.attr("fill") == "lightgreen")
+        {
+            meanCircle.attr("fill","darkgreen");
+        }   
+    }
+    
     
     
     
@@ -94,10 +106,16 @@ function OnMouseOver(e)
     {		
         setup(e, target);
         
-        console.log("yes!");
+        if(meanCircle.attr("fill") == "purple")
+        {
+            var meanCircle = d3.selectAll("#" + target.id + ".means");
+            meanCircle.attr("cursor","pointer");
         
-        var visualizationHolder = d3.selectAll("#" + target.id + ".means");
-        visualizationHolder.attr("cursor","pointer");
+            //change color of the mean circle
+            meanCircle.attr("fill", "lightgreen");
+        
+            //insert animation
+        }
     }
 }
 
@@ -112,6 +130,15 @@ function OnMouseOut(e)
     else if(target.className.baseVal == "visualizationHolder")                
     {
         var visualizationHolder = d3.selectAll("#" + target.id + ".visualizationHolder");
+    }
+    else if(target.className.baseVal == "means")                
+    {
+        var meanCircle = d3.selectAll("#" + target.id + ".means");
+        
+        if(meanCircle.attr("fill") != "darkgreen")
+        {
+            meanCircle.attr("fill", "purple");
+        }
     }
 }		
 
