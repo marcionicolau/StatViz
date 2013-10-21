@@ -133,7 +133,7 @@ function OnMouseOver(e)
             loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.65").attr("stroke","white");
             loop.transition().delay(2500).attr("display", "none");
 
-            timerId_initial = setInterval(function()
+            bubbles = setInterval(function()
             {						
                var loop = canvas.append("circle")
                              .attr("cx", meanCircle.attr("cx"))
@@ -171,7 +171,9 @@ function OnMouseOut(e)
         {
             meanCircle.attr("fill", meanColors["normal"]);
         }
+        clearInterval(bubbles);
     }
+    
 }		
 
 function setup(e, target)
