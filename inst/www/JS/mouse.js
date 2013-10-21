@@ -172,6 +172,14 @@ function OnMouseOver(e)
         
         highlightBinWithId(target.id);
     }   
+    else if(target.className.baseVal == "datapoints")
+    {		
+        setup(e, target);
+    
+        var datapoint = d3.select("#" + target.id + ".datapoints");
+        
+        datapoint.transition().duration(700).attr("r", "5px").attr("fill", meanColors["normal"]);
+    }   
 }
 
 function OnMouseOut(e)
