@@ -94,6 +94,8 @@ function OnMouseOver(e)
     {		
         setup(e, target);
         
+        console.log("yes!");
+        
         var visualizationHolder = d3.selectAll("#" + target.id + ".means");
         visualizationHolder.attr("cursor","pointer");
     }
