@@ -29,7 +29,7 @@ var axesOffset = 25;
 
 
 //Define colors for histogram bars, color scatterplot
-var colors = ["rgb(255,0,0)","rgb(0,255,0)","rgb(0,0,255)", "rgb(255,255,0)","rgb(0,255,255)","rgb(255,0,255)"];
+var colors = ["rgb(255,0,0,1.0)","rgba(0,255,0,1.0)","rgba(0,0,255,1.0)", "rgba(255,255,0,1.0)","rgba(0,255,255,0.5)","rgba(255,0,255,0.5)"];
 
 var meanColors = new Object();
 meanColors["normal"] = "purple";
@@ -37,5 +37,3 @@ meanColors["hover"] = "lightgreen";
 meanColors["click"] = "green";
 
 var intervals = new Object();
-
-var histogramOpacity = 0.5;
