@@ -90,6 +90,13 @@ function OnMouseOver(e)
         var visualizationHolder = d3.selectAll("#" + target.id + ".visualizationHolder");
         visualizationHolder.attr("cursor","pointer");
     }
+    else if(target.className.baseVal == "means")
+    {		
+        setup(e, target);
+        
+        var visualizationHolder = d3.selectAll("#" + target.id + ".means");
+        visualizationHolder.attr("cursor","pointer");
+    }
 }
 
 function OnMouseOut(e)
