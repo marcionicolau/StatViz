@@ -72,7 +72,7 @@ function OnMouseDown(e)
             }
             
             var completeLines = d3.selectAll(".completeLines");
-            console.log("complete lines = " + document.getElementsByClassName("means").length);
+            console.log("complete lines = " + document.getElementsByClassName("completeLines").length);
             console.log("means = " + document.getElementsByClassName("means").length);
             
             if(completeLines.length < (d3.selectAll(".means").length - 1))
@@ -102,7 +102,7 @@ function OnMouseMove(e)
     if(_dragElement != undefined)
     {
         var incompleteLines = d3.selectAll(".incompleteLines");
-        if((_dragElement.className.baseVal == 'means') && (incompleteLines.length > 0) && incompleteLines.attr("stroke") == meanColors["normal"])
+        if((_dragElement.className.baseVal == 'means') && (document.getElementsByClassName("incompleteLines").length > 0) && incompleteLines.attr("stroke") == meanColors["normal"])
         {
             incompleteLines.attr("x2", e.pageX - (width - canvasWidth))
                         .attr("y2", e.pageY);
@@ -155,7 +155,7 @@ function OnMouseOver(e)
             
             var incompleteLines = d3.selectAll(".incompleteLines");
             
-            if(incompleteLines.length > 0)
+            if(document.getElementsByClassName("incompleteLines").length > 0)
             {
                 incompleteLines.attr("x2", meanCircle.attr("cx"))
                                 .attr("y2", meanCircle.attr("cy"))
@@ -192,7 +192,7 @@ function OnMouseOut(e)
         
         var incompleteLines = d3.selectAll(".incompleteLines");
             
-        if(incompleteLines.length > 0)
+        if(document.getElementsByClassName("incompleteLines").length > 0)
         {
             incompleteLines.attr("stroke", meanColors["normal"]);
         }   
