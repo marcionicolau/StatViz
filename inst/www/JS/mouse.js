@@ -7,7 +7,7 @@ var _width = 0;
 var _dragElement;           // needs to be passed from OnMouseDown to OnMouseMove
 var _oldZIndex = 0;         // we temporarily increase the z-index during drag		
 
-var canvas = d3.select("#svgCanvas");
+
 
 function InitMouseGestures()
 {
@@ -118,6 +118,9 @@ function OnMouseOver(e)
         
             //change color of the mean circle
             meanCircle.attr("fill", meanColors["hover"]);
+            var canvas = d3.select("#svgCanvas");
+            
+            console.log(canvas);
         
             //insert animation
             var loop = canvas.append("circle")
