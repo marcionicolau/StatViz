@@ -145,7 +145,7 @@ function makeBoxplot()
         canvas.append("circle")
                     .attr("cx", canvasWidth/2 + (i+1)*widthSlice - size/2)
                     .attr("cy", canvasHeight/2 + size/2 - getFraction(means[i])*size)
-                    .attr("r", "5px")
+                    .attr("r", "7px")
                     .attr("id", currentVariableSelection[i])
                     .attr("class", "means");
     
