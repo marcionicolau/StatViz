@@ -106,7 +106,7 @@ function OnMouseOver(e)
     {		
         setup(e, target);
         
-        var meanCircle = d3.selectAll("#" + target.id + ".means");
+        var meanCircle = d3.select("#" + target.id + ".means");
         console.log("color on hover = "  + meanCircle.attr("fill"));
         
         if(meanCircle.attr("fill") == "purple")
