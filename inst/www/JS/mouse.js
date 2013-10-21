@@ -86,6 +86,11 @@ function OnMouseDown(e)
                         .attr("id", meanCircle.attr("id"))
                         .attr("class", "incompleteLines");
             }
+            else
+            {
+                //we are done
+                compareMeans();
+            }
         }   
     }
 }
@@ -143,7 +148,6 @@ function OnMouseOver(e)
         
         if(meanCircle.attr("fill") == meanColors["normal"])
         {
-            console.log("test");
             
             meanCircle.attr("cursor","pointer");
         
@@ -196,7 +200,8 @@ function OnMouseOut(e)
             incompleteLines.attr("stroke", meanColors["normal"]);
         }   
     }
-}		
+}	
+	
 
 function setup(e, target)
 {
