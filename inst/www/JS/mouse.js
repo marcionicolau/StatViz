@@ -7,6 +7,8 @@ var _width = 0;
 var _dragElement;           // needs to be passed from OnMouseDown to OnMouseMove
 var _oldZIndex = 0;         // we temporarily increase the z-index during drag		
 
+var canvas = d3.select("#svgCanvas");
+
 function InitMouseGestures()
 {
     document.onmousedown = OnMouseDown;
@@ -118,6 +120,32 @@ function OnMouseOver(e)
             meanCircle.attr("fill", meanColors["hover"]);
         
             //insert animation
+            var loop = svg.append("circle")
+                          .attr("cx", meanCircle.attr("cx"))
+                          .attr("cy", meanCircle.attr("cy"))
+                          .attr("r", "0px")
+                          .attr("fill", "none")
+                          .attr("stroke", "black")
+                          .attr("stroke-width", "2px")				
+                          .attr("class", "loops");
+
+            loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.65").attr("stroke","white");
+            loop.transition().delay(2500).attr("display", "none");
+
+            timerId_initial = setInterval(function()
+            {						
+               var loop = svg.append("circle")
+                             .attr("cx", meanCircle.attr("cx"))
+                             .attr("cy", meanCircle.attr("cy"))
+                             .attr("r", "0px")
+                             .attr("fill", "none")
+                             .attr("stroke", "black")
+                             .attr("stroke-width", "2px")				
+                             .attr("class", "loops");
+
+               loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.65").attr("stroke","white");
+               loop.transition().delay(2500).attr("display", "none");
+            },700);
         }
     }
 }
