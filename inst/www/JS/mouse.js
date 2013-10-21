@@ -72,6 +72,8 @@ function OnMouseDown(e)
             }
             
             var completeLines = d3.selectAll(".completeLines");
+            console.log("complete lines = " + completeLines.length);
+            console.log("means = " + d3.selectAll(".means").length);
             
             if(completeLines.length < (d3.selectAll(".means").length - 1))
             {
@@ -87,10 +89,6 @@ function OnMouseDown(e)
             }
         }   
     }
-    
-    
-    
-    
 }
  
 function OnMouseMove(e)
