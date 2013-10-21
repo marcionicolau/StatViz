@@ -84,11 +84,15 @@ function OnMouseMove(e)
 
     // this is the actual "drag code"
     
-    var incompleteLines = d3.selectAll(".incompleteLines");
-    if((_dragElement.className.baseVal == 'means') && (incompleteLines.length > 0))
+    
+    if(_dragElement != undefined)
     {
-        incompleteLines.attr("x2", e.pageX - (width - canvasWidth))
+        var incompleteLines = d3.selectAll(".incompleteLines");
+        if((_dragElement.className.baseVal == 'means') && (incompleteLines.length > 0))
+        {
+            incompleteLines.attr("x2", e.pageX - (width - canvasWidth))
                         .attr("y2", e.pageY);
+        }
         
     }
 }
@@ -171,8 +175,14 @@ function OnMouseOut(e)
         
         
         clearInterval(intervals[meanCircle.attr("id")]);
+        
+        var incompleteLines = d3.selectAll(".incompleteLines");
+            
+        if(incompleteLines.length > 0)
+        {
+            incompleteLines.attr("stroke", meanColors["normal"]);
+        }   
     }
-    
 }		
 
 function setup(e, target)
