@@ -146,6 +146,24 @@ function OnMouseOut(e)
         }
         removeElementsByClass("loops");
         
+        var allTags = document.body.getElementsByTagName('*');
+        var classNames = {};
+        for (var tg = 0; tg< allTags.length; tg++) {
+            var tag = allTags[tg];
+            if (tag.className) {
+              var classes = tag.className.split(" ");
+            for (var cn = 0; cn < classes.length; cn++){
+              var cName = classes[cn];
+              if (! classNames[cName]) {
+                classNames[cName] = true;
+              }
+            }
+            }   
+        }
+        var classList = [];
+        for (var name in classNames) classList.push(name);
+        console.log("classes: " + classList);
+        
         clearInterval(intervals[meanCircle.attr("id")]);
     }
     
