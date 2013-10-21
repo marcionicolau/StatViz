@@ -130,8 +130,8 @@ function OnMouseOver(e)
                           .attr("stroke-width", "2px")				
                           .attr("class", "loops");
 
-            loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.65").attr("stroke","white");
-            loop.transition().delay(2500).attr("display", "none");
+            loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.5").attr("stroke","lightgrey");
+            loop.transition().delay(2500).attr("opacity", "0");
 
             bubbles = setInterval(function()
             {						
@@ -144,7 +144,7 @@ function OnMouseOver(e)
                              .attr("stroke-width", "2px")				
                              .attr("class", "loops");
 
-               loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.65").attr("stroke","lightgrey");
+               loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.5").attr("stroke","lightgrey");
                loop.transition().delay(2500).attr("opacity", "0");
             },700);
         }
