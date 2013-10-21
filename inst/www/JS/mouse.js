@@ -82,6 +82,7 @@ function OnMouseDown(e)
                         .attr("x2", meanCircle.attr("cx"))
                         .attr("y2", meanCircle.attr("cy"))
                         .attr("stroke", meanColors["normal"])
+                        .attr("stroke-dasharray", "5,5")
                         .attr("id", meanCircle.attr("id"))
                         .attr("class", "incompleteLines");
             }
