@@ -166,6 +166,14 @@ function OnMouseOver(e)
             }
         }
     }
+    else if(target.className.baseVal == "bins")
+    {		
+        setup(e, target);
+        
+        var bin = d3.select("#" + target.id + ".bins");
+        
+        highlightBinWithId(target.id);
+    }   
 }
 
 function OnMouseOut(e)
@@ -199,6 +207,12 @@ function OnMouseOut(e)
         {
             incompleteLines.attr("stroke", meanColors["normal"]);
         }   
+    }
+    else if(target.className.baseVal == "bins")                
+    {
+        var bins = d3.selectAll(".bins");
+        
+        bins.setAttribute("opacity", "1");
     }
 }	
 	

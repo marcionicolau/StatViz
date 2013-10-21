@@ -54,8 +54,7 @@ function toggleFillColors()
     var visualizations = document.getElementsByClassName("visualizationHolder");
     
     for(var i=0; i<visualizations.length; i++)
-    {
-        console.log(visualizations.length);
+    {l        
         if(visualizations[i].getAttribute("id") == currentVisualizationSelection)
         {
             visualizations[i].setAttribute("fill", panelColors.active);
@@ -174,6 +173,19 @@ function startLoopAnimation(meanCircle)
        loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.5").attr("stroke","lightgrey");
        loop.transition().delay(2500).attr("opacity", "0");
     },700);
+}
+
+function highlightBinWithId(id)
+{
+    var bins = document.getElementsByClassName("bins");
+    
+    for(var i=0; i<bins.length; i++)
+    {
+        if(bins[i].getAttribute("id") != id)
+        {
+            bins[i].setAttribute("opacity", "0.4");
+        }
+    }
 }
             
         

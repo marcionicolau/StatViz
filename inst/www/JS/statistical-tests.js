@@ -8,7 +8,7 @@ function compareMeans()
                 //T-test
                 {
                     //check assumptions
-                    console.log("checking assumptions for t-test");
+                    console.log("checking assumptions for t-test\n");
                     
                     //homoscedasticity
                     performHomoscedasticityTest(getSelectedVariables());
@@ -62,8 +62,8 @@ function getSelectedVariables()
         }
     }
     
-    console.log("variables selected for statistical test = [" + variableList + "]");
+    console.log("variables selected for statistical test = [" + variableList + "]\n");
     
-    return varialbeList;
+    return variableList;
 }
             

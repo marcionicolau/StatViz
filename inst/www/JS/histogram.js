@@ -133,7 +133,7 @@ function makeHistogram()
                         .attr("height", (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size)
                         .attr("width", size/nBins)               
                         .attr("fill", colors[i])         
-                        .attr("id", currentVariableSelection[i])
+                        .attr("id", currentVariableSelection[i] + i + j)
                         .attr("class", "bins");
         }
     }
