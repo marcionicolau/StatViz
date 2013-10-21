@@ -151,7 +151,7 @@ function OnMouseOut(e)
         for (var tg = 0; tg< allTags.length; tg++) {
             var tag = allTags[tg];
             if (tag.className) {
-              var classes = tag.className.split(" ");
+              var classes = tag.className.baseVal.split(" ");
             for (var cn = 0; cn < classes.length; cn++){
               var cName = classes[cn];
               if (! classNames[cName]) {
