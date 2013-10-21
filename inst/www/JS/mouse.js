@@ -134,6 +134,14 @@ function OnMouseOver(e)
             meanCircle.attr("fill", meanColors["hover"]);
             
             startLoopAnimation(meanCircle);
+            
+            var incompleteLines = d3.selectAll(".incompleteLines");
+            
+            if(incompleteLines.length > 0)
+            {
+                incompleteLines.attr("x2", meanCircle.attr("cx"))
+                                .attr("y2", meanCircle.attr("cy")
+                                .attr("stroke", meanColors["hover"]);
         }
     }
 }
