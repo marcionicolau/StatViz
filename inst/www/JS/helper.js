@@ -181,7 +181,7 @@ function highlightBinWithId(id)
     
     for(var i=0; i<bins.length; i++)
     {
-        if(bins[i].getAttribute("id") != id)
+        if(getNumber(bins[i].getAttribute("id")) != getNumber(id))
         {
             bins[i].setAttribute("opacity", "0.4");
         }

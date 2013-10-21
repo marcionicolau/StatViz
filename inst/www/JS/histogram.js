@@ -126,23 +126,12 @@ function makeHistogram()
     for(i=0; i<currentVariableSelection.length; i++)
     {
         for(j=0; j<nBins; j++)
-        {
-            var z = "z-index: auto;";
-            if(i > 0)
-            {   
-                console.log("i: " + bins[currentVariableSelection[i]][j] + ", i-1: " + bins[currentVariableSelection[i-1]][j]);
-                if(bins[currentVariableSelection[i]][j] > bins[currentVariableSelection[i-1]][j])                
-                {
-                    z = "z-index: 3";
-                }
-            }
-                    
+        {           
             canvas.append("rect")
                         .attr("x", canvasWidth/2 - size/2 + j*xStep)
                         .attr("y", canvasHeight/2 + size/2 - (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size)
                         .attr("height", (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size)
                         .attr("width", size/nBins)          
-                        .attr("style", z)      
                         .attr("fill", colors[i])         
                         .attr("id", currentVariableSelection[i] + j)
                         .attr("class", "bins");

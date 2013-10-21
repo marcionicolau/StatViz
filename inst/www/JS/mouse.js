@@ -229,7 +229,7 @@ function setup(e, target)
 
     // bring the clicked element to the front while it is being dragged
     _oldZIndex = target.style.zIndex;
-//     target.style.zIndex = +1;
+    target.style.zIndex = +1;
 
     // we need to access the element in OnMouseMove
     _dragElement = target;
