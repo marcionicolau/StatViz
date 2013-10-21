@@ -4,13 +4,6 @@ function remove(id)
     element.parentNode.removeChild(element);
 }
 
-function getNumber(value)
-{
-    var n = parseInt(value);
-
-    return n == null || isNaN(n) ? 0 : n;
-}
-
 function addToArray(array, element)
 {   
     var variable = d3.select("#" + element + ".variableNameHolder");
@@ -175,17 +168,27 @@ function startLoopAnimation(meanCircle)
     },700);
 }
 
-function highlightBinWithX(X)
+function highlightBinWithId(ID)
 {
     var bins = document.getElementsByClassName("bins");
     
     for(var i=0; i<bins.length; i++)
     {    
-        if(bins[i].getAttribute("x") != X)
+        if(getNumber(bins[i].getAttribute("id")) != getNumber(ID))
         {
             bins[i].setAttribute("opacity", "0.4");
         }
     }
+}
+
+function getNumber(string)
+{
+    return string.replace(/[A-z]/g, '');
+}
+
+function getText(string)
+{
+    return string.replace(/[0-9]/g, '');
 }
             
         
