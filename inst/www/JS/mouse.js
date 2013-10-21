@@ -212,7 +212,7 @@ function OnMouseOut(e)
     {
         var bins = d3.selectAll(".bins");
         
-        bins.setAttribute("opacity", "1");
+        bins.attr("opacity", "1");
     }
 }	
 	
