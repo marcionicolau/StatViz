@@ -182,7 +182,10 @@ function highlightBinWithId(ID)
         else
         {
             bins[i].setAttribute("opacity", "1.0");
-            binTexts[i].setAttribute("display", "inline");
+            if(binTexts[i] != undefined)
+            {
+                binTexts[i].setAttribute("display", "inline");
+            }
         }
     }
 }
