@@ -140,7 +140,7 @@ function OnMouseOver(e)
             if(incompleteLines.length > 0)
             {
                 incompleteLines.attr("x2", meanCircle.attr("cx"))
-                                .attr("y2", meanCircle.attr("cy")
+                                .attr("y2", meanCircle.attr("cy"))
                                 .attr("stroke", meanColors["hover"]);
             }
         }
