@@ -88,7 +88,7 @@ function OnMouseMove(e)
     if(_dragElement != undefined)
     {
         var incompleteLines = d3.selectAll(".incompleteLines");
-        if((_dragElement.className.baseVal == 'means') && (incompleteLines.length > 0))
+        if((_dragElement.className.baseVal == 'means') && (incompleteLines.length > 0) && incompleteLines.attr("stroke") == meanColors["normal"])
         {
             incompleteLines.attr("x2", e.pageX - (width - canvasWidth))
                         .attr("y2", e.pageY);
