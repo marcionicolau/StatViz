@@ -59,16 +59,32 @@ function OnMouseDown(e)
         {
             meanCircle.attr("fill", meanColors["click"]);
             
-            var canvas = d3.select("#svgCanvas");
-            canvas.append("line")
-                    .attr("x1", meanCircle.attr("cx"))
-                    .attr("y1", meanCircle.attr("cy"))
-                    .attr("x2", meanCircle.attr("cx"))
-                    .attr("y2", meanCircle.attr("cy"))
-                    .attr("stroke", meanColors["normal"])
-                    .attr("id", meanCircle.attr("id"))
-                    .attr("class", "incompleteLines");
+            //check if we are finishing here
             
+            var incompleteLines = d3.selectAll(".incompleteLines");
+            
+            if(incompleteLines.length > 0)
+            {
+                incompleteLines.attr("x2", meanCircle.attr("cx"))
+                                .attr("y2", meanCircle.attr("cy"))
+                                .attr("stroke", meanColors["click"])
+                                .attr("class", "completeLines");
+            }
+            
+            var completeLines = d3.selectAll(".completeLines");
+            
+            if(completeLines.length < (d3.selectAll(".means").length - 1))
+            {
+                var canvas = d3.select("#svgCanvas");
+                canvas.append("line")
+                        .attr("x1", meanCircle.attr("cx"))
+                        .attr("y1", meanCircle.attr("cy"))
+                        .attr("x2", meanCircle.attr("cx"))
+                        .attr("y2", meanCircle.attr("cy"))
+                        .attr("stroke", meanColors["normal"])
+                        .attr("id", meanCircle.attr("id"))
+                        .attr("class", "incompleteLines");
+            }
         }   
     }
     
