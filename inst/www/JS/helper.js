@@ -180,7 +180,7 @@ function highlightBinWithId(id)
     var bins = document.getElementsByClassName("bins");
     
     for(var i=0; i<bins.length; i++)
-    {
+    {    
         if(getNumber(bins[i].getAttribute("id")) != getNumber(id))
         {
             bins[i].setAttribute("opacity", "0.4");

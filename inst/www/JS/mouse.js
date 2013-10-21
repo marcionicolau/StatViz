@@ -172,6 +172,7 @@ function OnMouseOver(e)
         
         var bin = d3.select("#" + target.id + ".bins");
         
+        console.log("number = " + getNumber(target.id));
         highlightBinWithId(target.id);
     }   
 }
