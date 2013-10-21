@@ -30,8 +30,8 @@ function performHomoscedasticityTest(dataset, variableName)
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("performHomoscedasticityTest", {
-                    dependentVariable: ,
-                    independentVariable: ,
+//                     dependentVariable: ,
+//                     independentVariable: ,
                     dataset: dataset
                     
                   }, function(output) {                                 
