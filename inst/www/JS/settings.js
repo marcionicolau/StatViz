@@ -34,3 +34,5 @@ var meanColors = new Object();
 meanColors["normal"] = "purple";
 meanColors["hover"] = "lightgreen";
 meanColors["click"] = "green";
+
+var intervals = new Object();
