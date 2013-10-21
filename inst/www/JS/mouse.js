@@ -171,6 +171,8 @@ function OnMouseOut(e)
         {
             meanCircle.attr("fill", meanColors["normal"]);
         }
+        removeElementsByClass("loops");
+        
         clearInterval(bubbles);
     }
     

@@ -131,6 +131,15 @@ Array.prototype.contains = function(v) {
    }
    return false;
 };
+
+function removeElementsByClass(className)
+{
+   elements = document.getElementsByClassName(className);
+   while(elements.length > 0)
+   {
+       elements[0].parentNode.removeChild(elements[0]);
+   }
+}
             
         
         
