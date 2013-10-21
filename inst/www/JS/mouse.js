@@ -178,15 +178,40 @@ function OnMouseOver(e)
     
         var datapoint = d3.select("#" + target.id + ".datapoints");
         
-        datapoint.transition().duration(700).attr("r", "5px").attr("fill", meanColors["normal"]);
+        datapoint.transition().duration(300).attr("r", "5px").attr("fill", meanColors["normal"]);
         
-        d3.select("#svgCanvas")
-            .append("text")
+        var canvas = d3.select("#svgCanvas");
+        canvas.append("text")
                 .attr("x", e.pageX + 10 - (width - canvasWidth))
                 .attr("y", e.pageY + 15)
                 .attr("fill", meanColors["normal"])
                 .text(variables[currentVariableSelection[0]][getNumber(datapoint.attr("id"))] + ", " + variables[currentVariableSelection[1]][getNumber(datapoint.attr("id"))])
                 .attr("class", "hoverText");
+                
+        var xLine = canvas.append("line")
+                .attr("x1", datapoint.attr("cx"))
+                .attr("y1", datapoint.attr("cy"))
+                .attr("x2", datapoint.attr("cx"))
+                .attr("y2", datapoint.attr("cy"))
+                .attr("stroke", meanColors["normal"])
+                .attr("stroke-dasharray", "5,5")
+                .attr("id", "x")
+                .attr("class", "hoverText");
+        
+        xLine.transition().duration(500).attr("x2", canvasWidth/2 - size/2);
+        
+        var yLine = canvas.append("line")
+                .attr("x1", datapoint.attr("cx"))
+                .attr("y1", datapoint.attr("cy"))
+                .attr("x2", datapoint.attr("cx"))
+                .attr("y2", datapoint.attr("cy"))
+                .attr("stroke", meanColors["normal"])
+                .attr("stroke-dasharray", "5,5")
+                .attr("id", "y")
+                .attr("class", "hoverText");
+        
+        yLine.transition().duration(500).attr("y2", canvasHeight/2 - size/2);
+                
         
     }   
 }
@@ -233,7 +258,7 @@ function OnMouseOut(e)
     {
         var datapoint = d3.select("#" + target.id + ".datapoints");
         
-        datapoint.transition().duration(700).attr("r", "2px").attr("fill", "black");
+        datapoint.transition().duration(300).attr("r", "2px").attr("fill", "black");
         removeElementsByClass("hoverText");
     }
     
