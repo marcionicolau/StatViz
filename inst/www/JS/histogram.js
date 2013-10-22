@@ -19,6 +19,8 @@ function makeHistogram()
     // Find minimum and maximum values
     var min = Array.min(mins);
     var max = Array.max(maxs);
+    
+    console.log(data.unique());
 
     // Should be changeable
     var numberOfGroovesInXAxis = 10;

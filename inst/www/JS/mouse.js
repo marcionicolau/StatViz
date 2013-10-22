@@ -248,7 +248,7 @@ function OnMouseOut(e)
     {
         var datapoint = d3.select("#" + target.id + ".datapoints");
         
-        datapoint.transition().duration(300).attr("r", "2px").attr("fill", "black");
+        datapoint.transition().duration(300).attr("r", datapointRadius).attr("fill", "black");
         removeElementsByClass("hoverText");
     }
     
