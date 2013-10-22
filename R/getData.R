@@ -1,8 +1,4 @@
 getData <- function(dataset = "langley", columnName = "Unemployed")
 {
-    assign(paste("DATA"),dataset);
-    
-    DATA <- as.data.frame(DATA)
-    
-    list(DATA = eval(parse(text = paste("DATA","$",columnName))));
+    list(data = eval(parse(text = paste(dataset,"$",columnName))));
 }

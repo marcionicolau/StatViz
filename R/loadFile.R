@@ -6,7 +6,6 @@ loadFile <- function(filePath)
     
     variableNames = names(DATA)
     
-    list(DATA = DATA, variableNames = variableNames);
-    
+    list(DATA = "DATA", variableNames = variableNames);
     
 }
