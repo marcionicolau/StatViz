@@ -98,7 +98,7 @@ function makeHistogram()
                                         .attr("class", "axes");
 
                                     
-        var xStep = size/(numberOfGroovesInXAxis-1);
+        var xStep = size/numberOfGroovesInXAxis;
     
         //grooves
         for(i=0; i<=numberOfGroovesInXAxis; i++)
