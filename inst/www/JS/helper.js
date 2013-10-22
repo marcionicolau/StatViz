@@ -95,7 +95,7 @@ function resetSVGCanvas()
       if(document.getElementById("svgCanvas") != null)
             remove("svgCanvas");
             
-        var svgCanvas = canvas.append("svg");
+        var svgCanvas = d3.select("#canvas").append("svg");
         
         svgCanvas.attr("id", "svgCanvas")
                                 .attr("x", 0)
