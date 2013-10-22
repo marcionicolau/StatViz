@@ -1,6 +1,6 @@
 function makeHistogram()
 {    
-    //Need to constrain the selection to 3 variables
+    // TODO: Need to constrain the selection to 3 variables
     
     var data = [];
     var mins = [];
@@ -13,11 +13,15 @@ function makeHistogram()
         mins[i] = MIN[currentVariableSelection[i]];      
         maxs[i] = MAX[currentVariableSelection[i]];      
     }
+    
+    console.log("data=[" + data +"]");
+    
+    // Find minimum and maximum values
     var min = Array.min(mins);
     var max = Array.max(maxs);
 
     // Should be changeable
-    var nGroovesX = 10;
+    var numberOfGroovesInXAxis = 10;
     
     var slice = (max - min)/nBins;    
     
@@ -81,10 +85,10 @@ function makeHistogram()
                                     .attr("class", "axes");
 
                                     
-    var xStep = size/nGroovesX;
+    var xStep = size/numberOfGroovesInXAxis;
     
     //grooves
-    for(i=0; i<=nGroovesX; i++)
+    for(i=0; i<=numberOfGroovesInXAxis; i++)
     {
         canvas.append("line")
                     .attr("x1", canvasWidth/2 - size/2 + i*xStep)
