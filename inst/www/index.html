@@ -120,7 +120,7 @@
                                 columnName: variableName
                               }, function(output) {                                 
                 variables[variableName] = output.data; 
-                console.log(variables[variableName]);
+                
                 MIN[variableName] = Array.min(variables[variableName]);
                 MAX[variableName] = Array.max(variables[variableName]);                               
                   }).fail(function(){
@@ -202,7 +202,7 @@
                                                     .attr("x", variableNameHolderPadding + variableNameHolderWidth/2)
                                                     .attr("y", variableNameHolderPadding + variableNameHolderHeight/2 + 15 + i*(variableNameHolderHeight + variableNameHolderPadding))
                                                     .attr("fill", "black")
-                                                    .attr("font-size", "36px")
+                                                    .attr("font-size", "24px")
                                                     .attr("text-anchor", "middle")
                                                     .text(variableNames[i])
                                                     .attr("id", variableNames[i])
