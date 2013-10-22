@@ -1,6 +1,6 @@
 loadFile <- function(filePath)
 {
-    assign(paste("DATA","="), read.table(filePath, head = T));
+    assign(paste("DATA"), read.table(filePath, head = T));
     
     data <- eval(as.name("DATA"));
     
