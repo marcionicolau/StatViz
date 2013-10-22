@@ -13,6 +13,7 @@ function makeHistogram()
         mins[i] = MIN[currentVariableSelection[i]];      
         maxs[i] = MAX[currentVariableSelection[i]];      
     }
+
     
     console.log("data=[" + data +"]");
     
@@ -49,6 +50,8 @@ function makeHistogram()
                 index = nBins - 1;
                 
             bins[currentVariableSelection[i]][index]++;
+            
+            console.log(bins[currentVariableSelection[i]][index]);
         }
     }
     
