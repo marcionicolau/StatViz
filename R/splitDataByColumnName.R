@@ -7,7 +7,7 @@ splitDataByColumnValues <- function(dataset, columnName)
     for(i in 1:length(levels))
     {
         assign(paste(levels[i]), subset(paste("table"), paste("table","$",columnName) == paste(levels[i])));
-        list(paste(levels[i]) = eval(levels[i]));
+        list(assign(paste(levels[i]),levels[i]));
     }
 }  
     
