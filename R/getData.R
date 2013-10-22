@@ -1,6 +1,8 @@
 getData <- function(dataset, columnName = "Unemployed")
 {
-    table = as.data.frame(dataset);
+    assign(paste("table"),dataset);
     
-    list(data = eval(parse(text = paste(table,"$",columnName))));
+    table <- as.data.frame(table)
+    
+    list(data = eval(parse(text = paste("table","$",columnName))));
 }
