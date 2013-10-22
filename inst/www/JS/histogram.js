@@ -135,7 +135,7 @@ function makeHistogram()
             {
                 canvas.append("text")
                             .attr("x", canvasWidth/2 - size/2 + j*xStep + (size/nBins)/2)                        
-                            .attr("y", canvasHeight/2 + size/2 - (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size + 20)
+                            .attr("y", canvasHeight/2 + size/2 - (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size + 15)
                             .attr("fill", "black")
                             .attr("text-anchor", "middle")
                             .attr("font-size", binCountFontSize)
