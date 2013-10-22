@@ -2,7 +2,7 @@ getData <- function(dataset = "langley", columnName = "Unemployed")
 {
     assign(paste("DATA"),dataset);
     
-    DATA <- data.frame(DATA)
+    DATA <- as.data.frame(DATA)
     
-    list(DATA = eval(parse(text = paste(DATA,"$",columnName))));
+    list(DATA = eval(parse(text = paste("DATA","$",columnName))));
 }
