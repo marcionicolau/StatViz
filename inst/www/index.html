@@ -55,11 +55,14 @@
                 visualizationPanel.attr("style", "width: " + canvasWidth + "px; height: " + height/3 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth) + "px;");    
                 canvas.attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth) + "px;");    
                 
+                // Load data from a given file
+                loadFile("/Users/krishnasubramanian/Documents/Coursera/Statistics One/Datasets/datafiles-Stats1.13.Lab.04.txt");
+                
                 // Load dataset variables and their data (into global variable "variables") and IQR (into IQR)
-                getVariables(dataset);
+//                 getVariables(dataset);
                 
                 // Populate visualizations
-                renderVisualizations();                
+//                 renderVisualizations();                
             }
             
             function loadFile(filePath)
@@ -68,6 +71,7 @@
                                 filePath: filePath
                               }, function(output) {                   
                 dataset = output.dataset;
+                
                 console.log("dataset: " + dataset);
                  }).fail(function(){
                       alert("Failure: " + req.responseText);
