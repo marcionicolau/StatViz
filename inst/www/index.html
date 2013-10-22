@@ -79,7 +79,7 @@
                 for(var i=0; i<output.variableNames.length; i++)
                 {
                     getData(dataset, output.variableNames[i]);                 
-//                     getIQR(dataset, output.variableNames[i]);                    
+                    getIQR(dataset, output.variableNames[i]);                    
                 }
                  }).fail(function(){
                       alert("Failure: " + req.responseText);
@@ -119,7 +119,7 @@
                                 dataset: dataset,
                                 columnName: variableName
                               }, function(output) {                                 
-                variables[variableName] = output.data; 
+                variables[variableName] = output.DATA; 
                 MIN[variableName] = Array.min(output.data);
                 MAX[variableName] = Array.max(output.data);                               
                   }).fail(function(){
