@@ -61,7 +61,7 @@ function makeHistogram()
                 if(index >= uniqueData.length)
                     index = uniqueData.length - 1;
                 
-                bins[currentVariableSelection[i]][index]++;         
+                bins[currentVariableSelection[i]][uniqueData.indexOf(data[i][j])]++;         
             }
         }
     
