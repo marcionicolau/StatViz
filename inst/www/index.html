@@ -70,7 +70,8 @@
                 var req = opencpu.r_fun_json("loadFile", {
                                 filePath: filePath
                               }, function(output) {                   
-                dataset = output.data;                
+                dataset = output.DATA; 
+                console.log(dataset);               
                 console.log("variables in the dataset: [" + output.variableNames + "]\n");
                 
                 renderVariableNames(output.variableNames);
