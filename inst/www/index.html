@@ -120,8 +120,9 @@
                                 columnName: variableName
                               }, function(output) {                                 
                 variables[variableName] = output.DATA; 
-                MIN[variableName] = Array.min(output.data);
-                MAX[variableName] = Array.max(output.data);                               
+                console.log(output.DATA);
+                MIN[variableName] = Array.min(output.DATA);
+                MAX[variableName] = Array.max(output.DATA);                               
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
                 });
