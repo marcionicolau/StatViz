@@ -57,6 +57,9 @@ function getData(dataset, variableName)
                     columnName: variableName
                   }, function(output) {                                 
     variables[variableName] = output.data; 
+    
+    console.log("\n" + variableName + ": [" + variables[variableName] + "]");
+    
     MIN[variableName] = Array.min(variables[variableName]);
     MAX[variableName] = Array.max(variables[variableName]);
       }).fail(function(){
