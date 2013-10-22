@@ -58,11 +58,11 @@
                 // Load data from a given file
                 loadFile("/Users/krishnasubramanian/Documents/Coursera/Statistics One/Datasets/datafiles-Stats1.13.Lab.04.txt");
                 
-                // Load dataset variables and their data (into global variable "variables") and IQR (into IQR)
+                // To load from a dataset in R datasets package
 //                 getVariables(dataset);
                 
                 // Populate visualizations
-//                 renderVisualizations();                
+                renderVisualizations();                
             }
             
             function loadFile(filePath)
@@ -70,10 +70,15 @@
                 var req = opencpu.r_fun_json("loadFile", {
                                 filePath: filePath
                               }, function(output) {                   
-                dataset = output.data;
-                varNames = output.variableNames;
+                dataset = output.data;                
+                console.log("variables in the dataset: [" + output.variableNames + "]\n");
                 
-                console.log("variables in the dataset: " + varNames);
+                renderVariableNames(output.variableNames);
+                for(var i=0; i<output.varNames.length; i++)
+                {
+                    getData(dataset, output.variableNames[i]);                 
+                    getIQR(dataset, output.variableNames[i]);                    
+                }
                  }).fail(function(){
                       alert("Failure: " + req.responseText);
                 });
