@@ -20,7 +20,7 @@ function makeHistogram()
     var min = Array.min(mins);
     var max = Array.max(maxs);
     
-    console.log(data.unique());
+    console.log("unique data: " + data.unique());
 
     // Should be changeable
     var numberOfGroovesInXAxis = 10;
