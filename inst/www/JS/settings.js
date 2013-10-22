@@ -30,12 +30,18 @@ var meanColors = new Object(); //Colors for mean, and ?
 
 
 // Histogram
-var nBins = 10;   
+var nBins = 10; 
+var binCountFontSize = "16px";
 
 
 // Boxplots
 var boxWidth = 75;
 var intervals = new Object(); //for keeping track of animations
+var meanRadius = "5px";
+var outlierRadius = "3px";
+
+// Scatterplot
+var datapointRadius = "3px";
 
 
 

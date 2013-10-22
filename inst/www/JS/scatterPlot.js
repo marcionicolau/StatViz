@@ -122,7 +122,7 @@ function makeScatterplot()
         canvas.append("circle")
                     .attr("cx", canvasWidth/2 - size/2 + getValue(data["X"][i], "X")*size)
                     .attr("cy", canvasHeight/2 + size/2 - getValue(data["Y"][i], "Y")*size)
-                    .attr("r", "2px")
+                    .attr("r", datapointRadius)
                     .attr("fill", color)
                     .attr("id", "data" + i)
                     .attr("class", "datapoints");     
