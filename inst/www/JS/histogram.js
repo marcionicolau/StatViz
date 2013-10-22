@@ -171,7 +171,6 @@ function makeHistogram()
             }
         }
     }
-    }
     else
     {
         // Should be changeable
