@@ -6,21 +6,28 @@ function makeHistogram()
     var mins = [];
     var maxs = [];
     
+    var combinedData = [];
+    
     //Get data, minimums and maximums for each selected variable
     for(var i=0; i<currentVariableSelection.length; i++)
     {        
         data[i] = variables[currentVariableSelection[i]];      
         mins[i] = MIN[currentVariableSelection[i]];      
-        maxs[i] = MAX[currentVariableSelection[i]];      
+        maxs[i] = MAX[currentVariableSelection[i]];
+        
+        for(var j=0; j<data[i].length; j++)
+        {
+            combinedData.push(data[i][j]);
+        }      
     }
     
-    console.log("data=[" + data + "]");
+    console.log("combined data=[" + combinedData + "]");
 
     // Find minimum and maximum values
     var min = Array.min(mins);
     var max = Array.max(maxs);
     
-    console.log("unique data: " + data.unique());
+    console.log("unique data: " + combinedData.unique());
 
     // Should be changeable
     var numberOfGroovesInXAxis = 10;
