@@ -114,7 +114,7 @@ function makeHistogram()
             canvas.append("text")
                         .attr("x", canvasWidth/2 - size/2 + i*xStep - 15)
                         .attr("y", canvasHeight/2 + size/2 + 30 + axesOffset)                    
-                        .text(format(min + i*slice))
+                        .text(uniqueData[i])
                         .attr("id", "groove" + i)
                         .attr("class", "xAxisGrooveText");
         }
