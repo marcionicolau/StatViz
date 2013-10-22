@@ -144,6 +144,8 @@ function makeHistogram()
                             .attr("id", currentVariableSelection[i] + j)
                             .attr("class", "binTexts");
             }
+            
+            console.log((bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size);
                         
             canvas.append("rect")
                         .attr("x", canvasWidth/2 - size/2 + j*xStep)
