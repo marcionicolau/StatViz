@@ -119,10 +119,10 @@
                                 dataset: dataset,
                                 columnName: variableName
                               }, function(output) {                                 
-                variables[variableName] = output.DATA; 
-                console.log(output.DATA);
-                MIN[variableName] = Array.min(output.DATA);
-                MAX[variableName] = Array.max(output.DATA);                               
+                variables[variableName] = output.data; 
+                console.log(variables[variableName]);
+                MIN[variableName] = Array.min(variables[variableName]);
+                MAX[variableName] = Array.max(variables[variableName]);                               
                   }).fail(function(){
                       alert("Failure: " + req.responseText);
                 });
