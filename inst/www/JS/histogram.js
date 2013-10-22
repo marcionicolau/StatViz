@@ -13,10 +13,9 @@ function makeHistogram()
         mins[i] = MIN[currentVariableSelection[i]];      
         maxs[i] = MAX[currentVariableSelection[i]];      
     }
+    
+    console.log("data=[" + data + "]");
 
-    
-    console.log("data=[" + data +"]");
-    
     // Find minimum and maximum values
     var min = Array.min(mins);
     var max = Array.max(maxs);
@@ -45,14 +44,11 @@ function makeHistogram()
         for(var j=0; j<data[i].length; j++)
         {           
             var index = Math.ceil((data[i][j] - min)/slice);
-            console.log("data=" + data[i][j] + ", min=" + min + ", slice=" + slice);
             
             if(index >= nBins)
                 index = nBins - 1;
                 
-            bins[currentVariableSelection[i]][index]++;
-            
-            console.log("index=" + index + ", nBins=" + nBins);
+            bins[currentVariableSelection[i]][index]++;         
         }
     }
     
@@ -148,8 +144,6 @@ function makeHistogram()
                             .attr("id", currentVariableSelection[i] + j)
                             .attr("class", "binTexts");
             }
-            
-            console.log("bins: " + bins[currentVariableSelection[i]][j] + ", array: " + Array.max(binMaxs) + "size: " + size);
                         
             canvas.append("rect")
                         .attr("x", canvasWidth/2 - size/2 + j*xStep)
