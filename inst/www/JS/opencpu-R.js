@@ -16,7 +16,7 @@ function loadFile(filePath)
     for(var i=0; i<output.variableNames.length; i++)
     {
         getData(dataset, output.variableNames[i]);                 
-        getIQRMinMax(dataset, output.variableNames[i]);                    
+        getIQR(dataset, output.variableNames[i]);                    
     }
      }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -57,6 +57,8 @@ function getData(dataset, variableName)
                     columnName: variableName
                   }, function(output) {                                 
     variables[variableName] = output.data; 
+    MIN[variableName] = Array.min(variables[variableName]);
+    MAX[variableName] = Array.max(variables[variableName]);
       }).fail(function(){
           alert("Failure: " + req.responseText);
     });
@@ -70,16 +72,14 @@ function getData(dataset, variableName)
     });
 }
 
-function getIQRMinMax(dataset, variableName)
+function getIQR(dataset, variableName)
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("getIQR", {
                     dataset: dataset,
                     columnName: variableName
                   }, function(output) {                                 
-    IQR[variableName] = output.IQR;  
-    MIN[variableName] = Array.min(variables[variableName]);
-    MAX[variableName] = Array.max(variables[variableName]);                                                             
+    IQR[variableName] = output.IQR;                                                                   
       }).fail(function(){
           alert("Failure: " + req.responseText);
     });
