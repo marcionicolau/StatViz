@@ -71,8 +71,9 @@
                                 filePath: filePath
                               }, function(output) {                   
                 dataset = output.data;
+                varNames = output.variableNames;
                 
-                console.log("dataset: " + dataset);
+                console.log("variables in the dataset: " + varNames);
                  }).fail(function(){
                       alert("Failure: " + req.responseText);
                 });
