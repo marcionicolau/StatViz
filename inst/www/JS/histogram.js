@@ -98,7 +98,7 @@ function makeHistogram()
                                         .attr("class", "axes");
 
                                     
-        var xStep = size/numberOfGroovesInXAxis;
+        var xStep = size/(numberOfGroovesInXAxis-1);
     
         //grooves
         for(i=0; i<=numberOfGroovesInXAxis; i++)
@@ -112,7 +112,7 @@ function makeHistogram()
                         .attr("class", "xAxisGrooves");
         
             canvas.append("text")
-                        .attr("x", canvasWidth/2 - size/2 + i*xStep - 15)
+                        .attr("x", canvasWidth/2 - size/2 + i*xStep)
                         .attr("y", canvasHeight/2 + size/2 + 30 + axesOffset)                    
                         .text(uniqueData[i])
                         .attr("id", "groove" + i)
