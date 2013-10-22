@@ -1,10 +1,12 @@
 loadFile <- function(filePath)
 {
-    DATA = read.table(filePath, head = T);
+    assign(paste("DATA","="), read.table(filePath, head = T));
     
-    variableNames = names(DATA)
+    data <- eval(as.name("DATA"));
     
-    list(data = DATA, variableNames = variableNames);
+    variableNames = names(data)
+    
+    list(data = data, variableNames = variableNames);
     
     
 }
