@@ -45,6 +45,7 @@ function makeHistogram()
         for(var j=0; j<data[i].length; j++)
         {           
             var index = Math.ceil((data[i][j] - min)/slice);
+            console.log("data=" + data[i][j] + ", min=" + min + ", slice=" + slice);
             
             if(index >= nBins)
                 index = nBins - 1;
