@@ -1,4 +1,6 @@
-getData <- function(dataset = "langley", columnName = "Unemployed")
+getData <- function(data, columnName = "Unemployed")
 {
-    list(data = eval(dataset));
+    table = as.data.frame(data);
+    
+    list(data = eval(table));
 }
