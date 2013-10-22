@@ -130,8 +130,8 @@
                                                     .attr("class", "visualizationHolder");
                     
                     visualizationPanelSVG.append("image")
-                                                    .attr("x", visualizationHolderPadding + visualizationHolderWidth/2 - imageSize/2 + i*(visualizationHolderWidth + visualizationHolderPadding))
-                                                    .attr("y", visualizationHolderPadding + visualizationHolderHeight/2 - imageSize/2)
+                                                    .attr("x", visualizationHolderPadding + visualizationHolderWidth/2 - visualizationImageSize/2 + i*(visualizationHolderWidth + visualizationHolderPadding))
+                                                    .attr("y", visualizationHolderPadding + visualizationHolderHeight/2 - visualizationImageSize/2)
                                                     .attr("xlink:href", "images/" + (i+1) + ".png")
                                                     .attr("height", visualizationImageSize)
                                                     .attr("width", visualizationImageSize)
