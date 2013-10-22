@@ -1,17 +1,8 @@
-    getIQR <- function(dataset = "",columnName = "") 
+    getIQR <- function(dataset,columnName = "") 
     {
-        if(dataset == "")
-        {   
-            dataset = "beaver1";
-            columnName = "time";
-        }
-        else if(columnName == "")
-        {
-            # Load the first column name by default
-            columnName = names(eval(parse(text = dataset)))[1]; 
-        }
+        table <- as.data.frame(dataset)
         
-        distribution = eval(parse(text = paste(dataset,"$",columnName)));
+        distribution = eval(parse(text = paste("table","$",columnName)));
         
-        list(IQR = IQR(distribution), dataset = dataset, columnName = columnName);
+        list(IQR = IQR(distribution));
     }
