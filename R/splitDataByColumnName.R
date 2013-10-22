@@ -1,4 +1,4 @@
-splitDataByColumnValues <- function(dataset, columnName, value)
+splitDataByColumnName <- function(dataset, columnName, value)
 {
     table <- as.data.frame(dataset);
     
