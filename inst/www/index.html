@@ -72,6 +72,7 @@
                               }, function(output) {                   
                 dataset = output.data;                
                 console.log("variables in the dataset: [" + output.variableNames + "]\n");
+                console.log("variable 1: " + output.value);
                 
                 renderVariableNames(output.variableNames);
                 

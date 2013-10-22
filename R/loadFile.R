@@ -1,6 +1,10 @@
 loadFile <- function(filePath)
 {
-    eval(parse(text(paste("DATA",=,read.table(filePath, head = T)))));
+    DATA = read.table(filePath, head = T);
     
-    list(data = "DATA", variableNames = names(DATA));
+    variableNames = names(DATA)
+    
+    list(data = DATA, variableNames = variableNames, value = DATA$variableNames[1]);
+    
+    
 }
