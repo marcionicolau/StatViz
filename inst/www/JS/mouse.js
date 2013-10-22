@@ -30,7 +30,7 @@ function OnMouseDown(e)
         toggleFillColors();
     }
     
-    else if((e.button == 1 && window.event != null || e.button == 0) && ((target.className.baseVal == "visualizationHolder") || (target.className.baseVal == "visualizationHolderText") || (target.className.baseVal == "visualizationHolderImage"))
+    else if((e.button == 1 && window.event != null || e.button == 0) && ((target.className.baseVal == "visualizationHolder") || (target.className.baseVal == "visualizationHolderText") || (target.className.baseVal == "visualizationHolderImage")))
     {
         setup(e, target);    
         currentVisualizationSelection = target.id;
