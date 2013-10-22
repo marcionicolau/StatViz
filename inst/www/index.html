@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="style/visualizations.css">
         <meta charset="utf-8">
         
-<!--         Title - change if possible -->
+        <!-- Title - change if possible -->
         <title>StatViz</title>
         <script type="text/javascript" src="d3/d3.v3.js"></script>
         
@@ -34,12 +34,16 @@
             
 //  Global variables that store statistics
             var variables = new Object();     
+            var variableTypes = new Object();
             var IQR = new Object();   
             var MIN = new Object();
             var MAX = new Object();
             
             var currentVariableSelection = [];
-            var currentVisualizationSelection = "Histogram"; //by default
+            
+            // Select histogram by default
+            var currentVisualizationSelection = "Histogram"; 
+            
         
             window.onload = function()
             { 
@@ -56,7 +60,7 @@
                 canvas.attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth) + "px;");    
                 
                 // Load data from a given file
-                loadFile("/Users/krishnasubramanian/Documents/Coursera/Statistics One/Datasets/datafiles-Stats1.13.Lab.02.txt");
+                loadFile(pathToFile);
                 
                 // To load from a dataset in R datasets package
 //                 getVariables(dataset);
@@ -71,7 +75,7 @@
                                 filePath: filePath
                               }, function(output) {                   
                 dataset = output.DATA; 
-                console.log(dataset);               
+                console.log("dataset: " + dataset);               
                 console.log("variables in the dataset: [" + output.variableNames + "]\n");
                 
                 renderVariableNames(output.variableNames);

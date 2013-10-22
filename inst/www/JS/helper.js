@@ -1,3 +1,5 @@
+var format = d3.format(".1f");	
+
 function remove(id)
 {
     var element = document.getElementById(id);

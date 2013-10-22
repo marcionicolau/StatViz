@@ -38,6 +38,7 @@ function OnMouseDown(e)
         console.log(currentVariableSelection);
                             
         makePlot();
+        toggleFillColors();
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "visualizationHolder")
