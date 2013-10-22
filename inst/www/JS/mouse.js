@@ -1,15 +1,4 @@
-var _startX = 0;            // mouse starting positions
-var _startY = 0;
-var _offsetX = 0;           // current element offset
-var _offsetY = 0;
-var _height = 0;
-var _width = 0;
-var _dragElement;           // needs to be passed from OnMouseDown to OnMouseMove
-var _oldZIndex = 0;         // we temporarily increase the z-index during drag		
-
-
-
-function InitMouseGestures()
+function InitializeMouseEventHandlers()
 {
     document.onmousedown = OnMouseDown;
     document.onmousemove = OnMouseMove;
@@ -29,7 +18,7 @@ function OnMouseDown(e)
     // for IE, left click == 1
     // for Firefox, left click == 0
    
-    if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "variableNameHolder")
+    if((e.button == 1 && window.event != null || e.button == 0) && ((target.className.baseVal == "variableNameHolder") || (target.className.baseVal == "variableNameHolderText")))
     {
         setup(e, target);        
         
@@ -41,7 +30,7 @@ function OnMouseDown(e)
         toggleFillColors();
     }
     
-    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "visualizationHolder")
+    else if((e.button == 1 && window.event != null || e.button == 0) && ((target.className.baseVal == "visualizationHolder") || (target.className.baseVal == "visualizationHolderText") || (target.className.baseVal == "visualizationHolderImage"))
     {
         setup(e, target);    
         currentVisualizationSelection = target.id;

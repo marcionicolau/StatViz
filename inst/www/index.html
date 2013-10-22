@@ -19,147 +19,35 @@
         
         <script type="text/javascript" src="JS/statistical-tests.js"></script>
         
+        <script type="text/javascript" src="JS/opencpu-R.js"></script>
+        
         <script type="text/javascript" src="JS/helper.js"></script>
         <script type="text/javascript" src="JS/math.js"></script>
         <script type="text/javascript" src="JS/settings.js"></script>
+        <script type="text/javascript" src="JS/global variables.js"></script>
         
         <script src="opencpu/jquery-1.10.1.min.js"></script>
         <script src="opencpu/opencpu.js"></script>
     </head>
     <body>        
         <script type="text/javascript">            
-            
-// Define format for displaying text (this depends on the dataset)            
-            var format = d3.format(".1f");	
-            
-//  Global variables that store statistics
-            var variables = new Object();     
-            var variableTypes = new Object();
-            var IQR = new Object();   
-            var MIN = new Object();
-            var MAX = new Object();
-            
-            var currentVariableSelection = [];
-            
-            // Select histogram by default
-            var currentVisualizationSelection = "Histogram"; 
-            
         
             window.onload = function()
-            { 
-                InitMouseGestures();
+            {                 
+                InitializeMouseEventHandlers();
                 
                 // Set the width and height of panels
-                variablePanel = d3.select("#variable.panel");
-                visualizationPanel = d3.select("#visualization.panel");
-                
-                canvas = d3.select("#canvas");
-        
-                variablePanel.attr("style", "width: " + (width - canvasWidth) + "px; height: " + height + "px;");    
-                visualizationPanel.attr("style", "width: " + canvasWidth + "px; height: " + height/3 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth) + "px;");    
-                canvas.attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth) + "px;");    
+                d3.select("#variable.panel").attr("style", "width: " + (width - canvasWidth) + "px; height: " + height + "px;");    
+                d3.select("#visualization.panel").attr("style", "width: " + canvasWidth + "px; height: " + height/3 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth) + "px;");                    
+                d3.select("#canvas").attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth) + "px;");    
                 
                 // Load data from a given file
-                loadFile(pathToFile);
-                
-                // To load from a dataset in R datasets package
-//                 getVariables(dataset);
+                loadFile(pathToFile); // To load a dataset from the R datasets package use getVariables(dataset)
                 
                 // Populate visualizations
                 renderVisualizations();                
             }
             
-            function loadFile(filePath)
-            {
-                var req = opencpu.r_fun_json("loadFile", {
-                                filePath: filePath
-                              }, function(output) {                   
-                dataset = output.DATA; 
-                console.log("dataset: " + dataset);               
-                console.log("variables in the dataset: [" + output.variableNames + "]\n");
-                
-                renderVariableNames(output.variableNames);
-                
-                for(var i=0; i<output.variableNames.length; i++)
-                {
-                    getData(dataset, output.variableNames[i]);                 
-                    getIQR(dataset, output.variableNames[i]);                    
-                }
-                 }).fail(function(){
-                      alert("Failure: " + req.responseText);
-                });
-        
-                //if R returns an error, alert the error message
-                req.fail(function(){
-                  alert("Server error: " + req.responseText);
-                }); 
-            }
-                
-            function getVariables(dataset)
-            {   
-                // Get variable names and their data type
-                var req = opencpu.r_fun_json("getVariableNames", {
-                                dataset: dataset
-                              }, function(output) {                   
-                renderVariableNames(output.varNames);
-                for(var i=0; i<output.varNames.length; i++)
-                {
-                    getData(dataset, output.varNames[i]);                 
-                    getIQR(dataset, output.varNames[i]);                    
-                } }).fail(function(){
-                      alert("Failure: " + req.responseText);
-                });
-        
-                //if R returns an error, alert the error message
-                req.fail(function(){
-                  alert("Server error: " + req.responseText);
-                });   
-            }
-            
-            function getData(dataset, variableName)
-            {
-                // Get variable names and their data type
-                var req = opencpu.r_fun_json("getData", {
-                                dataset: dataset,
-                                columnName: variableName
-                              }, function(output) {                                 
-                variables[variableName] = output.data; 
-                
-                MIN[variableName] = Array.min(variables[variableName]);
-                MAX[variableName] = Array.max(variables[variableName]);                               
-                  }).fail(function(){
-                      alert("Failure: " + req.responseText);
-                });
-        
-                //if R returns an error, alert the error message
-                req.fail(function(){
-                  alert("Server error: " + req.responseText);
-                });
-                req.complete(function(){
-                    
-                });
-            }
-            
-            function getIQR(dataset, variableName)
-            {
-                // Get variable names and their data type
-                var req = opencpu.r_fun_json("getIQR", {
-                                dataset: dataset,
-                                columnName: variableName
-                              }, function(output) {                                 
-                IQR[variableName] = output.IQR;                                
-                  }).fail(function(){
-                      alert("Failure: " + req.responseText);
-                });
-        
-                //if R returns an error, alert the error message
-                req.fail(function(){
-                  alert("Server error: " + req.responseText);
-                });
-                req.complete(function(){
-                    
-                });
-            }
             
             function renderVariableNames(variableNames)
             {   
@@ -170,7 +58,7 @@
                 var radius = "15px";
                 var variableNameHolderWidth = getNumber(variablePanelWidth) - 2*variableNameHolderPadding;                
                 
-                // TODO: Find this dynamically based on number of variable names (75 is the maximum), do this for font-size as well
+                // TODO: Find this dynamically based on number of variable names (50 is the maximum), do this for font-size as well
                 var variableNameHolderHeight = 50;
                 
                 var variablePanelSVG = variablePanel.append("svg");                
@@ -180,16 +68,10 @@
                                             .attr("left", variablePanel.style("left"))
                                             .attr("top", variablePanel.style("top"));  
                 
-                var imageSize = 50;
-                
-                flags = [0,0,1,0,0,0,1];
-                imageNames = ["knob-independent-variable.png", "meter-dependent-variable-alternative.png"];
-                
-                var displayNames = variableNames;
-                
                 for(var i=0; i<variableNames.length; i++)
                 {
-                    variableNames[i] = processStrings(variableNames[i]);
+                    variableNames[i] = processStrings(variableNames[i]);//this makes the variable names 'id' compatible
+                    
                     variablePanelSVG.append("rect")
                                                     .attr("x", variableNameHolderPadding)
                                                     .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding))                                                   
@@ -200,7 +82,6 @@
                                                     .attr("fill", panelColors.normal)
                                                     .attr("id", variableNames[i])
                                                     .attr("class", "variableNameHolder");
-
                                                 
                     variablePanelSVG.append("text")
                                                     .attr("x", variableNameHolderPadding + variableNameHolderWidth/2)
@@ -210,19 +91,8 @@
                                                     .attr("text-anchor", "middle")
                                                     .text(variableNames[i])
                                                     .attr("id", variableNames[i])
-                                                    .attr("class", "variableNameHolder");
-                                                    
-//                     variablePanelSVG.append("image")
-//                                                     .attr("x", variableNameHolderPadding + variableNameHolderWidth - imageSize - 15)
-//                                                     .attr("y", variableNameHolderPadding + variableNameHolderHeight/5 + i*(variableNameHolderHeight + variableNameHolderPadding))
-//                                                     .attr("xlink:href", "images/" + imageNames[flags[i]])
-//                                                     .attr("height", imageSize)
-//                                                     .attr("width", imageSize)
-//                                                     .attr("id", variableNames[i])
-//                                                     .attr("class", "variableNameHolder");
-                }    
-                
-                                     
+                                                    .attr("class", "variableNameHolderText");
+                }                    
             }
             
             function renderVisualizations()
@@ -235,8 +105,6 @@
                 var radius = "15px";
                 var visualizationHolderHeight = getNumber(visualizationPanelHeight) - 2*visualizationHolderPadding;                
                 
-               
-                
                 var visualizationPanelSVG = visualizationPanel.append("svg");                
                 visualizationPanelSVG.attr("id","visualizationPanelSVG")
                                             .attr("height", visualizationPanelHeight)
@@ -245,10 +113,8 @@
                                             .attr("top", visualizationPanel.style("top"));  
                 
                 var visualizations = ["Histogram", "Boxplot", "Scatterplot", "Scatterplot-matrix"];
-                 // TODO: Find this dynamically based on number of variable names (75 is the maximum), do this for font-size as well
-                var visualizationHolderWidth = (getNumber(visualizationPanelWidth) - (visualizations.length+1)*visualizationHolderPadding)/(visualizations.length);
                 
-                var imageSize = 200;
+                var visualizationHolderWidth = (getNumber(visualizationPanelWidth) - (visualizations.length+1)*visualizationHolderPadding)/(visualizations.length);
                 
                 for(var i=0; i<visualizations.length; i++)
                 {                    
@@ -267,8 +133,8 @@
                                                     .attr("x", visualizationHolderPadding + visualizationHolderWidth/2 - imageSize/2 + i*(visualizationHolderWidth + visualizationHolderPadding))
                                                     .attr("y", visualizationHolderPadding + visualizationHolderHeight/2 - imageSize/2)
                                                     .attr("xlink:href", "images/" + (i+1) + ".png")
-                                                    .attr("height", imageSize)
-                                                    .attr("width", imageSize)
+                                                    .attr("height", visualizationImageSize)
+                                                    .attr("width", visualizationImageSize)
                                                     .attr("style", "opacity: 0.75;")
                                                     .attr("id", visualizations[i])
                                                     .attr("class", "visualizationHolderImage");
@@ -282,11 +148,8 @@
                                                     .text(visualizations[i])
                                                     .attr("id", visualizations[i])
                                                     .attr("class", "visualizationHolderText");
-                                                    
                 } 
             }       
-                
-            
            
         </script>
         
