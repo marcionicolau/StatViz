@@ -34,7 +34,7 @@ function makeHistogram()
         //bar chart        
         var uniqueData = combinedData.unique();
         
-        var numberOfGroovesInXAxis = uniqueData.length + 1;
+        var numberOfGroovesInXAxis = uniqueData.length;
     
         var slice = (max - min)/uniqueData.length;    
     
@@ -101,7 +101,7 @@ function makeHistogram()
         var xStep = size/numberOfGroovesInXAxis;
     
         //grooves
-        for(i=0; i<numberOfGroovesInXAxis; i++)
+        for(i=0; i<=numberOfGroovesInXAxis; i++)
         {
             canvas.append("line")
                         .attr("x1", canvasWidth/2 - size/2 + i*xStep)
