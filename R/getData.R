@@ -1,6 +1,6 @@
 getData <- function(dataset = "langley", columnName = "Unemployed")
 {
-    dataset <- eval(as.name(dataset));
+    dataset <- eval(as.name("DATA"));
     
-    list(data = eval(parse(text = paste(dataset,"$",columnName))));
+    list(data = dataset);
 }
