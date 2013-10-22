@@ -51,7 +51,7 @@ function makeHistogram()
                 
             bins[currentVariableSelection[i]][index]++;
             
-            console.log(bins[currentVariableSelection[i]][index]);
+            console.log("index=" + index + ", nBins=" + nBins);
         }
     }
     
