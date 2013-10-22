@@ -70,7 +70,7 @@
                 var req = opencpu.r_fun_json("loadFile", {
                                 filePath: filePath
                               }, function(output) {                   
-                dataset = output.dataset;
+                dataset = output.data;
                 
                 console.log("dataset: " + dataset);
                  }).fail(function(){
