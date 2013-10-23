@@ -5,6 +5,7 @@ var MIN = new Object();
 var MAX = new Object();
 var variableType = new Object();
 var splitData = new Object();
+var varNames = new Array();
 
 
 var currentVariableSelection = [];    

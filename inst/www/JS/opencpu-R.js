@@ -11,6 +11,7 @@ function loadFile(filePath)
     
     //render the variable names
     renderVariableNames(output.variableNames);
+    varNames = output.variableNames;
     
     //for each variable, get the data and the IQR
     for(var i=0; i<output.variableNames.length; i++)
@@ -121,8 +122,13 @@ function splitDataByColumnName(dataset, columnName, value)
                     value: value
                   }, function(output) {                  
                 
-                splitData[value] = output.data;    
-                getData(splitData[value], columnName,value);                 
+       splitData[value] = output.data;  
+       
+       for(var i=0; i<varNames.length; i++)
+       {  
+           getData(splitData[value], varNames[i],value);                
+       }
+                
      }).fail(function(){
           alert("Failure: " + req.responseText);
     });
