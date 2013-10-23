@@ -13,7 +13,8 @@ var panelColors = new Object();
 var canvasHeight = height*(2/3);
 var canvasWidth = width*0.75; 
 
-var visualizationImageSize = 200;     
+var visualizationImageSize = 200;  
+variableSelectionButtonWidth = 50;   
       
 
 // Plots (general)
