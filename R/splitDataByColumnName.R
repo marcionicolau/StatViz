@@ -4,6 +4,6 @@ splitDataByColumnName <- function(dataset, columnName, value)
     
     levels = levels(eval(parse(text = paste("table","$",columnName))));
   
-    list(data = subset(paste("table"), paste("table","$",columnName) == value));
+    list(data = subset(paste("table"), paste("table","$",columnName == value)), levels = levels);
 }  
     
