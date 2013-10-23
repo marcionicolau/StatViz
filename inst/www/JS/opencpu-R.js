@@ -62,7 +62,7 @@ function getData(dataset, variableName, modifier)
         if(modifier === undefined)
         {
             console.log("setting modifier to variables");
-            modified = "variables";
+            modifier = "variables";
         }
                                 
         console.log(modifier + "[" + variableName+ "] = " + output.data);
