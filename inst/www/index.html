@@ -53,11 +53,11 @@
             function renderVariableNames(variableNames)
             {   
                 var variablePanel = d3.select("#variable.panel");                
-                var variablePanelWidth = variablePanel.style("width") - variableSelectionButtonWidth;
+                var variablePanelWidth = getNumber(variablePanel.style("width")) - variableSelectionButtonWidth;
                 
                 var variableNameHolderPadding = 15;
                 var radius = "15px";
-                var variableNameHolderWidth = getNumber(variablePanelWidth) - 2*variableNameHolderPadding;                
+                var variableNameHolderWidth = variablePanelWidth - 2*variableNameHolderPadding;                
                 
                 // TODO: Find this dynamically based on number of variable names (50 is the maximum), do this for font-size as well
                 var variableNameHolderHeight = 50;
