@@ -39,6 +39,18 @@ function OnMouseDown(e)
         makePlot();
     }
     
+    else if((e.button == 1 && window.event != null || e.button == 0) && (target.className.baseVal == "variableSelectionButton"))
+    {
+        setup(e, target);    
+        
+        var variableSelectionButton = d3.selectAll("#" + target.id + ".variableSelectionButton");
+        variableSelectionButton.attr("fill", panelColors["active"]);
+        
+        variableType[target.id] = false;
+        
+        console.log("variable types: " + variableType);
+    }
+    
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "means")
     {
         setup(e, target);    
@@ -129,6 +141,13 @@ function OnMouseOver(e)
         
         var visualizationHolder = d3.selectAll("#" + target.id + ".visualizationHolder");
         visualizationHolder.attr("cursor","pointer");
+    }
+    else if(target.className.baseVal == "variableSelectionButton")
+    {		
+        setup(e, target);
+        
+        var variableSelectionButton = d3.selectAll("#" + target.id + ".variableSelectionButton");
+        variableSelectionButton.attr("cursor","pointer");
     }
     else if(target.className.baseVal == "means")
     {		

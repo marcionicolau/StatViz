@@ -3,6 +3,8 @@ var variableTypes = new Object();
 var IQR = new Object();   
 var MIN = new Object();
 var MAX = new Object();
+var variableType = new Object();
+
 
 var currentVariableSelection = [];    
     var currentVisualizationSelection = "Histogram"; // Select histogram by default

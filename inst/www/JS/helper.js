@@ -1,5 +1,13 @@
 var format = d3.format(".1f");	
 
+function initVariableTypes()
+{
+    for(var i=0; i<variables.length; i++)
+    {
+        variableType[variables[i]] = true;
+    }
+}
+
 function remove(id)
 {
     var element = document.getElementById(id);
@@ -222,6 +230,8 @@ function getText(string)
 {
     return string.replace(/[0-9]/g, '');
 }
+
+      
             
         
         
