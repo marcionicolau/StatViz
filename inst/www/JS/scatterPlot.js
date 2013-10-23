@@ -3,10 +3,7 @@ var maxs = new Object();
    
    
 function makeScatterplot()
-{
-    var data = new Object();
-    
-    
+{   
     var colorsForPlot = new Object();
     
     var altScatterPlot = false;
