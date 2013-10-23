@@ -44,20 +44,17 @@ function makeBoxplot()
                 {
                     // for each level of the independent variable, find the dependent variables                    
                     
-                    console.log("here");
-                
                     data[j] = variables[currentVariableSelection[i]][levels[j]];
                     mins[j] = MIN[currentVariableSelection[i]][levels[j]];      
                     maxs[j] = MAX[currentVariableSelection[i] ][levels[j]];      
-                    medians[i] = median(data[j]);
-                    iqrs[i] = IQR[currentVariableSelection[i]][levels[i]];  
-                    means[i] = mean(data[j]);                    
+                    medians[j] = median(data[j]);
+                    iqrs[j] = IQR[currentVariableSelection[i]][levels[i]];  
+                    means[j] = mean(data[j]);  
                 }
             }  
         }
         else 
-        {   
-            console.log("or here");
+        {               
             data[i] = variables[currentVariableSelection[i]]["dataset"];      
             mins[i] = MIN[currentVariableSelection[i]]["dataset"];      
             maxs[i] = MAX[currentVariableSelection[i]]["dataset"];
