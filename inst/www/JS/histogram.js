@@ -33,7 +33,7 @@ function makeHistogram()
                 data[j] = variables[currentVariableSelection[i]][levels[j]];
             }
         }   
-        else
+        else if(variableType[currentVariableSelection[i]] != false)
         {   
             console.log("digging here for variables[" + currentVariableSelection[i] + "]");
             data[i] = variables[currentVariableSelection[i]];      
