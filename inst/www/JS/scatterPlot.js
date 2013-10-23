@@ -136,9 +136,7 @@ function makeScatterplot()
     }
     
     for(var i=0; i<data[0].length; i++)
-    {
-        v
-        
+    {        
         canvas.append("circle")
                     .attr("cx", canvasWidth/2 - size/2 + getValue1(data[0][i], 0)*size)
                     .attr("cy", canvasHeight/2 + size/2 - getValue(data[1][i], 1)*size)
