@@ -64,9 +64,12 @@ function getData(dataset, variableName, modifier)
             modifier = "variables";
         }
                                 
-        console.log(modifier + "[" + variableName+ "] = " + output.data);
+        var statement = (modifier + "[\"" + variableName + "\"]");
         
-        eval(modifier + "[" + variableName+ "] = [" + output.data + "]");     
+        eval(statement) = output.data;
+        
+        console.log(eval(statement));
+            
 //                   console.log("\n" + variableName + ": [" + eval(modifier + "[" + variableName+ "]") + "]");
 
 //         MIN[variableName] = Array.min(variables[variableName]);
