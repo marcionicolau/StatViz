@@ -47,8 +47,6 @@ function OnMouseDown(e)
         variableSelectionButton.attr("fill", panelColors["active"]);
         
         variableType[target.id] = false;
-        
-        console.dir(variableType);
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "means")

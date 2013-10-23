@@ -97,3 +97,23 @@ function getIQR(dataset, variableName)
         
     });
 }
+
+    
+function splitDataByColumnName(dataset, columnName, value)
+{   
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("splitDataByColumnName", {
+                    dataset: dataset,
+                    columnName: columnName,
+                    value: value
+                  }, function(output) {                   
+                splitData[value];
+     }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });   
+}

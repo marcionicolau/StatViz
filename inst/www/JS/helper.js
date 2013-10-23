@@ -81,7 +81,22 @@ function makePlot()
                                         break;
                                     }
         case "Boxplot":
-                                    {            
+                                    {         
+                                        for(var i=0; i<currentVariableSelection.length; i++)
+                                        {
+                                            if(!variableType[currentVariableSelection[i]])
+                                            {
+                                                var uniqueData = variables[currentVariableSelection[i]].unique();
+                                                
+                                                for(var j=0; j<uniqueData.length; j++)
+                                                {
+                                                    splitDataByColumnName(dataset, currentVariableSelection[i], uniqueData[j]);
+                                                }
+                                            }
+                                        }
+                                        
+                                        console.dir(variables);
+                                        
                                         makeBoxplot();
                                         break;
                                     }
