@@ -20,11 +20,13 @@ function makeBoxplot()
     //Get data, minimums and maximums for each selected variable
     for(var i=0; i<currentVariableSelection.length; i++)
     {   
+        console.log("variable type of \"" + currentVariableSelection[i] + " = " + variableType[currentVariableSelection[i]]);
+        
         if(variableType[currentVariableSelection[i]] == false && currentVariableSelection.length > 1)
         {
             // Levels are needed when we have a independent variable and one or more dependent variables
             levels = variables[currentVariableSelection[i]]["dataset"].unique();            
-            console.log("levels of the independent variable " + currentVariableSelection[i] + "= [" + levels + "]");
+            console.log("levels of the independent variable \"" + currentVariableSelection[i] + "\" = [" + levels + "]");
             
             altBoxPlot = true;
         }
