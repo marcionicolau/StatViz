@@ -11,7 +11,7 @@ var panelColors = new Object();
     panelColors.active = "darkgrey";
 
 var canvasHeight = height*(2/3);
-var canvasWidth = width*0.8; 
+var canvasWidth = width*0.75; 
 
 var visualizationImageSize = 200;     
       
