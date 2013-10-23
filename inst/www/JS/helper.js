@@ -84,6 +84,7 @@ function makePlot()
                                     {         
                                         for(var i=0; i<currentVariableSelection.length; i++)
                                         {
+                                            console.log("variable type: " + variableType[currentVariableSelection[i]]);
                                             if(!variableType[currentVariableSelection[i]])
                                             {
                                                 var uniqueData = variables[currentVariableSelection[i]].unique();
