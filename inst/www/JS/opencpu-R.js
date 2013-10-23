@@ -59,8 +59,9 @@ function getData(dataset, variableName, modifier)
                     dataset: dataset,
                     columnName: variableName
                   }, function(output) {    
-        if(typeof(modifier) === undefined)
+        if(modifier === undefined)
         {
+            console.log("setting modifier to variables");
             modified = "variables";
         }
                                 
