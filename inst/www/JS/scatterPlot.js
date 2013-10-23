@@ -9,36 +9,61 @@ function makeScatterplot()
     
     var colorsForPlot = new Object();
     
+    var altScatterPlot = false;
+   
     //Get data, minimums and maximums for each selected variable
     for(var i=0; i<currentVariableSelection.length; i++)
-    {    
-            
-        if(i == 0)
+    {   
+        if(variableType[currentVariableSelection[i]] == false && currentVariableSelection.length > 1)
         {
-            data["X"] = variables[currentVariableSelection[i]];      
-            mins["X"] = MIN[currentVariableSelection[i]];      
-            maxs["X"] = MAX[currentVariableSelection[i]];      
-        }
-        if(i == 1)
-        {
-            data["Y"] = variables[currentVariableSelection[i]];      
-            mins["Y"] = MIN[currentVariableSelection[i]];      
-            maxs["Y"] = MAX[currentVariableSelection[i]];      
-        }
-        if(i == 2)
-        {
-            data["color"] = variables[currentVariableSelection[i]];
-            mins["color"] = MIN[currentVariableSelection[i]];      
-            maxs["color"] = MAX[currentVariableSelection[i]];      
-            
-            var uniqueData = data["color"].unique();
-            
-            for(var i=0; i<uniqueData.length; i++)
-            {
-                colorsForPlot[uniqueData[i]] = colors[i];
-            }
+            // Levels are needed when we have a independent variable and one or more dependent variables
+            levels = variables[currentVariableSelection[i]]["dataset"].unique();            
+            altBoxPlot = true;
         }
     }
+    
+    for(var i=0; i<currentVariableSelection.length; i++)
+    {        
+        if(altScatterPlot)
+        {
+            if(variableType[currentVariableSelection[i]] != false)
+            {
+                //for the dependent variable(s)
+                
+                for(var j=0; j<levels.length; j++)
+                {
+                    // for each level of the independent variable, find the dependent variables                    
+                    
+                    data[j] = variables[currentVariableSelection[i]][levels[j]];
+                    mins[j] = MIN[currentVariableSelection[i]][levels[j]];      
+                    maxs[j] = MAX[currentVariableSelection[i] ][levels[j]];      
+                    medians[j] = median(data[j]);
+                    iqrs[j] = IQR[currentVariableSelection[i]][levels[i]];  
+                    means[j] = mean(data[j]);  
+                }
+            }  
+        }
+        else 
+        {               
+            data[i] = variables[currentVariableSelection[i]]["dataset"];      
+            mins[i] = MIN[currentVariableSelection[i]]["dataset"];      
+            maxs[i] = MAX[currentVariableSelection[i]]["dataset"];
+            medians[i] = median(data[i]);
+            iqrs[i] = IQR[currentVariableSelection[i]]["dataset"];
+            means[i] = mean(data[i]);  
+        }             
+    }
+    
+    if(currentVariableSelection.length == 3)
+    {
+        var uniqueData = data[2].unique();
+        
+        for(var i=0; i<uniqueData.length; i++)
+        {
+            colorsForPlot[uniqueData[i]] = colors[i];
+        }
+    }
+
      
     var canvas = d3.select("#svgCanvas");
     
@@ -76,8 +101,8 @@ function makeScatterplot()
     
     //y-axis grooves
     var step = size/(nGrooves-1);
-    var xSlice = (maxs["X"] - mins["X"])/(nGrooves-1);    
-    var ySlice = (maxs["Y"] - mins["Y"])/(nGrooves-1);    
+    var xSlice = (maxs[0] - mins[0])/(nGrooves-1);    
+    var ySlice = (maxs[1] - mins[1])/(nGrooves-1);    
     
     //grooves
     for(i=0; i<nGrooves; i++)
@@ -93,7 +118,7 @@ function makeScatterplot()
         canvas.append("text")
                     .attr("x", canvasWidth/2 - size/2 + i*step - 15)
                     .attr("y", canvasHeight/2 + size/2 + 30 + axesOffset)                    
-                    .text(format(mins["X"] + i*xSlice))
+                    .text(format(mins[0] + i*xSlice))
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooveText");
     }
@@ -111,17 +136,18 @@ function makeScatterplot()
         canvas.append("text")
                     .attr("x", canvasWidth/2 - size/2 - 55 - axesOffset)
                     .attr("y", canvasHeight/2 + size/2 - i*step)                    
-                    .text(format(mins["Y"] + i*ySlice))
+                    .text(format(mins[1] + i*ySlice))
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooveText");
     }
     
-    for(var i=0; i<data["X"].length; i++)
+    for(var i=0; i<data[0].length; i++)
     {
-        var color = currentVariableSelection.length > 2 ? colorsForPlot[data["color"][i]] : "black";
+        var color = currentVariableSelection.length > 2 ? colorsForPlot[data[2][i]] : "black";
+        
         canvas.append("circle")
-                    .attr("cx", canvasWidth/2 - size/2 + getValue(data["X"][i], "X")*size)
-                    .attr("cy", canvasHeight/2 + size/2 - getValue(data["Y"][i], "Y")*size)
+                    .attr("cx", canvasWidth/2 - size/2 + getValue(data[0][i], "X")*size)
+                    .attr("cy", canvasHeight/2 + size/2 - getValue(data[1][i], "Y")*size)
                     .attr("r", datapointRadius)
                     .attr("fill", color)
                     .attr("id", "data" + i)
