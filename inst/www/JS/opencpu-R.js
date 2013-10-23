@@ -16,6 +16,9 @@ function loadFile(filePath)
     //for each variable, get the data and the IQR
     for(var i=0; i<output.variableNames.length; i++)
     {
+        variables[output.variableNames[i]] = new Object();
+        MIN[output.variableNames[i]] = new Object();
+        MAX[output.variableNames[i]] = new Object();
         getData(dataset, output.variableNames[i]);                 
         getIQR(dataset, output.variableNames[i]);                    
     }
