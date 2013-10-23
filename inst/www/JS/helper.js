@@ -94,10 +94,8 @@ function makePlot()
                                                 
                                                 for(var j=0; j<uniqueData.length; j++)
                                                 {
-                                                    splitDataByColumnName(dataset, currentVariableSelection[i], uniqueData[j]);
-                                                    getData(dataset, uniqueData[j]);                 
+                                                    splitDataByColumnName(dataset, currentVariableSelection[i], uniqueData[j]);                                                    
                                                 }
-//                                                 getIQR(dataset, output.varNames[i]);                    
                                             }
                                         }                                        
                                         

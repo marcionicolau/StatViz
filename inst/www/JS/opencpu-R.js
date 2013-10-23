@@ -52,19 +52,21 @@ function getVariables(dataset)
     });   
 }
 
-function getData(dataset, variableName)
+function getData(dataset, variableName, modifier ="variables")
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("getData", {
                     dataset: dataset,
                     columnName: variableName
-                  }, function(output) {                                 
-    variables[variableName] = output.data; 
+                  }, function(output) {    
+                  if(modifier == "")
+    {                             
+        eval(modifier+ "[" + variableName+ "] = " + output.data);     
+        console.log("\n" + variableName + ": [" + eval(modifier + "[" + variableName+ "]") + "]");
     
-    console.log("\n" + variableName + ": [" + variables[variableName] + "]");
-    
-    MIN[variableName] = Array.min(variables[variableName]);
-    MAX[variableName] = Array.max(variables[variableName]);
+//         MIN[variableName] = Array.min(variables[variableName]);
+//         MAX[variableName] = Array.max(variables[variableName]);
+    }
       }).fail(function(){
           alert("Failure: " + req.responseText);
     });
@@ -110,6 +112,7 @@ function splitDataByColumnName(dataset, columnName, value)
                   }, function(output) {                  
                 
                 splitData[value] = output.data;    
+                getData(splitData[value], columnName,value);                 
      }).fail(function(){
           alert("Failure: " + req.responseText);
     });
