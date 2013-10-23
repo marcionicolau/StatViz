@@ -52,21 +52,22 @@ function getVariables(dataset)
     });   
 }
 
-function getData(dataset, variableName, modifier ="variables")
+function getData(dataset, variableName, modifier)
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("getData", {
                     dataset: dataset,
                     columnName: variableName
                   }, function(output) {    
-                  if(modifier == "")
-    {                             
-        eval(modifier+ "[" + variableName+ "] = " + output.data);     
-        console.log("\n" + variableName + ": [" + eval(modifier + "[" + variableName+ "]") + "]");
+                  if(typeof(modifier) == undefined)
+                    modified = "variables";
+                                
+                  eval(modifier+ "[" + variableName+ "] = " + output.data);     
+                  console.log("\n" + variableName + ": [" + eval(modifier + "[" + variableName+ "]") + "]");
     
 //         MIN[variableName] = Array.min(variables[variableName]);
 //         MAX[variableName] = Array.max(variables[variableName]);
-    }
+    
       }).fail(function(){
           alert("Failure: " + req.responseText);
     });
