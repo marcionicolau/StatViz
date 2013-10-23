@@ -33,6 +33,8 @@ function makeHistogram()
                 data[j] = variables[currentVariableSelection[i]][levels[j]];
                 mins[j] = MIN[currentVariableSelection[i]][levels[j]];      
                 maxs[j] = MAX[currentVariableSelection[i]][levels[j]];
+                
+                console.log("min: " + mins[j] + "; max: " + maxs[j]);
             }
         }   
         else if(currentVariableSelection.length == 1 && variableType[currentVariableSelection[i]] == false)
@@ -41,6 +43,8 @@ function makeHistogram()
             data[i] = variables[currentVariableSelection[i]];      
             mins[i] = MIN[currentVariableSelection[i]];      
             maxs[i] = MAX[currentVariableSelection[i]];
+            
+            
         }
              
     }
