@@ -154,5 +154,8 @@ function makeScatterplot()
 
 function getValue(number, type)
 {
+    console.log("number:" + number);
+    console.log("mins:" + mins[type]);
+    console.log("maxs:" + maxs[type]);
     return (number - mins[type])/(maxs[type] - mins[type]);
 }
