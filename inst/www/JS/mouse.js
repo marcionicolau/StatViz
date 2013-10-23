@@ -48,7 +48,7 @@ function OnMouseDown(e)
         
         variableType[target.id] = false;
         
-        var uniqueData = variables[target.id].unique();
+        var uniqueData = variables[target.id]["entire"].unique();
                 
         for(var i=0; i<uniqueData.length; i++)
         {
