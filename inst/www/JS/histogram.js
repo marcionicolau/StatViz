@@ -35,6 +35,7 @@ function makeHistogram()
         }   
         else
         {   
+            console.log("digging here for variables[" + currentVariableSelection[i] + "]");
             data[i] = variables[currentVariableSelection[i]];      
             mins[i] = MIN[currentVariableSelection[i]];      
             maxs[i] = MAX[currentVariableSelection[i]];
