@@ -15,6 +15,8 @@ function makeHistogram()
         if(variableTypes[currentVariableSelection[i]] == false)
         {
             levels = variables[currentVariableSelection[i]].unique();
+            
+            console.log("levels:[" + levels + "]");
         }
         else
         {
