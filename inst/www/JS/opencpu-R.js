@@ -110,7 +110,8 @@ function splitDataByColumnName(dataset, columnName, value)
                   }, function(output) {                  
                 
                 splitData[value] = output.data;                 
-                console.log("got data into " + output.data);                               
+                console.log("got data into ");
+                console.dir(splitData[value]);                               
                 
      }).fail(function(){
           alert("Failure: " + req.responseText);
