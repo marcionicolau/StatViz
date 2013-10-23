@@ -48,7 +48,7 @@ function OnMouseDown(e)
         
         variableType[target.id] = false;
         
-        console.log("variable types: " + variableType);
+        console.dir(variableType);
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "means")
