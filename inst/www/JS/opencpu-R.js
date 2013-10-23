@@ -68,7 +68,7 @@ function getData(dataset, variableName, modifier)
         
         eval(statement + "= output.data");
             
-//                   console.log("\n" + variableName + ": [" + eval(modifier + "[" + variableName+ "]") + "]");
+        console.log("variables[" + variableName + "] = " + variables[variableName]);
 
 //         MIN[variableName] = Array.min(variables[variableName]);
 //         MAX[variableName] = Array.max(variables[variableName]);
