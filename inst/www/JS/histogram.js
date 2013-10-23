@@ -21,13 +21,13 @@ function makeHistogram()
         }      
     }
     
-//     console.log("combined data=[" + combinedData + "]");
+    console.log("combined data=[" + combinedData + "]");
 
     // Find minimum and maximum values
     var min = Array.min(mins);
     var max = Array.max(maxs);
     
-//     console.log("unique data: " + combinedData.unique());
+    console.log("unique data: " + combinedData.unique());
     
     if(combinedData.unique().length < nBins)
     {
