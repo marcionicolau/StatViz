@@ -88,14 +88,21 @@ function getData(dataset, variableName, level)
     });
 }
 
-function getIQR(dataset, variableName)
+function getIQR(dataset, variableName, level)
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("getIQR", {
                     dataset: dataset,
                     columnName: variableName
                   }, function(output) {                                 
-    IQR[variableName] = output.IQR;                                                                   
+        
+    
+        if(level === undefined)
+        {   
+            level = "dataset";
+        }         
+        IQR[variableName][level] = output.IQR;                                                                   
+      
       }).fail(function(){
           alert("Failure: " + req.responseText);
     });
@@ -124,6 +131,7 @@ function splitDataByColumnName(dataset, columnName, value)
        for(var i=0; i<varNames.length; i++)
        {  
            getData(splitData[value], varNames[i],value);                
+           getIQR(splitData[value], varNames[i],value);                
        }
                 
      }).fail(function(){

@@ -28,7 +28,7 @@ function OnMouseDown(e)
     
         console.log("****************************************************");
         
-        console.log("\n\ncurrent variable selection: [" + currentVariableSelection + "]");
+        console.log("\ncurrent variable selection: [" + currentVariableSelection + "]");
                             
         makePlot();
         toggleFillColors();
