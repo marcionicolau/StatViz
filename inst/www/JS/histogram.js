@@ -16,7 +16,7 @@ function makeHistogram()
         
         if(variableType[currentVariableSelection[i]] == false && currentVariableSelection.length > 1)
         {
-            levels = variables[currentVariableSelection[i]]["entire"].unique();
+            levels = variables[currentVariableSelection[i]]["dataset"].unique();
             
             console.log("levels:[" + levels + "]");
         }
@@ -40,13 +40,12 @@ function makeHistogram()
         else if(currentVariableSelection.length == 1 && variableType[currentVariableSelection[i]] == false)
         {   
             console.log("digging here for variables[" + currentVariableSelection[i] + "]");
-            data[i] = variables[currentVariableSelection[i]]["entire"];      
-            mins[i] = MIN[currentVariableSelection[i]]["entire"];      
-            maxs[i] = MAX[currentVariableSelection[i]]["entire"];
+            data[i] = variables[currentVariableSelection[i]]["dataset"];      
+            mins[i] = MIN[currentVariableSelection[i]]["dataset"];      
+            maxs[i] = MAX[currentVariableSelection[i]]["dataset"];
             
             
-        }
-             
+        }             
     }
     for(var i=0; i<data.length; i++)
     {

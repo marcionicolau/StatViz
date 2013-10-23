@@ -48,7 +48,7 @@ function OnMouseDown(e)
         
         variableType[target.id] = false;
         
-        var uniqueData = variables[target.id]["entire"].unique();
+        var uniqueData = variables[target.id]["dataset"].unique();
                 
         for(var i=0; i<uniqueData.length; i++)
         {
@@ -199,7 +199,7 @@ function OnMouseOver(e)
                 .attr("x", e.pageX + 10 - (width - canvasWidth))
                 .attr("y", e.pageY + 15)
                 .attr("fill", meanColors["normal"])
-                .text(variables[currentVariableSelection[0]][getNumber(datapoint.attr("id"))] + ", " + variables[currentVariableSelection[1]][getNumber(datapoint.attr("id"))])
+                .text(variables[currentVariableSelection[0]]["dataset"][getNumber(datapoint.attr("id"))] + ", " + variables[currentVariableSelection[1]]["dataset"][getNumber(datapoint.attr("id"))])
                 .attr("class", "hoverText");
                 
         var xLine = canvas.append("line")
