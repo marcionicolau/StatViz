@@ -41,7 +41,9 @@ function getVariables(dataset)
     {
         getData(dataset, output.varNames[i]);                 
         getIQR(dataset, output.varNames[i]);                    
-    } }).fail(function(){
+    }
+    
+    console.log("\n\n") }).fail(function(){
           alert("Failure: " + req.responseText);
     });
 
