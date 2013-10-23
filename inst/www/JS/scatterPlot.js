@@ -140,10 +140,10 @@ function makeScatterplot()
     {
         var color = currentVariableSelection.length > 2 ? colorsForPlot[data[2][i]] : "black";
         
-        console.log("data ungo: " + getValue(data[0][i], 0));
+        console.log("data ungo: " + getValue(data[0][i],0));
         
         canvas.append("circle")
-                    .attr("cx", canvasWidth/2 - size/2 + getValue(data[0][i], 0)*size)
+                    .attr("cx", canvasWidth/2 - size/2 + getValue1(data[0][i], 0)*size)
                     .attr("cy", canvasHeight/2 + size/2 - getValue(data[1][i], 1)*size)
                     .attr("r", datapointRadius)
                     .attr("fill", color)
@@ -152,7 +152,7 @@ function makeScatterplot()
     }
 }
 
-function getValue(number, type)
+function getValue1(number, type)
 {
     console.log("number:" + number);
     console.log("mins:" + mins[type]);
