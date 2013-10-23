@@ -5,6 +5,7 @@ function initVariableTypes()
     for(var i=0; i<variables.length; i++)
     {
         variableType[variables[i]] = true;
+        console.log("variableType[" + variables[i] +"]: " + variableType[variables[i]]);
     }
 }
 
@@ -81,7 +82,8 @@ function makePlot()
                                         break;
                                     }
         case "Boxplot":
-                                    {         
+                                    {  
+                                        con       
                                         for(var i=0; i<currentVariableSelection.length; i++)
                                         {
                                             console.log("variable type: " + variableType[currentVariableSelection[i]]);
