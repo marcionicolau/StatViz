@@ -20,22 +20,24 @@ function makeHistogram()
             
             console.log("levels:[" + levels + "]");
         }
-        else
+    }
+    
+    for(var i=0; i<currentVariableSelection.length; i++)
+    {        
+        if(levels.length > 0)
         {
-            if(levels.length > 0)
+            for(var j=0; j<levels.length; j++)
             {
-                for(var j=0; j<levels.length; j++)
-                {
-                    data[j] = variables[currentVariableSelection[i]][levels[j]];
-                }
-            }   
-            else
-            {   
-                data[i] = variables[currentVariableSelection[i]];      
-                mins[i] = MIN[currentVariableSelection[i]];      
-                maxs[i] = MAX[currentVariableSelection[i]];
+                data[j] = variables[currentVariableSelection[i]][levels[j]];
             }
+        }   
+        else
+        {   
+            data[i] = variables[currentVariableSelection[i]];      
+            mins[i] = MIN[currentVariableSelection[i]];      
+            maxs[i] = MAX[currentVariableSelection[i]];
         }
+        
         
         for(var j=0; j<data[i].length; j++)
         {
