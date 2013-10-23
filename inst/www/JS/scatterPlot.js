@@ -140,7 +140,7 @@ function makeScatterplot()
     {
         var color = currentVariableSelection.length > 2 ? colorsForPlot[data[2][i]] : "black";
         
-        console.log("data ungo: " + data[0][i]);
+        console.log("data ungo: " + getValue(data[0][i], 0));
         
         canvas.append("circle")
                     .attr("cx", canvasWidth/2 - size/2 + getValue(data[0][i], 0)*size)
