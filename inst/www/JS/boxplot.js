@@ -16,16 +16,6 @@ function makeBoxplot()
     var iqrs = [];
     var medians = [];
     var means = [];
-    //Get data, minimums and maximums for each selected variable
-    for(var i=0; i<currentVariableSelection.length; i++)
-    {        
-        data[i] = variables[currentVariableSelection[i]];      
-        mins[i] = MIN[currentVariableSelection[i]];      
-        maxs[i] = MAX[currentVariableSelection[i]];      
-        medians[i] = median(data[i]);
-        iqrs[i] = IQR[currentVariableSelection[i]];                    
-        means[i] = mean(data[i]);  
-    }
     
     //Get data, minimums and maximums for each selected variable
     for(var i=0; i<currentVariableSelection.length; i++)
