@@ -48,18 +48,12 @@ function OnMouseDown(e)
         
         variableType[target.id] = false;
         
-        for(var i=0; i<varNames.length; i++)
-        {
-            if(variableType[varNames[i]] == false)
-            {
-                var uniqueData = variables[varNames[i]].unique();
+        var uniqueData = variables[target.id].unique();
                 
-                for(var j=0; j<uniqueData.length; j++)
-                {
-                    splitDataByColumnName(dataset, varNames[i], uniqueData[j]);                                                    
-                }
-            }
-        } 
+        for(var i=0; i<uniqueData.length; i++)
+        {
+            splitDataByColumnName(dataset, target.id, uniqueData[i]);                                                    
+        }
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "means")
