@@ -47,6 +47,22 @@ function OnMouseDown(e)
         variableSelectionButton.attr("fill", panelColors["active"]);
         
         variableType[target.id] = false;
+        
+        for(var i=0; i<varNames.length; i++)
+        {
+//             console.log("variable type: " + variableType[varNames[i]]);
+            if(variableType[varNames[i]] == false)
+            {
+                var uniqueData = variables[varNames[i]].unique();
+                
+                // console.log("unique data: " + uniqueData);
+                
+                for(var j=0; j<uniqueData.length; j++)
+                {
+                    splitDataByColumnName(dataset, varNames[i], uniqueData[j]);                                                    
+                }
+            }
+        } 
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "means")
