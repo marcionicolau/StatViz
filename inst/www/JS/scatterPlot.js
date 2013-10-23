@@ -19,7 +19,7 @@ function makeScatterplot()
         {
             // Levels are needed when we have a independent variable and one or more dependent variables
             levels = variables[currentVariableSelection[i]]["dataset"].unique();            
-            altBoxPlot = true;
+            altScatterPlot = true;
         }
     }
     
