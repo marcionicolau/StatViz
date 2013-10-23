@@ -4,6 +4,10 @@ var maxs = new Object();
    
 function makeScatterplot()
 {   
+    var data = [];
+    var mins = [];
+    var maxs = [];
+    
     var colorsForPlot = new Object();
     
     var altScatterPlot = false;
