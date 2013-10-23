@@ -16,7 +16,7 @@ function makeHistogram()
         
         if(variableType[currentVariableSelection[i]] == false && currentVariableSelection.length > 1)
         {
-            levels = variables[currentVariableSelection[i]].unique();
+            levels = variables[currentVariableSelection[i]]["entire"].unique();
             
             console.log("levels:[" + levels + "]");
         }
@@ -31,8 +31,8 @@ function makeHistogram()
                 console.log("\n retrieving variables[" + currentVariableSelection[i] + "][" + levels[j] + "]");
                 
                 data[j] = variables[currentVariableSelection[i]][levels[j]];
-                mins[j] = Array.min(data[j]);
-                maxs[j] = Array.max(data[j]);
+                mins[j] = MIN[currentVariableSelection[i]][levels[j]];      
+                maxs[j] = MAX[currentVariableSelection[i]][levels[j]];      
                 
                 console.log("min: " + mins[j] + "; max: " + maxs[j]);
             }
@@ -40,9 +40,9 @@ function makeHistogram()
         else if(currentVariableSelection.length == 1 && variableType[currentVariableSelection[i]] == false)
         {   
             console.log("digging here for variables[" + currentVariableSelection[i] + "]");
-            data[i] = variables[currentVariableSelection[i]];      
-            mins[i] = MIN[currentVariableSelection[i]];      
-            maxs[i] = MAX[currentVariableSelection[i]];
+            data[i] = variables[currentVariableSelection[i]]["entire"];      
+            mins[i] = MIN[currentVariableSelection[i]]["entire"];      
+            maxs[i] = MAX[currentVariableSelection[i]]["entire"];
             
             
         }
