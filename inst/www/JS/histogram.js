@@ -24,7 +24,7 @@ function makeHistogram()
     
     for(var i=0; i<currentVariableSelection.length; i++)
     {        
-        if(levels.length > 0 && variableType[currentVariableSelection[i] != false)
+        if(levels.length > 0 && variableType[currentVariableSelection[i]] != false)
         {
             for(var j=0; j<levels.length; j++)
             {
