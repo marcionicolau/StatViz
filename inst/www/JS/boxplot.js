@@ -41,6 +41,8 @@ function makeBoxplot()
                 for(var j=0; j<levels.length; j++)
                 {
                     // for each level of the independent variable, find the dependent variables                    
+                    
+                    console.log("here");
                 
                     data[j] = variables[currentVariableSelection[i]][levels[j]];
                     mins[j] = MIN[currentVariableSelection[i]][levels[j]];      
@@ -53,6 +55,7 @@ function makeBoxplot()
         }
         else 
         {   
+            console.log("or here");
             data[i] = variables[currentVariableSelection[i]]["dataset"];      
             mins[i] = MIN[currentVariableSelection[i]]["dataset"];      
             maxs[i] = MAX[currentVariableSelection[i]]["dataset"];
