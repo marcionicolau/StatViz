@@ -9,44 +9,49 @@ function makeHistogram()
     var combinedData = [];
     var levels = [];
     
+    var altBoxPlot = false;
+    
     //Get data, minimums and maximums for each selected variable
     for(var i=0; i<currentVariableSelection.length; i++)
     {   
-        console.log("variable type of " + currentVariableSelection[i] + ": " + variableType[currentVariableSelection[i]]);
-        
         if(variableType[currentVariableSelection[i]] == false && currentVariableSelection.length > 1)
         {
-            levels = variables[currentVariableSelection[i]]["dataset"].unique();
+            // Levels are needed when we have a independent variable and one or more dependent variables
+            levels = variables[currentVariableSelection[i]]["dataset"].unique();            
+            console.log("levels of the independent variable " + currentVariableSelection[i] + "= [" + levels + "]");
             
-            console.log("levels:[" + levels + "]");
+            altBoxPlot = true;
         }
     }
     
     for(var i=0; i<currentVariableSelection.length; i++)
     {        
-        if(levels.length > 0 && variableType[currentVariableSelection[i]] != false)
+        if(altBoxPlot)
         {
-            for(var j=0; j<levels.length; j++)
+            if(variableType[currentVariableSelection[i]] != false)
             {
-                console.log("\n retrieving variables[" + currentVariableSelection[i] + "][" + levels[j] + "]");
+                //for the dependent variable(s)
                 
-                data[j] = variables[currentVariableSelection[i]][levels[j]];
-                mins[j] = MIN[currentVariableSelection[i]][levels[j]];      
-                maxs[j] = MAX[currentVariableSelection[i] ][levels[j]];      
+                for(var j=0; j<levels.length; j++)
+                {
+                    // for each level of the independent variable, find the dependent variables                    
                 
-                console.log("min: " + mins[j] + "; max: " + maxs[j]);
-            }
-        }   
-        else if(currentVariableSelection.length == 1 && variableType[currentVariableSelection[i]] == false)
+                    data[j] = variables[currentVariableSelection[i]][levels[j]];
+                    mins[j] = MIN[currentVariableSelection[i]][levels[j]];      
+                    maxs[j] = MAX[currentVariableSelection[i] ][levels[j]];      
+                }
+            }  
+        }
+        else 
         {   
-            console.log("digging here for variables[" + currentVariableSelection[i] + "]");
             data[i] = variables[currentVariableSelection[i]]["dataset"];      
             mins[i] = MIN[currentVariableSelection[i]]["dataset"];      
             maxs[i] = MAX[currentVariableSelection[i]]["dataset"];
-            
-            
         }             
     }
+    
+    
+    // combine the collected data
     for(var i=0; i<data.length; i++)
     {
         for(var j=0; j<data[i].length; j++)
@@ -54,16 +59,13 @@ function makeHistogram()
             combinedData.push(data[i][j]);
         }
     } 
-    
-    console.log("combined data=[" + combinedData + "]");
+        
+    console.log("combined data = [" + combinedData + "]");
 
     // Find minimum and maximum values
     var min = Array.min(mins);
     var max = Array.max(maxs);
     
-    console.log("min: " + min + "; max: " + max);
-    
-    console.log("unique data: " + combinedData.unique());
     
     if(combinedData.unique().length < nBins)
     {
