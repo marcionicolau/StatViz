@@ -60,14 +60,13 @@ function getData(dataset, variableName, modifier)
                     columnName: variableName
                   }, function(output) {    
         if(modifier === undefined)
-        {
-            console.log("setting modifier to variables");
+        {            
             modifier = "variables";
         }
                                 
-        console.log(modifier + "[" + variableName+ "] = " + output.data);
+        console.log(modifier + "[\"" + variableName+ "\"] = " + output.data);
         
-        eval(modifier + "[" + variableName+ "] = " + output.data);     
+        eval(modifier + "[\"" + variableName+ "\"] = " + output.data);     
 //                   console.log("\n" + variableName + ": [" + eval(modifier + "[" + variableName+ "]") + "]");
 
 //         MIN[variableName] = Array.min(variables[variableName]);
