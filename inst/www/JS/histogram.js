@@ -7,13 +7,32 @@ function makeHistogram()
     var maxs = [];
     
     var combinedData = [];
+    var levels = [];
     
     //Get data, minimums and maximums for each selected variable
     for(var i=0; i<currentVariableSelection.length; i++)
-    {        
-        data[i] = variables[currentVariableSelection[i]];      
-        mins[i] = MIN[currentVariableSelection[i]];      
-        maxs[i] = MAX[currentVariableSelection[i]];
+    {   
+        
+        if(variableTypes[currentVariableSelection[i] == false)
+        {
+            levels = variables[currentVariableSelection[i]].unique();
+        }
+        else
+        {
+            if(levels.length > 0)
+            {
+                for(var j=0; j<levels.length; j++)
+                {
+                    data[j] = variables[currentVariableSelection[i]][levels[j]];
+                }
+            }   
+            else
+            {   
+                data[i] = variables[currentVariableSelection[i]];      
+                mins[i] = MIN[currentVariableSelection[i]];      
+                maxs[i] = MAX[currentVariableSelection[i]];
+            }
+        }
         
         for(var j=0; j<data[i].length; j++)
         {
