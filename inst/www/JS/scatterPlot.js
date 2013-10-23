@@ -39,7 +39,7 @@ function makeScatterplot()
                     mins[j] = MIN[currentVariableSelection[i]][levels[j]];      
                     maxs[j] = MAX[currentVariableSelection[i] ][levels[j]]; 
                     
-                    console.log("data= [" + data +"]\nmin=" + min + "\nmax=" + max);                         
+                    console.log("data= [" + data[j] +"]\nmin=" + mins[j] + "\nmax=" + maxs[j]);                         
                 }
             }  
         }
@@ -143,8 +143,8 @@ function makeScatterplot()
         var color = currentVariableSelection.length > 2 ? colorsForPlot[data[2][i]] : "black";
         
         canvas.append("circle")
-                    .attr("cx", canvasWidth/2 - size/2 + getValue(data[0][i], "X")*size)
-                    .attr("cy", canvasHeight/2 + size/2 - getValue(data[1][i], "Y")*size)
+                    .attr("cx", canvasWidth/2 - size/2 + getValue(data[0][i], 0)*size)
+                    .attr("cy", canvasHeight/2 + size/2 - getValue(data[1][i], 1)*size)
                     .attr("r", datapointRadius)
                     .attr("fill", color)
                     .attr("id", "data" + i)
