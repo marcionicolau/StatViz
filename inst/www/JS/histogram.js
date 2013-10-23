@@ -12,8 +12,7 @@ function makeHistogram()
     //Get data, minimums and maximums for each selected variable
     for(var i=0; i<currentVariableSelection.length; i++)
     {   
-        
-        if(variableTypes[currentVariableSelection[i] == false)
+        if(variableTypes[currentVariableSelection[i]] == false)
         {
             levels = variables[currentVariableSelection[i]].unique();
         }
