@@ -58,6 +58,8 @@ function makeHistogram()
     var min = Array.min(mins);
     var max = Array.max(maxs);
     
+    console.log("min: " + min + "; max: " + max);
+    
     console.log("unique data: " + combinedData.unique());
     
     if(combinedData.unique().length < nBins)
