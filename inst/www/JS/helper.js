@@ -93,9 +93,8 @@ function makePlot()
                                                     splitDataByColumnName(dataset, currentVariableSelection[i], uniqueData[j]);
                                                 }
                                             }
-                                        }
+                                        }                                        
                                         
-                                        console.dir(variables);
                                         
                                         makeBoxplot();
                                         break;

@@ -4,6 +4,7 @@ var IQR = new Object();
 var MIN = new Object();
 var MAX = new Object();
 var variableType = new Object();
+var splitData = new Object();
 
 
 var currentVariableSelection = [];    

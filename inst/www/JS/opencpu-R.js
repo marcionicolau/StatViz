@@ -108,6 +108,8 @@ function splitDataByColumnName(dataset, columnName, value)
                     value: value
                   }, function(output) {                   
                 splitData[value];
+                
+                console.dir(splitData);
      }).fail(function(){
           alert("Failure: " + req.responseText);
     });
