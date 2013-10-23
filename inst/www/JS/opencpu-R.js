@@ -19,7 +19,6 @@ function loadFile(filePath)
         getIQR(dataset, output.variableNames[i]);                    
     }
     
-    initVariableTypes();
      }).fail(function(){
           alert("Failure: " + req.responseText);
     });

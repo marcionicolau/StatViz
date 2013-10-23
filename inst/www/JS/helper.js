@@ -82,12 +82,11 @@ function makePlot()
                                         break;
                                     }
         case "Boxplot":
-                                    {  
-                                        con       
+                                    {          
                                         for(var i=0; i<currentVariableSelection.length; i++)
                                         {
                                             console.log("variable type: " + variableType[currentVariableSelection[i]]);
-                                            if(!variableType[currentVariableSelection[i]])
+                                            if(variableType[currentVariableSelection[i]] == false)
                                             {
                                                 var uniqueData = variables[currentVariableSelection[i]].unique();
                                                 
