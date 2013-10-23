@@ -65,33 +65,16 @@ function getData(dataset, variableName, level)
                   }, function(output) {    
         
         if(level === undefined)
-        {            
-            variables[variableName]["entire"] = output.data;
-            
-            
-            
-            MIN[variableName]["entire"] = Array.min(variables[variableName]["entire"]);
-            MAX[variableName]["entire"] = Array.max(variables[variableName]["entire"]);
-
-            console.log("variables[" + variableName + "][entire] = " + variables[variableName]["entire"]);
-            console.log("MIN[" + variableName + "][entire] = " + MIN[variableName]["entire"]);
-            console.log("MAX[" + variableName + "][entire] = " + MAX[variableName]["entire"]);
-
-        }
-        else
-        {                       
-            variables[variableName][level] = output.data;
-            
-            
-            MIN[variableName][level] = Array.min(variables[variableName][level]);
-            MAX[variableName][level] = Array.max(variables[variableName][level]);
-
-            
-            console.log("variables[" + variableName + "][" + level + "] = " + variables[variableName][level]);
-            console.log("MIN[" + variableName + "][" + level + "] = " + MIN[variableName][level]);
-            console.log("MAX[" + variableName + "][" + level + "] = " + MAX[variableName][level]);            
-        }
-    
+        {   
+            level = "dataset";
+        }         
+        variables[variableName][level] = output.data;
+        MIN[variableName][level] = Array.min(variables[variableName][level]);
+        MAX[variableName][level] = Array.max(variables[variableName][level]);
+        
+        console.log("\n\tvariables[" + variableName + "][" + level + "] = " + variables[variableName][level]);
+        console.log("\tMIN[" + variableName + "][" + level + "] = " + MIN[variableName][level]);
+        console.log("\tMAX[" + variableName + "][" + level + "] = " + MAX[variableName][level]);                
       }).fail(function(){
           alert("Failure: " + req.responseText);
     });
