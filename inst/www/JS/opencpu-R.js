@@ -69,15 +69,19 @@ function getData(dataset, variableName, level)
             
             MIN[variableName] = Array.min(variables[variableName]);
             MAX[variableName] = Array.max(variables[variableName]);
+
+            console.log("MIN[" + variableName + "] = " + MIN[variableName]);
+            console.log("MAX[" + variableName + "] = " + MAX[variableName]);
         }
         else
         {                       
             variables[variableName][level] = output.data;
-            MIN[level] = Array.min(variables[variableName][level]);
-            MAX[level] = Array.max(variables[variableName][level]);
+            MIN[variableName][level] = Array.min(variables[variableName][level]);
+            MAX[variableName][level] = Array.max(variables[variableName][level]);
             
-            console.log("MIN[" + level + "]="  + MIN[level])
-
+            console.log("MIN[" + variableName + "][" + level + "] = " + MIN[variableName][level]);
+            console.log("MAX[" + variableName + "][" + level + "] = " + MAX[variableName][level]);
+            
             console.log(variableName + "." + level + "= [" + variables[variableName][level] + "]\n");            
         }
     
