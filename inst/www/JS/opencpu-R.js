@@ -19,6 +19,8 @@ function loadFile(filePath)
         variables[output.variableNames[i]] = new Object();
         MIN[output.variableNames[i]] = new Object();
         MAX[output.variableNames[i]] = new Object();
+        IQR[output.variableNames[i]] = new Object();
+        
         getData(dataset, output.variableNames[i]);                 
         getIQR(dataset, output.variableNames[i]);                    
     }
