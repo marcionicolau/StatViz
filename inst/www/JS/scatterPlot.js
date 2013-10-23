@@ -1,12 +1,11 @@
-var mins = new Object();
-var maxs = new Object();
+
+var mins = [];
+var maxs = [];
    
    
 function makeScatterplot()
 {   
-    var data = [];
-    var mins = [];
-    var maxs = [];
+    var data = [];    
     
     var colorsForPlot = new Object();
     
@@ -138,9 +137,7 @@ function makeScatterplot()
     
     for(var i=0; i<data[0].length; i++)
     {
-        var color = currentVariableSelection.length > 2 ? colorsForPlot[data[2][i]] : "black";
-        
-        console.log("data ungo: " + getValue1(data[0][i],0));
+        v
         
         canvas.append("circle")
                     .attr("cx", canvasWidth/2 - size/2 + getValue1(data[0][i], 0)*size)
@@ -154,8 +151,5 @@ function makeScatterplot()
 
 function getValue1(number, type)
 {
-    console.log("number:" + number);
-    console.log("mins:" + mins[type]);
-    console.log("maxs:" + maxs[type]);
     return (number - mins[type])/(maxs[type] - mins[type]);
 }
