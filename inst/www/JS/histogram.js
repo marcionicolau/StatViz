@@ -28,6 +28,8 @@ function makeHistogram()
         {
             for(var j=0; j<levels.length; j++)
             {
+                console.log("\n retrieving variables[" + currentVariableSelection[i] + "][" + levels[j] + "]");
+                
                 data[j] = variables[currentVariableSelection[i]][levels[j]];
             }
         }   
