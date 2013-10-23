@@ -9,8 +9,6 @@ function loadFile(filePath)
     console.log("dataset: " + dataset + "\n");               
     console.log("variables in the dataset: [" + output.variableNames + "]\n");
     
-    initVariableTypes();
-    
     //render the variable names
     renderVariableNames(output.variableNames);
     
@@ -20,6 +18,8 @@ function loadFile(filePath)
         getData(dataset, output.variableNames[i]);                 
         getIQR(dataset, output.variableNames[i]);                    
     }
+    
+    initVariableTypes();
      }).fail(function(){
           alert("Failure: " + req.responseText);
     });
