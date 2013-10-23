@@ -63,11 +63,13 @@ function getData(dataset, variableName, level)
         
         if(level === undefined)
         {            
-            variables[variableName] = output.data;
-            MIN[variableName] = Array.min(variables[variableName]);
-            MAX[variableName] = Array.max(variables[variableName]);
+            variables[variableName]["entire"] = output.data;
+            MIN[variableName]["entire"] = Array.min(variables[variableName]);
+            MAX[variableName]["entire"] = Array.max(variables[variableName]);
 
-            console.log("variables[" + variableName + "] = " + variables[variableName]);
+            console.log("variables[" + variableName + "][entire] = " + variables[variableName]["entire"]);
+            console.log("MIN[" + variableName + "][entire] = " + MIN[variableName]["entire"]);
+            console.log("MAX[" + variableName + "][entire] = " + MAX[variableName]["entire"]);
 
         }
         else
@@ -76,7 +78,8 @@ function getData(dataset, variableName, level)
             
             
             console.log("variables[" + variableName + "][" + level + "] = " + variables[variableName][level]);
-            
+            console.log("MIN[" + variableName + "][" + level + "] = " + MIN[variableName][level]);
+            console.log("MAX[" + variableName + "][" + level + "] = " + MAx[variableName][level]);            
         }
     
       }).fail(function(){

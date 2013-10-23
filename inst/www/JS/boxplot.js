@@ -25,6 +25,7 @@ function makeBoxplot()
         iqrs[i] = IQR[currentVariableSelection[i]];                    
         means[i] = mean(data[i]);  
     }
+    
     min = Array.min(mins);
     max = Array.max(maxs);
     
