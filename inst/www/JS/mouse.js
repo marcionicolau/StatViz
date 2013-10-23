@@ -50,12 +50,9 @@ function OnMouseDown(e)
         
         for(var i=0; i<varNames.length; i++)
         {
-//             console.log("variable type: " + variableType[varNames[i]]);
             if(variableType[varNames[i]] == false)
             {
                 var uniqueData = variables[varNames[i]].unique();
-                
-                // console.log("unique data: " + uniqueData);
                 
                 for(var j=0; j<uniqueData.length; j++)
                 {
