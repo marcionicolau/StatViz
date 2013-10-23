@@ -24,7 +24,11 @@ function OnMouseDown(e)
         
         //add to list of variables selected
         currentVariableSelection = addToArray(currentVariableSelection, target.id);
-        console.log("current variable selection: [" + currentVariableSelection + "]");
+        
+    
+        console.log("****************************************************");
+        
+        console.log("\n\ncurrent variable selection: [" + currentVariableSelection + "]");
                             
         makePlot();
         toggleFillColors();

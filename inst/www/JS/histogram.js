@@ -60,7 +60,6 @@ function makeHistogram()
         }
     } 
         
-    console.log("combined data = [" + combinedData + "]");
 
     // Find minimum and maximum values
     var min = Array.min(mins);
