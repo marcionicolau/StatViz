@@ -66,6 +66,7 @@ function getData(dataset, variableName, modifier)
                                 
         var statement = (modifier + "[\"" + variableName + "\"]");
         
+        console.log("data=" + output.data);
         eval(statement + "=" + output.data);
         console.log(statement + eval(statement));
             
