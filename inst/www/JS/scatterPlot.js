@@ -36,10 +36,7 @@ function makeScatterplot()
                     
                     data[j] = variables[currentVariableSelection[i]][levels[j]];
                     mins[j] = MIN[currentVariableSelection[i]][levels[j]];      
-                    maxs[j] = MAX[currentVariableSelection[i] ][levels[j]];      
-                    medians[j] = median(data[j]);
-                    iqrs[j] = IQR[currentVariableSelection[i]][levels[i]];  
-                    means[j] = mean(data[j]);  
+                    maxs[j] = MAX[currentVariableSelection[i] ][levels[j]];                          
                 }
             }  
         }
@@ -47,10 +44,7 @@ function makeScatterplot()
         {               
             data[i] = variables[currentVariableSelection[i]]["dataset"];      
             mins[i] = MIN[currentVariableSelection[i]]["dataset"];      
-            maxs[i] = MAX[currentVariableSelection[i]]["dataset"];
-            medians[i] = median(data[i]);
-            iqrs[i] = IQR[currentVariableSelection[i]]["dataset"];
-            means[i] = mean(data[i]);  
+            maxs[i] = MAX[currentVariableSelection[i]]["dataset"];            
         }             
     }
     
