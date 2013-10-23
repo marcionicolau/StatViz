@@ -31,8 +31,8 @@ function makeHistogram()
                 console.log("\n retrieving variables[" + currentVariableSelection[i] + "][" + levels[j] + "]");
                 
                 data[j] = variables[currentVariableSelection[i]][levels[j]];
-                mins[j] = MIN[levels[j]];      
-                maxs[j] = MAX[levels[j]];
+                mins[j] = Array.min(data[j]);
+                maxs[j] = Array.max(data[j]);
                 
                 console.log("min: " + mins[j] + "; max: " + maxs[j]);
             }
