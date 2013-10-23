@@ -53,7 +53,7 @@
             function renderVariableNames(variableNames)
             {   
                 var variablePanel = d3.select("#variable.panel");                
-                var variablePanelWidth = variablePanel.style("width");
+                var variablePanelWidth = variablePanel.style("width") - variableSelectionButtonWidth;
                 
                 var variableNameHolderPadding = 15;
                 var radius = "15px";
@@ -77,12 +77,23 @@
                                                     .attr("x", variableNameHolderPadding)
                                                     .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding))                                                   
                                                     .attr("height", variableNameHolderHeight)
-                                                    .attr("width",  variableNameHolderWidth - variableNameHolderPadding)     
+                                                    .attr("width",  variableNameHolderWidth)     
                                                     .attr("rx", radius)
                                                     .attr("ry", radius)
                                                     .attr("fill", panelColors.normal)
                                                     .attr("id", variableNames[i])
                                                     .attr("class", "variableNameHolder");
+//                     
+//                     variablePanelSVG.append("rect")
+//                                                     .attr("x", variableNameHolderPadding)
+//                                                     .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding))                                                   
+//                                                     .attr("height", variableNameHolderHeight)
+//                                                     .attr("width",  variableNameHolderWidth)     
+//                                                     .attr("rx", radius)
+//                                                     .attr("ry", radius)
+//                                                     .attr("fill", panelColors.normal)
+//                                                     .attr("id", variableNames[i])
+//                                                     .attr("class", "variableNameHolder");
                                                 
                     variablePanelSVG.append("text")
                                                     .attr("x", variableNameHolderPadding + variableNameHolderWidth/2)
