@@ -198,12 +198,47 @@ function OnMouseOver(e)
         
         datapoint.transition().duration(300).attr("r", "5px").attr("fill", meanColors["normal"]);
         
+        var altScatterPlot = false;
+        
+        //Get data, minimums and maximums for each selected variable
+        for(var i=0; i<currentVariableSelection.length; i++)
+        {   
+            if(variableType[currentVariableSelection[i]] == false && currentVariableSelection.length > 1)
+            {
+                // Levels are needed when we have a independent variable and one or more dependent variables
+                levels = variables[currentVariableSelection[i]]["dataset"].unique();            
+                altScatterPlot = true;
+            }
+        }
+    
+        for(var i=0; i<currentVariableSelection.length; i++)
+        {        
+            if(altScatterPlot)
+            {
+                if(variableType[currentVariableSelection[i]] != false)
+                {
+                    //for the dependent variable(s)
+                
+                    for(var j=0; j<levels.length; j++)
+                    {
+                        // for each level of the independent variable, find the dependent variables                    
+                    
+                        text[j] = variables[currentVariableSelection[i]][levels[j]];
+                    }
+                }  
+            }
+            else 
+            {               
+                text[i] = variables[currentVariableSelection[i]]["dataset"];                
+            }             
+        }
+        
         var canvas = d3.select("#svgCanvas");
         canvas.append("text")
                 .attr("x", e.pageX + 10 - (width - canvasWidth))
                 .attr("y", e.pageY + 15)
                 .attr("fill", meanColors["normal"])
-                .text(variables[currentVariableSelection[0]]["dataset"][getNumber(datapoint.attr("id"))] + ", " + variables[currentVariableSelection[1]]["dataset"][getNumber(datapoint.attr("id"))])
+                .text(text[0][getNumber(datapoint.attr("id"))] + ", " + text[1][getNumber(datapoint.attr("id"))])
                 .attr("class", "hoverText");
                 
         var xLine = canvas.append("line")
