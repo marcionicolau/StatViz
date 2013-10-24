@@ -199,6 +199,7 @@ function OnMouseOver(e)
         datapoint.transition().duration(300).attr("r", "5px").attr("fill", meanColors["normal"]);
         
         var altScatterPlot = false;
+        var text = new Array();
         
         //Get data, minimums and maximums for each selected variable
         for(var i=0; i<currentVariableSelection.length; i++)
