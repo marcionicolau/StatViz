@@ -30,10 +30,8 @@ function compareMeans()
                     var levels = variables[variableList["independent"][0]]["dataset"].unique();
                     
                     if(option == "parametric")
-                    {
-                                                    
-                        performTTest(variables[variableList["dependent"][0]][[levels[0]], variables[variableList["dependent"][0]][[levels[1]]);
-                        
+                    {                                                    
+                        performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                        
                     }
                     
                     break;
