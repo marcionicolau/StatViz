@@ -184,124 +184,43 @@ function tTest()
                   .attr("stroke", "red")
                   .attr("fill", "red")
                   .attr("class", "DOM");
-
-    svg.append("line")
-       .attr("x1", canvasWidth/2 + size/2 + 5)
-       .attr("y1", cyMin - 45)
-       .attr("x2", canvasWidth/2 + size/2 + 5)
-       .attr("y2", cyMin + 45)
-       .attr("stroke", "blue")
-       .attr("stroke-width", "3px")
-       .attr("opacity", "0.25")
-       .attr("class", "CI")
-       .attr("id", "dom");
-    svg.append("line")
-       .attr("x1", canvasWidth/2 + size/2)
-       .attr("y1", cyMin - 45)
-       .attr("x2", canvasWidth/2 + size/2 + 10)
-       .attr("y2", cyMin - 45)
-       .attr("stroke", "blue")
-       .attr("stroke-width", "3px")
-       .attr("opacity", "0.25")
-       .attr("class", "CI")
-       .attr("id", "dom");
-    svg.append("line")
-       .attr("x1", canvasWidth/2 + size/2)
-       .attr("y1", cyMin + 45)
-       .attr("x2", canvasWidth/2 + size/2 + 10)
-       .attr("y2", cyMin + 45)
-       .attr("stroke", "blue")
-       .attr("stroke-width", "3px")
-       .attr("opacity", "0.25")
-       .attr("class", "CI")
-       .attr("id", "dom");		
-
-    // var scale = svg.append("line")
-//                    .attr("x1", canvasWidth/2 + size/2 + 25)
-//                    .attr("y1", cyMin - 25)
-//                    .attr("x2", canvasWidth/2 + size/2 + 25)
-//                    .attr("y2", cyMax + 25)
-//                    .attr("class", "DOM")
-//                    .attr("stroke", "black");
-// 
-//     var scaleGrooves = [];
-// 
-//     for(var i=0; i<4; i++)				
-//     {
-//         scaleGrooves[i] = svg.append("line")
-//                              .attr("x1", canvasWidth/2 + size/2 + 30)
-//                              .attr("y1", cyMax + i*((cyMin - cyMax)/3))
-//                              .attr("x2", canvasWidth/2 + size/2 + 20)
-//                              .attr("y2", cyMax + i*((cyMin - cyMax)/3))
-//                              .attr("class", "DOM")
-//                              .attr("stroke", "black");
-//         svg.append("text")
-//            .attr("x", canvasWidth/2 + size/2 + 35)
-//            .attr("y", cyMax + i*((cyMin - cyMax)/3) + 2)
-//            .text(3*i)
-//            .attr("class", "DOM");
-//     }
-//     
-//     svg.append("text")
-//         .attr("x", canvasWidth/2 + size/2 + 50)
-//         .attr("y", (cyMin + cyMax)/2)
-//         .attr("fill", "blue")
-//         .attr("font-size", "18px")
-//         .attr("class", "DOM")
-//         .text("d = 0.32");
-//         
-//     svg.append("circle")
-//         .attr("cx", canvasWidth/2 + size/2 + 125)
-//         .attr("cy", (cyMin + cyMax)/2 - 3)
-//         .attr("r", "10px")
-//         .attr("fill", "lightgrey")
-//         .attr("stroke", "black")
-//         .attr("id", "dHoverCircle")
-//         .attr("class", "help");
-//     
-//     svg.append("text")
-//         .attr("x", canvasWidth/2 + size/2 + 122)
-//         .attr("y", (cyMin + cyMax)/2 + 1)
-//         .attr("fill", "black")
-//         .attr("font-size", "14px")
-//         .text("?")
-//         .attr("id", "dHoverText")
-//         .attr("class", "help");
-//     
-//     svg.append("text")
-//         .attr("x", canvasWidth/2 + size/2 - 25) 
-//         .attr("y", cyMax + 50)
-//         .attr("fill", "blue")
-//         .attr("font-size", "24px")
-//         .attr("class", "DOM")
-//         .text("Unpaired 2-tailed t-test was used (t(24) = 3.14)");
-//     
-//     svg.append("text")
-//         .attr("x", canvasWidth/2 + size/2 + 25) 
-//         .attr("y", cyMax + 75)
-//         .attr("fill", "blue")
-//         .attr("font-size", "24px")
-//         .attr("class", "DOM")
-//         .text("p = 0.0134 (< 0.05)");   
-//         
-//      svg.append("circle")
-//         .attr("cx", canvasWidth/2 + size/2 + 165)
-//         .attr("cy", cyMax + 70)
-//         .attr("r", "10px")
-//         .attr("fill", "lightgrey")
-//         .attr("stroke", "black")
-//         .attr("id", "pHoverCircle")
-//         .attr("class", "help");
-//     
-//     svg.append("text")
-//         .attr("x", canvasWidth/2 + size/2 + 162)
-//         .attr("y", cyMax + 75)
-//         .attr("fill", "black")
-//         .attr("font-size", "14px")
-//         .text("?")
-//         .attr("id", "pHoverText")
-//         .attr("class", "help");
+    
+    drawScales(cx, cy);
+    
 }
+
+function drawScales(cx, cy)
+{
+    //get number of means
+    var yMin = Array.min(cy);
+    var yMax = Array.max(cy);
+    
+    var canvas = d3.select("#svgCanvas");
+    canvas.append("line")
+            .attr("x1", canvasWidth/2 + size/2 + significanceTestScaleOffset)
+            .attr("y1", yMin)
+            .attr("x2", canvasWidth/2 + size/2 + significanceTestScaleOffset)
+            .attr("y2", yMax)
+            .attr("stroke", meanColors["normal"])
+            .attr("id", "mainScale")
+            .attr("class", "significanceTestScale");            
+    
+    var x = canvasWidth/2 + size/2 + significanceTestScaleOffset;
+    if(cx.length < 5)
+    {
+        for(var i=0; i<cx.length; i++)
+        {        
+            canvas.append("line")
+                    .attr("x1", x-5)
+                    .attr("y1", cy[i])
+                    .attr("x2", x)
+                    .attr("y2", cy[i])
+                    .attr("stroke", meanColors["normal"])
+                    .attr("id", "ticks")
+                    .attr("class", "significanceTestScale");       
+        }
+    }        
+}   
 
 
 
