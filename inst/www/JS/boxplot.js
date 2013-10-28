@@ -121,7 +121,7 @@ function makeBoxplot()
     
     var widthSlice = size/(nPlots+1);
     
-    for(var i=0; i<nPlots.length; i++)
+    for(var i=0; i<nPlots; i++)
     {
         var rectBottom = (medians[i] - iqrs[i]/2) < min ? min : (medians[i] - iqrs[i]/2);
         var rectTop = (medians[i] + iqrs[i]/2) > max ? max : (medians[i] + iqrs[i]/2);
