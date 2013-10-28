@@ -163,6 +163,17 @@ function tTest()
                                  .attr("stroke-dasharray","5,5")
                                  .attr("id", "meanrefLine")
                                  .attr("class", "significanceTest");
+                                 
+                            svg.append("line")
+                                 .attr("x1", means[i].getAttribute("cx"))
+                                 .attr("y1", means[i].getAttribute("cy"))
+                                 .attr("x2", canvasWidth/2 - size/2)
+                                 .attr("y2", means[i].getAttribute("cy"))
+                                 .attr("stroke", "black")
+                                 .attr("opacity", "0.25")
+                                 .attr("stroke-dasharray","5,5")
+                                 .attr("id", "meanrefLine")
+                                 .attr("class", "significanceTest");
         }
         else
         {									
@@ -249,7 +260,7 @@ function drawScales(cx, cy)
                 .attr("fill", meanColors["normal"])
                 .attr("id", "tickText")
                 .attr("class", "significanceTestScaleText")
-                .text(means[1] - means[0]);
+                .text(format(means[1] - means[0]));
     }           
 }   
 
