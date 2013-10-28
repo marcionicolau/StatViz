@@ -203,6 +203,11 @@ function getFraction(number)
     return (number - min)/(max - min);
 }
 
+function getValue(fraction)
+{
+    return (fraction*(max - min)) + min;
+}
+
 function getOutliers(data, topFringe, bottomFringe)
 {
     var outliers = [];
