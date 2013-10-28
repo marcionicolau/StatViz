@@ -57,7 +57,7 @@ function performHomoscedasticityTest(dependent, independent)
                   
                   console.log("levene's test:\n p-value =" + output.p);
                   
-                  if(getNumber(output.p) < 0.05)
+                  if(output.p < 0.05)
                   {
                     alert("check the assumptions dumbhead. variances are significantly different from each other!");
                   }
