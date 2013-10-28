@@ -235,7 +235,7 @@ function drawScales(cx, cy)
                 .attr("fill", meanColors["normal"])
                 .attr("id", "tickText")
                 .attr("class", "significanceTestScaleText")
-                .text(format(getValue(yMax - yMin)));
+                .text(format(getValue(yMax)));
     }           
 }   
 
