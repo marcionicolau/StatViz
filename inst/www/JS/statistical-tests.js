@@ -227,15 +227,29 @@ function drawScales(cx, cy)
     
     console.log("length: " + cx.length);
     
-    if(cx.length == 2)
+    var variableList = getSelectedVariables();
+    var means = [];
+    
+    var levels = variables[variableList["independent"][0]]["dataset"].unique();
+    
+    for(var i=0; i<variableList["dependent"].length; i++)
     {
+        for(var j=0; j<levels.length; j++)
+        {
+            means.push(mean(variables[variableList["dependent"][i]][levels[j]]));
+        }
+    }   
+    
+    
+    if(cx.length == 2)
+    {        
         canvas.append("text")
                 .attr("x", x + 5)
                 .attr("y", (yMin + yMax)/2)
                 .attr("fill", meanColors["normal"])
                 .attr("id", "tickText")
                 .attr("class", "significanceTestScaleText")
-                .text(format(getValue(yMax)));
+                .text(means[1] - means[0]);
     }           
 }   
 
