@@ -11,5 +11,11 @@ performTTest <- function(dataset = "", group1 = "", group2 = "", paired = "FALSE
   
   
   # Interpret T-test  
-  list(p=result$p.value, t=result$statistic[["t"]], DOF=result$parameter[["df"]], CI_mean=result$conf.int, method=result$method, dataset = dataset, alpha = alpha);
+  list(p=result$p.value, 
+  t=result$statistic[["t"]], 
+  DOF=result$parameter[["df"]], 
+  CI_mean=result$conf.int, 
+  method=result$method, 
+  dataset = dataset, 
+  alpha = alpha);
 }

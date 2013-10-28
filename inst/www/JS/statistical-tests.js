@@ -218,7 +218,12 @@ function drawScales(cx, cy)
                     .attr("id", "ticks")
                     .attr("class", "significanceTestScale");       
         }
-    }        
+    }  
+    
+    if(cx.length == 2)
+    {
+        canvas.append("text")
+                
 }   
 
 
