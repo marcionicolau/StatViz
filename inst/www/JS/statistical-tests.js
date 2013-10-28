@@ -13,11 +13,13 @@ function compareMeans()
                     //homoscedasticity
                     var variableList = getSelectedVariables();
                     
-                    console.log("variable list: [");
-                    console.dir(variableList);
-                    console.log("]");
-                    
-//                     performHomoscedasticityTest();
+                    for(var i=0; i<variableList["independent"].length; i++)
+                    {
+                        for(var j=0; j<variableList["dependent"].length; j++)
+                        {
+                            performHomoscedasticityTest(variableList["dependent"][j], variableList["independent"][i]);
+                        }
+                    }
                     
                     //normality
                     break;
@@ -31,15 +33,16 @@ function compareMeans()
     }
 }
 
-function performHomoscedasticityTest(dataset, variableName)
+function performHomoscedasticityTest(dependent, independent)
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("performHomoscedasticityTest", {
-//                     dependentVariable: ,
-//                     independentVariable: ,
-                    dataset: dataset
-                    
+                    dependentVariable: dependent,
+                    independentVariable: independent,
+                    dataset: dataset                    
                   }, function(output) {                                 
+                  
+                  console.log("test statistic: " + output.testStatistic);
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
