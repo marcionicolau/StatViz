@@ -22,6 +22,11 @@ function compareMeans()
                     }
                     
                     //normality
+                    for(var i=0; i<variableList["dependent"].length; i++)
+                    {
+                        performNormalityTest(variableList["dependent"][i]);
+                    }
+                    
                     break;
                 }
         
@@ -42,7 +47,30 @@ function performHomoscedasticityTest(dependent, independent)
                     dataset: dataset                    
                   }, function(output) {                                 
                   
-                  console.log("test statistic: " + output.testStatistic);
+                  console.log("p-value =" + output.p);
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function performNormalityTest(variable)
+{
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("performShapiroWilkTest", {
+                    variableName: variable,                    
+                    dataset: dataset                    
+                  }, function(output) {                                                   
+                  
+                  console.log("p-value =" + output.p + " (" + variable + ")");
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
