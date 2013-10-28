@@ -11,8 +11,13 @@ function compareMeans()
                     console.log("checking assumptions for t-test\n");
                     
                     //homoscedasticity
-                    performHomoscedasticityTest(getSelectedVariables());
+                    var variableList = getSelectedVariables();
                     
+                    console.log("variable list: [");
+                    console.dir(variableList);
+                    console.log("]");
+                    
+//                     performHomoscedasticityTest();
                     
                     //normality
                     break;
@@ -64,6 +69,30 @@ function getSelectedVariables()
     
     console.log("variables selected for statistical test = [" + variableList + "]\n");
     
-    return variableList;
+    return sort(VariableList); //we have variables, now we need to sort them into independent and dependent variables
 }
-            
+
+          
+function sort(variableList)
+{
+    var newVariableList = new Object();
+    
+    newVariableList["dependent"] = new Array();
+    newVariableList["independent"] = new Array();
+
+    
+    for(var i=0; i<variableList.length; i++)
+    {
+        if(variableType[variableList[i]] == false)
+        {
+            newVariableList["independent"].push(variableList[i]);
+        }
+        else
+        {
+            newVariableList["dependent"].push(variableList[i]);
+        }
+    }
+    
+    return newVariableList;
+}
+  
