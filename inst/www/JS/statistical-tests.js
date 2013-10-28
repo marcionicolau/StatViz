@@ -41,6 +41,34 @@ function compareMeans()
         default:
                 //ANOVA
                 {
+                    //check assumptions
+                    console.log("checking assumptions for ANOVA\n");
+                    
+                    //homoscedasticity
+                    var variableList = getSelectedVariables();
+                    
+                    for(var i=0; i<variableList["independent"].length; i++)
+                    {
+                        for(var j=0; j<variableList["dependent"].length; j++)
+                        {
+                            performHomoscedasticityTest(variableList["dependent"][j], variableList["independent"][i]);
+                        }
+                    }
+                    
+                    //normality
+                    // for(var i=0; i<variableList["dependent"].length; i++)
+//                     {
+//                         performNormalityTest(variableList["dependent"][i]);
+//                     }
+//                     var option = "parametric";
+//                     var levels = variables[variableList["independent"][0]]["dataset"].unique();
+//                     
+//                     if(option == "parametric")
+//                     {                                                    
+//                         console.log(variables[variableList["dependent"][0]][levels[0]] + ",\n" + variables[variableList["dependent"][0]][levels[1]])
+//                         performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                        
+//                     }
+                    
                     break;
                 }
     }
