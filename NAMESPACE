@@ -24,6 +24,7 @@ export(drawQQPlot)
 
 export(getESFromF)
 export(getESFromT)
+export(getDFromT)
 export(getESFromChiSquared)
 export(getESFromP)
 export(getESFromRawMeanScores)

@@ -116,7 +116,7 @@ function performTTest(group1, group2)
                   testResults["df"] = output.DOF;
                   
                   console.log(testResults["t"] + "; " + group1.length);
-                  getESFromT(group1.length);                  
+                  getDFromT(group1.length);                  
                   
                 //drawing stuff
                 removeElementsByClass("completeLines");           
@@ -137,10 +137,10 @@ function performTTest(group1, group2)
     });
 }
 
-function getESFromT(n)
+function getDFromT(n)
 {
     // Get variable names and their data type
-    var req = opencpu.r_fun_json("getESFromT", {
+    var req = opencpu.r_fun_json("getDFromT", {
                     t: testResults["t"],                   
                     n1: n,
                     n2: n
