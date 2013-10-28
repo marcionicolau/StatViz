@@ -160,6 +160,8 @@ function tTest()
 
     var means = document.getElementsByClassName("means");
     var meanRefLines = [];
+    
+    var svg = d3.select("#svgCanvas");
 
     for(var i=0; i<means.length; i++)
     {
