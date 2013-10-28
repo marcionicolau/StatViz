@@ -136,13 +136,13 @@ function performTTest(group1, group2)
     });
 }
 
-function getESFromT()
+function getESFromT(n)
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("getESFromT", {
                     t: testResults[t],                   
-                    n1: testResults,
-                    n2: 
+                    n1: n,
+                    n2: n
                   }, function(output) {                                                   
                   
                   console.log("Cohen's d: " + output.d);
