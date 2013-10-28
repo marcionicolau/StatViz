@@ -220,9 +220,10 @@ function drawScales(cx, cy)
         }
     }  
     
-    if(cx.length == 2)
-    {
-        canvas.append("text")
+    // if(cx.length == 2)
+//     {
+//         canvas.append("text")
+//     
                 
 }   
 
