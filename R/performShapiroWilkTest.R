@@ -4,5 +4,5 @@ performShapiroWilkTest <- function(variableName, dataset)
   
   result <- eval(parse(text = paste("shapiro.test(table$",variableName,")")));
   
-  list(testStatistic = result$statistic[["Test Statistic"]], p = result$p.value, method = result$method, data = toString(dataset));
+  list(testStatistic = result$statistic[["W"]], p = result$p.value, method = result$method, data = toString(dataset));
 }
