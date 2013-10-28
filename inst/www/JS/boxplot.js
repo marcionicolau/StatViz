@@ -62,6 +62,8 @@ function makeBoxplot()
     
     console.log(data);
     
+    var nPlots = levels.length;
+    
     min = Array.min(mins);
     max = Array.max(maxs);
     
@@ -117,9 +119,9 @@ function makeBoxplot()
                     .attr("class", "yAxisGrooveText");
     }
     
-    var widthSlice = size/(currentVariableSelection.length+1);
+    var widthSlice = size/(nPlots+1);
     
-    for(var i=0; i<currentVariableSelection.length; i++)
+    for(var i=0; i<nPlots.length; i++)
     {
         var rectBottom = (medians[i] - iqrs[i]/2) < min ? min : (medians[i] - iqrs[i]/2);
         var rectTop = (medians[i] + iqrs[i]/2) > max ? max : (medians[i] + iqrs[i]/2);
