@@ -1,9 +1,10 @@
 performTTest <- function(dataset = "", group1 = "", group2 = "", paired = "FALSE", alternative = "two.sided", alpha = 0.95)
 {
   table <- as.data.frame(dataset);  
+  
+  distributionX <- as.data.frame(group1);
+  distributionY <- as.data.frame(group2);
         
-  distributionX = eval(parse(text = paste("table$",group1,sep="")));
-  distributionY = eval(parse(text = paste("table$",group2,sep="")));
   
   # Do T-test  
   result = t.test(x=distributionX, y=distributionY, alternative=alternative, paired=eval(parse(text = paired)), var.equal=TRUE, conf.level=eval(parse(text=alpha)));
