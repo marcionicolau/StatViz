@@ -1,7 +1,5 @@
 performHomoscedasticityTest <- function(dependentVariable = "", independentVariable = "", dataset = "", type = "levene")
-{
-  // p < 0.05 => there is a significant difference between the variances!
-  
+{  
   install.packages("lawstat");
   
   library(lawstat);
