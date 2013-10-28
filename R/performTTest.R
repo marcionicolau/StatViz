@@ -1,31 +1,14 @@
-performTTest <- function(dataset = "", columnNameX = "", columnNameY = "", paired = "FALSE", alternative = "two.sided", alpha = "")
+performTTest <- function(dataset = "", group1 = "", group2 = "", paired = "FALSE", alternative = "two.sided", alpha = 0.95)
 {
-  # Get distributions
-  
-  if(dataset == "")
-  {   
-    dataset = "beaver1";
-    columnNameX = "time";
-    columnNameY = "temp";
-    alpha = "0.95";
-  }
-  else if(columnNameX == "")
-  {
-    # Load the first column name by default
-    columnNameX = names(eval(parse(text = dataset)))[1]; 
-    columnNameY = names(eval(parse(text = dataset)))[2]; 
-  }
+  table <- as.data.frame(dataset);  
         
-  distributionX = eval(parse(text = paste(dataset,"$",columnNameX)));
-  distributionY = eval(parse(text = paste(dataset,"$",columnNameY)));
+  distributionX = eval(parse(text = paste("table$",group1)));
+  distributionY = eval(parse(text = paste("table$",group2)));
   
-  # Do T-test
-  alpha_ = eval(parse(text = alpha));
-  
-  result = t.test(x=distributionX, y=distributionY, alternative=alternative, paired=eval(parse(text = paired)), var.equal=TRUE, conf.level=alpha_);
+  # Do T-test  
+  result = t.test(x=distributionX, y=distributionY, alternative=alternative, paired=eval(parse(text = paired)), var.equal=TRUE, conf.level=eval(parse(text=alpha)));
   
   
-  # Interpret T-test
-  
-  list(p=result$p.value, t=result$statistic[["t"]], DOF=result$parameter[["df"]], CI_mean=result$conf.int, method=result$method, dataset = dataset, columnName1 = columnNameX, columnName2 = columnNameY, alpha = alpha);
+  # Interpret T-test  
+  list(p=result$p.value, t=result$statistic[["t"]], DOF=result$parameter[["df"]], CI_mean=result$conf.int, method=result$method, dataset = dataset, alpha = alpha);
 }

@@ -26,6 +26,16 @@ function compareMeans()
                     {
                         performNormalityTest(variableList["dependent"][i]);
                     }
+                    var option = "parametric";
+                    var levels = variables[variableList["independent"][0]].unique();
+                    
+                    if(option == "parametric")
+                    {
+                        for(var i=0; i<levels.length; i++)
+                        {                            
+                            performTTest(variables[variableList["dependent"][0]][levels[i]]);
+                        }
+                    }
                     
                     break;
                 }
@@ -47,7 +57,7 @@ function performHomoscedasticityTest(dependent, independent)
                     dataset: dataset                    
                   }, function(output) {                                 
                   
-                  console.log("p-value =" + output.p);
+                  console.log("levene's test:\n p-value =" + output.p);
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -70,7 +80,7 @@ function performNormalityTest(variable)
                     dataset: dataset                    
                   }, function(output) {                                                   
                   
-                  console.log("p-value =" + output.p + " (" + variable + ")");
+                  console.log("normality test:\n p-value =" + output.p + " (" + variable + ")");
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -84,6 +94,33 @@ function performNormalityTest(variable)
         
     });
 }
+
+//dataset = "", columnNameX = "", columnNameY = "", paired = "FALSE", alternative = "two.sided", alpha = 0.95)
+function performTTest(group1, group2)
+{
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("performTTest", {
+                    dataset: dataset,
+                    group1: group1,
+                    group2: group2                   
+                  }, function(output) {                                                   
+                  
+                  console.log("t-test: \n p-value =" + output.p + " (" + group1 + ", " + group2 + ")");
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+
 
 function getSelectedVariables()
 {
