@@ -115,6 +115,7 @@ function performTTest(group1, group2)
                   testResults["method"] = output.method;
                   testResults["df"] = output.DOF;
                   
+                  console.log(testResults["t"] + "; " + group1.length);
                   getESFromT(group1.length);                  
                   
                 //drawing stuff
