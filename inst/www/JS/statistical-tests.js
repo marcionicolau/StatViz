@@ -185,8 +185,7 @@ function tTest()
                   .attr("fill", "red")
                   .attr("class", "DOM");
     
-    drawScales(cx, cy);
-    
+    drawScales(cx, cy);    
 }
 
 function drawScales(cx, cy)
