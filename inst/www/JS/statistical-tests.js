@@ -124,7 +124,7 @@ function performTTest(group1, group2)
                           canvas.append("line")
                                     .attr("x1", means[i].getAttribute("cx"))
                                     .attr("y1", means[i].getAttribute("cy"))
-                                    .attr("x2", canvasSize/2 + size/2)
+                                    .attr("x2", canvasWidth/2 + size/2)
                                     .attr("y2", means[i].getAttribute("cy"))
                                     .attr("stroke", meanColors["normal"]);
                     }
