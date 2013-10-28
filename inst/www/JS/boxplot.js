@@ -60,6 +60,8 @@ function makeBoxplot()
         }             
     }
     
+    console.log(data);
+    
     min = Array.min(mins);
     max = Array.max(maxs);
     
