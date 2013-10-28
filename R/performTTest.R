@@ -17,6 +17,6 @@ performTTest <- function(dataset = "", group1 = "", group2 = "", paired = "FALSE
   CI_mean=result$conf.int, 
   method=result$method, 
   dataset = dataset, 
-  alpha = alpha
+  alpha = alpha,
   mean = result$estimate);
 }
