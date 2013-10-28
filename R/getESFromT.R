@@ -1,4 +1,4 @@
-getESFromT <- function(TVal = "", n1 = "", n2 = "")
+getESFromT <- function(t = "", n1 = "", n2 = "")
 {
   
   install.packages("compute.es");
@@ -6,15 +6,7 @@ getESFromT <- function(TVal = "", n1 = "", n2 = "")
   library(compute.es);
   
   
-  if(TVal == "")
-  {
-    TVal = "3.14";
-    n1 = "40";
-    n2 = "40";
-  }
-  
-  
-  result = tes(eval(parse(text = TVal)), eval(parse(text = n1)), eval(parse(text = n2)));
+  result = tes(eval(parse(text = t)), eval(parse(text = n1)), eval(parse(text = n2)));
   
   # result = tes(3.14, 40, 40);
   
