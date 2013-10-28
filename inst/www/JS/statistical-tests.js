@@ -174,7 +174,7 @@ function tTest()
                                  .attr("x2", canvasWidth/2 + size/2)
                                  .attr("y2", means[i].getAttribute("cy"))
                                  .attr("stroke", "black")
-                                 .attr("stroke-dasharray","5,5");
+                                 .attr("stroke-dasharray","5,5")
                                  .attr("id", "meanrefLine")
                                  .attr("class", "significanceTest");
         }
