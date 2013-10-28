@@ -109,6 +109,8 @@ function performTTest(group1, group2)
                   }, function(output) {                                                   
                   
                   console.log("t-test: \n p-value =" + output.p + " (" + group1 + ", " + group2 + ")");
+                  
+                  removeElementsByClass("completeLines");
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
