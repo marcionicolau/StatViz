@@ -31,10 +31,9 @@ function compareMeans()
                     
                     if(option == "parametric")
                     {
-                        for(var i=0; i<levels.length; i++)
-                        {                            
-                            performTTest(variables[variableList["dependent"][0]][levels[i]]);
-                        }
+                                                    
+                        performTTest(variables[variableList["dependent"][0]][[levels[0]], variables[variableList["dependent"][0]][[levels[1]]);
+                        
                     }
                     
                     break;
