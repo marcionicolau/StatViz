@@ -225,6 +225,8 @@ function drawScales(cx, cy)
         }
     }  
     
+    console.log("length: " + cx.length);
+    
     if(cx.length == 2)
     {
         canvas.append("text")
