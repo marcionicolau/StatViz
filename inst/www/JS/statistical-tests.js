@@ -110,7 +110,25 @@ function performTTest(group1, group2)
                   
                   console.log("t-test: \n p-value =" + output.p + " (" + group1 + ", " + group2 + ")");
                   
-                  removeElementsByClass("completeLines");
+                  
+                //drawing stuff
+                removeElementsByClass("completeLines");
+                var means = document.getElementsByClassName("means");
+                
+                var canvas = d3.select("#svgCanvas");
+                  
+                for(var i=0; i<means.length; i++)
+                {
+                    if(means[i].getAttribute("fill") == meanColors["click"])
+                    {
+                          canvas.append("line")
+                                    .attr("x1", means[i].getAttribute("cx"))
+                                    .attr("y1", means[i].getAttribute("cy"))
+                                    .attr("x2", canvasSize/2 + size/2)
+                                    .attr("y2", means[i].getAttribute("cy"))
+                                    .attr("stroke", meanColors["normal"]);
+                    }
+                }
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
