@@ -65,11 +65,9 @@ function getSelectedVariables()
         {
             variableList.push(means[i].getAttribute("id"));
         }
-    }
+    }   
     
-    console.log("variables selected for statistical test = [" + variableList + "]\n");
-    
-    return sort(VariableList); //we have variables, now we need to sort them into independent and dependent variables
+    return sort(variableList); //we have variables, now we need to sort them into independent and dependent variables
 }
 
           
