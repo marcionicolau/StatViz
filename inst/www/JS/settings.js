@@ -44,6 +44,9 @@ var outlierRadius = "3px";
 // Scatterplot
 var datapointRadius = "3px";
 
+// Significance test
+var significanceTestScaleOffset = 25;
+
 
 
 

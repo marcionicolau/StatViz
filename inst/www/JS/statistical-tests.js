@@ -115,12 +115,39 @@ function performTTest(group1, group2)
                   testResults["method"] = output.method;
                   testResults["df"] = output.DOF;
                   
+                  getESFromT(group1.length);                  
                   
                 //drawing stuff
                 removeElementsByClass("completeLines");           
 
                 tTest();
                 
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function getESFromT()
+{
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("getESFromT", {
+                    t: testResults[t],                   
+                    n1: testResults,
+                    n2: 
+                  }, function(output) {                                                   
+                  
+                  console.log("Cohen's d: " + output.d);
+                  
+                  testResults["d"] = output.d;
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -159,7 +186,7 @@ function tTest()
                                  .attr("y1", means[i].getAttribute("cy"))
                                  .attr("x2", canvasWidth/2 + size/2)
                                  .attr("y2", means[i].getAttribute("cy"))
-                                 .attr("stroke", "black")
+                                 .attr("stroke", meanColors["normal"])
                                  .attr("stroke-dasharray","5,5")
                                  .attr("id", "meanrefLine")
                                  .attr("class", "significanceTest");
@@ -167,9 +194,9 @@ function tTest()
                             svg.append("line")
                                  .attr("x1", means[i].getAttribute("cx"))
                                  .attr("y1", means[i].getAttribute("cy"))
-                                 .attr("x2", canvasWidth/2 - size/2)
+                                 .attr("x2", canvasWidth/2 - size/2 - axisOffset)
                                  .attr("y2", means[i].getAttribute("cy"))
-                                 .attr("stroke", "black")
+                                 .attr("stroke", meanColors["normal"])
                                  .attr("opacity", "0.25")
                                  .attr("stroke-dasharray","5,5")
                                  .attr("id", "meanrefLine")

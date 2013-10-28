@@ -22,7 +22,6 @@ var _width = 0;
 var _dragElement;           // needs to be passed from OnMouseDown to OnMouseMove
 var _oldZIndex = 0;         // we temporarily increase the z-index during drag	
 
-// Significance test
-var significanceTestScaleOffset = 25;
+
 
 var testResults = new Object();
