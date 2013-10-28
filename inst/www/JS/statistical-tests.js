@@ -140,7 +140,7 @@ function getESFromT(n)
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("getESFromT", {
-                    t: testResults[t],                   
+                    t: testResults["t"],                   
                     n1: n,
                     n2: n
                   }, function(output) {                                                   
