@@ -1,6 +1,6 @@
 // Data
 var dataset = "mtcars";
-var pathToFile = "/Users/krishnasubramanian/Documents/Coursera/Statistics One/Datasets/datafiles-Stats1.13.Lab.02.txt";
+var pathToFile = "/Users/krishnasubramanian/Documents/Coursera/Statistics One/Datasets/twan04.txt";
 
 // Skeleton
 var width = document.width;
