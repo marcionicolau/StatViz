@@ -109,6 +109,11 @@ function performTTest(group1, group2)
                   }, function(output) {                                                   
                   
                   console.log("t-test: \n p-value =" + output.p + " (" + group1 + ", " + group2 + ")");
+                  testResults["t"] = output.t;
+                  testResults["p"] = output.p;
+                  testResults["grandMean"] = output.mean;
+                  testResults["method"] = output.method;
+                  testResults["df"] = output.DOF;
                   
                   
                 //drawing stuff
@@ -215,16 +220,21 @@ function drawScales(cx, cy)
                     .attr("x2", x)
                     .attr("y2", cy[i])
                     .attr("stroke", meanColors["normal"])
-                    .attr("id", "ticks")
+                    .attr("id", "tick")
                     .attr("class", "significanceTestScale");       
         }
     }  
     
-    // if(cx.length == 2)
-//     {
-//         canvas.append("text")
-//     
-                
+    if(cx.length == 2)
+    {
+        canvas.append("text")
+                .attr("x", x + 5)
+                .attr("y", (yMin + yMax)/2)
+                .attr("fill", meanColors["normal"])
+                .attr("id", "tickText")
+                .attr("class", "significanceTestScaleText")
+                .text(testResults["mean"]);
+    }           
 }   
 
 

@@ -24,3 +24,5 @@ var _oldZIndex = 0;         // we temporarily increase the z-index during drag
 
 // Significance test
 var significanceTestScaleOffset = 25;
+
+var testResults = new Object();
