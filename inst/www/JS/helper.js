@@ -308,7 +308,14 @@ function getSelectedVariables()
     {
         if(means[i].getAttribute("fill") == meanColors["click"])
         {
-            variableList["independent-levels"].push(means[i].getAttribute("id"));
+            if(stringForNumber.indexOf(means[i].getAttribute("id")) != -1)
+            {
+                variableList["independent-levels"].push(stringForNumber[parseInt(means[i].getAttribute("id"))]);
+            }
+            else
+            {
+                variableList["independent-levels"].push(means[i].getAttribute("id"));
+            }
         }
     }   
     
