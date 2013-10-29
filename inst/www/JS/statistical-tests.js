@@ -16,13 +16,14 @@ function compareMeans()
                     
                     console.dir(variableList);
                     
-                    for(var i=0; i<variableList["independent"].length; i++)
+                    performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]); 
+                    
+                    console.log("waiting...");
+                    
+                    do
                     {
-                        for(var j=0; j<variableList["dependent"].length; j++)
-                        {                            
-                            performHomoscedasticityTest(variableList["dependent"][j], variableList["independent"][i]);
-                        }
-                    }
+                        
+                    }while((d3.select("#" + assumption[0] + ".ticks").attr("display", "inline")) || (d3.select("#" + assumption[0] + ".crosses").attr("display", "inline")));
                     
                     //normality
                     for(var i=0; i<variableList["dependent"].length; i++)                        
