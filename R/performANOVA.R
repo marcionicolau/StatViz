@@ -2,7 +2,7 @@ performANOVA <- function(dependentVariable = "", independentVariable = "", datas
 {       
     table <- as.data.frame(dataset);
     
-    model <- eval(parse(text = paste("lm(formula = ",dependentVariable," ~ ",independentVariable", data = table)");
+    model <- eval(parse(text = paste("lm(formula = ", dependentVariable, " ~ ", independentVariable, ", data = table)", sep="");
   
     result <- anova(model);
   
