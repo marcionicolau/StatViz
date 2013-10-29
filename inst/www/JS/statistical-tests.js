@@ -49,11 +49,11 @@ function compareMeans()
                     
                     console.dir(variableList);
                     
-                    for(var i=0; i<variableList["independent"].length; i++)
+                    for(var i=0; i<variableList["independent-levels"].length; i++)
                     {
                         for(var j=0; j<variableList["dependent"].length; j++)
                         {
-                            performHomoscedasticityTest(variableList["dependent"][j], variableList["independent"][i]);
+                            performHomoscedasticityTest(variableList["dependent"][j], variableList["independent-levels"][i]);
                         }
                     }
                     
@@ -327,40 +327,31 @@ function drawScales(cx, cy)
 function getSelectedVariables()
 {
     var means = document.getElementsByClassName("means");
-    var variableList = [];
+    var variableList = new Object();
     
+    variableList["dependent"] = new Array();
+    variableList["independent-levels"] = new Array();
+    
+    
+    //add the dependent variable
+    for(var i=0; i<currentVariableSelection.length; i++)
+    {
+        if(variableType[currentVariableSelection[i]] != false)
+        {
+            variableList["dependent"].push(currentVariableSelection[i]);
+        }
+    }    
+    
+    
+    //add the levels of the independent variable
     for(var i=0; i<means.length; i++)
     {
         if(means[i].getAttribute("fill") == meanColors["click"])
         {
-            variableList.push(means[i].getAttribute("id"));
+            variableList["independent-levels"].push(means[i].getAttribute("id"));
         }
     }   
     
-    return sort(variableList); //we have variables, now we need to sort them into independent and dependent variables
-}
-
-          
-function sort(variableList)
-{
-    var newVariableList = new Object();
-    
-    newVariableList["dependent"] = new Array();
-    newVariableList["independent"] = new Array();
-
-    
-    for(var i=0; i<variableList.length; i++)
-    {
-        if(variableType[variableList[i]] == false)
-        {
-            newVariableList["independent"].push(variableList[i]);
-        }
-        else
-        {
-            newVariableList["dependent"].push(variableList[i]);
-        }
-    }
-    
-    return newVariableList;
+    return variableList; 
 }
   
