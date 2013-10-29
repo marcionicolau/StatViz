@@ -338,8 +338,12 @@ function getValidIds(labels)
 
 function setDistribution(dependentVariable, level, normal)
 {
-    console.log("setting distributions for " + dependentVariable);
-    console.log(typeof(distributions[dependentVariable]));   
+    console.log("\n\nsetting distributions for " + dependentVariable);
+    if(typeof(distributions[dependentVariable]) == undefined)
+        distributions[dependentVariable] = new Object();
+    
+    distributions[dependentVariable][level] = normal;
+    console.log("\n\t length=" + distributions[dependentVariable].length);
 }
 
       
