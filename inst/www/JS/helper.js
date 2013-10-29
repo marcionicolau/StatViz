@@ -336,8 +336,9 @@ function getValidIds(labels)
     }
 }
 
-function setDistributions(dependentVariable, level, normal)
+function setDistribution(dependentVariable, level, normal)
 {
+`   console.log("setting distributions for " + dependentVariable);
     console.log(typeof(distributions[dependentVariable]));   
 }
 
