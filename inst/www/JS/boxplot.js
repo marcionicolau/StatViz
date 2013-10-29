@@ -188,7 +188,7 @@ function makeBoxplot()
                     .attr("class", "topFringes");
     
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 + i*widthSlice - size/ + xStep/2)
+                    .attr("x1", canvasWidth/2 + i*widthSlice - size/2 + xStep/2)
                     .attr("y1", canvasHeight/2 + size/2 - getFraction(topFringe)*size)
                     .attr("x2", canvasWidth/2 + i*widthSlice - size/2 + xStep/2)
                     .attr("y2", canvasHeight/2 + size/2- getFraction(medians[i] + iqrs[i]/2)*size)
