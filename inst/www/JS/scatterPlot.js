@@ -110,7 +110,7 @@ function makeScatterplot()
                     .attr("class", "xAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", canvasWidth/2 - size/2 + i*step - 15)
+                    .attr("x", canvasWidth/2 - size/2 + i*step)
                     .attr("y", canvasHeight/2 + size/2 + tickTextOffsetXAxis + axesOffset)                    
                     .text(format(mins[0] + i*xSlice))
                     .attr("text-anchor", "middle")
@@ -130,7 +130,7 @@ function makeScatterplot()
         
         canvas.append("text")
                     .attr("x", canvasWidth/2 - size/2 - tickTextOffsetYAxis - axesOffset)
-                    .attr("y", canvasHeight/2 + size/2 - i*step)                    
+                    .attr("y", canvasHeight/2 + size/2 - i*step + yAxisTickTextOffset)                    
                     .text(format(mins[1] + i*ySlice))
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)

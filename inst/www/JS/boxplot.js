@@ -110,7 +110,7 @@ function makeBoxplot()
         
         canvas.append("text")
                     .attr("x", canvasWidth/2 - size/2 - tickTextOffsetYAxis - axesOffset)
-                    .attr("y", canvasHeight/2 + size/2 - i*yStep)                    
+                    .attr("y", canvasHeight/2 + size/2 - i*yStep + yAxisTickTextOffset)                    
                     .text(format(min + i*slice))
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
