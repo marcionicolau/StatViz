@@ -343,18 +343,16 @@ function setDistribution(dependentVariable, level, normal)
     
     distributions[dependentVariable][level] = normal;
     
-    if(normal == false)
-    {
-                
-    }
-    
     if(getObjectLength(distributions[dependentVariable]) == (document.getElementsByClassName("completeLines")+1))
     {       
         var variableList = getSelectedVariables();
         var normal = true;
         
+        console.log("variableList[\"independent-levels\"].length=" + variableList["independent-levels"].length);
+        
         for(var i=0; i<variableList["independent-levels"].length; i++)
         {
+            console.log("distributions[dependentVariable][variableList[\"independent-levels\"][i]]=" + distributions[dependentVariable][variableList["independent-levels"][i]]);
             if(distributions[dependentVariable][variableList["independent-levels"][i]] == false)
             {
                 console.log("found a black sheep");
