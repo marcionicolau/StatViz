@@ -345,7 +345,18 @@ function setDistribution(dependentVariable, level, normal)
         console.log("undefined");
     }
     distributions[dependentVariable][level] = normal;
-    console.log("\n\t length=" + distributions[dependentVariable].length);
+    console.log("\n\t length = " + getObjectCount(distributions[dependentVariable]));
+}
+
+function getObjectCount(obj) {
+    var count = 0;
+
+    for(var prop in obj) {
+        if(obj.hasOwnProperty(prop))
+            ++count;
+    }
+
+    return count;
 }
 
       
