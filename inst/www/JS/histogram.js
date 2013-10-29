@@ -77,7 +77,7 @@ function makeHistogram()
     var validIds = true;
     for(var i=0; i<labels.length; i++)
     {
-        if(getText(labels[i]) == null)
+        if(_.isString(labels[i]) == false)
         {
             validIds = false;
             break;
