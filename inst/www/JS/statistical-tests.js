@@ -12,6 +12,8 @@ function compareMeans()
                     //homoscedasticity
                     var variableList = getSelectedVariables();
                     
+                    loadAssumptionCheckList();
+                    
                     console.dir(variableList);
                     
                     for(var i=0; i<variableList["independent"].length; i++)
@@ -73,6 +75,25 @@ function compareMeans()
                     
                     break;
                 }
+    }
+}
+
+function loadAssumptionCheckList()
+{
+    var canvas = d3.select("#svgCanvas");
+    
+    var assumptions = ["Homogeneity of variances", "Normality of distributions"];
+    
+    for(var i=0; i<assumptions.length; i++)
+    {
+        canvas.append("text")
+            .attr("x", canvasWidth/2 + size/2)
+            .attr("y", canvasHeight/2 - size/2 + i*assumptionsSpace)
+            .attr("font-size", "20px")
+            .attr("fill", meanColors["normal"])
+            .text((i+1) + ". " + assumptions[i])
+            .attr("id", "assumption" + (i+1))
+            .attr("class", "assumptions");
     }
 }
 
