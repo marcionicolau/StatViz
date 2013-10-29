@@ -186,14 +186,21 @@ function performHomoscedasticityTest(dependent, independent)
     });
 }
 
-function performNormalityTest(dist, varName)
+function doNormalityTests()
 {
     // Get variable names and their data type
-    var req = opencpu.r_fun_json("performShapiroWilkTest", {
-                    distribution: dist                                                           
+    
+    var variableList = getSelectedVariables();
+
+    for(var i=0; i<variableList["dependent"].length; i++)                        
+    {
+        for(var j=0; j<variableList["independent-levels"].length; j++)
+        {   
+            var req = opencpu.r_fun_json("performShapiroWilkTest", {
+                    distribution: variables[variableList["dependent"][i]][variableList["independent-levels"][j]]                                                           
                   }, function(output) {                                                   
                   
-                console.log("\t\t Shapiro-wilk test for (" + varName + ")");
+                console.log("\t\t Shapiro-wilk test for (" + variableList["dependent"][i] + "." + variableList["independent-levels"][j] + ")");
                 console.log("\t\t\t p = " + output.p);
                   
                 if(output.p < 0.05)
@@ -205,18 +212,19 @@ function performNormalityTest(dist, varName)
                   d3.select("#" + assumptions[1] + ".ticks").attr("display","inline");
                 }
                   
-      }).fail(function(){
-          alert("Failure: " + req.responseText);
-    });
-        
+              }).fail(function(){
+                  alert("Failure: " + req.responseText);
+            });        
 
-    //if R returns an error, alert the error message
-    req.fail(function(){
-      alert("Server error: " + req.responseText);
-    });
-    req.complete(function(){
+            //if R returns an error, alert the error message
+            req.fail(function(){
+              alert("Server error: " + req.responseText);
+            });
+            req.complete(function(){
         
-    });
+            });
+        }
+    }
 }
 
 //Significance Tests

@@ -64,18 +64,18 @@ function compareMeans()
     }
 }
 
-function doNormalityTests()
-{
-    var variableList = getSelectedVariables();
-
-    for(var i=0; i<variableList["dependent"].length; i++)                        
-    {
-        for(var j=0; j<variableList["independent-levels"].length; j++)
-        {                            
-            performNormalityTest(variables[variableList["dependent"][i]][variableList["independent-levels"][j]], variableList["dependent"][i] + "." + variableList["independent-levels"][j]);
-        }
-    }
-}
+// function doNormalityTests()
+// {
+//     var variableList = getSelectedVariables();
+// 
+//     for(var i=0; i<variableList["dependent"].length; i++)                        
+//     {
+//         for(var j=0; j<variableList["independent-levels"].length; j++)
+//         {                            
+//             performNormalityTest(variables[variableList["dependent"][i]][variableList["independent-levels"][j]], variableList["dependent"][i] + "." + variableList["independent-levels"][j]);
+//         }
+//     }
+// }
 
 function tTest()
 {    
