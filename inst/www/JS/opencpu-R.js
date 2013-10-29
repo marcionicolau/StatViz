@@ -144,3 +144,166 @@ function splitDataByColumnName(dataset, columnName, value)
       alert("Server error: " + req.responseText);
     });   
 }
+
+//Statistics
+
+//Assumption-checking
+
+function performHomoscedasticityTest(dependent, independent)
+{
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("performHomoscedasticityTest", {
+                    dependentVariable: dependent,
+                    independentVariable: independent,
+                    dataset: dataset                    
+                  }, function(output) {                                 
+                  
+                  console.log("\t\t Levene's test for (" + dependent + " ~ " + independent + ")");
+                  console.log("\t\t\t p = " + output.p);
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function performNormalityTest(dist, varName)
+{
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("performShapiroWilkTest", {
+                    distribution: dist                                                           
+                  }, function(output) {                                                   
+                  
+                  console.log("\t\t Shapiro-wilk test for (" + varName + ")");
+                  console.log("\t\t\t p = " + output.p);
+                  
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+//Significance Tests
+
+function performTTest(group1, group2)
+{
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("performTTest", {
+                    dataset: dataset,
+                    group1: group1,
+                    group2: group2                   
+                  }, function(output) {                                                   
+                  
+                  console.log("\t\t T-test for (" + group1 + ", " + group2 + ")");
+                  console.log("\t\t\t t = " + output.t);
+                  console.log("\t\t\t p = " + output.p);
+                  console.log("\t\t\t method used= " + output.method);
+                  console.log("\t\t\t DF = " + output.DOF);
+
+                  
+                  testResults["t"] = output.t;
+                  testResults["p"] = output.p;
+                  testResults["grandMean"] = output.mean;
+                  testResults["method"] = output.method;
+                  testResults["df"] = output.DOF;                  
+                  
+                  getDFromT(group1.length);                  
+                  
+                //drawing stuff
+                removeElementsByClass("completeLines");           
+
+                tTest();
+                
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function performANOVA(dependentVariable, independentVariable)
+{
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("performANOVA", {
+                    dataset: dataset,
+                    dependentVariable: dependentVariable,
+                    independentVariable: independentVariable                   
+                  }, function(output) {                                                   
+                  
+                  console.log("\t\t ANOVA for (" + dependentVariable + " ~ " + independentVariable + ")");
+                  console.log("\t\t\t F = " + output.F);
+                  console.log("\t\t\t p = " + output.p);
+                  console.log("\t\t\t method used= ANOVA"); //todo
+                  console.log("\t\t\t DF = " + output.DOF);
+                  
+                  testResults["F"] = output.F;
+                  testResults["p"] = output.p;                  
+                  testResults["df"] = output.DOF;
+                  testResults["method"] = "ANOVA"; //todo
+                           
+                  
+                //drawing stuff
+                removeElementsByClass("completeLines");           
+
+                ANOVA();                
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+// Effect sizes
+function getDFromT(n)
+{
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("getDFromT", {
+                    t: testResults["t"],                   
+                    n1: n,
+                    n2: n
+                  }, function(output) {                                                   
+                  
+                  console.log("Cohen's d: " + output.d);
+                  
+                  testResults["d"] = output.d;
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}

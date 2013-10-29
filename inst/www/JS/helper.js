@@ -1,6 +1,36 @@
 var format = d3.format(".1f");
 var stringForNumber = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 
+function makePlot()
+{   
+    resetSVGCanvas();
+    
+    switch(currentVisualizationSelection)
+    {
+        case "Histogram":
+                                    {
+                                        makeHistogram();
+                                        break;
+                                    }
+        case "Boxplot":
+                                    {         
+                                        
+                                        makeBoxplot();
+                                        break;
+                                    }
+        case "Scatterplot":
+                                    {
+                                        makeScatterplot();
+                                        break;
+                                    }
+        case "Scatterplot-matrix":
+                                    {
+                                        makeScatterplotMatrix();
+                                        break;
+                                    }
+    }
+}
+
 function initVariableTypes()
 {
     for(var i=0; i<variables.length; i++)
@@ -10,11 +40,37 @@ function initVariableTypes()
     }
 }
 
+//Miscellaneous
+
 function remove(id)
 {
     var element = document.getElementById(id);
     element.parentNode.removeChild(element);
 }
+
+function removeElementsByClassName(className)
+{
+   elements = document.getElementsByClassName(className);
+   while(elements.length > 0)
+   {
+       elements[0].parentNode.removeChild(elements[0]);
+   }
+}
+
+function resetSVGCanvas()
+{
+      if(document.getElementById("svgCanvas") != null)
+            remove("svgCanvas");
+            
+        var svgCanvas = d3.select("#canvas").append("svg");
+        
+        svgCanvas.attr("id", "svgCanvas")
+                                .attr("x", 0)
+                                .attr("y", 0)
+                                .attr("height", canvasHeight)
+                                .attr("width", canvasWidth);
+}
+
 
 function addToArray(array, element)
 {   
@@ -71,53 +127,21 @@ function toggleFillColors()
     }
 }
 
-function makePlot()
-{   
-    resetSVGCanvas();
-    
-    switch(currentVisualizationSelection)
-    {
-        case "Histogram":
-                                    {
-                                        makeHistogram();
-                                        break;
-                                    }
-        case "Boxplot":
-                                    {         
-                                        
-                                        makeBoxplot();
-                                        break;
-                                    }
-        case "Scatterplot":
-                                    {
-                                        makeScatterplot();
-                                        break;
-                                    }
-        case "Scatterplot-matrix":
-                                    {
-                                        makeScatterplotMatrix();
-                                        break;
-                                    }
-    }
-}
-
-function resetSVGCanvas()
-{
-      if(document.getElementById("svgCanvas") != null)
-            remove("svgCanvas");
-            
-        var svgCanvas = d3.select("#canvas").append("svg");
-        
-        svgCanvas.attr("id", "svgCanvas")
-                                .attr("x", 0)
-                                .attr("y", 0)
-                                .attr("height", canvasHeight)
-                                .attr("width", canvasWidth);
-}
+//Strings/numbers processing
 
 function processStrings(strings)
 {
     return strings.replace(".","");
+}
+
+function getNumber(string)
+{
+    return string.replace(/[A-z]/g, '');
+}
+
+function getText(string)
+{
+    return string.replace(/[0-9]/g, '');
 }
 
 Array.prototype.unique = function() {
@@ -137,15 +161,7 @@ Array.prototype.contains = function(v) {
    return false;
 };
 
-function removeElementsByClass(className)
-{
-   elements = document.getElementsByClassName(className);
-   while(elements.length > 0)
-   {
-       elements[0].parentNode.removeChild(elements[0]);
-   }
-}
-
+//Loop animation
 function startLoopAnimation(meanCircle)
 {
     var canvas = d3.select("#svgCanvas");
@@ -181,6 +197,7 @@ function startLoopAnimation(meanCircle)
     },700);
 }
 
+//Bin hover
 function highlightBinWithId(ID)
 {
     var bins = document.getElementsByClassName("bins");
@@ -236,16 +253,7 @@ function unhighlightBins()
     }
 }
 
-function getNumber(string)
-{
-    return string.replace(/[A-z]/g, '');
-}
-
-function getText(string)
-{
-    return string.replace(/[0-9]/g, '');
-}
-
+//convert numbers to strings (1:one, 2:two, etc)
 function encodeToStrings(numbers)
 {
     var strings = new Array();
@@ -265,11 +273,41 @@ function encodeToStrings(numbers)
     return strings;
 }
 
-var toString = Object.prototype.toString;
-
-function isString(obj) {
-  return toString.call(obj) == '[object String]';
+function getSelectedVariables()
+{
+    var means = document.getElementsByClassName("means");
+    var variableList = new Object();
+    
+    variableList["dependent"] = new Array();
+    variableList["independent"] = new Array();
+    variableList["independent-levels"] = new Array();    
+    
+    //add the dependent variable
+    for(var i=0; i<currentVariableSelection.length; i++)
+    {
+        if(variableType[currentVariableSelection[i]] != false)
+        {
+            variableList["dependent"].push(currentVariableSelection[i]);
+        }
+        else
+        {
+            variableList["independent"].push(currentVariableSelection[i]);
+        }
+    }    
+    
+    
+    //add the levels of the independent variable
+    for(var i=0; i<means.length; i++)
+    {
+        if(means[i].getAttribute("fill") == meanColors["click"])
+        {
+            variableList["independent-levels"].push(means[i].getAttribute("id"));
+        }
+    }   
+    
+    return variableList; 
 }
+
 
       
             

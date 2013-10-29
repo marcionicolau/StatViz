@@ -104,6 +104,20 @@ function OnMouseDown(e)
             }
         }   
     }
+    else
+    {
+        //the user clicked outside
+        
+        if(document.getElementsByClassName("incompleteLines").length > 0)
+        {
+            removeElementsByClassName("incompleteLines");
+            
+            if(document.getElementsByClassName("completeLines").length > 0)
+            {
+                compareMeans();
+            }
+        }   
+    }
 }
  
 function OnMouseMove(e)
@@ -290,7 +304,7 @@ function OnMouseOut(e)
         {
             meanCircle.attr("fill", meanColors["normal"]);
         }
-        removeElementsByClass("loops");
+        removeElementsByClassName("loops");
         
         
         clearInterval(intervals[meanCircle.attr("id")]);
@@ -313,7 +327,7 @@ function OnMouseOut(e)
         var datapoint = d3.select("#" + target.id + ".datapoints");
         
         datapoint.transition().duration(300).attr("r", datapointRadius).attr("fill", "black");
-        removeElementsByClass("hoverText");
+        removeElementsByClassName("hoverText");
     }
     
 }	

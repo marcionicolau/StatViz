@@ -8,6 +8,14 @@ Array.min = function( array )
     return Math.min.apply( Math, array );
 }	
 
+function mean(values)
+{ 
+    var total = 0, i;
+    for (i = 0; i < values.length; i += 1) {
+        total += values[i];
+    }
+    return total / values.length;
+}
 
 function median(values) 
 {
@@ -19,15 +27,6 @@ function median(values)
         return values[half];
     else
         return (values[half-1] + values[half]) / 2.0;
-}
-
-function mean(values)
-{ 
-    var total = 0, i;
-    for (i = 0; i < values.length; i += 1) {
-        total += values[i];
-    }
-    return total / values.length;
 }
 
 function isPrime(num) 
