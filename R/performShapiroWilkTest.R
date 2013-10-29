@@ -1,8 +1,8 @@
-performShapiroWilkTest <- function(variableName, dataset)
+performShapiroWilkTest <- function(distribution)
 {  
-  table <- as.data.frame(dataset) 
+  dist <- as.data.frame(distribution) 
   
-  result <- eval(parse(text = paste("shapiro.test(table$",variableName,")")));
+  result <- eval(parse(text = paste("shapiro.test(dist)")));
   
-  list(testStatistic = result$statistic[["W"]], p = result$p.value, method = result$method, data = toString(dataset));
+  list(testStatistic = result$statistic[["W"]], p = result$p.value, method = result$method);
 }

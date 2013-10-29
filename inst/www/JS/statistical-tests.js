@@ -43,25 +43,22 @@ function compareMeans()
                 {
                     //check assumptions
                     console.log("checking assumptions for ANOVA\n");
-                    
-                    //homoscedasticity
+                                        
                     var variableList = getSelectedVariables();
                     
-                    console.dir(variableList);
-                    
-                    for(var i=0; i<variableList["independent-levels"].length; i++)
+                    //homoscedasticity
+                    performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]); 
+                                        
+                    //normality                    
+                    for(var i=0; i<variableList["dependent"].length; i++)                        
                     {
-                        for(var j=0; j<variableList["dependent"].length; j++)
+                        for(var j=0; j<variableList["independent-levels"].length; j++)
                         {
-                            performHomoscedasticityTest(variableList["dependent"][j], variableList["independent-levels"][i]);
+                            performNormalityTest(variables[variableList["dependent"][i]][variableList["independent-levels"][j]], variableList["dependent"][i] + "." + variableList["independent-levels"][j]);
                         }
                     }
                     
-                    //normality
-                    // for(var i=0; i<variableList["dependent"].length; i++)
-//                     {
-//                         performNormalityTest(variableList["dependent"][i]);
-//                     }
+                    
 //                     var option = "parametric";
 //                     var levels = variables[variableList["independent"][0]]["dataset"].unique();
 //                     
@@ -85,7 +82,8 @@ function performHomoscedasticityTest(dependent, independent)
                     dataset: dataset                    
                   }, function(output) {                                 
                   
-                  console.log("levene's test:\n p-value =" + output.p);
+                  console.log("performing levene's test for [" + dependent + ", " + independent + "]");
+                  console.log("\n\t p = " + output.p);
                   
                   if(output.p < 0.05)
                   {
@@ -105,15 +103,14 @@ function performHomoscedasticityTest(dependent, independent)
     });
 }
 
-function performNormalityTest(variable)
+function performNormalityTest(dist, varName)
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("performShapiroWilkTest", {
-                    variableName: variable,                    
-                    dataset: dataset                    
+                    distribution: dist,                                                           
                   }, function(output) {                                                   
                   
-                  console.log("normality test:\n p-value =" + output.p + " (" + variable + ")");
+                  console.log("normality test:\n p-value =" + output.p + " (" + varName + ")");
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -330,8 +327,8 @@ function getSelectedVariables()
     var variableList = new Object();
     
     variableList["dependent"] = new Array();
-    variableList["independent-levels"] = new Array();
-    
+    variableList["independent"] = new Array();
+    variableList["independent-levels"] = new Array();    
     
     //add the dependent variable
     for(var i=0; i<currentVariableSelection.length; i++)
@@ -339,6 +336,10 @@ function getSelectedVariables()
         if(variableType[currentVariableSelection[i]] != false)
         {
             variableList["dependent"].push(currentVariableSelection[i]);
+        }
+        else
+        {
+            variableList["independent"].push(currentVariableSelection[i]);
         }
     }    
     
