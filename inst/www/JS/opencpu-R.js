@@ -224,7 +224,7 @@ function performTTest(group1, group2)
                   getDFromT(group1.length);                  
                   
                 //drawing stuff
-                removeElementsByClass("completeLines");           
+                removeElementsByClassName("completeLines");           
 
                 tTest();
                 
@@ -264,7 +264,7 @@ function performANOVA(dependentVariable, independentVariable)
                            
                   
                 //drawing stuff
-                removeElementsByClass("completeLines");           
+                removeElementsByClassName("completeLines");           
 
                 ANOVA();                
         
