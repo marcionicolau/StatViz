@@ -2,7 +2,7 @@
 var dataset = "mtcars";
 
 var fileName = "cars.txt";
-var pathToFile = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/ " + fileName;
+var pathToFile = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/" + fileName;
 
 // Skeleton
 var width = document.width;
