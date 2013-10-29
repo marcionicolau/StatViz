@@ -238,12 +238,12 @@ function encodeToStrings(numbers)
 {
     var strings = new Array();
     
-    for(var i=0; i<toString(numbers).length; i++)
+    for(var i=0; i<numbers.length; i++)
     {        
         var string = "";
+        console.log("numbers[i]=" + numbers[i]);
         for(var j=0; j<numbers[i].length; j++)
         {            
-            console.log(numbers[i]);
             string = string + stringForNumber[numbers[i][j]];
         }
         
