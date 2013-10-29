@@ -345,15 +345,31 @@ function setDistribution(dependentVariable, level, normal)
     
     if(normal == false)
     {
-        d3.select("#" + assumptions[1] + ".crosses").attr("display", "inline");                  
-        alert("distribution not normal. beep beep.");
-        return; 
+                
     }
     
     if(getObjectLength(distributions[dependentVariable]) == (document.getElementsByClassName("completeLines")+1))
     {       
         var variableList = getSelectedVariables();
-        performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                        
+        var normal = true;
+        
+        for(var i=0; i<variableList["independent-levels"].length; i++)
+        {
+            if(distributions[dependentVariable][variableList["independent-levels"][i]] == false)
+            {
+                d3.select("#" + assumptions[1] + ".crosses").attr("display", "inline");                  
+                normal = false;
+
+                //draw boxplots in red 
+            }
+        }
+        
+        if(normal)
+        {
+            console.log("all clear to go ahead");
+            
+            performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                       
+        }
     }    
 }
 
