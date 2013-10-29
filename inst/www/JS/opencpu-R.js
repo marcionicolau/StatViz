@@ -201,12 +201,10 @@ function performNormalityTest(dist, dependentVariable, level)
                   
                 if(output.p < 0.05)
                 {        
-                    console.log("less");
                     setDistribution(dependentVariable, level, false);
                 }
                 else
                 {   
-                    console.log("more");
                     setDistribution(dependentVariable, level, true);
                 }
                   

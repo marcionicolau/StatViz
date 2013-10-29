@@ -17,6 +17,11 @@ function makeBoxplot()
     var medians = [];
     var means = [];
     
+    var variableList = sort(currentVariableSelection);
+    
+    
+    console.log("sorted variablelist: " + variableList);
+    
     //Get data, minimums and maximums for each selected variable
     for(var i=0; i<currentVariableSelection.length; i++)
     {   

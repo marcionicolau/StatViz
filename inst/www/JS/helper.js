@@ -349,8 +349,7 @@ function setDistribution(dependentVariable, level, normal)
         var normal = true;
         
         for(var i=0; i<variableList["independent-levels"].length; i++)
-        {            
-            console.log("distributions[" + dependentVariable + "][" + variableList["independent-levels"][i] + " = "  + distributions[dependentVariable][variableList["independent-levels"][i]]);
+        {   
             if(distributions[dependentVariable][variableList["independent-levels"][i]] == false)
             {
                 d3.select("#" + assumptions[1] + ".crosses").attr("display", "inline");                  
@@ -361,8 +360,7 @@ function setDistribution(dependentVariable, level, normal)
         }
         
         if(normal)
-        {
-            console.log("all clear");
+        {            
             d3.select("#" + assumptions[1] + ".ticks").attr("display", "inline");                              
             performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                       
         }
@@ -378,6 +376,34 @@ function getObjectLength(obj) {
     }
 
     return count;
+}
+
+function sort(list)
+{
+    var variableList = new Object();
+    
+    variableList["dependent"] = new Array();
+    variableList["independent"] = new Array();
+    variableList["independent-levels"] = new Array();
+    
+    for(var i=0; i<list.length; i++)
+    {
+        if(variableType[list[i]] == false)
+        {
+            variableList["independent"].push(list[i]);
+            
+            var uniqueData = variables[list[i]]["dataset"].unique();
+            
+            for(var j=0; j<uniqueData.length; j++)
+            {
+                variableList["independent-levels"].push(uniqueData[j]);
+            }
+        }
+        else
+        {
+            variableList["dependent"].push(list[i]);
+        }
+    }
 }
 
       
