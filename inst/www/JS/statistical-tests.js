@@ -23,7 +23,7 @@ function compareMeans()
                     do
                     {
                         
-                    }while((d3.select("#" + assumption[0] + ".ticks").attr("display", "inline")) || (d3.select("#" + assumption[0] + ".crosses").attr("display", "inline")));
+                    }while((d3.select("#" + assumptions[0] + ".ticks").attr("display", "inline")) || (d3.select("#" + assumptions[0] + ".crosses").attr("display", "inline")));
                     
                     //normality
                     for(var i=0; i<variableList["dependent"].length; i++)                        
