@@ -18,16 +18,6 @@ function compareMeans()
                     
                     performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]); 
                     
-                    
-                    // var option = "parametric";
-//                     var levels = variables[variableList["independent"][0]]["dataset"].unique();
-//                     
-//                     if(option == "parametric")
-//                     {                                                    
-//                         console.log(variables[variableList["dependent"][0]][levels[0]] + ",\n" + variables[variableList["dependent"][0]][levels[1]])
-//                         performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                        
-//                     }
-                    
                     break;
                 }
         
@@ -39,26 +29,8 @@ function compareMeans()
                     var variableList = getSelectedVariables();
                     
                     //homoscedasticity
-                    performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]); 
-                                        
-                    //normality                    
-                    for(var i=0; i<variableList["dependent"].length; i++)                        
-                    {
-                        for(var j=0; j<variableList["independent-levels"].length; j++)
-                        {
-                            // console.log("variables[variableList[\"dependent\"][i]][variableList[\"independent-levels\"][j]] = " + variables[variableList["dependent"][i]][variableList["independent-levels"][j]]);
-                            performNormalityTest(variables[variableList["dependent"][i]][variableList["independent-levels"][j]], variableList["dependent"][i] + "." + variableList["independent-levels"][j]);
-                        }
-                    }
-                    
-                    
-                    var option = "parametric";
-                    
-                    if(option == "parametric")
-                    {                                                    
-                        performANOVA(variableList["dependent"][0], variableList["independent"][0]);
-                    }
-                    
+                    performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]);                                         
+        
                     break;
                 }
     }
