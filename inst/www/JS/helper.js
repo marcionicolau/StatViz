@@ -357,6 +357,7 @@ function setDistribution(dependentVariable, level, normal)
         {
             if(distributions[dependentVariable][variableList["independent-levels"][i]] == false)
             {
+                console.log("found a black sheep");
                 d3.select("#" + assumptions[1] + ".crosses").attr("display", "inline");                  
                 normal = false;
 
