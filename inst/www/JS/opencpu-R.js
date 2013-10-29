@@ -170,6 +170,7 @@ function performHomoscedasticityTest(dependent, independent)
                     d3.select("#" + assumptions[0] + ".ticks").attr("display","inline");
                     
                     //normality
+                    distributions[dependent] = {};
                     doNormalityTests();                    
                 }
         

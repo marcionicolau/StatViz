@@ -361,6 +361,7 @@ function setDistribution(dependentVariable, level, normal)
         
         if(normal)
         {
+            console.log("all clear");
             d3.select("#" + assumptions[1] + ".ticks").attr("display", "inline");                              
             performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                       
         }
