@@ -163,7 +163,7 @@ function performTTest(group1, group2)
     });
 }
 
-function performANOVA(dependentVariable, independentVariable
+function performANOVA(dependentVariable, independentVariable)
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("performANOVA", {
