@@ -19,7 +19,7 @@ function makeBoxplot()
     
     var variableList = sort(currentVariableSelection);
     
-    if(currentVariableSelection > 1)
+    if(currentVariableSelection.length > 1)
     {
         //if more than 2 variables are selected
         switch(variableList["independent"].length)
