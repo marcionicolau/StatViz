@@ -292,6 +292,7 @@ function makeHistogram()
                         .attr("x", canvasWidth/2 - size/2 + i*xStep - 15)
                         .attr("y", canvasHeight/2 + size/2 + tickTextOffsetXAxis + axesOffset)                    
                         .text(format(min + i*slice))
+                        .attr("text-anchor", "middle")
                         .attr("id", "groove" + i)
                         .attr("class", "xAxisGrooveText");
         }
