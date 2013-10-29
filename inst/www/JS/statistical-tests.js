@@ -7,8 +7,7 @@ function compareMeans()
         case 1:
                 //T-test
                 {
-                    //check assumptions
-                    console.log("checking assumptions for t-test\n");
+                    console.log("\t Performing T-test...\n\n");
                     
                     //homoscedasticity
                     var variableList = getSelectedVariables();
@@ -41,8 +40,7 @@ function compareMeans()
         default:
                 //ANOVA
                 {
-                    //check assumptions
-                    console.log("checking assumptions for ANOVA\n");
+                    console.log("\t Performing ANOVA test...\n\n");
                                         
                     var variableList = getSelectedVariables();
                     
@@ -81,13 +79,8 @@ function performHomoscedasticityTest(dependent, independent)
                     dataset: dataset                    
                   }, function(output) {                                 
                   
-                  console.log("performing levene's test for [" + dependent + ", " + independent + "]");
-                  console.log("\n\t p = " + output.p);
-                  
-                  if(output.p < 0.05)
-                  {
-                    alert("check the assumptions dumbhead. variances are significantly different from each other!");
-                  }
+                  console.log("\t\t Levene's test for (" + dependent + " ~ " + independent + ")");
+                  console.log("\t\t\t p = " + output.p);
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -109,8 +102,9 @@ function performNormalityTest(dist, varName)
                     distribution: dist                                                           
                   }, function(output) {                                                   
                   
-                  console.log("normality test:\n p-value =" + output.p + " (" + varName + ")");
-        
+                  console.log("\t\t Shapiro-wilk test for (" + varName + ")");
+                  console.log("\t\t\t p = " + output.p);
+                  
       }).fail(function(){
           alert("Failure: " + req.responseText);
     });
@@ -124,7 +118,6 @@ function performNormalityTest(dist, varName)
     });
 }
 
-//dataset = "", columnNameX = "", columnNameY = "", paired = "FALSE", alternative = "two.sided", alpha = 0.95)
 function performTTest(group1, group2)
 {
     // Get variable names and their data type
@@ -134,14 +127,19 @@ function performTTest(group1, group2)
                     group2: group2                   
                   }, function(output) {                                                   
                   
-                  console.log("t-test: \n p-value =" + output.p + " (" + group1 + ", " + group2 + ")");
+                  console.log("\t\t T-test for (" + group1 + ", " + group2 + ")");
+                  console.log("\t\t\t t = " + output.t);
+                  console.log("\t\t\t p = " + output.p);
+                  console.log("\t\t\t method used= " + output.method);
+                  console.log("\t\t\t DF = " + output.DOF);
+
+                  
                   testResults["t"] = output.t;
                   testResults["p"] = output.p;
                   testResults["grandMean"] = output.mean;
                   testResults["method"] = output.method;
-                  testResults["df"] = output.DOF;
+                  testResults["df"] = output.DOF;                  
                   
-                  console.log(testResults["t"] + "; " + group1.length);
                   getDFromT(group1.length);                  
                   
                 //drawing stuff
@@ -172,7 +170,12 @@ function performANOVA(dependentVariable, independentVariable)
                     independentVariable: independentVariable                   
                   }, function(output) {                                                   
                   
-                  console.log("ANOVA: \n p-value =" + output.p + " (" + dependentVariable + " ~ " + independentVariable + ")");
+                  console.log("\t\t ANOVA for (" + dependentVariable + " ~ " + independentVariable + ")");
+                  console.log("\t\t\t F = " + output.F);
+                  console.log("\t\t\t p = " + output.p);
+                  console.log("\t\t\t method used= ANOVA"); //todo
+                  console.log("\t\t\t DF = " + output.DOF);
+                  
                   testResults["F"] = output.F;
                   testResults["p"] = output.p;                  
                   testResults["df"] = output.DOF;
@@ -182,8 +185,7 @@ function performANOVA(dependentVariable, independentVariable)
                 //drawing stuff
                 removeElementsByClass("completeLines");           
 
-                ANOVA();
-                
+                ANOVA();                
         
       }).fail(function(){
           alert("Failure: " + req.responseText);

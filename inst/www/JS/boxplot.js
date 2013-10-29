@@ -58,10 +58,7 @@ function makeBoxplot()
             iqrs[i] = IQR[currentVariableSelection[i]]["dataset"];
             means[i] = mean(data[i]);  
         }             
-    }
-    
-    console.log(data);
-    
+    }    
     var nPlots = levels.length;
     
     min = Array.min(mins);

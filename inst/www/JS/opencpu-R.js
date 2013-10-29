@@ -5,10 +5,7 @@ function loadFile(filePath)
                     filePath: filePath
                   }, function(output) {                   
     dataset = output.dataset;
-     
-    console.log("dataset: " + dataset + "\n");               
-    console.log("variables in the dataset: [" + output.variableNames + "]\n");
-    
+         
     //render the variable names
     renderVariableNames(output.variableNames);
     varNames = output.variableNames;
@@ -48,7 +45,9 @@ function getVariables(dataset)
         getIQR(dataset, output.varNames[i]);                    
     }
     
-    console.log("\n\n") }).fail(function(){
+    console.log("\n\n*********************************************************************************\n\n") 
+    
+    }).fail(function(){
           alert("Failure: " + req.responseText);
     });
 
