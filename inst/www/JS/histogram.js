@@ -74,22 +74,7 @@ function makeHistogram()
         labels = currentVariableSelection;
     }
     
-    var validIds = true;
-    for(var i=0; i<labels.length; i++)
-    {
-        if(isString(labels[i]) == false)
-        {
-            validIds = false;
-            break;
-        }            
-    }
-    
-    var ids = labels;
-    
-    if(!validIds)
-    {
-        ids = encodeToStrings(labels);
-    }
+    var ids = getValidIds(labels);
     
     if(combinedData.unique().length < nBins)
     {

@@ -315,6 +315,29 @@ function getSelectedVariables()
     return variableList; 
 }
 
+function getValidIds(labels)
+{
+    var validIds = true;
+    
+    for(var i=0; i<labels.length; i++)
+    {
+        if(isString(labels[i]) == false)
+        {
+            validIds = false;
+            break;
+        }            
+    }    
+    
+    if(!validIds)
+    {
+        return encodeToStrings(labels);        
+    }
+    else
+    {
+        return labels;
+    }
+}
+
 
       
             

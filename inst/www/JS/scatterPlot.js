@@ -57,6 +57,19 @@ function makeScatterplot()
             colorsForPlot[uniqueData[i]] = colors[i];
         }
     }
+    
+    var labels;
+    
+    if(altScatterPlot == true)    
+    {
+        labels = levels;
+    }    
+    else    
+    {        
+        labels = currentVariableSelection;
+    }
+    
+    var ids = getValidIds(labels);
 
      
     var canvas = d3.select("#svgCanvas");
