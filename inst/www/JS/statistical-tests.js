@@ -284,7 +284,7 @@ function loadAssumptionCheckList()
             .attr("y", canvasHeight/2 - size/2 +i*assumptionsSpace)
             .attr("font-size", "20px")
             .attr("fill", meanColors["normal"])
-            .text(assumptions[i])
+            .text(assumptionsText[i])
             .attr("id", assumptions[i])
             .attr("class", "assumptions");
         canvas.append("image")

@@ -163,11 +163,13 @@ function performHomoscedasticityTest(dependent, independent)
                 
                 if(output.p < 0.05)
                 {
-                  d3.select("#" + assumptions[0] + ".crosses").attr("display","inline");
+                  d3.select("#" + assumptions[0] + ".crosses").attr("display", "inline");
+                  console.log(d3.select("#" + assumptions[0] + ".crosses").attr("display"));
                 }
                 else
                 {
                   d3.select("#" + assumptions[0] + ".ticks").attr("display","inline");
+                  console.log(d3.select("#" + assumptions[0] + ".crosses").attr("display"));
                 }
         
       }).fail(function(){
