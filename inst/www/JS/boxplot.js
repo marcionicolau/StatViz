@@ -40,6 +40,7 @@ function makeBoxplot()
                     }
             case 1:
                     {
+                        altBoxPlot = true;
                         for(var i=0; i<variableList["independent-levels"].length; i++)
                         {
                             data[i] = variables[variableList["dependent"][0]][variableList["independent-levels"][i]];
@@ -53,6 +54,7 @@ function makeBoxplot()
                     }
             case 2: 
                     {
+                        altBoxPlot = true;
                         //color plot
                         break;                        
                     }
