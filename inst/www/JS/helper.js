@@ -343,21 +343,15 @@ function setDistribution(dependentVariable, level, normal)
     
     distributions[dependentVariable][level] = normal;
     
-    console.log("length = " + getObjectLength(distributions[dependentVariable]));
-    
     if(getObjectLength(distributions[dependentVariable]) == (document.getElementsByClassName("completeLines").length + 1))
     {       
         var variableList = getSelectedVariables();
         var normal = true;
         
-        console.log("variableList[\"independent-levels\"].length=" + variableList["independent-levels"].length);
-        
         for(var i=0; i<variableList["independent-levels"].length; i++)
-        {
-            console.log("distributions[dependentVariable][variableList[\"independent-levels\"][i]]=" + distributions[dependentVariable][variableList["independent-levels"][i]]);
+        {            
             if(distributions[dependentVariable][variableList["independent-levels"][i]] == false)
             {
-                console.log("found a black sheep");
                 d3.select("#" + assumptions[1] + ".crosses").attr("display", "inline");                  
                 normal = false;
 
@@ -367,8 +361,7 @@ function setDistribution(dependentVariable, level, normal)
         
         if(normal)
         {
-            console.log("all clear to go ahead");
-            
+            d3.select("#" + assumptions[1] + ".ticks").attr("display", "inline");                              
             performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                       
         }
     }    
