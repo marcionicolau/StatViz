@@ -64,12 +64,12 @@ function makeBoxplot()
     }
     else
     {
-        data[i] = variables[currentVariableSelection[i]]["dataset"];      
-        mins[i] = MIN[currentVariableSelection[i]]["dataset"];      
-        maxs[i] = MAX[currentVariableSelection[i]]["dataset"];
-        medians[i] = median(data[i]);
-        iqrs[i] = IQR[currentVariableSelection[i]]["dataset"];
-        means[i] = mean(data[i]);  
+        data[0] = variables[currentVariableSelection[0]]["dataset"];      
+        mins[0] = MIN[currentVariableSelection[0]]["dataset"];      
+        maxs[0] = MAX[currentVariableSelection[0]]["dataset"];
+        medians[0] = median(data[0]);
+        iqrs[0] = IQR[currentVariableSelection[0]]["dataset"];
+        means[0] = mean(data[0]);  
     }
     
     console.dir(data);    
