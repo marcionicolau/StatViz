@@ -158,10 +158,17 @@ function performHomoscedasticityTest(dependent, independent)
                     dataset: dataset                    
                   }, function(output) {                                 
                   
-                  console.log("\t\t Levene's test for (" + dependent + " ~ " + independent + ")");
-                  console.log("\t\t\t p = " + output.p);
-                  
-                  return 2;
+                console.log("\t\t Levene's test for (" + dependent + " ~ " + independent + ")");
+                console.log("\t\t\t p = " + output.p);
+                
+                if(output.p < 0.05)
+                {
+                  d3.select("#" + assumptions[0] + ".crosses").attr("display","inline");
+                }
+                else
+                {
+                  d3.select("#" + assumptions[0] + ".ticks").attr("display","inline");
+                }
         
       }).fail(function(){
           alert("Failure: " + req.responseText);

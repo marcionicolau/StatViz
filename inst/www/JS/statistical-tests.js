@@ -19,8 +19,8 @@ function compareMeans()
                     for(var i=0; i<variableList["independent"].length; i++)
                     {
                         for(var j=0; j<variableList["dependent"].length; j++)
-                        {
-                            console.log(performHomoscedasticityTest(variableList["dependent"][j], variableList["independent"][i]));
+                        {                            
+                            performHomoscedasticityTest(variableList["dependent"][j], variableList["independent"][i]);
                         }
                     }
                     
@@ -274,8 +274,6 @@ function drawScales(cx, cy)
 function loadAssumptionCheckList()
 {
     var canvas = d3.select("#svgCanvas");
-    
-    var assumptions = ["Homogeneity of variances", "Normality of distributions"];
     
     console.log("loading assumptions checklist");
     

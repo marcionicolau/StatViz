@@ -52,6 +52,7 @@ var datapointRadius = "3px";
 var significanceTestScaleOffset = 25;
 var assumptionsSpace = 30;
 var assumptionImageSize = 30;
+var assumptions = ["Homogeneity of variances", "Normality of distributions"]; //todo for others
 
 
 
