@@ -63,6 +63,17 @@ function makeHistogram()
     var min = Array.min(mins);
     var max = Array.max(maxs);
     
+    var labels;
+    
+    if(altHistogram == true)    
+    {
+        labels = levels;
+    }    
+    else    
+    {        
+        labels = currentVariableSelection;
+    }
+    
     
     if(combinedData.unique().length < nBins)
     {
@@ -77,17 +88,17 @@ function makeHistogram()
         var canvas = d3.select("#svgCanvas");
     
         // Set all bin count to zero
-        for(var i=0; i<currentVariableSelection.length; i++)
+        for(var i=0; i<labels.length; i++)
         {
-            bins[currentVariableSelection[i]] = new Array();
+            bins[labels[i]] = new Array();
             for(var j=0; j<nBins; j++)
             {
-                bins[currentVariableSelection[i]][j] = 0;
+                bins[labels[i]][j] = 0;
             }  
         }
     
         // Update counts
-        for(var i=0; i<currentVariableSelection.length; i++)
+        for(var i=0; i<labels.length; i++)
         {
             for(var j=0; j<data[i].length; j++)
             {           
@@ -96,16 +107,16 @@ function makeHistogram()
                 if(index >= uniqueData.length)
                     index = uniqueData.length - 1;
                 
-                bins[currentVariableSelection[i]][uniqueData.indexOf(data[i][j])]++;         
+                bins[labels[i]][uniqueData.indexOf(data[i][j])]++;         
             }
         }
     
         var binMaxs = new Array();
         var binMins = new Array();
     
-        for(var i=0; i<currentVariableSelection.length; i++)
+        for(var i=0; i<labels.length; i++)
         {
-            binMaxs[i] = Array.max(bins[currentVariableSelection[i]]);        
+            binMaxs[i] = Array.max(bins[labels[i]]);        
         }
         
          // Find ticks   
@@ -177,31 +188,31 @@ function makeHistogram()
         }
     
         //bars
-        for(i=0; i<currentVariableSelection.length; i++)
+        for(i=0; i<labels.length; i++)
         {
             for(j=0; j<uniqueData.length+2; j++)
             {           
-                if(bins[currentVariableSelection[i]][j] != 0)
+                if(bins[labels[i]][j] != 0)
                 {
                     canvas.append("text")
                                 .attr("x", canvasWidth/2 - size/2 + j*xStep + (size/uniqueData.length)/2)                        
-                                .attr("y", canvasHeight/2 + size/2 - (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size + 15)
+                                .attr("y", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size + 15)
                                 .attr("fill", "black")
                                 .attr("text-anchor", "middle")
                                 .attr("font-size", binCountFontSize)
                                 .attr("display", "none")
-                                .text(bins[currentVariableSelection[i]][j])
-                                .attr("id", currentVariableSelection[i] + j)
+                                .text(bins[labels[i]][j])
+                                .attr("id", labels[i] + j)
                                 .attr("class", "binTexts");
                 }
                         
                 canvas.append("rect")
                             .attr("x", canvasWidth/2 - size/2 + j*xStep)
-                            .attr("y", canvasHeight/2 + size/2 - (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size)
-                            .attr("height", (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size)
+                            .attr("y", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size)
+                            .attr("height", (bins[labels[i]][j]/Array.max(binMaxs))*size)
                             .attr("width", size/uniqueData.length)          
                             .attr("fill", colors[i])         
-                            .attr("id", currentVariableSelection[i] + j)
+                            .attr("id", labels[i] + j)
                             .attr("class", "bins");
             
                         
@@ -219,17 +230,17 @@ function makeHistogram()
         var canvas = d3.select("#svgCanvas");
     
         // Set all bin count to zero
-        for(var i=0; i<currentVariableSelection.length; i++)
+        for(var i=0; i<labels.length; i++)
         {
-            bins[currentVariableSelection[i]] = new Array();
+            bins[labels[i]] = new Array();
             for(var j=0; j<nBins; j++)
             {
-                bins[currentVariableSelection[i]][j] = 0;
+                bins[labels[i]][j] = 0;
             }  
         }
     
         // Update counts
-        for(var i=0; i<currentVariableSelection.length; i++)
+        for(var i=0; i<labels.length; i++)
         {
             for(var j=0; j<data[i].length; j++)
             {           
@@ -238,16 +249,16 @@ function makeHistogram()
                 if(index >= nBins)
                     index = nBins - 1;
                 
-                bins[currentVariableSelection[i]][index]++;         
+                bins[labels[i]][index]++;         
             }
         }
     
         var binMaxs = new Array();
         var binMins = new Array();
     
-        for(var i=0; i<currentVariableSelection.length; i++)
+        for(var i=0; i<labels.length; i++)
         {
-            binMaxs[i] = Array.max(bins[currentVariableSelection[i]]);        
+            binMaxs[i] = Array.max(bins[labels[i]]);        
         }
         
          // Find ticks   
@@ -319,31 +330,31 @@ function makeHistogram()
         }
     
         //bars
-        for(i=0; i<currentVariableSelection.length; i++)
+        for(i=0; i<labels.length; i++)
         {
             for(j=0; j<nBins; j++)
             {           
-                if(bins[currentVariableSelection[i]][j] != 0)
+                if(bins[labels[i]][j] != 0)
                 {
                     canvas.append("text")
                                 .attr("x", canvasWidth/2 - size/2 + j*xStep + (size/nBins)/2)                        
-                                .attr("y", canvasHeight/2 + size/2 - (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size + 15)
+                                .attr("y", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size + 15)
                                 .attr("fill", "black")
                                 .attr("text-anchor", "middle")
                                 .attr("font-size", binCountFontSize)
                                 .attr("display", "none")
-                                .text(bins[currentVariableSelection[i]][j])
-                                .attr("id", currentVariableSelection[i] + j)
+                                .text(bins[labels[i]][j])
+                                .attr("id", labels[i] + j)
                                 .attr("class", "binTexts");
                 }
                         
                 canvas.append("rect")
                             .attr("x", canvasWidth/2 - size/2 + j*xStep)
-                            .attr("y", canvasHeight/2 + size/2 - (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size)
-                            .attr("height", (bins[currentVariableSelection[i]][j]/Array.max(binMaxs))*size)
+                            .attr("y", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size)
+                            .attr("height", (bins[labels[i]][j]/Array.max(binMaxs))*size)
                             .attr("width", size/nBins)          
                             .attr("fill", colors[i])         
-                            .attr("id", currentVariableSelection[i] + j)
+                            .attr("id", labels[i] + j)
                             .attr("class", "bins");
             
                         
