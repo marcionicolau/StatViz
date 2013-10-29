@@ -344,7 +344,11 @@ function setDistribution(dependentVariable, level, normal)
     distributions[dependentVariable][level] = normal;
     
     if(normal == false)
+    {
+        d3.select("#" + assumptions[1] + ".crosses").attr("display", "inline");                  
         alert("distribution not normal. beep beep.");
+        return; 
+    }
     
     if(getObjectLength(distributions[dependentVariable]) == (document.getElementsByClassName("completeLines")+1))
     {       

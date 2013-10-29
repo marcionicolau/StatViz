@@ -199,13 +199,11 @@ function performNormalityTest(dist, dependentVariable, level)
                 console.log("\t\t\t p = " + output.p);
                   
                 if(output.p < 0.05)
-                {
-                  d3.select("#" + assumptions[1] + ".crosses").attr("display", "inline");                  
+                {                  
                   setDistribution(dependentVariable, level, false);
                 }
                 else
-                {
-                  d3.select("#" + assumptions[1] + ".ticks").attr("display","inline");
+                {                 
                   setDistribution(dependentVariable, level, true);
                 }
                   
