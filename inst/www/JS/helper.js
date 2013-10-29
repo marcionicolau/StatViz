@@ -1,4 +1,5 @@
-var format = d3.format(".1f");	
+var format = d3.format(".1f");
+var stringForNumber = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 
 function initVariableTypes()
 {
@@ -233,6 +234,23 @@ function getText(string)
     return string.replace(/[0-9]/g, '');
 }
 
+function encodeToStrings(numbers)
+{
+    var strings = new Array();
+    
+    for(var i=0; i<numbers.length; i++)
+    {
+        var string = "";
+        for(var j=0; j<numbers[i].length; j++)
+        {
+            string = string + stringForNumber[numbers[i][j]];
+        }
+        
+        strings.push(string);
+    }
+    
+    return strings;
+}
 
       
             

@@ -74,10 +74,24 @@ function makeHistogram()
         labels = currentVariableSelection;
     }
     
+    var validIds = true;
     for(var i=0; i<labels.length; i++)
     {
-        console.log(getText(labels[i]));
-    }    
+        if(getText(labels[i]) == null)
+        {
+            validIds = false;
+            break;
+        }            
+    }
+    
+    console.log("validIds: " + validIds);
+    
+    var ids = labels;
+    
+    if(!validIds)
+    {
+        ids = encodeToStrings(labels);
+    }
     
     if(combinedData.unique().length < nBins)
     {
