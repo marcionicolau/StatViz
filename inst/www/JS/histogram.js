@@ -74,6 +74,10 @@ function makeHistogram()
         labels = currentVariableSelection;
     }
     
+    for(var i=0; i<labels.length; i++)
+    {
+        console.log(getText(labels[i]));
+    }    
     
     if(combinedData.unique().length < nBins)
     {

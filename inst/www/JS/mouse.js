@@ -52,8 +52,7 @@ function OnMouseDown(e)
         
         variableType[target.id] = false;
         
-        var uniqueData = variables[target.id]["dataset"].unique();
-        console.log("uniqueData: " + uniqueData);
+        var uniqueData = variables[target.id]["dataset"].unique();        
                 
         for(var i=0; i<uniqueData.length; i++)
         {
