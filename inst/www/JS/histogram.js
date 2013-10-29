@@ -352,7 +352,8 @@ function makeHistogram()
             {           
                 if(bins[labels[i]][j] != 0)
                 {
-                    if( ((bins[labels[i]][j]/Array.max(binMaxs))*size) < (0.1*size))
+                    // if( ((bins[labels[i]][j]/Array.max(binMaxs))*size) < (0.1*size))
+                    if(1)
                     {
                         canvas.append("line")
                                 .attr("x1", canvasWidth/2 - size/2 + j*xStep + (size/nBins)/2 + ((bins[labels[i]][j]/Array.max(binMaxs))*size)/2)    
