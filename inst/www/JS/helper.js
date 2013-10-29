@@ -337,18 +337,23 @@ function getValidIds(labels)
 }
 
 function setDistribution(dependentVariable, level, normal)
-{
-    console.log("\n\nsetting distributions for " + dependentVariable);
+{    
     if(distributions[dependentVariable] == undefined)
-    {
         distributions[dependentVariable] = new Object();
-        console.log("undefined");
-    }
+    
     distributions[dependentVariable][level] = normal;
-    console.log("\n\t length = " + getObjectCount(distributions[dependentVariable]));
+    
+    if(normal == false)
+        alert("distribution not normal. beep beep.");
+    
+    if(getObjectLength(distributions[dependentVariable]) == (document.getElementsByClassName("completeLines")+1))
+    {       
+        var variableList = getSelectedVariables();
+        performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                        
+    }    
 }
 
-function getObjectCount(obj) {
+function getObjectLength(obj) {
     var count = 0;
 
     for(var prop in obj) {
