@@ -170,7 +170,7 @@ function makeBoxplot()
         canvas.append("line")
                     .attr("x1", canvasWidth/2 - size/2 + i*widthSlice - boxWidth/2 + xStep/2)
                     .attr("y1", canvasHeight/2 + size/2 - getFraction(medians[i])*size)
-                    .attr("x2", canvasWidth/2 - size/2 + i*widthSlice + boxWidth/2)
+                    .attr("x2", canvasWidth/2 - size/2 + i*widthSlice + boxWidth/2 + xStep/2)
                     .attr("y2", canvasHeight/2 + size/2 - getFraction(medians[i])*size)
                     .attr("id", levels[i])
                     .attr("class", "medians");
