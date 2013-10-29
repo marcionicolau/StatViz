@@ -124,10 +124,11 @@ function makeBoxplot()
     max = Array.max(maxs);
     
     var labels;
+    var levels = variableList["independent-levels"];
     
     if(altBoxPlot == true)    
     {
-        labels = variableList["independent-levels"];
+        labels = levels;
     }    
     else    
     {        
