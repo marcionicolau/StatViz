@@ -241,10 +241,10 @@ function encodeToStrings(numbers)
     for(var i=0; i<numbers.length; i++)
     {        
         var string = "";
-        console.log("\tnumbers[i]=" + numbers[i].toString() + "\n\tnumbers[i].length=" + numbers[i].toString().length);
+        
         for(var j=0; j<numbers[i].toString().length; j++)
         {            
-            string = string + stringForNumber[numbers[i][j]];
+            string = string + stringForNumber[numbers[i].toString().charAt(j)];
         }
         
         strings.push(string);
