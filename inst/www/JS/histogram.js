@@ -93,6 +93,8 @@ function makeHistogram()
         ids = encodeToStrings(labels);
     }
     
+    console.log("ids: " + ids);
+    
     if(combinedData.unique().length < nBins)
     {
         //bar chart        
