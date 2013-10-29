@@ -51,7 +51,7 @@ var datapointRadius = "3px";
 // Significance test
 var significanceTestScaleOffset = 25;
 var assumptionsSpace = 30;
-
+var assumptionImageSize = 30;
 
 
 
