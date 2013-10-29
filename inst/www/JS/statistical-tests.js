@@ -84,6 +84,8 @@ function loadAssumptionCheckList()
     
     var assumptions = ["Homogeneity of variances", "Normality of distributions"];
     
+    console.log("loading assumptions checklist");
+    
     for(var i=0; i<assumptions.length; i++)
     {
         canvas.append("text")
