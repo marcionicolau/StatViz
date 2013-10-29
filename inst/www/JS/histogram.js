@@ -171,6 +171,7 @@ function makeHistogram()
                         .attr("x", canvasWidth/2 - size/2 - tickTextOffsetYAxis - axesOffset)
                         .attr("y", canvasHeight/2 + size/2 - i*yStep + 10)                                        
                         .text(Math.round(i*binSlice))
+                        .attr("text-anchor", "end")
                         .attr("id", "groove" + i)
                         .attr("class", "yAxisGrooveText");
         }
@@ -311,6 +312,7 @@ function makeHistogram()
                         .attr("x", canvasWidth/2 - size/2 - tickTextOffsetYAxis - axesOffset)
                         .attr("y", canvasHeight/2 + size/2 - i*yStep + 10)                                        
                         .text(Math.round(i*binSlice))
+                        .attr("text-anchor", "end")
                         .attr("id", "groove" + i)
                         .attr("class", "yAxisGrooveText");
         }
