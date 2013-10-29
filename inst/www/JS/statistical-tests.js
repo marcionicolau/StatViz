@@ -28,6 +28,8 @@ function compareMeans()
                                         
                     var variableList = getSelectedVariables();
                     
+                    loadAssumptionCheckList();
+                    
                     //homoscedasticity
                     performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]);                                         
         
