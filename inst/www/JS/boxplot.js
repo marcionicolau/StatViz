@@ -110,7 +110,7 @@ function makeBoxplot()
     var xStep = size/(nGroovesX - 1);    
     console.log("xStep = " + xStep);    
 
-    for(i=0; i<=nGroovesX; i++)
+    for(i=0; i<nGroovesX; i++)
     {
         canvas.append("line")
                     .attr("x1", canvasWidth/2 - size/2 + i*xStep)
