@@ -163,13 +163,11 @@ function performHomoscedasticityTest(dependent, independent)
                 
                 if(output.p < 0.05)
                 {
-                  d3.select("#" + assumptions[0] + ".crosses").attr("display", "inline");
-                  console.log(d3.select("#" + assumptions[0] + ".crosses").attr("display"));
+                  d3.select("#" + assumptions[0] + ".crosses").attr("display", "inline");                  
                 }
                 else
                 {
                   d3.select("#" + assumptions[0] + ".ticks").attr("display","inline");
-                  console.log(d3.select("#" + assumptions[0] + ".crosses").attr("display"));
                 }
         
       }).fail(function(){
@@ -192,12 +190,22 @@ function performNormalityTest(dist, varName)
                     distribution: dist                                                           
                   }, function(output) {                                                   
                   
-                  console.log("\t\t Shapiro-wilk test for (" + varName + ")");
-                  console.log("\t\t\t p = " + output.p);
+                console.log("\t\t Shapiro-wilk test for (" + varName + ")");
+                console.log("\t\t\t p = " + output.p);
+                  
+                if(output.p < 0.05)
+                {
+                  d3.select("#" + assumptions[1] + ".crosses").attr("display", "inline");                  
+                }
+                else
+                {
+                  d3.select("#" + assumptions[1] + ".ticks").attr("display","inline");
+                }
                   
       }).fail(function(){
           alert("Failure: " + req.responseText);
     });
+        
 
     //if R returns an error, alert the error message
     req.fail(function(){

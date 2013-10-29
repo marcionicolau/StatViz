@@ -32,6 +32,8 @@ function compareMeans()
                             performNormalityTest(variables[variableList["dependent"][i]][variableList["independent-levels"][j]], variableList["dependent"][i] + "." + variableList["independent-levels"][j]);
                         }
                     }
+                
+                    
                     
                     var option = "parametric";
                     var levels = variables[variableList["independent"][0]]["dataset"].unique();
