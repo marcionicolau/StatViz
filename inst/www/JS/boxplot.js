@@ -92,7 +92,42 @@ function makeBoxplot()
     
     //grooves
     
-    //todo: x-axis grooves
+    //x-axis grooves    
+    var nGroovesX;
+    var labels;
+    
+    if(altBoxPlot == true)    
+    {
+        nGroovesX = levels.length;
+        labels = levels;
+    }    
+    else    
+    {
+        nGroovesX = currentVariableSelection.length;            
+        labels = currentVariableSelection;
+    }
+    
+    var xStep = size/(nGroovesX - 1);    
+    console.log("xStep = " + xStep);    
+
+    for(i=0; i<=nGroovesX; i++)
+    {
+        canvas.append("line")
+                    .attr("x1", canvasWidth/2 - size/2 + i*xStep)
+                    .attr("y1", canvasHeight/2 + size/2  + axesOffset)
+                    .attr("x2", canvasWidth/2 - size/2 + i*xStep)
+                    .attr("y2", canvasHeight/2 + size/2 + 10 + axesOffset)
+                    .attr("id", "groove" + i)
+                    .attr("class", "xAxisGrooves");
+    
+        canvas.append("text")
+                    .attr("x", canvasWidth/2 - size/2 + i*xStep + xStep/2)
+                    .attr("y", canvasHeight/2 + size/2 + tickTextOffsetXAxis + axesOffset)                    
+                    .text(labels[i])
+                    .attr("text-anchor", "middle")
+                    .attr("id", "groove" + i)
+                    .attr("class", "xAxisGrooveText");
+    }
     
     //y-axis grooves
     var yStep = size/(nGroovesY-1);
