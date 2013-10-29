@@ -254,7 +254,7 @@ function encodeToStrings(numbers)
 
 var toString = Object.prototype.toString;
 
-_.isString = function (obj) {
+isString(obj) {
   return toString.call(obj) == '[object String]';
 }
 
