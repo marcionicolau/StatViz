@@ -60,14 +60,12 @@ function compareMeans()
                     }
                     
                     
-//                     var option = "parametric";
-//                     var levels = variables[variableList["independent"][0]]["dataset"].unique();
-//                     
-//                     if(option == "parametric")
-//                     {                                                    
-//                         console.log(variables[variableList["dependent"][0]][levels[0]] + ",\n" + variables[variableList["dependent"][0]][levels[1]])
-//                         performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                        
-//                     }
+                    var option = "parametric";
+                    
+                    if(option == "parametric")
+                    {                                                    
+                        performANOVA(variableList["dependent"][0], variableList["independent"][0]);
+                    }
                     
                     break;
                 }
@@ -150,6 +148,43 @@ function performTTest(group1, group2)
                 removeElementsByClass("completeLines");           
 
                 tTest();
+                
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function performANOVA(dependentVariable, independentVariable
+{
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("performANOVA", {
+                    dataset: dataset,
+                    dependentVariable: dependentVariable,
+                    independentVariable: independentVariable                   
+                  }, function(output) {                                                   
+                  
+                  console.log("ANOVA: \n p-value =" + output.p + " (" + dependentVariable + ", " + independentVariable + ")");
+                  testResults["F"] = output.t;
+                  testResults["p"] = output.p;                  
+                  testResults["df"] = output.DOF;
+                  testResults["method"] = "ANOVA"; //todo
+                  
+                  console.log(testResults["t"] + "; " + group1.length);
+                  getDFromT(group1.length);                  
+                  
+                //drawing stuff
+                removeElementsByClass("completeLines");           
+
+                // tTest();
                 
         
       }).fail(function(){
