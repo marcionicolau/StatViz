@@ -20,7 +20,7 @@ variableSelectionButtonWidth = 50;
 // Plots (general)
 var size = 400;
 var axesOffset = 25; //distance from plots to axes (for an R-like appearance)
-var tickTextOffsetXAxis = 20;
+var tickTextOffsetXAxis = 25;
 var tickTextOffsetYAxis = 15;
 var yAxisTickTextOffset = 6;
 
