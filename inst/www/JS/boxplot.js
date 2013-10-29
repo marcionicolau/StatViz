@@ -127,7 +127,7 @@ function makeBoxplot()
     
     if(altBoxPlot == true)    
     {
-        labels = levels;
+        labels = variableList["independent-levels"];
     }    
     else    
     {        
