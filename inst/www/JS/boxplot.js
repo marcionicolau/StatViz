@@ -151,7 +151,7 @@ function makeBoxplot()
                     .attr("class", "yAxisGrooveText");
     }
     
-    var widthSlice = size/(nGroovesX+1);
+    var widthSlice = size/(nGroovesX);
     
     for(var i=0; i<nGroovesX; i++)
     {
