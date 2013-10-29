@@ -20,7 +20,7 @@ function makeBoxplot()
     var variableList = sort(currentVariableSelection);
     
     
-    console.log("sorted variablelist: " + variableList);
+    console.dir(variableList);
     
     //Get data, minimums and maximums for each selected variable
     for(var i=0; i<currentVariableSelection.length; i++)
