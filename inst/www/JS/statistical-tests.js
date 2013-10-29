@@ -23,10 +23,14 @@ function compareMeans()
                     }
                     
                     //normality
-                    for(var i=0; i<variableList["dependent"].length; i++)
+                    for(var i=0; i<variableList["dependent"].length; i++)                        
                     {
-                        performNormalityTest(variableList["dependent"][i]);
+                        for(var j=0; j<variableList["independent-levels"].length; j++)
+                        {                            
+                            performNormalityTest(variables[variableList["dependent"][i]][variableList["independent-levels"][j]], variableList["dependent"][i] + "." + variableList["independent-levels"][j]);
+                        }
                     }
+                    
                     var option = "parametric";
                     var levels = variables[variableList["independent"][0]]["dataset"].unique();
                     
