@@ -355,17 +355,18 @@ function makeHistogram()
                     if( ((bins[labels[i]][j]/Array.max(binMaxs))*size) < (0.1*size))
                     {
                         canvas.append("line")
-                                .attr("x1", canvasWidth/2 - size/2 + j*xStep + (size/nBins)/2)    
+                                .attr("x1", canvasWidth/2 - size/2 + j*xStep + (size/nBins)/2 + ((bins[labels[i]][j]/Array.max(binMaxs))*size)/2)    
                                 .attr("y1", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size)
-                                .attr("x2", canvasWidth/2 + size/2 + j*xStep + (size/nBins)/2)    
+                                .attr("x2", canvasWidth/2 + size/2 + j*xStep + (size/nBins)/2 + ((bins[labels[i]][j]/Array.max(binMaxs))*size)/2)    
                                 .attr("y2", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size)
+                                .attr("display", "none");
                                 .attr("stroke", "black")
                                 .attr("id", ids[i] + j)
                                 .attr("class", "binTextLines");
                         
                         canvas.append("text")
-                                .attr("x", canvasWidth/2 + size/2 + j*xStep + (size/nBins)/2)                        
-                                .attr("y", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size + 15)
+                                .attr("x", canvasWidth/2 + size/2 + j*xStep + (size/nBins)/2 + ((bins[labels[i]][j]/Array.max(binMaxs))*size)/2)                        
+                                .attr("y", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size)
                                 .attr("fill", "black")
                                 .attr("text-anchor", "start")
                                 .attr("font-size", binCountFontSize)

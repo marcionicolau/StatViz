@@ -185,6 +185,7 @@ function highlightBinWithId(ID)
 {
     var bins = document.getElementsByClassName("bins");
     var binTexts = document.getElementsByClassName("binTexts");
+    var binTextLines = document.getElementsByClassName("binTexts");
     
     for(var i=0; i<bins.length; i++)
     {    
@@ -197,10 +198,15 @@ function highlightBinWithId(ID)
             bins[i].setAttribute("opacity", "1.0");
             
             binText = d3.select("#" + bins[i].getAttribute("id") + ".binTexts");
+            binTextLine = d3.select("#" + bins[i].getAttribute("id") + ".binTextLines");
             
             if(binText.length > 0)
             {                
                 binText.attr("display", "inline");
+                if(binTextLine.length > 0)
+                {
+                    binTextLine.attr("display", "inline");
+                }
             }
         }
     }
@@ -210,16 +216,22 @@ function unhighlightBins()
 {
     var bins = document.getElementsByClassName("bins");
     var binTexts = document.getElementsByClassName("binTexts");
+    var binTextLines = document.getElementsByClassName("binTextLines");
     
     for(var i=0; i<bins.length; i++)
     {   
         bins[i].setAttribute("opacity", "1.0");
 
         binTexts = d3.selectAll(".binTexts");
+        binTextLines = d3.selectAll(".binTextLines");
             
         if(binTexts.length > 0)
         {
             binTexts.attr("display", "none");
+            if(binTextLines.length > 0)
+            {
+                binTextLines.attr("display", "none");
+            }
         }
     }
 }
