@@ -27,6 +27,7 @@ function compareMeans()
                     console.log("\t Performing ANOVA test...\n\n");
                                         
                     var variableList = getSelectedVariables();
+                    console.dir(variableList);
                     
                     loadAssumptionCheckList();
                     
