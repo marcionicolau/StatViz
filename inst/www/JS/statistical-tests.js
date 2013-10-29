@@ -12,7 +12,7 @@ function compareMeans()
                     //homoscedasticity
                     var variableList = getSelectedVariables();
                     
-                    console.dir("variables: {" + variableList + "}");
+                    console.dir(variableList);
                     
                     for(var i=0; i<variableList["independent"].length; i++)
                     {
