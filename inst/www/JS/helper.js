@@ -129,6 +129,13 @@ function toggleFillColors()
 
 //Strings/numbers processing
 
+var toString = Object.prototype.toString;
+
+function isString(obj)
+{
+  return toString.call(obj) == '[object String]';
+}
+
 function processStrings(strings)
 {
     return strings.replace(".","");
