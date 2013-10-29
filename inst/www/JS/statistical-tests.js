@@ -173,7 +173,7 @@ function performANOVA(dependentVariable, independentVariable)
                   }, function(output) {                                                   
                   
                   console.log("ANOVA: \n p-value =" + output.p + " (" + dependentVariable + " ~ " + independentVariable + ")");
-                  testResults["F"] = output.t;
+                  testResults["F"] = output.F;
                   testResults["p"] = output.p;                  
                   testResults["df"] = output.DOF;
                   testResults["method"] = "ANOVA"; //todo
@@ -182,7 +182,7 @@ function performANOVA(dependentVariable, independentVariable)
                 //drawing stuff
                 removeElementsByClass("completeLines");           
 
-                // tTest();
+                ANOVA();
                 
         
       }).fail(function(){
@@ -228,6 +228,73 @@ function tTest()
 {
 //     setOpacityForElementsWithClassName("fade", "1.0");
     
+    var cx = [];
+    var cy = [];
+
+    var means = document.getElementsByClassName("means");
+    var meanRefLines = [];
+    
+    var svg = d3.select("#svgCanvas");
+
+    for(var i=0; i<means.length; i++)
+    {
+        if(means[i].getAttribute("fill") == meanColors["click"])
+        {								
+            cx.push(means[i].getAttribute("cx"));
+            cy.push(means[i].getAttribute("cy"));
+        
+            meanRefLines[i] = svg.append("line")
+                                 .attr("x1", means[i].getAttribute("cx"))
+                                 .attr("y1", means[i].getAttribute("cy"))
+                                 .attr("x2", canvasWidth/2 + size/2)
+                                 .attr("y2", means[i].getAttribute("cy"))
+                                 .attr("stroke", meanColors["normal"])
+                                 .attr("stroke-dasharray","5,5")
+                                 .attr("id", "meanrefLine")
+                                 .attr("class", "significanceTest");
+                                 
+                            svg.append("line")
+                                 .attr("x1", means[i].getAttribute("cx"))
+                                 .attr("y1", means[i].getAttribute("cy"))
+                                 .attr("x2", canvasWidth/2 - size/2 - axesOffset)
+                                 .attr("y2", means[i].getAttribute("cy"))
+                                 .attr("stroke", meanColors["normal"])
+                                 .attr("opacity", "0.25")
+                                 .attr("stroke-dasharray","5,5")
+                                 .attr("id", "meanrefLine")
+                                 .attr("class", "significanceTest");
+        }
+        else
+        {									
+            cx.splice(i, 1);
+            cy.splice(i, 1);								
+        }	
+    }
+    var cyMax = Math.max.apply(Math, cy);
+    var cyMin = Math.min.apply(Math, cy);		   	 
+
+    var differenceLine = svg.append("line")
+                            .attr("x1", canvasWidth/2 + size/2)
+                            .attr("y1", cyMin)
+                            .attr("x2", canvasWidth/2 + size/2)
+                            .attr("y2", cyMax)
+                            .attr("stroke", "red")
+                            .attr("stroke-width", "2px")
+                            .attr("class", "DOM");
+
+    var x = canvasWidth/2 + size/2;
+    var y = cyMin;			 
+    var head = svg.append("path")
+                  .attr("d", "M " + x + " " + y + " L " + (x-5)+ " " + (y+5) + " L " + (x+5) + " " + (y+5) + " z")
+                  .attr("stroke", "red")
+                  .attr("fill", "red")
+                  .attr("class", "DOM");
+    
+    drawScales(cx, cy);    
+}
+
+function ANOVA()
+{    
     var cx = [];
     var cy = [];
 
