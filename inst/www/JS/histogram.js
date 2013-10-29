@@ -359,7 +359,7 @@ function makeHistogram()
                                 .attr("y1", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size)
                                 .attr("x2", canvasWidth/2 + size/2 + j*xStep + (size/nBins)/2 + ((bins[labels[i]][j]/Array.max(binMaxs))*size)/2)    
                                 .attr("y2", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size)
-                                .attr("display", "none");
+                                .attr("display", "none")
                                 .attr("stroke", "black")
                                 .attr("id", ids[i] + j)
                                 .attr("class", "binTextLines");
