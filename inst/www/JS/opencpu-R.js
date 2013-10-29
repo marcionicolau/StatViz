@@ -167,7 +167,10 @@ function performHomoscedasticityTest(dependent, independent)
                 }
                 else
                 {
-                  d3.select("#" + assumptions[0] + ".ticks").attr("display","inline");
+                    d3.select("#" + assumptions[0] + ".ticks").attr("display","inline");
+                    
+                    //normality
+                    doNormalityTests();                    
                 }
         
       }).fail(function(){

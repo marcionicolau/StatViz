@@ -18,32 +18,15 @@ function compareMeans()
                     
                     performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]); 
                     
-                    console.log("waiting...");
                     
-                    do
-                    {
-                        
-                    }while((d3.select("#" + assumptions[0] + ".ticks").attr("display", "inline")) || (d3.select("#" + assumptions[0] + ".crosses").attr("display", "inline")));
-                    
-                    //normality
-                    for(var i=0; i<variableList["dependent"].length; i++)                        
-                    {
-                        for(var j=0; j<variableList["independent-levels"].length; j++)
-                        {                            
-                            performNormalityTest(variables[variableList["dependent"][i]][variableList["independent-levels"][j]], variableList["dependent"][i] + "." + variableList["independent-levels"][j]);
-                        }
-                    }
-                
-                    
-                    
-                    var option = "parametric";
-                    var levels = variables[variableList["independent"][0]]["dataset"].unique();
-                    
-                    if(option == "parametric")
-                    {                                                    
-                        console.log(variables[variableList["dependent"][0]][levels[0]] + ",\n" + variables[variableList["dependent"][0]][levels[1]])
-                        performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                        
-                    }
+                    // var option = "parametric";
+//                     var levels = variables[variableList["independent"][0]]["dataset"].unique();
+//                     
+//                     if(option == "parametric")
+//                     {                                                    
+//                         console.log(variables[variableList["dependent"][0]][levels[0]] + ",\n" + variables[variableList["dependent"][0]][levels[1]])
+//                         performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                        
+//                     }
                     
                     break;
                 }
@@ -81,6 +64,18 @@ function compareMeans()
     }
 }
 
+function doNormalityTests()
+{
+    var variableList = getSelectedVariables();
+
+    for(var i=0; i<variableList["dependent"].length; i++)                        
+    {
+        for(var j=0; j<variableList["independent-levels"].length; j++)
+        {                            
+            performNormalityTest(variables[variableList["dependent"][i]][variableList["independent-levels"][j]], variableList["dependent"][i] + "." + variableList["independent-levels"][j]);
+        }
+    }
+}
 
 function tTest()
 {    
