@@ -94,7 +94,7 @@ function loadAssumptionCheckList()
             .attr("font-size", "20px")
             .attr("fill", meanColors["normal"])
             .text(assumptions[i])
-            .attr("id", "assumption" + (i+1))
+            .attr("id", assumptions[i])
             .attr("class", "assumptions");
         canvas.append("image")
             .attr("x", canvasWidth/2 + size/2 - assumptionImageSize*1.5)
@@ -103,8 +103,17 @@ function loadAssumptionCheckList()
             .attr("xlink:href", "images/tick.png")
             .attr("height", assumptionImageSize)
             .attr("width", assumptionImageSize)
-            .attr("id", "assumptionImage" + (i+1))
-            .attr("class", "assumptions");
+            .attr("id", assumptions[i])
+            .attr("class", "ticks");
+        canvas.append("image")
+            .attr("x", canvasWidth/2 + size/2 - assumptionImageSize*1.5)
+            .attr("y", canvasHeight/2 - size/2 + i*assumptionsSpace - assumptionImageSize/2 - 10)
+            .attr("text-anchor", "end")
+            .attr("xlink:href", "images/tick.png")
+            .attr("height", assumptionImageSize)
+            .attr("width", assumptionImageSize)
+            .attr("id", assumptions[i])
+            .attr("class", "crosses");
     }
 }
 
