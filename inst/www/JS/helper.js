@@ -404,6 +404,8 @@ function sort(list)
             variableList["dependent"].push(list[i]);
         }
     }
+    
+    return variableList;
 }
 
       
