@@ -54,7 +54,7 @@ function compareMeans()
                     {
                         for(var j=0; j<variableList["independent-levels"].length; j++)
                         {
-                            console.log("variables[variableList[\"dependent\"][i]][variableList[\"independent-levels\"][j]] = " + variables[variableList["dependent"][i]][variableList["independent-levels"][j]]);
+                            // console.log("variables[variableList[\"dependent\"][i]][variableList[\"independent-levels\"][j]] = " + variables[variableList["dependent"][i]][variableList["independent-levels"][j]]);
                             performNormalityTest(variables[variableList["dependent"][i]][variableList["independent-levels"][j]], variableList["dependent"][i] + "." + variableList["independent-levels"][j]);
                         }
                     }
@@ -108,7 +108,7 @@ function performNormalityTest(dist, varName)
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("performShapiroWilkTest", {
-                    distribution: dist,                                                           
+                    distribution: dist                                                           
                   }, function(output) {                                                   
                   
                   console.log("normality test:\n p-value =" + output.p + " (" + varName + ")");

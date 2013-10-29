@@ -1,6 +1,6 @@
 performShapiroWilkTest <- function(distribution)
 {  
-  dist <- as.data.frame(distribution) 
+  dist <- c(distribution); 
   
   result <- eval(parse(text = paste("shapiro.test(dist)")));
   
