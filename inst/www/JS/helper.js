@@ -350,6 +350,7 @@ function setDistribution(dependentVariable, level, normal)
         
         for(var i=0; i<variableList["independent-levels"].length; i++)
         {            
+            console.log("distributions[" + dependentVariable + "][" + variableList["independent-levels"][i]] + " = "  + distributions[dependentVariable][variableList["independent-levels"][i]]);
             if(distributions[dependentVariable][variableList["independent-levels"][i]] == false)
             {
                 d3.select("#" + assumptions[1] + ".crosses").attr("display", "inline");                  
