@@ -172,14 +172,12 @@ function performANOVA(dependentVariable, independentVariable)
                     independentVariable: independentVariable                   
                   }, function(output) {                                                   
                   
-                  console.log("ANOVA: \n p-value =" + output.p + " (" + dependentVariable + ", " + independentVariable + ")");
+                  console.log("ANOVA: \n p-value =" + output.p + " (" + dependentVariable + " ~ " + independentVariable + ")");
                   testResults["F"] = output.t;
                   testResults["p"] = output.p;                  
                   testResults["df"] = output.DOF;
                   testResults["method"] = "ANOVA"; //todo
-                  
-                  console.log(testResults["t"] + "; " + group1.length);
-                  getDFromT(group1.length);                  
+                           
                   
                 //drawing stuff
                 removeElementsByClass("completeLines");           
