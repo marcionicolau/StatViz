@@ -20,7 +20,7 @@ function compareMeans()
                     {
                         for(var j=0; j<variableList["dependent"].length; j++)
                         {
-                            performHomoscedasticityTest(variableList["dependent"][j], variableList["independent"][i]);
+                            console.log(performHomoscedasticityTest(variableList["dependent"][j], variableList["independent"][i]));
                         }
                     }
                     
@@ -78,44 +78,6 @@ function compareMeans()
     }
 }
 
-function loadAssumptionCheckList()
-{
-    var canvas = d3.select("#svgCanvas");
-    
-    var assumptions = ["Homogeneity of variances", "Normality of distributions"];
-    
-    console.log("loading assumptions checklist");
-    
-    for(var i=0; i<assumptions.length; i++)
-    {
-        canvas.append("text")
-            .attr("x", canvasWidth/2 + size/2)
-            .attr("y", canvasHeight/2 - size/2 +i*assumptionsSpace)
-            .attr("font-size", "20px")
-            .attr("fill", meanColors["normal"])
-            .text(assumptions[i])
-            .attr("id", assumptions[i])
-            .attr("class", "assumptions");
-        canvas.append("image")
-            .attr("x", canvasWidth/2 + size/2 - assumptionImageSize*1.5)
-            .attr("y", canvasHeight/2 - size/2 + i*assumptionsSpace - assumptionImageSize/2 - 10)
-            .attr("text-anchor", "end")
-            .attr("xlink:href", "images/tick.png")
-            .attr("height", assumptionImageSize)
-            .attr("width", assumptionImageSize)
-            .attr("id", assumptions[i])
-            .attr("class", "ticks");
-        canvas.append("image")
-            .attr("x", canvasWidth/2 + size/2 - assumptionImageSize*1.5)
-            .attr("y", canvasHeight/2 - size/2 + i*assumptionsSpace - assumptionImageSize/2 - 10)
-            .attr("text-anchor", "end")
-            .attr("xlink:href", "images/cross.png")
-            .attr("height", assumptionImageSize)
-            .attr("width", assumptionImageSize)
-            .attr("id", assumptions[i])
-            .attr("class", "crosses");
-    }
-}
 
 function tTest()
 {    
@@ -307,5 +269,46 @@ function drawScales(cx, cy)
                 .attr("class", "significanceTestScaleText")
                 .text(format(means[1] - means[0]));
     }           
-}   
+}  
+
+function loadAssumptionCheckList()
+{
+    var canvas = d3.select("#svgCanvas");
+    
+    var assumptions = ["Homogeneity of variances", "Normality of distributions"];
+    
+    console.log("loading assumptions checklist");
+    
+    for(var i=0; i<assumptions.length; i++)
+    {
+        canvas.append("text")
+            .attr("x", canvasWidth/2 + size/2)
+            .attr("y", canvasHeight/2 - size/2 +i*assumptionsSpace)
+            .attr("font-size", "20px")
+            .attr("fill", meanColors["normal"])
+            .text(assumptions[i])
+            .attr("id", assumptions[i])
+            .attr("class", "assumptions");
+        canvas.append("image")
+            .attr("x", canvasWidth/2 + size/2 - assumptionImageSize)
+            .attr("y", canvasHeight/2 - size/2 + i*assumptionsSpace - assumptionImageSize/2 - 10)
+            .attr("text-anchor", "end")
+            .attr("xlink:href", "images/tick.png")
+            .attr("height", assumptionImageSize)            
+            .attr("width", assumptionImageSize)
+            .attr("display", "none")
+            .attr("id", assumptions[i])
+            .attr("class", "ticks");
+        canvas.append("image")
+            .attr("x", canvasWidth/2 + size/2 - assumptionImageSize)
+            .attr("y", canvasHeight/2 - size/2 + i*assumptionsSpace - assumptionImageSize/2 - 10)
+            .attr("text-anchor", "end")
+            .attr("xlink:href", "images/cross.png")
+            .attr("height", assumptionImageSize)
+            .attr("width", assumptionImageSize)
+            .attr("display", "none")
+            .attr("id", assumptions[i])
+            .attr("class", "crosses");
+    }
+}
   

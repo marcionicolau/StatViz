@@ -160,6 +160,8 @@ function performHomoscedasticityTest(dependent, independent)
                   
                   console.log("\t\t Levene's test for (" + dependent + " ~ " + independent + ")");
                   console.log("\t\t\t p = " + output.p);
+                  
+                  return 2;
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
