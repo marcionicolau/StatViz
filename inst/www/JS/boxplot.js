@@ -59,7 +59,6 @@ function makeBoxplot()
             means[i] = mean(data[i]);  
         }             
     }    
-    var nPlots = levels.length;
     
     min = Array.min(mins);
     max = Array.max(maxs);
@@ -113,9 +112,9 @@ function makeBoxplot()
     for(i=0; i<nGroovesX; i++)
     {
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 - size/2 + i*xStep)
+                    .attr("x1", canvasWidth/2 - size/2 + i*xStep + xStep/2)
                     .attr("y1", canvasHeight/2 + size/2  + axesOffset)
-                    .attr("x2", canvasWidth/2 - size/2 + i*xStep)
+                    .attr("x2", canvasWidth/2 - size/2 + i*xStep + xStep/2)
                     .attr("y2", canvasHeight/2 + size/2 + 10 + axesOffset)
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooves");
@@ -152,9 +151,9 @@ function makeBoxplot()
                     .attr("class", "yAxisGrooveText");
     }
     
-    var widthSlice = size/(nPlots+1);
+    var widthSlice = size/(nGroovesX+1);
     
-    for(var i=0; i<nPlots; i++)
+    for(var i=0; i<nGroovesX; i++)
     {
         var rectBottom = (medians[i] - iqrs[i]/2) < min ? min : (medians[i] - iqrs[i]/2);
         var rectTop = (medians[i] + iqrs[i]/2) > max ? max : (medians[i] + iqrs[i]/2);
