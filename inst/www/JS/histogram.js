@@ -84,16 +84,12 @@ function makeHistogram()
         }            
     }
     
-    console.log("validIds: " + validIds);
-    
     var ids = labels;
     
     if(!validIds)
     {
         ids = encodeToStrings(labels);
     }
-    
-    console.log("ids: " + ids);
     
     if(combinedData.unique().length < nBins)
     {
@@ -222,7 +218,7 @@ function makeHistogram()
                                 .attr("font-size", binCountFontSize)
                                 .attr("display", "none")
                                 .text(bins[labels[i]][j])
-                                .attr("id", labels[i] + j)
+                                .attr("id", ids[i] + j)
                                 .attr("class", "binTexts");
                 }
                         
@@ -232,7 +228,7 @@ function makeHistogram()
                             .attr("height", (bins[labels[i]][j]/Array.max(binMaxs))*size)
                             .attr("width", size/uniqueData.length)          
                             .attr("fill", colors[i])         
-                            .attr("id", labels[i] + j)
+                            .attr("id", ids[i] + j)
                             .attr("class", "bins");
             
                         
@@ -364,7 +360,7 @@ function makeHistogram()
                                 .attr("font-size", binCountFontSize)
                                 .attr("display", "none")
                                 .text(bins[labels[i]][j])
-                                .attr("id", labels[i] + j)
+                                .attr("id", ids[i] + j)
                                 .attr("class", "binTexts");
                 }
                         
@@ -374,7 +370,7 @@ function makeHistogram()
                             .attr("height", (bins[labels[i]][j]/Array.max(binMaxs))*size)
                             .attr("width", size/nBins)          
                             .attr("fill", colors[i])         
-                            .attr("id", labels[i] + j)
+                            .attr("id", ids[i] + j)
                             .attr("class", "bins");
             
                         
