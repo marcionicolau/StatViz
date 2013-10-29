@@ -148,7 +148,7 @@ function makeHistogram()
         
             canvas.append("text")
                         .attr("x", canvasWidth/2 - size/2 + i*xStep + xStep/2)
-                        .attr("y", canvasHeight/2 + size/2 + 30 + axesOffset)                    
+                        .attr("y", canvasHeight/2 + size/2 + tickTextOffsetXAxis + axesOffset)                    
                         .text(uniqueData[i])
                         .attr("text-anchor", "middle")
                         .attr("id", "groove" + i)
@@ -168,7 +168,7 @@ function makeHistogram()
                         .attr("class", "yAxisGrooves");
         
             canvas.append("text")
-                        .attr("x", canvasWidth/2 - size/2 - 35 - axesOffset)
+                        .attr("x", canvasWidth/2 - size/2 - tickTextOffsetYAxis - axesOffset)
                         .attr("y", canvasHeight/2 + size/2 - i*yStep + 10)                                        
                         .text(Math.round(i*binSlice))
                         .attr("id", "groove" + i)
@@ -289,7 +289,7 @@ function makeHistogram()
         
             canvas.append("text")
                         .attr("x", canvasWidth/2 - size/2 + i*xStep - 15)
-                        .attr("y", canvasHeight/2 + size/2 + 30 + axesOffset)                    
+                        .attr("y", canvasHeight/2 + size/2 + tickTextOffsetXAxis + axesOffset)                    
                         .text(format(min + i*slice))
                         .attr("id", "groove" + i)
                         .attr("class", "xAxisGrooveText");
@@ -308,7 +308,7 @@ function makeHistogram()
                         .attr("class", "yAxisGrooves");
         
             canvas.append("text")
-                        .attr("x", canvasWidth/2 - size/2 - 35 - axesOffset)
+                        .attr("x", canvasWidth/2 - size/2 - tickTextOffsetYAxis - axesOffset)
                         .attr("y", canvasHeight/2 + size/2 - i*yStep + 10)                                        
                         .text(Math.round(i*binSlice))
                         .attr("id", "groove" + i)

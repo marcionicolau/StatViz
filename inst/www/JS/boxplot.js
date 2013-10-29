@@ -109,7 +109,7 @@ function makeBoxplot()
                     .attr("class", "yAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", canvasWidth/2 - size/2 - 55 - axesOffset)
+                    .attr("x", canvasWidth/2 - size/2 - tickTextOffsetYAxis - axesOffset)
                     .attr("y", canvasHeight/2 + size/2 - i*yStep)                    
                     .text(format(min + i*slice))
                     .attr("id", "groove" + i)

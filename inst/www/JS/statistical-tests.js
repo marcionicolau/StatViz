@@ -394,8 +394,6 @@ function drawScales(cx, cy)
         }
     }  
     
-    console.log("length: " + cx.length);
-    
     var variableList = getSelectedVariables();
     var means = [];
     
