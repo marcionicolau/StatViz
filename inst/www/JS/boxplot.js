@@ -106,8 +106,7 @@ function makeBoxplot()
         labels = currentVariableSelection;
     }
     
-    var xStep = size/nGroovesX;    
-    console.log("xStep = " + xStep);    
+    var xStep = size/nGroovesX;       
 
     for(i=0; i<nGroovesX; i++)
     {
