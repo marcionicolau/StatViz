@@ -310,6 +310,9 @@ function getSelectedVariables()
         {
             if(stringForNumber.indexOf(means[i].getAttribute("id")) != -1)
             {
+                console.log("id is a number. now decoding it...");
+                console.log("\t " + stringForNumber[parseInt(means[i].getAttribute("id"))]);
+                
                 variableList["independent-levels"].push(stringForNumber[parseInt(means[i].getAttribute("id"))]);
             }
             else
