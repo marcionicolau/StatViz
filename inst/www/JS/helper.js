@@ -31,15 +31,6 @@ function makePlot()
     }
 }
 
-function initVariableTypes()
-{
-    for(var i=0; i<variables.length; i++)
-    {
-        variableType[variables[i]] = true;
-        console.log("variableType[" + variables[i] +"]: " + variableType[variables[i]]);
-    }
-}
-
 //Miscellaneous
 
 function remove(id)
@@ -345,6 +336,10 @@ function getValidIds(labels)
     }
 }
 
+function setDistributions(dependentVariable, level, normal)
+{
+    console.log(typeof(distributions[dependentVariable]));   
+}
 
       
             

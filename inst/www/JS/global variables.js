@@ -25,3 +25,6 @@ var _oldZIndex = 0;         // we temporarily increase the z-index during drag
 
 
 var testResults = new Object();
+
+var distributions = new Object();
+

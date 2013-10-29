@@ -186,45 +186,41 @@ function performHomoscedasticityTest(dependent, independent)
     });
 }
 
-function doNormalityTests()
+function performNormalityTest(dist, dependentVariable, level)
 {
     // Get variable names and their data type
     
-    var variableList = getSelectedVariables();
-
-    for(var i=0; i<variableList["dependent"].length; i++)                        
-    {
-        for(var j=0; j<variableList["independent-levels"].length; j++)
-        {   
-            var req = opencpu.r_fun_json("performShapiroWilkTest", {
-                    distribution: variables[variableList["dependent"][i]][variableList["independent-levels"][j]]                                                           
+    
+    var req = opencpu.r_fun_json("performShapiroWilkTest", {
+                    distribution: dist                                                           
                   }, function(output) {                                                   
                   
-                console.log("\t\t Shapiro-wilk test for (" + variableList["dependent"][i] + "." + variableList["independent-levels"][j] + ")");
+                console.log("\t\t Shapiro-wilk test for (" + dependentVariable + "." + level + ")");
                 console.log("\t\t\t p = " + output.p);
                   
                 if(output.p < 0.05)
                 {
                   d3.select("#" + assumptions[1] + ".crosses").attr("display", "inline");                  
+                  setDistribution(dependentVariable, level, false);
                 }
                 else
                 {
                   d3.select("#" + assumptions[1] + ".ticks").attr("display","inline");
+                  setDistribution(dependentVariable, level, true);
                 }
                   
-              }).fail(function(){
-                  alert("Failure: " + req.responseText);
-            });        
-
-            //if R returns an error, alert the error message
-            req.fail(function(){
-              alert("Server error: " + req.responseText);
-            });
-            req.complete(function(){
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
         
-            });
-        }
-    }
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
 }
 
 //Significance Tests
