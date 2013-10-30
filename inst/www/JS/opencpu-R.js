@@ -89,7 +89,7 @@ function getData(dataset, variableName, level)
         
         if(level == "dataset")
         {
-            variableTypes[variableNames] = "dependent";
+            variableTypes[variableName] = "dependent";
             if(typeof(variables[variableName][level][0]) == "string")
             {           
                 variableDataTypes[variableName] = "qualitative";
