@@ -47,8 +47,6 @@ function OnMouseDown(e)
     {
         setup(e, target);    
         
-        init();
-        
         var variableSelectionButton = d3.selectAll("#" + target.id + ".variableSelectionButton");
         variableSelectionButton.attr("fill", panelColors["active"]);
         

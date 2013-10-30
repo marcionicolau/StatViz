@@ -109,6 +109,11 @@ function getIQR(dataset, variableName, level)
             level = "dataset";
         }         
         IQR[variableName][level] = output.IQR;                                                                   
+        
+        if(variableName == variableNames[variableNames.length - 1])
+        {
+            init();
+        }
       
       }).fail(function(){
           alert("Failure: " + req.responseText);
