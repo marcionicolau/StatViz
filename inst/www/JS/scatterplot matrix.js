@@ -1,10 +1,18 @@
 var mins = new Object();
 var maxs = new Object();
 
+// Scatterplot matrix
+var shortFontSize, shortAxesOffset, shortTickLength;
+
 function makeScatterplotMatrix()
 {
     var variableList = sort(currentVariableSelection);
     var numberOfVariables = variableList["dependent"].length;
+    
+    // Scatterplot matrix
+    shortFontSize = fontSize/numberOfVariables;
+    shortAxesOffset = axesOffset/numberOfVariables;
+    shortTickLength = tickLength/numberOfVariables;
     
     if(numberOfVariables == 2)
     {
@@ -45,7 +53,7 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
     // x-axis
     canvas.append("line")
             .attr("x1", x)
-            .attr("y1", y + a)
+            .attr("y1", y + shortAxesOffset)
             .attr("x2", x + plotSize)
             .attr("y2", y)
             .attr("stroke", "black")
@@ -54,9 +62,9 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
     
     // y-axis
     canvas.append("line")
-            .attr("x1", x)
+            .attr("x1", x - shortAxesOffset)
             .attr("y1", y)
-            .attr("x2", x)
+            .attr("x2", x - shortAxesOffset)
             .attr("y2", y - plotSize)
             .attr("stroke", "black")
             .attr("id", "axis")
@@ -69,20 +77,22 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
     var ySlice = (maxY - minY)/(nGrooves-1);    
     
     //grooves
+    
+    //x-axis ticks
     for(i=0; i<nGrooves; i++)
     {
         canvas.append("line")
                     .attr("x1", x + i*step)
-                    .attr("y1", y)
+                    .attr("y1", y + shortAxesOffset)
                     .attr("x2", x + i*step)
-                    .attr("y2", y + 10)
+                    .attr("y2", y + shortAxesOffset + 10)
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooves");
         
         canvas.append("text")
                     .attr("x", x + i*step)
-                    .attr("y", y)     
-                    .attr("font-size", spmFontSize + "px")
+                    .attr("y", y + shortAxesOffset)     
+                    .attr("font-size", shortFontSize + "px")
                     .text(format(minX + i*xSlice))
                     .attr("text-anchor", "middle")
                     .attr("id", "groove" + i)
@@ -92,9 +102,9 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
     for(i=0; i<nGrooves; i++)
     {
         canvas.append("line")
-                    .attr("x1", x)
+                    .attr("x1", x - shortAxesOffset)
                     .attr("y1", y - i*step)
-                    .attr("x2", x - 10)
+                    .attr("x2", x - shortAxesOffset - 10)
                     .attr("y2", y - i*step)
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooves");
@@ -103,7 +113,7 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
                     .attr("x", x)
                     .attr("y", y - i*step)  
                     .text(format(minY + i*ySlice))
-                    .attr("font-size", spmFontSize + "px")
+                    .attr("font-size", shortFontSize + "px")
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooveText");

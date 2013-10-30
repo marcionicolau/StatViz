@@ -26,6 +26,7 @@ var tickTextOffsetXAxis = 25;
 var tickTextOffsetYAxis = 15;
 var yAxisTickTextOffset = 6;
 var fontSize = 14;
+var tickLength = 10;
 
 
 //Define colors for histogram bars, color scatterplot
@@ -49,10 +50,6 @@ var outlierRadius = "3px";
 
 // Scatterplot
 var datapointRadius = "3px";
-
-// Scatterplot matrix
-var spmFontSize = fontSize/2;
-var spmAxesOffset = axesOffset/2;
 
 // Significance test
 experimentalDesign = "between-groups";
