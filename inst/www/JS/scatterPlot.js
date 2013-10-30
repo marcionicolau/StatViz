@@ -208,7 +208,7 @@ function makeScatterplot()
         var color = currentVariableSelection.length > 2 ? colorsForPlot[data[2]] : "black";        
         canvas.append("circle")
                     .attr("cx", canvasWidth/2 - size/2 + getValue1(data[0][i], 0)*size)
-                    .attr("cy", canvasHeight/2 + size/2 - getValue(data[1][i], 1)*size)
+                    .attr("cy", canvasHeight/2 + size/2 - getValue1(data[1][i], 1)*size)
                     .attr("r", datapointRadius)
                     .attr("fill", color)
                     .attr("id", "data" + i)

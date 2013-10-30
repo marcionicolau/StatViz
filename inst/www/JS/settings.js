@@ -50,6 +50,7 @@ var outlierRadius = "3px";
 
 // Scatterplot
 var datapointRadius = 3;
+var numberOfGrooves = 10;
 
 // Significance test
 experimentalDesign = "between-groups";
