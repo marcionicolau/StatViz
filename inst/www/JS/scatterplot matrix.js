@@ -1,7 +1,7 @@
 var minX, maxX, minY, maxY;
 
 // Scatterplot matrix
-var shortAxesOffset, shortTickLength, shortDataPointRadius, shortNumberOfGrooves, shortTickTextOffsetXAxis, shortTickTextOffsetYAxis, shortYAxisTickTextOffset;
+var shortAxesOffset, shortTickLength, shortDataPointRadius, shortNumberOfGrooves, shortTickTextOffsetXAxis, shortTickTextOffsetYAxis, shortYAxisTickTextOffset, shortFontSize;
 
 function makeScatterplotMatrix()
 {
@@ -16,6 +16,11 @@ function makeScatterplotMatrix()
     shortTickTextOffsetXAxis = tickTextOffsetXAxis/(numberOfVariables);
     shortTickTextOffsetYAxis = tickTextOffsetYAxis/(numberOfVariables);
     shortYAxisTickTextOffset = yAxisTickTextOffset/numberOfVariables;
+    shortFontSize = fontSize;
+    
+    if(numberOfVariables > 4)
+        shortFontSize = 0;
+    
     
     var left = canvasWidth/2 - plotWidth/2;
     var top = canvasHeight/2 - plotHeight/2;
@@ -103,8 +108,8 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
         
         canvas.append("text")
                     .attr("x", x + i*xStep)
-                    .attr("y", y + shortAxesOffset + shortTickLength + fontSize)     
-                    .attr("font-size", fontSize)
+                    .attr("y", y + shortAxesOffset + shortTickLength + shortFontSize)     
+                    .attr("font-size", shortFontSize)
                     .text(format(minX + i*xSlice))
                     .attr("text-anchor", textAnchor)
                     .attr("id", "groove" + i)
@@ -125,18 +130,18 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
         
         if(i == 0)
         {
-            offset = -fontSize;
+            offset = -shortFontSize;
         }
         else if(i == shortNumberOfGrooves-1)
         {
-            offset = fontSize;
+            offset = shortFontSize;
         }
         
         canvas.append("text")
                     .attr("x", x - shortAxesOffset - shortTickTextOffsetYAxis)
                     .attr("y", y - i*yStep + shortTickLength + offset)  
                     .text(format(minY + i*ySlice))
-                    .attr("font-size", fontSize + "px")
+                    .attr("font-size", shortFontSize + "px")
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooveText");
