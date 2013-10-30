@@ -110,7 +110,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
         
         canvas.append("text")
                     .attr("x", x + i*xStep)
-                    .attr("y", y + shortAxesOffset + tickTextOffsetXAxis)     
+                    .attr("y", y + shortAxesOffset + shortTickTextOffsetXAxis)     
                     .attr("font-size", fontSize)
                     .text(format(minX + i*xSlice))
                     .attr("text-anchor", textAnchor)
@@ -132,15 +132,15 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
         
         if(i == 0)
         {
-            offset = -shortYAxisTickTextOffset;
+            offset = -2*shortYAxisTickTextOffset;
         }
         else if(i == shortNumberOfGrooves-1)
         {
-            offset = shortYAxisTickTextOffset;
+            offset = 2*shortYAxisTickTextOffset;
         }
         
         canvas.append("text")
-                    .attr("x", x - shortAxesOffset - tickTextOffsetYAxis)
+                    .attr("x", x - shortAxesOffset - shortTickTextOffsetYAxis)
                     .attr("y", y - i*yStep + shortYAxisTickTextOffset + offset)  
                     .text(format(minY + i*ySlice))
                     .attr("font-size", fontSize + "px")
