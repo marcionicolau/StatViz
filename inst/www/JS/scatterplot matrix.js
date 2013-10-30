@@ -106,7 +106,7 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
                     .attr("class", "yAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", x - tickTextOffsetYAxis)
+                    .attr("x", x - shortAxesOffset - tickTextOffsetYAxis)
                     .attr("y", y - i*step)  
                     .text(format(minY + i*ySlice))
                     .attr("font-size", fontSize + "px")
