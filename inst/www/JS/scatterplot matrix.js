@@ -17,7 +17,7 @@ function makeScatterplotMatrix()
     shortTickTextOffsetYAxis = tickTextOffsetYAxis/(numberOfVariables);
     
     
-    if(numberOfVariables == 2)
+    if(numberOfVariables > 2)
     {
         // we'll do just this case for now...
         
