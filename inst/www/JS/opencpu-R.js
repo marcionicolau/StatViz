@@ -82,11 +82,7 @@ function getData(dataset, variableName, level)
         console.log("\n\tvariables[" + variableName + "][" + level + "] = " + variables[variableName][level]);
         console.log("\tMIN[" + variableName + "][" + level + "] = " + MIN[variableName][level]);
         console.log("\tMAX[" + variableName + "][" + level + "] = " + MAX[variableName][level]);   
-        
-        if(getObjectLength(variables) == variableNames.length)
-        {
-            init();
-        }
+    
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -115,6 +111,11 @@ function getIQR(dataset, variableName, level)
             level = "dataset";
         }         
         IQR[variableName][level] = output.IQR;                                                                   
+        
+        if((variableName == variableNames[variableNames.length - 1]) && (level == "dataset"))
+        {
+            init();
+        }
       
       }).fail(function(){
           alert("Failure: " + req.responseText);
