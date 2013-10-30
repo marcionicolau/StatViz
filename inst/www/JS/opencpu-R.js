@@ -194,6 +194,7 @@ function performHomoscedasticityTest(dependent, independent)
                     d3.select("#" + assumptions[0] + ".ticks").attr("display","inline");
                     
                     variableList = getSelectedVariables();
+                    levels = variableList["independent-levels"];
                     performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                       
                 }
         
