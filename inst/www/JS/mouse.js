@@ -52,7 +52,7 @@ function OnMouseDown(e)
         var variableSelectionButton = d3.selectAll("#" + target.id + ".variableSelectionButton");
         variableSelectionButton.attr("fill", panelColors["active"]);
         
-        variableType[target.id] = false;
+        variableTypes[target.id] = false;
         
         var uniqueData = variables[target.id]["dataset"].unique();        
                 
@@ -220,7 +220,7 @@ function OnMouseOver(e)
         //Get data, minimums and maximums for each selected variable
         for(var i=0; i<currentVariableSelection.length; i++)
         {   
-            if(variableType[currentVariableSelection[i]] == false && currentVariableSelection.length > 1)
+            if(variableTypes[currentVariableSelection[i]] == false && currentVariableSelection.length > 1)
             {
                 // Levels are needed when we have a independent variable and one or more dependent variables
                 levels = variables[currentVariableSelection[i]]["dataset"].unique();            
@@ -232,7 +232,7 @@ function OnMouseOver(e)
         {        
             if(altScatterPlot)
             {
-                if(variableType[currentVariableSelection[i]] != false)
+                if(variableTypes[currentVariableSelection[i]] != false)
                 {
                     //for the dependent variable(s)
                 
