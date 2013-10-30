@@ -20,12 +20,12 @@ function initVariableDataTypes()
 {    
     for(var i=0; i<variableNames.length; i++)
     {        
-        if(typeof(variables[variableNames[i]]["dataset"][0] == "string")
+        if(typeof(variables[variableNames[i]]["dataset"][0] == "string"))
         {
             console.log("kit");
             variableDataTypes[variableNames[i]] = "qualitative";
         }
-        else if(typeof(variables[variableNames[i]]["dataset"][0] == "number")
+        else if(typeof(variables[variableNames[i]]["dataset"][0] == "number"))
         {
             variableDataTypes[variableNames[i]] = "quantitative";
             console.log("kat");
