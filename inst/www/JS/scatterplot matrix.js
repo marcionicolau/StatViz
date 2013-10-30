@@ -1,7 +1,7 @@
 var minX, maxX, minY, maxY;
 
 // Scatterplot matrix
-var shortAxesOffset, shortTickLength, shortDataPointRadius, shortNumberOfGrooves;
+var shortAxesOffset, shortTickLength, shortDataPointRadius, shortNumberOfGrooves, shortTickTextOffsetXAxis, shortTickTextOffsetYAxis;
 
 function makeScatterplotMatrix()
 {
@@ -12,7 +12,9 @@ function makeScatterplotMatrix()
     shortAxesOffset = axesOffset/numberOfVariables;
     shortTickLength = tickLength/numberOfVariables;
     shortDataPointRadius = datapointRadius/numberOfVariables < 1 ? 1 : datapointRadius/numberOfVariables;
-    shortNumberOfGrooves = Math.round(numberOfGrooves/(numberOfVariables * 1.5));
+    shortNumberOfGrooves = Math.ceil(numberOfGrooves/(numberOfVariables * 1.5));
+    shortTickTextOffsetXAxis = tickTextOffsetXAxis/(numberOfVariables);
+    shortTickTextOffsetYAxis = tickTextOffsetYAxis/(numberOfVariables);
     
     
     if(numberOfVariables == 2)
@@ -85,7 +87,7 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
         
         canvas.append("text")
                     .attr("x", x + i*step)
-                    .attr("y", y + shortAxesOffset)     
+                    .attr("y", y + shortAxesOffset + shortTickTextOffsetXAxis)     
                     .attr("font-size", fontSize)
                     .text(format(minX + i*xSlice))
                     .attr("text-anchor", "middle")
@@ -104,7 +106,7 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
                     .attr("class", "yAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", x)
+                    .attr("x", x - shortTickTextOffsetYAxis)
                     .attr("y", y - i*step)  
                     .text(format(minY + i*ySlice))
                     .attr("font-size", fontSize + "px")
