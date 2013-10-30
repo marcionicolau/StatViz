@@ -20,11 +20,13 @@ variableSelectionButtonWidth = 50;
       
 
 // Plots (general)
-var size = 400;
+var size = 500;
 var axesOffset = 25; //distance from plots to axes (for an R-like appearance)
 var tickTextOffsetXAxis = 25;
 var tickTextOffsetYAxis = 15;
 var yAxisTickTextOffset = 6;
+var fontSize = 14;
+
 
 //Define colors for histogram bars, color scatterplot
 var colors = ["rgba(255,0,0,0.5)","rgba(0,255,0,0.5)","rgba(0,0,255,0.5)", "rgba(255,255,0,0.5)","rgba(0,255,255,0.5)","rgba(255,0,255,0.5)"];

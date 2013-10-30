@@ -178,7 +178,7 @@ function makeScatterplot()
                     .attr("x", canvasWidth/2 - size/2 + i*step)
                     .attr("y", canvasHeight/2 + size/2 + tickTextOffsetXAxis + axesOffset)                    
                     .text(format(mins[0] + i*xSlice))
-                    .attr("font-size", "14px")
+                    .attr("font-size", fontSize + "px")
                     .attr("text-anchor", "middle")
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooveText");

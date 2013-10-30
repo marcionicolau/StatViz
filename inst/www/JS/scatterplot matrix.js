@@ -7,6 +7,9 @@ function makeScatterplotMatrix()
     var variableList = sort(currentVariableSelection);
     var numberOfVariables = variableList["dependent"].length;
     
+    //scale some variables
+    var spmFontSize = fontSize/2;
+    
     if(numberOfVariables == 2)
     {
         // we'll do just this case for now...
@@ -82,7 +85,8 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
         
         canvas.append("text")
                     .attr("x", x + i*step)
-                    .attr("y", y)                    
+                    .attr("y", y)     
+                    .attr("font-size", spmFontSize + "px")
                     .text(format(minX + i*xSlice))
                     .attr("text-anchor", "middle")
                     .attr("id", "groove" + i)
@@ -103,6 +107,7 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
                     .attr("x", x)
                     .attr("y", y - i*step)  
                     .text(format(minY + i*ySlice))
+                    .attr("font-size", spmFontSize + "px")
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooveText");
