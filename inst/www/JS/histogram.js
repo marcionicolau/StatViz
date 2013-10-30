@@ -132,61 +132,61 @@ function makeHistogram()
         // Draw axes
         
         var xAxis = canvas.append("line")
-                                        .attr("x1", canvasWidth/2 - size/2)
-                                        .attr("y1", canvasHeight/2 + size/2 + axesOffset)
-                                        .attr("x2", canvasWidth/2 + size/2)
-                                        .attr("y2", canvasHeight/2 + size/2 + axesOffset) 
+                                        .attr("x1", )
+                                        .attr("y1", canvasHeight/2 + plotHeight/2 + axesOffset)
+                                        .attr("x2", canvasWidth/2 + plotWidth/2)
+                                        .attr("y2", canvasHeight/2 + plotHeight/2 + axesOffset) 
                                         .attr("stroke", "black")
                                         .attr("id", "xAxis")
                                         .attr("class", "axes");
     
         var yAxis = canvas.append("line")
-                                        .attr("x1", canvasWidth/2 - size/2 - axesOffset)
-                                        .attr("y1", canvasHeight/2 - size/2)
-                                        .attr("x2", canvasWidth/2 - size/2 - axesOffset)
-                                        .attr("y2", canvasHeight/2 + size/2)
+                                        .attr("x1", canvasWidth/2 - plotWidth/2 - axesOffset)
+                                        .attr("y1", canvasHeight/2 - plotHeight/2)
+                                        .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
+                                        .attr("y2", canvasHeight/2 + plotHeight/2)
                                         .attr("stroke", "black")
                                         .attr("id", "yAxis")
                                         .attr("class", "axes");
 
                                     
-        var xStep = size/numberOfGroovesInXAxis;
+        var xStep = plotWidth/numberOfGroovesInXAxis;
     
         //grooves
         for(i=0; i<=numberOfGroovesInXAxis; i++)
         {
             canvas.append("line")
-                        .attr("x1", canvasWidth/2 - size/2 + i*xStep)
-                        .attr("y1", canvasHeight/2 + size/2  + axesOffset)
-                        .attr("x2", canvasWidth/2 - size/2 + i*xStep)
-                        .attr("y2", canvasHeight/2 + size/2 + 10 + axesOffset)
+                        .attr("x1", canvasWidth/2 - plotWidth/2 + i*xStep)
+                        .attr("y1", canvasHeight/2 + plotHeight/2  + axesOffset)
+                        .attr("x2", canvasWidth/2 - plotWidth/2 + i*xStep)
+                        .attr("y2", canvasHeight/2 + plotHeight/2 + 10 + axesOffset)
                         .attr("id", "groove" + i)
                         .attr("class", "xAxisGrooves");
         
             canvas.append("text")
-                        .attr("x", canvasWidth/2 - size/2 + i*xStep + xStep/2)
-                        .attr("y", canvasHeight/2 + size/2 + tickTextOffsetXAxis + axesOffset)                    
+                        .attr("x", canvasWidth/2 - plotWidth/2 + i*xStep + xStep/2)
+                        .attr("y", canvasHeight/2 + plotHeight/2 + tickTextOffsetXAxis + axesOffset)                    
                         .text(uniqueData[i])
                         .attr("text-anchor", "middle")
                         .attr("id", "groove" + i)
                         .attr("class", "xAxisGrooveText");
         }
     
-        var yStep = size/(nGroovesY-1);
+        var yStep = plotHeight/(nGroovesY-1);
     
         for(i=0; i<nGroovesY; i++)
         {
             canvas.append("line")
-                        .attr("x1", canvasWidth/2 - size/2 - 10 - axesOffset)
-                        .attr("y1", canvasHeight/2 + size/2 - i*yStep)
-                        .attr("x2", canvasWidth/2 - size/2 - axesOffset)
-                        .attr("y2", canvasHeight/2 + size/2 - i*yStep)
+                        .attr("x1", canvasWidth/2 - plotWidth/2 - 10 - axesOffset)
+                        .attr("y1", canvasHeight/2 + plotHeight/2 - i*yStep)
+                        .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
+                        .attr("y2", canvasHeight/2 + plotHeight/2 - i*yStep)
                         .attr("id", "groove" + i)
                         .attr("class", "yAxisGrooves");
         
             canvas.append("text")
-                        .attr("x", canvasWidth/2 - size/2 - tickTextOffsetYAxis - axesOffset)
-                        .attr("y", canvasHeight/2 + size/2 - i*yStep + yAxisTickTextOffset)                                        
+                        .attr("x", canvasWidth/2 - plotWidth/2 - tickTextOffsetYAxis - axesOffset)
+                        .attr("y", canvasHeight/2 + plotHeight/2 - i*yStep + yAxisTickTextOffset)                                        
                         .text(Math.round(i*binSlice))
                         .attr("text-anchor", "end")
                         .attr("id", "groove" + i)
@@ -201,8 +201,8 @@ function makeHistogram()
                 if(bins[labels[i]][j] != 0)
                 {
                     canvas.append("text")
-                                .attr("x", canvasWidth/2 - size/2 + j*xStep + (size/uniqueData.length)/2)                        
-                                .attr("y", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size + 15)
+                                .attr("x", canvasWidth/2 - plotWidth/2 + j*xStep + (plotWidth/uniqueData.length)/2)                        
+                                .attr("y", canvasHeight/2 + plotHeight/2 - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight + 15)
                                 .attr("fill", "black")
                                 .attr("text-anchor", "middle")
                                 .attr("font-size", binCountFontSize)
@@ -213,10 +213,10 @@ function makeHistogram()
                 }
                         
                 canvas.append("rect")
-                            .attr("x", canvasWidth/2 - size/2 + j*xStep)
-                            .attr("y", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size)
-                            .attr("height", (bins[labels[i]][j]/Array.max(binMaxs))*size)
-                            .attr("width", size/uniqueData.length)          
+                            .attr("x", canvasWidth/2 - plotWidth/2 + j*xStep)
+                            .attr("y", canvasHeight/2 + plotHeight/2 - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight)
+                            .attr("height", (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight)
+                            .attr("width", plotWidth/uniqueData.length)          
                             .attr("fill", colors[i])         
                             .attr("id", ids[i] + j)
                             .attr("class", "bins");
@@ -274,61 +274,61 @@ function makeHistogram()
         // Draw axes
         
         var xAxis = canvas.append("line")
-                                        .attr("x1", canvasWidth/2 - size/2)
-                                        .attr("y1", canvasHeight/2 + size/2 + axesOffset)
-                                        .attr("x2", canvasWidth/2 + size/2)
-                                        .attr("y2", canvasHeight/2 + size/2 + axesOffset) 
+                                        .attr("x1", canvasWidth/2 - plotWidth/2)
+                                        .attr("y1", canvasHeight/2 + plotHeight/2 + axesOffset)
+                                        .attr("x2", canvasWidth/2 + plotWidth/2)
+                                        .attr("y2", canvasHeight/2 + plotHeight/2 + axesOffset) 
                                         .attr("stroke", "black")
                                         .attr("id", "xAxis")
                                         .attr("class", "axes");
     
         var yAxis = canvas.append("line")
-                                        .attr("x1", canvasWidth/2 - size/2 - axesOffset)
-                                        .attr("y1", canvasHeight/2 - size/2)
-                                        .attr("x2", canvasWidth/2 - size/2 - axesOffset)
-                                        .attr("y2", canvasHeight/2 + size/2)
+                                        .attr("x1", canvasWidth/2 - plotWidth/2 - axesOffset)
+                                        .attr("y1", canvasHeight/2 - plotHeight/2)
+                                        .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
+                                        .attr("y2", canvasHeight/2 + plotHeight/2)
                                         .attr("stroke", "black")
                                         .attr("id", "yAxis")
                                         .attr("class", "axes");
 
                                     
-        var xStep = size/numberOfGroovesInXAxis;
+        var xStep = plotWidth/numberOfGroovesInXAxis;
     
         //grooves
         for(i=0; i<=numberOfGroovesInXAxis; i++)
         {
             canvas.append("line")
-                        .attr("x1", canvasWidth/2 - size/2 + i*xStep)
-                        .attr("y1", canvasHeight/2 + size/2  + axesOffset)
-                        .attr("x2", canvasWidth/2 - size/2 + i*xStep)
-                        .attr("y2", canvasHeight/2 + size/2 + 10 + axesOffset)
+                        .attr("x1", canvasWidth/2 - plotWidth/2 + i*xStep)
+                        .attr("y1", canvasHeight/2 + plotHeight/2  + axesOffset)
+                        .attr("x2", canvasWidth/2 - plotWidth/2 + i*xStep)
+                        .attr("y2", canvasHeight/2 + plotHeight/2 + 10 + axesOffset)
                         .attr("id", "groove" + i)
                         .attr("class", "xAxisGrooves");
         
             canvas.append("text")
-                        .attr("x", canvasWidth/2 - size/2 + i*xStep)
-                        .attr("y", canvasHeight/2 + size/2 + tickTextOffsetXAxis + axesOffset)                    
+                        .attr("x", canvasWidth/2 - plotWidth/2 + i*xStep)
+                        .attr("y", canvasHeight/2 + plotHeight/2 + tickTextOffsetXAxis + axesOffset)                    
                         .text(format(min + i*slice))
                         .attr("text-anchor", "middle")
                         .attr("id", "groove" + i)
                         .attr("class", "xAxisGrooveText");
         }
     
-        var yStep = size/(nGroovesY-1);
+        var yStep = plotHeight/(nGroovesY-1);
     
         for(i=0; i<nGroovesY; i++)
         {
             canvas.append("line")
-                        .attr("x1", canvasWidth/2 - size/2 - 10 - axesOffset)
-                        .attr("y1", canvasHeight/2 + size/2 - i*yStep)
-                        .attr("x2", canvasWidth/2 - size/2 - axesOffset)
-                        .attr("y2", canvasHeight/2 + size/2 - i*yStep)
+                        .attr("x1", canvasWidth/2 - plotWidth/2 - 10 - axesOffset)
+                        .attr("y1", canvasHeight/2 + plotHeight/2 - i*yStep)
+                        .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
+                        .attr("y2", canvasHeight/2 + plotHeight/2 - i*yStep)
                         .attr("id", "groove" + i)
                         .attr("class", "yAxisGrooves");
         
             canvas.append("text")
-                        .attr("x", canvasWidth/2 - size/2 - tickTextOffsetYAxis - axesOffset)
-                        .attr("y", canvasHeight/2 + size/2 - i*yStep + yAxisTickTextOffset)                                        
+                        .attr("x", canvasWidth/2 - plotWidth/2 - tickTextOffsetYAxis - axesOffset)
+                        .attr("y", canvasHeight/2 + plotHeight/2 - i*yStep + yAxisTickTextOffset)                                        
                         .text(Math.round(i*binSlice))
                         .attr("text-anchor", "end")
                         .attr("id", "groove" + i)
@@ -342,22 +342,21 @@ function makeHistogram()
             {           
                 if(bins[labels[i]][j] != 0)
                 {
-                    // if( ((bins[labels[i]][j]/Array.max(binMaxs))*size) < (0.1*size))
                     if(1)
                     {
                         canvas.append("line")
-                                .attr("x1", canvasWidth/2 - size/2 + j*xStep + (size/nBins)/2)
-                                .attr("y1", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size)
-                                .attr("x2", canvasWidth/2 - size/2 + j*xStep + (size/nBins)/2 + ((i+1)/labels.length)*size*0.25)    
-                                .attr("y2", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size - ((i+1)/nBins)*size*0.25)
+                                .attr("x1", canvasWidth/2 - plotWidth/2 + j*xStep + (plotWidth/nBins)/2)
+                                .attr("y1", canvasHeight/2 + plotHeight/2 - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight)
+                                .attr("x2", canvasWidth/2 - plotWidth/2 + j*xStep + (plotWidth/nBins)/2 + ((i+1)/labels.length)*plotWidth*0.25)    
+                                .attr("y2", canvasHeight/2 + plotHeight/2 - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight - ((i+1)/nBins)*plotHeight*0.25)
                                 .attr("display", "none")
                                 .attr("stroke", "black")
                                 .attr("id", ids[i] + j)
                                 .attr("class", "binTextLines");
                         
                         canvas.append("text")
-                                .attr("x", canvasWidth/2 - size/2 + j*xStep + (size/nBins)/2 + ((i+1)/labels.length)*size*0.25)                        
-                                .attr("y", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size + yAxisTickTextOffset - ((i+1)/nBins)*size*0.25)
+                                .attr("x", canvasWidth/2 - plotWidth/2 + j*xStep + (plotWidth/nBins)/2 + ((i+1)/labels.length)*plotWidth*0.25)                        
+                                .attr("y", canvasHeight/2 + plotHeight/2 - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight + yAxisTickTextOffset - ((i+1)/nBins)*plotHeight*0.25)
                                 .attr("fill", "black")
                                 .attr("text-anchor", "start")
                                 .attr("font-size", binCountFontSize)
@@ -369,8 +368,8 @@ function makeHistogram()
                     else
                     {
                         canvas.append("text")
-                                .attr("x", canvasWidth/2 - size/2 + j*xStep + (size/nBins)/2)                        
-                                .attr("y", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size + 15)
+                                .attr("x", canvasWidth/2 - plotWidth/2 + j*xStep + (plotWidth/nBins)/2)                        
+                                .attr("y", canvasHeight/2 + plotHeight/2 - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight + 15)
                                 .attr("fill", "black")
                                 .attr("text-anchor", "middle")
                                 .attr("font-size", binCountFontSize)
@@ -382,10 +381,10 @@ function makeHistogram()
                 }
                         
                 canvas.append("rect")
-                            .attr("x", canvasWidth/2 - size/2 + j*xStep)
-                            .attr("y", canvasHeight/2 + size/2 - (bins[labels[i]][j]/Array.max(binMaxs))*size)
-                            .attr("height", (bins[labels[i]][j]/Array.max(binMaxs))*size)
-                            .attr("width", size/nBins)          
+                            .attr("x", canvasWidth/2 - plotWidth/2 + j*xStep)
+                            .attr("y", canvasHeight/2 + plotHeight/2 - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight)
+                            .attr("height", (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight)
+                            .attr("width", plotWidth/nBins)          
                             .attr("fill", colors[i])         
                             .attr("id", ids[i] + j)
                             .attr("class", "bins");
