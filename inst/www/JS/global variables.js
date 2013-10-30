@@ -3,6 +3,7 @@ var variableTypes = new Object();
 var IQR = new Object();   
 var MIN = new Object();
 var MAX = new Object();
+var splitData = new Object();
 var variableNames = new Array();
 
 
