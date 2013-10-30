@@ -36,18 +36,12 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
             .attr("stroke", "yellow")
             .attr("fill", "none");
     
-    console.log(variableX);
-    console.log(variableY);
+    //may be you can calculate this in makeScatterPlot()
+    var maxX = MAX[variableX]["dataset"];
+    var minX = MIN[variableX]["dataset"];
     
-    console.dir(MIN);
-    
-    var maxX = MAX[variableX];
-    var minX = MIN[variableX];
-    
-    var maxY = MAX[variableY];
-    var minY = MIN[variableY];
-    
-    console.log("x:[" + minX + "," + maxX + "\ny:[" + minY + "," + maxY + "]");
+    var maxY = MAX[variableY]["dataset"];
+    var minY = MIN[variableY]["dataset"];
     
     // x-axis
     canvas.append("line")
@@ -99,15 +93,15 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
     {
         canvas.append("line")
                     .attr("x1", x)
-                    .attr("y1", y + i*step)
+                    .attr("y1", y - i*step)
                     .attr("x2", x - 10)
-                    .attr("y2", y + i*step)
+                    .attr("y2", y - i*step)
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooves");
         
         canvas.append("text")
                     .attr("x", x)
-                    .attr("y", y + i*step)  
+                    .attr("y", y - i*step)  
                     .text(format(minY + i*ySlice))
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
