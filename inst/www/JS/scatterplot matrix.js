@@ -1,8 +1,7 @@
-var mins = new Object();
-var maxs = new Object();
+var minX, maxX, minY, maxY;
 
 // Scatterplot matrix
-var shortFontSize, shortAxesOffset, shortTickLength;
+var shortFontSize, shortAxesOffset, shortTickLength, shortDataPointRadius;
 
 function makeScatterplotMatrix()
 {
@@ -13,6 +12,7 @@ function makeScatterplotMatrix()
     shortFontSize = fontSize/numberOfVariables;
     shortAxesOffset = axesOffset/numberOfVariables;
     shortTickLength = tickLength/numberOfVariables;
+    shortDataPointRadius = datapointRadius/numberOfVariables < 1 ? 1 : datapointRadius/numberOfVariables;
     
     if(numberOfVariables == 2)
     {
@@ -35,14 +35,6 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
     
     var canvas = d3.select("#svgCanvas");
     
-    canvas.append("rect")
-            .attr("x", x)
-            .attr("y", y - plotSize)
-            .attr("height", plotSize)
-            .attr("width", plotSize)
-            .attr("stroke", "yellow")
-            .attr("fill", "none");
-    
     //may be you can calculate this in makeScatterPlot()
     var maxX = MAX[variableX]["dataset"];
     var minX = MIN[variableX]["dataset"];
@@ -50,12 +42,15 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
     var maxY = MAX[variableY]["dataset"];
     var minY = MIN[variableY]["dataset"];
     
+    var dataX = variables[variableX]["dataset"];
+    var dataY = variables[variableY]["dataset"];
+    
     // x-axis
     canvas.append("line")
             .attr("x1", x)
             .attr("y1", y + shortAxesOffset)
             .attr("x2", x + plotSize)
-            .attr("y2", y)
+            .attr("y2", y + shortAxesOffset)
             .attr("stroke", "black")
             .attr("id", "axis")
             .attr("class", "xAxis");
@@ -118,9 +113,22 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooveText");
     }
+    
+    for(var i=0; i<dataX.length; i++)
+    {
+        var color = "black";
+        
+        canvas.append("circle")
+                    .attr("cx", x + getValue(dataX[i], minX, maxX)*plotSize)
+                    .attr("cy", y - getValue(dataY[i], minY, maxY)*plotSize)
+                    .attr("r", shortDataPointRadius)
+                    .attr("fill", color)
+                    .attr("id", "data" + i)
+                    .attr("class", "datapoints");     
+    }
 }
 
-function getValue(number, type)
+function getValue(number, min, max)
 {
-    return (number - mins[type])/(maxs[type] - mins[type]);
+    return (number - min)/(max - min);
 }
