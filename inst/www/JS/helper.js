@@ -1,34 +1,34 @@
 var format = d3.format(".1f");
 var stringForNumber = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 
-function init()
-{
-    initVariableTypes();
-    initVariableDataTypes();
-}
-
-function initVariableTypes()
-{    
-    for(var i=0; i<variableNames.length; i++)
-    {        
-        variableTypes[variableNames[i]] = "dependent";
-    }
-}
-
-function initVariableDataTypes()
-{    
-    for(var i=0; i<variableNames.length; i++)
-    {        
-        if(typeof(variables[variableNames[i]]["dataset"][0]) == "string")
-        {           
-            variableDataTypes[variableNames[i]] = "qualitative";
-        }
-        else if(typeof(variables[variableNames[i]]["dataset"][0]) == "number")
-        {
-            variableDataTypes[variableNames[i]] = "quantitative";           
-        }
-    }
-}
+// function init()
+// {
+//     initVariableTypes();
+//     initVariableDataTypes();
+// }
+// 
+// function initVariableTypes()
+// {    
+//     for(var i=0; i<variableNames.length; i++)
+//     {        
+//         variableTypes[variableNames[i]] = "dependent";
+//     }
+// }
+// 
+// function initVariableDataTypes()
+// {    
+//     for(var i=0; i<variableNames.length; i++)
+//     {        
+//         if(typeof(variables[variableNames[i]]["dataset"][0]) == "string")
+//         {           
+//             variableDataTypes[variableNames[i]] = "qualitative";
+//         }
+//         else if(typeof(variables[variableNames[i]]["dataset"][0]) == "number")
+//         {
+//             variableDataTypes[variableNames[i]] = "quantitative";           
+//         }
+//     }
+// }
         
 function makePlot()
 {   

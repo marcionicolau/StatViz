@@ -24,7 +24,6 @@ function loadFile(filePath)
         getIQR(dataset, output.variableNames[i]);                    
     }
     
-    console.log("hey");
     
      }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -35,7 +34,7 @@ function loadFile(filePath)
       alert("Server error: " + req.responseText);
     });
     req.complete(function(){
-       console.log("hiya"); 
+ 
     });
 }
     
@@ -87,6 +86,19 @@ function getData(dataset, variableName, level)
         console.log("\n\tvariables[" + variableName + "][" + level + "] = " + variables[variableName][level]);
         console.log("\tMIN[" + variableName + "][" + level + "] = " + MIN[variableName][level]);
         console.log("\tMAX[" + variableName + "][" + level + "] = " + MAX[variableName][level]);   
+        
+        if(level == "dataset")
+        {
+            variableTypes[variableNames] = "dependent";
+            if(typeof(variables[variableName][level][0]) == "string")
+            {           
+                variableDataTypes[variableName] = "qualitative";
+            }
+            else if(typeof(variables[variableName][level][0]) == "number")
+            {
+                variableDataTypes[variableName] = "quantitative";           
+            }
+        }
     
         
       }).fail(function(){
