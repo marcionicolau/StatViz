@@ -297,6 +297,8 @@ function makeHistogram()
                 bins[labels[i]][index]++;         
             }
         }
+        
+        console.dir(bins);
     
         var binMaxs = new Array();
         var binMins = new Array();
