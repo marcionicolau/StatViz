@@ -1,7 +1,7 @@
 var minX, maxX, minY, maxY;
 
 // Scatterplot matrix
-var shortAxesOffset, shortTickLength, shortDataPointRadius, shortNumberOfGrooves, shortTickTextOffsetXAxis, shortTickTextOffsetYAxis;
+var shortAxesOffset, shortTickLength, shortDataPointRadius, shortNumberOfGrooves, shortTickTextOffsetXAxis, shortTickTextOffsetYAxis, shortYAxisTickTextOffset;
 
 function makeScatterplotMatrix()
 {
@@ -15,9 +15,10 @@ function makeScatterplotMatrix()
     shortNumberOfGrooves = Math.ceil(numberOfGrooves/(numberOfVariables * 1.5));
     shortTickTextOffsetXAxis = tickTextOffsetXAxis/(numberOfVariables);
     shortTickTextOffsetYAxis = tickTextOffsetYAxis/(numberOfVariables);
+    shortYAxisTickTextOffset = yAxisTickTextOffset/numberOfVariables;
     
     var left = canvasWidth/2 - plotWidth/2;
-    var top = canvasHeight/2 - plotHeight/2 - (axesOffset + tickTextOffsetXAxis + border);
+    var top = canvasHeight/2 - plotHeight/2;
     
     if(numberOfVariables >= 2)
     {
@@ -97,12 +98,22 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooves");
         
+        var textAnchor = "middle";
+        if(i == 0)
+        {
+            textAnchor = "start";
+        }
+        else if(i == shortNumberOfGrooves-1)
+        {
+            textAnchor = "end";
+        }
+        
         canvas.append("text")
                     .attr("x", x + i*xStep)
                     .attr("y", y + shortAxesOffset + tickTextOffsetXAxis)     
                     .attr("font-size", fontSize)
                     .text(format(minX + i*xSlice))
-                    .attr("text-anchor", "middle")
+                    .attr("text-anchor", textAnchor)
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooveText");
     }
@@ -115,11 +126,22 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
                     .attr("x2", x - shortAxesOffset - shortTickLength)
                     .attr("y2", y - i*yStep)
                     .attr("id", "groove" + i)
-                    .attr("class", "yAxisGrooves");
+                    .attr("class", "yAxisGrooves");       
+        
+        var offset = 0;
+        
+        if(i == 0)
+        {
+            offset = -shortYAxisTickTextOffset;
+        }
+        else if(i == shortNumberOfGrooves-1)
+        {
+            offset = shortYAxisTickTextOffset;
+        }
         
         canvas.append("text")
                     .attr("x", x - shortAxesOffset - tickTextOffsetYAxis)
-                    .attr("y", y - i*yStep)  
+                    .attr("y", y - i*yStep - shortYAxisTickTextOffset + offset)  
                     .text(format(minY + i*ySlice))
                     .attr("font-size", fontSize + "px")
                     .attr("text-anchor", "end")
