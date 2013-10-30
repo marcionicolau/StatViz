@@ -53,6 +53,8 @@ function makeHistogram()
         maxs[0] = MAX[currentVariableSelection[0]]["dataset"];       
     } 
     
+    console.dir(data);
+    
 //     //Get data, minimums and maximums for each selected variable
 //     for(var i=0; i<currentVariableSelection.length; i++)
 //     {   
