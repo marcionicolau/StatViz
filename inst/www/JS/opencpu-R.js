@@ -135,10 +135,10 @@ function splitDataByColumnName(dataset, columnName, value)
                 
        splitData[value] = output.data;  
        
-       for(var i=0; i<varNames.length; i++)
+       for(var i=0; i<variableNames.length; i++)
        {  
-           getData(splitData[value], varNames[i],value);                
-           getIQR(splitData[value], varNames[i],value);                
+           getData(splitData[value], variableNames[i],value);                
+           getIQR(splitData[value], variableNames[i],value);                
        }
                 
      }).fail(function(){
