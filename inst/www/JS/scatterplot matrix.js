@@ -7,6 +7,10 @@ function makeScatterplotMatrix()
     var variableList = sort(currentVariableSelection);
     var nPlots = variableList["dependent"].length*variableList["dependent"].length;;
     
+    console.log("size=" + size);
+    
+    console.log("nPlots = "  +nPlots);
+    
     if(variableList["dependent"].length == 2)
     {
         // we'll do just this case for now...
@@ -35,6 +39,9 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
             .attr("width", plotSize)
             .attr("stroke", "yellow")
             .attr("fill", "none");
+    
+    console.log(variableX);
+    console.log(variableY);
     
     var maxX = MAX[variableX];
     var minX = MIN[variableX];
