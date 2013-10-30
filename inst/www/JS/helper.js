@@ -87,9 +87,9 @@ function resetSVGCanvas()
         svgCanvas.attr("id", "svgCanvas")
                                 .attr("x", 0)
                                 .attr("y", 0)
-                                .attr("height", "100%")
-                                .attr("width", "100%")
-                                .attr("viewBox", (width - canvasWidth) + " 0 " + canvasWidth + " " + canvasHeight);
+                                .attr("height", canvasHeight)
+                                .attr("width", canvasWidth)
+                                .attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
 }
 
 
