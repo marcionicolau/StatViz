@@ -29,6 +29,7 @@ function compareMeans()
                     console.log("\t Performing ANOVA test...\n\n");
                                         
                     var variableList = getSelectedVariables();
+                    console.dir(variableList);
                     
                     loadAssumptionCheckList();
                     
@@ -295,16 +296,16 @@ function loadAssumptionCheckList()
     for(var i=0; i<assumptions.length; i++)
     {
         canvas.append("text")
-            .attr("x", canvasWidth/2 + size/2)
-            .attr("y", canvasHeight/2 - size/2 +i*assumptionsSpace)
+            .attr("x", canvasWidth/2 + plotWidth/2)
+            .attr("y", canvasHeight/2 - plotHeight/2 +i*assumptionsSpace)
             .attr("font-size", "20px")
             .attr("fill", meanColors["normal"])
             .text(assumptionsText[i])
             .attr("id", assumptions[i])
             .attr("class", "assumptions");
         canvas.append("image")
-            .attr("x", canvasWidth/2 + size/2 - assumptionImageSize)
-            .attr("y", canvasHeight/2 - size/2 + i*assumptionsSpace - assumptionImageSize/2 - 10)
+            .attr("x", canvasWidth/2 + plotWidth/2 - assumptionImageSize)
+            .attr("y", canvasHeight/2 - plotHeight/2 + i*assumptionsSpace - assumptionImageSize/2 - 10)
             .attr("text-anchor", "end")
             .attr("xlink:href", "images/tick.png")
             .attr("height", assumptionImageSize)            
@@ -313,8 +314,8 @@ function loadAssumptionCheckList()
             .attr("id", assumptions[i])
             .attr("class", "ticks");
         canvas.append("image")
-            .attr("x", canvasWidth/2 + size/2 - assumptionImageSize)
-            .attr("y", canvasHeight/2 - size/2 + i*assumptionsSpace - assumptionImageSize/2 - 10)
+            .attr("x", canvasWidth/2 + plotWidth/2 - assumptionImageSize)
+            .attr("y", canvasHeight/2 - plotHeight/2 + i*assumptionsSpace - assumptionImageSize/2 - 10)
             .attr("text-anchor", "end")
             .attr("xlink:href", "images/cross.png")
             .attr("height", assumptionImageSize)

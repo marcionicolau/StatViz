@@ -35,6 +35,8 @@ function makeScatterplotMatrix()
             {
                 if(i != j)
                     makeScatterPlotAt(left + j*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis), top + i*((plotHeight/numberOfVariables) + shortAxesOffset + shortTickTextOffsetXAxis), (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), variableList["dependent"][i], variableList["dependent"][j]); 
+                else
+                    //todo: print the variable name 
             }
         }
     }
