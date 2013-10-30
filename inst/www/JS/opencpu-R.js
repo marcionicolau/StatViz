@@ -112,6 +112,8 @@ function getIQR(dataset, variableName, level)
         }         
         IQR[variableName][level] = output.IQR;                                                                   
         
+        console.log(getObjectLength(IQR));
+        
         if((variableName == variableNames[variableNames.length - 1]) && (level == "dataset"))
         {
             init();
