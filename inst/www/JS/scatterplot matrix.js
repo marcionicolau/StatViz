@@ -141,7 +141,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
         
         canvas.append("text")
                     .attr("x", x - shortAxesOffset - tickTextOffsetYAxis)
-                    .attr("y", y - i*yStep - shortYAxisTickTextOffset + offset)  
+                    .attr("y", y - i*yStep + shortYAxisTickTextOffset + offset)  
                     .text(format(minY + i*ySlice))
                     .attr("font-size", fontSize + "px")
                     .attr("text-anchor", "end")
