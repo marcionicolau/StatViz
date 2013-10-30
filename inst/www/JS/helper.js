@@ -3,11 +3,11 @@ var stringForNumber = ["zero", "one", "two", "three", "four", "five", "six", "se
 
 function init()
 {
-    initVariableType();
-    initVariableDataType();
+    initVariableTypes();
+    initVariableDataTypes();
 }
 
-function initVariableType()
+function initVariableTypes()
 {    
     for(var i=0; i<variableNames.length; i++)
     {        
@@ -16,11 +16,20 @@ function initVariableType()
     }
 }
 
-function initVariableDataType()
+function initVariableDataTypes()
 {    
     for(var i=0; i<variableNames.length; i++)
     {        
-        console.log(typeof(variables[variableNames[i]]["dataset"][0]));
+        if(typeof(variables[variableNames[i]]["dataset"][0] == "string")
+        {
+            console.log("kit");
+            variableDataTypes[variableNames[i]] = "qualitative";
+        }
+        else if(typeof(variables[variableNames[i]]["dataset"][0] == "number")
+        {
+            variableDataTypes[variableNames[i]] = "quantitative";
+            console.log("kat");
+        }
     }
 }
         
