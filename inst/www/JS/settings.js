@@ -49,7 +49,7 @@ var meanRadius = "5px";
 var outlierRadius = "3px";
 
 // Scatterplot
-var datapointRadius = "3px";
+var datapointRadius = 3;
 
 // Significance test
 experimentalDesign = "between-groups";
