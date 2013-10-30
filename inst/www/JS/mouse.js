@@ -53,6 +53,12 @@ function OnMouseDown(e)
         variableTypes[target.id] = "independent";
         
         var canvas = d3.select("#svgCanvas");
+        canvas.append("circle")
+                .attr("cx", 100)
+                .attr("cy", 100)
+                .attr("r", 50)
+                .attr("fill", "red");
+            
         console.log("width=" + canvas.attr("width"));
         
         canvas.transition().duration(1000).attr("width", canvas.attr("width")/2);
