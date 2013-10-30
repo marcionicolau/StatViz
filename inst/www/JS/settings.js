@@ -56,6 +56,7 @@ var assumptionsSpace = 30;
 var assumptionImageSize = 30;
 var assumptionsText = ["Homogeneity of variances", "Normality of distributions"]; //todo for others
 var assumptions = ["homogeneity", "normality"];
+var sampleSizeCutoff = 20;
 
 
 

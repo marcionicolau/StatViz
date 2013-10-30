@@ -66,9 +66,6 @@ function makeBoxplot()
     }
     else
     {
-//         if(variableList["independent"].length > 0)
-//             altBoxPlot = true;
-
         data[0] = variables[currentVariableSelection[0]]["dataset"];      
         mins[0] = MIN[currentVariableSelection[0]]["dataset"];      
         maxs[0] = MAX[currentVariableSelection[0]]["dataset"];

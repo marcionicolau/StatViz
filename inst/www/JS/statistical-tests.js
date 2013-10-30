@@ -8,18 +8,19 @@ function compareMeans()
                 //T-test
                 {
                     console.log("\t Performing T-test...\n\n");
-                    
-                    //this should tell us about the sample size (is it small => non-parametric test), type of variable (ordinal => non-parametric test), dependent/independent (paired/unpaired test)                    
-                    analyseVariables(); 
-                    
+
                     //homoscedasticity
                     var variableList = getSelectedVariables();
+                    console.dir(variableList);
                     
                     loadAssumptionCheckList();
                     
-                    console.dir(variableList);
+                    //this should tell us about the sample size (is it small => non-parametric test), type of variable (ordinal => non-parametric test), dependent/independent (paired/unpaired test)                    
+                    var type = determineTypeOfTTest(variableList); 
                     
-                    performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]); 
+                    console.log("type of test: " + type);
+                    
+//                     performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]); 
                     
                     break;
                 }
@@ -52,6 +53,49 @@ function doNormalityTests()
         {                            
             performNormalityTest(variables[variableList["dependent"][i]][variableList["independent-levels"][j]], variableList["dependent"][i], variableList["independent-levels"][j]);
         }
+    }
+}
+
+function determineTypeOfTTest(variableList)
+{
+    //find sample sizes
+    var sampleSizeIsLarge = true;
+    for(var i=0; i<variableList["independent-levels"].length; i++)
+    {
+        if(variables[variableList["dependent"][0]][variableList["independent-levels"][i]].length < sampleSizeCutoff)
+        {
+            sampleSizeIsLarge = false;
+        }
+    }
+    
+    if(!sampleSizeIsLarge)
+    {
+        console.log("Sample size is not large enough.");
+        
+        if(experimentalDesign == "between-groups")
+        {
+            //independent/unpaired
+            return "Wilcoxon Signed-rank Test";
+        }
+        else if(experimentalDesign == "within-groups")
+        {
+            //dependent/paired
+            return "Mann-Whitney U Test";
+        }
+    }
+    
+    //type of variable...
+    
+    //experimental design
+    if(experimentalDesign == "between-groups")
+    {
+        //independent/unpaired
+        return "Paired T-test";
+    }
+    else if(experimentalDesign == "within-groups")
+    {
+        //dependent/paired
+        return "Unpaired T-test";
     }
 }
 
