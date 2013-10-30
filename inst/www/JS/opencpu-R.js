@@ -8,7 +8,9 @@ function loadFile(filePath)
          
     //render the variable names
     renderVariableNames(output.variableNames);
-    varNames = output.variableNames;
+    variableNames = output.variableNames;
+    
+    console.log("variableNames=" + variableNames);
     
     //for each variable, get the data and the IQR
     for(var i=0; i<output.variableNames.length; i++)
@@ -42,7 +44,7 @@ function getVariables(dataset)
     
     variableNames = output.varNames;
     
-    console.log("variableNames=" + variableNames);
+    
     for(var i=0; i<output.varNames.length; i++)
     {
         getData(dataset, output.varNames[i]);                 
