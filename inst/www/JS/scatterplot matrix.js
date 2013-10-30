@@ -5,22 +5,18 @@ var maxs = new Object();
 function makeScatterplotMatrix()
 {
     var variableList = sort(currentVariableSelection);
-    var nPlots = variableList["dependent"].length*variableList["dependent"].length;;
+    var numberOfVariables = variableList["dependent"].length;
     
-    console.log("size=" + size);
-    
-    console.log("nPlots = "  +nPlots);
-    
-    if(variableList["dependent"].length == 2)
+    if(numberOfVariables == 2)
     {
         // we'll do just this case for now...
         
-        for(var i=0; i<variableList["dependent"].length; i++)
+        for(var i=0; i<numberOfVariables; i++)
         {
-            for(var j=0; j<variableList["dependent"].length; j++)
+            for(var j=0; j<numberOfVariables; j++)
             {
                 if(i != j)
-                    makeScatterPlotAt(canvasWidth/2 - size/2 + j*(size/2), canvasHeight/2 + i*(size/2), size/nPlots, variableList["dependent"][i], variableList["dependent"][j]); 
+                    makeScatterPlotAt(canvasWidth/2 - size/2 + j*(size/2), canvasHeight/2 + i*(size/2), (size/numberOfVariables) - axesOffset, variableList["dependent"][i], variableList["dependent"][j]); 
             }
         }
     }
@@ -42,6 +38,8 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
     
     console.log(variableX);
     console.log(variableY);
+    
+    console.dir(MIN);
     
     var maxX = MAX[variableX];
     var minX = MIN[variableX];
