@@ -77,8 +77,8 @@ function setDistribution(dependentVariable, level, normal)
                 normal = false;
 
                 //draw boxplots in red 
-                d3.select("#svgCanvas").transition().duration(1000).attr("height", canvasHeight - 100);
-                d3.select("#canvas").transition().duration(1000).attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + (canvasHeight-100) + "px; top: 100px; left: " + (width - canvasWidth) + "px;");    
+                d3.select("#svgCanvas").transition().duration(1000).attr("height", canvasHeight - 300);
+//                 d3.select("#canvas").transition().duration(1000).attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + (canvasHeight-100) + "px; top: 100px; left: " + (width - canvasWidth) + "px;");    
             }
         }
         
