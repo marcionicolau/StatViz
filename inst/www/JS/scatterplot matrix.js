@@ -1,5 +1,8 @@
 var mins = new Object();
 var maxs = new Object();
+
+
+var spmFontSize;
    
    
 function makeScatterplotMatrix()
