@@ -25,7 +25,7 @@ function makeScatterplotMatrix()
             for(var j=0; j<numberOfVariables; j++)
             {
                 if(i != j)
-                    makeScatterPlotAt(canvasWidth/2 - plotWidth/2 + j*(plotWidth/numberOfVariables), canvasHeight/2 + i*(plotHeight/numberOfVariables), (plotWidth/numberOfVariables) - axesOffset, (plotHeight/2) - axesOffset, variableList["dependent"][i], variableList["dependent"][j]); 
+                    makeScatterPlotAt(canvasWidth/2 - plotWidth/2 + j*(plotWidth/numberOfVariables), canvasHeight/2 - plotHeight/2 + i*(plotHeight/numberOfVariables), (plotWidth/numberOfVariables) - axesOffset, (plotHeight/2) - axesOffset, variableList["dependent"][i], variableList["dependent"][j]); 
             }
         }
     }
@@ -34,6 +34,7 @@ function makeScatterplotMatrix()
 function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, variableColor)
 {
     // make sure that all preprocessing is done in the makeScatterPlotMatrix() function
+    y = y + shortHeight;
     
     var canvas = d3.select("#svgCanvas");
     
