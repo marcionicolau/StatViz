@@ -7,7 +7,6 @@ function makeHistogram()
     var maxs = [];
     
     var combinedData = [];
-    var levels = [];
     
     var altHistogram = false;
     
@@ -108,6 +107,7 @@ function makeHistogram()
     var max = Array.max(maxs);
     
     var labels;
+    var levels = variableList["independent-levels"];
     
     if(altHistogram == true)    
     {
