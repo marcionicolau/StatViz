@@ -52,45 +52,6 @@ function makeHistogram()
         maxs[0] = MAX[currentVariableSelection[0]]["dataset"];       
     } 
     
-    console.dir(data);
-    
-//     //Get data, minimums and maximums for each selected variable
-//     for(var i=0; i<currentVariableSelection.length; i++)
-//     {   
-//         if(variableTypes[currentVariableSelection[i]] == false && currentVariableSelection.length > 1)
-//         {
-//             // Levels are needed when we have a independent variable and one or more dependent variables
-//             levels = variables[currentVariableSelection[i]]["dataset"].unique();           
-//             altHistogram = true;
-//         }
-//     }
-//     
-//     for(var i=0; i<currentVariableSelection.length; i++)
-//     {        
-//         if(altHistogram)
-//         {
-//             if(variableTypes[currentVariableSelection[i]] != false)
-//             {
-//                 //for the dependent variable(s)
-//                 
-//                 for(var j=0; j<levels.length; j++)
-//                 {
-//                     // for each level of the independent variable, find the dependent variables                    
-//                 
-//                     data[j] = variables[currentVariableSelection[i]][levels[j]];
-//                     mins[j] = MIN[currentVariableSelection[i]][levels[j]];      
-//                     maxs[j] = MAX[currentVariableSelection[i] ][levels[j]];      
-//                 }
-//             }  
-//         }
-//         else 
-//         {   
-//             data[i] = variables[currentVariableSelection[i]]["dataset"];      
-//             mins[i] = MIN[currentVariableSelection[i]]["dataset"];      
-//             maxs[i] = MAX[currentVariableSelection[i]]["dataset"];
-//         }             
-//     }
-    
     
     // combine the collected data
     for(var i=0; i<data.length; i++)
@@ -297,8 +258,6 @@ function makeHistogram()
                 bins[labels[i]][index]++;         
             }
         }
-        
-        console.dir(bins);
     
         var binMaxs = new Array();
         var binMins = new Array();
