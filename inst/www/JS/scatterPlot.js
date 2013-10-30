@@ -111,7 +111,8 @@ function makeScatterplot()
     //todo: x-axis grooves
     
     //y-axis grooves
-    var step = plotHeight/(numberOfGrooves-1);
+    var xStep = plotWidth/(numberOfGrooves-1);
+    var yStep = plotHeight/(numberOfGrooves-1);
     var xSlice = (maxs[0] - mins[0])/(numberOfGrooves-1);    
     var ySlice = (maxs[1] - mins[1])/(numberOfGrooves-1);    
     
@@ -119,15 +120,15 @@ function makeScatterplot()
     for(i=0; i<numberOfGrooves; i++)
     {
         canvas.append("line")
-                    .attr("x1", left + i*step)
+                    .attr("x1", left + i*xStep)
                     .attr("y1", bottom + axesOffset)
-                    .attr("x2", left + i*step)
+                    .attr("x2", left + i*xStep)
                     .attr("y2", bottom + 10 + axesOffset)
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", left + i*step)
+                    .attr("x", left + i*xStep)
                     .attr("y", bottom + tickTextOffsetXAxis + axesOffset)                    
                     .text(format(mins[0] + i*xSlice))
                     .attr("font-size", fontSize + "px")
@@ -140,15 +141,15 @@ function makeScatterplot()
     {
         canvas.append("line")
                     .attr("x1", left - 10 - axesOffset)
-                    .attr("y1", bottom - i*step)
+                    .attr("y1", bottom - i*yStep)
                     .attr("x2", left  - axesOffset)
-                    .attr("y2", bottom - i*step)
+                    .attr("y2", bottom - i*yStep)
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooves");
         
         canvas.append("text")
                     .attr("x", left - tickTextOffsetYAxis - axesOffset)
-                    .attr("y", bottom - i*step + yAxisTickTextOffset)                    
+                    .attr("y", bottom - i*yStep + yAxisTickTextOffset)                    
                     .text(format(mins[1] + i*ySlice))
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
