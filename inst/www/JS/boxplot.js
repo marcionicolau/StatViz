@@ -9,6 +9,14 @@ var bottomFringe;
 
 function makeBoxplot()
 {
+    //boundaries    
+    var left = canvasWidth/2 - plotWidth/2;
+    var right = canvasWidth/2 + plotWidth/2;
+    
+    var top = canvasHeight/2 - plotHeight/2;
+    var bottom = canvasHeight/2 + plotHeight/2;
+    
+    
     var altBoxPlot = false;
     var data = [];
     var mins = [];
@@ -99,19 +107,19 @@ function makeBoxplot()
     // Draw axes
         
     var xAxis = canvas.append("line")
-                                    .attr("x1", canvasWidth/2 - size/2)
-                                    .attr("y1", canvasHeight/2 + size/2 + axesOffset)
-                                    .attr("x2", canvasWidth/2 + size/2)
-                                    .attr("y2", canvasHeight/2 + size/2 + axesOffset) 
+                                    .attr("x1", left)
+                                    .attr("y1", bottom + axesOffset)
+                                    .attr("x2", right)
+                                    .attr("y2", bottom + axesOffset) 
                                     .attr("stroke", "black")
                                     .attr("id", "xAxis")
                                     .attr("class", "axes");
     
     var yAxis = canvas.append("line")
-                                    .attr("x1", canvasWidth/2 - size/2 - axesOffset)
-                                    .attr("y1", canvasHeight/2 - size/2)
-                                    .attr("x2", canvasWidth/2 - size/2 - axesOffset)
-                                    .attr("y2", canvasHeight/2 + size/2)
+                                    .attr("x1", left - axesOffset)
+                                    .attr("y1", top)
+                                    .attr("x2", left - axesOffset)
+                                    .attr("y2", bottom)
                                     .attr("stroke", "black")
                                     .attr("id", "yAxis")
                                     .attr("class", "axes");
@@ -134,21 +142,21 @@ function makeBoxplot()
         labels = currentVariableSelection;
     }
     
-    var xStep = size/nGroovesX;       
+    var xStep = plotWidth/nGroovesX;       
 
     for(i=0; i<nGroovesX; i++)
     {
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 - size/2 + i*xStep + xStep/2)
-                    .attr("y1", canvasHeight/2 + size/2  + axesOffset)
-                    .attr("x2", canvasWidth/2 - size/2 + i*xStep + xStep/2)
-                    .attr("y2", canvasHeight/2 + size/2 + 10 + axesOffset)
+                    .attr("x1", left + i*xStep + xStep/2)
+                    .attr("y1", bottom  + axesOffset)
+                    .attr("x2", left + i*xStep + xStep/2)
+                    .attr("y2", bottom + 10 + axesOffset)
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooves");
     
         canvas.append("text")
-                    .attr("x", canvasWidth/2 - size/2 + i*xStep + xStep/2)
-                    .attr("y", canvasHeight/2 + size/2 + tickTextOffsetXAxis + axesOffset)                    
+                    .attr("x", left + i*xStep + xStep/2)
+                    .attr("y", bottom + tickTextOffsetXAxis + axesOffset)                    
                     .text(labels[i])
                     .attr("text-anchor", "middle")
                     .attr("id", "groove" + i)
@@ -156,29 +164,29 @@ function makeBoxplot()
     }
     
     //y-axis grooves
-    var yStep = size/(nGroovesY-1);
+    var yStep = plotHeight/(nGroovesY-1);
     var slice = (max - min)/(nGroovesY-1);    
     
     for(i=0; i<nGroovesY; i++)
     {
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 - size/2 - 10 - axesOffset)
-                    .attr("y1", canvasHeight/2 + size/2 - i*yStep)
-                    .attr("x2", canvasWidth/2 - size/2 - axesOffset)
-                    .attr("y2", canvasHeight/2 + size/2 - i*yStep)
+                    .attr("x1", left - 10 - axesOffset)
+                    .attr("y1", bottom - i*yStep)
+                    .attr("x2", left - axesOffset)
+                    .attr("y2", bottom - i*yStep)
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", canvasWidth/2 - size/2 - tickTextOffsetYAxis - axesOffset)
-                    .attr("y", canvasHeight/2 + size/2 - i*yStep + yAxisTickTextOffset)                    
+                    .attr("x", left - tickTextOffsetYAxis - axesOffset)
+                    .attr("y", bottom - i*yStep + yAxisTickTextOffset)                    
                     .text(format(min + i*slice))
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooveText");
     }
     
-    var widthSlice = size/(nGroovesX);
+    var widthSlice = plotWidth/(nGroovesX);
     
     for(var i=0; i<nGroovesX; i++)
     {
@@ -186,19 +194,19 @@ function makeBoxplot()
         var rectTop = (medians[i] + iqrs[i]/2) > max ? max : (medians[i] + iqrs[i]/2);
         
         canvas.append("rect")
-                    .attr("x", canvasWidth/2 - size/2 + i*widthSlice - boxWidth/2 + xStep/2)
-                    .attr("y", canvasHeight/2 + size/2 - getFraction(rectTop)*size)
-                    .attr("height", getFraction(rectTop)*size - getFraction(rectBottom)*size)
+                    .attr("x", left + i*widthSlice - boxWidth/2 + xStep/2)
+                    .attr("y", bottom - getFraction(rectTop)*plotHeight)
+                    .attr("height", getFraction(rectTop)*plotHeight - getFraction(rectBottom)*plotHeight)
                     .attr("width", boxWidth)
                     .attr("id", ids[i])
                     .attr("class", "IQRs");
                 
         // median
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 - size/2 + i*widthSlice - boxWidth/2 + xStep/2)
-                    .attr("y1", canvasHeight/2 + size/2 - getFraction(medians[i])*size)
-                    .attr("x2", canvasWidth/2 - size/2 + i*widthSlice + boxWidth/2 + xStep/2)
-                    .attr("y2", canvasHeight/2 + size/2 - getFraction(medians[i])*size)
+                    .attr("x1", left + i*widthSlice - boxWidth/2 + xStep/2)
+                    .attr("y1", bottom - getFraction(medians[i])*plotHeight)
+                    .attr("x2", left + i*widthSlice + boxWidth/2 + xStep/2)
+                    .attr("y2", bottom - getFraction(medians[i])*plotHeight)
                     .attr("id", ids[i])
                     .attr("class", "medians");
     
@@ -207,40 +215,40 @@ function makeBoxplot()
         topFringe = (medians[i] + 1.5*iqrs[i]) > max ? max : (medians[i] + 1.5*iqrs[i]);
     
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 - boxWidth/4 + i*widthSlice - size/2 + xStep/2)
-                    .attr("y1", canvasHeight/2 + size/2 - getFraction(topFringe)*size)
-                    .attr("x2", canvasWidth/2 + boxWidth/4 + i*widthSlice - size/2 + xStep/2)
-                    .attr("y2", canvasHeight/2 + size/2 - getFraction(topFringe)*size)
+                    .attr("x1", canvasWidth/2 - boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("y1", bottom - getFraction(topFringe)*plotHeight)
+                    .attr("x2", canvasWidth/2 + boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("y2", bottom - getFraction(topFringe)*plotHeight)
                     .attr("id", ids[i])
                     .attr("class", "topFringes");
     
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 + i*widthSlice - size/2 + xStep/2)
-                    .attr("y1", canvasHeight/2 + size/2 - getFraction(topFringe)*size)
-                    .attr("x2", canvasWidth/2 + i*widthSlice - size/2 + xStep/2)
-                    .attr("y2", canvasHeight/2 + size/2- getFraction(medians[i] + iqrs[i]/2)*size)
+                    .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("y1", bottom - getFraction(topFringe)*plotHeight)
+                    .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("y2", bottom- getFraction(medians[i] + iqrs[i]/2)*plotHeight)
                     .attr("id", ids[i])
                     .attr("class", "topFringeConnectors");    
     
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 - boxWidth/4 + i*widthSlice - size/2 + xStep/2)
-                    .attr("y1", canvasHeight/2 + size/2 - getFraction(bottomFringe)*size)
-                    .attr("x2", canvasWidth/2 + boxWidth/4 + i*widthSlice - size/2 + xStep/2)
-                    .attr("y2", canvasHeight/2 + size/2 - getFraction(bottomFringe)*size)
+                    .attr("x1", canvasWidth/2 - boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("y1", bottom - getFraction(bottomFringe)*plotHeight)
+                    .attr("x2", canvasWidth/2 + boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("y2", bottom - getFraction(bottomFringe)*plotHeight)
                     .attr("id", ids[i])
                     .attr("class", "bottomFringes");
                 
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 + i*widthSlice - size/2 + xStep/2)
-                    .attr("y1", canvasHeight/2 + size/2 - getFraction(bottomFringe)*size)
-                    .attr("x2", canvasWidth/2 + i*widthSlice - size/2 + xStep/2)
-                    .attr("y2", canvasHeight/2 + size/2 - getFraction(rectBottom)*size)
+                    .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("y1", bottom - getFraction(bottomFringe)*plotHeight)
+                    .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("y2", bottom - getFraction(rectBottom)*plotHeight)
                     .attr("id", ids[i])
                     .attr("class", "bottomFringeConnectors");
     
         canvas.append("circle")
-                    .attr("cx", canvasWidth/2 + i*widthSlice - size/2 + xStep/2)
-                    .attr("cy", canvasHeight/2 + size/2 - getFraction(means[i])*size)
+                    .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("cy", bottom - getFraction(means[i])*plotHeight)
                     .attr("r", meanRadius)
                     .attr("fill", meanColors["normal"])
                     .attr("style", "z-index: 5;")
@@ -252,8 +260,8 @@ function makeBoxplot()
         for(var j=0; j<outliers.length; j++)
         {
             canvas.append("circle")
-                    .attr("cx", canvasWidth/2 + i*widthSlice - size/2 + xStep/2)
-                    .attr("cy", canvasHeight/2 + size/2 - getFraction(outliers[j])*size)
+                    .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("cy", bottom - getFraction(outliers[j])*plotHeight)
                     .attr("r", outlierRadius)
                     .attr("id", ids[i])
                     .attr("class", "outliers");
