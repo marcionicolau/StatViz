@@ -31,4 +31,13 @@ var distributions = new Object();
 //Significance tests
 var variableDataType = new Object();
 var experimentalDesign;
-
+var significanceTestNames = new Object();
+    significanceTestNames["pT"] = "Paired T-test";
+    significanceTestNames["uT"] = "Unpaired T-test";
+    significanceTestNames["mT"] = "Mann-Whitney U test";    
+    significanceTestNames["wT"] = "Wilcoxon Signed-rank test";
+    significanceTestNames["a"] = "Analysis of Variance (ANOVA)";
+    significanceTestNames["kT"] = "Kruskal-Wallis test";
+    significanceTestNames["rA"] = "Repeated-measures ANOVA";
+    significanceTestNames["fT"] = "Friedman Test";
+var currentTestType;

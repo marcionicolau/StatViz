@@ -193,9 +193,8 @@ function performHomoscedasticityTest(dependent, independent)
                 {
                     d3.select("#" + assumptions[0] + ".ticks").attr("display","inline");
                     
-                    //normality
-                    distributions[dependent] = {};
-                    doNormalityTests();                    
+                    variableList = getSelectedVariables();
+                    performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                       
                 }
         
       }).fail(function(){

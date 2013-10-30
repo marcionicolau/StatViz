@@ -365,37 +365,6 @@ function getValidIds(labels)
     }
 }
 
-function setDistribution(dependentVariable, level, normal)
-{    
-    if(distributions[dependentVariable] == undefined)
-        distributions[dependentVariable] = new Object();
-    
-    distributions[dependentVariable][level] = normal;
-    
-    if(getObjectLength(distributions[dependentVariable]) == (document.getElementsByClassName("completeLines").length + 1))
-    {       
-        var variableList = getSelectedVariables();
-        var normal = true;
-        
-        for(var i=0; i<variableList["independent-levels"].length; i++)
-        {   
-            if(distributions[dependentVariable][variableList["independent-levels"][i]] == false)
-            {
-                d3.select("#" + assumptions[1] + ".crosses").attr("display", "inline");                  
-                normal = false;
-
-                //draw boxplots in red 
-            }
-        }
-        
-        if(normal)
-        {            
-            d3.select("#" + assumptions[1] + ".ticks").attr("display", "inline");                              
-            performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                       
-        }
-    }    
-}
-
 function getObjectLength(obj) {
     var count = 0;
 

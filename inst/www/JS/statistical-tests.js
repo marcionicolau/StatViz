@@ -14,11 +14,11 @@ function compareMeans()
                     loadAssumptionCheckList();
                     
                     //this should tell us about the sample size (is it small => non-parametric test), type of variable (ordinal => non-parametric test), dependent/independent (paired/unpaired test)                    
-                    var type = determineTypeOfTTest(variableList); 
+                    currentTestType = determineTypeOfTTest(variableList); 
                     
                     console.log("\n\n\t Type of test: " + type);
-                    
-//                     performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]); 
+                                              
+                    performNormalityTests(); 
                     
                     break;
                 }
@@ -41,9 +41,12 @@ function compareMeans()
     }
 }
 
-function doNormalityTests()
+function performNormalityTests()
 {
     var variableList = getSelectedVariables();
+    
+    //normality
+    distributions[dependent] = {};
 
     for(var i=0; i<variableList["dependent"].length; i++)                        
     {
@@ -52,6 +55,40 @@ function doNormalityTests()
             performNormalityTest(variables[variableList["dependent"][i]][variableList["independent-levels"][j]], variableList["dependent"][i], variableList["independent-levels"][j]);
         }
     }
+}
+
+function setDistribution(dependentVariable, level, normal)
+{    
+    if(distributions[dependentVariable] == undefined)
+        distributions[dependentVariable] = new Object();
+    
+    distributions[dependentVariable][level] = normal;
+    
+    if(getObjectLength(distributions[dependentVariable]) == (document.getElementsByClassName("completeLines").length + 1))
+    {       
+        var variableList = getSelectedVariables();
+        var normal = true;
+        
+        for(var i=0; i<variableList["independent-levels"].length; i++)
+        {   
+            if(distributions[dependentVariable][variableList["independent-levels"][i]] == false)
+            {
+                d3.select("#" + assumptions[1] + ".crosses").attr("display", "inline");                  
+                normal = false;
+
+                //draw boxplots in red 
+            }
+        }
+        
+        if(normal)
+        {         
+            console.log("all distributions are normal!");
+            
+            d3.select("#" + assumptions[1] + ".ticks").attr("display", "inline");  
+            performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]);
+//             performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                       
+        }
+    }    
 }
 
 function determineTypeOfTTest(variableList)
@@ -73,12 +110,12 @@ function determineTypeOfTTest(variableList)
         if(experimentalDesign == "between-groups")
         {
             //independent/unpaired
-            return "Wilcoxon Signed-rank Test";
+            return "wT";
         }
         else if(experimentalDesign == "within-groups")
         {
             //dependent/paired
-            return "Mann-Whitney U Test";
+            return "mT";
         }
     }
     
@@ -88,12 +125,12 @@ function determineTypeOfTTest(variableList)
     if(experimentalDesign == "between-groups")
     {
         //independent/unpaired
-        return "Paired T-test";
+        return "pT";
     }
     else if(experimentalDesign == "within-groups")
     {
         //dependent/paired
-        return "Unpaired T-test";
+        return "uT";
     }
 }
 
