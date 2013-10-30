@@ -9,13 +9,11 @@ function init()
 
 function initVariableType()
 {    
-    console.log("setting varible types...");
-    console.log(variables.length);
-    console.log(getObjectLength(variables));
-    for(var i=0; i<variables.length; i++)
+    console.log("# of variables = " + variableNames.length);
+    for(var i=0; i<variableNames.length; i++)
     {        
-        variableType[variables[i]] = "dependent";
-        console.log(variableType[variables[i]]);
+        variableType[variableNames[i]] = "dependent";
+        console.log(variableType[variableNames[i]]);
     }
 }
 

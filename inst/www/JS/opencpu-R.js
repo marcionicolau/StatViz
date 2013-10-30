@@ -39,6 +39,8 @@ function getVariables(dataset)
                     dataset: dataset
                   }, function(output) {                   
     renderVariableNames(output.varNames);
+    
+    variableNames = output.varNames;
     for(var i=0; i<output.varNames.length; i++)
     {
         getData(dataset, output.varNames[i]);                 
