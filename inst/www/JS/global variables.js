@@ -28,3 +28,7 @@ var testResults = new Object();
 
 var distributions = new Object();
 
+//Significance tests
+var variableDataType = new Object();
+var experimentalDesign;
+

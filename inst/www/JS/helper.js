@@ -1,6 +1,30 @@
 var format = d3.format(".1f");
 var stringForNumber = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 
+function init()
+{
+    initVariableType();
+    initVariableDataType();
+}
+
+function initVariableType()
+{    
+    for(var i=0; i<variables.length; i++)
+    {
+        console.log("setting varible types...");
+        variableType[variables[i]] = "dependent";
+    }
+}
+
+function initVariableDataType()
+{
+    for(var i=0; i<variables.length; i++)
+    {
+        console.log("setting varible data types...");
+        console.log(typeof(variables[i][0]));
+    }
+}
+        
 function makePlot()
 {   
     resetSVGCanvas();

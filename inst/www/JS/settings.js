@@ -49,6 +49,8 @@ var outlierRadius = "3px";
 var datapointRadius = "3px";
 
 // Significance test
+experimentalDesign = "between-groups";
+
 var significanceTestScaleOffset = 25;
 var assumptionsSpace = 30;
 var assumptionImageSize = 30;

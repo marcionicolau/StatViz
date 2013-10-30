@@ -9,6 +9,9 @@ function compareMeans()
                 {
                     console.log("\t Performing T-test...\n\n");
                     
+                    //this should tell us about the sample size (is it small => non-parametric test), type of variable (ordinal => non-parametric test), dependent/independent (paired/unpaired test)                    
+                    analyseVariables(); 
+                    
                     //homoscedasticity
                     var variableList = getSelectedVariables();
                     
