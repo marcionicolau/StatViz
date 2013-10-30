@@ -39,7 +39,8 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
             .attr("x", x)
             .attr("y", y)
             .attr("height", shortHeight)
-            .attr("width", width)
+            .attr("width", shortWidth)
+            .attr("fill", "none")
             .attr("stroke", "yellow");
             
     y = y + shortHeight;
