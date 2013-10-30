@@ -316,10 +316,12 @@ function getSelectedVariables()
     {
         if(variableTypes[currentVariableSelection[i]] == "dependent")
         {
+            console.log("dep");
             variableList["dependent"].push(currentVariableSelection[i]);
         }
-        else
+        else if(variableTypes[currentVariableSelection[i]] == "independent")
         {
+            console.log("indep");
             variableList["independent"].push(currentVariableSelection[i]);
         }
     }    
