@@ -40,7 +40,7 @@
                 // Set the width and height of panels
                 d3.select("#variable.panel").attr("style", "width: " + (width - canvasWidth) + "px; height: " + height + "px;");    
                 d3.select("#visualization.panel").attr("style", "width: " + canvasWidth + "px; height: " + height/3 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth) + "px;");                    
-//                 d3.select("#canvas").attr("style", "position: absolute; width: 100%; height: 100%; top: 0px; left: " + (width - canvasWidth) + "px;");    
+                d3.select("#canvas").attr("style", "position: relative; width: 100%; height: 100%; top: 0px; left: " + (width - canvasWidth) + "px;");    
                 
                 // Load data from a given file
                 loadFile(pathToFile); // To load a dataset from the R datasets package use getVariables(dataset)
