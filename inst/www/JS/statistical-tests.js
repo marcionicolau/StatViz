@@ -11,14 +11,12 @@ function compareMeans()
 
                     //homoscedasticity
                     var variableList = getSelectedVariables();
-                    console.dir(variableList);
-                    
                     loadAssumptionCheckList();
                     
                     //this should tell us about the sample size (is it small => non-parametric test), type of variable (ordinal => non-parametric test), dependent/independent (paired/unpaired test)                    
                     var type = determineTypeOfTTest(variableList); 
                     
-                    console.log("type of test: " + type);
+                    console.log("\n\n\t Type of test: " + type);
                     
 //                     performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]); 
                     
@@ -31,7 +29,6 @@ function compareMeans()
                     console.log("\t Performing ANOVA test...\n\n");
                                         
                     var variableList = getSelectedVariables();
-                    console.dir(variableList);
                     
                     loadAssumptionCheckList();
                     
@@ -294,8 +291,6 @@ function drawScales(cx, cy)
 function loadAssumptionCheckList()
 {
     var canvas = d3.select("#svgCanvas");
-    
-    console.log("loading assumptions checklist");
     
     for(var i=0; i<assumptions.length; i++)
     {

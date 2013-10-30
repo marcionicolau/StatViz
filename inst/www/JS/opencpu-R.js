@@ -10,8 +10,6 @@ function loadFile(filePath)
     renderVariableNames(output.variableNames);
     variableNames = output.variableNames;
     
-    console.log("variableNames=" + variableNames);
-    
     //for each variable, get the data and the IQR
     for(var i=0; i<output.variableNames.length; i++)
     {

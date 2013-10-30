@@ -309,20 +309,15 @@ function getSelectedVariables()
     variableList["independent"] = new Array();
     variableList["independent-levels"] = new Array();    
     
-    console.dir(variableTypes);
-    
     //add the dependent variable
     for(var i=0; i<currentVariableSelection.length; i++)
     {
-        console.log(variableTypes[currentVariableSelection[i]]);
         if(variableTypes[currentVariableSelection[i]] == "dependent")
         {
-            console.log("dep");
             variableList["dependent"].push(currentVariableSelection[i]);
         }
         else if(variableTypes[currentVariableSelection[i]] == "independent")
         {
-            console.log("indep");
             variableList["independent"].push(currentVariableSelection[i]);
         }
     }    
