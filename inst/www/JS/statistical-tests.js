@@ -190,7 +190,7 @@ function tTest()
                             .attr("stroke-width", "2px")
                             .attr("class", "DOM");
 
-    var x = canvasWidth/2 + size/2;
+    var x = canvasWidth/2 + plotWidth/2;
     var y = cyMin;			 
     var head = svg.append("path")
                   .attr("d", "M " + x + " " + y + " L " + (x-5)+ " " + (y+5) + " L " + (x+5) + " " + (y+5) + " z")
@@ -276,15 +276,15 @@ function drawScales(cx, cy)
     
     var canvas = d3.select("#svgCanvas");
     canvas.append("line")
-            .attr("x1", canvasWidth/2 + size/2 + significanceTestScaleOffset)
+            .attr("x1", canvasWidth/2 + plotWidth/2 + significanceTestScaleOffset)
             .attr("y1", yMin)
-            .attr("x2", canvasWidth/2 + size/2 + significanceTestScaleOffset)
+            .attr("x2", canvasWidth/2 + plotWidth/2 + significanceTestScaleOffset)
             .attr("y2", yMax)
             .attr("stroke", meanColors["normal"])
             .attr("id", "mainScale")
             .attr("class", "significanceTestScale");            
     
-    var x = canvasWidth/2 + size/2 + significanceTestScaleOffset;
+    var x = canvasWidth/2 + plotWidth/2 + significanceTestScaleOffset;
     if(cx.length < 5)
     {
         for(var i=0; i<cx.length; i++)
