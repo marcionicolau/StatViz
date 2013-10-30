@@ -16,6 +16,9 @@ function makeScatterplotMatrix()
     shortTickTextOffsetXAxis = tickTextOffsetXAxis/(numberOfVariables);
     shortTickTextOffsetYAxis = tickTextOffsetYAxis/(numberOfVariables);
     
+    var left = canvasWidth/2 - plotWidth/2;
+    var top = canvasHeight/2 - plotHeight/2 - (axesOffset + tickTextOffsetXAxis + border);
+    
     if(numberOfVariables >= 2)
     {
         // we'll do just this case for now...
@@ -25,7 +28,7 @@ function makeScatterplotMatrix()
             for(var j=0; j<numberOfVariables; j++)
             {
                 if(i != j)
-                    makeScatterPlotAt(canvasWidth/2 - plotWidth/2 + j*(plotWidth/numberOfVariables), canvasHeight/2 - plotHeight/2 + i*(plotHeight/numberOfVariables) + numberOfVariables*axesOffset, (plotWidth/numberOfVariables), (plotHeight/numberOfVariables), variableList["dependent"][i], variableList["dependent"][j]); 
+                    makeScatterPlotAt(left + j*(plotWidth/numberOfVariables), top + i*(plotHeight/numberOfVariables), (plotWidth/numberOfVariables), (plotHeight/numberOfVariables), variableList["dependent"][i], variableList["dependent"][j]); 
             }
         }
     }
