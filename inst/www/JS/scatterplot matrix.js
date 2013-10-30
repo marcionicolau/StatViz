@@ -1,17 +1,10 @@
 var mins = new Object();
 var maxs = new Object();
 
-
-var spmFontSize;
-   
-   
 function makeScatterplotMatrix()
 {
     var variableList = sort(currentVariableSelection);
     var numberOfVariables = variableList["dependent"].length;
-    
-    //scale some variables
-    var spmFontSize = fontSize/2;
     
     if(numberOfVariables == 2)
     {
@@ -52,7 +45,7 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
     // x-axis
     canvas.append("line")
             .attr("x1", x)
-            .attr("y1", y)
+            .attr("y1", y + a)
             .attr("x2", x + plotSize)
             .attr("y2", y)
             .attr("stroke", "black")

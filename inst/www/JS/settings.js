@@ -50,6 +50,10 @@ var outlierRadius = "3px";
 // Scatterplot
 var datapointRadius = "3px";
 
+// Scatterplot matrix
+var spmFontSize = fontSize/2;
+var spmAxesOffset = axesOffset/2;
+
 // Significance test
 experimentalDesign = "between-groups";
 
@@ -59,6 +63,8 @@ var assumptionImageSize = 30;
 var assumptionsText = ["Homogeneity of variances", "Normality of distributions"]; //todo for others
 var assumptions = ["homogeneity", "normality"];
 var sampleSizeCutoff = 20;
+
+
 
 
 
