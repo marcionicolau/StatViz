@@ -50,7 +50,7 @@ function OnMouseDown(e)
         var variableSelectionButton = d3.selectAll("#" + target.id + ".variableSelectionButton");
         variableSelectionButton.attr("fill", panelColors["active"]);
         
-        variableTypes[target.id] = false;
+        variableTypes[target.id] = "independent";
         
         var uniqueData = variables[target.id]["dataset"].unique();        
                 

@@ -12,7 +12,6 @@ function initVariableTypes()
     for(var i=0; i<variableNames.length; i++)
     {        
         variableTypes[variableNames[i]] = "dependent";
-        console.log(variableTypes[variableNames[i]]);
     }
 }
 
