@@ -52,6 +52,11 @@ function OnMouseDown(e)
         
         variableTypes[target.id] = "independent";
         
+        var canvas = d3.select("#svgCanvas");
+        
+        canvas.transition().duration(1000).attr("width", canvas.attr("width")/2);
+        
+        
         var uniqueData = variables[target.id]["dataset"].unique();        
                 
         for(var i=0; i<uniqueData.length; i++)
