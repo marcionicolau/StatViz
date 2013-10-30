@@ -417,7 +417,7 @@ function sort(list)
     
     for(var i=0; i<list.length; i++)
     {
-        if(variableType[list[i]] == false)
+        if(variableTypes[list[i]] == "independent")
         {
             variableList["independent"].push(list[i]);
             
