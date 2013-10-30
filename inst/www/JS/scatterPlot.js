@@ -5,6 +5,13 @@ var maxs = [];
    
 function makeScatterplot()
 {   
+    //boundaries    
+    var left = canvasWidth/2 - plotWidth/2;
+    var right = canvasWidth/2 + plotWidth/2;
+    
+    var top = canvasHeight/2 - plotHeight/2;
+    var bottom = canvasHeight/2 + plotHeight/2;
+    
     var data = [];    
     
     var colorsForPlot = new Object();
@@ -60,54 +67,6 @@ function makeScatterplot()
                     }
         }
     }
-
-   
-    // //Get data, minimums and maximums for each selected variable
-//     for(var i=0; i<currentVariableSelection.length; i++)
-//     {   
-//         if(variableType[currentVariableSelection[i]] == false && currentVariableSelection.length > 1)
-//         {
-//             // Levels are needed when we have a independent variable and one or more dependent variables
-//             levels = variables[currentVariableSelection[i]]["dataset"].unique();            
-//             altScatterPlot = true;
-//         }
-//     }
-//     
-//     for(var i=0; i<currentVariableSelection.length; i++)
-//     {        
-//         if(altScatterPlot)
-//         {
-//             if(variableType[currentVariableSelection[i]] != false)
-//             {
-//                 //for the dependent variable(s)
-//                 
-//                 for(var j=0; j<levels.length; j++)
-//                 {
-//                     // for each level of the independent variable, find the dependent variables                    
-//                     
-//                     data[j] = variables[currentVariableSelection[i]][levels[j]];
-//                     mins[j] = MIN[currentVariableSelection[i]][levels[j]];      
-//                     maxs[j] = MAX[currentVariableSelection[i] ][levels[j]]; 
-//                 }
-//             }  
-//         }
-//         else 
-//         {               
-//             data[i] = variables[currentVariableSelection[i]]["dataset"];      
-//             mins[i] = MIN[currentVariableSelection[i]]["dataset"];      
-//             maxs[i] = MAX[currentVariableSelection[i]]["dataset"];            
-//         }             
-//     }
-    
-//     if(currentVariableSelection.length == 3)
-//     {
-//         var uniqueData = data[2].unique();
-//         
-//         for(var i=0; i<uniqueData.length; i++)
-//         {
-//             colorsForPlot[uniqueData[i]] = colors[i];
-//         }
-//     }
     
     var labels;
     var levels = variableList["independent-levels"];
@@ -126,29 +85,22 @@ function makeScatterplot()
      
     var canvas = d3.select("#svgCanvas");
     
-    
-    
-    
-
-    // changeable
-    var nGrooves = 10;
-    
     // Draw axes
         
     var xAxis = canvas.append("line")
-                                    .attr("x1", canvasWidth/2 - size/2)
-                                    .attr("y1", canvasHeight/2 + size/2 + axesOffset)
-                                    .attr("x2", canvasWidth/2 + size/2)
-                                    .attr("y2", canvasHeight/2 + size/2 + axesOffset) 
+                                    .attr("x1", left)
+                                    .attr("y1", bottom + axesOffset)
+                                    .attr("x2", right)
+                                    .attr("y2", bottom + axesOffset) 
                                     .attr("stroke", "black")
                                     .attr("id", "xAxis")
                                     .attr("class", "axes");
     
     var yAxis = canvas.append("line")
-                                    .attr("x1", canvasWidth/2 - size/2 - axesOffset)
-                                    .attr("y1", canvasHeight/2 - size/2)
-                                    .attr("x2", canvasWidth/2 - size/2 - axesOffset)
-                                    .attr("y2", canvasHeight/2 + size/2)
+                                    .attr("x1", left - axesOffset)
+                                    .attr("y1", top)
+                                    .attr("x2", left - axesOffset)
+                                    .attr("y2", bottom)
                                     .attr("stroke", "black")
                                     .attr("id", "yAxis")
                                     .attr("class", "axes");
@@ -159,24 +111,24 @@ function makeScatterplot()
     //todo: x-axis grooves
     
     //y-axis grooves
-    var step = size/(nGrooves-1);
-    var xSlice = (maxs[0] - mins[0])/(nGrooves-1);    
-    var ySlice = (maxs[1] - mins[1])/(nGrooves-1);    
+    var step = plotHeight/(numberOfGrooves-1);
+    var xSlice = (maxs[0] - mins[0])/(numberOfGrooves-1);    
+    var ySlice = (maxs[1] - mins[1])/(numberOfGrooves-1);    
     
     //grooves
-    for(i=0; i<nGrooves; i++)
+    for(i=0; i<numberOfGrooves; i++)
     {
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 - size/2 + i*step)
-                    .attr("y1", canvasHeight/2 + size/2 + axesOffset)
-                    .attr("x2", canvasWidth/2 - size/2 + i*step)
-                    .attr("y2", canvasHeight/2 + size/2 + 10 + axesOffset)
+                    .attr("x1", left + i*step)
+                    .attr("y1", bottom + axesOffset)
+                    .attr("x2", left + i*step)
+                    .attr("y2", bottom + 10 + axesOffset)
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", canvasWidth/2 - size/2 + i*step)
-                    .attr("y", canvasHeight/2 + size/2 + tickTextOffsetXAxis + axesOffset)                    
+                    .attr("x", left + i*step)
+                    .attr("y", bottom + tickTextOffsetXAxis + axesOffset)                    
                     .text(format(mins[0] + i*xSlice))
                     .attr("font-size", fontSize + "px")
                     .attr("text-anchor", "middle")
@@ -184,19 +136,19 @@ function makeScatterplot()
                     .attr("class", "xAxisGrooveText");
     }
     
-    for(i=0; i<nGrooves; i++)
+    for(i=0; i<numberOfGrooves; i++)
     {
         canvas.append("line")
-                    .attr("x1", canvasWidth/2 - size/2 - 10 - axesOffset)
-                    .attr("y1", canvasHeight/2 + size/2 - i*step)
-                    .attr("x2", canvasWidth/2 - size/2  - axesOffset)
-                    .attr("y2", canvasHeight/2 + size/2 - i*step)
+                    .attr("x1", left - 10 - axesOffset)
+                    .attr("y1", bottom - i*step)
+                    .attr("x2", left  - axesOffset)
+                    .attr("y2", bottom - i*step)
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", canvasWidth/2 - size/2 - tickTextOffsetYAxis - axesOffset)
-                    .attr("y", canvasHeight/2 + size/2 - i*step + yAxisTickTextOffset)                    
+                    .attr("x", left - tickTextOffsetYAxis - axesOffset)
+                    .attr("y", bottom - i*step + yAxisTickTextOffset)                    
                     .text(format(mins[1] + i*ySlice))
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
@@ -207,8 +159,8 @@ function makeScatterplot()
     {
         var color = currentVariableSelection.length > 2 ? colorsForPlot[data[2]] : "black";        
         canvas.append("circle")
-                    .attr("cx", canvasWidth/2 - size/2 + getValue1(data[0][i], 0)*size)
-                    .attr("cy", canvasHeight/2 + size/2 - getValue1(data[1][i], 1)*size)
+                    .attr("cx", left + getValue1(data[0][i], 0)*plotWidth)
+                    .attr("cy", bottom - getValue1(data[1][i], 1)*plotHeight)
                     .attr("r", datapointRadius)
                     .attr("fill", color)
                     .attr("id", "data" + i)
