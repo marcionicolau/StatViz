@@ -16,7 +16,7 @@ function compareMeans()
                     //this should tell us about the sample size (is it small => non-parametric test), type of variable (ordinal => non-parametric test), dependent/independent (paired/unpaired test)                    
                     currentTestType = determineTypeOfTTest(variableList); 
                     
-                    console.log("\n\n\t Type of test: " + type);
+                    console.log("\n\n\t Type of test: " + currentTestType);
                                               
                     performNormalityTests(); 
                     
