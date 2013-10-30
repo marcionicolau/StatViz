@@ -132,7 +132,7 @@ function makeHistogram()
         // Draw axes
         
         var xAxis = canvas.append("line")
-                                        .attr("x1", )
+                                        .attr("x1", canvasWidth/2 + plotWidth/2)
                                         .attr("y1", canvasHeight/2 + plotHeight/2 + axesOffset)
                                         .attr("x2", canvasWidth/2 + plotWidth/2)
                                         .attr("y2", canvasHeight/2 + plotHeight/2 + axesOffset) 
