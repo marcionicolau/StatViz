@@ -39,14 +39,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
 {
     // make sure that all preprocessing is done in the makeScatterPlotMatrix() function
     var canvas = d3.select("#svgCanvas");
-    canvas.append("rect")
-            .attr("x", x)
-            .attr("y", y)
-            .attr("height", shortHeight)
-            .attr("width", shortWidth)
-            .attr("fill", "none")
-            .attr("stroke", "yellow");
-            
+    
     y = y + shortHeight;
     
     //may be you can calculate this in makeScatterPlot()
@@ -110,7 +103,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
         
         canvas.append("text")
                     .attr("x", x + i*xStep)
-                    .attr("y", y + shortAxesOffset + shortTickTextOffsetXAxis)     
+                    .attr("y", y + shortAxesOffset + tickTextOffsetXAxis)     
                     .attr("font-size", fontSize)
                     .text(format(minX + i*xSlice))
                     .attr("text-anchor", textAnchor)
