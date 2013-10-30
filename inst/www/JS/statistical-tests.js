@@ -46,7 +46,7 @@ function performNormalityTests()
     var variableList = getSelectedVariables();
     
     //normality
-    distributions[dependent] = {};
+    distributions[variableList["dependent"][0]] = {};
 
     for(var i=0; i<variableList["dependent"].length; i++)                        
     {
