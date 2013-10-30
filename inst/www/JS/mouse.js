@@ -52,8 +52,8 @@ function OnMouseDown(e)
         
         variableTypes[target.id] = "independent";
         
-        document.removeElementById("variable");
-        document.removeElementById("visualization");
+        remove("variable");
+        remove("visualization");
         
         
         var uniqueData = variables[target.id]["dataset"].unique();        
