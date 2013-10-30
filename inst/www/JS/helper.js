@@ -312,7 +312,7 @@ function getSelectedVariables()
     //add the dependent variable
     for(var i=0; i<currentVariableSelection.length; i++)
     {
-        if(variableType[currentVariableSelection[i]] != false)
+        if(variableTypes[currentVariableSelection[i]] == "dependent")
         {
             variableList["dependent"].push(currentVariableSelection[i]);
         }
