@@ -34,7 +34,7 @@ function makeScatterplotMatrix()
 function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, variableColor)
 {
     // make sure that all preprocessing is done in the makeScatterPlotMatrix() function
-    
+    var canvas = d3.select("#svgCanvas");
     canvas.append("rect")
             .attr("x", x)
             .attr("y", y)
@@ -43,8 +43,6 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
             .attr("stroke", "yellow");
             
     y = y + shortHeight;
-    
-    var canvas = d3.select("#svgCanvas");
     
     //may be you can calculate this in makeScatterPlot()
     var maxX = MAX[variableX]["dataset"];
