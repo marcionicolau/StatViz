@@ -27,7 +27,7 @@ var yAxisTickTextOffset = 6;
 var fontSize = 14;
 var tickLength = 10;
 
-var plotHeight = canvasHeight - (axesOffset + tickTextOffsetXAxis);
+var plotHeight = canvasHeight - 2*(axesOffset + tickTextOffsetXAxis);
 var plotWidth = 4*plotHeight/3;
 
 
