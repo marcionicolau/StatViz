@@ -33,7 +33,10 @@ function loadFile(filePath)
     //if R returns an error, alert the error message
     req.fail(function(){
       alert("Server error: " + req.responseText);
-    }); 
+    });
+    req.complete(function(){
+       console.log("hiya"); 
+    });
 }
     
 function getVariables(dataset)
