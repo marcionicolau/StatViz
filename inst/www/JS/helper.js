@@ -10,6 +10,8 @@ function init()
 function initVariableType()
 {    
     console.log("setting varible types...");
+    console.log(variables.length);
+    console.log(getObjectLength(variables));
     for(var i=0; i<variables.length; i++)
     {        
         variableType[variables[i]] = "dependent";
@@ -20,6 +22,8 @@ function initVariableType()
 function initVariableDataType()
 {
     console.log("setting varible data types...");
+    console.log(variables.length);
+    console.log(getObjectLength(variables));
     for(var i=0; i<variables.length; i++)
     {        
         console.log(typeof(variables[i][0]));
