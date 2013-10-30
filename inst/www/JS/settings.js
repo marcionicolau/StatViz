@@ -20,15 +20,15 @@ variableSelectionButtonWidth = 50;
       
 
 // Plots (general)
-var plotHeight = canvasHeight - (axesOffset + tickTextOffsetXAxis);
-var plotWidth = 4*plotHeight/3;
-
 var axesOffset = 25; //distance from plots to axes (for an R-like appearance)
 var tickTextOffsetXAxis = 25;
 var tickTextOffsetYAxis = 15;
 var yAxisTickTextOffset = 6;
 var fontSize = 14;
 var tickLength = 10;
+
+var plotHeight = canvasHeight - (axesOffset + tickTextOffsetXAxis);
+var plotWidth = 4*plotHeight/3;
 
 
 //Define colors for histogram bars, color scatterplot
