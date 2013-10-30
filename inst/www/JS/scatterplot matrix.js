@@ -28,7 +28,7 @@ function makeScatterplotMatrix()
             for(var j=0; j<numberOfVariables; j++)
             {
                 if(i != j)
-                    makeScatterPlotAt(left + j*((plotWidth - (axesOffset + tickTextOffsetYAxis))/numberOfVariables), top + i*((plotHeight - (axesOffset + tickTextOffsetXAxis))/numberOfVariables), (plotWidth/numberOfVariables), (plotHeight/numberOfVariables), variableList["dependent"][i], variableList["dependent"][j]); 
+                    makeScatterPlotAt(left + j*((plotWidth + (axesOffset + tickTextOffsetYAxis))/numberOfVariables), top + i*((plotHeight + (axesOffset + tickTextOffsetXAxis))/numberOfVariables), (plotWidth/numberOfVariables), (plotHeight/numberOfVariables), variableList["dependent"][i], variableList["dependent"][j]); 
             }
         }
     }
