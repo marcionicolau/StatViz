@@ -17,7 +17,7 @@ function makeScatterplotMatrix()
     shortTickTextOffsetYAxis = tickTextOffsetYAxis/(numberOfVariables);
     shortYAxisTickTextOffset = yAxisTickTextOffset/numberOfVariables;
     
-    var left = canvasWidth/2 - plotWidth/2 - ;
+    var left = canvasWidth/2 - plotWidth/2;
     var top = canvasHeight/2 - plotHeight/2;
     
     if(numberOfVariables >= 2)
