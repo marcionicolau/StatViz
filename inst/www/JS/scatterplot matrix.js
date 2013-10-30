@@ -25,7 +25,7 @@ function makeScatterplotMatrix()
             for(var j=0; j<numberOfVariables; j++)
             {
                 if(i != j)
-                    makeScatterPlotAt(canvasWidth/2 - plotWidth/2 + j*(plotWidth/numberOfVariables), canvasHeight/2 - plotHeight/2 + i*(plotHeight/numberOfVariables), (plotWidth/numberOfVariables) - axesOffset, (plotHeight/numberOfVariables) - axesOffset, variableList["dependent"][i], variableList["dependent"][j]); 
+                    makeScatterPlotAt(canvasWidth/2 - plotWidth/2 + j*(plotWidth/numberOfVariables), canvasHeight/2 - plotHeight/2 + i*(plotHeight/numberOfVariables), (plotWidth/numberOfVariables) - numberOfVariables*axesOffset, (plotHeight/numberOfVariables) - numberOfVariables*axesOffset, variableList["dependent"][i], variableList["dependent"][j]); 
             }
         }
     }
