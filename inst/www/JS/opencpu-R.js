@@ -24,6 +24,8 @@ function loadFile(filePath)
         getIQR(dataset, output.variableNames[i]);                    
     }
     
+    console.log("hey");
+    
      }).fail(function(){
           alert("Failure: " + req.responseText);
     });
@@ -112,7 +114,7 @@ function getIQR(dataset, variableName, level)
         }         
         IQR[variableName][level] = output.IQR;                                                                   
         
-        console.log(getObjectLength(IQR));
+        
         
         if((variableName == variableNames[variableNames.length - 1]) && (level == "dataset"))
         {
