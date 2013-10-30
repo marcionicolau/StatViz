@@ -55,6 +55,8 @@ function OnMouseDown(e)
         remove("variable");
         remove("visualization");
         
+        d3.select("#canvas").attr("style", "left: 0px;");
+        
         
         var uniqueData = variables[target.id]["dataset"].unique();        
                 
