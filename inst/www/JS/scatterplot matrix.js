@@ -87,7 +87,7 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
         
         canvas.append("text")
                     .attr("x", x + i*step)
-                    .attr("y", y + shortAxesOffset + shortTickTextOffsetXAxis)     
+                    .attr("y", y + shortAxesOffset + tickTextOffsetXAxis)     
                     .attr("font-size", fontSize)
                     .text(format(minX + i*xSlice))
                     .attr("text-anchor", "middle")
@@ -106,7 +106,7 @@ function makeScatterPlotAt(x,y,plotSize, variableX, variableY, variableColor)
                     .attr("class", "yAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", x - shortTickTextOffsetYAxis)
+                    .attr("x", x - tickTextOffsetYAxis)
                     .attr("y", y - i*step)  
                     .text(format(minY + i*ySlice))
                     .attr("font-size", fontSize + "px")
