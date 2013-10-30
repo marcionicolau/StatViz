@@ -11,42 +11,84 @@ function makeHistogram()
     
     var altHistogram = false;
     
-    //Get data, minimums and maximums for each selected variable
-    for(var i=0; i<currentVariableSelection.length; i++)
-    {   
-        if(variableTypes[currentVariableSelection[i]] == false && currentVariableSelection.length > 1)
-        {
-            // Levels are needed when we have a independent variable and one or more dependent variables
-            levels = variables[currentVariableSelection[i]]["dataset"].unique();           
-            altHistogram = true;
-        }
-    }
+    var variableList = sort(currentVariableSelection);
     
-    for(var i=0; i<currentVariableSelection.length; i++)
-    {        
-        if(altHistogram)
+    if(currentVariableSelection.length > 1)
+    {
+        //if more than 2 variables are selected
+        switch(variableList["independent"].length)
         {
-            if(variableTypes[currentVariableSelection[i]] != false)
-            {
-                //for the dependent variable(s)
-                
-                for(var j=0; j<levels.length; j++)
-                {
-                    // for each level of the independent variable, find the dependent variables                    
-                
-                    data[j] = variables[currentVariableSelection[i]][levels[j]];
-                    mins[j] = MIN[currentVariableSelection[i]][levels[j]];      
-                    maxs[j] = MAX[currentVariableSelection[i] ][levels[j]];      
-                }
-            }  
+            case 0:
+                    {
+                        for(var i=0; i<variableList["dependent"].length; i++)
+                        {
+                            data[i] = variables[variableList["dependent"][i]]["dataset"];      
+                            mins[i] = MIN[variableList["dependent"][i]]["dataset"];      
+                            maxs[i] = MAX[variableList["dependent"][i]]["dataset"];                                  
+                        }
+                        
+                        break;                    
+                    }
+            case 1:
+                    {
+                        altHistogram = true;
+                        for(var i=0; i<variableList["independent-levels"].length; i++)
+                        {
+                            data[i] = variables[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            mins[i] = MIN[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            maxs[i] = MAX[variableList["dependent"][0]][variableList["independent-levels"][i]];                            
+                        }
+                        break;
+                    }
+            default:
+                    {
+                        //this shouldn't happen!
+                    }
         }
-        else 
-        {   
-            data[i] = variables[currentVariableSelection[i]]["dataset"];      
-            mins[i] = MIN[currentVariableSelection[i]]["dataset"];      
-            maxs[i] = MAX[currentVariableSelection[i]]["dataset"];
-        }             
     }
+    else
+    {
+        data[0] = variables[currentVariableSelection[0]]["dataset"];      
+        mins[0] = MIN[currentVariableSelection[0]]["dataset"];      
+        maxs[0] = MAX[currentVariableSelection[0]]["dataset"];       
+    } 
+    
+//     //Get data, minimums and maximums for each selected variable
+//     for(var i=0; i<currentVariableSelection.length; i++)
+//     {   
+//         if(variableTypes[currentVariableSelection[i]] == false && currentVariableSelection.length > 1)
+//         {
+//             // Levels are needed when we have a independent variable and one or more dependent variables
+//             levels = variables[currentVariableSelection[i]]["dataset"].unique();           
+//             altHistogram = true;
+//         }
+//     }
+//     
+//     for(var i=0; i<currentVariableSelection.length; i++)
+//     {        
+//         if(altHistogram)
+//         {
+//             if(variableTypes[currentVariableSelection[i]] != false)
+//             {
+//                 //for the dependent variable(s)
+//                 
+//                 for(var j=0; j<levels.length; j++)
+//                 {
+//                     // for each level of the independent variable, find the dependent variables                    
+//                 
+//                     data[j] = variables[currentVariableSelection[i]][levels[j]];
+//                     mins[j] = MIN[currentVariableSelection[i]][levels[j]];      
+//                     maxs[j] = MAX[currentVariableSelection[i] ][levels[j]];      
+//                 }
+//             }  
+//         }
+//         else 
+//         {   
+//             data[i] = variables[currentVariableSelection[i]]["dataset"];      
+//             mins[i] = MIN[currentVariableSelection[i]]["dataset"];      
+//             maxs[i] = MAX[currentVariableSelection[i]]["dataset"];
+//         }             
+//     }
     
     
     // combine the collected data

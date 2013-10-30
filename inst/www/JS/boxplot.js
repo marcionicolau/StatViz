@@ -72,53 +72,7 @@ function makeBoxplot()
         medians[0] = median(data[0]);
         iqrs[0] = IQR[currentVariableSelection[0]]["dataset"];
         means[0] = mean(data[0]);  
-    }
-    
-    console.dir(data);    
-        
-    
-//     //Get data, minimums and maximums for each selected variable
-//     for(var i=0; i<currentVariableSelection.length; i++)
-//     {   
-//         if(variableType[currentVariableSelection[i]] == false && currentVariableSelection.length > 1)
-//         {
-//             // Levels are needed when we have a independent variable and one or more dependent variables
-//             levels = variables[currentVariableSelection[i]]["dataset"].unique();            
-//             altBoxPlot = true;
-//         }
-//     }
-//     
-//     for(var i=0; i<currentVariableSelection.length; i++)
-//     {        
-//         if(altBoxPlot)
-//         {
-//             if(variableType[currentVariableSelection[i]] != false)
-//             {
-//                 //for the dependent variable(s)
-//                 
-//                 for(var j=0; j<levels.length; j++)
-//                 {
-//                     // for each level of the independent variable, find the dependent variables                    
-//                     
-//                     data[j] = variables[currentVariableSelection[i]][levels[j]];
-//                     mins[j] = MIN[currentVariableSelection[i]][levels[j]];      
-//                     maxs[j] = MAX[currentVariableSelection[i] ][levels[j]];      
-//                     medians[j] = median(data[j]);
-//                     iqrs[j] = IQR[currentVariableSelection[i]][levels[i]];  
-//                     means[j] = mean(data[j]);  
-//                 }
-//             }  
-//         }
-//         else 
-//         {               
-//             data[i] = variables[currentVariableSelection[i]]["dataset"];      
-//             mins[i] = MIN[currentVariableSelection[i]]["dataset"];      
-//             maxs[i] = MAX[currentVariableSelection[i]]["dataset"];
-//             medians[i] = median(data[i]);
-//             iqrs[i] = IQR[currentVariableSelection[i]]["dataset"];
-//             means[i] = mean(data[i]);  
-//         }             
-//     }    
+    }   
     
     min = Array.min(mins);
     max = Array.max(maxs);
