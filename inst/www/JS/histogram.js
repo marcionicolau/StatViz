@@ -447,6 +447,20 @@ function makeHistogram()
         }
         curve.attr("d", d + "Z");
         
+        var line = canvas.append("path")
+                        .attr("fill", "transparent")
+                        .attr("stroke", "magenta");
+        var lineD = "M " + left + " " + bottom + " ";
+        
+        for(var i=0; i<nBins; i++)
+        {
+            lineD = lineD + "L " + getBinCenterX(i) + " " + (bottom - (bins[labels[0]][i+1]/Array.max(binMaxs))*plotHeight) + " ";
+        }
+        
+        lineD = lineD + "Z";
+        
+        line.attr("d", lineD);
+        
     }
 }
 
