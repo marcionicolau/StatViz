@@ -1,28 +1,22 @@
-performWilcoxonTest <- function(dependentVariable = "", independentVariable = "", dataset = "", paired = "FALSE")
-{
-  # Get distributions
+performWilcoxonTest <- function(groupA, groupB)
+{   
+    groupA <- c(groupA);    
+    groupB <- c(groupB);
+      
+    result <- wilcox.test(groupA, groupB, paired = T);
   
-  if(dataset == "")
-  {   
-    y1 = c(18.2, 20.1, 17.6, 16.8, 18.8, 19.7, 19.1);
-    y2 = c(17.4, 18.7, 19.1, 16.4, 15.9, 18.4, 17.7);
+    V = result$statistic[["V"]];
+    p = result$p.value;
     
-    dependentVariable = c(y1, y2);
+    install.packages("coin");
     
-    independentVariable = rep(c('category 1', 'category 2'), each=7);
+    library(coin);
     
-    dataset = data.frame(depV = dependentVariable, indepV = factor(independentVariable));
-  }
-  else
-  {
-    dataset = eval(parse(text = dataset));
+    result <- wilcoxsign_test(groupA ~ groupB, distribution = "exact");
     
-    dependentVariable = eval(parse(text = paste(dataset,"$",dependentVariable)));
-    independentVariable = eval(parse(text = paste(dataset,"$",independentVariable)));
-  }  
+    Z = result@statistic@teststatistic[["groupA"]];
     
-  paired = eval(parse(text = paired));  
-  result <- wilcox.test(depV ~ indepV, dataset, paired = paired);
-  
-  list(W = result$statistic[["W"]], p = result$p.value);
+    r = Z/length(groupA);
+    
+    list(V = V, p = p, r = abs(r));
 }

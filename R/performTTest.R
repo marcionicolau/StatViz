@@ -1,22 +1,18 @@
-performTTest <- function(dataset = "", group1 = "", group2 = "", paired = "FALSE", alternative = "two.sided", alpha = 0.95)
+performTTest <- function(groupA, groupB, paired = "FALSE", alternative = "two.sided", alpha = 0.95, variance = "FALSE")
 {
-  table <- as.data.frame(dataset);  
+  groupA <- c(groupA);
+  groupB <- c(groupB);
   
-  distributionX <- as.data.frame(group1);
-  distributionY <- as.data.frame(group2);
-        
+  paired <- eval(parse(text = paired));
+  variance <- eval(parse(text = variance));
   
-  # Do T-test  
-  result = t.test(x=distributionX, y=distributionY, alternative=alternative, paired=eval(parse(text = paired)), var.equal=TRUE, conf.level=eval(parse(text=alpha)));
+  result = eval(parse(text = paste("t.test(groupA, groupB, alternative = ",alternative,",paired=",paired,",var.equal=",variance,")",sep="")));
   
-  
-  # Interpret T-test  
   list(p=result$p.value, 
   t=result$statistic[["t"]], 
   DOF=result$parameter[["df"]], 
   CI_mean=result$conf.int, 
   method=result$method, 
-  dataset = dataset, 
   alpha = alpha,
   mean = result$estimate);
 }

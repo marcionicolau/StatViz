@@ -185,24 +185,27 @@ function performHomoscedasticityTest(dependent, independent)
                 console.log("\t\t Levene's test for (" + dependent + " ~ " + independent + ")");
                 console.log("\t\t\t p = " + output.p);
                 
+                variableList = getSelectedVariables();
+                
                 if(output.p < 0.05)
                 {
-                  d3.select("#homogeneity.crosses").attr("display", "inline");                  
+                  d3.select("#homogeneity.crosses").attr("display", "inline");                 
                   
-                  console.log("welch's t-test");
+                  performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE");
                 }
                 else
                 {   
                     //equal variances
                     d3.select("#homogeneity.ticks").attr("display","inline");
                     
+                    
                     if(experimentalDesign == "between-groups")
-                    {
-                        console.log("Mann-Whitney U Test");
+                    {                        
+                        performMannWhitneyTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]]);
                     }
                     else
                     {
-                        console.log("Wilcoxon Signed-rank Test");
+                        performWilcoxonTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]]);
                     }                                        
                 }
         
@@ -231,11 +234,13 @@ function performHomoscedasticityTestNormality(dependent, independent)
                 console.log("\t\t Levene's test for (" + dependent + " ~ " + independent + ")");
                 console.log("\t\t\t p = " + output.p);
                 
+                variableList = getSelectedVariables();
+                
                 if(output.p < 0.05)
                 {
                   d3.select("#homogeneity.crosses").attr("display", "inline");                  
                   
-                  console.log("welch's t-test");
+                  performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE");
                 }
                 else
                 {   
@@ -244,11 +249,11 @@ function performHomoscedasticityTestNormality(dependent, independent)
                     
                     if(experimentalDesign == "between-groups")
                     {
-                        console.log("Unpaired t-test");
+                        performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "TRUE", "TRUE");
                     }
                     else
                     {
-                        console.log("Paired t-test");
+                        performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "TRUE", "FALSE");
                     }                                        
                 }
         
@@ -405,6 +410,115 @@ function performANOVA(dependentVariable, independentVariable)
                 removeElementsByClassName("completeLines");           
 
                 ANOVA();                
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function performMannWhitneyTest(groupA, groupB)
+{
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("performMannWhitneyTest", {
+                    groupA: groupA,
+                    groupB: groupB
+                  }, function(output) {                                                   
+                  
+                  console.log("\t\t Mann-Whitney U test");
+                  console.log("\t\t\t U = " + output.U);
+                  console.log("\t\t\t p = " + output.p);
+                  console.log("\t\t\t r = " + output.r);
+                  
+                  testResults["U"] = output.U;
+                  testResults["p"] = output.p;                  
+                  testResults["r"] = output.r;
+                  
+                           
+                  
+                //drawing stuff
+                removeElementsByClassName("completeLines");           
+
+//                 ANOVA();                
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function performWilcoxonTest(groupA, groupB)
+{
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("performWilcoxonTest", {
+                    groupA: groupA,
+                    groupB: groupB
+                  }, function(output) {                                                   
+                  
+                  console.log("\t\t Wilcoxon Signed-rank Test");
+                  console.log("\t\t\t V = " + output.V);
+                  console.log("\t\t\t p = " + output.p);
+                  console.log("\t\t\t r = " + output.r);
+                  
+                  testResults["V"] = output.V;
+                  testResults["p"] = output.p;                  
+                  testResults["r"] = output.r;
+                  
+                //drawing stuff
+                removeElementsByClassName("completeLines");           
+
+//                 ANOVA();                
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+
+function performTTest(groupA, groupB, varianceEqual, paired) //groupA, groupB, paired = "FALSE", alternative = "two.sided", alpha = 0.95, var = "FALSE"
+{
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("performTTest", {
+                    groupA: groupA,
+                    groupB: groupB,
+                    variance: varianceEqual,
+                    paired: paired
+                  }, function(output) {                                                   
+                  
+                  console.log("\t\t " + output.method);
+                  console.log("\t\t\t DOF = " + output.DOF);
+                  console.log("\t\t\t p = " + output.p);
+                  console.log("\t\t\t t = " + output.t);
+                  
+                  testResults["t"] = output.t;
+                  testResults["p"] = output.p;                  
+                  testResults["df"] = output.DOF;
+                  testResults["method"] = output.method;
+                  
+                //drawing stuff
+                removeElementsByClassName("completeLines");           
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
