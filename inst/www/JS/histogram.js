@@ -483,7 +483,7 @@ function makeHistogramWithDensityCurve(left, top, histWidth, histHeight, depende
     }  
 
     // Binning
-    for(var i=0; i<nBins; i++)
+    for(var i=0; i<data.length; i++)
     {
         var index = Math.ceil((data[i] - min)/slice);
         
