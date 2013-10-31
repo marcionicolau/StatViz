@@ -28,7 +28,7 @@ var fontSize = 14;
 var tickLength = 10;
 var border = 20;
 
-var plotHeight = canvasHeight - 1.5*(axesOffset + tickTextOffsetXAxis + border);
+var plotHeight = canvasHeight - 2*(axesOffset + tickTextOffsetXAxis + border);
 var plotWidth = 4*plotHeight/3;
 
 
@@ -65,8 +65,13 @@ experimentalDesign = "between-groups";
 var significanceTestScaleOffset = 25;
 var assumptionsSpace = 30;
 var assumptionImageSize = 30;
-var assumptionsText = ["Homogeneity of variances", "Normality of distributions"]; //todo for others
-var assumptions = ["homogeneity", "normality"];
+
+var assumptionsText = new Object();
+    assumptionsText["normality"] = "Normality of distributions";
+    assumptionsText["homoscedasticity"] = "Homogeneity of variances";
+    
+var assumptions = ["normality", "homogeneity"];
+
 var sampleSizeCutoff = 20;
 
 

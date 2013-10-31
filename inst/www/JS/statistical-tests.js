@@ -73,7 +73,7 @@ function setDistribution(dependentVariable, level, normal)
         {   
             if(distributions[dependentVariable][variableList["independent-levels"][i]] == false)
             {
-                d3.select("#" + assumptions[1] + ".crosses").attr("display", "inline");                  
+                d3.select("#normality.crosses").attr("display", "inline");                  
                 normal = false;
 
                 //draw boxplots in red 
@@ -88,7 +88,7 @@ function setDistribution(dependentVariable, level, normal)
         {         
             console.log("all distributions are normal!");
             
-            d3.select("#" + assumptions[1] + ".ticks").attr("display", "inline");  
+            d3.select("#normality.ticks").attr("display", "inline");  
             performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]);
 //             performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                       
         }
@@ -336,14 +336,14 @@ function loadAssumptionCheckList()
 {
     var canvas = d3.select("#svgCanvas");
     
-    for(var i=0; i<assumptions.length; i++)
+    for(var i=0; i<getObjectLength(assumptionsText); i++)
     {
         canvas.append("text")
             .attr("x", canvasWidth/2 + plotWidth/2)
             .attr("y", canvasHeight/2 - plotHeight/2 +i*assumptionsSpace)
             .attr("font-size", "20px")
             .attr("fill", meanColors["normal"])
-            .text(assumptionsText[i])
+            .text(assumptionsText[assumptions[i]])
             .attr("id", assumptions[i])
             .attr("class", "assumptions");
         canvas.append("image")
