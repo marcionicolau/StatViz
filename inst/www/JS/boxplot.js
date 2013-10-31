@@ -198,6 +198,7 @@ function makeBoxplot()
                     .attr("y", bottom - getFraction(rectTop)*plotHeight)
                     .attr("height", getFraction(rectTop)*plotHeight - getFraction(rectBottom)*plotHeight)
                     .attr("width", boxWidth)
+                    .attr("fill", boxColors["normal"])
                     .attr("id", ids[i])
                     .attr("class", "IQRs");
                 
