@@ -68,7 +68,7 @@ var assumptionImageSize = 30;
 
 var assumptionsText = new Object();
     assumptionsText["normality"] = "Normality of distributions";
-    assumptionsText["homoscedasticity"] = "Homogeneity of variances";
+    assumptionsText["homogeneity"] = "Homogeneity of variances";
     
 var assumptions = ["normality", "homogeneity"];
 
