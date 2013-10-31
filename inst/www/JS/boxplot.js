@@ -272,6 +272,7 @@ function makeBoxplot()
 function drawBoxPlotInRed(dependentVariable, level)
 {
     var box = d3.select("#" + level + ".IQRs");
+    console.log("current fill: " + box.attr("fill"));
     
     box.attr("fill", boxColors["notnormal"]);
 }
