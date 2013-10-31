@@ -14,7 +14,9 @@ performWilcoxonTest <- function(groupA, groupB)
     
     result <- wilcoxsign_test(groupA ~ groupB, distribution = "exact");
     
-    Z = result@statistic@teststatistic[["groupA"]];
+    name <- names(result@statistic@testStatistic);
+    
+    Z = result@statistic@teststatistic[[name[1]]];
     
     r = Z/length(groupA);
     
