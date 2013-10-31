@@ -466,20 +466,12 @@ function makeHistogramWithDensityCurve(left, top, histWidth, histHeight, depende
     
     var id = level;       
        
-    var numberOfGroovesInXAxis = shortNBins;    
+    var numberOfGroovesInXAxis = 2; //make this into a dynamic variable    
     
     var slice = (max - min)/nBins;    
 
     var bins = [];
     var canvas = d3.select("#svgCanvas"); //this should be changed
-    
-    canvas.append("rect")
-            .attr("x", left)
-            .attr("y", top)
-            .attr("width", histWidth)
-            .attr("height", histHeight)
-            .attr("fill", "none")
-            .attr("stroke", "purple");
             
 
     // Set all bin count to zero
@@ -569,6 +561,7 @@ function makeHistogramWithDensityCurve(left, top, histWidth, histHeight, depende
                     .attr("class", "yAxisGrooveText");
     }
 
+    xStep  = histWidth/nBins;
     //bins
     for(i=0; i<nBins; i++)
     {

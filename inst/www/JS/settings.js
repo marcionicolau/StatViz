@@ -43,7 +43,6 @@ var meanColors = new Object(); //Colors for mean, and ?
 // Histogram
 var nBins = 10; 
 var binCountFontSize = "16px";
-var shortNBins = 3;
 
 
 // Boxplots
