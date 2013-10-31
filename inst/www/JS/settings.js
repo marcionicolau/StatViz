@@ -1,7 +1,7 @@
 // Data
 var dataset = "mtcars";
 
-var fileName = "cars-mod.txt"; //"news-sports-business.txt";
+var fileName = "news-sports-business.txt";//"cars-mod.txt"; 
 var pathToFile = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/" + fileName;
 
 // Skeleton
@@ -60,7 +60,7 @@ var datapointRadius = 3;
 var numberOfGrooves = 10;
 
 // Significance test
-experimentalDesign = "between-groups";
+experimentalDesign = "within-groups";
 
 var significanceTestScaleOffset = 25;
 var assumptionsSpace = 30;
