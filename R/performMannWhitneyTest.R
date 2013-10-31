@@ -1,5 +1,7 @@
 performMannWhitneyTest <- function(groupA, groupB)
 {
+    install.packages("coin");
+    
     groupA <- c(groupA);
     groupB <- c(groupB);
     

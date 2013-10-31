@@ -462,8 +462,6 @@ function makeHistogramWithDensityCurve(left, top, histWidth, histHeight, depende
     var min = MIN[dependentVariable][level];
     var max = MAX[dependentVariable][level];
     
-    console.log("\n\tdata=" + data + "\n\t[" + min + "," + max);
-    
     var shortAxesOffset = axesOffset*(histWidth/plotWidth);
     
     var id = level;       
