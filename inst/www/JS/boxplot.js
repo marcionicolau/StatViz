@@ -277,7 +277,7 @@ function drawBoxPlotInRed(dependentVariable, level)
     var box = d3.select("#" + level + ".IQRs");    
     box.attr("fill", boxColors["notnormal"]);
     
-    var text = d3.select("#" + level + "xAxisGrooveText");
+    var text = d3.select("#" + level + ".xAxisGrooveText");
     text.attr("fill", boxColors["notnormal"]);
 }
 

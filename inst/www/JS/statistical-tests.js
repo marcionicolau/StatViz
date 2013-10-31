@@ -80,6 +80,7 @@ function setDistribution(dependentVariable, level, normal)
                 d3.select("#svgCanvas").transition().duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight*1.5);
                 
                 drawBoxPlotInRed(dependentVariable, variableList["independent-levels"][i]);
+//                 drawNormalityPlot(dependentVariable, variableList["independent-levels"][i]);
             }
         }
         
@@ -93,6 +94,14 @@ function setDistribution(dependentVariable, level, normal)
         }
     }    
 }
+
+// function drawNormalityPlot(dependentVariable, variableList["independent-levels"][i]);
+// {
+//     var canvas = d3.select("#svgCanvas");
+//     
+//     canvas.append("rect");
+//     
+    
 
 function determineTypeOfTTest(variableList)
 {
