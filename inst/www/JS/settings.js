@@ -72,7 +72,12 @@ var assumptionsText = new Object();
     
 var assumptions = ["normality", "homogeneity"];
 
+var normalityPlotWidth = 100;
+var normalityPlotHeight = normalityPlotWidth*(3/4);
+var normalityPlotOffset = 200; //from canvasHeight
+
 var sampleSizeCutoff = 20;
+
 
 
 

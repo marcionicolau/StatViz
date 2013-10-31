@@ -97,6 +97,11 @@ function setDistribution(dependentVariable, level, normal)
 function drawNormalityPlot(dependentVariable, level)
 {
     //make histogram with these variables in a separate svg
+    var mean = d3.select("#" + level + ".means");
+    var centerX = mean.attr("cx");   
+    
+    
+    makeHistogramWithDensityCurve(centerX - normalityPlotWidth/2, canvasHeight + normalityPlotOffset, normalityPlotWidth, normalityPlotHeight, dependentVariable, level);//left, top, histWidth, histHeight, dependentVariable, level;
 }
 
 function determineTypeOfTTest(variableList)
