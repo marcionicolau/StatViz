@@ -402,10 +402,11 @@ function makeHistogram()
                             .attr("id", ids[i] + j)
                             .attr("class", "bins");
                 
+                var x = left + (j+1)*xStep/2;
                 
                 if(i == 0 && j == 0)
                 {
-                    d = d + "C" + (left + (j+1)*xStep/2) + " " +  (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + ", " + (left + (j+2)*xStep/2) + " " + (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + ", " + (left + (j+3)*xStep/2) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + " ";
+                    d = d + "C" + x + " " +  (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + ", " + (x + xStep) + " " + (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + ", " + (x + 2*xStep) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + " ";
                     
                     
                     canvas.append("circle")
@@ -428,19 +429,19 @@ function makeHistogram()
                 }
                 else
                 {
-                    // d = d + "S" + (left + (j+3)*xStep/2) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + ", " + (left + (j+4)*xStep/2) + " " + (bottom - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight) + " ";
-//                     
-//                     canvas.append("circle")
-//                                 .attr("cx", (left + (j+3)*xStep/2))
-//                                 .attr("cy", (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight))
-//                                 .attr("r", "5px")
-//                                 .attr("fill", "darkgoldenrod");
-//                     
-//                     canvas.append("circle")
-//                                 .attr("cx", (left + (j+4)*xStep/2))
-//                                 .attr("cy", (bottom - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight))
-//                                 .attr("r", "5px")
-//                                 .attr("fill", "darkgoldenrod");
+                   d = d + "S" + (x + 2*xStep) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + ", " + (x + xStep*3) + " " + (bottom - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight) + " ";
+                    
+                    canvas.append("circle")
+                                .attr("cx", (x + 2*xStep))
+                                .attr("cy", (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight))
+                                .attr("r", "5px")
+                                .attr("fill", "darkgoldenrod");
+                    
+                    canvas.append("circle")
+                                .attr("cx", (x + 3*xStep))
+                                .attr("cy", (bottom - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight))
+                                .attr("r", "5px")
+                                .attr("fill", "darkgoldenrod");
                 }
                         
             }
