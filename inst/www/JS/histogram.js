@@ -428,7 +428,19 @@ function makeHistogram()
                 }
                 else
                 {
-//                     d = d + "S" + getBinCenterX(j+2, xStep) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+3, xStep) + " " + (bottom - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight) + " ";
+                    d = d + "S" + getBinCenterX(j+2) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+3) + " " + (bottom - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight) + " ";
+                    
+                    canvas.append("circle")
+                                .attr("cx", getBinCenterX(j+2))
+                                .attr("cy", (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight))
+                                .attr("r", "5px")
+                                .attr("fill", "darkgoldenrod");
+                    
+                    canvas.append("circle")
+                                .attr("cx", getBinCenterX(j+3))
+                                .attr("cy", (bottom - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight))
+                                .attr("r", "5px")
+                                .attr("fill", "darkgoldenrod");
                 }
                         
             }
