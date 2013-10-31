@@ -60,7 +60,7 @@ var datapointRadius = 3;
 var numberOfGrooves = 10;
 
 // Significance test
-experimentalDesign = "within-groups";
+experimentalDesign = "between-groups";
 
 var significanceTestScaleOffset = 25;
 var assumptionsSpace = 30;

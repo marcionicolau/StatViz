@@ -256,7 +256,7 @@ function performHomoscedasticityTestNormality(dependent, independent)
                         }
                         else
                         {
-                            performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "TRUE", "FALSE");
+                            console.log("repeated-measures ANOVA");
                         }                                        
                     }
                 }
