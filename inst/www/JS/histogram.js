@@ -403,6 +403,7 @@ function makeHistogram()
                 else
                 {
                     d = d + "S" + (left + (j+1)*xStep) + " " + (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + ", " + (left + (j+2)*xStep) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + " ";
+                }
                         
             }
         }
