@@ -503,7 +503,7 @@ function makeHistogramWithDensityCurve(left, top, histWidth, histHeight, depende
     
     // Find ticks   
     var nGroovesY = findTicks(maxBinSize);    
-    var binSlice = Array.max(maxBinSize)/(nGroovesY-1);
+    var binSlice = maxBinSize/(nGroovesY-1);
 
     // Draw axes
     
