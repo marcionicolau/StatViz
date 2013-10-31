@@ -1,15 +1,14 @@
-// boundaries
-var left = canvasWidth/2 - plotWidth/2;
-var right = canvasWidth/2 + plotWidth/2;
-
-var top = canvasHeight/2 - plotHeight/2;
-var bottom = canvasHeight/2 + plotHeight/2;
-    
+var left, right, top, bottom, xStep;
 function makeHistogram()
 {    
     // TODO: Need to constrain the selection to 3 variables
     
+    // boundaries
+    left = canvasWidth/2 - plotWidth/2;
+    right = canvasWidth/2 + plotWidth/2;
     
+    top = canvasHeight/2 - plotHeight/2;
+    bottom = canvasHeight/2 + plotHeight/2;
     
     var data = [];
     var mins = [];
@@ -159,7 +158,7 @@ function makeHistogram()
                                         .attr("class", "axes");
 
                                     
-        var xStep = plotWidth/numberOfGroovesInXAxis;
+        xStep = plotWidth/numberOfGroovesInXAxis;
     
         //grooves
         for(i=0; i<=numberOfGroovesInXAxis; i++)
@@ -311,7 +310,7 @@ function makeHistogram()
                                         .attr("class", "axes");
 
                                     
-        var xStep = plotWidth/numberOfGroovesInXAxis;
+        xStep = plotWidth/numberOfGroovesInXAxis;
     
         //grooves
         for(i=0; i<=numberOfGroovesInXAxis; i++)
@@ -406,22 +405,22 @@ function makeHistogram()
                 
                 if(i == 0 && j == 0)
                 {
-                    d = d + "C" + getBinCenterX(j, xStep) + " " + (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+1, xStep) + " " + (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+2, xStep) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + " ";                    
+                    d = d + "C" + getBinCenterX(j) + " " + (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+1) + " " + (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+2) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + " ";                    
                     
                     canvas.append("circle")
-                                .attr("cx", getBinCenterX(j, xStep))
+                                .attr("cx", getBinCenterX(j))
                                 .attr("cy", (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight))
                                 .attr("r", "5px")
                                 .attr("fill", "darkgoldenrod");
                     
                     canvas.append("circle")
-                                .attr("cx", getBinCenterX(j+1, xStep))
+                                .attr("cx", getBinCenterX(j+1))
                                 .attr("cy", (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight))
                                 .attr("r", "5px")
                                 .attr("fill", "darkgoldenrod");
                     
                     canvas.append("circle")
-                                .attr("cx", getBinCenterX(j+2, xStep))
+                                .attr("cx", getBinCenterX(j+2))
                                 .attr("cy", (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight))
                                 .attr("r", "5px")
                                 .attr("fill", "darkgoldenrod");
@@ -439,7 +438,7 @@ function makeHistogram()
     }
 }
 
-function getBinCenterX(j, xStep)
+function getBinCenterX(j)
 {
     return left + j*xStep + xStep/2;
 }
