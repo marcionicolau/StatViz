@@ -336,7 +336,7 @@ function loadAssumptionCheckList()
 {
     var canvas = d3.select("#svgCanvas");
     
-    for(var i=0; i<getObjectLength(assumptionsText); i++)
+    for(var i=0; i<assumptions.length; i++)
     {
         canvas.append("text")
             .attr("x", canvasWidth/2 + plotWidth/2)
