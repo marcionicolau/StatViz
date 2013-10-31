@@ -496,7 +496,7 @@ function makeHistogramWithDensityCurve(left, top, histWidth, histHeight, depende
     var maxBinSize = Array.max(bins);
     
     // Find ticks   
-    var nGroovesY = findTicks(maxBinSize);    
+    var nGroovesY = findTicks(maxBinSize)*(histWidth/plotWidth);    
     var binSlice = maxBinSize/(nGroovesY-1);
 
     // Draw axes
@@ -536,7 +536,7 @@ function makeHistogramWithDensityCurve(left, top, histWidth, histHeight, depende
         canvas.append("text")
                     .attr("x", left + i*xStep)
                     .attr("y", bottom + tickTextOffsetXAxis + shortAxesOffset)                    
-                    .text(format(min + i*slice))
+                    .text(format(min + i*(max-min)))
                     .attr("text-anchor", "middle")
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooveText");
