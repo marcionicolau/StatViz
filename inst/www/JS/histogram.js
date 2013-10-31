@@ -573,9 +573,9 @@ function makeHistogramWithDensityCurve(left, top, histWidth, histHeight, depende
     for(i=0; i<nBins; i++)
     {
         canvas.append("rect")
-                    .attr("x", left + j*xStep)
-                    .attr("y", bottom - (bins[i]/Array.max(maxBinSize))*histHeight)
-                    .attr("height", (bins[labels[i]][j]/Array.max(maxBinSize))*histHeight)
+                    .attr("x", left + i*xStep)
+                    .attr("y", bottom - (bins[i]/maxBinSize)*histHeight)
+                    .attr("height", (bins[i]/maxBinSize)*histHeight)
                     .attr("width", histWidth/nBins)          
                     .attr("fill", meanColors["normal"])         
                     .attr("id", id + i)
