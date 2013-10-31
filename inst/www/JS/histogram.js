@@ -1,13 +1,15 @@
+// boundaries
+var left = canvasWidth/2 - plotWidth/2;
+var right = canvasWidth/2 + plotWidth/2;
+
+var top = canvasHeight/2 - plotHeight/2;
+var bottom = canvasHeight/2 + plotHeight/2;
+    
 function makeHistogram()
 {    
     // TODO: Need to constrain the selection to 3 variables
     
-    // boundaries
-    var left = canvasWidth/2 - plotWidth/2;
-    var right = canvasWidth/2 + plotWidth/2;
     
-    var top = canvasHeight/2 - plotHeight/2;
-    var bottom = canvasHeight/2 + plotHeight/2;
     
     var data = [];
     var mins = [];
@@ -439,5 +441,5 @@ function makeHistogram()
 
 function getBinCenterX(j, xStep)
 {
-    return j*xStep + xStep/2;
+    return left + j*xStep + xStep/2;
 }
