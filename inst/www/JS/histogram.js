@@ -352,10 +352,11 @@ function makeHistogram()
                         .attr("class", "yAxisGrooveText");
         }
         
-        var curve = canvas.append("path")
-                            .attr("d", "M" + left + " " + bottom + " ")
-                            .attr("fill", "none")
-                            .attr("stroke", "black");
+        var curve = canvas.append("path")                            
+                            .attr("fill", "transparent")
+                            .attr("stroke", "red");
+                            
+        var d = "M" + left + " " + bottom + " ";
     
         //bars
         for(i=0; i<labels.length; i++)
@@ -395,12 +396,12 @@ function makeHistogram()
                             .attr("id", ids[i] + j)
                             .attr("class", "bins");
                 
-                curve.attr("d", curve.attr("d") + "C" + (left + j*xStep) + " " + (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + " ");
+                d = d + "Q" + (left + j*xStep) + " " + (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + ", " + (left + (j+1)*xStep)) + " " + (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + " ";
             
                         
             }
         }
-        curve.attr("d", curve.attr("d") + "Z");
+        curve.attr("d", d + "Z");
         
     }
 }
