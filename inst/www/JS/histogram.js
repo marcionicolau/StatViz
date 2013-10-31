@@ -404,19 +404,19 @@ function makeHistogram()
                     canvas.append("circle")
                                 .attr("cx", (left + (j+1)*xStep/2))
                                 .attr("cy", (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight))
-                                .attr("r", "2px")
+                                .attr("r", "5px")
                                 .attr("fill", "darkgoldenrod");
                     
                     canvas.append("circle")
                                 .attr("cx", (left + (j+2)*xStep/2))
                                 .attr("cy", (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight))
-                                .attr("r", "2px")
+                                .attr("r", "5px")
                                 .attr("fill", "darkgoldenrod");
                     
                     canvas.append("circle")
                                 .attr("cx", (left + (j+3)*xStep/2))
                                 .attr("cy", (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight))
-                                .attr("r", "2px")
+                                .attr("r", "5px")
                                 .attr("fill", "darkgoldenrod");
                 }
                 else
@@ -426,13 +426,13 @@ function makeHistogram()
                     canvas.append("circle")
                                 .attr("cx", (left + (j+3)*xStep/2))
                                 .attr("cy", (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight))
-                                .attr("r", "2px")
+                                .attr("r", "5px")
                                 .attr("fill", "darkgoldenrod");
                     
                     canvas.append("circle")
                                 .attr("cx", (left + (j+4)*xStep/2))
                                 .attr("cy", (bottom - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight))
-                                .attr("r", "2px")
+                                .attr("r", "5px")
                                 .attr("fill", "darkgoldenrod");
                 }
                         
