@@ -415,13 +415,13 @@ function makeHistogram()
                                 .attr("fill", "darkgoldenrod");
                     
                     canvas.append("circle")
-                                .attr("cx", (left + 2*(j+1)*xStep/2))
+                                .attr("cx", (left + (j+1)*xStep/2) + xStep)
                                 .attr("cy", (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight))
                                 .attr("r", "5px")
                                 .attr("fill", "darkgoldenrod");
                     
                     canvas.append("circle")
-                                .attr("cx", (left + 3*(j+1)*xStep/2))
+                                .attr("cx", (left + (j+1)*xStep/2) + 2*xStep)
                                 .attr("cy", (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight))
                                 .attr("r", "5px")
                                 .attr("fill", "darkgoldenrod");
