@@ -51,6 +51,10 @@ var intervals = new Object(); //for keeping track of animations
 var meanRadius = "5px";
 var outlierRadius = "3px";
 
+var boxColors = new Object();
+    boxColors["normal"] = "lightgrey";
+    boxColors["notnormal"] = "lightred";
+
 // Scatterplot
 var datapointRadius = 3;
 var numberOfGrooves = 10;

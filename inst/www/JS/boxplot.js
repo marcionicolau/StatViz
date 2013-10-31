@@ -269,6 +269,13 @@ function makeBoxplot()
     }        
 }
 
+function drawBoxPlotInRed(dependentVariable, level)
+{
+    var box = d3.select("#" + level + ".IQRs");
+    
+    box.attr("fill", boxColors["notnormal"]);
+}
+
 function getFraction(number)
 {
     return (number - min)/(max - min);
