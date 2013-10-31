@@ -1,7 +1,7 @@
 // Data
 var dataset = "mtcars";
 
-var fileName = "cars-mod.txt";
+var fileName = "news-sports-business.txt"; //"cars-mod.txt";
 var pathToFile = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/" + fileName;
 
 // Skeleton
@@ -53,7 +53,7 @@ var outlierRadius = "3px";
 
 var boxColors = new Object();
     boxColors["normal"] = "lightgrey";
-    boxColors["notnormal"] = "lightred";
+    boxColors["notnormal"] = "crimson";
 
 // Scatterplot
 var datapointRadius = 3;
