@@ -207,21 +207,19 @@ function makeHistogram()
             {           
                 if(bins[labels[i]][j] != 0)
                 {
-                    var transform = "rotate (" + (left + j*xStep + (plotWidth/uniqueData.length)/2) + " " + (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + " " + ((i+1)/nBins)*(-90) + ")";
                     canvas.append("line")
                             .attr("x1", left + j*xStep + (plotWidth/uniqueData.length)/2)
                             .attr("y1", bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight)
-                            .attr("x2", left + (j+1)*xStep/2 + (plotWidth/uniqueData.length)/2)
-                            .attr("y2", bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight)
+                            .attr("x2", left + j*xStep + (plotWidth/uniqueData.length)/2 + ((i+1)/labels.length)*plotWidth*0.15)    
+                            .attr("y2", bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight - ((i+1)/uniqueData.length)*plotHeight*0.35)
                             .attr("display", "none")
-                            .attr("transform", transform)
                             .attr("stroke", "black")
                             .attr("id", ids[i] + j)
                             .attr("class", "binTextLines");
                     
                     canvas.append("text")
-                            .attr("x", left + j*xStep + (plotWidth/uniqueData.length)/2)
-                            .attr("y", bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight + yAxisTickTextOffset)
+                            .attr("x", left + j*xStep + (plotWidth/uniqueData.length)/2 + ((i+1)/labels.length)*plotWidth*0.15)                        
+                            .attr("y", bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight + yAxisTickTextOffset - ((i+1)/uniqueData.length)*plotHeight*0.35)
                             .attr("fill", "black")
                             .attr("text-anchor", "start")
                             .attr("font-size", binCountFontSize)
@@ -353,6 +351,11 @@ function makeHistogram()
                         .attr("id", "groove" + i)
                         .attr("class", "yAxisGrooveText");
         }
+        
+        var curve = canvas.append("path")
+                            .attr("d", "M" + left + " " + bottom + " ")
+                            .attr("fill", "none")
+                            .attr("stroke", "black");
     
         //bars
         for(i=0; i<labels.length; i++)
@@ -391,9 +394,13 @@ function makeHistogram()
                             .attr("fill", colors[i])         
                             .attr("id", ids[i] + j)
                             .attr("class", "bins");
+                
+                curve.attr("d", curve.attr("d") + "C" + (left + j*xStep) + " " + (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + " ");
             
                         
             }
         }
+        curve.attr("d", curve.attr("d") + "Z");
+        
     }
 }
