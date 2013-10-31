@@ -409,7 +409,7 @@ function makeHistogram()
                 }
                 else
                 {
-                    d = d + "S" + getBinCenterX(j+2, xStep) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+3, xStep) + " " + (bottom - (bins[labels[i]][j+#]/Array.max(binMaxs))*plotHeight) + " ";
+                    d = d + "S" + getBinCenterX(j+2, xStep) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+3, xStep) + " " + (bottom - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight) + " ";
                 }
                         
             }
