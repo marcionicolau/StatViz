@@ -485,7 +485,7 @@ function makeHistogramWithDensityCurve(left, top, histWidth, histHeight, depende
     // Set all bin count to zero
     for(var i=0; i<nBins; i++)
     {
-        bins[j] = 0;
+        bins[i] = 0;
     }  
 
     // Binning
