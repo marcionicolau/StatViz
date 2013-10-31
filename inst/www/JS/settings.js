@@ -74,7 +74,7 @@ var assumptions = ["normality", "homogeneity"];
 
 var normalityPlotWidth = 200;
 var normalityPlotHeight = normalityPlotWidth*(3/4);
-var normalityPlotOffset = 175; //from canvasHeight
+var normalityPlotOffset = 75; //from canvasHeight
 
 var sampleSizeCutoff = 20;
 

@@ -1,17 +1,7 @@
-applyTransform <- function(dataset = "", columnName = "", type = "squareRoot")
-{
-  if(dataset == "")
-  {   
-    dataset = "beaver1";
-    columnName = "time";
-  }
-  else if(columnName == "")
-  {
-    # Load the first column name by default
-    columnName = names(eval(parse(text = dataset)))[1]; 
-  }
-        
-  distribution = eval(parse(text = paste(dataset,"$",columnName)));
+applyTransform <- function(distribution, type = "squareRoot")
+{        
+  distribution <- c(distribution);
+  
   # type = eval(parse(text = type));
   switch(type,
   squareRoot = {

@@ -246,6 +246,31 @@ function performNormalityTest(dist, dependentVariable, level)
     });
 }
 
+function findTransform(distribution)
+{
+    // Get variable names and their data type
+    
+    
+    var req = opencpu.r_fun_json("findTransform", {
+                    distribution: disttribution                                                           
+                  }, function(output) {                                                   
+                  
+                console.log("type=" + output.type);
+                  
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+        
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
 //Significance Tests
 
 function performTTest(group1, group2)

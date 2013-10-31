@@ -29,6 +29,8 @@ export(getESFromChiSquared)
 export(getESFromP)
 export(getESFromRawMeanScores)
 
+export(findTransform)
+
 export(runThisRCode)
 
 export(getVariableNames)

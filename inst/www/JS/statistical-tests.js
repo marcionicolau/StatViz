@@ -81,6 +81,8 @@ function setDistribution(dependentVariable, level, normal)
                 
                 drawBoxPlotInRed(dependentVariable, variableList["independent-levels"][i]);
                 drawNormalityPlot(dependentVariable, variableList["independent-levels"][i]);
+                
+                findTransform(variables[dependentVariable][variableList["independent-levels"][i]]);
             }
         }
         
