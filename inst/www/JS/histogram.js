@@ -454,7 +454,7 @@ function makeHistogram()
         
         for(var i=0; i<nBins; i++)
         {
-            lineD = lineD + "L " + getBinCenterX(i) + " " + (bottom - (bins[labels[0]][i+1]/Array.max(binMaxs))*plotHeight) + " ";
+            lineD = lineD + "L " + getBinCenterX(i) + " " + (bottom - (bins[labels[0]][i]/Array.max(binMaxs))*plotHeight) + " ";
         }
         
         lineD = lineD + "Z";
