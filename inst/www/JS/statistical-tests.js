@@ -98,7 +98,7 @@ function setDistribution(dependentVariable, level, normal)
         }
         else
         {
-            findTransform(variables[dependentVariable][variableList["independent-levels"][i]]);
+            findTransform(variables[dependentVariable][variableList["independent-levels"][0]]);
         }
     }    
 }
