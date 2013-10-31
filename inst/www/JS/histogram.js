@@ -406,10 +406,28 @@ function makeHistogram()
                 {
                     d = d + "C" + getBinCenterX(j, xStep) + " " + (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+1, xStep) + " " + (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+2, xStep) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + " ";                    
                     
+                    canvas.append("circle")
+                                .attr("cx", getBinCenterX(j, xStep))
+                                .attr("cy", (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight))
+                                .attr("r", "5px")
+                                .attr("fill", "darkgoldenrod");
+                    
+                    canvas.append("circle")
+                                .attr("cx", getBinCenterX(j+1, xStep))
+                                .attr("cy", (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight))
+                                .attr("r", "5px")
+                                .attr("fill", "darkgoldenrod");
+                    
+                    canvas.append("circle")
+                                .attr("cx", getBinCenterX(j+2, xStep))
+                                .attr("cy", (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight))
+                                .attr("r", "5px")
+                                .attr("fill", "darkgoldenrod");
+                    
                 }
                 else
                 {
-                    d = d + "S" + getBinCenterX(j+2, xStep) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+3, xStep) + " " + (bottom - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight) + " ";
+//                     d = d + "S" + getBinCenterX(j+2, xStep) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+3, xStep) + " " + (bottom - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight) + " ";
                 }
                         
             }
