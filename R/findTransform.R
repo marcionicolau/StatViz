@@ -5,7 +5,7 @@ findTransform <- function(distribution)
     result = eval(parse(text = paste("shapiro.test(sqrt(distribution))")));
     if(result$p.value > 0.05)
     {
-        return "sqrt";
+        type = "sqrt";
     }
 
     result = eval(parse(text = paste("shapiro.test(distribution^(1/3))")));
