@@ -205,7 +205,7 @@ function performHomoscedasticityTest(dependent, independent)
                     }
                     else
                     {
-                        performWilcoxonTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], [variableList["independent-levels"][0]]);
+                        performWilcoxonTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]]);
                     }                                        
                 }
         
@@ -461,13 +461,12 @@ function performMannWhitneyTest(groupA, groupB)
     });
 }
 
-function performWilcoxonTest(groupA, groupB, level)
+function performWilcoxonTest(groupA, groupB)
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("performWilcoxonTest", {
                     groupA: groupA,
-                    groupB: groupB,
-                    level: level
+                    groupB: groupB
                   }, function(output) {                                                   
                   
                   console.log("\t\t Wilcoxon Signed-rank Test");
