@@ -235,6 +235,7 @@ function performHomoscedasticityTestNormality(dependent, independent)
                 console.log("\t\t\t p = " + output.p);
                 
                 variableList = getSelectedVariables();
+                console.log("number of levels: " + variableList["independent-levels"].length);
                 
                 if(variableList["independent-levels"].length > 2)
                 {
