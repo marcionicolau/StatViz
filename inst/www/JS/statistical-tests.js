@@ -86,8 +86,6 @@ function setDistribution(dependentVariable, level, normal)
                 
                 drawBoxPlotInRed(dependentVariable, variableList["independent-levels"][i]);
                 drawNormalityPlot(dependentVariable, variableList["independent-levels"][i]);
-                
-                findTransform(variables[dependentVariable][variableList["independent-levels"][i]]);
             }
         }
         
@@ -97,6 +95,10 @@ function setDistribution(dependentVariable, level, normal)
             
             d3.select("#normality.ticks").attr("display", "inline");  
             performHomoscedasticityTestNormality(variableList["dependent"][0], variableList["independent"][0]);
+        }
+        else
+        {
+            findTransform(variables[dependentVariable][variableList["independent-levels"][i]]);
         }
     }    
 }
