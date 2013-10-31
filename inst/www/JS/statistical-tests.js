@@ -90,7 +90,6 @@ function setDistribution(dependentVariable, level, normal)
             
             d3.select("#normality.ticks").attr("display", "inline");  
             performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]);
-//             performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                       
         }
     }    
 }
