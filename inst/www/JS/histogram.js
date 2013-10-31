@@ -396,7 +396,7 @@ function makeHistogram()
                             .attr("id", ids[i] + j)
                             .attr("class", "bins");
                 
-                d = d + "Q" + (left + j*xStep) + " " + (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + ", " + (left + (j+1)*xStep) + " " + (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + " ";            
+                d = d + "C" + (left + j*xStep) + " " + (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + ", " + (left + (j+1)*xStep) + " " + (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + ", " + (left + (j+2)*xStep) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + " ";            
                         
             }
         }
