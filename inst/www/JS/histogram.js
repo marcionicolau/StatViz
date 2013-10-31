@@ -403,47 +403,47 @@ function makeHistogram()
                             .attr("id", ids[i] + j)
                             .attr("class", "bins");
                 
-                if(i == 0 && j == 0)
-                {
-//                     d = d + "C" + getBinCenterX(j) + " " + (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+1) + " " + (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+2) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + " ";                    
-                    d = d + "Q" + getBinCenterX(j) + " " + (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+1) + " " + (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + " ";                    
-                    
-                    canvas.append("circle")
-                                .attr("cx", getBinCenterX(j))
-                                .attr("cy", (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight))
-                                .attr("r", "5px")
-                                .attr("fill", "darkgoldenrod");
-                    
-                    canvas.append("circle")
-                                .attr("cx", getBinCenterX(j+1))
-                                .attr("cy", (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight))
-                                .attr("r", "5px")
-                                .attr("fill", "darkgoldenrod");
-                    
-                    canvas.append("circle")
-                                .attr("cx", getBinCenterX(j+2))
-                                .attr("cy", (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight))
-                                .attr("r", "5px")
-                                .attr("fill", "darkgoldenrod");
-                    
-                }
-                else if(j%2 == 1)
-                {
-//                     d = d + "S" + getBinCenterX(j+2) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+3) + " " + (bottom - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight) + " ";
-                       d = d + "T" + getBinCenterX(j+1) + " " + (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + " ";
-                    
-                    canvas.append("circle")
-                                .attr("cx", getBinCenterX(j+2))
-                                .attr("cy", (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight))
-                                .attr("r", "5px")
-                                .attr("fill", "darkgoldenrod");
-                    
-                    canvas.append("circle")
-                                .attr("cx", getBinCenterX(j+3))
-                                .attr("cy", (bottom - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight))
-                                .attr("r", "5px")
-                                .attr("fill", "darkgoldenrod");
-                }
+                // if(i == 0 && j == 0)
+//                 {
+// //                     d = d + "C" + getBinCenterX(j) + " " + (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+1) + " " + (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+2) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + " ";                    
+//                     d = d + "Q" + getBinCenterX(j) + " " + (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+1) + " " + (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + " ";                    
+//                     
+//                     canvas.append("circle")
+//                                 .attr("cx", getBinCenterX(j))
+//                                 .attr("cy", (bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight))
+//                                 .attr("r", "5px")
+//                                 .attr("fill", "darkgoldenrod");
+//                     
+//                     canvas.append("circle")
+//                                 .attr("cx", getBinCenterX(j+1))
+//                                 .attr("cy", (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight))
+//                                 .attr("r", "5px")
+//                                 .attr("fill", "darkgoldenrod");
+//                     
+//                     canvas.append("circle")
+//                                 .attr("cx", getBinCenterX(j+2))
+//                                 .attr("cy", (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight))
+//                                 .attr("r", "5px")
+//                                 .attr("fill", "darkgoldenrod");
+//                     
+//                 }
+//                 else if(j%2 == 1)
+//                 {
+// //                     d = d + "S" + getBinCenterX(j+2) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+3) + " " + (bottom - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight) + " ";
+//                        d = d + "T" + getBinCenterX(j+1) + " " + (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + " ";
+//                     
+//                     canvas.append("circle")
+//                                 .attr("cx", getBinCenterX(j+2))
+//                                 .attr("cy", (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight))
+//                                 .attr("r", "5px")
+//                                 .attr("fill", "darkgoldenrod");
+//                     
+//                     canvas.append("circle")
+//                                 .attr("cx", getBinCenterX(j+3))
+//                                 .attr("cy", (bottom - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight))
+//                                 .attr("r", "5px")
+//                                 .attr("fill", "darkgoldenrod");
+//                 }
                         
             }
         }

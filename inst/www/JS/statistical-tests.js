@@ -95,12 +95,6 @@ function setDistribution(dependentVariable, level, normal)
     }    
 }
 
-// function drawNormalityPlot(dependentVariable, variableList["independent-levels"][i]);
-// {
-//     var canvas = d3.select("#svgCanvas");
-//     
-//     canvas.append("rect");
-//     
     
 
 function determineTypeOfTTest(variableList)
