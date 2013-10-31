@@ -214,6 +214,7 @@ function makeHistogram()
                             .attr("x2", left + (j+1)*xStep/2 + (plotWidth/uniqueData.length)/2)
                             .attr("y2", bottom - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight)
                             .attr("display", "none")
+                            .attr("transform", transform)
                             .attr("stroke", "black")
                             .attr("id", ids[i] + j)
                             .attr("class", "binTextLines");
