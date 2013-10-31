@@ -6,7 +6,7 @@ performTTest <- function(groupA, groupB, paired = "FALSE", alternative = "two.si
   paired <- eval(parse(text = paired));
   variance <- eval(parse(text = variance));
   
-  result = eval(parse(text = paste("t.test(groupA, groupB, alternative=two.sided, paired=",paired,",var.equal=",variance,")",sep="")));
+  result = eval(parse(text = paste("t.test(groupA, groupB, alternative=\"two.sided\", paired=",paired,",var.equal=",variance,")",sep="")));
   
   list(p=result$p.value, 
   t=result$statistic[["t"]], 
