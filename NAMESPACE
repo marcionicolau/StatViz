@@ -13,6 +13,7 @@ export(performANOVA)
 export(performFriedmanTest)
 export(performKruskalTest)
 export(performWilcoxonTest)
+export(performMannWhitneyTest)
 export(performHomoscedasticityTest)
 export(performShapiroWilkTest)
 

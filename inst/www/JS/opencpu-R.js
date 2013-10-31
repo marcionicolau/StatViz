@@ -188,14 +188,68 @@ function performHomoscedasticityTest(dependent, independent)
                 if(output.p < 0.05)
                 {
                   d3.select("#homogeneity.crosses").attr("display", "inline");                  
+                  
+                  console.log("welch's t-test");
                 }
                 else
-                {
+                {   
+                    //equal variances
                     d3.select("#homogeneity.ticks").attr("display","inline");
                     
-                    variableList = getSelectedVariables();
-                    levels = variableList["independent-levels"];
-                    performTTest(variables[variableList["dependent"][0]][levels[0]], variables[variableList["dependent"][0]][levels[1]]);                       
+                    if(experimentalDesign == "between-groups")
+                    {
+                        console.log("Mann-Whitney U Test");
+                    }
+                    else
+                    {
+                        console.log("Wilcoxon Signed-rank Test");
+                    }                                        
+                }
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function performHomoscedasticityTestNormality(dependent, independent)
+{
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("performHomoscedasticityTest", {
+                    dependentVariable: dependent,
+                    independentVariable: independent,
+                    dataset: dataset                    
+                  }, function(output) {                                 
+                  
+                console.log("\t\t Levene's test for (" + dependent + " ~ " + independent + ")");
+                console.log("\t\t\t p = " + output.p);
+                
+                if(output.p < 0.05)
+                {
+                  d3.select("#homogeneity.crosses").attr("display", "inline");                  
+                  
+                  console.log("welch's t-test");
+                }
+                else
+                {   
+                    //equal variances
+                    d3.select("#homogeneity.ticks").attr("display","inline");
+                    
+                    if(experimentalDesign == "between-groups")
+                    {
+                        console.log("Unpaired t-test");
+                    }
+                    else
+                    {
+                        console.log("Paired t-test");
+                    }                                        
                 }
         
       }).fail(function(){
@@ -256,6 +310,16 @@ function findTransform(dist)
                   }, function(output) {                                                   
                   
                 console.log("type=" + output.type);
+                
+                if(output.type == "none")
+                {
+                    var variableList = getSelectedVariables();
+                    performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]);
+                }
+                else
+                {
+                    console.log("choice between WT/MT and PT/UT");
+                }
                   
       }).fail(function(){
           alert("Failure: " + req.responseText);

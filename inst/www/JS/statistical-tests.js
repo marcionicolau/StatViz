@@ -14,11 +14,16 @@ function compareMeans()
                     loadAssumptionCheckList();
                     
                     //this should tell us about the sample size (is it small => non-parametric test), type of variable (ordinal => non-parametric test), dependent/independent (paired/unpaired test)                    
-                    currentTestType = determineTypeOfTTest(variableList); 
+                    var sampleSize = variables[variableList["dependent"][0]][variableList["independent-levels"][0]].length;
                     
-                    console.log("\n\n\t Type of test: " + currentTestType);
-                                              
-                    performNormalityTests(); 
+                    if(sampleSize < 20)
+                    {
+                        performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]);
+                    }
+                    else
+                    {
+                        performNormalityTests(); 
+                    }
                     
                     break;
                 }
@@ -91,7 +96,7 @@ function setDistribution(dependentVariable, level, normal)
             console.log("all distributions are normal!");
             
             d3.select("#normality.ticks").attr("display", "inline");  
-            performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]);
+            performHomoscedasticityTestNormality(variableList["dependent"][0], variableList["independent"][0]);
         }
     }    
 }
@@ -133,20 +138,7 @@ function determineTypeOfTTest(variableList)
             return "mT";
         }
     }
-    
-    //type of variable...
-    
-    //experimental design
-    if(experimentalDesign == "between-groups")
-    {
-        //independent/unpaired
-        return "pT";
-    }
-    else if(experimentalDesign == "within-groups")
-    {
-        //dependent/paired
-        return "uT";
-    }
+    return "none";
 }
 
 function tTest()
