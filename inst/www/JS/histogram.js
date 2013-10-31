@@ -426,9 +426,9 @@ function makeHistogram()
                                 .attr("fill", "darkgoldenrod");
                     
                 }
-                else
+                else if(j%2 == 1)
                 {
-                    d = d + "S" + getBinCenterX(j+1) + " " + (bottom - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+2) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + " ";
+                    d = d + "S" + getBinCenterX(j+2) + " " + (bottom - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+3) + " " + (bottom - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight) + " ";
                     
                     canvas.append("circle")
                                 .attr("cx", getBinCenterX(j+2))
@@ -445,21 +445,8 @@ function makeHistogram()
                         
             }
         }
-        curve.attr("d", d + "Z");
+        curve.attr("d", d + "Z");        
         
-        var line = canvas.append("path")
-                        .attr("fill", "transparent")
-                        .attr("stroke", "magenta");
-        var lineD = "M " + left + " " + bottom + " ";
-        
-        for(var i=0; i<nBins; i++)
-        {
-            lineD = lineD + "L " + getBinCenterX(i) + " " + (bottom - (bins[labels[0]][i]/Array.max(binMaxs))*plotHeight) + " ";
-        }
-        
-        lineD = lineD + "Z";
-        
-        line.attr("d", lineD);
         
     }
 }
