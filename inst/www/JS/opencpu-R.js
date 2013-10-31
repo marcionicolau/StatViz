@@ -236,25 +236,51 @@ function performHomoscedasticityTestNormality(dependent, independent)
                 
                 variableList = getSelectedVariables();
                 
-                if(output.p < 0.05)
+                if(variableList["independent-levels"].length > 2)
                 {
-                  d3.select("#homogeneity.crosses").attr("display", "inline");                  
-                  
-                  performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE");
-                }
-                else
-                {   
-                    //equal variances
-                    d3.select("#homogeneity.ticks").attr("display","inline");
-                    
-                    if(experimentalDesign == "between-groups")
+                    if(output.p < 0.05)
                     {
-                        performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "TRUE", "TRUE");
+                      d3.select("#homogeneity.crosses").attr("display", "inline");                  
+                  
+                      console.log("tell me what to do...");
                     }
                     else
+                    {   
+                        //equal variances
+                        d3.select("#homogeneity.ticks").attr("display","inline");
+                    
+                        if(experimentalDesign == "between-groups")
+                        {
+                            performANOVA(variableList["dependent"][0], variableList["independent"][0]);
+                        }
+                        else
+                        {
+                            performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "TRUE", "FALSE");
+                        }                                        
+                    }
+                }
+                else
+                {               
+                    if(output.p < 0.05)
                     {
-                        performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "TRUE", "FALSE");
-                    }                                        
+                      d3.select("#homogeneity.crosses").attr("display", "inline");                  
+                  
+                      performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE");
+                    }
+                    else
+                    {   
+                        //equal variances
+                        d3.select("#homogeneity.ticks").attr("display","inline");
+                    
+                        if(experimentalDesign == "between-groups")
+                        {
+                            performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "TRUE", "TRUE");
+                        }
+                        else
+                        {
+                            performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "TRUE", "FALSE");
+                        }                                        
+                    }
                 }
         
       }).fail(function(){

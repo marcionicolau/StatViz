@@ -39,8 +39,7 @@ function compareMeans()
                     
                     loadAssumptionCheckList();
                     
-                    //homoscedasticity
-                    performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]);                                         
+                    performNormalityTests();
         
                     break;
                 }
