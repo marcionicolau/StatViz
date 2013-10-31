@@ -423,5 +423,3 @@ function getBinCenterX(j, xStep)
 {
     return j*xStep + xStep/2;
 }
-
-function getBinCenterY(
