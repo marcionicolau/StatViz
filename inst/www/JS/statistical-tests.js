@@ -18,6 +18,7 @@ function compareMeans()
                     
                     if(sampleSize < 20)
                     {
+                        console.log("sample size < 20");
                         performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]);
                     }
                     else
