@@ -151,15 +151,16 @@ function makeBoxplot()
                     .attr("y1", bottom  + axesOffset)
                     .attr("x2", left + i*xStep + xStep/2)
                     .attr("y2", bottom + 10 + axesOffset)
-                    .attr("id", "groove" + i)
+                    .attr("id", ids[i])
                     .attr("class", "xAxisGrooves");
     
         canvas.append("text")
                     .attr("x", left + i*xStep + xStep/2)
                     .attr("y", bottom + tickTextOffsetXAxis + axesOffset)                    
                     .text(labels[i])
+                    .attr("fill", "black")
                     .attr("text-anchor", "middle")
-                    .attr("id", "groove" + i)
+                    .attr("id", ids[i])
                     .attr("class", "xAxisGrooveText");
     }
     
@@ -273,12 +274,11 @@ function makeBoxplot()
 
 function drawBoxPlotInRed(dependentVariable, level)
 {
-    console.log(level);
-    
-    var box = d3.select("#" + level + ".IQRs");
-    console.log("current fill: " + box.attr("fill"));
-    
+    var box = d3.select("#" + level + ".IQRs");    
     box.attr("fill", boxColors["notnormal"]);
+    
+    var text = d3.select("#" + level + "xAxisGrooveText");
+    text.attr("fill", boxColors["notnormal"]);
 }
 
 function getFraction(number)
