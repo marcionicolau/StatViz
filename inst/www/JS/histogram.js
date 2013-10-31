@@ -466,7 +466,7 @@ function makeHistogramWithDensityCurve(left, top, histWidth, histHeight, depende
     
     var id = level;       
        
-    var numberOfGroovesInXAxis = nBins;    
+    var numberOfGroovesInXAxis = shortNBins;    
     
     var slice = (max - min)/nBins;    
 
