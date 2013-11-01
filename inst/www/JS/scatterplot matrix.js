@@ -44,6 +44,7 @@ function makeScatterplotMatrix()
                             .attr("x", left + j*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis) + ((plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis))/2)
                             .attr("y", top + i*((plotHeight/numberOfVariables) + shortAxesOffset + shortTickTextOffsetXAxis) + ((plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis))/2)
                             .attr("text-anchor", "middle")
+                            .attr("fill","crimson")
                             .text(variableList["dependent"][i]);
                 }
             }
