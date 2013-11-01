@@ -22,7 +22,8 @@ function makeScatterplotMatrix()
     
     if(numberOfVariables > 4)
         shortFontSize = 0;
-    
+        
+    var canvas = d3.select("#svgCanvas");    
     
     var left = canvasWidth/2 - plotWidth/2;
     var top = canvasHeight/2 - plotHeight/2;
@@ -39,7 +40,11 @@ function makeScatterplotMatrix()
                     makeScatterPlotAt(left + j*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis), top + i*((plotHeight/numberOfVariables) + shortAxesOffset + shortTickTextOffsetXAxis), (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), variableList["dependent"][i], variableList["dependent"][j]); 
                 else
                 {
-                    //todo: print the variable name 
+                    canvas.append("text")
+                            .attr("x", left + j*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis) + ((plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis))/2)
+                            .attr("y", top + i*((plotHeight/numberOfVariables) + shortAxesOffset + shortTickTextOffsetXAxis) + ((plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis))/2)
+                            .attr("text-anchor", "middle")
+                            .text(variableList["dependent"][i]);
                 }
             }
         }
@@ -161,9 +166,8 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
                     .attr("cx", x + getValue(dataX[i], minX, maxX)*shortWidth)
                     .attr("cy", y - getValue(dataY[i], minY, maxY)*shortHeight)
                     .attr("r", shortDataPointRadius)
-                    .attr("fill", color)
-                    .attr("id", "data" + i)
-                    .attr("class", "datapoints");     
+                    .attr("fill", color)                    
+                    .attr("class", "points");     
     }
 }
 
