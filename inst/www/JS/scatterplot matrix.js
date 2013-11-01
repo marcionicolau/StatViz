@@ -6,6 +6,8 @@ var shortAxesOffset, shortTickLength, shortDataPointRadius, shortNumberOfGrooves
 function makeScatterplotMatrix()
 {
     var variableList = sort(currentVariableSelection);
+    
+    //any number of dependent variables -> should work
     var numberOfVariables = variableList["dependent"].length;
     
     // Scatterplot matrix
