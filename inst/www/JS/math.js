@@ -42,6 +42,7 @@ function isPrime(num)
 function findIQR(values)
 {
     values.sort( function(a,b) {return a - b;} );
+    console.log(values);
     
     console.log("total=" + values.length);
     
