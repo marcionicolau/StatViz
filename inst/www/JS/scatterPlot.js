@@ -162,6 +162,7 @@ function makeScatterplot()
         if(uniqueDataY.length <= numberOfGrooves)
         {
             axisText = uniqueDataY[i];
+            console.log(uniqueDataY[i]);
             textPosition = BOTTOM - yStep/2 - i*yStep;                    
         }
         
