@@ -28,7 +28,7 @@ function makeScatterplotMatrix()
     var LEFT = canvasWidth/2 - plotWidth/2;
     var TOP = canvasHeight/2 - plotHeight/2;
     
-    if(numberOfVariables >= 2)
+    if(numberOfVariables >= 3)
     {
         // we'll do just this case for now...
         
