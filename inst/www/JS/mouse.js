@@ -68,6 +68,8 @@ function OnMouseDown(e)
             
             if(document.getElementsByClassName("incompleteLines").length > 0)
             {
+                console.log("completing lines...");
+            
                 incompleteLines.attr("x2", meanCircle.attr("cx"))
                                 .attr("y2", meanCircle.attr("cy"))
                                 .attr("stroke", meanColors["click"])
