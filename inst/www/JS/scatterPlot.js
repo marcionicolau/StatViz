@@ -124,12 +124,12 @@ function makeScatterplot()
     console.log("nX=" + numberOfGroovesInXAxis);
     console.log("plotWidth = " + plotWidth);
     
-    var xSlice = (maxs[0] - mins[0])/(numberOfGroovesInXAxis-1);    
-    var ySlice = (maxs[1] - mins[1])/(numberOfGroovesInYAxis-1);    
+    var xSlice = (maxs[0] - mins[0])/numberOfGroovesInXAxis;    
+    var ySlice = (maxs[1] - mins[1])/numberOfGroovesInYAxis;    
     
     var axisText, textPosition;
     //grooves
-    for(i=0; i<numberOfGroovesInXAxis; i++)
+    for(i=0; i<=numberOfGroovesInXAxis; i++)
     {
         axisText = format(mins[0] + i*xSlice);
         textPosition = LEFT + i*xStep;
@@ -137,7 +137,7 @@ function makeScatterplot()
         if(isNaN(mins[0]))
         {
             axisText = uniqueDataX[i];
-            textPosition = LEFT + (i+1)*xStep/2;
+            textPosition = LEFT + i*xStep;
         }
         
         canvas.append("line")
