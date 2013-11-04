@@ -18,10 +18,16 @@ function makeScatterplotMatrix()
     shortTickTextOffsetXAxis = tickTextOffsetXAxis/(numberOfVariables);
     shortTickTextOffsetYAxis = tickTextOffsetYAxis/(numberOfVariables);
     shortYAxisTickTextOffset = yAxisTickTextOffset/numberOfVariables;
-    shortFontSize = fontSize - 2;
+    shortFontSize = fontSize;
     
+    if(numberOfVariables == 3)
+    {
+        shortFontSize = fontSize - 3;
+    }
     if(numberOfVariables > 3)
+    {
         shortFontSize = 0;
+    }
         
     var canvas = d3.select("#svgCanvas");    
     
