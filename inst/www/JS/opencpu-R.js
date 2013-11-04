@@ -203,10 +203,10 @@ function splitData1()
                     }
                 }
             }
+            console.log(variableNames[j]);
+            console.dir(variables);
         }
     }       
-    
-    console.dir(variables);
 }
 
 //Statistics
