@@ -194,6 +194,11 @@ function splitData1()
                 {
                     if(variables[independentVariables[i]]["dataset"][m] == uniqueData[k])
                     {
+                        if(variables[variableNames[j]][uniqueData[k]] == undefined)
+                        {
+                            variables[variableNames[j]][uniqueData[k]] = new Array();
+                        }
+                        
                         variables[variableNames[j]][uniqueData[k]].push(variables[variableNames[j]]["dataset"][m]);
                     }
                 }
