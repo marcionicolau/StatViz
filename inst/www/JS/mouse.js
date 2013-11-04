@@ -61,7 +61,7 @@ function OnMouseDown(e)
         
         console.log(document.getElementsByClassName("completeLines").length);
         console.log(document.getElementsByClassName("means").length);
-        if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means").length))
+        if(document.getElementsByClassName("completeLines").length+1 < (document.getElementsByClassName("means").length))
         {
             console.log("in");
             meanCircle.attr("fill", meanColors["click"]);
@@ -181,7 +181,7 @@ function OnMouseOver(e)
         
         var meanCircle = d3.select("#" + target.id + ".means");
         
-        if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means").length))
+        if(document.getElementsByClassName("completeLines").length+1 < (document.getElementsByClassName("means").length))
         {
             
             meanCircle.attr("cursor","pointer");
