@@ -181,7 +181,7 @@ function OnMouseOver(e)
         
         var meanCircle = d3.select("#" + target.id + ".means");
         
-        if(meanCircle.attr("fill") == meanColors["normal"])
+        if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means").length))
         {
             
             meanCircle.attr("cursor","pointer");
