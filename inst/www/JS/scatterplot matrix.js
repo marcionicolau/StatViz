@@ -64,6 +64,9 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     var canvas = d3.select("#svgCanvas");
     
     y = y + shortHeight;
+
+    var dataX = variables[variableX]["dataset"];
+    var dataY = variables[variableY]["dataset"];
     
     var uniqueDataX = dataX.unique();
     var uniqueDataY = dataY.unique();  
@@ -81,9 +84,6 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
         maxY = MAX[variableY]["dataset"];
         minY = MIN[variableY]["dataset"];
     }
-    
-    var dataX = variables[variableX]["dataset"];
-    var dataY = variables[variableY]["dataset"];
     
     // x-axis
     canvas.append("line")
