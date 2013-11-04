@@ -65,12 +65,22 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     
     y = y + shortHeight;
     
-    //may be you can calculate this in makeScatterPlot()
-    var maxX = MAX[variableX]["dataset"];
-    var minX = MIN[variableX]["dataset"];
+    var uniqueDataX = dataX.unique();
+    var uniqueDataY = dataY.unique();  
     
-    var maxY = MAX[variableY]["dataset"];
-    var minY = MIN[variableY]["dataset"];
+    var minX=0, minY=0, maxX=0, maxY=0;
+    
+    if(uniqueDataX.length > shortNumberOfGrooves)
+    {
+        maxX = MAX[variableX]["dataset"];        
+        minX = MIN[variableX]["dataset"];
+    }
+    
+    if(uniqueDataY.length > shortNumberOfGrooves)
+    {
+        maxY = MAX[variableY]["dataset"];
+        minY = MIN[variableY]["dataset"];
+    }
     
     var dataX = variables[variableX]["dataset"];
     var dataY = variables[variableY]["dataset"];
