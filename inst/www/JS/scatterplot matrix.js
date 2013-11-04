@@ -18,7 +18,7 @@ function makeScatterplotMatrix()
     shortTickTextOffsetXAxis = tickTextOffsetXAxis/(numberOfVariables);
     shortTickTextOffsetYAxis = tickTextOffsetYAxis/(numberOfVariables);
     shortYAxisTickTextOffset = yAxisTickTextOffset/numberOfVariables;
-    shortFontSize = fontSize;
+    shortFontSize = fontSize - 2;
     
     if(numberOfVariables > 3)
         shortFontSize = 0;
