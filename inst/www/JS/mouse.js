@@ -6,6 +6,7 @@ function OnMouseDown(e)
 
     // IE uses srcElement, others use target
     var target = e.target != null ? e.target : e.srcElement;
+    console.log("target: " + e.target.className.baseVal);
    
     // for IE, left click == 1
     // for Firefox, left click == 0
