@@ -80,7 +80,7 @@ function makeScatterplot()
         labels = currentVariableSelection;
     }
     
-    var ids = getValidIds(labels);
+    var ids = stringify(labels);
 
      
     var canvas = d3.select("#svgCanvas");

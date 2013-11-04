@@ -304,3 +304,39 @@ function getOutliers(data, topFringe, bottomFringe)
     }   
     return outliers;
 }
+
+//Loop animation
+function startLoopAnimation(meanCircle)
+{
+    var canvas = d3.select("#svgCanvas");
+        
+    //insert animation
+    var loop = canvas.append("circle")
+                  .attr("cx", meanCircle.attr("cx"))
+                  .attr("cy", meanCircle.attr("cy"))
+                  .attr("r", "0px")
+                  .attr("fill", "none")
+                  .attr("style", "z-index: -1;")
+                  .attr("stroke", "black")
+                  .attr("stroke-width", "2px")				
+                  .attr("class", "loops");
+
+    loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.5").attr("stroke","lightgrey");
+    loop.transition().delay(2500).attr("opacity", "0");
+
+    intervals[meanCircle.attr("id")] = setInterval(function()
+    {						
+       var loop = canvas.append("circle")
+                     .attr("cx", meanCircle.attr("cx"))
+                     .attr("cy", meanCircle.attr("cy"))
+                     .attr("r", "0px")
+                     .attr("fill", "none")
+                     .attr("style", "z-index: -1;")
+                     .attr("stroke", "black")
+                     .attr("stroke-width", "2px")				
+                     .attr("class", "loops");
+
+       loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.5").attr("stroke","lightgrey");
+       loop.transition().delay(2500).attr("opacity", "0");
+    },700);
+}

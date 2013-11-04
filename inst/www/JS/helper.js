@@ -1,35 +1,15 @@
 var format = d3.format(".1f");
-var stringForNumber = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 
-// function init()
-// {
-//     initVariableTypes();
-//     initVariableDataTypes();
-// }
-// 
-// function initVariableTypes()
-// {    
-//     for(var i=0; i<variableNames.length; i++)
-//     {        
-//         variableTypes[variableNames[i]] = "dependent";
-//     }
-// }
-// 
-// function initVariableDataTypes()
-// {    
-//     for(var i=0; i<variableNames.length; i++)
-//     {        
-//         if(typeof(variables[variableNames[i]]["dataset"][0]) == "string")
-//         {           
-//             variableDataTypes[variableNames[i]] = "qualitative";
-//         }
-//         else if(typeof(variables[variableNames[i]]["dataset"][0]) == "number")
-//         {
-//             variableDataTypes[variableNames[i]] = "quantitative";           
-//         }
-//     }
-// }
-        
+//Initialise the mouse event handlers
+function InitializeMouseEventHandlers()
+{
+    document.onmousedown = OnMouseDown;
+    document.onmousemove = OnMouseMove;
+    document.onmouseover = OnMouseOver;
+    document.onmouseout = OnMouseOut;
+}
+
+//Resets SVG canvas, draws plot based on the visualisation selected
 function makePlot()
 {   
     resetSVGCanvas();
@@ -60,27 +40,11 @@ function makePlot()
     }
 }
 
-//Miscellaneous
-
-function remove(id)
-{
-    var element = document.getElementById(id);
-    element.parentNode.removeChild(element);
-}
-
-function removeElementsByClassName(className)
-{
-   elements = document.getElementsByClassName(className);
-   while(elements.length > 0)
-   {
-       elements[0].parentNode.removeChild(elements[0]);
-   }
-}
-
+//Deletes the current SVG canvas and draws an empty canvas 
 function resetSVGCanvas()
 {
       if(document.getElementById("svgCanvas") != null)
-            remove("svgCanvas");
+            removeElementById("svgCanvas");
             
         var svgCanvas = d3.select("#canvas").append("svg");
         
@@ -92,15 +56,34 @@ function resetSVGCanvas()
                                 .attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
 }
 
+//Removes a single element with the given ID
+function removeElementById(id)
+{
+    var element = document.getElementById(id);
+    element.parentNode.removeChild(element);
+}
 
-function addToArray(array, element)
+//Removes all elements with the given classname
+function removeElementsByClassName(className)
+{
+   elements = document.getElementsByClassName(className);
+   while(elements.length > 0)
+   {
+       elements[0].parentNode.removeChild(elements[0]);
+   }
+}
+
+//Adds a given element to an array by maintain unique elements
+function addElementToArrayWithUniqueElements(array, element)
 {   
     var variable = d3.select("#" + element + ".variableNameHolder");
+    
     if(array.indexOf(element) == -1)
     {
         array.push(element);
         variable.attr("fill", panelColors.active);
     }
+    
     else
     {     
         array.splice(array.indexOf(element), 1);
@@ -110,28 +93,8 @@ function addToArray(array, element)
     return array;
 }
 
-function findTicks(number)
-{
-    var factor = 0;
-    if((isPrime(number)) && (number > 10))
-    {
-        number = number + 1;      
-    }
-    
-    //we now have a non-prime number
-    for(var i=1; i<=number/2; i++)
-    {
-        if((number%i == 0) && (number/i <= 10))
-        {
-            factor = i;
-            break;
-        }
-    }
-    
-    return (number/factor)+1;
-};
-
-function toggleFillColors()
+//Manages the fill colors for visualisation-holders
+function toggleFillColorsForVisualizations()
 {
     var visualizations = document.getElementsByClassName("visualizationHolder");
     
@@ -152,26 +115,25 @@ function toggleFillColors()
 
 var toString = Object.prototype.toString;
 
+//Checks if a given object is a string
 function isString(obj)
 {
   return toString.call(obj) == '[object String]';
 }
 
-function processStrings(strings)
-{
-    return strings.replace(".","");
-}
-
-function getNumber(string)
+//Removes alphabets in the given string
+function removeAlphabetsFromString(string)
 {
     return string.replace(/[A-z]/g, '');
 }
 
-function getText(string)
+//Removes numbers in the given string
+function removeNumbersFromString(string)
 {
     return string.replace(/[0-9]/g, '');
 }
 
+//Returns the unique elements of the given array
 Array.prototype.unique = function() {
     var arr = new Array();
     for(var i = 0; i < this.length; i++) {
@@ -182,6 +144,7 @@ Array.prototype.unique = function() {
     return arr; 
 }
 
+//Returns true if the given array contains a particular element
 Array.prototype.contains = function(v) {
    for(var i = 0; i < this.length; i++) {
        if(this[i] === v) return true;
@@ -189,100 +152,32 @@ Array.prototype.contains = function(v) {
    return false;
 };
 
-//Loop animation
-function startLoopAnimation(meanCircle)
+//Returns a set of valid IDs (non-numeric)
+function getValidIds(labels)
 {
-    var canvas = d3.select("#svgCanvas");
-        
-    //insert animation
-    var loop = canvas.append("circle")
-                  .attr("cx", meanCircle.attr("cx"))
-                  .attr("cy", meanCircle.attr("cy"))
-                  .attr("r", "0px")
-                  .attr("fill", "none")
-                  .attr("style", "z-index: -1;")
-                  .attr("stroke", "black")
-                  .attr("stroke-width", "2px")				
-                  .attr("class", "loops");
-
-    loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.5").attr("stroke","lightgrey");
-    loop.transition().delay(2500).attr("opacity", "0");
-
-    intervals[meanCircle.attr("id")] = setInterval(function()
-    {						
-       var loop = canvas.append("circle")
-                     .attr("cx", meanCircle.attr("cx"))
-                     .attr("cy", meanCircle.attr("cy"))
-                     .attr("r", "0px")
-                     .attr("fill", "none")
-                     .attr("style", "z-index: -1;")
-                     .attr("stroke", "black")
-                     .attr("stroke-width", "2px")				
-                     .attr("class", "loops");
-
-       loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.5").attr("stroke","lightgrey");
-       loop.transition().delay(2500).attr("opacity", "0");
-    },700);
-}
-
-//Bin hover
-function highlightBinWithId(ID)
-{
-    var bins = document.getElementsByClassName("bins");
-    var binTexts = document.getElementsByClassName("binTexts");
-    var binTextLines = document.getElementsByClassName("binTexts");
+    var validIds = true;
     
-    for(var i=0; i<bins.length; i++)
-    {    
-        if(getNumber(bins[i].getAttribute("id")) != getNumber(ID))
+    for(var i=0; i<labels.length; i++)
+    {
+        if(isString(labels[i]) == false)
         {
-            bins[i].setAttribute("opacity", "0.25");
-        }
-        else
-        {
-            bins[i].setAttribute("opacity", "1.0");
-            
-            binText = d3.select("#" + bins[i].getAttribute("id") + ".binTexts");
-            binTextLine = d3.select("#" + bins[i].getAttribute("id") + ".binTextLines");
-            
-            if(binText.length > 0)
-            {                
-                binText.attr("display", "inline");
-                if(binTextLine.length > 0)
-                {
-                    binTextLine.attr("display", "inline");
-                }
-            }
-        }
+            validIds = false;
+            break;
+        }            
+    }    
+    
+    if(!validIds)
+    {
+        return convertIntegersToStrings(labels);        
+    }
+    else
+    {
+        return labels;
     }
 }
 
-function unhighlightBins()
-{
-    var bins = document.getElementsByClassName("bins");
-    var binTexts = document.getElementsByClassName("binTexts");
-    var binTextLines = document.getElementsByClassName("binTextLines");
-    
-    for(var i=0; i<bins.length; i++)
-    {   
-        bins[i].setAttribute("opacity", "1.0");
-
-        binTexts = d3.selectAll(".binTexts");
-        binTextLines = d3.selectAll(".binTextLines");
-            
-        if(binTexts.length > 0)
-        {
-            binTexts.attr("display", "none");
-            if(binTextLines.length > 0)
-            {
-                binTextLines.attr("display", "none");
-            }
-        }
-    }
-}
-
-//convert numbers to strings (1:one, 2:two, etc)
-function encodeToStrings(numbers)
+//convert numbers to strings
+function convertIntegersToStrings(numbers)
 {
     var strings = new Array();
     
@@ -301,6 +196,19 @@ function encodeToStrings(numbers)
     return strings;
 }
 
+//returns the length of an object
+function getObjectLength(obj) {
+    var count = 0;
+
+    for(var prop in obj) {
+        if(obj.hasOwnProperty(prop))
+            ++count;
+    }
+
+    return count;
+}
+
+//sorts the selected variables and returns the sorted object
 function getSelectedVariables()
 {
     var means = document.getElementsByClassName("means");
@@ -343,40 +251,7 @@ function getSelectedVariables()
     return variableList; 
 }
 
-function getValidIds(labels)
-{
-    var validIds = true;
-    
-    for(var i=0; i<labels.length; i++)
-    {
-        if(isString(labels[i]) == false)
-        {
-            validIds = false;
-            break;
-        }            
-    }    
-    
-    if(!validIds)
-    {
-        return encodeToStrings(labels);        
-    }
-    else
-    {
-        return labels;
-    }
-}
-
-function getObjectLength(obj) {
-    var count = 0;
-
-    for(var prop in obj) {
-        if(obj.hasOwnProperty(prop))
-            ++count;
-    }
-
-    return count;
-}
-
+//Just the sorting functionality of the above function
 function sort(list)
 {
     var variableList = new Object();

@@ -1,11 +1,3 @@
-function InitializeMouseEventHandlers()
-{
-    document.onmousedown = OnMouseDown;
-    document.onmousemove = OnMouseMove;
-    document.onmouseover = OnMouseOver;
-    document.onmouseout = OnMouseOut;
-}
-
 function OnMouseDown(e)
 {
     // IE is retarded and doesn't pass the event object
@@ -23,23 +15,22 @@ function OnMouseDown(e)
         setup(e, target);        
         
         //add to list of variables selected
-        currentVariableSelection = addToArray(currentVariableSelection, target.id);
+        currentVariableSelection = addElementToArrayWithUniqueElements(currentVariableSelection, target.id);
         
-    
-        console.log("************************************************************************************************************************************************************");
-        
+        //display the current variable selection
+        console.log("************************************************************************************************************************************************************");        
         console.log("\ncurrent variable selection: [" + currentVariableSelection + "]\n");
                             
-        makePlot();
-        toggleFillColors();
+        makePlot(); //checks which plot is selected and draws that plot
+        toggleFillColorsForVisualizations(); //manages the fill colors of vizualizations (only one at a time)
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && ((target.className.baseVal == "visualizationHolder") || (target.className.baseVal == "visualizationHolderText") || (target.className.baseVal == "visualizationHolderImage")))
     {
         setup(e, target);    
         currentVisualizationSelection = target.id;
-        toggleFillColors();
         
+        toggleFillColorsForVisualizations();        
         makePlot();
     }
     
@@ -50,13 +41,7 @@ function OnMouseDown(e)
         var variableSelectionButton = d3.selectAll("#" + target.id + ".variableSelectionButton");
         variableSelectionButton.attr("fill", panelColors["active"]);
         
-        variableTypes[target.id] = "independent";
-        
-//         remove("variable");
-//         remove("visualization");
-//         
-//         d3.select("#canvas").attr("style", "left: 0px;");
-        
+        variableTypes[target.id] = "independent";        
         
         var uniqueData = variables[target.id]["dataset"].unique();        
                 
@@ -259,7 +244,7 @@ function OnMouseOver(e)
                 .attr("x", e.pageX + 10 - (width - canvasWidth))
                 .attr("y", e.pageY + 15)
                 .attr("fill", meanColors["normal"])
-                .text(text[0][getNumber(datapoint.attr("id"))] + ", " + text[1][getNumber(datapoint.attr("id"))])
+                .text(text[0][removeAlphabetsFromString(datapoint.attr("id"))] + ", " + text[1][removeAlphabetsFromString(datapoint.attr("id"))])
                 .attr("class", "hoverText");
                 
         var xLine = canvas.append("line")
@@ -346,8 +331,8 @@ function setup(e, target)
     _startY = e.clientY;
 
     // grab the clicked element's position
-    _offsetX = getNumber(target.style.left);
-    _offsetY = getNumber(target.style.top);      
+    _offsetX = removeAlphabetsFromString(target.style.left);
+    _offsetY = removeAlphabetsFromString(target.style.top);      
 
     // bring the clicked element to the front while it is being dragged
     _oldZIndex = target.style.zIndex;

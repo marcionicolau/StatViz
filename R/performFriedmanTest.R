@@ -1,4 +1,4 @@
-performFriedmanTest <- function(dataset = "")
+performFriedmanTest <- function(dependentVariable, independentVariable)
 {
   url = "http://ww2.coastal.edu/kingw/statistics/R-tutorials/text/groceries.txt";
   

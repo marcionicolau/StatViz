@@ -23,10 +23,7 @@ var _dragElement;           // needs to be passed from OnMouseDown to OnMouseMov
 var _oldZIndex = 0;         // we temporarily increase the z-index during drag	
 
 
-
-var testResults = new Object();
-
-var distributions = new Object();
+var stringForNumber = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
 
 //Significance tests
 var variableDataType = new Object();
@@ -41,3 +38,5 @@ var significanceTestNames = new Object();
     significanceTestNames["rA"] = "Repeated-measures ANOVA";
     significanceTestNames["fT"] = "Friedman Test";
 var currentTestType;
+var testResults = new Object();
+var distributions = new Object();

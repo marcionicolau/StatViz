@@ -10,6 +10,8 @@ function makeHistogram()
     top = canvasHeight/2 - plotHeight/2;
     bottom = canvasHeight/2 + plotHeight/2;
     
+    console.log("top=" + top);
+    
     var data = [];
     var mins = [];
     var maxs = [];
@@ -134,7 +136,7 @@ function makeHistogram()
         }
         
          // Find ticks   
-        var nGroovesY = findTicks(Array.max(binMaxs));    
+        var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));    
         var binSlice = Array.max(binMaxs)/(nGroovesY-1);
     
         // Draw axes
@@ -286,7 +288,7 @@ function makeHistogram()
         }
         
          // Find ticks   
-        var nGroovesY = findTicks(Array.max(binMaxs));    
+        var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));    
         var binSlice = Array.max(binMaxs)/(nGroovesY-1);
     
         // Draw axes
@@ -494,7 +496,7 @@ function makeHistogramWithDensityCurve(left, top, histWidth, histHeight, depende
     var maxBinSize = Array.max(bins);
     
     // Find ticks   
-    var nGroovesY = Math.ceil(findTicks(maxBinSize)*(histWidth/plotWidth)); 
+    var nGroovesY = Math.ceil(findTicksForHistogramFrequencyAxis(maxBinSize)*(histWidth/plotWidth)); 
     
     nGroovesY = nGroovesY < 2 ? 2: nGroovesY;
     var binSlice = maxBinSize/(nGroovesY-1);
@@ -581,4 +583,83 @@ function makeHistogramWithDensityCurve(left, top, histWidth, histHeight, depende
 function getBinCenterX(j)
 {
     return left + j*xStep + xStep/2;
+}
+
+//Returns the largest possible factor for the given number so that there are a maximum of 10 ticks
+function findTicksForHistogramFrequencyAxis(number)
+{
+    var factor = 0;
+    if((isPrime(number)) && (number > 10))
+    {
+        number = number + 1;  //so that we get a non-prime  
+    }
+    
+    //we now have a non-prime number
+    for(var i=1; i<=number/2; i++)
+    {
+        if((number%i == 0) && (number/i <= 10))
+        {
+            factor = i;
+            break;
+        }
+    }
+    
+    return (number/factor)+1;
+}
+
+//On hovering over a bin, highlight that bin
+function highlightBinWithId(ID)
+{
+    var bins = document.getElementsByClassName("bins");
+    var binTexts = document.getElementsByClassName("binTexts");
+    var binTextLines = document.getElementsByClassName("binTexts");
+    
+    for(var i=0; i<bins.length; i++)
+    {    
+        if(removeAlphabetsFromString(bins[i].getAttribute("id")) != getNumber(ID))
+        {
+            bins[i].setAttribute("opacity", "0.25");
+        }
+        else
+        {
+            bins[i].setAttribute("opacity", "1.0");
+            
+            binText = d3.select("#" + bins[i].getAttribute("id") + ".binTexts");
+            binTextLine = d3.select("#" + bins[i].getAttribute("id") + ".binTextLines");
+            
+            if(binText.length > 0)
+            {                
+                binText.attr("display", "inline");
+                if(binTextLine.length > 0)
+                {
+                    binTextLine.attr("display", "inline");
+                }
+            }
+        }
+    }
+}
+
+//On hovering out from a bin, restore the opacity of all bins
+function unhighlightBins()
+{
+    var bins = document.getElementsByClassName("bins");
+    var binTexts = document.getElementsByClassName("binTexts");
+    var binTextLines = document.getElementsByClassName("binTextLines");
+    
+    for(var i=0; i<bins.length; i++)
+    {   
+        bins[i].setAttribute("opacity", "1.0");
+
+        binTexts = d3.selectAll(".binTexts");
+        binTextLines = d3.selectAll(".binTextLines");
+            
+        if(binTexts.length > 0)
+        {
+            binTexts.attr("display", "none");
+            if(binTextLines.length > 0)
+            {
+                binTextLines.attr("display", "none");
+            }
+        }
+    }
 }

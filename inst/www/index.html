@@ -52,7 +52,7 @@
             function renderVariableNames(variableNames)
             {   
                 var variablePanel = d3.select("#variable.panel");                
-                var variablePanelWidth = getNumber(variablePanel.style("width")) - variableSelectionButtonWidth;
+                var variablePanelWidth = removeAlphabetsFromString(variablePanel.style("width")) - variableSelectionButtonWidth;
                 
                 var variableNameHolderPadding = 15;
                 var radius = "15px";
@@ -69,9 +69,7 @@
                                             .attr("top", variablePanel.style("top"));  
                 
                 for(var i=0; i<variableNames.length; i++)
-                {
-                    variableNames[i] = processStrings(variableNames[i]);//this makes the variable names 'id' compatible
-                    
+                {                    
                     variablePanelSVG.append("rect")
                                                     .attr("x", variableNameHolderPadding)
                                                     .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding))                                                   
@@ -114,7 +112,7 @@
                 
                 var visualizationHolderPadding = 15;
                 var radius = "15px";
-                var visualizationHolderHeight = getNumber(visualizationPanelHeight) - 2*visualizationHolderPadding;                
+                var visualizationHolderHeight = removeAlphabetsFromString(visualizationPanelHeight) - 2*visualizationHolderPadding;                
                 
                 var visualizationPanelSVG = visualizationPanel.append("svg");                
                 visualizationPanelSVG.attr("id","visualizationPanelSVG")
@@ -125,7 +123,7 @@
                 
                 var visualizations = ["Histogram", "Boxplot", "Scatterplot", "Scatterplot-matrix"];
                 
-                var visualizationHolderWidth = (getNumber(visualizationPanelWidth) - (visualizations.length+1)*visualizationHolderPadding)/(visualizations.length);
+                var visualizationHolderWidth = (removeAlphabetsFromString(visualizationPanelWidth) - (visualizations.length+1)*visualizationHolderPadding)/(visualizations.length);
                 
                 for(var i=0; i<visualizations.length; i++)
                 {                    
