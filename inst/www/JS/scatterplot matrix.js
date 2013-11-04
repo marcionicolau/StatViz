@@ -73,13 +73,13 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     
     var minX=0, minY=0, maxX=0, maxY=0;
     
-    if(uniqueDataX.length > shortNumberOfGrooves)
+    if(!isNaN(dataX[0]))
     {
         maxX = MAX[variableX]["dataset"];        
         minX = MIN[variableX]["dataset"];
     }
     
-    if(uniqueDataY.length > shortNumberOfGrooves)
+    if(!isNaN(dataY[0]))
     {
         maxY = MAX[variableY]["dataset"];
         minY = MIN[variableY]["dataset"];
