@@ -8,7 +8,7 @@ function makeScatterplotMatrix()
     var variableList = sort(currentVariableSelection);
     
     //any number of dependent variables -> should work
-    var numberOfVariables = variableList["dependent"].length;
+    var numberOfVariables = currentVariableSelection.length;
     
     // Scatterplot matrix
     shortAxesOffset = axesOffset/numberOfVariables;
@@ -45,7 +45,7 @@ function makeScatterplotMatrix()
                             .attr("y", TOP + i*((plotHeight/numberOfVariables) + shortAxesOffset + shortTickTextOffsetXAxis) + ((plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis))/2)
                             .attr("text-anchor", "middle")
                             .attr("fill","crimson")
-                            .text(variableList["dependent"][i]);
+                            .text(currentVariableSelection[i]);
                 }
             }
         }
