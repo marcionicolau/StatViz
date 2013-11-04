@@ -129,7 +129,7 @@ function makeScatterplot()
     
     var axisText, textPosition;
     //grooves
-    for(i=0; i<=numberOfGroovesInXAxis; i++)
+    for(i=0; i<numberOfGroovesInXAxis; i++)
     {
         axisText = format(mins[0] + i*xSlice);
         textPosition = LEFT + i*xStep;
@@ -158,7 +158,7 @@ function makeScatterplot()
                     .attr("class", "xAxisGrooveText");
     }
     
-    for(i=0; i<=numberOfGroovesInYAxis; i++)
+    for(i=0; i<numberOfGroovesInYAxis; i++)
     {
         axisText = format(mins[1] + i*ySlice);
         textPosition = BOTTOM - i*yStep;                  
