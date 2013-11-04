@@ -42,7 +42,8 @@ function isPrime(num)
 function findIQR(values)
 {
     values.sort( function(a,b) {return a - b;} );
-    var half1, half2;
+    var half1 = new Array();
+    var half2 = new Array();
     if(values.length % 2)
     {
         //odd
