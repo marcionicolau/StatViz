@@ -52,14 +52,19 @@ function findIQR(values)
         //odd
         for(var i=0; i<(values.length)/2; i++)
             half1.push(values[i]);
-        for(var i=(values.length/2)+1; i<values.length; i++)
+            
+        for(var i=((values.length)/2)+1; i<values.length; i++)
+        {   
+            console.log(values[i]);
             half2.push(values[i]);
+        }
     }
     else
     {
         //even
         for(var i=0; i<(values.length)/2; i++)
             half1.push(values[i]);
+            
         for(var i=values.length/2; i<values.length; i++)
             half2.push(values[i]);
     }
