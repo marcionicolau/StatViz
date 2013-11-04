@@ -108,6 +108,10 @@ function OnMouseDown(e)
             {
                 compareMeans();
             }
+            else
+            {
+                _dragElement.setAttribute("fill", meanColors["normal"]);
+            }
         }   
     }
 }
