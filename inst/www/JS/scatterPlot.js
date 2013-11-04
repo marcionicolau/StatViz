@@ -117,8 +117,8 @@ function makeScatterplot()
     var numberOfGroovesInYAxis = uniqueDataY.length > numberOfGrooves ? numberOfGrooves : uniqueDataY.length;
     
     //y-axis grooves
-    var xStep = isNaN(mins[0]) ? plotWidth/numberOfGroovesInXAxis : plotWidth/(numberOfGroovesInXAxis - 1);
-    var yStep = isNaN(mins[1]) ? plotHeight/numberOfGroovesInYAxis : plotHeight/(numberOfGroovesInYAxis - 1);
+    var xStep = uniqueDataX.length <= numberOfGrooves ? plotWidth/numberOfGroovesInXAxis : plotWidth/(numberOfGroovesInXAxis - 1);
+    var yStep = uniqueDataY.length <= numberOfGrooves ? plotHeight/numberOfGroovesInYAxis : plotHeight/(numberOfGroovesInYAxis - 1);
     
     var xSlice = (maxs[0] - mins[0])/(numberOfGroovesInXAxis - 1);    
     var ySlice = (maxs[1] - mins[1])/(numberOfGroovesInYAxis - 1);    
@@ -130,7 +130,7 @@ function makeScatterplot()
         axisText = format(mins[0] + i*xSlice);
         textPosition = LEFT + i*xStep;
         
-        if(isNaN(mins[0]))
+        if(uniqueDataX.length <= numberOfGrooves)
         {
             axisText = uniqueDataX[i];
             textPosition = LEFT + xStep/2 + i*xStep;
@@ -159,7 +159,7 @@ function makeScatterplot()
         axisText = format(mins[1] + i*ySlice);
         textPosition = BOTTOM - i*yStep;                  
         
-        if(isNaN(mins[1]))
+        if(uniqueDataY.length <= numberOfGrooves)
         {
             axisText = uniqueDataY[i];
             textPosition = BOTTOM - yStep/2 - i*yStep;                    
@@ -183,17 +183,31 @@ function makeScatterplot()
                     .attr("class", "yAxisGrooveText");
     }
     
-    // for(var i=0; i<data[0].length; i++)
-//     {
-//         var color = currentVariableSelection.length > 2 ? colorsForPlot[data[2]] : "black";        
-//         canvas.append("circle")
-//                     .attr("cx", LEFT + getValue1(data[0][i], 0)*plotWidth)
-//                     .attr("cy", BOTTOM - getValue1(data[1][i], 1)*plotHeight)
-//                     .attr("r", datapointRadius)
-//                     .attr("fill", color)
-//                     .attr("id", "data" + i)
-//                     .attr("class", "datapoints");     
-//     }
+    for(var i=0; i<data[0].length; i++)
+    {
+        var x,y;
+        
+        if(uniqueDataX.length <= numberOfGrooves)
+            x = LEFT + uniqueDataX.indexOf(data[0][i])*xStep + xStep/2;    
+        else
+            x = LEFT + getValue1(data[0][i], 0)*plotWidth;
+            
+        if(uniqueDataY.length <= numberOfGrooves)
+            y = BOTTOM - uniqueDataY.indexOf(data[1][i])*yStep - yStep/2;
+        else
+            y = BOTTOM - getValue1(data[1][i], 1)*plotHeight;
+        
+        
+        var color = currentVariableSelection.length > 2 ? colorsForPlot[data[2]] : "black";        
+        
+        canvas.append("circle")
+                    .attr("cx", x)
+                    .attr("cy", y)
+                    .attr("r", datapointRadius)
+                    .attr("fill", color)
+                    .attr("id", "data" + i)
+                    .attr("class", "datapoints");     
+    }
 }
 
 function getValue1(number, type)
