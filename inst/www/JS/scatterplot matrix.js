@@ -14,7 +14,7 @@ function makeScatterplotMatrix()
     shortAxesOffset = axesOffset/numberOfVariables;
     shortTickLength = tickLength/numberOfVariables;
     shortDataPointRadius = datapointRadius/numberOfVariables < 1 ? 1 : datapointRadius/numberOfVariables;
-    shortNumberOfGrooves = Math.ceil(numberOfGrooves/(numberOfVariables * 1.5));
+    shortNumberOfGrooves = Math.ceil(numberOfGrooves/(numberOfVariables * 1.5)) < 7 ? 7 : Math.ceil(numberOfGrooves/(numberOfVariables * 1.5));
     shortTickTextOffsetXAxis = tickTextOffsetXAxis/(numberOfVariables);
     shortTickTextOffsetYAxis = tickTextOffsetYAxis/(numberOfVariables);
     shortYAxisTickTextOffset = yAxisTickTextOffset/numberOfVariables;
@@ -92,8 +92,8 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     var uniqueDataX = dataX.unique();
     var uniqueDataY = dataY.unique();  
     
-    var numberOfGroovesInXAxis = uniqueDataX.length > 5 ? shortNumberOfGrooves : uniqueDataX.length;
-    var numberOfGroovesInYAxis = uniqueDataY.length > 5 ? shortNumberOfGrooves : uniqueDataY.length;
+    var numberOfGroovesInXAxis = uniqueDataX.length > shortNumberOfGrooves ? shortNumberOfGrooves : uniqueDataX.length;
+    var numberOfGroovesInYAxis = uniqueDataY.length > shortNumberOfGrooves ? shortNumberOfGrooves : uniqueDataY.length;
     
     //y-axis grooves
     var xStep = uniqueDataX.length <= numberOfGrooves ? shortWidth/numberOfGroovesInXAxis : shortWidth/(numberOfGroovesInXAxis - 1);
