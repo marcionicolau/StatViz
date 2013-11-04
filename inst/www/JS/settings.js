@@ -1,7 +1,7 @@
 // Data
 var dataset = "mtcars";
 
-var fileName = "news-sports-business.txt";//"cars-mod.txt"; 
+var fileName = "cars-mod.txt"; //"news-sports-business.txt";
 var pathToFile = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/" + fileName;
 
 var experimentalDesign = "between-groups";
