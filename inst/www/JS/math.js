@@ -51,7 +51,7 @@ function findIQR(values)
     if(values.length % 2)
     {
         //odd
-        for(var i=0; i<(values.length)/2; i++)
+        for(var i=0; i<((values.length)/2); i++)
             half1.push(values[i]);
             
         for(var i=((values.length)/2)+1; i<values.length; i++)
@@ -63,7 +63,7 @@ function findIQR(values)
     else
     {
         //even
-        for(var i=0; i<(values.length)/2; i++)
+        for(var i=0; i<((values.length)/2); i++)
             half1.push(values[i]);
             
         for(var i=values.length/2; i<values.length; i++)
