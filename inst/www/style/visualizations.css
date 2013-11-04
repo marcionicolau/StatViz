@@ -13,12 +13,12 @@
     stroke: black;
 }
 
-.topFringeConnectors,.bottomFringeConnectors
+.TOPFringeConnectors,.BOTTOMFringeConnectors
 {
     stroke: grey;
 }
 
-.topFringes, .bottomFringes
+.TOPFringes, .BOTTOMFringes
 {
     stroke: black;
 }
