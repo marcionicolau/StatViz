@@ -50,13 +50,13 @@ function findIQR(values)
     var half2 = new Array();
     if(values.length % 2)
     {
-        var x = values.length/2;
+        var x = Math.ceil(values.length/2);
         console.log("x = " + x);
         //odd
-        for(var i=0; i<((values.length)/2); i++)
+        for(var i=0; i<Math.ceil(values.length/2); i++)
             half1.push(values[i]);
             
-        for(var i=((values.length)/2)+1; i<values.length; i++)
+        for(var i=Math.ceil(values.length/2) + 1; i<values.length; i++)
         {   
             console.log(values[i]);
             half2.push(values[i]);
@@ -65,10 +65,10 @@ function findIQR(values)
     else
     {
         //even
-        for(var i=0; i<((values.length)/2); i++)
+        for(var i=0; i<Math.ceil(values.length/2); i++)
             half1.push(values[i]);
             
-        for(var i=values.length/2; i<values.length; i++)
+        for(var i=Math.ceil(values.length/2); i<values.length; i++)
             half2.push(values[i]);
     }
     
