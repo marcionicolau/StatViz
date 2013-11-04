@@ -4,17 +4,17 @@ var min;
 var data;
 var iqr;
 
-var topFringe;
-var bottomFringe;
+var TOPFringe;
+var BOTTOMFringe;
 
 function makeBoxplot()
 {
     //boundaries    
-    var left = canvasWidth/2 - plotWidth/2;
-    var right = canvasWidth/2 + plotWidth/2;
+    var LEFT = canvasWidth/2 - plotWidth/2;
+    var RIGHT = canvasWidth/2 + plotWidth/2;
     
-    var top = canvasHeight/2 - plotHeight/2;
-    var bottom = canvasHeight/2 + plotHeight/2;
+    var TOP = canvasHeight/2 - plotHeight/2;
+    var BOTTOM = canvasHeight/2 + plotHeight/2;
     
     
     var altBoxPlot = false;
@@ -107,19 +107,19 @@ function makeBoxplot()
     // Draw axes
         
     var xAxis = canvas.append("line")
-                                    .attr("x1", left)
-                                    .attr("y1", bottom + axesOffset)
-                                    .attr("x2", right)
-                                    .attr("y2", bottom + axesOffset) 
+                                    .attr("x1", LEFT)
+                                    .attr("y1", BOTTOM + axesOffset)
+                                    .attr("x2", RIGHT)
+                                    .attr("y2", BOTTOM + axesOffset) 
                                     .attr("stroke", "black")
                                     .attr("id", "xAxis")
                                     .attr("class", "axes");
     
     var yAxis = canvas.append("line")
-                                    .attr("x1", left - axesOffset)
-                                    .attr("y1", top)
-                                    .attr("x2", left - axesOffset)
-                                    .attr("y2", bottom)
+                                    .attr("x1", LEFT - axesOffset)
+                                    .attr("y1", TOP)
+                                    .attr("x2", LEFT - axesOffset)
+                                    .attr("y2", BOTTOM)
                                     .attr("stroke", "black")
                                     .attr("id", "yAxis")
                                     .attr("class", "axes");
@@ -147,16 +147,16 @@ function makeBoxplot()
     for(i=0; i<nGroovesX; i++)
     {
         canvas.append("line")
-                    .attr("x1", left + i*xStep + xStep/2)
-                    .attr("y1", bottom  + axesOffset)
-                    .attr("x2", left + i*xStep + xStep/2)
-                    .attr("y2", bottom + 10 + axesOffset)
+                    .attr("x1", LEFT + i*xStep + xStep/2)
+                    .attr("y1", BOTTOM  + axesOffset)
+                    .attr("x2", LEFT + i*xStep + xStep/2)
+                    .attr("y2", BOTTOM + 10 + axesOffset)
                     .attr("id", ids[i])
                     .attr("class", "xAxisGrooves");
     
         canvas.append("text")
-                    .attr("x", left + i*xStep + xStep/2)
-                    .attr("y", bottom + tickTextOffsetXAxis + axesOffset)                    
+                    .attr("x", LEFT + i*xStep + xStep/2)
+                    .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
                     .text(labels[i])
                     .attr("fill", "black")
                     .attr("text-anchor", "middle")
@@ -171,16 +171,16 @@ function makeBoxplot()
     for(i=0; i<nGroovesY; i++)
     {
         canvas.append("line")
-                    .attr("x1", left - 10 - axesOffset)
-                    .attr("y1", bottom - i*yStep)
-                    .attr("x2", left - axesOffset)
-                    .attr("y2", bottom - i*yStep)
+                    .attr("x1", LEFT - 10 - axesOffset)
+                    .attr("y1", BOTTOM - i*yStep)
+                    .attr("x2", LEFT - axesOffset)
+                    .attr("y2", BOTTOM - i*yStep)
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", left - tickTextOffsetYAxis - axesOffset)
-                    .attr("y", bottom - i*yStep + yAxisTickTextOffset)                    
+                    .attr("x", LEFT - tickTextOffsetYAxis - axesOffset)
+                    .attr("y", BOTTOM - i*yStep + yAxisTickTextOffset)                    
                     .text(format(min + i*slice))
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
@@ -195,8 +195,8 @@ function makeBoxplot()
         var rectTop = (medians[i] + iqrs[i]/2) > max ? max : (medians[i] + iqrs[i]/2);
         
         canvas.append("rect")
-                    .attr("x", left + i*widthSlice - boxWidth/2 + xStep/2)
-                    .attr("y", bottom - getFraction(rectTop)*plotHeight)
+                    .attr("x", LEFT + i*widthSlice - boxWidth/2 + xStep/2)
+                    .attr("y", BOTTOM - getFraction(rectTop)*plotHeight)
                     .attr("height", getFraction(rectTop)*plotHeight - getFraction(rectBottom)*plotHeight)
                     .attr("width", boxWidth)
                     .attr("fill", boxColors["normal"])
@@ -206,65 +206,65 @@ function makeBoxplot()
                 
         // median
         canvas.append("line")
-                    .attr("x1", left + i*widthSlice - boxWidth/2 + xStep/2)
-                    .attr("y1", bottom - getFraction(medians[i])*plotHeight)
-                    .attr("x2", left + i*widthSlice + boxWidth/2 + xStep/2)
-                    .attr("y2", bottom - getFraction(medians[i])*plotHeight)
+                    .attr("x1", LEFT + i*widthSlice - boxWidth/2 + xStep/2)
+                    .attr("y1", BOTTOM - getFraction(medians[i])*plotHeight)
+                    .attr("x2", LEFT + i*widthSlice + boxWidth/2 + xStep/2)
+                    .attr("y2", BOTTOM - getFraction(medians[i])*plotHeight)
                     .attr("id", ids[i])
                     .attr("class", "medians");
     
         //end fringes
-        bottomFringe = (medians[i] - 1.5*iqrs[i]) < min ? min : (medians[i] - 1.5*iqrs[i]);
-        topFringe = (medians[i] + 1.5*iqrs[i]) > max ? max : (medians[i] + 1.5*iqrs[i]);
+        BOTTOMFringe = (medians[i] - 1.5*iqrs[i]) < min ? min : (medians[i] - 1.5*iqrs[i]);
+        TOPFringe = (medians[i] + 1.5*iqrs[i]) > max ? max : (medians[i] + 1.5*iqrs[i]);
     
         canvas.append("line")
                     .attr("x1", canvasWidth/2 - boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("y1", bottom - getFraction(topFringe)*plotHeight)
+                    .attr("y1", BOTTOM - getFraction(TOPFringe)*plotHeight)
                     .attr("x2", canvasWidth/2 + boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("y2", bottom - getFraction(topFringe)*plotHeight)
+                    .attr("y2", BOTTOM - getFraction(TOPFringe)*plotHeight)
                     .attr("id", ids[i])
-                    .attr("class", "topFringes");
+                    .attr("class", "TOPFringes");
     
         canvas.append("line")
                     .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("y1", bottom - getFraction(topFringe)*plotHeight)
+                    .attr("y1", BOTTOM - getFraction(TOPFringe)*plotHeight)
                     .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("y2", bottom- getFraction(medians[i] + iqrs[i]/2)*plotHeight)
+                    .attr("y2", BOTTOM- getFraction(medians[i] + iqrs[i]/2)*plotHeight)
                     .attr("id", ids[i])
-                    .attr("class", "topFringeConnectors");    
+                    .attr("class", "TOPFringeConnectors");    
     
         canvas.append("line")
                     .attr("x1", canvasWidth/2 - boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("y1", bottom - getFraction(bottomFringe)*plotHeight)
+                    .attr("y1", BOTTOM - getFraction(BOTTOMFringe)*plotHeight)
                     .attr("x2", canvasWidth/2 + boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("y2", bottom - getFraction(bottomFringe)*plotHeight)
+                    .attr("y2", BOTTOM - getFraction(BOTTOMFringe)*plotHeight)
                     .attr("id", ids[i])
-                    .attr("class", "bottomFringes");
+                    .attr("class", "BOTTOMFringes");
                 
         canvas.append("line")
                     .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("y1", bottom - getFraction(bottomFringe)*plotHeight)
+                    .attr("y1", BOTTOM - getFraction(BOTTOMFringe)*plotHeight)
                     .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("y2", bottom - getFraction(rectBottom)*plotHeight)
+                    .attr("y2", BOTTOM - getFraction(rectBottom)*plotHeight)
                     .attr("id", ids[i])
-                    .attr("class", "bottomFringeConnectors");
+                    .attr("class", "BOTTOMFringeConnectors");
     
         canvas.append("circle")
                     .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("cy", bottom - getFraction(means[i])*plotHeight)
+                    .attr("cy", BOTTOM - getFraction(means[i])*plotHeight)
                     .attr("r", meanRadius)
                     .attr("fill", meanColors["normal"])
                     .attr("style", "z-index: 5;")
                     .attr("id", ids[i])
                     .attr("class", "means");
     
-        var outliers = getOutliers(data[i], topFringe, bottomFringe);
+        var outliers = getOutliers(data[i], TOPFringe, BOTTOMFringe);
             
         for(var j=0; j<outliers.length; j++)
         {
             canvas.append("circle")
                     .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("cy", bottom - getFraction(outliers[j])*plotHeight)
+                    .attr("cy", BOTTOM - getFraction(outliers[j])*plotHeight)
                     .attr("r", outlierRadius)
                     .attr("id", ids[i])
                     .attr("class", "outliers");
@@ -291,13 +291,13 @@ function getValue(fraction)
     return (fraction*(max - min)) + min;
 }
 
-function getOutliers(data, topFringe, bottomFringe)
+function getOutliers(data, TOPFringe, BOTTOMFringe)
 {
     var outliers = [];
     
     for(var i=0; i<data.length; i++)
     {
-        if((data[i] > (topFringe) )|| (data[i] < (bottomFringe) ))
+        if((data[i] > (TOPFringe) )|| (data[i] < (BOTTOMFringe) ))
         {
             outliers.push(data[i]);
         }

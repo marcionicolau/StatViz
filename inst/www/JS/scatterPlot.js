@@ -6,11 +6,11 @@ var maxs = [];
 function makeScatterplot()
 {   
     //boundaries    
-    var left = canvasWidth/2 - plotWidth/2;
-    var right = canvasWidth/2 + plotWidth/2;
+    var LEFT = canvasWidth/2 - plotWidth/2;
+    var RIGHT = canvasWidth/2 + plotWidth/2;
     
-    var top = canvasHeight/2 - plotHeight/2;
-    var bottom = canvasHeight/2 + plotHeight/2;
+    var TOP = canvasHeight/2 - plotHeight/2;
+    var BOTTOM = canvasHeight/2 + plotHeight/2;
     
     var data = [];    
     
@@ -88,19 +88,19 @@ function makeScatterplot()
     // Draw axes
         
     var xAxis = canvas.append("line")
-                                    .attr("x1", left)
-                                    .attr("y1", bottom + axesOffset)
-                                    .attr("x2", right)
-                                    .attr("y2", bottom + axesOffset) 
+                                    .attr("x1", LEFT)
+                                    .attr("y1", BOTTOM + axesOffset)
+                                    .attr("x2", RIGHT)
+                                    .attr("y2", BOTTOM + axesOffset) 
                                     .attr("stroke", "black")
                                     .attr("id", "xAxis")
                                     .attr("class", "axes");
     
     var yAxis = canvas.append("line")
-                                    .attr("x1", left - axesOffset)
-                                    .attr("y1", top)
-                                    .attr("x2", left - axesOffset)
-                                    .attr("y2", bottom)
+                                    .attr("x1", LEFT - axesOffset)
+                                    .attr("y1", TOP)
+                                    .attr("x2", LEFT - axesOffset)
+                                    .attr("y2", BOTTOM)
                                     .attr("stroke", "black")
                                     .attr("id", "yAxis")
                                     .attr("class", "axes");
@@ -120,16 +120,16 @@ function makeScatterplot()
     for(i=0; i<numberOfGrooves; i++)
     {
         canvas.append("line")
-                    .attr("x1", left + i*xStep)
-                    .attr("y1", bottom + axesOffset)
-                    .attr("x2", left + i*xStep)
-                    .attr("y2", bottom + 10 + axesOffset)
+                    .attr("x1", LEFT + i*xStep)
+                    .attr("y1", BOTTOM + axesOffset)
+                    .attr("x2", LEFT + i*xStep)
+                    .attr("y2", BOTTOM + 10 + axesOffset)
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", left + i*xStep)
-                    .attr("y", bottom + tickTextOffsetXAxis + axesOffset)                    
+                    .attr("x", LEFT + i*xStep)
+                    .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
                     .text(format(mins[0] + i*xSlice))
                     .attr("font-size", fontSize + "px")
                     .attr("text-anchor", "middle")
@@ -140,16 +140,16 @@ function makeScatterplot()
     for(i=0; i<numberOfGrooves; i++)
     {
         canvas.append("line")
-                    .attr("x1", left - 10 - axesOffset)
-                    .attr("y1", bottom - i*yStep)
-                    .attr("x2", left  - axesOffset)
-                    .attr("y2", bottom - i*yStep)
+                    .attr("x1", LEFT - 10 - axesOffset)
+                    .attr("y1", BOTTOM - i*yStep)
+                    .attr("x2", LEFT  - axesOffset)
+                    .attr("y2", BOTTOM - i*yStep)
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", left - tickTextOffsetYAxis - axesOffset)
-                    .attr("y", bottom - i*yStep + yAxisTickTextOffset)                    
+                    .attr("x", LEFT - tickTextOffsetYAxis - axesOffset)
+                    .attr("y", BOTTOM - i*yStep + yAxisTickTextOffset)                    
                     .text(format(mins[1] + i*ySlice))
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
@@ -160,8 +160,8 @@ function makeScatterplot()
     {
         var color = currentVariableSelection.length > 2 ? colorsForPlot[data[2]] : "black";        
         canvas.append("circle")
-                    .attr("cx", left + getValue1(data[0][i], 0)*plotWidth)
-                    .attr("cy", bottom - getValue1(data[1][i], 1)*plotHeight)
+                    .attr("cx", LEFT + getValue1(data[0][i], 0)*plotWidth)
+                    .attr("cy", BOTTOM - getValue1(data[1][i], 1)*plotHeight)
                     .attr("r", datapointRadius)
                     .attr("fill", color)
                     .attr("id", "data" + i)

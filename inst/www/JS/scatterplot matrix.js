@@ -25,8 +25,8 @@ function makeScatterplotMatrix()
         
     var canvas = d3.select("#svgCanvas");    
     
-    var left = canvasWidth/2 - plotWidth/2;
-    var top = canvasHeight/2 - plotHeight/2;
+    var LEFT = canvasWidth/2 - plotWidth/2;
+    var TOP = canvasHeight/2 - plotHeight/2;
     
     if(numberOfVariables >= 2)
     {
@@ -37,12 +37,12 @@ function makeScatterplotMatrix()
             for(var j=0; j<numberOfVariables; j++)
             {
                 if(i != j)
-                    makeScatterPlotAt(left + j*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis), top + i*((plotHeight/numberOfVariables) + shortAxesOffset + shortTickTextOffsetXAxis), (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), variableList["dependent"][j], variableList["dependent"][i]); 
+                    makeScatterPlotAt(LEFT + j*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis), TOP + i*((plotHeight/numberOfVariables) + shortAxesOffset + shortTickTextOffsetXAxis), (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), variableList["dependent"][j], variableList["dependent"][i]); 
                 else
                 {
                     canvas.append("text")
-                            .attr("x", left + j*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis) + ((plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis))/2)
-                            .attr("y", top + i*((plotHeight/numberOfVariables) + shortAxesOffset + shortTickTextOffsetXAxis) + ((plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis))/2)
+                            .attr("x", LEFT + j*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis) + ((plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis))/2)
+                            .attr("y", TOP + i*((plotHeight/numberOfVariables) + shortAxesOffset + shortTickTextOffsetXAxis) + ((plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis))/2)
                             .attr("text-anchor", "middle")
                             .attr("fill","crimson")
                             .text(variableList["dependent"][i]);
