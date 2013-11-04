@@ -187,7 +187,7 @@ function OnMouseOver(e)
             meanCircle.attr("cursor","pointer");
         
             //change color of the mean circle
-            if(meanCircle.attr("fill") == meanColors["click"])
+            if(meanCircle.attr("fill") == meanColors["normal"])
                 meanCircle.attr("fill", meanColors["hover"]);
             
             startLoopAnimation(meanCircle);
