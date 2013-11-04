@@ -137,7 +137,7 @@ function makeScatterplot()
         if(isNaN(mins[0]))
         {
             axisText = uniqueDataX[i];
-            textPosition = LEFT + (i+1)*xStep/2;
+            textPosition = LEFT + xStep/2 + i*xStep;
         }
         
         canvas.append("line")
@@ -166,7 +166,7 @@ function makeScatterplot()
         if(isNaN(mins[1]))
         {
             axisText = uniqueDataY[i];
-            textPosition = BOTTOM - (i+1)*yStep/2;                    
+            textPosition = BOTTOM - yStep/2 - i*yStep;                    
         }
         
         var axisText = isNaN(mins[1]) ? uniqueDataY[i] : format(mins[1] + i*ySlice);
