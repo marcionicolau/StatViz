@@ -76,7 +76,7 @@ function OnMouseDown(e)
             
             var completeLines = d3.selectAll(".completeLines");
             
-            if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means").length - 1))
+            if(document.getElementsByClassName("completeLines").length < document.getElementsByClassName("means").length)
             {
                 var canvas = d3.select("#svgCanvas");
                 canvas.append("line")
