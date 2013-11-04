@@ -171,7 +171,7 @@ function splitDataByColumnName(dataset, columnName, value)
 
 function splitData1()
 {
-    var variableList = getVariableSelection();    
+    var variableList = getSelectedVariables();    
     console.dir(variableList);
     
     for(var i=0; i<variableList["independent"].length; i++)
