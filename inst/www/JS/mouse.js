@@ -58,6 +58,8 @@ function OnMouseDown(e)
         var meanCircle = d3.selectAll("#" + target.id + ".means");
         
         
+        console.log(document.getElementsByClassName("completeLines").length);
+        console.log(document.getElementsByClassName("means").length);
         if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means").length))
         {
             console.log("in");
