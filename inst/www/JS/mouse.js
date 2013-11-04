@@ -83,7 +83,7 @@ function OnMouseDown(e)
             
             var completeLines = d3.selectAll(".completeLines");
             
-            if(document.getElementsByClassName("completeLines").length < document.getElementsByClassName("means").length)
+            if(document.getElementsByClassName("completeLines").length+1 < document.getElementsByClassName("means").length)
             {
                 var canvas = d3.select("#svgCanvas");
                 canvas.append("line")
@@ -187,7 +187,8 @@ function OnMouseOver(e)
             meanCircle.attr("cursor","pointer");
         
             //change color of the mean circle
-            meanCircle.attr("fill", meanColors["hover"]);
+            if(meanCircle.attr("fill") == meanColors["click"])
+                meanCircle.attr("fill", meanColors["hover"]);
             
             startLoopAnimation(meanCircle);
             
