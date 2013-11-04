@@ -449,10 +449,10 @@ function performANOVA(dependentVariable, independentVariable)
                     independentVariable: independentVariable                   
                   }, function(output) {                                                   
                   
-                  console.log("\t\t ANOVA for (" + dependentVariable + " ~ " + independentVariable + ")");
+                  console.log("\t\t One-way ANOVA for (" + dependentVariable + " ~ " + independentVariable + ")");
                   console.log("\t\t\t F = " + output.F);
                   console.log("\t\t\t p = " + output.p);
-                  console.log("\t\t\t method used= ANOVA"); //todo
+                  console.log("\t\t\t method used = One-wayANOVA"); //todo
                   console.log("\t\t\t DF = " + output.DOF);
                   
                   testResults["F"] = output.F;
