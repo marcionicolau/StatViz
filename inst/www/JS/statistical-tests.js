@@ -13,7 +13,6 @@ function compareMeans()
                     var variableList = getSelectedVariables();
                     loadAssumptionCheckList();
                     
-                    //this should tell us about the sample size (is it small => non-parametric test), type of variable (ordinal => non-parametric test), dependent/independent (paired/unpaired test)                    
                     var sampleSize = variables[variableList["dependent"][0]][variableList["independent-levels"][0]].length;
                     
                     if(sampleSize < 20)

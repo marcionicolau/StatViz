@@ -187,26 +187,53 @@ function performHomoscedasticityTest(dependent, independent)
                 
                 variableList = getSelectedVariables();
                 
-                if(output.p < 0.05)
+                if(variableList["independent-levels"].length > 2)
                 {
-                  d3.select("#homogeneity.crosses").attr("display", "inline");                 
+                    if(output.p < 0.05)
+                    {
+                      d3.select("#homogeneity.crosses").attr("display", "inline");                  
                   
-                  performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE");
-                }
-                else
-                {   
-                    //equal variances
-                    d3.select("#homogeneity.ticks").attr("display","inline");
-                    
-                    
-                    if(experimentalDesign == "between-groups")
-                    {                        
-                        performMannWhitneyTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]]);
+                      //Welch's ANOVA
+                      performWelchANOVA(variableList["dependent"][0], variableList["independent"][0]);
                     }
                     else
+                    {   
+                        //equal variances
+                        d3.select("#homogeneity.ticks").attr("display","inline");
+                    
+                        if(experimentalDesign == "between-groups")
+                        {
+                            performKruskalWallisTest(variableList["dependent"][0], variableList["independent"][0]);
+                        }
+                        else
+                        {
+                            console.log("Friedman's Test");
+                        }                                        
+                    }
+                }
+                else
+                {  
+                    if(output.p < 0.05)
                     {
-                        performWilcoxonTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]]);
-                    }                                        
+                      d3.select("#homogeneity.crosses").attr("display", "inline");                 
+                  
+                      performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE");
+                    }
+                    else
+                    {   
+                        //equal variances
+                        d3.select("#homogeneity.ticks").attr("display","inline");
+                    
+                    
+                        if(experimentalDesign == "between-groups")
+                        {                        
+                            performMannWhitneyTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]]);
+                        }
+                        else
+                        {
+                            performWilcoxonTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]]);
+                        }                                        
+                    }
                 }
         
       }).fail(function(){
@@ -243,7 +270,8 @@ function performHomoscedasticityTestNormality(dependent, independent)
                     {
                       d3.select("#homogeneity.crosses").attr("display", "inline");                  
                   
-                      console.log("tell me what to do...");
+                      //Welch's ANOVA
+                      performWelchANOVA(variableList["dependent"][0], variableList["independent"][0]);
                     }
                     else
                     {   
@@ -350,7 +378,7 @@ function findTransform(dist)
                 }
                 else
                 {
-                    console.log("choice between WT/MT and PT/UT");
+                    console.log("Offer choice to the user");
                 }
                   
       }).fail(function(){
@@ -437,6 +465,87 @@ function performANOVA(dependentVariable, independentVariable)
                 removeElementsByClassName("completeLines");           
 
                 ANOVA();                
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function performWelchANOVA(dependentVariable, independentVariable)
+{
+    //get data from variable names
+    dependentVariableData = variables[dependentVariable]["dataset"];
+    independentVariableData = variables[independentVariable]["dataset"];
+    
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("performWelchANOVA", {
+                    dependentVariable: dependentVariableData,
+                    independentVariable: independentVariableData                   
+                  }, function(output) {                                                   
+                  
+                  console.log("\t\t Welch's ANOVA for (" + dependentVariable + " ~ " + independentVariable + ")");
+                  console.log("\t\t\t F = " + output.F);
+                  console.log("\t\t\t p = " + output.p);
+                  console.log("\t\t\t method used= Welch's ANOVA");
+                  console.log("\t\t\t DF = (" + output.numeratorDF + ", " + output.denominatorDF +")");
+                  
+                  testResults["F"] = output.F;
+                  testResults["p"] = output.p;                  
+                  testResults["numDF"] = output.numeratorDF;
+                  testResults["denomDF"] = output.denominatorDF;
+                  testResults["method"] = "Welch's ANOVA"; 
+                           
+                  
+                //drawing stuff
+                removeElementsByClassName("completeLines");                          
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function performKruskalWallisTest(dependentVariable, independentVariable)
+{
+    //get data from variable names
+    dependentVariableData = variables[dependentVariable]["dataset"];
+    independentVariableData = variables[independentVariable]["dataset"];
+    
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("performKruskalWallisTest", {
+                    dependentVariable: dependentVariableData,
+                    independentVariable: independentVariableData                   
+                  }, function(output) {                                                   
+                  
+                  console.log("\t\t Kruskal-Wallis test for (" + dependentVariable + " ~ " + independentVariable + ")");
+                  console.log("\t\t\t Chi-squared = " + output.chiSquared);
+                  console.log("\t\t\t p = " + output.p);
+                  console.log("\t\t\t method used= Kruskal-Wallis Test ANOVA");
+                  console.log("\t\t\t DF = " + output.DF);
+                  
+                  testResults["F"] = output.F;
+                  testResults["p"] = output.p;                  
+                  testResults["DF"] = output.DF;
+                  testResults["method"] = "Kruskal-Wallis Test"; 
+                           
+                  
+                //drawing stuff
+                removeElementsByClassName("completeLines");                          
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
