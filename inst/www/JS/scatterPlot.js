@@ -110,15 +110,23 @@ function makeScatterplot()
     
     //todo: x-axis grooves
     
+    var uniqueDataX = data[0].unique();
+    var uniqueDataY = data[1].unique();  
+    
+    var numberOfGroovesInXAxis = uniqueDataX.length > numberOfGrooves ? numberOfGrooves : (uniqueDataX.length+1);
+    var numberOfGroovesInYAxis = uniqueDataY.length > numberOfGrooves ? numberOfGrooves : (uniqueDataY.length+1);
+    
     //y-axis grooves
-    var xStep = plotWidth/(numberOfGrooves-1);
-    var yStep = plotHeight/(numberOfGrooves-1);
-    var xSlice = (maxs[0] - mins[0])/(numberOfGrooves-1);    
-    var ySlice = (maxs[1] - mins[1])/(numberOfGrooves-1);    
+    var xStep = plotWidth/(numberOfGroovesInXAxis-1);
+    var yStep = plotHeight/(numberOfGroovesInYAxis-1);
+    
+    var xSlice = (maxs[0] - mins[0])/(numberOfGroovesInXAxis-1);    
+    var ySlice = (maxs[1] - mins[1])/(numberOfGroovesInYAxis-1);    
     
     //grooves
-    for(i=0; i<numberOfGrooves; i++)
+    for(i=0; i<numberOfGroovesInXAxis; i++)
     {
+        var axisText = isNaN(mins[0]) ? uniqueDataX[i] : format(mins[0] + i*xSlice);
         canvas.append("line")
                     .attr("x1", LEFT + i*xStep)
                     .attr("y1", BOTTOM + axesOffset)
@@ -130,15 +138,16 @@ function makeScatterplot()
         canvas.append("text")
                     .attr("x", LEFT + i*xStep)
                     .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
-                    .text(format(mins[0] + i*xSlice))
+                    .text(axisText)
                     .attr("font-size", fontSize + "px")
                     .attr("text-anchor", "middle")
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooveText");
     }
     
-    for(i=0; i<numberOfGrooves; i++)
+    for(i=0; i<numberOfGroovesInYAxis; i++)
     {
+        var axisText = isNaN(mins[1]) ? uniqueDataY[i] : format(mins[1] + i*ySlice);
         canvas.append("line")
                     .attr("x1", LEFT - 10 - axesOffset)
                     .attr("y1", BOTTOM - i*yStep)
@@ -150,7 +159,7 @@ function makeScatterplot()
         canvas.append("text")
                     .attr("x", LEFT - tickTextOffsetYAxis - axesOffset)
                     .attr("y", BOTTOM - i*yStep + yAxisTickTextOffset)                    
-                    .text(format(mins[1] + i*ySlice))
+                    .text(axisText)
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooveText");
