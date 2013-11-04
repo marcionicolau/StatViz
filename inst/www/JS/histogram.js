@@ -10,7 +10,7 @@ function makeHistogram()
     top = canvasHeight/2 - plotHeight/2;
     bottom = canvasHeight/2 + plotHeight/2;
     
-    console.log("top=" + top);
+    console.log("canvasHeight=" + canvasHeight + ", plotHeight=" + plotHeight);
     
     var data = [];
     var mins = [];
