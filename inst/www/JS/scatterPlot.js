@@ -108,8 +108,6 @@ function makeScatterplot()
     
     //grooves
     
-    //todo: x-axis grooves
-    
     var uniqueDataX = data[0].unique();
     var uniqueDataY = data[1].unique();  
     

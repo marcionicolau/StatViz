@@ -89,21 +89,38 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
             .attr("id", "axis")
             .attr("class", "yAxis");
     
-    var xStep = shortWidth/(shortNumberOfGrooves-1);
-    var yStep = shortHeight/(shortNumberOfGrooves-1);
+    var uniqueDataX = dataX.unique();
+    var uniqueDataY = dataY.unique();  
+    
+    var numberOfGroovesInXAxis = uniqueDataX.length > shortNumberOfGrooves ? shortNumberOfGrooves : uniqueDataX.length;
+    var numberOfGroovesInYAxis = uniqueDataY.length > shortNumberOfGrooves ? shortNumberOfGrooves : uniqueDataY.length;
+    
+    //y-axis grooves
+    var xStep = uniqueDataX.length <= numberOfGrooves ? shortWidth/numberOfGroovesInXAxis : shortWidth/(numberOfGroovesInXAxis - 1);
+    var yStep = uniqueDataY.length <= numberOfGrooves ? shortHeight/numberOfGroovesInYAxis : shortHeight/(numberOfGroovesInYAxis - 1);
     
     var xSlice = (maxX - minX)/(shortNumberOfGrooves-1);    
     var ySlice = (maxY - minY)/(shortNumberOfGrooves-1);    
     
     //grooves
     
+    var axisText, textPosition;
     //x-axis ticks
     for(i=0; i<shortNumberOfGrooves; i++)
     {
+        axisText = format(minX + i*xSlice);
+        textPosition = x + i*xStep;
+        
+        if(uniqueDataX.length <= numberOfGrooves)
+        {
+            axisText = uniqueDataX[i];
+            textPosition = x + xStep/2 + i*xStep;
+        }
+        
         canvas.append("line")
-                    .attr("x1", x + i*xStep)
+                    .attr("x1", textPosition)
                     .attr("y1", y + shortAxesOffset)
-                    .attr("x2", x + i*xStep)
+                    .attr("x2", textPosition)
                     .attr("y2", y + shortAxesOffset + shortTickLength)
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooves");
@@ -119,10 +136,10 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
         }
         
         canvas.append("text")
-                    .attr("x", x + i*xStep)
+                    .attr("x", textPosition)
                     .attr("y", y + shortAxesOffset + shortTickLength + shortFontSize)     
                     .attr("font-size", shortFontSize)
-                    .text(format(minX + i*xSlice))
+                    .text(axisText)
                     .attr("text-anchor", textAnchor)
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooveText");
@@ -130,11 +147,19 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     
     for(i=0; i<shortNumberOfGrooves; i++)
     {
+        axisText = format(minY + i*ySlice);
+        textPosition = y - i*yStep;                  
+        
+        if(uniqueDataY.length <= numberOfGrooves)
+        {
+            axisText = uniqueDataY[i];
+            textPosition = y - yStep/2 - i*yStep;                    
+        }
         canvas.append("line")
                     .attr("x1", x - shortAxesOffset)
-                    .attr("y1", y - i*yStep)
+                    .attr("y1", textPosition)
                     .attr("x2", x - shortAxesOffset - shortTickLength)
-                    .attr("y2", y - i*yStep)
+                    .attr("y2", textPosition)
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooves");       
         
@@ -151,8 +176,8 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
         
         canvas.append("text")
                     .attr("x", x - shortAxesOffset - shortTickTextOffsetYAxis)
-                    .attr("y", y - i*yStep + shortTickLength + offset)  
-                    .text(format(minY + i*ySlice))
+                    .attr("y", textPosition + shortTickLength + offset)  
+                    .text(axisText)
                     .attr("font-size", shortFontSize + "px")
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
@@ -161,11 +186,23 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     
     for(var i=0; i<dataX.length; i++)
     {
+        var X,Y;
+        
+        if(uniqueDataX.length <= numberOfGrooves)
+            X = x + uniqueDataX.indexOf(dataX[i])*xStep + xStep/2;    
+        else
+            X = x + getValue(dataX[i], minX, maxX)*shortWidth;
+            
+        if(uniqueDataY.length <= numberOfGrooves)
+            Y = y - uniqueDataY.indexOf(dataY[i])*yStep - yStep/2;
+        else
+            Y = y - getValue(dataY[i], minY, maxY)*shortHeight;
+            
         var color = "black";
         
         canvas.append("circle")
-                    .attr("cx", x + getValue(dataX[i], minX, maxX)*shortWidth)
-                    .attr("cy", y - getValue(dataY[i], minY, maxY)*shortHeight)
+                    .attr("cx", X)
+                    .attr("cy", Y)
                     .attr("r", shortDataPointRadius)
                     .attr("fill", color)                    
                     .attr("class", "points");     
