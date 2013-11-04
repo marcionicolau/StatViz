@@ -42,6 +42,9 @@ function isPrime(num)
 function findIQR(values)
 {
     values.sort( function(a,b) {return a - b;} );
+    
+    console.log("total=" + values.length);
+    
     var half1 = new Array();
     var half2 = new Array();
     if(values.length % 2)
@@ -62,7 +65,9 @@ function findIQR(values)
     }
     
     console.log("half1=[" + half1 + "]");
+    console.log("1st length= " + half1.length);
     console.log("half2=[" + half2 + "]");
+    console.log("2nd length= " + half2.length);
     
     var q1, q3;
     q1 = median(half1);
