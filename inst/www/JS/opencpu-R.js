@@ -215,7 +215,8 @@ function splitData1()
                 IQR[variableNames[j]][uniqueData[k]] = findIQR(variables[variableNames[j]][uniqueData[k]]);
             }
         }
-    }       
+    }     
+    console.dir(IQR);
 }
 
 //Statistics
