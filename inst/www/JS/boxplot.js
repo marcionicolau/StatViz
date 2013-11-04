@@ -223,6 +223,7 @@ function makeBoxplot()
                     .attr("x2", canvasWidth/2 + boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y2", BOTTOM - getFraction(TOPFringe)*plotHeight)
                     .attr("id", ids[i])
+                    .attr("stroke-width", "2")
                     .attr("class", "TOPFringes");
     
         canvas.append("line")
@@ -239,6 +240,7 @@ function makeBoxplot()
                     .attr("x2", canvasWidth/2 + boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y2", BOTTOM - getFraction(BOTTOMFringe)*plotHeight)
                     .attr("id", ids[i])
+                    .attr("stroke-width", "2")
                     .attr("class", "BOTTOMFringes");
                 
         canvas.append("line")
