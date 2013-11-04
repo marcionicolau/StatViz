@@ -171,22 +171,28 @@ function splitDataByColumnName(dataset, columnName, value)
 
 function splitData1()
 {
-    var variableList = getSelectedVariables();    
-    console.dir(variableList);
+    var independentVariables = [];
+    for(var i=0; i<variableNames.length; i++)
+    {
+        if(variableTypes[variableNames[i]] == "independent")
+        {
+            independentVariables.push(variableNames[i]);
+        }
+    }
     
-    for(var i=0; i<variableList["independent"].length; i++)
+    for(var i=0; i<independentVariables.length; i++)
     {   
         //for every independent variable
         for(var j=0; j<variableNames.length; j++)
         {
             //for every variable
-            var uniqueData = variables[variableList["independent"][i]]["dataset"].unique();
+            var uniqueData = variables[independentVariables[i]]["dataset"].unique();
             for(var k=0; k<uniqueData.length; k++)
             {
                 //for every level
                 for(var m=0; m<variables[variableNames[j]]["dataset"].length; m++)
                 {
-                    if(variables[variableList["independent"][i]]["dataset"][m] == uniqueData[k])
+                    if(variables[independentVariables[i]]["dataset"][m] == uniqueData[k])
                     {
                         variables[variableNames[j]][uniqueData[k]].push(variables[variableNames[j]]["dataset"][m]);
                     }
