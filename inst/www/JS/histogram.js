@@ -7,7 +7,7 @@ function makeHistogram()
     left = canvasWidth/2 - plotWidth/2;
     right = canvasWidth/2 + plotWidth/2;
     
-    top = (canvasHeight/2) - (plotHeight/2);
+    top = ((canvasHeight/2) - (plotHeight/2));
     bottom = canvasHeight/2 + plotHeight/2;
     
     console.log("canvasHeight=" + canvasHeight + ", plotHeight=" + plotHeight + "top=" + top);
