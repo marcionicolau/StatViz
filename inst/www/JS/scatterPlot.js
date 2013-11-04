@@ -122,6 +122,7 @@ function makeScatterplot()
     
     console.log("xStep=" + xStep);
     console.log("nX=" + numberOfGroovesInXAxis);
+    console.log("plotWidth = " + plotWidth;
     
     var xSlice = (maxs[0] - mins[0])/(numberOfGroovesInXAxis-1);    
     var ySlice = (maxs[1] - mins[1])/(numberOfGroovesInYAxis-1);    
