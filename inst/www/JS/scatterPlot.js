@@ -14,7 +14,21 @@ function makeScatterplot()
     
     var data = [];    
     
+    var colorData;
+    var uniqueColorData;
+    
     var colorsForPlot = new Object();
+    
+    if(currentVariableSelection.length == 3)
+    {
+        colorData = variables[currentVariableSelection[2]]["dataset"];
+        uniqueColorData = colorData.unique();
+        
+        for(var i=0; i<uniqueColorData.length; i++)
+        {
+            colorsForPlot[uniqueColorData[i]] = colors[i];
+        }
+    }
     
     var altScatterPlot = false;
     
@@ -196,7 +210,7 @@ function makeScatterplot()
             y = BOTTOM - getValue1(data[1][i], 1)*plotHeight;
         
         
-        var color = currentVariableSelection.length > 2 ? colorsForPlot[data[2]] : "black";        
+        var color = currentVariableSelection.length > 2 ? colorsForPlot[colorData[i]] : "black";        
         
         canvas.append("circle")
                     .attr("cx", x)
