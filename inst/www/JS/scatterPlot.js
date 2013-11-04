@@ -134,7 +134,7 @@ function makeScatterplot()
         axisText = format(mins[0] + i*xSlice);
         textPosition = LEFT + i*xStep;
         
-        isNaN(mins[0])
+        if(isNaN(mins[0]))
         {
             axisText = uniqueDataX[i];
             textPosition = LEFT + (i+1)*xStep/2;
@@ -163,7 +163,7 @@ function makeScatterplot()
         axisText = format(mins[1] + i*ySlice);
         textPosition = BOTTOM - i*yStep + yAxisTickTextOffset;                  
         
-        isNaN(mins[1])
+        if(isNaN(mins[1]))
         {
             axisText = uniqueDataY[i];
             textPosition = BOTTOM - (i+1)*yStep/2 + yAxisTickTextOffset;                    
