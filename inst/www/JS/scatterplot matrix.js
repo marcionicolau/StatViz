@@ -106,7 +106,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     
     var axisText, textPosition;
     //x-axis ticks
-    for(i=0; i<shortNumberOfGrooves; i++)
+    for(i=0; i<numberOfGroovesInXAxis; i++)
     {
         axisText = format(minX + i*xSlice);
         textPosition = x + i*xStep;
@@ -145,7 +145,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
                     .attr("class", "xAxisGrooveText");
     }
     
-    for(i=0; i<shortNumberOfGrooves; i++)
+    for(i=0; i<numberOfGroovesInYAxis; i++)
     {
         axisText = format(minY + i*ySlice);
         textPosition = y - i*yStep;                  
