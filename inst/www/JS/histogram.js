@@ -617,7 +617,7 @@ function highlightBinWithId(ID)
     
     for(var i=0; i<bins.length; i++)
     {    
-        if(removeAlphabetsFromString(bins[i].getAttribute("id")) != getNumber(ID))
+        if(removeAlphabetsFromString(bins[i].getAttribute("id")) != removeAlphabetsFromString(ID))
         {
             bins[i].setAttribute("opacity", "0.25");
         }
