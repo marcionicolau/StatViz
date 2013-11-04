@@ -50,6 +50,8 @@ function findIQR(values)
     var half2 = new Array();
     if(values.length % 2)
     {
+        var x = values.length/2;
+        console.log("x = " + x);
         //odd
         for(var i=0; i<((values.length)/2); i++)
             half1.push(values[i]);
