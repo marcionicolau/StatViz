@@ -43,7 +43,7 @@ function makeScatterplotMatrix()
             for(var j=0; j<numberOfVariables; j++)
             {
                 if(i != j)
-                    makeScatterPlotAt(LEFT + j*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis), TOP + i*((plotHeight/numberOfVariables) + shortAxesOffset + shortTickTextOffsetXAxis), (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), variableList["dependent"][j], variableList["dependent"][i]); 
+                    makeScatterPlotAt(LEFT + j*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis), TOP + i*((plotHeight/numberOfVariables) + shortAxesOffset + shortTickTextOffsetXAxis), (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), currentVariableSelection[j], currentVariableSelection[i]); 
                 else
                 {
                     canvas.append("text")
@@ -103,10 +103,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
             .attr("y2", y - shortHeight)
             .attr("stroke", "black")
             .attr("id", "axis")
-            .attr("class", "yAxis");
-    
-    var uniqueDataX = dataX.unique();
-    var uniqueDataY = dataY.unique();  
+            .attr("class", "yAxis");  
     
     var numberOfGroovesInXAxis = uniqueDataX.length > shortNumberOfGrooves ? shortNumberOfGrooves : uniqueDataX.length;
     var numberOfGroovesInYAxis = uniqueDataY.length > shortNumberOfGrooves ? shortNumberOfGrooves : uniqueDataY.length;
