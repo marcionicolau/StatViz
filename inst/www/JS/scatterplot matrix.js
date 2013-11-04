@@ -20,7 +20,7 @@ function makeScatterplotMatrix()
     shortYAxisTickTextOffset = yAxisTickTextOffset/numberOfVariables;
     shortFontSize = fontSize;
     
-    if(numberOfVariables > 2)
+    if(numberOfVariables > 3)
         shortFontSize = 0;
         
     var canvas = d3.select("#svgCanvas");    
@@ -28,7 +28,7 @@ function makeScatterplotMatrix()
     var LEFT = canvasWidth/2 - plotWidth/2;
     var TOP = canvasHeight/2 - plotHeight/2;
     
-    if(numberOfVariables >= 3)
+    if(numberOfVariables >= 2)
     {
         // we'll do just this case for now...
         
