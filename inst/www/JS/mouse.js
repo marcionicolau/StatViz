@@ -257,7 +257,7 @@ function OnMouseOver(e)
                 .attr("id", "x")
                 .attr("class", "hoverText");
         
-        xLine.transition().duration(500).attr("x2", canvasWidth/2 - size/2 - axesOffset);
+        xLine.transition().duration(500).attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
         
         var yLine = canvas.append("line")
                 .attr("x1", datapoint.attr("cx"))
@@ -269,7 +269,7 @@ function OnMouseOver(e)
                 .attr("id", "y")
                 .attr("class", "hoverText");
         
-        yLine.transition().duration(500).attr("y2", canvasHeight/2 + size/2 + axesOffset);
+        yLine.transition().duration(500).attr("y2", canvasHeight/2 + plotHeight/2 + axesOffset);
                 
         
     }   

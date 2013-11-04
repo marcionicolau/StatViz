@@ -166,7 +166,6 @@ function makeScatterplot()
             textPosition = BOTTOM - yStep/2 - i*yStep;                    
         }
         
-        var axisText = isNaN(mins[1]) ? uniqueDataY[i] : format(mins[1] + i*ySlice);
         canvas.append("line")
                     .attr("x1", LEFT - 10 - axesOffset)
                     .attr("y1", textPosition)
