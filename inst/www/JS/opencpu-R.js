@@ -169,6 +169,35 @@ function splitDataByColumnName(dataset, columnName, value)
     });   
 }
 
+function splitData()
+{
+    var variableList = getVariableSelection();    
+    console.dir(variableList);
+    
+    for(var i=0; i<variableList["independent"].length; i++)
+    {   
+        //for every independent variable
+        for(var j=0; j<variableNames.length; j++)
+        {
+            //for every variable
+            var uniqueData = variables[variableList["independent"][i]]["dataset"].unique();
+            for(var k=0; k<uniqueData.length; k++)
+            {
+                //for every level
+                for(var m=0; m<variables[variableNames[j]]["dataset"].length; m++)
+                {
+                    if(variables[variableList["independent"][i]]["dataset"][m] == uniqueData[k])
+                    {
+                        variables[variableNames[j]][uniqueData[k]].push(variables[variableNames[j]]["dataset"][m]);
+                    }
+                }
+            }
+        }
+    }       
+    
+    console.dir(variables);
+}
+
 //Statistics
 
 //Assumption-checking
