@@ -14,7 +14,7 @@ function makeScatterplotMatrix()
     shortAxesOffset = axesOffset/numberOfVariables;
     shortTickLength = tickLength/numberOfVariables;
     shortDataPointRadius = datapointRadius/numberOfVariables < 1 ? 1 : datapointRadius/numberOfVariables;
-    shortNumberOfGrooves = Math.ceil(numberOfGrooves/(numberOfVariables * 1.5)) < 7 ? 7 : Math.ceil(numberOfGrooves/(numberOfVariables * 1.5));
+    shortNumberOfGrooves = Math.ceil(numberOfGrooves/(numberOfVariables * 1.5)) < 5 ? 5 : Math.ceil(numberOfGrooves/(numberOfVariables * 1.5));
     shortTickTextOffsetXAxis = tickTextOffsetXAxis/(numberOfVariables);
     shortTickTextOffsetYAxis = tickTextOffsetYAxis/(numberOfVariables);
     shortYAxisTickTextOffset = yAxisTickTextOffset/numberOfVariables;
