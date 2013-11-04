@@ -60,6 +60,7 @@ function OnMouseDown(e)
         
         if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means").length))
         {
+            console.log("in");
             meanCircle.attr("fill", meanColors["click"]);
             
             //check if we are finishing here
