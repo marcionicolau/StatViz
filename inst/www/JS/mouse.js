@@ -65,6 +65,7 @@ function OnMouseDown(e)
             //check if we are finishing here
             
             var incompleteLines = d3.selectAll(".incompleteLines");
+            console.log(document.getElementsByClassName("incompleteLines").length);
             
             if(document.getElementsByClassName("incompleteLines").length > 0)
             {
