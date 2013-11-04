@@ -113,8 +113,8 @@ function makeScatterplot()
     var uniqueDataX = data[0].unique();
     var uniqueDataY = data[1].unique();  
     
-    var numberOfGroovesInXAxis = uniqueDataX.length > numberOfGrooves ? numberOfGrooves : (uniqueDataX.length+1);
-    var numberOfGroovesInYAxis = uniqueDataY.length > numberOfGrooves ? numberOfGrooves : (uniqueDataY.length+1);
+    var numberOfGroovesInXAxis = uniqueDataX.length > numberOfGrooves ? numberOfGrooves : uniqueDataX.length;
+    var numberOfGroovesInYAxis = uniqueDataY.length > numberOfGrooves ? numberOfGrooves : uniqueDataY.length;
     
     //y-axis grooves
     var xStep = plotWidth/(numberOfGroovesInXAxis-1);
@@ -161,12 +161,12 @@ function makeScatterplot()
     for(i=0; i<numberOfGroovesInYAxis; i++)
     {
         axisText = format(mins[1] + i*ySlice);
-        textPosition = BOTTOM - i*yStep + yAxisTickTextOffset;                  
+        textPosition = BOTTOM - i*yStep;                  
         
         if(isNaN(mins[1]))
         {
             axisText = uniqueDataY[i];
-            textPosition = BOTTOM - (i+1)*yStep/2 + yAxisTickTextOffset;                    
+            textPosition = BOTTOM - (i+1)*yStep/2;                    
         }
         
         var axisText = isNaN(mins[1]) ? uniqueDataY[i] : format(mins[1] + i*ySlice);
@@ -180,7 +180,7 @@ function makeScatterplot()
         
         canvas.append("text")
                     .attr("x", LEFT - tickTextOffsetYAxis - axesOffset)
-                    .attr("y", textPosition)                    
+                    .attr("y", textPosition + yAxisTickOffset)                     
                     .text(axisText)
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
