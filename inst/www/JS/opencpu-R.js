@@ -197,9 +197,16 @@ function splitData1()
                         if(variables[variableNames[j]][uniqueData[k]] == undefined)
                         {
                             variables[variableNames[j]][uniqueData[k]] = new Array();
+                            MIN[variableNames[j]][uniqueData[k]] = 999999;
+                            MAX[variableNames[j]][uniqueData[k]] = -999999;
                         }
                         
-                        variables[variableNames[j]][uniqueData[k]].push(variables[variableNames[j]]["dataset"][m]);
+                        variables[variableNames[j]][uniqueData[k]].push(variables[variableNames[j]]["dataset"][m]);                        
+                        
+                        if(variables[variableNames[j]]["dataset"][m] < MIN[variableNames[j]][uniqueData[k]])
+                            MIN[variableNames[j]][uniqueData[k]] = variables[variableNames[j]]["dataset"][m];
+                        if(variables[variableNames[j]]["dataset"][m] > MAX[variableNames[j]][uniqueData[k]])
+                            MAX[variableNames[j]][uniqueData[k]] = variables[variableNames[j]]["dataset"][m];                        
                     }
                 }
             }
