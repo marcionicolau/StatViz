@@ -57,7 +57,8 @@ function OnMouseDown(e)
         
         var meanCircle = d3.selectAll("#" + target.id + ".means");
         
-        if(meanCircle.attr("fill") == meanColors["hover"])
+        
+        if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means")))
         {
             meanCircle.attr("fill", meanColors["click"]);
             
