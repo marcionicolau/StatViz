@@ -20,7 +20,7 @@ function makeScatterplotMatrix()
     shortYAxisTickTextOffset = yAxisTickTextOffset/numberOfVariables;
     shortFontSize = fontSize;
     
-    if(numberOfVariables > 4)
+    if(numberOfVariables > 3)
         shortFontSize = 0;
         
     var canvas = d3.select("#svgCanvas");    
@@ -92,8 +92,8 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     var uniqueDataX = dataX.unique();
     var uniqueDataY = dataY.unique();  
     
-    var numberOfGroovesInXAxis = uniqueDataX.length > shortNumberOfGrooves ? shortNumberOfGrooves : uniqueDataX.length;
-    var numberOfGroovesInYAxis = uniqueDataY.length > shortNumberOfGrooves ? shortNumberOfGrooves : uniqueDataY.length;
+    var numberOfGroovesInXAxis = uniqueDataX.length > 5 ? shortNumberOfGrooves : uniqueDataX.length;
+    var numberOfGroovesInYAxis = uniqueDataY.length > 5 ? shortNumberOfGrooves : uniqueDataY.length;
     
     //y-axis grooves
     var xStep = uniqueDataX.length <= numberOfGrooves ? shortWidth/numberOfGroovesInXAxis : shortWidth/(numberOfGroovesInXAxis - 1);
