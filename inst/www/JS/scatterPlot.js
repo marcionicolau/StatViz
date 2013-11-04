@@ -180,7 +180,7 @@ function makeScatterplot()
         
         canvas.append("text")
                     .attr("x", LEFT - tickTextOffsetYAxis - axesOffset)
-                    .attr("y", textPosition + yAxisTickOffset)                     
+                    .attr("y", textPosition + yAxisTickTextOffset)                     
                     .text(axisText)
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
