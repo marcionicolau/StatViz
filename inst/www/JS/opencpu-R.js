@@ -169,7 +169,7 @@ function splitDataByColumnName(dataset, columnName, value)
     });   
 }
 
-function splitData()
+function splitData1()
 {
     var variableList = getVariableSelection();    
     console.dir(variableList);

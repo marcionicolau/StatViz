@@ -50,7 +50,7 @@ function OnMouseDown(e)
 //         {
 //             splitDataByColumnName(dataset, target.id, uniqueData[i]);                                                    
 //         }
-        splitData();
+        splitData1();
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "means")
