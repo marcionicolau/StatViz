@@ -158,7 +158,7 @@ function makeScatterplot()
                     .attr("class", "xAxisGrooveText");
     }
     
-    for(i=0; i<numberOfGroovesInYAxis; i++)
+    for(i=0; i<=numberOfGroovesInYAxis; i++)
     {
         axisText = format(mins[1] + i*ySlice);
         textPosition = BOTTOM - i*yStep;                  
@@ -166,7 +166,7 @@ function makeScatterplot()
         if(isNaN(mins[1]))
         {
             axisText = uniqueDataY[i];
-            textPosition = BOTTOM - (i+1)*yStep/2;                    
+            textPosition = BOTTOM - i*yStep;                    
         }
         
         var axisText = isNaN(mins[1]) ? uniqueDataY[i] : format(mins[1] + i*ySlice);
