@@ -61,6 +61,9 @@ function findIQR(values)
             half2.push(values[i]);
     }
     
+    console.log("half1=[" + half1 + "]");
+    console.log("half2=[" + half2 + "]");
+    
     var q1, q3;
     q1 = median(half1);
     q3 = median(half2);
