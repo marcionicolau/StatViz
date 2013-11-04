@@ -113,19 +113,19 @@ function makeScatterplot()
     var uniqueDataX = data[0].unique();
     var uniqueDataY = data[1].unique();  
     
-    var numberOfGroovesInXAxis = uniqueDataX.length > numberOfGrooves ? (numberOfGrooves+1) : uniqueDataX.length;
-    var numberOfGroovesInYAxis = uniqueDataY.length > numberOfGrooves ? (numberOfGrooves+1) : uniqueDataY.length;
+    var numberOfGroovesInXAxis = uniqueDataX.length > numberOfGrooves ? numberOfGrooves : (uniqueDataX.length + 1);
+    var numberOfGroovesInYAxis = uniqueDataY.length > numberOfGrooves ? numberOfGrooves : (uniqueDataY.length + 1);
     
     //y-axis grooves
-    var xStep = plotWidth/numberOfGroovesInXAxis;
-    var yStep = plotHeight/numberOfGroovesInYAxis;
+    var xStep = plotWidth/(numberOfGroovesInXAxis - 1);
+    var yStep = plotHeight/(numberOfGroovesInYAxis - 1);
     
     console.log("xStep=" + xStep);
     console.log("nX=" + numberOfGroovesInXAxis);
     console.log("plotWidth = " + plotWidth);
     
-    var xSlice = (maxs[0] - mins[0])/numberOfGroovesInXAxis;    
-    var ySlice = (maxs[1] - mins[1])/numberOfGroovesInYAxis;    
+    var xSlice = (maxs[0] - mins[0])/(numberOfGroovesInXAxis - 1);    
+    var ySlice = (maxs[1] - mins[1])/(numberOfGroovesInYAxis - 1);    
     
     var axisText, textPosition;
     //grooves
@@ -137,7 +137,7 @@ function makeScatterplot()
         if(isNaN(mins[0]))
         {
             axisText = uniqueDataX[i];
-            textPosition = LEFT + i*xStep;
+            textPosition = LEFT + (i+1)*xStep/2;
         }
         
         canvas.append("line")
@@ -166,7 +166,7 @@ function makeScatterplot()
         if(isNaN(mins[1]))
         {
             axisText = uniqueDataY[i];
-            textPosition = BOTTOM - i*yStep;                    
+            textPosition = BOTTOM - (i+1)*yStep/2;                    
         }
         
         var axisText = isNaN(mins[1]) ? uniqueDataY[i] : format(mins[1] + i*ySlice);
