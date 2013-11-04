@@ -120,6 +120,9 @@ function makeScatterplot()
     var xStep = plotWidth/(numberOfGroovesInXAxis-1);
     var yStep = plotHeight/(numberOfGroovesInYAxis-1);
     
+    console.log("xStep=" + xStep);
+    console.log("nX=" + numberOfGroovesInXAxis);
+    
     var xSlice = (maxs[0] - mins[0])/(numberOfGroovesInXAxis-1);    
     var ySlice = (maxs[1] - mins[1])/(numberOfGroovesInYAxis-1);    
     
@@ -183,17 +186,17 @@ function makeScatterplot()
                     .attr("class", "yAxisGrooveText");
     }
     
-    for(var i=0; i<data[0].length; i++)
-    {
-        var color = currentVariableSelection.length > 2 ? colorsForPlot[data[2]] : "black";        
-        canvas.append("circle")
-                    .attr("cx", LEFT + getValue1(data[0][i], 0)*plotWidth)
-                    .attr("cy", BOTTOM - getValue1(data[1][i], 1)*plotHeight)
-                    .attr("r", datapointRadius)
-                    .attr("fill", color)
-                    .attr("id", "data" + i)
-                    .attr("class", "datapoints");     
-    }
+    // for(var i=0; i<data[0].length; i++)
+//     {
+//         var color = currentVariableSelection.length > 2 ? colorsForPlot[data[2]] : "black";        
+//         canvas.append("circle")
+//                     .attr("cx", LEFT + getValue1(data[0][i], 0)*plotWidth)
+//                     .attr("cy", BOTTOM - getValue1(data[1][i], 1)*plotHeight)
+//                     .attr("r", datapointRadius)
+//                     .attr("fill", color)
+//                     .attr("id", "data" + i)
+//                     .attr("class", "datapoints");     
+//     }
 }
 
 function getValue1(number, type)
