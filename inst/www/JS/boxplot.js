@@ -229,7 +229,7 @@ function makeBoxplot()
                     .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(TOPFringe)*plotHeight)
                     .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("y2", BOTTOM- getFraction(medians[i] + iqrs[i]/2)*plotHeight)
+                    .attr("y2", BOTTOM- getFraction(rectTop)*plotHeight)
                     .attr("id", ids[i])
                     .attr("class", "TOPFringeConnectors");    
     
