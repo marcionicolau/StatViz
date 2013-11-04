@@ -123,20 +123,29 @@ function makeScatterplot()
     var xSlice = (maxs[0] - mins[0])/(numberOfGroovesInXAxis-1);    
     var ySlice = (maxs[1] - mins[1])/(numberOfGroovesInYAxis-1);    
     
+    var axisText, textPosition;
     //grooves
     for(i=0; i<numberOfGroovesInXAxis; i++)
     {
-        var axisText = isNaN(mins[0]) ? uniqueDataX[i] : format(mins[0] + i*xSlice);
+        axisText = format(mins[0] + i*xSlice);
+        textPosition = LEFT + i*xStep;
+        
+        isNaN(mins[0])
+        {
+            axisText = uniqueDataX[i];
+            textPosition = LEFT + (i+1)*xStep/2;
+        }
+        
         canvas.append("line")
-                    .attr("x1", LEFT + i*xStep)
+                    .attr("x1", textPosition)
                     .attr("y1", BOTTOM + axesOffset)
-                    .attr("x2", LEFT + i*xStep)
+                    .attr("x2", textPosition)
                     .attr("y2", BOTTOM + 10 + axesOffset)
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooves");
         
         canvas.append("text")
-                    .attr("x", LEFT + i*xStep)
+                    .attr("x", textPosition)
                     .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
                     .text(axisText)
                     .attr("font-size", fontSize + "px")
@@ -147,18 +156,27 @@ function makeScatterplot()
     
     for(i=0; i<numberOfGroovesInYAxis; i++)
     {
+        axisText = format(mins[1] + i*ySlice);
+        textPosition = BOTTOM - i*yStep + yAxisTickTextOffset;                  
+        
+        isNaN(mins[1])
+        {
+            axisText = uniqueDataY[i];
+            textPosition = BOTTOM - (i+1)*yStep/2 + yAxisTickTextOffset;                    
+        }
+        
         var axisText = isNaN(mins[1]) ? uniqueDataY[i] : format(mins[1] + i*ySlice);
         canvas.append("line")
                     .attr("x1", LEFT - 10 - axesOffset)
-                    .attr("y1", BOTTOM - i*yStep)
+                    .attr("y1", textPosition)
                     .attr("x2", LEFT  - axesOffset)
-                    .attr("y2", BOTTOM - i*yStep)
+                    .attr("y2", textPosition)
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooves");
         
         canvas.append("text")
                     .attr("x", LEFT - tickTextOffsetYAxis - axesOffset)
-                    .attr("y", BOTTOM - i*yStep + yAxisTickTextOffset)                    
+                    .attr("y", textPosition)                    
                     .text(axisText)
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
