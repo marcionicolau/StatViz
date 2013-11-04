@@ -113,16 +113,12 @@ function makeScatterplot()
     var uniqueDataX = data[0].unique();
     var uniqueDataY = data[1].unique();  
     
-    var numberOfGroovesInXAxis = uniqueDataX.length > numberOfGrooves ? numberOfGrooves : (uniqueDataX.length + 1);
-    var numberOfGroovesInYAxis = uniqueDataY.length > numberOfGrooves ? numberOfGrooves : (uniqueDataY.length + 1);
+    var numberOfGroovesInXAxis = uniqueDataX.length > numberOfGrooves ? numberOfGrooves : uniqueDataX.length;
+    var numberOfGroovesInYAxis = uniqueDataY.length > numberOfGrooves ? numberOfGrooves : uniqueDataY.length;
     
     //y-axis grooves
-    var xStep = plotWidth/(numberOfGroovesInXAxis - 1);
-    var yStep = plotHeight/(numberOfGroovesInYAxis - 1);
-    
-    console.log("xStep=" + xStep);
-    console.log("nX=" + numberOfGroovesInXAxis);
-    console.log("plotWidth = " + plotWidth);
+    var xStep = isNaN(mins[0]) ? plotWidth/numberOfGroovesInXAxis : plotWidth/(numberOfGroovesInXAxis - 1);
+    var yStep = isNaN(mins[1]) ? plotHeight/numberOfGroovesInYAxis : plotHeight/(numberOfGroovesInYAxis - 1);
     
     var xSlice = (maxs[0] - mins[0])/(numberOfGroovesInXAxis - 1);    
     var ySlice = (maxs[1] - mins[1])/(numberOfGroovesInYAxis - 1);    
