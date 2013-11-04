@@ -38,3 +38,31 @@ function isPrime(num)
     }
     return true;
 }
+
+function findIQR(values)
+{
+    values.sort( function(a,b) {return a - b;} );
+    var half1, half2;
+    if(values.length % 2)
+    {
+        //odd
+        for(var i=0; i<(values.length)/2; i++)
+            half1.push(values[i]);
+        for(var i=values.length/2+1; i<values.length; i++)
+            half2.push(values[i]);
+    }
+    else
+    {
+        //even
+        for(var i=0; i<(values.length)/2; i++)
+            half1.push(values[i]);
+        for(var i=values.length/2; i<values.length; i++)
+            half2.push(values[i]);
+    }
+    
+    var q1, q3;
+    q1 = median(half1);
+    q3 = median(half2);
+    
+    return q3 - q1;
+}   

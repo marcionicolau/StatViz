@@ -210,8 +210,7 @@ function splitData1()
                     }
                 }
             }
-            console.log(variableNames[j]);
-            console.dir(variables);
+            IQR[variableNames[j]][uniqueData[k]] = findIQR(variables[variableNames[j]][uniqueData[k]]);
         }
     }       
 }
