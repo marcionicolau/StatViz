@@ -205,7 +205,7 @@ function makeBoxplot()
                     .attr("class", "IQRs"));
                 
         // median
-        medians.push(canvas.append("line")
+        medianLines.push(canvas.append("line")
                     .attr("x1", LEFT + i*widthSlice - boxWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(medians[i])*plotHeight)
                     .attr("x2", LEFT + i*widthSlice + boxWidth/2 + xStep/2)
@@ -251,7 +251,7 @@ function makeBoxplot()
                     .attr("id", ids[i])
                     .attr("class", "BOTTOMFringeConnectors"));
     
-        means.push(canvas.append("circle")
+        meanCircles.push(canvas.append("circle")
                     .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("cy", BOTTOM - getFraction(means[i])*plotHeight)
                     .attr("r", meanRadius)
@@ -431,7 +431,7 @@ function redrawBoxPlot()
                     .attr("class", "IQRs");
                 
         // median
-        medians[i].transition().duration(boxPlotTransformationDuration)
+        medianLines[i].transition().duration(boxPlotTransformationDuration)
                     .attr("x1", LEFT + i*widthSlice - boxWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(medians[i])*plotHeight)
                     .attr("x2", LEFT + i*widthSlice + boxWidth/2 + xStep/2)
@@ -477,7 +477,7 @@ function redrawBoxPlot()
                     .attr("id", ids[i])
                     .attr("class", "BOTTOMFringeConnectors");
     
-        means[i].transition().duration(boxPlotTransformationDuration)
+        meanCircles[i].transition().duration(boxPlotTransformationDuration)
                     .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("cy", BOTTOM - getFraction(means[i])*plotHeight)
                     .attr("r", meanRadius)

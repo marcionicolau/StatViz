@@ -73,8 +73,8 @@ function makePlot()
         case "Boxplot":
                                     {         
                                         boxes = [];
-                                        means = [];
-                                        medians = [];
+                                        meanCircles = [];
+                                        medianLines = [];
                                         topFringes = [];
                                         bottomFringes = [];
                                         topFringeConnectors = [];

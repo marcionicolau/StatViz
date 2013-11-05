@@ -45,8 +45,8 @@ var distributions = new Object();
 var transformationType;
 
 var boxes = [];
-var means = [];
-var medians = [];
+var meanCircles = [];
+var medianLines = [];
 var topFringes = [];
 var bottomFringes = [];
 var topFringeConnectors = [];
