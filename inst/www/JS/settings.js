@@ -47,7 +47,7 @@ var nBins = 10;
 var binCountFontSize = "16px";
 var histLegendOffsetX = 25;
 var histLegendOffsetY = 35;
-var histLegendSize = 25;
+var histLegendSize = 35;
 
 
 // Boxplots

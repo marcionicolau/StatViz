@@ -14,6 +14,7 @@ function makeHistogram()
     var data = [];
     var mins = [];
     var maxs = [];
+    var varNames = [];
     
     var combinedData = [];
     
@@ -31,6 +32,7 @@ function makeHistogram()
                         for(var i=0; i<variableList["dependent"].length; i++)
                         {
                             data[i] = variables[variableList["dependent"][i]]["dataset"];      
+                            varNames[i] = variableList["dependent"][i];      
                             mins[i] = MIN[variableList["dependent"][i]]["dataset"];      
                             maxs[i] = MAX[variableList["dependent"][i]]["dataset"];                                  
                         }
@@ -43,6 +45,7 @@ function makeHistogram()
                         for(var i=0; i<variableList["independent-levels"].length; i++)
                         {
                             data[i] = variables[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            varNames[i] = variableList["dependent"][0] + variableList["independent-levels"][i];
                             mins[i] = MIN[variableList["dependent"][0]][variableList["independent-levels"][i]];
                             maxs[i] = MAX[variableList["dependent"][0]][variableList["independent-levels"][i]];                            
                         }
@@ -57,11 +60,12 @@ function makeHistogram()
     else
     {
         data[0] = variables[currentVariableSelection[0]]["dataset"];      
+        varNames[0] = currentVariableSelection[0];
         mins[0] = MIN[currentVariableSelection[0]]["dataset"];      
         maxs[0] = MAX[currentVariableSelection[0]]["dataset"];       
     } 
     
-    drawLegends(data);
+    drawLegends(varNames);
     
     
     // combine the collected data
@@ -581,13 +585,13 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
     }   
 }
 
-function drawLegends(data)
+function drawLegends(varNames)
 {
     var canvas = d3.select("#svgCanvas");
     
     var yStep = plotHeight/10;
     
-    for(var i=0; i<data.length; i++)
+    for(var i=0; i<varNames.length; i++)
     {
         canvas.append("rect")
                 .attr("x", RIGHT + histLegendOffsetX)
@@ -598,6 +602,14 @@ function drawLegends(data)
                 .attr("stroke", "black")
                 .attr("id", "legend" + i)
                 .attr("class", "rect");
+        
+        canvas.append("text")
+                .attr("x", RIGHT + 2*histLegendOffsetX + histLegendSize)
+                .attr("y", TOP + histLegendOffsetY + i*yStep + histLegendSize + 6)
+                .attr("fill", "black")
+                .text(varNames[i])
+                .attr("id", "legend" + i)
+                .attr("class", "text");
             
     }
 }
