@@ -105,14 +105,13 @@ function OnMouseDown(e)
             console.log("okay, will transform the distributions");
             
             var variableList = sort(currentVariableSelection);
-            var last = false;
             
             for(var i=0; i<variableList["independent-levels"].length; i++)
-            {
-                if(i == variableList["independent-levels"].length - 1)
-                    last = true;
-                applyTransform(variableList["dependent"][0], variableList["independent-levels"][i], last);
+            {                
+                applyTransform(variableList["dependent"][0], variableList["independent-levels"][i], false);
             }
+            
+            applyTransform(variableList["dependent"][0], "dataset", true);
         }        
         
     }
