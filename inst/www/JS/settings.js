@@ -83,6 +83,7 @@ var assumptionsText = new Object();
     assumptionsText["homogeneity"] = "Homogeneity of variances";
     
 var assumptions = ["normality", "homogeneity"];
+var significanceTestResultOffset = 50;
 
 //transformation
 var normalityPlotWidth = 200;
