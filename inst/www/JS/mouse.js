@@ -138,6 +138,7 @@ function OnMouseDown(e)
             button.attr("xlink:href", "images/fullscreenclick.png");
             d3.select("#variable.panel").attr("style", "width: " + 0 + "px; height: " + height + "px;"); 
             d3.select("#variablePanelSVG").attr("width", 0);
+            d3.select("#canvas").attr("style", "left: 0px");
         }
         else if(button.attr("xlink:href") == "images/fullscreenclick.png")
             button.attr("xlink:href", "images/fullscreennormal.png");
