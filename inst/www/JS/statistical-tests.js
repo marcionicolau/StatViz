@@ -160,7 +160,7 @@ function displaySignificanceTestResults()
     var means = document.getElementsByClassName("means");
     var meanRefLines = [];
     
-    var svg = d3.select("#svgCanvas");
+    var canvas = d3.select("#svgCanvas");
 
     for(var i=0; i<means.length; i++)
     {
@@ -169,7 +169,7 @@ function displaySignificanceTestResults()
             cx.push(means[i].getAttribute("cx"));
             cy.push(means[i].getAttribute("cy"));
         
-            meanRefLines[i] = svg.append("line")
+            meanRefLines[i] = canvas.append("line")
                                  .attr("x1", means[i].getAttribute("cx"))
                                  .attr("y1", means[i].getAttribute("cy"))
                                  .attr("x2", canvasWidth/2 + plotWidth/2)
@@ -179,7 +179,7 @@ function displaySignificanceTestResults()
                                  .attr("id", "meanrefLine")
                                  .attr("class", "significanceTest");
                                  
-                            svg.append("line")
+                            canvas.append("line")
                                  .attr("x1", means[i].getAttribute("cx"))
                                  .attr("y1", means[i].getAttribute("cy"))
                                  .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
@@ -199,7 +199,7 @@ function displaySignificanceTestResults()
     var cyMax = Math.max.apply(Math, cy);
     var cyMin = Math.min.apply(Math, cy);		   	 
 
-    var differenceLine = svg.append("line")
+    var differenceLine = canvas.append("line")
                             .attr("x1", canvasWidth/2 + plotWidth/2)
                             .attr("y1", cyMin)
                             .attr("x2", canvasWidth/2 + plotWidth/2)
@@ -210,13 +210,21 @@ function displaySignificanceTestResults()
 
     var x = canvasWidth/2 + plotWidth/2;
     var y = cyMin;			 
-    var head = svg.append("path")
+    var head = canvas.append("path")
                   .attr("d", "M " + x + " " + y + " L " + (x-5)+ " " + (y+5) + " L " + (x+5) + " " + (y+5) + " z")
                   .attr("stroke", "red")
                   .attr("fill", "red")
                   .attr("class", "significanceTest");
     
-    drawScales(cx, cy);    
+    drawScales(cx, cy); 
+    
+    var spaceOnRight = (canvasWidth - plotWidth)/2;
+    canvas.append("text")
+            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+            .attr("y", canvasHeight/2 + plotHeight/2 - significanceTestResultOffset)
+            .attr("text-anchor", "middle")
+            .attr("fill", "orange")
+            .text(testResults["method"]);
 }
 
 function drawScales(cx, cy)

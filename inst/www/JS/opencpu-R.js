@@ -490,7 +490,7 @@ function performTTest(groupA, groupB, varianceEqual, paired) //groupA, groupB, p
                   console.log("\t\t\t p = " + output.p);
                   console.log("\t\t\t t = " + output.t);
                   
-                  testResults["t"] = output.t;
+                  testResults["statistic"] = "t = " + output.t;
                   testResults["p"] = output.p;                  
                   testResults["df"] = output.DOF;
                   testResults["method"] = output.method;
@@ -526,11 +526,9 @@ function performMannWhitneyTest(groupA, groupB)
                   console.log("\t\t\t p = " + output.p);
                   console.log("\t\t\t r = " + output.r);
                   
-                  testResults["U"] = output.U;
+                  testResults["statistic"] = "U = " + output.U;
                   testResults["p"] = output.p;                  
-                  testResults["r"] = output.r;
-                  
-                           
+                  testResults["effect-size"] = "r = " + output.r;
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines");           
@@ -563,9 +561,9 @@ function performWilcoxonTest(groupA, groupB)
                   console.log("\t\t\t p = " + output.p);
                   console.log("\t\t\t r = " + output.r);
                   
-                  testResults["V"] = output.V;
+                  testResults["statistic"] = "V = " + output.V;
                   testResults["p"] = output.p;                  
-                  testResults["r"] = output.r;
+                  testResults["effect-size"] = "r = " + output.r;
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines");           
@@ -600,7 +598,7 @@ function performANOVA(dependentVariable, independentVariable)
                   console.log("\t\t\t method used = One-way ANOVA"); //todo
                   console.log("\t\t\t DF = " + output.DOF);
                   
-                  testResults["F"] = output.F;
+                  testResults["statistic"] = "F = " + output.F;
                   testResults["p"] = output.p;                  
                   testResults["df"] = output.DOF;
                   testResults["method"] = "ANOVA"; //todo
@@ -642,10 +640,9 @@ function performWelchANOVA(dependentVariable, independentVariable)
                   console.log("\t\t\t method used = Welch's ANOVA");
                   console.log("\t\t\t DF = (" + output.numeratorDF + ", " + output.denominatorDF +")");
                   
-                  testResults["F"] = output.F;
+                  testResults["statistic"] = "F = " + output.F;
                   testResults["p"] = output.p;                  
-                  testResults["numDF"] = output.numeratorDF;
-                  testResults["denomDF"] = output.denominatorDF;
+                  testResults["df"] = output.numeratorDF + "/" + output.denominatorDF;
                   testResults["method"] = "Welch's ANOVA"; 
                            
                   
@@ -685,9 +682,9 @@ function performKruskalWallisTest(dependentVariable, independentVariable)
                   console.log("\t\t\t method used = Kruskal-Wallis Test ANOVA");
                   console.log("\t\t\t DF = " + output.DF);
                   
-                  testResults["F"] = output.F;
+                  testResults["statistic"] = "F = " + output.F;
                   testResults["p"] = output.p;                  
-                  testResults["DF"] = output.DF;
+                  testResults["df"] = output.DF;
                   testResults["method"] = "Kruskal-Wallis Test"; 
                            
                   
@@ -723,7 +720,7 @@ function getDFromT(n)
                   
                   console.log("Cohen's d: " + output.d);
                   
-                  testResults["d"] = output.d;
+                  testResults["effect-size"] = "Cohen's d = " + output.d;
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
