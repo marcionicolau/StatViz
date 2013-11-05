@@ -452,8 +452,10 @@ function applyTransform(dependentVariable, level, last)
                     var text = d3.select("#" + level + ".xAxisGrooveText");
                     text.attr("fill", boxColors["normal"]);
                     
+                    d3.select("#normality.crosses").attr("display", "none");  
                     d3.select("#normality.ticks").attr("display", "inline");  
-                    performHomoscedasticityTestNormal(variableList["dependent"][0], variableList["independent"][0]);
+                    var variableList = sort(currentVariableSelection);                    
+                    performHomoscedasticityTestNormal(dependentVariable, variableList["independent"][0]);
                 }
             
                   
