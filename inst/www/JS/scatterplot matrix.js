@@ -71,8 +71,8 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     var uniqueDataX = dataX.unique();
     var uniqueDataY = dataY.unique();  
     
-    console.log("unique data length (X)=" + uniqueDataX.length);
-    console.log("unique data length (Y)=" + uniqueDataY.length);
+    console.log("unique data length (" + variableX + ")=" + uniqueDataX.length);
+    console.log("unique data length (" + variableY + ")=" + uniqueDataY.length);
     
     console.log("short number of grooves=" + shortNumberOfGrooves);
     
