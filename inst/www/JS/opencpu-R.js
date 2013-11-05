@@ -376,7 +376,7 @@ function findTransform(dist)
                 if(output.type == "none")
                 {
                     var variableList = getSelectedVariables();
-                    performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]);
+                    performHomoscedasticityTestNotNormal(variableList["dependent"][0], variableList["independent"][0]);
                 }
                 else
                 {
