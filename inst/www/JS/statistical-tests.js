@@ -134,7 +134,8 @@ function setDistribution(dependentVariable, level, normal)
         }
         else
         {
-            findTransform(variables[dependentVariable][variableList["independent-levels"][0]]);
+            console.log("checking if normality transform is possible...");            
+            findTransform(variableList["dependent"][0], variableList["independent"][0]);
         }
     }    
 }
@@ -182,7 +183,7 @@ function displaySignificanceTestResults()
                                  .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
                                  .attr("y2", means[i].getAttribute("cy"))
                                  .attr("stroke", meanColors["normal"])
-                                 .attr("opacity", "0.25")
+                                 .attr("opacity", "0.45")
                                  .attr("stroke-dasharray","5,5")
                                  .attr("id", "meanrefLine")
                                  .attr("class", "significanceTest");
@@ -249,7 +250,7 @@ function drawScales(cx, cy)
     }  
     
     var variableList = getSelectedVariables();
-    var means = [];
+    var means = [];performHomoscedasticityTestNotNormalperformHomoscedasticityTestNotNormalperformHomoscedasticityTestNotNormal
     
     var levels = variables[variableList["independent"][0]]["dataset"].unique();
     

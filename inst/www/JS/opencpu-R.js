@@ -362,13 +362,15 @@ function performNormalityTest(dist, dependentVariable, level)
     });
 }
 
-function findTransform(dist)
+function findTransform(dependentVariable, independentVariable)
 {
     // Get variable names and their data type
     
     
     var req = opencpu.r_fun_json("findTransform", {
-                    distribution: dist
+                    dependentVariable: dependentVariable,
+                    independentVariable: independentVariable,
+                    dataset: dataset
                   }, function(output) {                                                   
                   
                 console.log("type=" + output.type);
@@ -380,7 +382,7 @@ function findTransform(dist)
                 }
                 else
                 {
-                    console.log("Offer choice to the user");
+                    console.log("type="+type);
                 }
                   
       }).fail(function(){

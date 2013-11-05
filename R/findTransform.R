@@ -1,43 +1,109 @@
-findTransform <- function(distribution)
+findTransform <- function(dependentVariable, independentVariable, dataset)
 {
-    distribution = c(distribution);
-
-    result = eval(parse(text = paste("shapiro.test(sqrt(distribution))")));
-    if(!is.nan(result$p.value))    
+    D <- as.data.frame(dataset);
+    
+    eval(parse(text = paste("D$",independentVariable," = ","as.factor(D$",independentVariable,")",sep="")));
+    
+    levels = eval(parse(text = paste("unique(D$",independentVariable,")")));
+    numberOfLevels = eval(parse(text = paste("length(unique(D$",independentVariable,"))")));
+    
+    transformations = c("sqrt", "cube", "reciprocal", "log");
+    
+    for(i in 1:numberOfLevels)
     {
-        if(result$p.value > 0.05)
-        {
-            type = "sqrt";
-        }
+        eval(parse(text = paste(levels[i]," = subset(D, D$",independentVariable," == \"",levels[i],"\")",sep="")));
+        eval(parse(text = paste(levels[i]," = ",levels[i],"$",dependentVariable)))
     }
-
-    result = eval(parse(text = paste("shapiro.test(distribution^(1/3))")));
-    if(!is.nan(result$p.value))    
-    {
-        if(result$p.value > 0.05)
-        {
-            type = "cube";
-        }
-    }
-
-    result = eval(parse(text = paste("shapiro.test(1/distribution)")));
-    if(!is.nan(result$p.value))    
-    {
-        if(result$p.value > 0.05)
-        {
-            type = "reciprocal";
-        }
-    }
-
-    result = eval(parse(text = paste("shapiro.test(log10(distribution))")));
-    if(!is.nan(result$p.value))    
-    {
-        if(result$p.value > 0.05)
-        {
-            type = "log";
-        }
-    }
-
+    
     type = "none";
+    
+    for(i in 1:length(transformations))
+    {
+    	if(transformations[i] == "sqrt")
+    	{	
+    		for(k in 1:numberOfLevels)
+    		{
+    			temp = eval(parse(text = paste("sqrt(",levels[k],")")));
+    			
+    			result <- shapiro.test(temp);
+    			if(!is.nan(result$p.value))    
+			    {
+			        if(result$p.value > 0.05)
+			        {
+			            type = "sqrt";
+			        }
+			        else
+			        {
+			        	type = "none";
+			        	break;
+			        }
+			    }
+    		}
+    	}
+    	if(transformations[i] == "cube")
+    	{	
+    		for(k in 1:numberOfLevels)
+    		{
+    			temp = eval(parse(text = paste(levels[k],"^(1/3)")));
+    			
+    			result <- shapiro.test(temp);
+    			if(!is.nan(result$p.value))    
+			    {
+			        if(result$p.value > 0.05)
+			        {
+			            type = "cube";
+			        }
+			        else
+			        {
+			        	type = "none";
+			        	break;
+			        }
+			    }
+    		}
+    	}
+    	if(transformations[i] == "reciprocal")
+    	{
+    		for(k in 1:numberOfLevels)
+    		{
+    			temp = eval(parse(text = paste("1/",levels[k])));
+    			
+    			result <- shapiro.test(temp);
+    			if(!is.nan(result$p.value))    
+			    {
+			        if(result$p.value > 0.05)
+			        {
+			            type = "reciprocal";
+			        }
+			        else
+			        {
+			        	type = "none";
+			        	break;
+			        }
+			    }
+    		}
+    	}
+    	if(transformations[i] == "log")
+    	{
+    		for(k in 1:numberOfLevels)
+    		{
+    			temp = eval(parse(text = paste("log10(",levels[k],")")));
+    			
+    			result <- shapiro.test(temp);
+    			if(!is.nan(result$p.value))    
+			    {
+			        if(result$p.value > 0.05)
+			        {
+			            type = "log";
+			        }
+			        else
+			        {
+			        	type = "none";
+			        	break;
+			        }
+			    }
+    		}
+    	}
+    }
+    
     list(type = type);
 }
