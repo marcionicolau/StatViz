@@ -64,6 +64,7 @@ var boxColors = new Object();
 var datapointRadius = 3;
 var numberOfGrooves = 10;
 var topOffset = 25;
+var labelOffset = 25;
 
 // Significance test
 
