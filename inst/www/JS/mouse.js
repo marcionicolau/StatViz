@@ -200,7 +200,7 @@ function OnMouseMove(e)
                 console.log("e.pageX=" + e.pageX);
                 console.log("width=" + width);
                 console.log("canvasWidth=" + canvasWidth);
-                incompleteLines.attr("x2", e.pageX*((width-canvasWidth)/width) - (width - canvasWidth))
+                incompleteLines.attr("x2", e.pageX)
                         .attr("y2", e.pageY);
             }
         }
