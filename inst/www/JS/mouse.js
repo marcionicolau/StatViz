@@ -144,7 +144,15 @@ function OnMouseDown(e)
             d3.select("#svgCanvas").attr("height", height).attr("width", width);
         }
         else if(button.attr("xlink:href") == "images/fullscreenclick.png")
+        {
             button.attr("xlink:href", "images/fullscreennormal.png");
+            d3.select("#variable.panel").attr("style", "width: " + (width - canvasWidth) + "px; height: " + height + "px;"); 
+            d3.select("#variablePanelSVG").attr("width", (width - canvasWidth));            
+            d3.select("#visualization.panel").attr("style", "width: " + canvasWidth + "px; height: " + height/3 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth) + "px;");                    
+            d3.select("#visualizationPanelSVG").attr("height", height/3);
+            d3.select("#canvas").attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth) + "px;");    
+            d3.select("#svgCanvas").attr("height", canvasHeight).attr("width", canvasWidth);
+        }
     }
     else
     {
