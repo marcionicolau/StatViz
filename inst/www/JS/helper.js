@@ -47,7 +47,6 @@ function splitTheData()
             }
         }
     }     
-    console.dir(IQR);
 }
 
 //Initialise the mouse event handlers

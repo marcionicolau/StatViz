@@ -6,7 +6,6 @@ function OnMouseDown(e)
 
     // IE uses srcElement, others use target
     var target = e.target != null ? e.target : e.srcElement;
-    console.log("target: " + e.target.className.baseVal);
    
     // for IE, left click == 1
     // for Firefox, left click == 0
@@ -59,23 +58,16 @@ function OnMouseDown(e)
         
         var meanCircle = d3.selectAll("#" + target.id + ".means");
         
-        
-        console.log(document.getElementsByClassName("completeLines").length);
-        console.log(document.getElementsByClassName("means").length);
         if(document.getElementsByClassName("completeLines").length+1 < (document.getElementsByClassName("means").length))
         {
-            console.log("in");
             meanCircle.attr("fill", meanColors["click"]);
             
             //check if we are finishing here
             
             var incompleteLines = d3.selectAll(".incompleteLines");
-            console.log(document.getElementsByClassName("incompleteLines").length);
             
             if(document.getElementsByClassName("incompleteLines").length > 0)
-            {
-                console.log("completing lines...");
-            
+            {            
                 incompleteLines.attr("x2", meanCircle.attr("cx"))
                                 .attr("y2", meanCircle.attr("cy"))
                                 .attr("stroke", meanColors["click"])

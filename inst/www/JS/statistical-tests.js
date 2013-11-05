@@ -250,7 +250,7 @@ function drawScales(cx, cy)
     }  
     
     var variableList = getSelectedVariables();
-    var means = [];performHomoscedasticityTestNotNormalperformHomoscedasticityTestNotNormalperformHomoscedasticityTestNotNormal
+    var means = [];
     
     var levels = variables[variableList["independent"][0]]["dataset"].unique();
     
