@@ -223,7 +223,7 @@ function displaySignificanceTestResults()
             .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
             .attr("y", cyMin + significanceTestResultOffset)
             .attr("text-anchor", "middle")
-            .attr("font-size", "24px")
+            .attr("font-size", "22px")
             .attr("fill", "orange")
             .text(testResults["method"]);
     
@@ -231,7 +231,7 @@ function displaySignificanceTestResults()
             .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
             .attr("y", cyMin + 2*significanceTestResultOffset)
             .attr("text-anchor", "middle")
-            .attr("font-size", "24px")
+            .attr("font-size", "22px")
             .attr("fill", "orange")
             .text(testResults["statistic"]);
     
@@ -239,7 +239,7 @@ function displaySignificanceTestResults()
             .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
             .attr("y", cyMin + 3*significanceTestResultOffset)
             .attr("text-anchor", "middle")
-            .attr("font-size", "18px")
+            .attr("font-size", "16px")
             .attr("fill", "orange")
             .text("p = " + testResults["p"]);
 }
