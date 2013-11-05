@@ -135,7 +135,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
         axisText = format(minX + i*xSlice);
         textPosition = x + i*xStep;
         
-        if(uniqueDataX.length <= numberOfGrooves)
+        if(uniqueDataX.length <= shortNumberOfGrooves)
         {
             axisText = uniqueDataX[i];
             textPosition = x + xStep/2 + i*xStep;
@@ -174,7 +174,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
         axisText = format(minY + i*ySlice);
         textPosition = y - i*yStep;                  
         
-        if(uniqueDataY.length <= numberOfGrooves)
+        if(uniqueDataY.length <= shortNumberOfGrooves)
         {
             axisText = uniqueDataY[i];
             textPosition = y - yStep/2 - i*yStep;                    
