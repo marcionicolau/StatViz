@@ -71,6 +71,11 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     var uniqueDataX = dataX.unique();
     var uniqueDataY = dataY.unique();  
     
+    console.log("unique data length (X)=" + uniqueDataX.length);
+    console.log("unique data length (Y)=" + uniqueDataY.length);
+    
+    console.log("short number of grooves=" + shortNumberOfGrooves);
+    
     var minX=0, minY=0, maxX=0, maxY=0;
     
     if(!isNaN(dataX[0]))
@@ -108,15 +113,15 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     var numberOfGroovesInXAxis = uniqueDataX.length > shortNumberOfGrooves ? shortNumberOfGrooves : uniqueDataX.length;
     var numberOfGroovesInYAxis = uniqueDataY.length > shortNumberOfGrooves ? shortNumberOfGrooves : uniqueDataY.length;
     
-    console.log("#grooves in x-axis=" + numberOfGroovesInXAxis);
-    console.log("#grooves in y-axis=" + numberOfGroovesInYAxis);
+//     console.log("#grooves in x-axis=" + numberOfGroovesInXAxis);
+//     console.log("#grooves in y-axis=" + numberOfGroovesInYAxis);
     
     //y-axis grooves
     var xStep = uniqueDataX.length <= shortNumberOfGrooves ? shortWidth/numberOfGroovesInXAxis : shortWidth/(numberOfGroovesInXAxis - 1);
     var yStep = uniqueDataY.length <= shortNumberOfGrooves ? shortHeight/numberOfGroovesInYAxis : shortHeight/(numberOfGroovesInYAxis - 1);
     
-    console.log("X-step=" + xStep);
-    console.log("Y-step=" + yStep);
+//     console.log("X-step=" + xStep);
+//     console.log("Y-step=" + yStep);
     
     var xSlice = (maxX - minX)/(shortNumberOfGrooves-1);    
     var ySlice = (maxY - minY)/(shortNumberOfGrooves-1);    
@@ -203,29 +208,29 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
                     .attr("class", "yAxisGrooveText");
     }
     
-    for(var i=0; i<dataX.length; i++)
-    {
-        var X,Y;
-        
-        if(isNaN(dataX[0]))
-            X = x + uniqueDataX.indexOf(dataX[i])*xStep + xStep/2;    
-        else
-            X = x + getValue(dataX[i], minX, maxX)*shortWidth;
-            
-        if(isNaN(dataY[0]))
-            Y = y - uniqueDataY.indexOf(dataY[i])*yStep - yStep/2;
-        else
-            Y = y - getValue(dataY[i], minY, maxY)*shortHeight;
-            
-        var color = "black";
-        
-        canvas.append("circle")
-                    .attr("cx", X)
-                    .attr("cy", Y)
-                    .attr("r", shortDataPointRadius)
-                    .attr("fill", color)                    
-                    .attr("class", "points");     
-    }
+//     for(var i=0; i<dataX.length; i++)
+//     {
+//         var X,Y;
+//         
+//         if(isNaN(dataX[0]))
+//             X = x + uniqueDataX.indexOf(dataX[i])*xStep + xStep/2;    
+//         else
+//             X = x + getValue(dataX[i], minX, maxX)*shortWidth;
+//             
+//         if(isNaN(dataY[0]))
+//             Y = y - uniqueDataY.indexOf(dataY[i])*yStep - yStep/2;
+//         else
+//             Y = y - getValue(dataY[i], minY, maxY)*shortHeight;
+//             
+//         var color = "black";
+//         
+//         canvas.append("circle")
+//                     .attr("cx", X)
+//                     .attr("cy", Y)
+//                     .attr("r", shortDataPointRadius)
+//                     .attr("fill", color)                    
+//                     .attr("class", "points");     
+//     }
 }
 
 function getValue(number, min, max)
