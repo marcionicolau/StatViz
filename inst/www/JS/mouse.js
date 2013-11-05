@@ -383,12 +383,15 @@ function setup(e, target)
     _startY = e.clientY;
 
     // grab the clicked element's position
-    _offsetX = removeAlphabetsFromString(target.style.left);
-    _offsetY = removeAlphabetsFromString(target.style.top);      
-
+    if(target.style != undefined)
+    {
+        _offsetX = removeAlphabetsFromString(target.style.left);
+        _offsetY = removeAlphabetsFromString(target.style.top);      
+        target.style.zIndex = +1;
+    }
     // bring the clicked element to the front while it is being dragged
     _oldZIndex = target.style.zIndex;
-//     target.style.zIndex = +1;
+
 
     // we need to access the element in OnMouseMove
     _dragElement = target;
