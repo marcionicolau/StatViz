@@ -33,6 +33,12 @@ var border = 20;
 var plotHeight = canvasHeight - 2*(axesOffset + tickTextOffsetXAxis + border);
 var plotWidth = 4*plotHeight/3;
 
+// Buttons
+var buttonColors = new Object();   
+    buttonColors["normal"] = "white";
+    buttonColors["hover"] = "lightgrey";
+    buttonColors["click"] = "BlanchedAlmond";
+
 
 //Define colors for histogram bars, color scatterplot
 var colors = ["rgba(255,0,0,0.5)","rgba(0,255,0,0.5)","rgba(0,0,255,0.5)", "rgba(255,255,0,0.5)","rgba(0,255,255,0.5)","rgba(255,0,255,0.5)"];
@@ -83,7 +89,7 @@ var normalityPlotHeight = normalityPlotWidth*(3/4);
 var normalityPlotOffset = 75; //from canvasHeight
 var buttonOffset = 100;
 var buttonHeight = 75;
-var buttonWidth = 250;
+var buttonWidth = 350;
 
 var sampleSizeCutoff = 20;
 

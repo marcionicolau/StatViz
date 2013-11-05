@@ -392,8 +392,12 @@ function findTransform(dependentVariable, independentVariable)
                             .attr("y", canvasHeight/2 - plotHeight/2 + buttonOffset)
                             .attr("width", buttonWidth)
                             .attr("height", buttonHeight)
+                            .attr("rx", "10")
+                            .attr("ry", "10")
                             .attr("fill", "white")
-                            .attr("stroke", "black");
+                            .attr("stroke", "black")
+                            .attr("id", "button")
+                            .attr("class", "transformToNormal");
                     
                     canvas.append("text")
                             .attr("x", canvasWidth/2 + plotWidth/2 + buttonOffset + buttonWidth/2)
@@ -401,7 +405,9 @@ function findTransform(dependentVariable, independentVariable)
                             .attr("fill", "orange")
                             .attr("text-anchor", "middle")
                             .attr("font-size", "24px")
-                            .text("transform all to normal distributions");
+                            .text("transform all to normal distributions")
+                            .attr("id", "text")
+                            .attr("class", "transformToNormal");
                             
                 }
                   

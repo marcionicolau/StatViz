@@ -90,6 +90,22 @@ function OnMouseDown(e)
             }
         }   
     }
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "transformToNormal")
+    {
+        setup(e, target);
+        
+        var button = d3.select("#button." + target.className.baseVal);   
+        var buttonText = d3.select("#text." + target.className.baseVal);
+        
+        if(button.attr("fill", buttonColors["hover"])
+        {
+            button.attr("fill", buttonColors["click"]);
+            
+            //apply transform
+            console.log("okay, will transform the distributions");
+        }        
+        
+    }
     else
     {
         //the user clicked outside
@@ -273,6 +289,19 @@ function OnMouseOver(e)
                 
         
     }   
+    else if(target.className.baseVal == "transformToNormal")
+    {
+        setup(e, target);
+        var button = d3.select("#button." + target.className.baseVal);   
+        var buttonText = d3.select("#text." + target.className.baseVal);
+        
+        if(button.attr("fill", buttonColors["normal"])
+        {
+            button.attr("fill", buttonColors["hover"]);
+            button.attr("cursor", "pointer");
+            buttonText.attr("cursor", "pointer");
+        }        
+    }
 }
 
 function OnMouseOut(e)
