@@ -383,7 +383,7 @@ function findTransform(dependentVariable, independentVariable)
                 else
                 {
                     console.log("type=" + output.type);
-                    
+                    transformationType = output.type;
                     //offer choice
                     var canvas = d3.select("#svgCanvas");
                     
@@ -410,6 +410,32 @@ function findTransform(dependentVariable, independentVariable)
                             .attr("class", "transformToNormal");
                             
                 }
+                  
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+        
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function applyTransform(dependentVariable, level)
+{
+    // Get variable names and their data type
+    
+    var req = opencpu.r_fun_json("applyTransform", {
+                    distribution: variables[dependentVariable][level],
+                    type: transformationType
+                  }, function(output) {                                                   
+                  
+                console.log("transformed data = " + output.transformedData);                
+                variables[dependentVariable][level] = output.transformedData;
                   
       }).fail(function(){
           alert("Failure: " + req.responseText);

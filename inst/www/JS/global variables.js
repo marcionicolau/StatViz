@@ -40,3 +40,5 @@ var significanceTestNames = new Object();
 var currentTestType;
 var testResults = new Object();
 var distributions = new Object();
+
+var transformationType;
