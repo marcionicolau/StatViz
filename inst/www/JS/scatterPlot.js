@@ -47,23 +47,37 @@ function makeScatterplot()
     
     // Draw axes
         
-    var xAxis = canvas.append("line")
-                                    .attr("x1", LEFT)
-                                    .attr("y1", BOTTOM + axesOffset)
-                                    .attr("x2", RIGHT)
-                                    .attr("y2", BOTTOM + axesOffset) 
-                                    .attr("stroke", "black")
-                                    .attr("id", "xAxis")
-                                    .attr("class", "axes");
+    canvas.append("line")
+              .attr("x1", LEFT)
+              .attr("y1", BOTTOM + axesOffset)
+              .attr("x2", RIGHT)
+              .attr("y2", BOTTOM + axesOffset) 
+              .attr("stroke", "black")
+              .attr("id", "xAxis")
+              .attr("class", "axes");
+              
+    canvas.append("text")
+                .attr("x", (LEFT + RIGHT)/2)
+                .attr("y", BOTTOM + axesOffset + labelOffset)
+                .attr("text-anchor", "middle")
+                .text(currentVariableSelection[0])
+                .attr("fill", "black");
     
-    var yAxis = canvas.append("line")
-                                    .attr("x1", LEFT - axesOffset)
-                                    .attr("y1", TOP)
-                                    .attr("x2", LEFT - axesOffset)
-                                    .attr("y2", BOTTOM)
-                                    .attr("stroke", "black")
-                                    .attr("id", "yAxis")
-                                    .attr("class", "axes");
+    canvas.append("line")
+              .attr("x1", LEFT - axesOffset)
+              .attr("y1", TOP)
+              .attr("x2", LEFT - axesOffset)
+              .attr("y2", BOTTOM)
+              .attr("stroke", "black")
+              .attr("id", "yAxis")              
+              .attr("class", "axes");
+    
+    canvas.append("text")
+                .attr("x", LEFT - axesOffset - labelOffset)
+                .attr("y", (TOP + BOTTOM)/2 + 6)
+                .attr("text-anchor", "end")
+                .text(currentVariableSelection[1])
+                .attr("fill", "black");
                                     
     
     //grooves

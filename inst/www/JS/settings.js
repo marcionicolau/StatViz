@@ -63,7 +63,7 @@ var boxColors = new Object();
 // Scatterplot
 var datapointRadius = 3;
 var numberOfGrooves = 10;
-var topOffset = 20;
+var topOffset = 25;
 
 // Significance test
 
