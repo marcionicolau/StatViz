@@ -425,7 +425,7 @@ function findTransform(dependentVariable, independentVariable)
     });
 }
 
-function applyTransform(dependentVariable, level)
+function applyTransform(dependentVariable, level, last)
 {
     // Get variable names and their data type
     
@@ -434,8 +434,14 @@ function applyTransform(dependentVariable, level)
                     type: transformationType
                   }, function(output) {                                                   
                   
-                console.log("transformed data = " + output.transformedData);                
                 variables[dependentVariable][level] = output.transformedData;
+                
+                if(last)
+                {
+                    console.dir(variables);
+                    makePlot();
+                }
+            
                   
       }).fail(function(){
           alert("Failure: " + req.responseText);
