@@ -443,6 +443,11 @@ function applyTransform(dependentVariable, level, last)
                 {
                     console.dir(variables);
                     redrawBoxPlot();
+                    
+                    d3.select("#svgCanvas").transition().duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
+                    
+                    removeElementsByClassName("transformToNormal");
+                    removeElementsByClassName("completeLines");
                 }
             
                   
