@@ -101,9 +101,6 @@ function OnMouseDown(e)
         {
             button.attr("fill", buttonColors["click"]);
             
-            //apply transform
-            console.log("okay, will transform the distributions");
-            
             var variableList = sort(currentVariableSelection);
             
             for(var i=0; i<variableList["independent-levels"].length; i++)

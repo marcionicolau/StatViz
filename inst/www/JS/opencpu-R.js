@@ -597,7 +597,7 @@ function performANOVA(dependentVariable, independentVariable)
                   console.log("\t\t One-way ANOVA for (" + dependentVariable + " ~ " + independentVariable + ")");
                   console.log("\t\t\t F = " + output.F);
                   console.log("\t\t\t p = " + output.p);
-                  console.log("\t\t\t method used = One-wayANOVA"); //todo
+                  console.log("\t\t\t method used = One-way ANOVA"); //todo
                   console.log("\t\t\t DF = " + output.DOF);
                   
                   testResults["F"] = output.F;
@@ -639,7 +639,7 @@ function performWelchANOVA(dependentVariable, independentVariable)
                   console.log("\t\t Welch's ANOVA for (" + dependentVariable + " ~ " + independentVariable + ")");
                   console.log("\t\t\t F = " + output.F);
                   console.log("\t\t\t p = " + output.p);
-                  console.log("\t\t\t method used= Welch's ANOVA");
+                  console.log("\t\t\t method used = Welch's ANOVA");
                   console.log("\t\t\t DF = (" + output.numeratorDF + ", " + output.denominatorDF +")");
                   
                   testResults["F"] = output.F;
@@ -682,7 +682,7 @@ function performKruskalWallisTest(dependentVariable, independentVariable)
                   console.log("\t\t Kruskal-Wallis test for (" + dependentVariable + " ~ " + independentVariable + ")");
                   console.log("\t\t\t Chi-squared = " + output.chiSquared);
                   console.log("\t\t\t p = " + output.p);
-                  console.log("\t\t\t method used= Kruskal-Wallis Test ANOVA");
+                  console.log("\t\t\t method used = Kruskal-Wallis Test ANOVA");
                   console.log("\t\t\t DF = " + output.DF);
                   
                   testResults["F"] = output.F;

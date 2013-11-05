@@ -7,7 +7,7 @@ function compareMeans()
         case 1:
                 //T-test
                 {
-                    console.log("\t Performing T-test...\n\n");
+                    console.log("\t Significance test for 2 variables...\n\n");
 
                     //homoscedasticity
                     var variableList = getSelectedVariables();
@@ -17,7 +17,7 @@ function compareMeans()
                     
                     if(sampleSize < 20)
                     {
-                        console.log("sample size < 20");
+                        console.log("sample size < 20!");
                         performHomoscedasticityTestNotNormal(variableList["dependent"][0], variableList["independent"][0]);
                     }
                     else
@@ -31,7 +31,7 @@ function compareMeans()
         default:
                 //ANOVA
                 {
-                    console.log("\t Performing ANOVA test...\n\n");
+                    console.log("\t Significance test for more than 2 variables...\n\n");
                                         
                     var variableList = getSelectedVariables();
                     console.dir(variableList);
@@ -127,14 +127,14 @@ function setDistribution(dependentVariable, level, normal)
         
         if(normal)
         {         
-            console.log("all distributions are normal!");
+            console.log("\n\tall distributions are normal!");
             
             d3.select("#normality.ticks").attr("display", "inline");  
             performHomoscedasticityTestNormal(variableList["dependent"][0], variableList["independent"][0]);
         }
         else
         {
-            console.log("checking if normality transform is possible...");            
+            console.log("\n\tchecking if normality transform is possible...");            
             findTransform(variableList["dependent"][0], variableList["independent"][0]);
         }
     }    
