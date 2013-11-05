@@ -147,7 +147,6 @@ function OnMouseDown(e)
         else if(button.attr("xlink:href") == "images/fullscreenclick.png")
         {
             fullScreen = false;
-            console.log("'ello");
             button.attr("xlink:href", "images/fullscreennormal.png");
             d3.select("#variable.panel").attr("style", "width: " + (width - canvasWidth) + "px; height: " + height + "px;"); 
             d3.select("#variablePanelSVG").attr("width", (width - canvasWidth));            
