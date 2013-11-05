@@ -146,12 +146,12 @@ function makeScatterplot()
         var x,y;
         
         if(uniqueDataX.length <= numberOfGrooves)
-            x = LEFT + uniqueDataX.indexOf(data[0][i])*xStep + xStep/2;    
+            x = LEFT + uniqueDataX.indexOf(data["X"][i])*xStep + xStep/2;    
         else
             x = LEFT + getValue1(data["X"][i], mins["X"], maxs["X"])*plotWidth;
             
         if(uniqueDataY.length <= numberOfGrooves)
-            y = BOTTOM - uniqueDataY.indexOf(data[1][i])*yStep - yStep/2;
+            y = BOTTOM - uniqueDataY.indexOf(data["Y"][i])*yStep - yStep/2;
         else
             y = BOTTOM - getValue1(data["Y"][i], mins["Y"], maxs["Y"])*plotHeight;
         
