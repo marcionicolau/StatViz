@@ -400,6 +400,7 @@ function findTransform(dependentVariable, independentVariable)
                             .attr("y", canvasHeight/2 - plotHeight/2 + buttonOffset + buttonHeight/2)
                             .attr("fill", "orange")
                             .attr("text-anchor", "middle")
+                            .attr("font-size", "24px")
                             .text("transform all to normal distributions");
                             
                 }

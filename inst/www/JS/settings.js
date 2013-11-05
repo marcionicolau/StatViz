@@ -82,8 +82,8 @@ var normalityPlotWidth = 200;
 var normalityPlotHeight = normalityPlotWidth*(3/4);
 var normalityPlotOffset = 75; //from canvasHeight
 var buttonOffset = 100;
-var buttonHeight = 50;
-var buttonWidth = 100;
+var buttonHeight = 75;
+var buttonWidth = 250;
 
 var sampleSizeCutoff = 20;
 
