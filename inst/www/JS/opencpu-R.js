@@ -444,10 +444,16 @@ function applyTransform(dependentVariable, level, last)
                     console.dir(variables);
                     redrawBoxPlot();
                     
-                    d3.select("#svgCanvas").transition().duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
+                    d3.select("#svgCanvas").transition().delay(1000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
                     
                     removeElementsByClassName("transformToNormal");
                     removeElementsByClassName("completeLines");
+                    
+                    var text = d3.select("#" + level + ".xAxisGrooveText");
+                    text.attr("fill", boxColors["normal"]);
+                    
+                    d3.select("#normality.ticks").attr("display", "inline");  
+                    performHomoscedasticityTestNormal(variableList["dependent"][0], variableList["independent"][0]);
                 }
             
                   

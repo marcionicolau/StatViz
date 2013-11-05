@@ -51,3 +51,4 @@ var topFringes = [];
 var bottomFringes = [];
 var topFringeConnectors = [];
 var bottomFringeConnectors = [];
+var yAxisTexts = [];

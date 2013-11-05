@@ -79,6 +79,7 @@ function makePlot()
                                         bottomFringes = [];
                                         topFringeConnectors = [];
                                         bottomFringeConnectors = [];
+                                        yAxisTexts = [];
                                         
                                         makeBoxplot();
                                         break;

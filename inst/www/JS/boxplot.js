@@ -178,13 +178,13 @@ function makeBoxplot()
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooves");
         
-        canvas.append("text")
+        yAxisTexts.push(canvas.append("text")
                     .attr("x", LEFT - tickTextOffsetYAxis - axesOffset)
                     .attr("y", BOTTOM - i*yStep + yAxisTickTextOffset)                    
                     .text(format(min + i*slice))
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
-                    .attr("class", "yAxisGrooveText");
+                    .attr("class", "yAxisGrooveText"));
     }
     
     var widthSlice = plotWidth/(nGroovesX);
@@ -394,24 +394,16 @@ function redrawBoxPlot()
     var yStep = plotHeight/(nGroovesY-1);
     var slice = (max - min)/(nGroovesY-1);    
     
-//     for(i=0; i<nGroovesY; i++)
-//     {
-//         canvas.append("line")
-//                     .attr("x1", LEFT - 10 - axesOffset)
-//                     .attr("y1", BOTTOM - i*yStep)
-//                     .attr("x2", LEFT - axesOffset)
-//                     .attr("y2", BOTTOM - i*yStep)
-//                     .attr("id", "groove" + i)
-//                     .attr("class", "yAxisGrooves");
-//         
-//         canvas.append("text")
-//                     .attr("x", LEFT - tickTextOffsetYAxis - axesOffset)
-//                     .attr("y", BOTTOM - i*yStep + yAxisTickTextOffset)                    
-//                     .text(format(min + i*slice))
-//                     .attr("text-anchor", "end")
-//                     .attr("id", "groove" + i)
-//                     .attr("class", "yAxisGrooveText");
-//     }
+    for(i=0; i<nGroovesY; i++)
+    {
+        yAxisTexts[i].transition().duration(boxPlotTransformationDuration)        
+                    .attr("x", LEFT - tickTextOffsetYAxis - axesOffset)
+                    .attr("y", BOTTOM - i*yStep + yAxisTickTextOffset)                    
+                    .text(format(min + i*slice))
+                    .attr("text-anchor", "end")
+                    .attr("id", "groove" + i)
+                    .attr("class", "yAxisGrooveText");
+    }
     
     var widthSlice = plotWidth/(nGroovesX);
     
@@ -485,6 +477,8 @@ function redrawBoxPlot()
                     .attr("style", "z-index: 5;")
                     .attr("id", ids[i])
                     .attr("class", "means");
+        
+        removeElementsByClassName("outliers");
     
         var outliers = getOutliers(data[i], TOPFringe, BOTTOMFringe);
             
