@@ -442,7 +442,7 @@ function applyTransform(dependentVariable, level, last)
                 if(last)
                 {
                     console.dir(variables);
-                    makePlot();
+                    redrawBoxPlot();
                 }
             
                   
