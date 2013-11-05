@@ -599,11 +599,13 @@ function performANOVA(dependentVariable, independentVariable)
                   console.log("\t\t\t p = " + output.p);
                   console.log("\t\t\t method used = One-way ANOVA"); //todo
                   console.log("\t\t\t DF = " + output.DOF);
+                  console.log("\t\t\t Eta-squared: " + output.etaSquared);
                   
                   testResults["df"] = output.DOF;
                   testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;
                   testResults["p"] = output.p;   
                   testResults["method"] = "ANOVA"; //todo
+                  testResults["effect-size"] = "Eta-squared = " + output.etaSquared;
                            
                   
                 //drawing stuff
@@ -641,11 +643,13 @@ function performWelchANOVA(dependentVariable, independentVariable)
                   console.log("\t\t\t p = " + output.p);
                   console.log("\t\t\t method used = Welch's ANOVA");
                   console.log("\t\t\t DF = (" + output.numeratorDF + ", " + output.denominatorDF +")");
+                  console.log("\t\t\t Eta-squared: " + output.etaSquared);
                   
                   testResults["df"] = output.numeratorDF + "/" + output.denominatorDF;
                   testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;
                   testResults["p"] = output.p;
                   testResults["method"] = "Welch's ANOVA"; 
+                  testResults["effect-size"] = "Eta-squared = " + output.etaSquared;
                            
                   
                 //drawing stuff
@@ -685,7 +689,7 @@ function performKruskalWallisTest(dependentVariable, independentVariable)
                   console.log("\t\t\t DF = " + output.DF);
                   
                   testResults["df"] = output.DF;
-                  testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;
+                  testResults["statistic"] = "Chi-squared(" + testResults["df"] + ") = " + output.chiSquared;
                   testResults["p"] = output.p;                  
                   testResults["method"] = "Kruskal-Wallis Test"; 
                            

@@ -5,5 +5,12 @@ performWelchANOVA <- function(dependentVariable, independentVariable)
     
     result = oneway.test(dependentVariable ~ independentVariable);
     
-    list(p = result$p.value, F = result$statistic[["F"]], numeratorDF = result$parameter[["num df"]], denominatorDF = result$parameter[["denom df"]]);
+    install.packages("MBESS");
+    library(MBESS);
+    
+    n = eval(parse(text = paste("length(table$",dependentVariable,")")));
+    
+    es = ci.pvaf(result$statistic[["F"]], result$parameter[["num df"]], result$parameter[["denom df"]], n);
+    
+    list(p = result$p.value, F = result$statistic[["F"]], numeratorDF = result$parameter[["num df"]], denominatorDF = result$parameter[["denom df"]], etaSquared = es[["Upper.Limit.Proportion.of.Variance.Accounted.for"]]);
 }   
