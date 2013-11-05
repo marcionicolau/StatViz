@@ -45,8 +45,8 @@ var meanColors = new Object(); //Colors for mean, and ?
 // Histogram
 var nBins = 10; 
 var binCountFontSize = "16px";
-var histLegendsOffsetX = 25;
-var histLegendsOffsetX = 35;
+var histLegendOffsetX = 25;
+var histLegendOffsetY = 35;
 var histLegendSize = 25;
 
 
