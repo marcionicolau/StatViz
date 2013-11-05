@@ -134,7 +134,10 @@ function OnMouseDown(e)
         var button = d3.select(".fullscreen");
         
         if(button.attr("xlink:href") == "images/fullscreennormal.png")
+        {
             button.attr("xlink:href", "images/fullscreenclick.png");
+            d3.select("#variable.panel").attr("style", "width: " + 0 + "px; height: " + height + "px;");    
+        }
         else if(button.attr("xlink:href") == "images/fullscreenclick.png")
             button.attr("xlink:href", "images/fullscreennormal.png");
     }

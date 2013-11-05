@@ -97,7 +97,7 @@ var boxPlotTransformationDuration = 700;
 var sampleSizeCutoff = 20;
 
 //full screen button
-var fullScreenButtonSize = 30;
+var fullScreenButtonSize = 75;
 var fullScreenButtonOffset = 15;
 
 
