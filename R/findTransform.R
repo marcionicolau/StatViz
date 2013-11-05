@@ -39,6 +39,9 @@ findTransform <- function(dependentVariable, independentVariable, dataset)
 			        }
 			    }
     		}
+    		
+    		if(type!="none")
+    		    break;
     	}
     	if(transformations[i] == "cube")
     	{	
@@ -60,6 +63,8 @@ findTransform <- function(dependentVariable, independentVariable, dataset)
 			        }
 			    }
     		}
+    		if(type!="none")
+    		    break;
     	}
     	if(transformations[i] == "reciprocal")
     	{
@@ -81,6 +86,8 @@ findTransform <- function(dependentVariable, independentVariable, dataset)
 			        }
 			    }
     		}
+    		if(type!="none")
+    		    break;
     	}
     	if(transformations[i] == "log")
     	{
@@ -102,6 +109,8 @@ findTransform <- function(dependentVariable, independentVariable, dataset)
 			        }
 			    }
     		}
+    		if(type!="none")
+    		    break;
     	}
     }
     
