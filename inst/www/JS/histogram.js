@@ -591,7 +591,7 @@ function drawLegends(data)
     {
         canvas.append("rect")
                 .attr("x", RIGHT + histLegendOffsetX)
-                .attr("y", top + histLegendOffsetY + i*yStep)
+                .attr("y", TOP + histLegendOffsetY + i*yStep)
                 .attr("width", histLegendSize)
                 .attr("height", histLegendSize)
                 .attr("fill", colors[i])
