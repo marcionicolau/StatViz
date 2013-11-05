@@ -9,8 +9,8 @@ function makeScatterplot()
     var LEFT = canvasWidth/2 - plotWidth/2;
     var RIGHT = canvasWidth/2 + plotWidth/2;
     
-    var TOP = canvasHeight/2 - plotHeight/2;
-    var BOTTOM = canvasHeight/2 + plotHeight/2;
+    var TOP = canvasHeight/2 - plotHeight/2 - topOffset;
+    var BOTTOM = canvasHeight/2 + plotHeight/2 - topOffset;
     
     var data = new Object(); 
     var mins = new Object();
