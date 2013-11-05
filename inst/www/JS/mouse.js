@@ -197,7 +197,7 @@ function OnMouseMove(e)
             }
             else
             {
-                incompleteLines.attr("x2", e.pageX - (canvasWidth))
+                incompleteLines.attr("x2", e.pageX - (width - canvasWidth))
                         .attr("y2", e.pageY);
             }
         }
