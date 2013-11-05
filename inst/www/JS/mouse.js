@@ -140,8 +140,8 @@ function OnMouseDown(e)
             d3.select("#variablePanelSVG").attr("width", 0);            
             d3.select("#visualization.panel").attr("style", "height: " + 0 + "px;"); 
             d3.select("#visualizationPanelSVG").attr("height", 0);
-            d3.select("#canvas").attr("style", "left: 0px");
-            d3.select("#svgCanvas").attr("viewBox", "0 0 " + width + " " + height);
+            d3.select("#canvas").attr("style", "left: 0px; height: " + height + "px;");
+            d3.select("#svgCanvas").attr("height", height).attr("width", width).attr("viewBox", "0 0 " + width + " " + height);
         }
         else if(button.attr("xlink:href") == "images/fullscreenclick.png")
             button.attr("xlink:href", "images/fullscreennormal.png");
