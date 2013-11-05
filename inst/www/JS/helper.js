@@ -72,7 +72,13 @@ function makePlot()
                                     }
         case "Boxplot":
                                     {         
-                                        
+                                        var boxes = [];
+                                        var means = [];
+                                        var medians = [];
+                                        var topFringes = [];
+                                        var bottomFringes = [];
+                                        var topFringeConnectors = [];
+                                        var bottomFringeConnectors = [];
                                         makeBoxplot();
                                         break;
                                     }
