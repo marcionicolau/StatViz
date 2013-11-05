@@ -490,9 +490,9 @@ function performTTest(groupA, groupB, varianceEqual, paired) //groupA, groupB, p
                   console.log("\t\t\t p = " + output.p);
                   console.log("\t\t\t t = " + output.t);
                   
-                  testResults["statistic"] = "t = " + output.t;
-                  testResults["p"] = output.p;                  
                   testResults["df"] = output.DOF;
+                  testResults["statistic"] = "t(" + testResults["df"] +") = " + output.t;
+                  testResults["p"] = output.p; 
                   testResults["method"] = output.method;
                   
                 //drawing stuff
@@ -529,6 +529,7 @@ function performMannWhitneyTest(groupA, groupB)
                   testResults["statistic"] = "U = " + output.U;
                   testResults["p"] = output.p;                  
                   testResults["effect-size"] = "r = " + output.r;
+                  testResults["method"] = "Mann-Whitney U test";
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines");           
@@ -564,6 +565,7 @@ function performWilcoxonTest(groupA, groupB)
                   testResults["statistic"] = "V = " + output.V;
                   testResults["p"] = output.p;                  
                   testResults["effect-size"] = "r = " + output.r;
+                  testResults["method"] = "Wilcoxon Signed-rank test";
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines");           
@@ -598,9 +600,9 @@ function performANOVA(dependentVariable, independentVariable)
                   console.log("\t\t\t method used = One-way ANOVA"); //todo
                   console.log("\t\t\t DF = " + output.DOF);
                   
-                  testResults["statistic"] = "F = " + output.F;
-                  testResults["p"] = output.p;                  
                   testResults["df"] = output.DOF;
+                  testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;
+                  testResults["p"] = output.p;   
                   testResults["method"] = "ANOVA"; //todo
                            
                   
@@ -640,9 +642,9 @@ function performWelchANOVA(dependentVariable, independentVariable)
                   console.log("\t\t\t method used = Welch's ANOVA");
                   console.log("\t\t\t DF = (" + output.numeratorDF + ", " + output.denominatorDF +")");
                   
-                  testResults["statistic"] = "F = " + output.F;
-                  testResults["p"] = output.p;                  
                   testResults["df"] = output.numeratorDF + "/" + output.denominatorDF;
+                  testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;
+                  testResults["p"] = output.p;
                   testResults["method"] = "Welch's ANOVA"; 
                            
                   
@@ -682,9 +684,9 @@ function performKruskalWallisTest(dependentVariable, independentVariable)
                   console.log("\t\t\t method used = Kruskal-Wallis Test ANOVA");
                   console.log("\t\t\t DF = " + output.DF);
                   
-                  testResults["statistic"] = "F = " + output.F;
-                  testResults["p"] = output.p;                  
                   testResults["df"] = output.DF;
+                  testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;
+                  testResults["p"] = output.p;                  
                   testResults["method"] = "Kruskal-Wallis Test"; 
                            
                   

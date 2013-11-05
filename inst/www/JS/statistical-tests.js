@@ -221,10 +221,27 @@ function displaySignificanceTestResults()
     var spaceOnRight = (canvasWidth - plotWidth)/2;
     canvas.append("text")
             .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
-            .attr("y", canvasHeight/2 + plotHeight/2 - significanceTestResultOffset)
+            .attr("y", cyMin + significanceTestResultOffset)
             .attr("text-anchor", "middle")
+            .attr("font-size", "24px")
             .attr("fill", "orange")
             .text(testResults["method"]);
+    
+    canvas.append("text")
+            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+            .attr("y", cyMin + 2*significanceTestResultOffset)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "24px")
+            .attr("fill", "orange")
+            .text(testResults["statistic"]);
+    
+    canvas.append("text")
+            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+            .attr("y", cyMin + 3*significanceTestResultOffset)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "18px")
+            .attr("fill", "orange")
+            .text("p = " + testResults["p"]);
 }
 
 function drawScales(cx, cy)
