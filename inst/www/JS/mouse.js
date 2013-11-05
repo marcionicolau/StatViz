@@ -97,7 +97,7 @@ function OnMouseDown(e)
         var button = d3.select("#button." + target.className.baseVal);   
         var buttonText = d3.select("#text." + target.className.baseVal);
         
-        if(button.attr("fill", buttonColors["hover"])
+        if(button.attr("fill", buttonColors["hover"]))
         {
             button.attr("fill", buttonColors["click"]);
             
@@ -295,7 +295,7 @@ function OnMouseOver(e)
         var button = d3.select("#button." + target.className.baseVal);   
         var buttonText = d3.select("#text." + target.className.baseVal);
         
-        if(button.attr("fill", buttonColors["normal"])
+        if(button.attr("fill", buttonColors["normal"]))
         {
             button.attr("fill", buttonColors["hover"]);
             button.attr("cursor", "pointer");
