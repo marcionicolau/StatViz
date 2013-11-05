@@ -382,7 +382,26 @@ function findTransform(dependentVariable, independentVariable)
                 }
                 else
                 {
-                    console.log("type="+type);
+                    console.log("type=" + output.type);
+                    
+                    //offer choice
+                    var canvas = d3.select("#svgCanvas");
+                    
+                    canvas.append("rect")
+                            .attr("x", canvasWidth/2 + plotWidth/2 + buttonOffset)
+                            .attr("y", canvasHeight/2 - plotHeight/2 + buttonOffset)
+                            .attr("width", buttonWidth)
+                            .attr("height", buttonHeight)
+                            .attr("fill", "white")
+                            .attr("stroke", "black");
+                    
+                    canvas.append("text")
+                            .attr("x", canvasWidth/2 + plotWidth/2 + buttonOffset + buttonWidth/2)
+                            .attr("y", canvasHeight/2 - plotHeight/2 + buttonOffset + buttonHeight/2)
+                            .attr("fill", "orange")
+                            .attr("text-anchor", "middle")
+                            .text("transform all to normal distributions");
+                            
                 }
                   
       }).fail(function(){
