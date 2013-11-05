@@ -135,6 +135,7 @@ function OnMouseDown(e)
         
         if(button.attr("xlink:href") == "images/fullscreennormal.png")
         {
+            fullScreen = true;
             button.attr("xlink:href", "images/fullscreenclick.png");
             d3.select("#variable.panel").attr("style", "width: " + 0 + "px; height: " + height + "px;"); 
             d3.select("#variablePanelSVG").attr("width", 0);            
@@ -145,6 +146,7 @@ function OnMouseDown(e)
         }
         else if(button.attr("xlink:href") == "images/fullscreenclick.png")
         {
+            fullScreen = false;
             console.log("'ello");
             button.attr("xlink:href", "images/fullscreennormal.png");
             d3.select("#variable.panel").attr("style", "width: " + (width - canvasWidth) + "px; height: " + height + "px;"); 
@@ -188,8 +190,16 @@ function OnMouseMove(e)
         var incompleteLines = d3.selectAll(".incompleteLines");
         if((_dragElement.className.baseVal == 'means') && (document.getElementsByClassName("incompleteLines").length > 0) && incompleteLines.attr("stroke") == meanColors["normal"])
         {
-            incompleteLines.attr("x2", e.pageX - (width - canvasWidth))
+            if(!fullScreen)
+            {
+                incompleteLines.attr("x2", e.pageX - (width - canvasWidth))
                         .attr("y2", e.pageY);
+            }
+            else
+            {
+                incompleteLines.attr("x2", e.pageX - width)
+                        .attr("y2", e.pageY);
+            }
         }
         
     }

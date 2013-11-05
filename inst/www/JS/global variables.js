@@ -10,6 +10,8 @@ var variableNames = new Array();
 
 var currentVariableSelection = [];    
     var currentVisualizationSelection = "Histogram"; // Select histogram by default
+
+var fullScreen = false;
     
     
 // Mouse events
