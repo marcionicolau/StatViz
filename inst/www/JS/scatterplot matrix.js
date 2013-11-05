@@ -207,12 +207,12 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     {
         var X,Y;
         
-        if(uniqueDataX.length <= numberOfGrooves)
+        if(isNaN(dataX[0]))
             X = x + uniqueDataX.indexOf(dataX[i])*xStep + xStep/2;    
         else
             X = x + getValue(dataX[i], minX, maxX)*shortWidth;
             
-        if(uniqueDataY.length <= numberOfGrooves)
+        if(isNaN(dataY[0]))
             Y = y - uniqueDataY.indexOf(dataY[i])*yStep - yStep/2;
         else
             Y = y - getValue(dataY[i], minY, maxY)*shortHeight;
