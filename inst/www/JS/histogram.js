@@ -45,7 +45,7 @@ function makeHistogram()
                         for(var i=0; i<variableList["independent-levels"].length; i++)
                         {
                             data[i] = variables[variableList["dependent"][0]][variableList["independent-levels"][i]];
-                            varNames[i] = variableList["dependent"][0] + variableList["independent-levels"][i];
+                            varNames[i] = variableList["dependent"][0] + "[" + variableList["independent-levels"][i] + "]";
                             mins[i] = MIN[variableList["dependent"][0]][variableList["independent-levels"][i]];
                             maxs[i] = MAX[variableList["dependent"][0]][variableList["independent-levels"][i]];                            
                         }
@@ -605,7 +605,7 @@ function drawLegends(varNames)
         
         canvas.append("text")
                 .attr("x", RIGHT + 2*histLegendOffsetX + histLegendSize)
-                .attr("y", TOP + histLegendOffsetY + i*yStep + histLegendSize + 6)
+                .attr("y", TOP + histLegendOffsetY + i*yStep + histLegendSize/2 - 3)
                 .attr("fill", "black")
                 .text(varNames[i])
                 .attr("id", "legend" + i)
