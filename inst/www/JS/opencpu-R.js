@@ -605,7 +605,7 @@ function performANOVA(dependentVariable, independentVariable)
                   testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;
                   testResults["p"] = output.p;   
                   testResults["method"] = "ANOVA"; //todo
-                  testResults["effect-size"] = "Eta-squared = " + output.etaSquared;
+                  testResults["effect-size"] = "η^2 = " + output.etaSquared;
                            
                   
                 //drawing stuff
@@ -649,7 +649,7 @@ function performWelchANOVA(dependentVariable, independentVariable)
                   testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;
                   testResults["p"] = output.p;
                   testResults["method"] = "Welch's ANOVA"; 
-                  testResults["effect-size"] = "Eta-squared = " + output.etaSquared;
+                  testResults["effect-size"] = "η^2 = " + output.etaSquared;
                            
                   
                 //drawing stuff
@@ -689,7 +689,7 @@ function performKruskalWallisTest(dependentVariable, independentVariable)
                   console.log("\t\t\t DF = " + output.DF);
                   
                   testResults["df"] = output.DF;
-                  testResults["statistic"] = "Chi-squared(" + testResults["df"] + ") = " + output.chiSquared;
+                  testResults["statistic"] = "𝝌^2(" + testResults["df"] + ") = " + output.chiSquared;
                   testResults["p"] = output.p;                  
                   testResults["method"] = "Kruskal-Wallis Test"; 
                            
