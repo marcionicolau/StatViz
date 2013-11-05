@@ -110,18 +110,18 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
             .attr("id", "axis")
             .attr("class", "yAxis");  
     
-    var numberOfGroovesInXAxis = uniqueDataX.length > shortNumberOfGrooves ? shortNumberOfGrooves : uniqueDataX.length;
-    var numberOfGroovesInYAxis = uniqueDataY.length > shortNumberOfGrooves ? shortNumberOfGrooves : uniqueDataY.length;
+    var numberOfGroovesInXAxis = uniqueDataX.length <= shortNumberOfGrooves ? uniqueDataX.length : shortNumberOfGrooves;
+    var numberOfGroovesInYAxis = uniqueDataY.length <= shortNumberOfGrooves ? uniqueDataY.length : shortNumberOfGrooves;
     
-//     console.log("#grooves in x-axis=" + numberOfGroovesInXAxis);
-//     console.log("#grooves in y-axis=" + numberOfGroovesInYAxis);
+    console.log("\nnumber of grooves in x-axis=" + numberOfGroovesInXAxis);
+    console.log("number grooves in y-axis=" + numberOfGroovesInYAxis);
     
     //y-axis grooves
     var xStep = uniqueDataX.length <= shortNumberOfGrooves ? shortWidth/numberOfGroovesInXAxis : shortWidth/(numberOfGroovesInXAxis - 1);
     var yStep = uniqueDataY.length <= shortNumberOfGrooves ? shortHeight/numberOfGroovesInYAxis : shortHeight/(numberOfGroovesInYAxis - 1);
     
-//     console.log("X-step=" + xStep);
-//     console.log("Y-step=" + yStep);
+    console.log("\nX-step=" + xStep);
+    console.log("Y-step=" + yStep);
     
     var xSlice = (maxX - minX)/(shortNumberOfGrooves-1);    
     var ySlice = (maxY - minY)/(shortNumberOfGrooves-1);    
