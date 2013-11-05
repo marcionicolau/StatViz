@@ -42,13 +42,7 @@ function OnMouseDown(e)
         variableSelectionButton.attr("fill", panelColors["active"]);
         
         variableTypes[target.id] = "independent";        
-        
-//         var uniqueData = variables[target.id]["dataset"].unique();        
-//                 
-//         for(var i=0; i<uniqueData.length; i++)
-//         {
-//             splitDataByColumnName(dataset, target.id, uniqueData[i]);                                                    
-//         }
+
         splitTheData();
     }
     

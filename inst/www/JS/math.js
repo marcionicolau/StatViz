@@ -48,7 +48,7 @@ function findIQR(values)
     if(values.length % 2)
     {
         var x = Math.floor(values.length/2);
-        console.log("x = " + x);
+        
         //odd
         for(var i=0; i<Math.floor(values.length/2); i++)
             half1.push(values[i]);
