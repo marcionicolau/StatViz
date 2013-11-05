@@ -41,4 +41,13 @@ var currentTestType;
 var testResults = new Object();
 var distributions = new Object();
 
+//transformations
 var transformationType;
+
+var boxes = [];
+var means = [];
+var medians = [];
+var topFringes = [];
+var bottomFringes = [];
+var topFringeConnectors = [];
+var bottomFringeConnectors = [];
