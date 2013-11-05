@@ -283,7 +283,7 @@ function OnMouseOver(e)
                 .attr("id", "y")
                 .attr("class", "hoverText");
         
-        yLine.transition().duration(500).attr("y2", canvasHeight/2 + plotHeight/2 + axesOffset);
+        yLine.transition().duration(500).attr("y2", canvasHeight/2 + plotHeight/2 - topOffset + axesOffset);
                 
         
     }   
