@@ -110,7 +110,17 @@ function OnMouseDown(e)
             
             applyTransform(variableList["dependent"][0], "dataset", true);
         }        
+    }
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "fullscreen")
+    {
+        setup(e, target);
         
+        var button = d3.select(".fullscreen");
+        
+        if(button.attr("xlink:href") == "images/fullscreennormal.png")
+            button.attr("xlink:href", "images/fullscreenclick.png");
+        else if(button.attr("xlink:href") == "images/fullscreenclick.png")
+            button.attr("xlink:href", "images/fullscreennormal.png");
     }
     else
     {
@@ -307,6 +317,13 @@ function OnMouseOver(e)
             button.attr("cursor", "pointer");
             buttonText.attr("cursor", "pointer");
         }        
+    }
+    else if(target.className.baseVal == "fullscreen")
+    {
+        setup(e.target);
+        
+        var button = d3.select(".fullscreen");
+        button.attr("cursor", "pointer");
     }
 }
 
