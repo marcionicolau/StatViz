@@ -116,11 +116,7 @@ function OnMouseDown(e)
         // grab the mouse position
         _startX = e.clientX;
         _startY = e.clientY;
-
-        // grab the clicked element's position
-        _offsetX = removeAlphabetsFromString(target.left);
-        _offsetY = removeAlphabetsFromString(target.top);      
-
+        
         // we need to access the element in OnMouseMove
         _dragElement = target;
 
@@ -343,11 +339,6 @@ function OnMouseOver(e)
         // grab the mouse position
         _startX = e.clientX;
         _startY = e.clientY;
-
-        // grab the clicked element's position
-        _offsetX = removeAlphabetsFromString(target.left);
-        _offsetY = removeAlphabetsFromString(target.top);      
-
         // we need to access the element in OnMouseMove
         _dragElement = target;
 
