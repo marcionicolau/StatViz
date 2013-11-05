@@ -585,7 +585,7 @@ function drawLegends(data)
 {
     var canvas = d3.select("#svgCanvas");
     
-    var yStep = plotHeight/(data.length-1);
+    var yStep = plotHeight/10;
     
     for(var i=0; i<data.length; i++)
     {
