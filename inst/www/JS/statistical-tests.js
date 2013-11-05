@@ -155,6 +155,8 @@ function displaySignificanceTestResults()
     var cx = [];
     var cy = [];
 
+    removeElementsByClassName("significanceTest");
+    
     var means = document.getElementsByClassName("means");
     var meanRefLines = [];
     
@@ -204,7 +206,7 @@ function displaySignificanceTestResults()
                             .attr("y2", cyMax)
                             .attr("stroke", "red")
                             .attr("stroke-width", "2px")
-                            .attr("class", "DOM");
+                            .attr("class", "significanceTest");
 
     var x = canvasWidth/2 + plotWidth/2;
     var y = cyMin;			 
@@ -212,7 +214,7 @@ function displaySignificanceTestResults()
                   .attr("d", "M " + x + " " + y + " L " + (x-5)+ " " + (y+5) + " L " + (x+5) + " " + (y+5) + " z")
                   .attr("stroke", "red")
                   .attr("fill", "red")
-                  .attr("class", "DOM");
+                  .attr("class", "significanceTest");
     
     drawScales(cx, cy);    
 }
@@ -231,7 +233,7 @@ function drawScales(cx, cy)
             .attr("y2", yMax)
             .attr("stroke", meanColors["normal"])
             .attr("id", "mainScale")
-            .attr("class", "significanceTestScale");            
+            .attr("class", "significanceTest");            
     
     var x = canvasWidth/2 + plotWidth/2 + significanceTestScaleOffset;
     if(cx.length < 5)
@@ -245,7 +247,7 @@ function drawScales(cx, cy)
                     .attr("y2", cy[i])
                     .attr("stroke", meanColors["normal"])
                     .attr("id", "tick")
-                    .attr("class", "significanceTestScale");       
+                    .attr("class", "significanceTest");       
         }
     }  
     
@@ -270,7 +272,7 @@ function drawScales(cx, cy)
                 .attr("y", (yMin + yMax)/2)
                 .attr("fill", meanColors["normal"])
                 .attr("id", "tickText")
-                .attr("class", "significanceTestScaleText")
+                .attr("class", "significanceTest")
                 .text(format(means[1] - means[0]));
     }           
 }
