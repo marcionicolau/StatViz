@@ -60,6 +60,7 @@ function makeScatterplot()
                 .attr("x", (LEFT + RIGHT)/2)
                 .attr("y", BOTTOM + axesOffset + labelOffset)
                 .attr("text-anchor", "middle")
+                .attr("font-size", "20px")
                 .text(currentVariableSelection[0])
                 .attr("fill", "black");
     
@@ -76,6 +77,7 @@ function makeScatterplot()
                 .attr("x", LEFT - axesOffset - labelOffset)
                 .attr("y", (TOP + BOTTOM)/2 + 6)
                 .attr("text-anchor", "end")
+                .attr("font-size", "20px")
                 .text(currentVariableSelection[1])
                 .attr("fill", "black");
                                     
