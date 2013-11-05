@@ -1,5 +1,55 @@
 var format = d3.format(".1f");
 
+function splitTheData()
+{
+    var independentVariables = [];
+    for(var i=0; i<variableNames.length; i++)
+    {
+        if(variableTypes[variableNames[i]] == "independent")
+        {
+            independentVariables.push(variableNames[i]);
+        }
+    }
+    
+    for(var i=0; i<independentVariables.length; i++)
+    {   
+        //for every independent variable
+        for(var j=0; j<variableNames.length; j++)
+        {
+            //for every variable
+            var uniqueData = variables[independentVariables[i]]["dataset"].unique();
+            for(var k=0; k<uniqueData.length; k++)
+            {
+                //for every level
+                for(var m=0; m<variables[variableNames[j]]["dataset"].length; m++)
+                {
+                    if(variables[independentVariables[i]]["dataset"][m] == uniqueData[k])
+                    {
+                        if(variables[variableNames[j]][uniqueData[k]] == undefined)
+                        {
+                            variables[variableNames[j]][uniqueData[k]] = new Array();
+                            MIN[variableNames[j]][uniqueData[k]] = 999999;
+                            MAX[variableNames[j]][uniqueData[k]] = -999999;
+                        }
+                        
+                        variables[variableNames[j]][uniqueData[k]].push(variables[variableNames[j]]["dataset"][m]);                        
+                        
+                        if(variables[variableNames[j]]["dataset"][m] < MIN[variableNames[j]][uniqueData[k]])
+                            MIN[variableNames[j]][uniqueData[k]] = variables[variableNames[j]]["dataset"][m];
+                        if(variables[variableNames[j]]["dataset"][m] > MAX[variableNames[j]][uniqueData[k]])
+                            MAX[variableNames[j]][uniqueData[k]] = variables[variableNames[j]]["dataset"][m];                        
+                    }
+                }
+            }
+            for(var k=0; k<uniqueData.length; k++)
+            {
+                IQR[variableNames[j]][uniqueData[k]] = findIQR(variables[variableNames[j]][uniqueData[k]]);
+            }
+        }
+    }     
+    console.dir(IQR);
+}
+
 //Initialise the mouse event handlers
 function InitializeMouseEventHandlers()
 {

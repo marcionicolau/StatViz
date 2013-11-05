@@ -18,7 +18,7 @@ function compareMeans()
                     if(sampleSize < 20)
                     {
                         console.log("sample size < 20");
-                        performHomoscedasticityTest(variableList["dependent"][0], variableList["independent"][0]);
+                        performHomoscedasticityTestNotNormal(variableList["dependent"][0], variableList["independent"][0]);
                     }
                     else
                     {
@@ -42,6 +42,43 @@ function compareMeans()
         
                     break;
                 }
+    }
+}
+
+function loadAssumptionCheckList()
+{
+    var canvas = d3.select("#svgCanvas");
+    
+    for(var i=0; i<assumptions.length; i++)
+    {
+        canvas.append("text")
+            .attr("x", canvasWidth/2 + plotWidth/2)
+            .attr("y", canvasHeight/2 - plotHeight/2 +i*assumptionsSpace)
+            .attr("font-size", "20px")
+            .attr("fill", meanColors["normal"])
+            .text(assumptionsText[assumptions[i]])
+            .attr("id", assumptions[i])
+            .attr("class", "assumptions");
+        canvas.append("image")
+            .attr("x", canvasWidth/2 + plotWidth/2 - assumptionImageSize)
+            .attr("y", canvasHeight/2 - plotHeight/2 + i*assumptionsSpace - assumptionImageSize/2 - 10)
+            .attr("text-anchor", "end")
+            .attr("xlink:href", "images/tick.png")
+            .attr("height", assumptionImageSize)            
+            .attr("width", assumptionImageSize)
+            .attr("display", "none")
+            .attr("id", assumptions[i])
+            .attr("class", "ticks");
+        canvas.append("image")
+            .attr("x", canvasWidth/2 + plotWidth/2 - assumptionImageSize)
+            .attr("y", canvasHeight/2 - plotHeight/2 + i*assumptionsSpace - assumptionImageSize/2 - 10)
+            .attr("text-anchor", "end")
+            .attr("xlink:href", "images/cross.png")
+            .attr("height", assumptionImageSize)
+            .attr("width", assumptionImageSize)
+            .attr("display", "none")
+            .attr("id", assumptions[i])
+            .attr("class", "crosses");
     }
 }
 
@@ -93,7 +130,7 @@ function setDistribution(dependentVariable, level, normal)
             console.log("all distributions are normal!");
             
             d3.select("#normality.ticks").attr("display", "inline");  
-            performHomoscedasticityTestNormality(variableList["dependent"][0], variableList["independent"][0]);
+            performHomoscedasticityTestNotNormalNormal(variableList["dependent"][0], variableList["independent"][0]);
         }
         else
         {
@@ -111,38 +148,8 @@ function drawNormalityPlot(dependentVariable, level)
     
     makeHistogramWithDensityCurve(centerX - normalityPlotWidth/2, canvasHeight + normalityPlotOffset, normalityPlotWidth, normalityPlotHeight, dependentVariable, level);//left, top, histWidth, histHeight, dependentVariable, level;
 }
-
-function determineTypeOfTTest(variableList)
-{
-    //find sample sizes
-    var sampleSizeIsLarge = true;
-    for(var i=0; i<variableList["independent-levels"].length; i++)
-    {
-        if(variables[variableList["dependent"][0]][variableList["independent-levels"][i]].length < sampleSizeCutoff)
-        {
-            sampleSizeIsLarge = false;
-        }
-    }
-    
-    if(!sampleSizeIsLarge)
-    {
-        console.log("Sample size is not large enough.");
-        
-        if(experimentalDesign == "between-groups")
-        {
-            //independent/unpaired
-            return "wT";
-        }
-        else if(experimentalDesign == "within-groups")
-        {
-            //dependent/paired
-            return "mT";
-        }
-    }
-    return "none";
-}
-
-function tTest()
+  
+function displaySignificanceTestResults()
 {    
     var cx = [];
     var cy = [];
@@ -209,73 +216,6 @@ function tTest()
     drawScales(cx, cy);    
 }
 
-function ANOVA()
-{    
-    var cx = [];
-    var cy = [];
-
-    var means = document.getElementsByClassName("means");
-    var meanRefLines = [];
-    
-    var svg = d3.select("#svgCanvas");
-
-    for(var i=0; i<means.length; i++)
-    {
-        if(means[i].getAttribute("fill") == meanColors["click"])
-        {								
-            cx.push(means[i].getAttribute("cx"));
-            cy.push(means[i].getAttribute("cy"));
-        
-            meanRefLines[i] = svg.append("line")
-                                 .attr("x1", means[i].getAttribute("cx"))
-                                 .attr("y1", means[i].getAttribute("cy"))
-                                 .attr("x2", canvasWidth/2 + size/2)
-                                 .attr("y2", means[i].getAttribute("cy"))
-                                 .attr("stroke", meanColors["normal"])
-                                 .attr("stroke-dasharray","5,5")
-                                 .attr("id", "meanrefLine")
-                                 .attr("class", "significanceTest");
-                                 
-                            svg.append("line")
-                                 .attr("x1", means[i].getAttribute("cx"))
-                                 .attr("y1", means[i].getAttribute("cy"))
-                                 .attr("x2", canvasWidth/2 - size/2 - axesOffset)
-                                 .attr("y2", means[i].getAttribute("cy"))
-                                 .attr("stroke", meanColors["normal"])
-                                 .attr("opacity", "0.25")
-                                 .attr("stroke-dasharray","5,5")
-                                 .attr("id", "meanrefLine")
-                                 .attr("class", "significanceTest");
-        }
-        else
-        {									
-            cx.splice(i, 1);
-            cy.splice(i, 1);								
-        }	
-    }
-    var cyMax = Math.max.apply(Math, cy);
-    var cyMin = Math.min.apply(Math, cy);		   	 
-
-    var differenceLine = svg.append("line")
-                            .attr("x1", canvasWidth/2 + size/2)
-                            .attr("y1", cyMin)
-                            .attr("x2", canvasWidth/2 + size/2)
-                            .attr("y2", cyMax)
-                            .attr("stroke", "red")
-                            .attr("stroke-width", "2px")
-                            .attr("class", "DOM");
-
-    var x = canvasWidth/2 + size/2;
-    var y = cyMin;			 
-    var head = svg.append("path")
-                  .attr("d", "M " + x + " " + y + " L " + (x-5)+ " " + (y+5) + " L " + (x+5) + " " + (y+5) + " z")
-                  .attr("stroke", "red")
-                  .attr("fill", "red")
-                  .attr("class", "DOM");
-    
-    drawScales(cx, cy);    
-}
-
 function drawScales(cx, cy)
 {
     //get number of means
@@ -332,42 +272,4 @@ function drawScales(cx, cy)
                 .attr("class", "significanceTestScaleText")
                 .text(format(means[1] - means[0]));
     }           
-}  
-
-function loadAssumptionCheckList()
-{
-    var canvas = d3.select("#svgCanvas");
-    
-    for(var i=0; i<assumptions.length; i++)
-    {
-        canvas.append("text")
-            .attr("x", canvasWidth/2 + plotWidth/2)
-            .attr("y", canvasHeight/2 - plotHeight/2 +i*assumptionsSpace)
-            .attr("font-size", "20px")
-            .attr("fill", meanColors["normal"])
-            .text(assumptionsText[assumptions[i]])
-            .attr("id", assumptions[i])
-            .attr("class", "assumptions");
-        canvas.append("image")
-            .attr("x", canvasWidth/2 + plotWidth/2 - assumptionImageSize)
-            .attr("y", canvasHeight/2 - plotHeight/2 + i*assumptionsSpace - assumptionImageSize/2 - 10)
-            .attr("text-anchor", "end")
-            .attr("xlink:href", "images/tick.png")
-            .attr("height", assumptionImageSize)            
-            .attr("width", assumptionImageSize)
-            .attr("display", "none")
-            .attr("id", assumptions[i])
-            .attr("class", "ticks");
-        canvas.append("image")
-            .attr("x", canvasWidth/2 + plotWidth/2 - assumptionImageSize)
-            .attr("y", canvasHeight/2 - plotHeight/2 + i*assumptionsSpace - assumptionImageSize/2 - 10)
-            .attr("text-anchor", "end")
-            .attr("xlink:href", "images/cross.png")
-            .attr("height", assumptionImageSize)
-            .attr("width", assumptionImageSize)
-            .attr("display", "none")
-            .attr("id", assumptions[i])
-            .attr("class", "crosses");
-    }
 }
-  

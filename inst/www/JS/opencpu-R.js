@@ -1,3 +1,4 @@
+//to load a file on local disk
 function loadFile(filePath)
 {
     //loads the file and returns the dataset and variable names
@@ -35,7 +36,8 @@ function loadFile(filePath)
  
     });
 }
-    
+
+//to get the variable names    
 function getVariables(dataset)
 {   
     // Get variable names and their data type
@@ -141,7 +143,7 @@ function getIQR(dataset, variableName, level)
     });
 }
 
-    
+//Split data - R based   
 function splitDataByColumnName(dataset, columnName, value)
 {   
     // Get variable names and their data type
@@ -169,61 +171,11 @@ function splitDataByColumnName(dataset, columnName, value)
     });   
 }
 
-function splitData1()
-{
-    var independentVariables = [];
-    for(var i=0; i<variableNames.length; i++)
-    {
-        if(variableTypes[variableNames[i]] == "independent")
-        {
-            independentVariables.push(variableNames[i]);
-        }
-    }
-    
-    for(var i=0; i<independentVariables.length; i++)
-    {   
-        //for every independent variable
-        for(var j=0; j<variableNames.length; j++)
-        {
-            //for every variable
-            var uniqueData = variables[independentVariables[i]]["dataset"].unique();
-            for(var k=0; k<uniqueData.length; k++)
-            {
-                //for every level
-                for(var m=0; m<variables[variableNames[j]]["dataset"].length; m++)
-                {
-                    if(variables[independentVariables[i]]["dataset"][m] == uniqueData[k])
-                    {
-                        if(variables[variableNames[j]][uniqueData[k]] == undefined)
-                        {
-                            variables[variableNames[j]][uniqueData[k]] = new Array();
-                            MIN[variableNames[j]][uniqueData[k]] = 999999;
-                            MAX[variableNames[j]][uniqueData[k]] = -999999;
-                        }
-                        
-                        variables[variableNames[j]][uniqueData[k]].push(variables[variableNames[j]]["dataset"][m]);                        
-                        
-                        if(variables[variableNames[j]]["dataset"][m] < MIN[variableNames[j]][uniqueData[k]])
-                            MIN[variableNames[j]][uniqueData[k]] = variables[variableNames[j]]["dataset"][m];
-                        if(variables[variableNames[j]]["dataset"][m] > MAX[variableNames[j]][uniqueData[k]])
-                            MAX[variableNames[j]][uniqueData[k]] = variables[variableNames[j]]["dataset"][m];                        
-                    }
-                }
-            }
-            for(var k=0; k<uniqueData.length; k++)
-            {
-                IQR[variableNames[j]][uniqueData[k]] = findIQR(variables[variableNames[j]][uniqueData[k]]);
-            }
-        }
-    }     
-    console.dir(IQR);
-}
-
 //Statistics
 
 //Assumption-checking
 
-function performHomoscedasticityTest(dependent, independent)
+function performHomoscedasticityTestNotNormal(dependent, independent)
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("performHomoscedasticityTest", {
@@ -299,7 +251,7 @@ function performHomoscedasticityTest(dependent, independent)
     });
 }
 
-function performHomoscedasticityTestNormality(dependent, independent)
+function performHomoscedasticityTestNormal(dependent, independent)
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("performHomoscedasticityTest", {
@@ -447,35 +399,102 @@ function findTransform(dist)
 
 //Significance Tests
 
-function performTTest(group1, group2)
+function performTTest(groupA, groupB, varianceEqual, paired) //groupA, groupB, paired = "FALSE", alternative = "two.sided", alpha = 0.95, var = "FALSE"
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("performTTest", {
-                    dataset: dataset,
-                    group1: group1,
-                    group2: group2                   
+                    groupA: groupA,
+                    groupB: groupB,
+                    variance: varianceEqual,
+                    paired: paired
                   }, function(output) {                                                   
                   
-                  console.log("\t\t T-test for (" + group1 + ", " + group2 + ")");
-                  console.log("\t\t\t t = " + output.t);
+                  console.log("\t\t " + output.method);
+                  console.log("\t\t\t DOF = " + output.DOF);
                   console.log("\t\t\t p = " + output.p);
-                  console.log("\t\t\t method used= " + output.method);
-                  console.log("\t\t\t DF = " + output.DOF);
-
+                  console.log("\t\t\t t = " + output.t);
                   
                   testResults["t"] = output.t;
-                  testResults["p"] = output.p;
-                  testResults["grandMean"] = output.mean;
+                  testResults["p"] = output.p;                  
+                  testResults["df"] = output.DOF;
                   testResults["method"] = output.method;
-                  testResults["df"] = output.DOF;                  
                   
-                  getDFromT(group1.length);                  
+                //drawing stuff
+                removeElementsByClassName("completeLines");
+                
+                displaySignificanceTestResults();
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function performMannWhitneyTest(groupA, groupB)
+{
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("performMannWhitneyTest", {
+                    groupA: groupA,
+                    groupB: groupB
+                  }, function(output) {                                                   
+                  
+                  console.log("\t\t Mann-Whitney U test");
+                  console.log("\t\t\t U = " + output.U);
+                  console.log("\t\t\t p = " + output.p);
+                  console.log("\t\t\t r = " + output.r);
+                  
+                  testResults["U"] = output.U;
+                  testResults["p"] = output.p;                  
+                  testResults["r"] = output.r;
+                  
+                           
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines");           
 
-                tTest();
-                
+                displaySignificanceTestResults();              
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function performWilcoxonTest(groupA, groupB)
+{
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("performWilcoxonTest", {
+                    groupA: groupA,
+                    groupB: groupB
+                  }, function(output) {                                                   
+                  
+                  console.log("\t\t Wilcoxon Signed-rank Test");
+                  console.log("\t\t\t V = " + output.V);
+                  console.log("\t\t\t p = " + output.p);
+                  console.log("\t\t\t r = " + output.r);
+                  
+                  testResults["V"] = output.V;
+                  testResults["p"] = output.p;                  
+                  testResults["r"] = output.r;
+                  
+                //drawing stuff
+                removeElementsByClassName("completeLines");           
+
+                displaySignificanceTestResults();             
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -514,7 +533,7 @@ function performANOVA(dependentVariable, independentVariable)
                 //drawing stuff
                 removeElementsByClassName("completeLines");           
 
-                ANOVA();                
+                displaySignificanceTestResults();               
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -555,7 +574,9 @@ function performWelchANOVA(dependentVariable, independentVariable)
                            
                   
                 //drawing stuff
-                removeElementsByClassName("completeLines");                          
+                removeElementsByClassName("completeLines"); 
+                
+                displaySignificanceTestResults();
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -595,7 +616,9 @@ function performKruskalWallisTest(dependentVariable, independentVariable)
                            
                   
                 //drawing stuff
-                removeElementsByClassName("completeLines");                          
+                removeElementsByClassName("completeLines");   
+                
+                displaySignificanceTestResults();
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -610,116 +633,9 @@ function performKruskalWallisTest(dependentVariable, independentVariable)
     });
 }
 
-function performMannWhitneyTest(groupA, groupB)
-{
-    // Get variable names and their data type
-    var req = opencpu.r_fun_json("performMannWhitneyTest", {
-                    groupA: groupA,
-                    groupB: groupB
-                  }, function(output) {                                                   
-                  
-                  console.log("\t\t Mann-Whitney U test");
-                  console.log("\t\t\t U = " + output.U);
-                  console.log("\t\t\t p = " + output.p);
-                  console.log("\t\t\t r = " + output.r);
-                  
-                  testResults["U"] = output.U;
-                  testResults["p"] = output.p;                  
-                  testResults["r"] = output.r;
-                  
-                           
-                  
-                //drawing stuff
-                removeElementsByClassName("completeLines");           
-
-//                 ANOVA();                
-        
-      }).fail(function(){
-          alert("Failure: " + req.responseText);
-    });
-
-    //if R returns an error, alert the error message
-    req.fail(function(){
-      alert("Server error: " + req.responseText);
-    });
-    req.complete(function(){
-        
-    });
-}
-
-function performWilcoxonTest(groupA, groupB)
-{
-    // Get variable names and their data type
-    var req = opencpu.r_fun_json("performWilcoxonTest", {
-                    groupA: groupA,
-                    groupB: groupB
-                  }, function(output) {                                                   
-                  
-                  console.log("\t\t Wilcoxon Signed-rank Test");
-                  console.log("\t\t\t V = " + output.V);
-                  console.log("\t\t\t p = " + output.p);
-                  console.log("\t\t\t r = " + output.r);
-                  
-                  testResults["V"] = output.V;
-                  testResults["p"] = output.p;                  
-                  testResults["r"] = output.r;
-                  
-                //drawing stuff
-                removeElementsByClassName("completeLines");           
-
-//                 ANOVA();                
-        
-      }).fail(function(){
-          alert("Failure: " + req.responseText);
-    });
-
-    //if R returns an error, alert the error message
-    req.fail(function(){
-      alert("Server error: " + req.responseText);
-    });
-    req.complete(function(){
-        
-    });
-}
-
-
-function performTTest(groupA, groupB, varianceEqual, paired) //groupA, groupB, paired = "FALSE", alternative = "two.sided", alpha = 0.95, var = "FALSE"
-{
-    // Get variable names and their data type
-    var req = opencpu.r_fun_json("performTTest", {
-                    groupA: groupA,
-                    groupB: groupB,
-                    variance: varianceEqual,
-                    paired: paired
-                  }, function(output) {                                                   
-                  
-                  console.log("\t\t " + output.method);
-                  console.log("\t\t\t DOF = " + output.DOF);
-                  console.log("\t\t\t p = " + output.p);
-                  console.log("\t\t\t t = " + output.t);
-                  
-                  testResults["t"] = output.t;
-                  testResults["p"] = output.p;                  
-                  testResults["df"] = output.DOF;
-                  testResults["method"] = output.method;
-                  
-                //drawing stuff
-                removeElementsByClassName("completeLines");           
-        
-      }).fail(function(){
-          alert("Failure: " + req.responseText);
-    });
-
-    //if R returns an error, alert the error message
-    req.fail(function(){
-      alert("Server error: " + req.responseText);
-    });
-    req.complete(function(){
-        
-    });
-}
 
 // Effect sizes
+
 function getDFromT(n)
 {
     // Get variable names and their data type
