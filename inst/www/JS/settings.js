@@ -94,9 +94,10 @@ var buttonHeight = 75;
 var buttonWidth = 450;
 var boxPlotTransformationDuration = 700;
 
-
-
 var sampleSizeCutoff = 20;
+
+//full screen button
+var fullScreenButtonSize = 30;
 
 
 

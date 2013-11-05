@@ -62,6 +62,7 @@ function InitializeMouseEventHandlers()
 function makePlot()
 {   
     resetSVGCanvas();
+    drawFullScreenButton();
     
     switch(currentVisualizationSelection)
     {
@@ -338,6 +339,27 @@ function sort(list)
     
     return variableList;
 }
+
+function drawFullScreenButton()
+{
+    var canvas = d3.select("#svgCanvas");
+    
+    canvas.append("rect")
+            .attr("x", canvasWidth - fullScreenButtonSize)
+            .attr("y", 10)
+            .attr("width", fullScreenButtonSize/2)
+            .attr("height", fullScreenButtonSize/2)
+            .attr("fill", "transparent")
+            .attr("stroke", "black");
+    
+    canvas.append("line")
+            .attr("x1", canvasWidth - fullScreenButtonSize/2)
+            .attr("y1", 10 + fullScreenButtonSize/4)
+            .attr("x2", canvasWidth)
+            .attr("y2", 10 + fullScreenButtonSize/4)
+            .attr("stroke", "black");
+}
+            
 
       
             
