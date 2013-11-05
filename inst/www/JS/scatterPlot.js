@@ -141,7 +141,7 @@ function makeScatterplot()
                     .attr("class", "yAxisGrooveText");
     }
     
-    for(var i=0; i<data[0].length; i++)
+    for(var i=0; i<data["X"].length; i++)
     {
         var x,y;
         
