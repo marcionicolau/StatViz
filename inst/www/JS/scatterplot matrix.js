@@ -135,10 +135,23 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
         axisText = format(minX + i*xSlice);
         textPosition = x + i*xStep;
         
+        var textAnchor = "middle";
+        
         if(uniqueDataX.length <= shortNumberOfGrooves)
         {
             axisText = uniqueDataX[i];
             textPosition = x + xStep/2 + i*xStep;
+        }
+        else
+        {
+            if(i == 0)
+            {
+                textAnchor = "start";
+            }
+            else if(i == shortNumberOfGrooves-1)
+            {
+                textAnchor = "end";
+            }
         }
         
         canvas.append("line")
@@ -148,17 +161,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
                     .attr("y2", y + shortAxesOffset + shortTickLength)
                     .attr("id", "groove" + i)
                     .attr("class", "xAxisGrooves");
-        
-        var textAnchor = "middle";
-        if(i == 0)
-        {
-            textAnchor = "start";
-        }
-        else if(i == shortNumberOfGrooves-1)
-        {
-            textAnchor = "end";
-        }
-        
+                    
         canvas.append("text")
                     .attr("x", textPosition)
                     .attr("y", y + shortAxesOffset + shortTickLength + shortFontSize)     
@@ -173,12 +176,25 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     {
         axisText = format(minY + i*ySlice);
         textPosition = y - i*yStep;                  
+        var offset = 0;
         
         if(uniqueDataY.length <= shortNumberOfGrooves)
         {
             axisText = uniqueDataY[i];
             textPosition = y - yStep/2 - i*yStep;                    
         }
+        else
+        {
+            if(i == 0)
+            {
+                offset = -shortFontSize/3;
+            }
+            else if(i == shortNumberOfGrooves-1)
+            {
+                offset = shortFontSize/3;
+            }
+        }
+        
         canvas.append("line")
                     .attr("x1", x - shortAxesOffset)
                     .attr("y1", textPosition)
@@ -187,16 +203,9 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooves");       
         
-        var offset = 0;
         
-        if(i == 0)
-        {
-            offset = -shortFontSize/3;
-        }
-        else if(i == shortNumberOfGrooves-1)
-        {
-            offset = shortFontSize/3;
-        }
+        
+        
         
         canvas.append("text")
                     .attr("x", x - shortAxesOffset - shortTickTextOffsetYAxis)
@@ -208,29 +217,29 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
                     .attr("class", "yAxisGrooveText");
     }
     
-//     for(var i=0; i<dataX.length; i++)
-//     {
-//         var X,Y;
-//         
-//         if(isNaN(dataX[0]))
-//             X = x + uniqueDataX.indexOf(dataX[i])*xStep + xStep/2;    
-//         else
-//             X = x + getValue(dataX[i], minX, maxX)*shortWidth;
-//             
-//         if(isNaN(dataY[0]))
-//             Y = y - uniqueDataY.indexOf(dataY[i])*yStep - yStep/2;
-//         else
-//             Y = y - getValue(dataY[i], minY, maxY)*shortHeight;
-//             
-//         var color = "black";
-//         
-//         canvas.append("circle")
-//                     .attr("cx", X)
-//                     .attr("cy", Y)
-//                     .attr("r", shortDataPointRadius)
-//                     .attr("fill", color)                    
-//                     .attr("class", "points");     
-//     }
+    for(var i=0; i<dataX.length; i++)
+    {
+        var X,Y;
+        
+        if(isNaN(dataX[0]))
+            X = x + uniqueDataX.indexOf(dataX[i])*xStep + xStep/2;    
+        else
+            X = x + getValue(dataX[i], minX, maxX)*shortWidth;
+            
+        if(isNaN(dataY[0]))
+            Y = y - uniqueDataY.indexOf(dataY[i])*yStep - yStep/2;
+        else
+            Y = y - getValue(dataY[i], minY, maxY)*shortHeight;
+            
+        var color = "black";
+        
+        canvas.append("circle")
+                    .attr("cx", X)
+                    .attr("cy", Y)
+                    .attr("r", shortDataPointRadius)
+                    .attr("fill", color)                    
+                    .attr("class", "points");     
+    }
 }
 
 function getValue(number, min, max)
