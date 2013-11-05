@@ -420,7 +420,7 @@ function redrawBoxPlot()
         var rectBottom = (medians[i] - iqrs[i]/2) < min ? min : (medians[i] - iqrs[i]/2);
         var rectTop = (medians[i] + iqrs[i]/2) > max ? max : (medians[i] + iqrs[i]/2);
         
-        boxes.transition().duration(boxPlotTransformationDuration)
+        boxes[i].transition().duration(boxPlotTransformationDuration)
                     .attr("x", LEFT + i*widthSlice - boxWidth/2 + xStep/2)
                     .attr("y", BOTTOM - getFraction(rectTop)*plotHeight)
                     .attr("height", getFraction(rectTop)*plotHeight - getFraction(rectBottom)*plotHeight)
@@ -431,7 +431,7 @@ function redrawBoxPlot()
                     .attr("class", "IQRs");
                 
         // median
-        medians.transition().duration(boxPlotTransformationDuration)
+        medians[i].transition().duration(boxPlotTransformationDuration)
                     .attr("x1", LEFT + i*widthSlice - boxWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(medians[i])*plotHeight)
                     .attr("x2", LEFT + i*widthSlice + boxWidth/2 + xStep/2)
@@ -443,7 +443,7 @@ function redrawBoxPlot()
         BOTTOMFringe = (medians[i] - 1.5*iqrs[i]) < min ? min : (medians[i] - 1.5*iqrs[i]);
         TOPFringe = (medians[i] + 1.5*iqrs[i]) > max ? max : (medians[i] + 1.5*iqrs[i]);
     
-        topFringes.transition().duration(boxPlotTransformationDuration)
+        topFringes[i].transition().duration(boxPlotTransformationDuration)
                     .attr("x1", canvasWidth/2 - boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(TOPFringe)*plotHeight)
                     .attr("x2", canvasWidth/2 + boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
@@ -452,7 +452,7 @@ function redrawBoxPlot()
                     .attr("stroke-width", "2")
                     .attr("class", "TOPFringes");
     
-        topFringeConnectors.transition().duration(boxPlotTransformationDuration)
+        topFringeConnectors[i].transition().duration(boxPlotTransformationDuration)
                     .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(TOPFringe)*plotHeight)
                     .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
@@ -460,7 +460,7 @@ function redrawBoxPlot()
                     .attr("id", ids[i])
                     .attr("class", "TOPFringeConnectors");    
     
-        bottomFringes.transition().duration(boxPlotTransformationDuration)
+        bottomFringes[i].transition().duration(boxPlotTransformationDuration)
                     .attr("x1", canvasWidth/2 - boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(BOTTOMFringe)*plotHeight)
                     .attr("x2", canvasWidth/2 + boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
@@ -469,7 +469,7 @@ function redrawBoxPlot()
                     .attr("stroke-width", "2")
                     .attr("class", "BOTTOMFringes");
                 
-        bottomFringeConnectors.transition().duration(boxPlotTransformationDuration)
+        bottomFringeConnectors[i].transition().duration(boxPlotTransformationDuration)
                     .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(BOTTOMFringe)*plotHeight)
                     .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
@@ -477,7 +477,7 @@ function redrawBoxPlot()
                     .attr("id", ids[i])
                     .attr("class", "BOTTOMFringeConnectors");
     
-        means.transition().duration(boxPlotTransformationDuration)
+        means[i].transition().duration(boxPlotTransformationDuration)
                     .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("cy", BOTTOM - getFraction(means[i])*plotHeight)
                     .attr("r", meanRadius)
