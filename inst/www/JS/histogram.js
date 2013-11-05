@@ -61,6 +61,8 @@ function makeHistogram()
         maxs[0] = MAX[currentVariableSelection[0]]["dataset"];       
     } 
     
+    drawLegends(data);
+    
     
     // combine the collected data
     for(var i=0; i<data.length; i++)
@@ -577,6 +579,27 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
                     .attr("id", id + i)
                     .attr("class", "bins");
     }   
+}
+
+function drawLegends(data)
+{
+    var canvas = d3.select("#svgCanvas");
+    
+    var yStep = plotHeight/(data.length-1);
+    
+    for(var i=0; i<data.length; i++)
+    {
+        canvas.append("rect")
+                .attr("x", RIGHT + histLegendOffsetX)
+                .attr("y", top + histLegendOffsetY + i*yStep)
+                .attr("width", histLegendSize)
+                .attr("height", histLegendSize)
+                .attr("fill", colors[i])
+                .attr("stroke", "black")
+                .attr("id", "legend" + i)
+                .attr("class", "rect");
+            
+    }
 }
 
 function getBinCenterX(j)
