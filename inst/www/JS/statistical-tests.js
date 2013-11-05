@@ -130,7 +130,7 @@ function setDistribution(dependentVariable, level, normal)
             console.log("all distributions are normal!");
             
             d3.select("#normality.ticks").attr("display", "inline");  
-            performHomoscedasticityTestNotNormalNormal(variableList["dependent"][0], variableList["independent"][0]);
+            performHomoscedasticityTestNormal(variableList["dependent"][0], variableList["independent"][0]);
         }
         else
         {
