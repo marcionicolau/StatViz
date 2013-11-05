@@ -344,20 +344,14 @@ function drawFullScreenButton()
 {
     var canvas = d3.select("#svgCanvas");
     
-    canvas.append("rect")
-            .attr("x", canvasWidth - fullScreenButtonSize)
-            .attr("y", 10)
-            .attr("width", fullScreenButtonSize/2)
-            .attr("height", fullScreenButtonSize/2)
-            .attr("fill", "transparent")
-            .attr("stroke", "black");
-    
-    canvas.append("line")
-            .attr("x1", canvasWidth - fullScreenButtonSize/2)
-            .attr("y1", 10 + fullScreenButtonSize/4)
-            .attr("x2", canvasWidth)
-            .attr("y2", 10 + fullScreenButtonSize/4)
-            .attr("stroke", "black");
+    canvas.append("image")
+                .attr("x", canvasWidth - fullScreenButtonSize - fullScreenButtonOffset)
+                .attr("y", fullScreenButtonOffset)
+                .attr("xlink:href", "images/fullscreen.png")
+                .attr("height", fullScreenButtonSize)
+                .attr("width", fullScreenButtonSize)
+                .attr("style", "opacity: 1.0;")
+                .attr("class", "fullscreen");
 }
             
 

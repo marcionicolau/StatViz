@@ -98,6 +98,7 @@ var sampleSizeCutoff = 20;
 
 //full screen button
 var fullScreenButtonSize = 30;
+var fullScreenButtonOffset = 15;
 
 
 
