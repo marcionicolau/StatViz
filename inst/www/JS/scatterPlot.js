@@ -12,7 +12,18 @@ function makeScatterplot()
     var TOP = canvasHeight/2 - plotHeight/2;
     var BOTTOM = canvasHeight/2 + plotHeight/2;
     
-    var data = [];    
+    var data = new Object(); 
+    var mins = new Object();
+    var maxs = new Object();
+    
+    data["X"] = variables[currentVariableSelection[0]]["dataset"];
+    data["Y"] = variables[currentVariableSelection[1]]["dataset"];
+    
+    mins["X"] = MIN[currentVariableSelection[0]]["dataset"];
+    mins["Y"] = MIN[currentVariableSelection[1]]["dataset"];
+    
+    maxs["X"] = MAX[currentVariableSelection[0]]["dataset"];
+    maxs["Y"] = MAX[currentVariableSelection[1]]["dataset"];
     
     var colorData;
     var uniqueColorData;
@@ -30,72 +41,7 @@ function makeScatterplot()
         }
     }
     
-    var altScatterPlot = false;
-    
-    var variableList = sort(currentVariableSelection);
-    
-    if(currentVariableSelection.length >= 2)
-    {
-        //if more than 2 variables are selected
-        switch(variableList["independent"].length)
-        {
-            case 0:
-                    {
-                        //dep-dep
-                        for(var i=0; i<variableList["dependent"].length; i++)
-                        {
-                            data[i] = variables[variableList["dependent"][i]]["dataset"];      
-                            mins[i] = MIN[variableList["dependent"][i]]["dataset"];      
-                            maxs[i] = MAX[variableList["dependent"][i]]["dataset"];                                  
-                        }
-                        
-                        break;                    
-                    }
-            case 1:
-                    {
-                        //dep-ind
-                        altScatterPlot = true;
-                        for(var i=0; i<variableList["independent-levels"].length; i++)
-                        {
-                            data[i] = variables[variableList["dependent"][0]][variableList["independent-levels"][i]];
-                            mins[i] = MIN[variableList["dependent"][0]][variableList["independent-levels"][i]];
-                            maxs[i] = MAX[variableList["dependent"][0]][variableList["independent-levels"][i]];                        
-                        }
-                        break;
-                    }
-            case 2: 
-                    {
-                        //ind-ind
-                        for(var i=0; i<variableList["independent"].length; i++)
-                        {
-                            data[i] = variables[variableList["independent"][i]]["dataset"];      
-                            mins[i] = MIN[variableList["independent"][i]]["dataset"];      
-                            maxs[i] = MAX[variableList["independent"][i]]["dataset"];                                  
-                        }
-                        //color plot
-                        break;                        
-                    }
-            default:
-                    {
-                        //this shouldn't happen!
-                    }
-        }
-    }
-    
-    var labels;
-    var levels = variableList["independent-levels"];
-    
-    if(altScatterPlot == true)    
-    {
-        labels = levels;
-    }    
-    else    
-    {        
-        labels = currentVariableSelection;
-    }
-    
-    var ids = getValidIds(labels);
-
+    var ids = currentVariableSelection;
      
     var canvas = d3.select("#svgCanvas");
     
@@ -122,8 +68,8 @@ function makeScatterplot()
     
     //grooves
     
-    var uniqueDataX = data[0].unique();
-    var uniqueDataY = data[1].unique();  
+    var uniqueDataX = data["X"].unique();
+    var uniqueDataY = data["Y"].unique();  
     
     var numberOfGroovesInXAxis = uniqueDataX.length > numberOfGrooves ? numberOfGrooves : uniqueDataX.length;
     var numberOfGroovesInYAxis = uniqueDataY.length > numberOfGrooves ? numberOfGrooves : uniqueDataY.length;
@@ -132,14 +78,14 @@ function makeScatterplot()
     var xStep = uniqueDataX.length <= numberOfGrooves ? plotWidth/numberOfGroovesInXAxis : plotWidth/(numberOfGroovesInXAxis - 1);
     var yStep = uniqueDataY.length <= numberOfGrooves ? plotHeight/numberOfGroovesInYAxis : plotHeight/(numberOfGroovesInYAxis - 1);
     
-    var xSlice = (maxs[0] - mins[0])/(numberOfGroovesInXAxis - 1);    
-    var ySlice = (maxs[1] - mins[1])/(numberOfGroovesInYAxis - 1);    
+    var xSlice = (maxs["X"] - mins["X"])/(numberOfGroovesInXAxis - 1);    
+    var ySlice = (maxs["Y"] - mins["Y"])/(numberOfGroovesInYAxis - 1);    
     
     var axisText, textPosition;
     //grooves
     for(i=0; i<numberOfGroovesInXAxis; i++)
     {
-        axisText = format(mins[0] + i*xSlice);
+        axisText = format(mins["X"] + i*xSlice);
         textPosition = LEFT + i*xStep;
         
         if(uniqueDataX.length <= numberOfGrooves)
@@ -168,7 +114,7 @@ function makeScatterplot()
     
     for(i=0; i<numberOfGroovesInYAxis; i++)
     {
-        axisText = format(mins[1] + i*ySlice);
+        axisText = format(mins["Y"] + i*ySlice);
         textPosition = BOTTOM - i*yStep;                  
         
         if(uniqueDataY.length <= numberOfGrooves)
@@ -202,12 +148,12 @@ function makeScatterplot()
         if(uniqueDataX.length <= numberOfGrooves)
             x = LEFT + uniqueDataX.indexOf(data[0][i])*xStep + xStep/2;    
         else
-            x = LEFT + getValue1(data[0][i], 0)*plotWidth;
+            x = LEFT + getValue1(data["X"][i], mins["X"], maxs["X"])*plotWidth;
             
         if(uniqueDataY.length <= numberOfGrooves)
             y = BOTTOM - uniqueDataY.indexOf(data[1][i])*yStep - yStep/2;
         else
-            y = BOTTOM - getValue1(data[1][i], 1)*plotHeight;
+            y = BOTTOM - getValue1(data["Y"][i], mins["Y"], maxs["Y"])*plotHeight;
         
         
         var color = currentVariableSelection.length > 2 ? colorsForPlot[colorData[i]] : "black";        
@@ -222,7 +168,7 @@ function makeScatterplot()
     }
 }
 
-function getValue1(number, type)
+function getValue1(number, min, max)
 {
-    return (number - mins[type])/(maxs[type] - mins[type]);
+    return (number - min)/(max - min);
 }
