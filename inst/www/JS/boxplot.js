@@ -417,19 +417,14 @@ function redrawBoxPlot()
                     .attr("y", BOTTOM - getFraction(rectTop)*plotHeight)
                     .attr("height", getFraction(rectTop)*plotHeight - getFraction(rectBottom)*plotHeight)
                     .attr("width", boxWidth)
-                    .attr("fill", boxColors["normal"])
-                    .attr("stroke", "black")
-                    .attr("id", ids[i])
-                    .attr("class", "IQRs");
+                    .attr("fill", boxColors["normal"]);
                 
         // median
         medianLines[i].transition().duration(boxPlotTransformationDuration)
                     .attr("x1", LEFT + i*widthSlice - boxWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(medians[i])*plotHeight)
                     .attr("x2", LEFT + i*widthSlice + boxWidth/2 + xStep/2)
-                    .attr("y2", BOTTOM - getFraction(medians[i])*plotHeight)
-                    .attr("id", ids[i])
-                    .attr("class", "medians");
+                    .attr("y2", BOTTOM - getFraction(medians[i])*plotHeight);
     
         //end fringes
         BOTTOMFringe = (medians[i] - 1.5*iqrs[i]) < min ? min : (medians[i] - 1.5*iqrs[i]);
@@ -439,44 +434,30 @@ function redrawBoxPlot()
                     .attr("x1", canvasWidth/2 - boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(TOPFringe)*plotHeight)
                     .attr("x2", canvasWidth/2 + boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("y2", BOTTOM - getFraction(TOPFringe)*plotHeight)
-                    .attr("id", ids[i])
-                    .attr("stroke-width", "2")
-                    .attr("class", "TOPFringes");
+                    .attr("y2", BOTTOM - getFraction(TOPFringe)*plotHeight);
     
         topFringeConnectors[i].transition().duration(boxPlotTransformationDuration)
                     .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(TOPFringe)*plotHeight)
                     .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("y2", BOTTOM- getFraction(rectTop)*plotHeight)
-                    .attr("id", ids[i])
-                    .attr("class", "TOPFringeConnectors");    
+                    .attr("y2", BOTTOM- getFraction(rectTop)*plotHeight);    
     
         bottomFringes[i].transition().duration(boxPlotTransformationDuration)
                     .attr("x1", canvasWidth/2 - boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(BOTTOMFringe)*plotHeight)
                     .attr("x2", canvasWidth/2 + boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("y2", BOTTOM - getFraction(BOTTOMFringe)*plotHeight)
-                    .attr("id", ids[i])
-                    .attr("stroke-width", "2")
-                    .attr("class", "BOTTOMFringes");
+                    .attr("y2", BOTTOM - getFraction(BOTTOMFringe)*plotHeight);
                 
         bottomFringeConnectors[i].transition().duration(boxPlotTransformationDuration)
                     .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(BOTTOMFringe)*plotHeight)
                     .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("y2", BOTTOM - getFraction(rectBottom)*plotHeight)
-                    .attr("id", ids[i])
-                    .attr("class", "BOTTOMFringeConnectors");
+                    .attr("y2", BOTTOM - getFraction(rectBottom)*plotHeight);
+
     
         meanCircles[i].transition().duration(boxPlotTransformationDuration)
                     .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("cy", BOTTOM - getFraction(means[i])*plotHeight)
-                    .attr("r", meanRadius)
-                    .attr("fill", meanColors["normal"])
-                    .attr("style", "z-index: 5;")
-                    .attr("id", ids[i])
-                    .attr("class", "means");
+                    .attr("cy", BOTTOM - getFraction(means[i])*plotHeight);
         
         removeElementsByClassName("outliers");
     
