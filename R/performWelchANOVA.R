@@ -8,7 +8,7 @@ performWelchANOVA <- function(dependentVariable, independentVariable)
     install.packages("MBESS");
     library(MBESS);
     
-    n = eval(parse(text = paste("length(table$",dependentVariable,")")));
+    n = length(dependentVariable);
     
     es = ci.pvaf(result$statistic[["F"]], result$parameter[["num df"]], result$parameter[["denom df"]], n);
     
