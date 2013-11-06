@@ -65,7 +65,7 @@ function makeHistogram()
         maxs[0] = MAX[currentVariableSelection[0]]["dataset"];       
     } 
     
-    drawLegends(varNames);
+    drawHistogramLegends(varNames);
     console.dir(data);
     
     
@@ -621,7 +621,7 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
       .style("stroke", "#000000");
 }
 
-function drawLegends(varNames)
+function drawHistogramLegends(varNames)
 {
     var canvas = d3.select("#svgCanvas");
     

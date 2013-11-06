@@ -29,6 +29,7 @@ function makeScatterplot()
     var uniqueColorData;
     
     var colorsForPlot = new Object();
+    var varNames = [];
     
     if(currentVariableSelection.length == 3)
     {
@@ -38,8 +39,10 @@ function makeScatterplot()
         for(var i=0; i<uniqueColorData.length; i++)
         {
             colorsForPlot[uniqueColorData[i]] = colors[i];
+            varNames[i] = uniqueColorData[i];
         }
-    }
+        drawScatterPlotLegends(varNames);
+    }    
     
     var ids = currentVariableSelection;
      
@@ -186,4 +189,31 @@ function makeScatterplot()
 function getValue1(number, min, max)
 {
     return (number - min)/(max - min);
+}
+
+function drawScatterPlotLegends(varNames)
+{
+    var canvas = d3.select("#svgCanvas");
+    
+    var yStep = plotHeight/10;
+    
+    for(var i=0; i<varNames.length; i++)
+    {
+        canvas.append("circle")
+                .attr("cx", RIGHT + histLegendOffsetX)
+                .attr("cy", TOP + histLegendOffsetY + i*yStep)
+                .attr("r", datapointRadius)
+                .attr("fill", colors[i])
+                .attr("id", "legend" + i)
+                .attr("class", "circles");
+        
+        canvas.append("text")
+                .attr("x", RIGHT + 2*histLegendOffsetX + histLegendSize)
+                .attr("y", TOP + histLegendOffsetY + i*yStep + histLegendSize/2 + 3)
+                .attr("fill", "black")
+                .text(varNames[i])
+                .attr("id", "legend" + i)
+                .attr("class", "text");
+            
+    }
 }
