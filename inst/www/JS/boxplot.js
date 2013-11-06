@@ -72,10 +72,9 @@ function makeBoxplot()
                         {
                             for(var j=0; j<variableList["independent-levels"][1].length; j++)
                             {                                
-                                if(i != j)
-                                {
-                                    console.log(variableList["dependent"][0] + "[" + variableList["independent-levels"][0][i] + "][" + variableList["independent-levels"][1][j]);
-                                }
+                                
+                                console.log(variableList["dependent"][0] + "[" + variableList["independent-levels"][0][i] + "][" + variableList["independent-levels"][1][j]);
+                                
                             }
                         }
                         
