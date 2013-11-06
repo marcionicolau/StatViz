@@ -156,7 +156,11 @@ function getCI(dataset, variableName, level)
         console.log("CI for " + variableName + "[" + level + "] = " + output.min + ", " + output.max);                
         
         if(CI[variableName][level] = undefined)
+        {
+            console.log("hey");
+        
             CI[variableName][level] = new Array();
+        }
         
         CI[variableName][level].push(1);
         console.log(CI[variableName][level]);
