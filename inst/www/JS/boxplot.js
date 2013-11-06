@@ -275,7 +275,7 @@ function makeBoxplot()
                 .attr("stroke", "rosybrown")
                 .attr("stroke-width", "4")
                 .attr("id", ids[i])
-                .attr("class", "CIFringes");
+                .attr("class", "CIBottomFringes");
         
         canvas.append("line")
                 .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2 - CIFringeLength)
@@ -285,7 +285,7 @@ function makeBoxplot()
                 .attr("stroke", "rosybrown")
                 .attr("stroke-width", "4")
                 .attr("id", ids[i])
-                .attr("class", "CIFringes");
+                .attr("class", "CITopFringes");
         
         meanCircles.push(canvas.append("circle")
                     .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
