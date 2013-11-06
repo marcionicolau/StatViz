@@ -82,12 +82,12 @@ function findCI(variableName, level)
     var distribution = variables[variableName][level];
     
     var SE = getStandardError(distribution);
-    var mean = mean(distribution);
+    var m = mean(distribution);
     
     CI[variableName][level] = new Array();
     
-    CI[variableName][level][0] = mean - 1.96*SE;
-    CI[variableName][level][1] = mean + 1.96*SE;
+    CI[variableName][level][0] = m - 1.96*SE;
+    CI[variableName][level][1] = m + 1.96*SE;
 } 
 
 function getStandardError(values)
@@ -104,7 +104,7 @@ function getStandardDeviation(values)
     
     for(var i=0; i<values.length; i++)
     {
-        SS += Math.pow(values[i] - mean,2);
+        SS += Math.pow(values[i] - m,2);
     }
     
     return Math.sqrt(SS/values.length);
