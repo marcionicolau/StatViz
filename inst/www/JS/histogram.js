@@ -581,14 +581,14 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
         
         curveY.push(BOTTOM - (bins[i]/maxBinSize)*histHeight);
         
-        canvas.append("rect")
-                    .attr("x", LEFT + i*xStep)
-                    .attr("y", BOTTOM - (bins[i]/maxBinSize)*histHeight)
-                    .attr("height", (bins[i]/maxBinSize)*histHeight)
-                    .attr("width", histWidth/nBins)          
-                    .attr("fill", meanColors["normal"])         
-                    .attr("id", id + i)
-                    .attr("class", "bins");
+//         canvas.append("rect")
+//                     .attr("x", LEFT + i*xStep)
+//                     .attr("y", BOTTOM - (bins[i]/maxBinSize)*histHeight)
+//                     .attr("height", (bins[i]/maxBinSize)*histHeight)
+//                     .attr("width", histWidth/nBins)          
+//                     .attr("fill", meanColors["normal"])         
+//                     .attr("id", id + i)
+//                     .attr("class", "bins");
     }  
     
     curveX.push(RIGHT);
