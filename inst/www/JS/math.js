@@ -99,7 +99,7 @@ function getStandardError(values)
 
 function getStandardDeviation(values)
 {
-    var mean = mean(values);
+    var m = mean(values);
     var SS = 0;
     
     for(var i=0; i<values.length; i++)
