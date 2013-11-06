@@ -604,7 +604,7 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
         .domain([d3.min(curveY), d3.max(curveY)])
         .range([TOP, BOTTOM]) //svg corner starts at top left
 
-    var line = d3.canvas.line()
+    var line = d3.svg.line()
         .x(function(d) {
           //for each x value we map it to the pixel value
           return xscale(d);
