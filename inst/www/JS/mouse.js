@@ -393,16 +393,16 @@ function OnMouseOver(e)
         console.log(topFringe.attr("x2"));
         
         var topLine = canvas.append("line")
-                .attr("x1", (topFringe.attr("x1") + topFringe.attr("x2"))/2)
+                .attr("x1", (parseFloat(topFringe.attr("x1")) + parseFloat(topFringe.attr("x2")))/2)
                 .attr("y1", topFringe.attr("y1"))
-                .attr("x2", (topFringe.attr("x1") + topFringe.attr("x2"))/2)
+                .attr("x2", (parseFloat(topFringe.attr("x1")) + parseFloat(topFringe.attr("x2")))/2)
                 .attr("y2", topFringe.attr("y1"))
                 .attr("stroke", "black");
         
         var bottomLine = canvas.append("line")
-                .attr("x1", (bottomFringe.attr("x1") + bottomFringe.attr("x2"))/2)
+                .attr("x1", (parseFloat(bottomFringe.attr("x1")) + parseFloat(bottomFringe.attr("x2")))/2)
                 .attr("y1", bottomFringe.attr("y1"))
-                .attr("x2", (bottomFringe.attr("x1") + bottomFringe.attr("x2"))/2)
+                .attr("x2", (parseFloat(bottomFringe.attr("x1")) + parseFloat(bottomFringe.attr("x2")))/2)
                 .attr("y2", bottomFringe.attr("y1"))
                 .attr("stroke", "black");
         
