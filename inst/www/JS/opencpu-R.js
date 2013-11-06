@@ -156,10 +156,10 @@ function getCI(dataset, variableName, level)
         console.log("CI for " + variableName + "[" + level + "] = " + output.min + ", " + output.max);                
         
         if(CI[variableName][level] = undefined)
-            CI[variableName][level] = new Object();
+            CI[variableName][level] = new Array();
         
-        CI[variableName][level]["min"] = output.min;
-        CI[variableName][level]["max"] = output.max;
+        CI[variableName][level][0] = output.min;
+        CI[variableName][level][1] = output.max;
                 
      }).fail(function(){
           alert("Failure: " + req.responseText);
