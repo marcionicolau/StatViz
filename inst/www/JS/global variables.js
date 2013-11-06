@@ -54,3 +54,7 @@ var bottomFringes = [];
 var topFringeConnectors = [];
 var bottomFringeConnectors = [];
 var yAxisTexts = [];
+
+//histogram curve
+var curveX = [];
+var curveY = [];

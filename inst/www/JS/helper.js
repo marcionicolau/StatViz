@@ -69,6 +69,8 @@ function makePlot()
     {
         case "Histogram":
                                     {
+                                        curveX = [];
+                                        curveY = [];
                                         makeHistogram();
                                         break;
                                     }

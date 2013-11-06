@@ -572,9 +572,17 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
     }
 
     xStep  = histWidth/nBins;
+    curveX.push(LEFT);
+    curveY.push(BOTTOM);
     //bins
     for(i=0; i<nBins; i++)
     {
+        curveX.push(LEFT + i*xStep);
+        curveX.push(LEFT + (i+1)*xStep);
+        
+        curveY.push(BOTTOM - (bins[i]/maxBinSize)*histHeight);
+        curveY.push(BOTTOM - (bins[i]/maxBinSize)*histHeight);
+        
         canvas.append("rect")
                     .attr("x", LEFT + i*xStep)
                     .attr("y", BOTTOM - (bins[i]/maxBinSize)*histHeight)
@@ -583,7 +591,36 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
                     .attr("fill", meanColors["normal"])         
                     .attr("id", id + i)
                     .attr("class", "bins");
-    }   
+    }  
+    
+    curveX.push(RIGHT);
+    curveY.push(BOTTOM);
+    
+    var xscale = d3.scale.linear()
+                .domain([d3.min(curveX), d3.max(curveX)])
+                .range([LEFT, RIGHT]); 
+
+    var yscale = d3.scale.linear()
+        .domain([d3.min(curveY), d3.max(curveY)])
+        .range([TOP, BOTTOM]) //svg corner starts at top left
+
+    var line = d3.canvas.line()
+        .x(function(d) {
+          //for each x value we map it to the pixel value
+          return xscale(d);
+        })
+        .y(function(d,i) {
+          //for each data point we perform our y function and then
+          //map that value to pixels
+          return yscale(y[i]);
+        })
+        .interpolate("basis");
+
+    var path = canvas.append("path")
+      .data([data])
+      .attr("d", line) //this calls the line function with this element's data
+      .style("fill", "none")
+      .style("stroke", "#000000");
 }
 
 function drawLegends(varNames)
