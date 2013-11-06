@@ -198,15 +198,15 @@ function makeBoxplot()
         var rectBottom = (medians[i] - iqrs[i]/2) < min ? min : (medians[i] - iqrs[i]/2);
         var rectTop = (medians[i] + iqrs[i]/2) > max ? max : (medians[i] + iqrs[i]/2);
         
-        boxes.push(canvas.append("rect")
-                    .attr("x", LEFT + i*widthSlice - boxWidth/2 + xStep/2)
-                    .attr("y", BOTTOM - getFraction(rectTop)*plotHeight)
-                    .attr("height", getFraction(rectTop)*plotHeight - getFraction(rectBottom)*plotHeight)
-                    .attr("width", boxWidth)
-                    .attr("fill", boxColors["normal"])
-                    .attr("stroke", "black")
-                    .attr("id", ids[i])
-                    .attr("class", "IQRs"));
+        // boxes.push(canvas.append("rect")
+//                     .attr("x", LEFT + i*widthSlice - boxWidth/2 + xStep/2)
+//                     .attr("y", BOTTOM - getFraction(rectTop)*plotHeight)
+//                     .attr("height", getFraction(rectTop)*plotHeight - getFraction(rectBottom)*plotHeight)
+//                     .attr("width", boxWidth)
+//                     .attr("fill", boxColors["normal"])
+//                     .attr("stroke", "black")
+//                     .attr("id", ids[i])
+//                     .attr("class", "IQRs"));
                 
         // median
         medianLines.push(canvas.append("line")
