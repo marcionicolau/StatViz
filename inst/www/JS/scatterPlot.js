@@ -31,18 +31,20 @@ function makeScatterplot()
     var colorsForPlot = new Object();
     var varNames = [];
     
-    if((currentVariableSelection.length == 3) && (parseInt(variables[currentVariableSelection[2]]["dataset"].length) <= 10))
+    if((currentVariableSelection.length == 3))
     {
-        console.log("'ello");
-        colorData = variables[currentVariableSelection[2]]["dataset"];
-        uniqueColorData = colorData.unique();
-        
-        for(var i=0; i<uniqueColorData.length; i++)
+        if(parseInt(variables[currentVariableSelection[2]]["dataset"].length) <= 10)
         {
-            colorsForPlot[uniqueColorData[i]] = colors[i];
-            varNames[i] = uniqueColorData[i];
+            colorData = variables[currentVariableSelection[2]]["dataset"];
+            uniqueColorData = colorData.unique();
+        
+            for(var i=0; i<uniqueColorData.length; i++)
+            {
+                colorsForPlot[uniqueColorData[i]] = colors[i];
+                varNames[i] = uniqueColorData[i];
+            }
+            drawScatterPlotLegends(varNames);
         }
-        drawScatterPlotLegends(varNames);
     }    
     
     var ids = currentVariableSelection;
