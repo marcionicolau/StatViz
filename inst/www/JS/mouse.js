@@ -388,9 +388,8 @@ function OnMouseOver(e)
         
         var topFringe = d3.select("#" + target.id + ".CITopFringes");
         var bottomFringe = d3.select("#" + target.id + ".CIBottomFringes");
-        
-        console.log(topFringe.attr("x1"));
-        console.log(topFringe.attr("x2"));
+    
+        var variableList = sort(currentVariableSelection);
         
         var topLine = canvas.append("line")
                 .attr("x1", (parseFloat(topFringe.attr("x1")) + parseFloat(topFringe.attr("x2")))/2)
@@ -409,6 +408,19 @@ function OnMouseOver(e)
                 .attr("stroke", "black")
                 .attr("stroke-dasharray", "5,5")
                 .attr("class", "hover");
+        
+        canvas.append("text")
+                .attr("x",(parseFloat(bottomFringe.attr("x1")) + parseFloat(bottomFringe.attr("x2")))/2)
+                .attr("y", bottomFringe.attr("y1") - 10)
+                .attr("text-anchor", "middle")
+                .text(CI[variableList["dependent"][0]][target.id]);
+        
+        canvas.append("text")
+                .attr("x",(parseFloat(topFringe.attr("x1")) + parseFloat(topFringe.attr("x2")))/2)
+                .attr("y", topFringe.attr("y1") + 30)
+                .attr("text-anchor", "middle")
+                .text(CI[variableList["dependent"][1]][target.id]);
+                
         
         topLine.transition().duration(1000)
                     .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
