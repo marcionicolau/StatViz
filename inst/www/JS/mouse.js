@@ -409,26 +409,26 @@ function OnMouseOver(e)
                 .attr("stroke-dasharray", "5,5")
                 .attr("class", "hover");
         
-        canvas.append("text")
-                .attr("x",(parseFloat(bottomFringe.attr("x1")) + parseFloat(bottomFringe.attr("x2")))/2)
-                .attr("y", bottomFringe.attr("y1") + 25)
-                .attr("text-anchor", "middle")
-                .text(format(CI[variableList["dependent"][0]][target.id][0]))
-                .attr("class", "hover");
-        
-        canvas.append("text")
-                .attr("x",(parseFloat(topFringe.attr("x1")) + parseFloat(topFringe.attr("x2")))/2)
-                .attr("y", topFringe.attr("y1") - 5)
-                .attr("text-anchor", "middle")
-                .text(format(CI[variableList["dependent"][0]][target.id][1]))
-                .attr("class", "hover");
-                
-        
         topLine.transition().duration(1000)
                     .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
         
         bottomLine.transition().duration(1000)
                     .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
+        
+        canvas.append("text")
+                .attr("x",(parseFloat(bottomFringe.attr("x1")) - 20))
+                .attr("y", bottomFringe.attr("y1") - 5)
+                .attr("text-anchor", "middle")
+                .text(format(CI[variableList["dependent"][0]][target.id][0]))
+                .attr("class", "hover");
+        
+        canvas.append("text")
+                .attr("x",(parseFloat(topFringe.attr("x1")) - 20))
+                .attr("y", topFringe.attr("y1") - 5)
+                .attr("text-anchor", "middle")
+                .text(format(CI[variableList["dependent"][0]][target.id][1]))
+                .attr("class", "hover");
+                
         
     }
 }
