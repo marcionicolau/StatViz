@@ -43,9 +43,8 @@ function splitTheData()
             }
             for(var k=0; k<uniqueData.length; k++)
             {
-                console.log(
                 IQR[variableNames[j]][uniqueData[k]] = findIQR(variables[variableNames[j]][uniqueData[k]]);
-                findCI(variableNames[j],uniqueData[k]);
+                findCI(variableNames[j], uniqueData[k]);
             }
         }
     }     
