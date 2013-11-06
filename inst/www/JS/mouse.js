@@ -390,6 +390,7 @@ function OnMouseOver(e)
         var bottomFringe = d3.select("#" + target.id + ".CIBottomFringes");
         
         console.log(topFringe.attr("x1"));
+        console.log(topFringe.attr("x2"));
         
         var topLine = canvas.append("line")
                 .attr("x1", (topFringe.attr("x1") + topFringe.attr("x2"))/2)
