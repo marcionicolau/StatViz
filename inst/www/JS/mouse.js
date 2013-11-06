@@ -275,7 +275,7 @@ function OnMouseOver(e)
     
         var datapoint = d3.select("#" + target.id + ".datapoints");
         
-        datapoint.transition().duration(300).attr("r", "5px").attr("fill", meanColors["normal"]);
+        datapoint.transition().duration(300).attr("r", "5px");
         
         var altScatterPlot = false;
         var text = new Array();
@@ -475,7 +475,7 @@ function OnMouseOut(e)
     {
         var datapoint = d3.select("#" + target.id + ".datapoints");
         
-        datapoint.transition().duration(300).attr("r", datapointRadius).attr("fill", "black");
+        datapoint.transition().duration(300).attr("r", datapointRadius);
         removeElementsByClassName("hoverText");
     }
     else if((target.className.baseVal == "CIs") || (target.className.baseVal == "CITopFringes") || (target.className.baseVal == "CIBottomFringes"))
