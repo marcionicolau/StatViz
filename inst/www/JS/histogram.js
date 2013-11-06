@@ -84,7 +84,7 @@ function makeHistogram()
     var max = Array.max(maxs);
     
     var labels;
-    var levels = variableList["independent-levels"];//todo
+    var levels = variableList["independent-levels"][0];//todo
     
     if(altHistogram == true)    
     {
