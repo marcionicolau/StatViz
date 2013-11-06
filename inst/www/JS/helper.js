@@ -44,6 +44,7 @@ function splitTheData()
             for(var k=0; k<uniqueData.length; k++)
             {
                 IQR[variableNames[j]][uniqueData[k]] = findIQR(variables[variableNames[j]][uniqueData[k]]);
+//                 CI[variableNames[j]][uniqueData[k]] = getCI(variables[variableNames[j]][uniqueData[k]]);
             }
         }
     }     
