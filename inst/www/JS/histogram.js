@@ -612,12 +612,12 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
         .y(function(d,i) {
           //for each data point we perform our y function and then
           //map that value to pixels
-          return yscale(y[i]);
+          return yscale(curveY[i]);
         })
         .interpolate("basis");
 
     var path = canvas.append("path")
-      .data([data])
+      .data([curveX])
       .attr("d", line) //this calls the line function with this element's data
       .style("fill", "none")
       .style("stroke", "#000000");
