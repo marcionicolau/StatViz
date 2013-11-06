@@ -21,7 +21,8 @@ function loadFile(filePath)
         CI[output.variableNames[i]] = new Object();
         
         getData(dataset, output.variableNames[i]);                 
-        getIQR(dataset, output.variableNames[i]);                    
+        getIQR(dataset, output.variableNames[i]);  
+        getCI(dataset, output.variableNames[i]);
     }
     
     
@@ -129,8 +130,6 @@ function getIQR(dataset, variableName, level)
             level = "dataset";
         }         
         IQR[variableName][level] = output.IQR; 
-        getCI(variableName, level);
-        
       
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -145,20 +144,22 @@ function getIQR(dataset, variableName, level)
     });
 }
 
-function getCI(columnName, level)
+function getCI(dataset, variableName, level)
 {
     if(level == undefined)
         level = "dataset";
+        
     var req = opencpu.r_fun_json("getCI", {
-                    distribution: variables[columnName][level]
+                    dataset: dataset,
+                    variableName: variableName
                   }, function(output) {                  
-        console.log("CI for " + columnName + "[" + level + "] = " + output.min + ", " + output.max);                
+        console.log("CI for " + variableName + "[" + level + "] = " + output.min + ", " + output.max);                
         
-        if(CI[columnName][level] = undefined)
-            CI[columnName][level] = new Object();
+        if(CI[variableName][level] = undefined)
+            CI[variableName][level] = new Object();
         
-        CI[columnName][level]["min"] = output.min;
-        CI[columnName][level]["max"] = output.max;
+        CI[variableName][level]["min"] = output.min;
+        CI[variableName][level]["max"] = output.max;
                 
      }).fail(function(){
           alert("Failure: " + req.responseText);

@@ -1,6 +1,8 @@
-getCI <- function(distribution, alpha = "0.95")
-{        
-  distribution = c(distribution);
+getCI <- function(dataset, variableName, alpha = "0.95")
+{  
+  table <- as.data.frame(dataset)
+        
+  distribution = eval(parse(text = paste("table","$",variableName)));
   
   mean = mean(distribution);  
   sigma = sd(distribution);  
