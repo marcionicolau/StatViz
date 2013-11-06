@@ -614,7 +614,7 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
           //map that value to pixels
           return yscale(curveY[i]);
         })
-        .interpolate("basis");
+        .interpolate("bundle");
 
     var path = canvas.append("path")
       .data([curveX])
