@@ -52,15 +52,15 @@ function makeBoxplot()
             case 1:
                     {
                         altBoxPlot = true;
-                        for(var i=0; i<variableList["independent-levels"].length; i++)
+                        for(var i=0; i<variableList["independent-levels"][0].length; i++)
                         {
-                            data[i] = variables[variableList["dependent"][0]][variableList["independent-levels"][i]];
-                            mins[i] = MIN[variableList["dependent"][0]][variableList["independent-levels"][i]];
-                            maxs[i] = MAX[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            data[i] = variables[variableList["dependent"][0]][variableList["independent-levels"][0][i]];
+                            mins[i] = MIN[variableList["dependent"][0]][variableList["independent-levels"][0][i]];
+                            maxs[i] = MAX[variableList["dependent"][0]][variableList["independent-levels"][0][i]];
                             means[i] = mean(data[i]);
                             medians[i] = median(data[i]);
-                            iqrs[i] = IQR[variableList["dependent"][0]][variableList["independent-levels"][i]];
-                            cis[i] = CI[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            iqrs[i] = IQR[variableList["dependent"][0]][variableList["independent-levels"][0][i]];
+                            cis[i] = CI[variableList["dependent"][0]][variableList["independent-levels"][0][i]];
                         }
                         break;
                     }
