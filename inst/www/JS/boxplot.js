@@ -24,6 +24,7 @@ function makeBoxplot()
     var iqrs = [];
     var medians = [];
     var means = [];
+    var cis = [];
     
     var variableList = sort(currentVariableSelection);
     
@@ -42,6 +43,7 @@ function makeBoxplot()
                             means[i] = mean(data[i]);
                             medians[i] = median(data[i]);
                             iqrs[i] = IQR[variableList["dependent"][i]]["dataset"]; 
+                            cis[i] = CI[variableList["dependent"][i]]["dataset"]; 
                         }
                         
                         break;                    
@@ -57,6 +59,7 @@ function makeBoxplot()
                             means[i] = mean(data[i]);
                             medians[i] = median(data[i]);
                             iqrs[i] = IQR[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            cis[i] = CI[variableList["dependent"][0]][variableList["independent-levels"][i]];
                         }
                         break;
                     }
@@ -79,6 +82,7 @@ function makeBoxplot()
         maxs[0] = MAX[currentVariableSelection[0]]["dataset"];
         medians[0] = median(data[0]);
         iqrs[0] = IQR[currentVariableSelection[0]]["dataset"];
+        cis[0] = CI[currentVariableSelection[0]]["dataset"];
         means[0] = mean(data[0]);  
     }   
     
@@ -259,6 +263,16 @@ function makeBoxplot()
                     .attr("style", "z-index: 5;")
                     .attr("id", ids[i])
                     .attr("class", "means"));
+        
+        canvas.append("line")
+                .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
+                .attr("y1", BOTTOM - getFraction(cis[i][0])*plotHeight)
+                .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
+                .attr("y2", BOTTOM - getFraction(cis[i][1])*plotHeight)
+                .attr("stroke", meanColors["normal"])
+                .attr("stroke-width", "4")
+                .attr("id", ids[i])
+                .attr("class", "CIs");
     
         var outliers = getOutliers(data[i], TOPFringe, BOTTOMFringe);
             
@@ -458,6 +472,8 @@ function redrawBoxPlot()
         meanCircles[i].transition().duration(boxPlotTransformationDuration)
                     .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("cy", BOTTOM - getFraction(means[i])*plotHeight);
+        
+        
         
         removeElementsByClassName("outliers");
     
