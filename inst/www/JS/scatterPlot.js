@@ -33,6 +33,7 @@ function makeScatterplot()
     
     if((currentVariableSelection.length == 3))
     {
+        console.log(variables[currentVariableSelection[2]]["dataset"].length);
         console.log(parseInt(variables[currentVariableSelection[2]]["dataset"].length));
         if(parseInt(variables[currentVariableSelection[2]]["dataset"].length) <= 10)
         {
