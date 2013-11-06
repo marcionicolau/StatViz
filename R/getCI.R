@@ -1,44 +1,15 @@
-getCI <- function(dataset = "", columnName = "", alpha = "")
-{
-  if(dataset == "")
-  {   
-    dataset = "beaver1";
-    columnName = "time";
-    alpha = "0.95";
-  }
-  else if(columnName == "")
-  {
-    # Load the first column name by default
-    columnName = names(eval(parse(text = dataset)))[1]; 
-  }
-        
-  distribution = eval(parse(text = paste(dataset,"$",columnName)));
+getCI <- function(distribution, alpha = "0.95")
+{        
+  distribution = c(distribution);
   
-  
-  # Find mean
-  
-  # TODO: use custom function
-  
-  mean = mean(distribution);
-  
-  
-  # Find SD (sigma)
-  
-  sigma = sd(distribution)
-  
-  
-  
-  # Get number of samples (n)
-  
-  n = length(distribution)
-  
-  
-  
-  # Find CI
+  mean = mean(distribution);  
+  sigma = sd(distribution);  
+  n = length(distribution);
+    
   alpha = eval(parse(text = alpha));
   z = 1 - (alpha/2);
   
   error <- qnorm(z)*sigma/sqrt(n);
   
-  list(min = mean - error, max = mean + error, dataset = dataset, columnName = columnName, alpha = alpha);
+  list(min = mean - error, max = mean + error);
 }

@@ -4,9 +4,9 @@ var variableDataTypes = new Object(); //numeric/string (todo: further classifica
 var IQR = new Object();   
 var MIN = new Object();
 var MAX = new Object();
+var CI = new Object();
 var splitData = new Object();
 var variableNames = new Array();
-
 
 var currentVariableSelection = [];    
     var currentVisualizationSelection = "Histogram"; // Select histogram by default
