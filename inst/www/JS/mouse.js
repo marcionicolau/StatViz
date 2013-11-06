@@ -413,13 +413,13 @@ function OnMouseOver(e)
                 .attr("x",(parseFloat(bottomFringe.attr("x1")) + parseFloat(bottomFringe.attr("x2")))/2)
                 .attr("y", bottomFringe.attr("y1") - 10)
                 .attr("text-anchor", "middle")
-                .text(CI[variableList["dependent"][0]][target.id]);
+                .text(CI[variableList["dependent"][0]][target.id][0]);
         
         canvas.append("text")
                 .attr("x",(parseFloat(topFringe.attr("x1")) + parseFloat(topFringe.attr("x2")))/2)
                 .attr("y", topFringe.attr("y1") + 30)
                 .attr("text-anchor", "middle")
-                .text(CI[variableList["dependent"][1]][target.id]);
+                .text(CI[variableList["dependent"][0]][target.id][1]);
                 
         
         topLine.transition().duration(1000)
