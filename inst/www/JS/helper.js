@@ -326,18 +326,16 @@ function sort(list)
         if(variableTypes[list[i]] == "independent")
         {
             variableList["independent"].push(list[i]);
-            
-            var uniqueData = variables[list[i]]["dataset"].unique();
-            
-            for(var j=0; j<uniqueData.length; j++)
-            {
-                variableList["independent-levels"].push(uniqueData[j]);
-            }
         }
         else
         {
             variableList["dependent"].push(list[i]);
         }
+    }
+    
+    for(var i=0; i<variableList["independent"].length; i++)
+    {
+        variableList["independent-levels"][i] = variables[variableList["independent"][i]]["dataset"].unique();
     }
     
     return variableList;
