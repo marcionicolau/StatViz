@@ -158,6 +158,7 @@ function getCI(dataset, variableName, level)
         if(CI[variableName][level] = undefined)
             CI[variableName][level] = new Array();
         
+        CI[variableName][level].push(1);
         console.log(CI[variableName][level]);
         
 //         CI[variableName][level][0] = output.min;
