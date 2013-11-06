@@ -397,14 +397,18 @@ function OnMouseOver(e)
                 .attr("y1", topFringe.attr("y1"))
                 .attr("x2", (parseFloat(topFringe.attr("x1")) + parseFloat(topFringe.attr("x2")))/2)
                 .attr("y2", topFringe.attr("y1"))
-                .attr("stroke", "black");
+                .attr("stroke", "black")
+                .attr("stroke-dasharray", "5,5")
+                .attr("class", "hover");
         
         var bottomLine = canvas.append("line")
                 .attr("x1", (parseFloat(bottomFringe.attr("x1")) + parseFloat(bottomFringe.attr("x2")))/2)
                 .attr("y1", bottomFringe.attr("y1"))
                 .attr("x2", (parseFloat(bottomFringe.attr("x1")) + parseFloat(bottomFringe.attr("x2")))/2)
                 .attr("y2", bottomFringe.attr("y1"))
-                .attr("stroke", "black");
+                .attr("stroke", "black")
+                .attr("stroke-dasharray", "5,5")
+                .attr("class", "hover");
         
         topLine.transition().duration(1000)
                     .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
@@ -459,6 +463,10 @@ function OnMouseOut(e)
         
         datapoint.transition().duration(300).attr("r", datapointRadius).attr("fill", "black");
         removeElementsByClassName("hoverText");
+    }
+    else if((target.className.baseVal == "CIs") || (target.className.baseVal == "CITopFringes") || (target.className.baseVal == "CIBottomFringes"))
+    {
+        removeElementsByClassName("hover");
     }
     
 }	
