@@ -198,15 +198,15 @@ function makeBoxplot()
         var rectBottom = (medians[i] - iqrs[i]/2) < min ? min : (medians[i] - iqrs[i]/2);
         var rectTop = (medians[i] + iqrs[i]/2) > max ? max : (medians[i] + iqrs[i]/2);
         
-        // boxes.push(canvas.append("rect")
-//                     .attr("x", LEFT + i*widthSlice - boxWidth/2 + xStep/2)
-//                     .attr("y", BOTTOM - getFraction(rectTop)*plotHeight)
-//                     .attr("height", getFraction(rectTop)*plotHeight - getFraction(rectBottom)*plotHeight)
-//                     .attr("width", boxWidth)
-//                     .attr("fill", boxColors["normal"])
-//                     .attr("stroke", "black")
-//                     .attr("id", ids[i])
-//                     .attr("class", "IQRs"));
+        boxes.push(canvas.append("rect")
+                    .attr("x", LEFT + i*widthSlice - boxWidth/2 + xStep/2)
+                    .attr("y", BOTTOM - getFraction(rectTop)*plotHeight)
+                    .attr("height", getFraction(rectTop)*plotHeight - getFraction(rectBottom)*plotHeight)
+                    .attr("width", boxWidth)
+                    .attr("fill", boxColors["normal"])
+                    .attr("stroke", "black")
+                    .attr("id", ids[i])
+                    .attr("class", "IQRs"));
                 
         // median
         medianLines.push(canvas.append("line")
@@ -255,14 +255,14 @@ function makeBoxplot()
                     .attr("id", ids[i])
                     .attr("class", "BOTTOMFringeConnectors"));
     
-        // meanCircles.push(canvas.append("circle")
-//                     .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
-//                     .attr("cy", BOTTOM - getFraction(means[i])*plotHeight)
-//                     .attr("r", meanRadius)
-//                     .attr("fill", meanColors["normal"])
-//                     .attr("style", "z-index: 5;")
-//                     .attr("id", ids[i])
-//                     .attr("class", "means"));
+        meanCircles.push(canvas.append("circle")
+                    .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("cy", BOTTOM - getFraction(means[i])*plotHeight)
+                    .attr("r", meanRadius)
+                    .attr("fill", meanColors["normal"])
+                    .attr("style", "z-index: 5;")
+                    .attr("id", ids[i])
+                    .attr("class", "means"));
         
         canvas.append("line")
                 .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
@@ -273,6 +273,27 @@ function makeBoxplot()
                 .attr("stroke-width", "4")
                 .attr("id", ids[i])
                 .attr("class", "CIs");
+        
+        canvas.append("line")
+                .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2 - CIFringeLength)
+                .attr("y1", BOTTOM - getFraction(cis[i][0])*plotHeight)
+                .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2 + CIFringeLength)
+                .attr("y2", BOTTOM - getFraction(cis[i][0])*plotHeight)
+                .attr("stroke", meanColors["normal"])
+                .attr("stroke-width", "4")
+                .attr("id", ids[i])
+                .attr("class", "CIFringes");
+        
+        canvas.append("line")
+                .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2 - CIFringeLength)
+                .attr("y1", BOTTOM - getFraction(cis[i][1])*plotHeight)
+                .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2 + CIFringeLength)
+                .attr("y2", BOTTOM - getFraction(cis[i][1])*plotHeight)
+                .attr("stroke", meanColors["normal"])
+                .attr("stroke-width", "4")
+                .attr("id", ids[i])
+                .attr("class", "CIFringes");
+                
     
         var outliers = getOutliers(data[i], TOPFringe, BOTTOMFringe);
             

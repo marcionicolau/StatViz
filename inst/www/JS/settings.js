@@ -66,6 +66,8 @@ var boxColors = new Object();
     boxColors["normal"] = "lightgrey";
     boxColors["notnormal"] = "crimson";
 
+var CIFringeLength = 5;
+
 // Scatterplot
 var datapointRadius = 3;
 var numberOfGrooves = 10;
