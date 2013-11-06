@@ -577,10 +577,8 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
     //bins
     for(i=0; i<nBins; i++)
     {
-        curveX.push(LEFT + i*xStep);
-        curveX.push(LEFT + (i+1)*xStep);
+        curveX.push(LEFT + i*xStep + xStep/2);
         
-        curveY.push(BOTTOM - (bins[i]/maxBinSize)*histHeight);
         curveY.push(BOTTOM - (bins[i]/maxBinSize)*histHeight);
         
         canvas.append("rect")
@@ -614,7 +612,7 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
           //map that value to pixels
           return yscale(curveY[i]);
         })
-        .interpolate("bundle");
+        .interpolate("basis");
 
     var path = canvas.append("path")
       .data([curveX])
