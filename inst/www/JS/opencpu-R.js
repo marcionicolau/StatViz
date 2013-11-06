@@ -169,7 +169,7 @@ function getCI(dataset, variableName, level)
     req.fail(function(){
       alert("Server error: " + req.responseText);
     });
-}
+}  
 
 //Split data - R based   
 function splitDataByColumnName(dataset, columnName, value)

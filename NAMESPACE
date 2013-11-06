@@ -6,6 +6,8 @@ export(getRSquared)
 export(getLinearModelCoefficients)
 export(getCI)
 export(getQQPlotCoordinates)
+export(getStandardError)
+
 export(splitDataByColumnName)
 
 export(performTTest)

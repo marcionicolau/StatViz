@@ -71,4 +71,40 @@ function findIQR(values)
     q3 = median(half2);
     
     return q3 - q1;
-}   
+} 
+
+function findCI(variableName, level)
+{
+    if(level == undefined)
+        level = "dataset";
+        
+    var distribution = variables[variableName][level];
+    
+    var SE = getStandardError(distribution);
+    var mean = mean(distribution);
+    
+    CI[variableName][level] = new Array();
+    
+    CI[variableName][level][0] = mean - 1.96*SE;
+    CI[variableName][level][1] = mean + 1.96*SE;
+} 
+
+function getStandardError(values)
+{   
+    var sd = getStandardDeviation(values);
+    
+    return sd/Math.sqrt(values.length);
+}
+
+function getStandardDeviation(values)
+{
+    var mean = mean(values);
+    var SS = 0;
+    
+    for(var i=0; i<values.length; i++)
+    {
+        SS += Math.pow(values[i] - mean,2);
+    }
+    
+    return Math.sqrt(SS/values.length);
+}
