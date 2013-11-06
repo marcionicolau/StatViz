@@ -31,9 +31,8 @@ function makeScatterplot()
     var colorsForPlot = new Object();
     var varNames = [];
     
-    if(currentVariableSelection.length == 3)
+    if((currentVariableSelection.length == 3) && (variables[currentVariableSelection[2]]["dataset"].length <= 10))
     {
-        console.log(variables[currentVariableSelection[2]]["dataset"].length);
         colorData = variables[currentVariableSelection[2]]["dataset"];
         uniqueColorData = colorData.unique();
         
