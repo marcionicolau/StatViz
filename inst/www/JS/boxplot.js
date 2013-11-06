@@ -27,6 +27,7 @@ function makeBoxplot()
     var cis = [];
     
     var variableList = sort(currentVariableSelection);
+    console.dir(variableList);
     
     if(currentVariableSelection.length > 1)
     {
@@ -66,7 +67,12 @@ function makeBoxplot()
             case 2: 
                     {
                         altBoxPlot = true;
-                        //color plot
+                        
+                        for(var i=0; i<variableList["independent-levels"].length; i++)
+                        {
+                            //
+                        }
+                        
                         break;                        
                     }
             default:
