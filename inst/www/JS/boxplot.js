@@ -255,22 +255,14 @@ function makeBoxplot()
                     .attr("id", ids[i])
                     .attr("class", "BOTTOMFringeConnectors"));
     
-        meanCircles.push(canvas.append("circle")
-                    .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("cy", BOTTOM - getFraction(means[i])*plotHeight)
-                    .attr("r", meanRadius)
-                    .attr("fill", meanColors["normal"])
-                    .attr("style", "z-index: 5;")
-                    .attr("id", ids[i])
-                    .attr("class", "means"));
+        
         
         canvas.append("line")
                 .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
                 .attr("y1", BOTTOM - getFraction(cis[i][0])*plotHeight)
                 .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
                 .attr("y2", BOTTOM - getFraction(cis[i][1])*plotHeight)
-                .attr("stroke", meanColors["hover"])
-                .attr("opacity", "0.6")
+                .attr("stroke", "khaki")
                 .attr("stroke-width", "4")
                 .attr("id", ids[i])
                 .attr("class", "CIs");
@@ -280,8 +272,7 @@ function makeBoxplot()
                 .attr("y1", BOTTOM - getFraction(cis[i][0])*plotHeight)
                 .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2 + CIFringeLength)
                 .attr("y2", BOTTOM - getFraction(cis[i][0])*plotHeight)
-                .attr("stroke", meanColors["hover"])
-                .attr("opacity", "0.6")
+                .attr("stroke", "khaki")
                 .attr("stroke-width", "4")
                 .attr("id", ids[i])
                 .attr("class", "CIFringes");
@@ -291,11 +282,20 @@ function makeBoxplot()
                 .attr("y1", BOTTOM - getFraction(cis[i][1])*plotHeight)
                 .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2 + CIFringeLength)
                 .attr("y2", BOTTOM - getFraction(cis[i][1])*plotHeight)
-                .attr("stroke", meanColors["hover"])
+                .attr("stroke", "khaki")
                 .attr("opacity", "0.6")
                 .attr("stroke-width", "4")
                 .attr("id", ids[i])
                 .attr("class", "CIFringes");
+        
+        meanCircles.push(canvas.append("circle")
+                    .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("cy", BOTTOM - getFraction(means[i])*plotHeight)
+                    .attr("r", meanRadius)
+                    .attr("fill", meanColors["normal"])
+                    .attr("style", "z-index: 5;")
+                    .attr("id", ids[i])
+                    .attr("class", "means"));
                 
     
         var outliers = getOutliers(data[i], TOPFringe, BOTTOMFringe);
