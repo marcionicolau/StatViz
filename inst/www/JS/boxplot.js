@@ -255,14 +255,14 @@ function makeBoxplot()
                     .attr("id", ids[i])
                     .attr("class", "BOTTOMFringeConnectors"));
     
-        meanCircles.push(canvas.append("circle")
-                    .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("cy", BOTTOM - getFraction(means[i])*plotHeight)
-                    .attr("r", meanRadius)
-                    .attr("fill", meanColors["normal"])
-                    .attr("style", "z-index: 5;")
-                    .attr("id", ids[i])
-                    .attr("class", "means"));
+        // meanCircles.push(canvas.append("circle")
+//                     .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
+//                     .attr("cy", BOTTOM - getFraction(means[i])*plotHeight)
+//                     .attr("r", meanRadius)
+//                     .attr("fill", meanColors["normal"])
+//                     .attr("style", "z-index: 5;")
+//                     .attr("id", ids[i])
+//                     .attr("class", "means"));
         
         canvas.append("line")
                 .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
