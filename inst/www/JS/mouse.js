@@ -382,6 +382,34 @@ function OnMouseOver(e)
         var button = d3.select(".fullscreen");
         button.attr("cursor", "pointer");
     }
+    else if((target.className.baseVal == "CIs") || (target.className.baseVal == "CITopFringes") || (target.className.baseVal == "CIBottomFringes"))
+    {
+        var canvas = d3.select("#svgCanvas");
+        
+        var topFringe = d3.select("#" + target.id + ".CITopFringes");
+        var bottomFringe = d3.select("#" + target.id + ".CIBottomFringes");
+        
+        var topLine = canvas.append("line")
+                .attr("x1", (topFringe.attr("x1") + topFringe.attr("x2"))/2)
+                .attr("y1", topFringe.attr("y1"))
+                .attr("x2", (topFringe.attr("x1") + topFringe.attr("x2"))/2)
+                .attr("y2", topFringe.attr("y1"))
+                .attr("stroke", "black");
+        
+        var bottomLine = canvas.append("line")
+                .attr("x1", (bottomFringe.attr("x1") + bottomFringe.attr("x2"))/2)
+                .attr("y1", bottomFringe.attr("y1"))
+                .attr("x2", (bottomFringe.attr("x1") + bottomFringe.attr("x2"))/2)
+                .attr("y2", bottomFringe.attr("y1"))
+                .attr("stroke", "black");
+        
+        topLine.transition().duration(1000)
+                    .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
+        
+        bottomLine.transition().duration(1000)
+                    .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
+        
+    }
 }
 
 function OnMouseOut(e)

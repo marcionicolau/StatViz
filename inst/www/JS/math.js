@@ -78,7 +78,6 @@ function findCI(variableName, level)
     if(level == undefined)
         level = "dataset";
     
-    console.log("variable name: " + variableName + ", level= " + level); 
     var distribution = variables[variableName][level];
     
     var SE = getStandardError(distribution);

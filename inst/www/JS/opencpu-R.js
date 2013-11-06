@@ -152,9 +152,7 @@ function getCI(dataset, variableName, level)
     var req = opencpu.r_fun_json("getCI", {
                     dataset: dataset,
                     variableName: variableName
-                  }, function(output) {                  
-        console.log("CI for " + variableName + "[" + level + "] = " + output.min + ", " + output.max);                
-        
+                  }, function(output) {                    
         
         CI[variableName][level] = new Array();
         
