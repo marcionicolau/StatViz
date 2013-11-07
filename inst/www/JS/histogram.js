@@ -42,9 +42,9 @@ function makeHistogram()
             case 1:
                     {
                         altHistogram = true;
-                        for(var i=0; i<variableList["independent-levels"][0].length; i++)
+                        for(var k=0; k<variableList["dependent"].length; k++)
                         {
-                            for(var k=0; k<variableList["dependent"].length; k++)
+                            for(var i=0; i<variableList["independent-levels"][0].length; i++)
                             {
                                 console.log("index=" + (i + k*variableList["independent-levels"][0].length));
                                 data[i*variableList["independent-levels"][0].length + k] = variables[variableList["dependent"][k]][variableList["independent-levels"][0][i]];
