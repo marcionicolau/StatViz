@@ -399,7 +399,7 @@ function makeHistogram()
                             .attr("text-anchor", "start")
                             .attr("font-size", binCountFontSize)
                             .attr("display", "none")
-                            .text(bins[labels[i]][j])
+                            .text(bins[labels[i]][j] + "[" + labels[i] + "]")
                             .attr("id", ids[i] + j)
                             .attr("class", "binTexts");
                 }
