@@ -44,10 +44,13 @@ function makeHistogram()
                         altHistogram = true;
                         for(var i=0; i<variableList["independent-levels"][0].length; i++)
                         {
-                            data[i] = variables[variableList["dependent"][0]][variableList["independent-levels"][0][i]];
-                            varNames[i] = variableList["dependent"][0] + "[" + variableList["independent-levels"][0][i] + "]";
-                            mins[i] = MIN[variableList["dependent"][0]][variableList["independent-levels"][0][i]];
-                            maxs[i] = MAX[variableList["dependent"][0]][variableList["independent-levels"][0][i]];                            
+                            for(var k=0; k<variableList["dependent"].length; k++)
+                            {
+                                data[i] = variables[variableList["dependent"][k]][variableList["independent-levels"][0][i]];
+                                varNames[i] = variableList["dependent"][k] + "[" + variableList["independent-levels"][0][i] + "]";
+                                mins[i] = MIN[variableList["dependent"][k]][variableList["independent-levels"][0][i]];
+                                maxs[i] = MAX[variableList["dependent"][k]][variableList["independent-levels"][0][i]];                            
+                            }
                         }
                         break;
                     }
