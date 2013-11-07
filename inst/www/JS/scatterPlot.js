@@ -33,8 +33,6 @@ function makeScatterplot()
     
     if((currentVariableSelection.length == 3))
     {
-        console.log(variables[currentVariableSelection[2]]["dataset"].unique().length);
-        console.log(parseInt(variables[currentVariableSelection[2]]["dataset"].unique().length));
         if(parseInt(variables[currentVariableSelection[2]]["dataset"].unique().length) <= 10)
         {
             colorData = variables[currentVariableSelection[2]]["dataset"];
