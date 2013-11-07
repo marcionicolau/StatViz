@@ -326,6 +326,14 @@ function makeHistogram()
                                         .attr("stroke", "black")
                                         .attr("id", "yAxis")
                                         .attr("class", "axes");
+        
+        canvas.append("text")
+                .attr("x", LEFT - axesOffset - labelOffset)
+                .attr("y", (TOP + BOTTOM)/2 + 6)
+                .attr("text-anchor", "end")
+                .attr("font-size", "24px")
+                .text("Frequency")
+                .attr("fill", "orange");
 
                                     
         xStep = plotWidth/numberOfGroovesInXAxis;
