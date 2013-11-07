@@ -179,8 +179,8 @@ function makeScatterplot()
             y = BOTTOM - getValue1(data["Y"][i], mins["Y"], maxs["Y"])*plotHeight;
         
         
-        console.log(colorsForPlot.length);
-        var color = colorsForPlot.length > 0 ? colorsForPlot[colorData[i]] : "black";        
+        
+        var color = getObjectLength(colorsForPlot) > 0 ? colorsForPlot[colorData[i]] : "black";        
         
         canvas.append("circle")
                     .attr("cx", x)
