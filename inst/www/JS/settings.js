@@ -41,7 +41,7 @@ var buttonColors = new Object();
 
 
 //Define colors for histogram bars, color scatterplot
-var colors = ["rgba(255,0,0,1.0)","rgba(0,255,0,0.75)","rgba(0,0,255,0.5)", "rgba(255,255,0,0.25)","rgba(0,255,255,0.25)","rgba(255,0,255,0.25)"];
+var colors = ["rgba(255,0,0,0.8)","rgba(0,255,0,0.6)","rgba(0,0,255,0.4)", "rgba(255,255,0,0.2)","rgba(0,255,255,0.25)","rgba(255,0,255,0.25)"];
 
 var meanColors = new Object(); //Colors for mean, and ?
     meanColors["normal"] = "purple";
