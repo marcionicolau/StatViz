@@ -634,7 +634,7 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
       .data([curveX])
       .attr("d", line) //this calls the line function with this element's data
       .style("fill", "none")
-      .style("stroke", densityCurve[distributionType]);
+      .style("stroke", densityCurveColors[distributionType]);
 }
 
 function drawHistogramLegends(varNames)
