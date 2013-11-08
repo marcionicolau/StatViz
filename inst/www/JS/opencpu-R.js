@@ -732,7 +732,7 @@ function performKruskalWallisTest(dependentVariable, independentVariable)
                   console.log("\t\t\t DF = " + output.DF);
                   
                   testResults["df"] = output.DF;
-                  testResults["statistic"] = "𝝌^2(" + testResults["df"] + ") = " + output.chiSquared;
+                  testResults["statistic"] = "𝝌^2(" + testResults["df"] + ") = " + output.ChiSquared;
                   testResults["p"] = output.p;                  
                   testResults["method"] = "Kruskal-Wallis Test"; 
                            
