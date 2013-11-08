@@ -58,3 +58,7 @@ var yAxisTexts = [];
 //histogram curve
 var curveX = [];
 var curveY = [];
+var distributionType;
+var densityCurveColors = new Object();
+    densityCurveColors["normal"] = "red";
+    densityCurveColors["notnormal"] = "green";

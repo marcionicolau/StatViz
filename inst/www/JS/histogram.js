@@ -477,7 +477,7 @@ function makeHistogram()
     }
 }
 
-function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, dependentVariable, level)
+function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, dependentVariable, level, distributionType)
 {
     var RIGHT = LEFT + histWidth;
     var BOTTOM = TOP + histHeight;
@@ -634,7 +634,7 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
       .data([curveX])
       .attr("d", line) //this calls the line function with this element's data
       .style("fill", "none")
-      .style("stroke", "#000000");
+      .style("stroke", densityCurve[distributionType]);
 }
 
 function drawHistogramLegends(varNames)
