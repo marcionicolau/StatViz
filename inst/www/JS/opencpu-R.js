@@ -480,6 +480,8 @@ function applyTransform(dependentVariable, level, last)
                     {   
                         if(distributions[dependentVariable][variableList["independent-levels"][i]] == false)
                         {
+                            var mean = d3.select("#" + variableList["independent-levels"][i] + ".means");
+                            var centerX = mean.attr("cx");   
                             makeHistogramWithDensityCurve(centerX - normalityPlotWidth/2, canvasHeight + normalityPlotOffset, normalityPlotWidth, normalityPlotHeight, variableList["dependent"][0], variableList["independent-levels"][i], "normal");//left, top, histWidth, histHeight, dependentVariable, level;
                         }
                     }
