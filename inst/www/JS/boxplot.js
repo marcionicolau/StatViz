@@ -98,6 +98,8 @@ function makeBoxplot()
     min = Array.min(mins);
     max = Array.max(maxs);
     
+    console.log("min=" + min + ", max=" + max);
+    
     var labels;
     var levels = variableList["independent-levels"];
     
