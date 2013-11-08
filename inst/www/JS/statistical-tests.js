@@ -308,8 +308,9 @@ function drawScales(cx, cy)
     }   
     
     
-    if(cx.length == 2)
-    {        
+    if(cy.length == 2)
+    {
+        
         canvas.append("text")
                 .attr("x", x + 5)
                 .attr("y", (yMin + yMax)/2)
@@ -317,5 +318,21 @@ function drawScales(cx, cy)
                 .attr("id", "tickText")
                 .attr("class", "significanceTest")
                 .text(format(means[1] - means[0]));
-    }           
+    }
+    else
+    {
+        for(var i=0; i<cy.length; i++)
+        {   
+            if(cy[i] != yMax)
+            {
+                canvas.append("text")
+                    .attr("x", x + 5)
+                    .attr("y", cy[i])
+                    .attr("fill", meanColors["normal"])
+                    .attr("id", "tickText")
+                    .attr("class", "significanceTest")
+                    .text(format(means[i+1] - means[i]));
+            }
+        }           
+    }
 }
