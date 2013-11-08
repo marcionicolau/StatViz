@@ -343,7 +343,7 @@ function drawScales(cx, cy)
                     .attr("fill", meanColors["normal"])
                     .attr("id", "tickText")
                     .attr("class", "significanceTest")
-                    .text(format(means[i] - means[i-1]));
+                    .text(format(means[i] - means[0]));
             }
         }           
     }
