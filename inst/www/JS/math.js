@@ -73,20 +73,20 @@ function findIQR(values)
     return q3 - q1;
 } 
 
-function findCI(variableName, level)
+function findCI(distribution)
 {
     if(level == undefined)
         level = "dataset";
     
-    var distribution = variables[variableName][level];
-    
     var SE = getStandardError(distribution);
     var m = mean(distribution);
     
-    CI[variableName][level] = new Array();
+    var array = new Array();
     
-    CI[variableName][level][0] = m - 1.96*SE;
-    CI[variableName][level][1] = m + 1.96*SE;
+    array[0] = m - 1.96*SE;
+    array[1] = m + 1.96*SE;
+    
+    return array;
 } 
 
 function getStandardError(values)
