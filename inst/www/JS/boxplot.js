@@ -338,7 +338,7 @@ function redrawBoxPlot()
     var medians = [];
     var means = [];
     
-    var variableList = sort(currentVariableSelection);
+    var variableList = getSelectedVariables(currentVariableSelection);
     
     if(currentVariableSelection.length > 1)
     {
