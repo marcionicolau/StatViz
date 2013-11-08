@@ -579,7 +579,7 @@ function getOutliers(data, TOPFringe, BOTTOMFringe)
             outliers.push(data[i]);
         }
     }   
-    return outliers;
+    return 0;//outliers;
 }
 
 //Loop animation
