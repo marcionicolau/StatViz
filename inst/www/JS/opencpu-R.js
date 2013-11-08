@@ -474,6 +474,7 @@ function applyTransform(dependentVariable, level, last)
                     redrawBoxPlot();
                     
                     removeElementsByClassName("densityCurve");
+                    var variableList = getSelectedVariables();
                     
                     for(var i=0; i<variableList["independent-levels"].length; i++)
                     {   
