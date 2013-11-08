@@ -566,26 +566,6 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
                     .attr("class", "xAxisGrooveText");
     }
 
-    var yStep = histHeight/(nGroovesY-1);
-
-    for(i=0; i<nGroovesY; i++)
-    {
-        canvas.append("line")
-                    .attr("x1", LEFT - 10 - shortAxesOffset)
-                    .attr("y1", BOTTOM - i*yStep)
-                    .attr("x2", LEFT - shortAxesOffset)
-                    .attr("y2", BOTTOM - i*yStep)
-                    .attr("id", "groove" + i)
-                    .attr("class", "yAxisGrooves");
-    
-        canvas.append("text")
-                    .attr("x", LEFT - tickTextOffsetYAxis - shortAxesOffset)
-                    .attr("y", BOTTOM - i*yStep + yAxisTickTextOffset)                                        
-                    .text(Math.round(i*binSlice))
-                    .attr("text-anchor", "end")
-                    .attr("id", "groove" + i)
-                    .attr("class", "yAxisGrooveText");
-    }
 
     xStep  = histWidth/nBins;
     curveX.push(LEFT);
@@ -595,16 +575,7 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
     {
         curveX.push(LEFT + i*xStep + xStep/2);
         
-        curveY.push(BOTTOM - (bins[i]/maxBinSize)*histHeight);
-        
-//         canvas.append("rect")
-//                     .attr("x", LEFT + i*xStep)
-//                     .attr("y", BOTTOM - (bins[i]/maxBinSize)*histHeight)
-//                     .attr("height", (bins[i]/maxBinSize)*histHeight)
-//                     .attr("width", histWidth/nBins)          
-//                     .attr("fill", meanColors["normal"])         
-//                     .attr("id", id + i)
-//                     .attr("class", "bins");
+        curveY.push(BOTTOM - (bins[i]/maxBinSize)*histHeight);   
     }  
     
     curveX.push(RIGHT);
@@ -634,7 +605,8 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
       .data([curveX])
       .attr("d", line) //this calls the line function with this element's data
       .style("fill", "none")
-      .style("stroke", densityCurveColors[distributionType]);
+      .style("stroke", densityCurveColors[distributionType])
+      .attr("stroke-width", "2px");
 }
 
 function drawHistogramLegends(varNames)

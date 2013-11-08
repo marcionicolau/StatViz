@@ -60,5 +60,5 @@ var curveX = [];
 var curveY = [];
 var distributionType;
 var densityCurveColors = new Object();
-    densityCurveColors["normal"] = "red";
-    densityCurveColors["notnormal"] = "green";
+    densityCurveColors["normal"] = "green";
+    densityCurveColors["notnormal"] = "red";
