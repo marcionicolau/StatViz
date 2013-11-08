@@ -607,7 +607,9 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
       .attr("d", line) //this calls the line function with this element's data
       .style("fill", "none")
       .style("stroke", densityCurveColors[distributionType])
-      .attr("stroke-width", "2px");
+      .attr("stroke-width", "2px")
+      .attr("id", level)
+      .attr("class", "densityCurve");
 }
 
 function drawHistogramLegends(varNames)

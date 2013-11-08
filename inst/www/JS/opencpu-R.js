@@ -473,7 +473,7 @@ function applyTransform(dependentVariable, level, last)
                     console.dir(CI);
                     redrawBoxPlot();
                     
-                    d3.select("#svgCanvas").transition().delay(1000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
+//                     d3.select("#svgCanvas").transition().delay(1000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
                     
                     removeElementsByClassName("transformToNormal");
                     removeElementsByClassName("completeLines");
