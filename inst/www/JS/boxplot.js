@@ -231,6 +231,8 @@ function makeBoxplot()
         //end fringes
         BOTTOMFringe = (medians[i] - 1.5*iqrs[i]) < min ? min : (medians[i] - 1.5*iqrs[i]);
         TOPFringe = (medians[i] + 1.5*iqrs[i]) > max ? max : (medians[i] + 1.5*iqrs[i]);
+        
+        console.log("top fringe=" + TOPFringe + ", bottom fringe = " + BOTTOMFringe);
     
         topFringes.push(canvas.append("line")
                     .attr("x1", canvasWidth/2 - boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
@@ -581,7 +583,8 @@ function getOutliers(data, TOPFringe, BOTTOMFringe)
             outliers.push(data[i]);
         }
     }   
-    return 0;//outliers;
+    console.log("outliers = [" + outliers + "]");
+    return outliers;
 }
 
 //Loop animation
