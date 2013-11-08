@@ -75,9 +75,6 @@ function findIQR(values)
 
 function findCI(distribution)
 {
-    if(level == undefined)
-        level = "dataset";
-    
     var SE = getStandardError(distribution);
     var m = mean(distribution);
     
