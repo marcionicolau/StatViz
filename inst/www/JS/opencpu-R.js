@@ -405,6 +405,7 @@ function findTransform(dependentVariable, independentVariable)
                 {
                     var variableList = getSelectedVariables();
                     performHomoscedasticityTestNotNormal(variableList["dependent"][0], variableList["independent"][0]);
+                    d3.select("#svgCanvas").transition().delay(3000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
                 }
                 else
                 {
