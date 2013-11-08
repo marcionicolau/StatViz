@@ -336,6 +336,7 @@ function sort(list)
         }
     }
     
+    console.dir(variableList);
     console.log("variables[" + variableList["independent"][0] + "][\"dataset\"]=" + variables[variableList["independent"][0]]["dataset"]);
     
     var uniqueData = variables[variableList["independent"][0]]["dataset"].unique();
