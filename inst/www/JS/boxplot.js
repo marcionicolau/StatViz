@@ -26,7 +26,7 @@ function makeBoxplot()
     var means = [];
     var cis = [];
     
-    var variableList = getSelectedVariables();
+    var variableList = sort(currentVariableSelection);
     console.dir(variableList);
     
     if(currentVariableSelection.length > 1)

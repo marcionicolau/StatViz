@@ -336,9 +336,11 @@ function sort(list)
         }
     }
     
-    for(var i=0; i<variableList["independent"].length; i++)
+    var uniqueData = variables[variableList["independent"][0]]["dataset"].unique();
+    
+    for(var i=0; i<uniqueData.length; i++)
     {
-        variableList["independent-levels"][i] = variables[variableList["independent"][i]]["dataset"].unique();
+        variableList["independent-levels"][i] = uniqueData[i];
     }
     
     return variableList;
