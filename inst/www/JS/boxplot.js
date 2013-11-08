@@ -372,7 +372,7 @@ function redrawBoxPlot()
                             means[i] = mean(data[i]);
                             medians[i] = median(data[i]);
                             iqrs[i] = IQR[variableList["dependent"][0]][variableList["independent-levels"][i]];
-                            cis[i] = CI[variableList["dependent"][0]][variableList["independent-levels"][0][i]];
+                            cis[i] = CI[variableList["dependent"][0]][variableList["independent-levels"][i]];
                         }
                         break;
                     }
@@ -395,7 +395,8 @@ function redrawBoxPlot()
         maxs[0] = MAX[currentVariableSelection[0]]["dataset"];
         medians[0] = median(data[0]);
         iqrs[0] = IQR[currentVariableSelection[0]]["dataset"];
-        means[0] = mean(data[0]);  
+        means[0] = mean(data[0]); 
+        cis[0] = CI[currentVariableSelection[0]]["dataset"];
     }   
     
     min = Array.min(mins);
