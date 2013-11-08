@@ -307,6 +307,8 @@ function drawScales(cx, cy)
         }
     }   
     
+    means = means.sort(function(a,b){return a-b});
+    cy = cy.sort(function(a,b){return b-a});
     
     if(cy.length == 2)
     {
@@ -318,9 +320,7 @@ function drawScales(cx, cy)
                 .attr("id", "tickText")
                 .attr("class", "significanceTest")
                 .text(format(means[1] - means[0]));
-    }
-    means = means.sort(function(a,b){return a-b});
-    cy = cy.sort(function(a,b){return b-a});
+    }    
     else
     {
         for(var i=0; i<cy.length; i++)
