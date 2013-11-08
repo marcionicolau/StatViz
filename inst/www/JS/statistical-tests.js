@@ -108,6 +108,7 @@ function setDistribution(dependentVariable, level, normal)
     if(getObjectLength(distributions[dependentVariable]) == (document.getElementsByClassName("completeLines").length + 1))
     {       
         var variableList = getSelectedVariables();
+        console.log("variableList=");
         console.dir(variableList);
         var normal = true;
         
