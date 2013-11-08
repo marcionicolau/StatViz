@@ -497,6 +497,9 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
 
     var bins = [];
     var canvas = d3.select("#svgCanvas"); //this should be changed
+    
+    curveX = [];
+    curveY = [];
             
 
     // Set all bin count to zero
