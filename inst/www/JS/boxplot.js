@@ -300,16 +300,6 @@ function makeBoxplot()
                 .attr("id", ids[i])
                 .attr("class", "CITopFringes"));
         
-        meanCircles.push(canvas.append("circle")
-                    .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("cy", BOTTOM - getFraction(means[i])*plotHeight)
-                    .attr("r", meanRadius)
-                    .attr("fill", meanColors["normal"])
-                    .attr("style", "z-index: 5;")
-                    .attr("id", ids[i])
-                    .attr("class", "means"));
-                
-    
         var outliers = getOutliers(data[i], TOPFringe, BOTTOMFringe);
             
         for(var j=0; j<outliers.length; j++)
@@ -321,6 +311,16 @@ function makeBoxplot()
                     .attr("id", ids[i])
                     .attr("class", "outliers");
         }
+        
+        
+        meanCircles.push(canvas.append("circle")
+                    .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("cy", BOTTOM - getFraction(means[i])*plotHeight)
+                    .attr("r", meanRadius)
+                    .attr("fill", meanColors["normal"])
+                    .attr("style", "z-index: 5;")
+                    .attr("id", ids[i])
+                    .attr("class", "means"));
     }        
 }
 
@@ -531,12 +531,6 @@ function redrawBoxPlot()
                 .attr("y1", BOTTOM - getFraction(cis[i][1])*plotHeight)
                 .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2 + CIFringeLength)
                 .attr("y2", BOTTOM - getFraction(cis[i][1])*plotHeight);
-    
-        meanCircles[i].transition().duration(boxPlotTransformationDuration)
-                    .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
-                    .attr("cy", BOTTOM - getFraction(means[i])*plotHeight);
-        
-        
         
         removeElementsByClassName("outliers");
     
@@ -551,6 +545,10 @@ function redrawBoxPlot()
                     .attr("id", ids[i])
                     .attr("class", "outliers");
         }
+    
+        meanCircles[i].transition().duration(boxPlotTransformationDuration)
+                    .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("cy", BOTTOM - getFraction(means[i])*plotHeight);
     }        
 }
 function drawBoxPlotInRed(dependentVariable, level)
