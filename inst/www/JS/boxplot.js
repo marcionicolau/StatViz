@@ -26,7 +26,7 @@ function makeBoxplot()
     var means = [];
     var cis = [];
     
-    var variableList = sort(currentVariableSelection);
+    var variableList = getSelectedVariables();
     console.dir(variableList);
     
     if(currentVariableSelection.length > 1)
@@ -52,15 +52,15 @@ function makeBoxplot()
             case 1:
                     {
                         altBoxPlot = true;
-                        for(var i=0; i<variableList["independent-levels"][0].length; i++)
+                        for(var i=0; i<variableList["independent-levels"].length; i++)
                         {
-                            data[i] = variables[variableList["dependent"][0]][variableList["independent-levels"][0][i]];
-                            mins[i] = MIN[variableList["dependent"][0]][variableList["independent-levels"][0][i]];
-                            maxs[i] = MAX[variableList["dependent"][0]][variableList["independent-levels"][0][i]];
+                            data[i] = variables[variableList["dependent"]][variableList["independent-levels"][i]];
+                            mins[i] = MIN[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            maxs[i] = MAX[variableList["dependent"][0]][variableList["independent-levels"][i]];
                             means[i] = mean(data[i]);
                             medians[i] = median(data[i]);
-                            iqrs[i] = IQR[variableList["dependent"][0]][variableList["independent-levels"][0][i]];
-                            cis[i] = CI[variableList["dependent"][0]][variableList["independent-levels"][0][i]];
+                            iqrs[i] = IQR[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            cis[i] = CI[variableList["dependent"][0]][variableList["independent-levels"][i]];
                         }
                         break;
                     }
@@ -337,6 +337,7 @@ function redrawBoxPlot()
     var iqrs = [];
     var medians = [];
     var means = [];
+    var cis = [];
     
     var variableList = getSelectedVariables(currentVariableSelection);
     
@@ -355,6 +356,7 @@ function redrawBoxPlot()
                             means[i] = mean(data[i]);
                             medians[i] = median(data[i]);
                             iqrs[i] = IQR[variableList["dependent"][i]]["dataset"]; 
+                            cis[i] = CI[variableList["dependent"][i]]["dataset"]; 
                         }
                         
                         break;                    
@@ -370,6 +372,7 @@ function redrawBoxPlot()
                             means[i] = mean(data[i]);
                             medians[i] = median(data[i]);
                             iqrs[i] = IQR[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            cis[i] = CI[variableList["dependent"][0]][variableList["independent-levels"][0][i]];
                         }
                         break;
                     }
