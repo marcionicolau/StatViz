@@ -454,6 +454,7 @@ function findTransform(dependentVariable, independentVariable)
 function applyTransform(dependentVariable, level, last)
 {
     // Get variable names and their data type
+    console.log("variables[" + dependentVariable + "][" + level + "]=" + variables[dependentVariable][level]); 
     
     var req = opencpu.r_fun_json("applyTransform", {
                     distribution: variables[dependentVariable][level],
