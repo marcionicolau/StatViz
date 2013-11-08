@@ -726,7 +726,7 @@ function performKruskalWallisTest(dependentVariable, independentVariable)
                   }, function(output) {                                                   
                   
                   console.log("\t\t Kruskal-Wallis test for (" + dependentVariable + " ~ " + independentVariable + ")");
-                  console.log("\t\t\t Chi-squared = " + output.chiSquared);
+                  console.log("\t\t\t Chi-squared = " + output.ChiSquared);
                   console.log("\t\t\t p = " + output.p);
                   console.log("\t\t\t method used = Kruskal-Wallis Test ANOVA");
                   console.log("\t\t\t DF = " + output.DF);
