@@ -473,6 +473,15 @@ function applyTransform(dependentVariable, level, last)
                     console.dir(CI);
                     redrawBoxPlot();
                     
+                    removeElementsByClassName("densityCurve");
+                    
+                    for(var i=0; i<variableList["independent-levels"].length; i++)
+                    {   
+                        if(distributions[dependentVariable][variableList["independent-levels"][i]] == false)
+                        {
+                            makeHistogramWithDensityCurve(centerX - normalityPlotWidth/2, canvasHeight + normalityPlotOffset, normalityPlotWidth, normalityPlotHeight, variableList["dependent"][0], variableList["independent-levels"][i], "normal");//left, top, histWidth, histHeight, dependentVariable, level;
+                        }
+                    }
 //                     d3.select("#svgCanvas").transition().delay(1000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
                     
                     removeElementsByClassName("transformToNormal");

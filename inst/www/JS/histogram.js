@@ -533,7 +533,7 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
                                     .attr("y2", BOTTOM + shortAxesOffset) 
                                     .attr("stroke", "black")
                                     .attr("id", "xAxis")
-                                    .attr("class", "axes");
+                                    .attr("class", "densityCurve");
 
     var yAxis = canvas.append("line")
                                     .attr("x1", LEFT - shortAxesOffset)
@@ -542,7 +542,7 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
                                     .attr("y2", BOTTOM)
                                     .attr("stroke", "black")
                                     .attr("id", "yAxis")
-                                    .attr("class", "axes");
+                                    .attr("class", "densityCurve");
 
                                 
     xStep = histWidth/numberOfGroovesInXAxis;
@@ -556,7 +556,7 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
                     .attr("x2", LEFT + i*xStep)
                     .attr("y2", BOTTOM + 10 + shortAxesOffset)
                     .attr("id", "groove" + i)
-                    .attr("class", "xAxisGrooves");
+                    .attr("class", "densityCurve");
     
         canvas.append("text")
                     .attr("x", LEFT + i*xStep)
@@ -564,7 +564,7 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
                     .text(format(min + i*(max-min)))
                     .attr("text-anchor", "middle")
                     .attr("id", "groove" + i)
-                    .attr("class", "xAxisGrooveText");
+                    .attr("class", "densityCurve");
     }
 
 
