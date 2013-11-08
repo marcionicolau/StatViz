@@ -319,11 +319,13 @@ function drawScales(cx, cy)
                 .attr("class", "significanceTest")
                 .text(format(means[1] - means[0]));
     }
+    means = means.sort(function(a,b){return a-b});
+    cy = cy.sort(function(a,b){return b-a});
     else
     {
         for(var i=0; i<cy.length; i++)
         {   
-            if(cy[i] != yMax)
+            if(i == 0)
             {
                 canvas.append("text")
                     .attr("x", x + 5)
@@ -331,7 +333,17 @@ function drawScales(cx, cy)
                     .attr("fill", meanColors["normal"])
                     .attr("id", "tickText")
                     .attr("class", "significanceTest")
-                    .text(format(means[i+1] - means[i]));
+                    .text(0);
+            }
+            else
+            {
+                canvas.append("text")
+                    .attr("x", x + 5)
+                    .attr("y", cy[i])
+                    .attr("fill", meanColors["normal"])
+                    .attr("id", "tickText")
+                    .attr("class", "significanceTest")
+                    .text(format(means[i] - means[i-1]));
             }
         }           
     }
