@@ -399,6 +399,8 @@ function redrawBoxPlot()
         cis[0] = CI[currentVariableSelection[0]]["dataset"];
     }   
     
+    console.log("cis:");
+    console.dir(cis);
     min = Array.min(mins);
     max = Array.max(maxs);
     
