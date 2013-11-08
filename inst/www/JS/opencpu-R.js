@@ -469,6 +469,8 @@ function applyTransform(dependentVariable, level, last)
                 if(last)
                 {
                     console.dir(variables);
+                    console.log("CI=");
+                    console.dir(CI);
                     redrawBoxPlot();
                     
                     d3.select("#svgCanvas").transition().delay(1000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
