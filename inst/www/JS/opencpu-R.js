@@ -464,6 +464,7 @@ function applyTransform(dependentVariable, level, last)
                 MIN[dependentVariable][level] = Array.min(output.transformedData);
                 MAX[dependentVariable][level] = Array.max(output.transformedData);
                 IQR[dependentVariable][level] = findIQR(output.transformedData);
+                CI[dependentVariable][level] = findCI(dependentVariable, level);
                 
                 if(last)
                 {
