@@ -83,6 +83,9 @@ function makePlot()
                                         bottomFringes = [];
                                         topFringeConnectors = [];
                                         bottomFringeConnectors = [];
+                                        CILines = [];
+                                        CITopLines = [];
+                                        CIBottomLines = [];
                                         yAxisTexts = [];
                                         
                                         makeBoxplot();

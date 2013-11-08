@@ -53,6 +53,9 @@ var topFringes = [];
 var bottomFringes = [];
 var topFringeConnectors = [];
 var bottomFringeConnectors = [];
+var CILines = [];
+var CITopLines = [];
+var CIBottomLines = [];
 var yAxisTexts = [];
 
 //histogram curve

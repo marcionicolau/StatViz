@@ -266,7 +266,7 @@ function makeBoxplot()
     
         
         
-        canvas.append("line")
+        CILines.push(canvas.append("line")
                 .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
                 .attr("y1", BOTTOM - getFraction(cis[i][0])*plotHeight)
                 .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
@@ -274,9 +274,9 @@ function makeBoxplot()
                 .attr("stroke", "rosybrown")
                 .attr("stroke-width", "4")
                 .attr("id", ids[i])
-                .attr("class", "CIs");
+                .attr("class", "CIs"));
         
-        canvas.append("line")
+        CIBottomLines.push(canvas.append("line")
                 .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2 - CIFringeLength)
                 .attr("y1", BOTTOM - getFraction(cis[i][0])*plotHeight)
                 .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2 + CIFringeLength)
@@ -284,9 +284,9 @@ function makeBoxplot()
                 .attr("stroke", "rosybrown")
                 .attr("stroke-width", "4")
                 .attr("id", ids[i])
-                .attr("class", "CIBottomFringes");
+                .attr("class", "CIBottomFringes"));
         
-        canvas.append("line")
+        CITopLines.push(canvas.append("line")
                 .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2 - CIFringeLength)
                 .attr("y1", BOTTOM - getFraction(cis[i][1])*plotHeight)
                 .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2 + CIFringeLength)
@@ -294,7 +294,7 @@ function makeBoxplot()
                 .attr("stroke", "rosybrown")
                 .attr("stroke-width", "4")
                 .attr("id", ids[i])
-                .attr("class", "CITopFringes");
+                .attr("class", "CITopFringes"));
         
         meanCircles.push(canvas.append("circle")
                     .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
@@ -499,7 +499,24 @@ function redrawBoxPlot()
                     .attr("y1", BOTTOM - getFraction(BOTTOMFringe)*plotHeight)
                     .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y2", BOTTOM - getFraction(rectBottom)*plotHeight);
-
+        
+        CILines[i].transition().duration(boxPlotTransformationDuration)
+                .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
+                .attr("y1", BOTTOM - getFraction(cis[i][0])*plotHeight)
+                .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
+                .attr("y2", BOTTOM - getFraction(cis[i][1])*plotHeight);
+        
+        CIBottomLines[i].transition().duration(boxPlotTransformationDuration)
+                .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2 - CIFringeLength)
+                .attr("y1", BOTTOM - getFraction(cis[i][0])*plotHeight)
+                .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2 + CIFringeLength)
+                .attr("y2", BOTTOM - getFraction(cis[i][0])*plotHeight);
+        
+        CITopLines[i].transition().duration(boxPlotTransformationDuration)
+                .attr("x1", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2 - CIFringeLength)
+                .attr("y1", BOTTOM - getFraction(cis[i][1])*plotHeight)
+                .attr("x2", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2 + CIFringeLength)
+                .attr("y2", BOTTOM - getFraction(cis[i][1])*plotHeight);
     
         meanCircles[i].transition().duration(boxPlotTransformationDuration)
                     .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
