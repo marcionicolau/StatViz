@@ -101,7 +101,7 @@ function OnMouseDown(e)
         {
             button.attr("fill", buttonColors["click"]);
             
-            var variableList = sort(currentVariableSelection);
+            var variableList = getSelectedVariables();
             
             for(var i=0; i<variableList["independent-levels"].length; i++)
             {                
