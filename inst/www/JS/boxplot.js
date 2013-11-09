@@ -66,6 +66,7 @@ function makeBoxplot()
             case 2: 
                     {
                         altBoxPlot = true;
+                        splitThisLevelBy(variableList["independent"][0], variableList["independent"][1], variableList["dependent"][0]);
                         
                         for(var i=0; i<variableList["independent-levels"][0].length; i++)
                         {

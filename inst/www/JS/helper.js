@@ -50,6 +50,28 @@ function splitTheData()
     }     
 }
 
+function splitThisLevelBy(independentVariableA, independentVariableB, dependentVariable)
+{
+    var splitData = new Object();
+    var levelsA = variables[independentVariableA]["dataset"].unique();
+    var levelsB = variables[independentVariableB]["dataset"].unique();
+    
+    var dataA = new Object();
+    var dataB = new Object();
+    
+    for(var i=0; i<levelsA.length; i++)
+    {
+        dataA[levelsA[i]] = variables[dependentVariable][levelsA[i]];
+    }
+    
+    for(var i=0; i<levelsB.length; i++)
+    {
+        dataB[levelsB[i]] = variables[dependentVariable][levelsB[i]];
+    }
+    
+    console.log("dataA = [" + dataA + "]\ndataB = ["  + dataB + "]");
+}
+
 //Initialise the mouse event handlers
 function InitializeMouseEventHandlers()
 {
