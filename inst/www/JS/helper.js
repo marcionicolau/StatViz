@@ -69,7 +69,8 @@ function splitThisLevelBy(independentVariableA, independentVariableB, dependentV
         dataB[levelsB[i]] = variables[dependentVariable][levelsB[i]];
     }
     
-    console.log("dataA = [" + dataA + "]\ndataB = ["  + dataB + "]");
+    console.dir(dataA);
+    console.dir(dataB);
 }
 
 //Initialise the mouse event handlers
