@@ -67,6 +67,8 @@ function makeBoxplot()
                     {
                         altBoxPlot = true;
                         var splitData = splitThisLevelBy(variableList["independent"][0], variableList["independent"][1], variableList["dependent"][0]);
+                        console.log("splitData");
+                        console.dir(splitData);
                         
                         for(var i=0; i<variableList["independent-levels"][0].length; i++)
                         {
