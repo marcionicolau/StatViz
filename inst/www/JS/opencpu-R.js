@@ -8,7 +8,7 @@ function loadFile(filePath)
     dataset = output.dataset;
          
     //render the variable names
-//     renderVariableNames(output.variableNames);
+    renderVariableNames(output.variableNames);
     variableNames = output.variableNames;
     
     //for each variable, get the data and the IQR

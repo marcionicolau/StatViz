@@ -1,6 +1,6 @@
 // Data
 var fileName;
-var pathToFile = "http://hci.rwth-aachen.de/~subramanian/datasets/" + localStorage.fileName +".csv";
+var pathToFile = "http://hci.rwth-aachen.de/~subramanian/datasets/" + localStorage.fileName +".txt";
 
 var experimentalDesign = "between-groups";
 
