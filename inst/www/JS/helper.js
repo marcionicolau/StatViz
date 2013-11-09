@@ -272,8 +272,8 @@ function invalidate(list)
     {        
         if(visualizations[i].getAttribute("id").indexOf(list) != -1)
         {
-            visualizations[i].setAttribute("class", "invalid");
             visualizations[i].setAttribute("opacity", "0.25");
+            visualizations[i].setAttribute("class", "invalid");            
         }        
     }
 }
