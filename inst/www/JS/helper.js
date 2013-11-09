@@ -309,7 +309,7 @@ function invalidate(list)
     
     for(var i=0; i<visualizations.length; i++)
     {    
-        console.log(visualizations[i].getAttribute("id") + " : " visualizations[i].getAttribute("id").indexOf(list));
+        console.log(visualizations[i].getAttribute("id") + " : " + visualizations[i].getAttribute("id").indexOf(list));
         if(visualizations[i].getAttribute("id").indexOf(list) != -1)
         {
             console.log(visualizations[i]);
