@@ -115,7 +115,6 @@ function pickOutVisualizations()
                     {
                         case 0:
                                 {  
-                                    console.log("hola there");
                                     currentVisualizationSelection = "Boxplot";
                                     break;
                                 }
@@ -144,13 +143,15 @@ function makePlot()
     {
         case "Histogram":
                                     {
+                                        console.log("hi");
                                         curveX = [];
                                         curveY = [];
                                         makeHistogram();
                                         break;
                                     }
         case "Boxplot":
-                                    {         
+                                    { 
+                                        console.log("ih");
                                         boxes = [];
                                         meanCircles = [];
                                         medianLines = [];
