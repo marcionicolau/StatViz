@@ -297,6 +297,7 @@ function validateAll()
 
 function invalidate(list)
 {
+    console.log("invalidating " + list);
     var visualizations = document.getElementsByClassName("visualizationHolderFront");
     
     for(var i=0; i<list.length; i++)
