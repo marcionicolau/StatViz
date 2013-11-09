@@ -127,6 +127,17 @@
                 
                 for(var i=0; i<visualizations.length; i++)
                 {    
+                    visualizationPanelSVG.append("rect")
+                                                    .attr("x", visualizationHolderPadding + i*(visualizationHolderWidth + visualizationHolderPadding))
+                                                    .attr("y", visualizationHolderPadding )
+                                                    .attr("height", visualizationHolderHeight)
+                                                    .attr("width",  visualizationHolderWidth)     
+                                                    .attr("rx", radius)
+                                                    .attr("ry", radius)
+                                                    .attr("id", visualizations[i])
+                                                    .attr("fill", panelColors.normal)
+                                                    .attr("class", "dummy");
+                                                    
                     visualizationPanelSVG.append("image")
                                                     .attr("x", visualizationHolderPadding + visualizationHolderWidth/2 - visualizationImageSize/2 + i*(visualizationHolderWidth + visualizationHolderPadding))
                                                     .attr("y", visualizationHolderPadding + visualizationHolderHeight/2 - visualizationImageSize/2)
@@ -154,7 +165,7 @@
                                                     .attr("rx", radius)
                                                     .attr("ry", radius)
                                                     .attr("id", visualizations[i])
-                                                    .attr("fill", "rgba(255,255,255,0.25)")
+                                                    .attr("fill", "transparent")
                                                     .attr("class", "visualizationHolder");
                     
                     

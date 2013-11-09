@@ -224,12 +224,12 @@ function toggleFillColorsForVisualizations()
                     switch(variableList["dependent"].length)
                     {
                         case 1:
-                                invalidate(viz[3]);
+                                invalidate(viz[2]);
                                 break;
                         case 2:
                                 break;
                         default:
-                                invalidate(viz[3]);
+                                invalidate(viz[2]);
                     }
                     
                     break;
@@ -260,6 +260,7 @@ function validateAll()
     {        
         visualizations[i].setAttribute("class", "visualizationHolder");         
         visualizations[i].setAttribute("opacity", "1.0");
+        visualizations[i].setAttribute("fill", "transparent");
     }
 }
 
@@ -272,7 +273,8 @@ function invalidate(list)
     {        
         if(visualizations[i].getAttribute("id").indexOf(list) != -1)
         {
-            visualizations[i].setAttribute("opacity", "0.25");
+            visualizations[i].setAttribute("fill", "grey");
+            visualizations[i].setAttribute("opacity", "0.5");
             visualizations[i].setAttribute("class", "invalid");            
         }        
     }
