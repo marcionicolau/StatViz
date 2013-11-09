@@ -46,6 +46,7 @@
                 $("#datasetInformation").text(datasetInformation[dataset]);
                 
                 var variableList = variablesInDataset[dataset];
+                var variableListTypes = variablesInDatasetType[dataset];
                 var variablesDiv = d3.select("#variablesDiv");
                 
                 removeElementsByClassName("variableList");
@@ -59,7 +60,7 @@
                     var tr = table.append("tr");
                     
                     tr.append("td")
-                        .text("x");
+                        .text(variableListTypes[i]);
                     
                     tr.append("td")
                         .text(variableList[i]);
