@@ -42,6 +42,7 @@
             function changeDataset()
             {
                 fileName = $("#datasetDropDownList").val();
+                window["x"] = fileName;
                 
                 $("#datasetInformation").text(datasetInformation[fileName]);
                 
