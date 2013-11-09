@@ -56,21 +56,30 @@ function splitThisLevelBy(independentVariableA, independentVariableB, dependentV
     var levelsA = variables[independentVariableA]["dataset"].unique();
     var levelsB = variables[independentVariableB]["dataset"].unique();
     
-    var dataA = new Object();
-    var dataB = new Object();
+    var indepA = variables[independentVariableA]["dataset"];
+    var indepB = variables[independentVariableB]["dataset"];
+    var dep = variables[dependentVariable]["dataset"];
     
     for(var i=0; i<levelsA.length; i++)
     {
-        dataA[levelsA[i]] = variables[dependentVariable][levelsA[i]];
+        splitData[levelsA[i]] = new Object();
+        for(var j=0; j<levelsB.length; j++)
+        {
+            splitData[levelsA[i]][levelsB[j]] = new Array();
+        }
     }
     
-    for(var i=0; i<levelsB.length; i++)
+    for(var i=0; i<dep.length; i++
     {
-        dataB[levelsB[i]] = variables[dependentVariable][levelsB[i]];
+        var indexA = indepA[i];
+        var indexB = indepB[i];
+        
+        splitData[indexA][indexB].push(dep[i]);
     }
     
-    console.dir(dataA);
-    console.dir(dataB);
+    console.dir(splitData);
+    
+    return splitData;
 }
 
 //Initialise the mouse event handlers
