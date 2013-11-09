@@ -45,7 +45,9 @@
             function changeDataset()
             {
                 fileName = $("#datasetDropDownList").val();
+                console.log(fileName);
                 window.fileName = fileName;
+                localStorage.fileName = fileName;
                 
                 $("#datasetInformation").text(datasetInformation[fileName]);
                 
