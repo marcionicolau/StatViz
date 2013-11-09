@@ -43,10 +43,10 @@
             {
                 fileName = $("#datasetDropDownList").val();
                 
-                $("#datasetInformation").text(datasetInformation[dataset]);
+                $("#datasetInformation").text(datasetInformation[fileName]);
                 
-                var variableList = variablesInDataset[dataset];
-                var variableListTypes = variablesInDatasetType[dataset];
+                var variableList = variablesInDataset[fileName];
+                var variableListTypes = variablesInDatasetType[fileName];
                 var variablesDiv = d3.select("#variablesDiv");
                 
                 removeElementsByClassName("variableList");
