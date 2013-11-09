@@ -66,13 +66,19 @@ function makeBoxplot()
             case 2: 
                     {
                         altBoxPlot = true;
-                        splitThisLevelBy(variableList["independent"][0], variableList["independent"][1], variableList["dependent"][0]);
+                        var splitData = splitThisLevelBy(variableList["independent"][0], variableList["independent"][1], variableList["dependent"][0]);
                         
                         for(var i=0; i<variableList["independent-levels"][0].length; i++)
                         {
                             for(var j=0; j<variableList["independent-levels"][1].length; j++)
                             {   
-                                //console.log(variableList["dependent"][0] + "[" + variableList["independent-levels"][0][i] + "][" + variableList["independent-levels"][1][j] + "]");
+                                data[i*variableList["independent-levels"][0].length + j] = splitData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][i]];                                
+                                mins[i*variableList["independent-levels"][0].length + j] = Array.min(data[i*variableList["independent-levels"][0].length + j]);
+                                maxs[i*variableList["independent-levels"][0].length + j] = Array.max(data[i*variableList["independent-levels"][0].length + j]);
+                                means[i*variableList["independent-levels"][0].length + j] = mean(data[i*variableList["independent-levels"][0].length + j]);
+                                medians[i*variableList["independent-levels"][0].length + j] = median(data[i*variableList["independent-levels"][0].length + j]);
+                                iqrs[i*variableList["independent-levels"][0].length + j] = findIQR(data[i*variableList["independent-levels"][0].length + j]);
+                                cis[i*variableList["independent-levels"][0].length + j] = findCI(data[i*variableList["independent-levels"][0].length + j]);
                             }
                         }
                         
@@ -100,7 +106,22 @@ function makeBoxplot()
 
     
     var labels;
-    var levels = variableList["independent-levels"];
+    
+    if(variableList["independent"].length == 1)
+    {
+        levels = variableList["independent-levels"];
+    }
+    else if(variableList["independent"].length == 2)
+    {
+        for(var i=0; i<variableList["independent-levels"][0].length; i++)
+        {
+            for(var j=0; j<variableList["independent-levels"][1].length; j++)
+            {
+                levels.push(variableList["independent-levels"][0][i] + "." +  variableList["independent-levels"][1][j]);
+            }
+        }
+    }   
+    
     
     if(altBoxPlot == true)    
     {
