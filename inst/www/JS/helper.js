@@ -65,7 +65,7 @@ function makePlot()
     resetSVGCanvas();
     drawFullScreenButton();
     
-    var variableList = sort(currentVisualizationSelection);
+    var variableList = sort(currentVariableSelection);
     
     console.dir(variableList);
     
