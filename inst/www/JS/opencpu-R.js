@@ -1,6 +1,7 @@
 //to load a file on local disk
 function loadFile(filePath)
 {
+    console.log("loading " + filePath);
     //loads the file and returns the dataset and variable names
     var req = opencpu.r_fun_json("loadFile", {
                     filePath: filePath
