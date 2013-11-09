@@ -309,20 +309,21 @@ function invalidate(list)
     
     for(var i=0; i<list.length; i++)
     {
-        console.log(list[i]);
+        var viz = d3.select("#" + list[i] + ".visualizationHolderFront");
+        viz.attr("fill", "black").attr("opacity", "0.9").attr("class", "invalid");
     }
-    
-    for(var i=0; i<visualizations.length; i++)
-    {    
-        console.log(visualizations[i].getAttribute("id") + " : " + visualizations[i].getAttribute("id").indexOf(list));
-        if(visualizations[i].getAttribute("id").indexOf(list) != -1)
-        {
-            console.log(visualizations[i]);
-            visualizations[i].setAttribute("fill", "black");
-            visualizations[i].setAttribute("opacity", "0.9");
-            visualizations[i].setAttribute("class", "invalid");            
-        }        
-    }
+//     
+//     for(var i=0; i<visualizations.length; i++)
+//     {    
+//         console.log(visualizations[i].getAttribute("id") + " : " + visualizations[i].getAttribute("id").indexOf(list));
+//         if(visualizations[i].getAttribute("id").indexOf(list) != -1)
+//         {
+//             console.log(visualizations[i]);
+//             visualizations[i].setAttribute("fill", "black");
+//             visualizations[i].setAttribute("opacity", "0.9");
+//             visualizations[i].setAttribute("class", "invalid");            
+//         }        
+//     }
 }
 //Strings/numbers processing
 
