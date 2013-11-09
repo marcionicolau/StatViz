@@ -100,7 +100,7 @@ function pickOutVisualizations()
                         case 1:
                                 {                                 
                                     currentVisualizationSelection = "Boxplot";
-                                    break
+                                    break;
                                 }
                         default:
                                 {                                    
@@ -108,7 +108,28 @@ function pickOutVisualizations()
                                 }
                     }
                     break;
-                }           
+                }  
+        case 2:
+                {
+                    switch(variableList["dependent"].length)
+                    {
+                        case 0:
+                                {                                 
+                                    currentVisualizationSelection = "Boxplot";
+                                    break;
+                                }
+                        case 1:
+                                {                                 
+                                    currentVisualizationSelection = "Scatterplot";
+                                    break;
+                                }
+                        default:
+                                {                                    
+                                    currentVisualizationSelection = "Scatterplot-matrix";
+                                }
+                    }
+                    break;
+                }
     }
 }
 
