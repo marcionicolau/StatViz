@@ -108,6 +108,7 @@ function makeBoxplot()
 
     
     var labels;
+    var levels;
     
     if(variableList["independent"].length == 1)
     {
