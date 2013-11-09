@@ -230,6 +230,7 @@ function toggleFillColorsForVisualizations()
                                 break;
                         default:
                                 invalidate(viz[3], viz[4]);
+                    }
                     
                     break;
                 }
