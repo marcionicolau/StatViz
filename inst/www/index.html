@@ -1,3 +1,4 @@
+<!-- Skeleton for VizStat -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,7 +7,7 @@
         <meta charset="utf-8">
         
         <!-- Title - change if possible -->
-        <title>Preprocessing</title>
+        <title>StatViz</title>
         <script type="text/javascript" src="d3/d3.v3.js"></script>
         
         <script type="text/javascript" src="JS/mouse.js"></script>
@@ -31,72 +32,139 @@
     </head>
     <body>        
         <script type="text/javascript">            
-            var height = document.height;
-            var width = document.width;
         
             window.onload = function()
-            {  
-               
+            {                 
+                InitializeMouseEventHandlers();
+                
+                // Set the width and height of panels
+                d3.select("#variable.panel").attr("style", "width: " + (width - canvasWidth) + "px; height: " + height + "px;");    
+                d3.select("#visualization.panel").attr("style", "width: " + canvasWidth + "px; height: " + height/3 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth) + "px;");                    
+                d3.select("#canvas").attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth) + "px;");    
+                
+                // Load data from a given file
+                loadFile(pathToFile); 
+                
+                // Populate visualizations
+                renderVisualizations();                
+            }            
+            
+            function renderVariableNames(variableNames)
+            {   
+                var variablePanel = d3.select("#variable.panel");                
+                var variablePanelWidth = removeAlphabetsFromString(variablePanel.style("width")) - variableSelectionButtonWidth;
+                
+                var variableNameHolderPadding = 15;
+                var radius = "15px";
+                var variableNameHolderWidth = variablePanelWidth - 3*variableNameHolderPadding;                
+                
+                // TODO: Find this dynamically based on number of variable names (50 is the maximum), do this for font-size as well
+                var variableNameHolderHeight = 50;
+                
+                var variablePanelSVG = variablePanel.append("svg");                
+                variablePanelSVG.attr("id","variablePanelSVG")
+                                            .attr("height", variablePanel.style("height"))
+                                            .attr("width", variablePanel.style("width"))
+                                            .attr("left", variablePanel.style("left"))
+                                            .attr("top", variablePanel.style("top"));  
+                
+                for(var i=0; i<variableNames.length; i++)
+                {                    
+                    variablePanelSVG.append("rect")
+                                                    .attr("x", variableNameHolderPadding)
+                                                    .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding))                                                   
+                                                    .attr("height", variableNameHolderHeight)
+                                                    .attr("width",  variableNameHolderWidth)     
+                                                    .attr("rx", radius)
+                                                    .attr("ry", radius)
+                                                    .attr("fill", panelColors.normal)
+                                                    .attr("id", variableNames[i])
+                                                    .attr("class", "variableNameHolder");
+                    
+                    variablePanelSVG.append("rect")
+                                                    .attr("x", 2*variableNameHolderPadding + variableNameHolderWidth)
+                                                    .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding))                                                   
+                                                    .attr("height", variableNameHolderHeight)
+                                                    .attr("width",  variableSelectionButtonWidth)     
+                                                    .attr("rx", radius)
+                                                    .attr("ry", radius)
+                                                    .attr("fill", panelColors.normal)
+                                                    .attr("id", variableNames[i])
+                                                    .attr("class", "variableSelectionButton");
+                                                
+                    variablePanelSVG.append("text")
+                                                    .attr("x", variableNameHolderPadding + variableNameHolderWidth/2)
+                                                    .attr("y", variableNameHolderPadding + variableNameHolderHeight/2 + 15 + i*(variableNameHolderHeight + variableNameHolderPadding))
+                                                    .attr("fill", "black")
+                                                    .attr("font-size", "24px")
+                                                    .attr("text-anchor", "middle")
+                                                    .text(variableNames[i])
+                                                    .attr("id", variableNames[i])
+                                                    .attr("class", "variableNameHolderText");
+                }                    
             }
             
-            function changeDataset()
+            function renderVisualizations()
             {
-                fileName = $("#datasetDropDownList").val();
+                visualizationPanel = d3.select("#visualization.panel");
+                var visualizationPanelHeight = visualizationPanel.style("height");
+                var visualizationPanelWidth = visualizationPanel.style("width");
                 
-                localStorage.fileName = fileName;
+                var visualizationHolderPadding = 15;
+                var radius = "15px";
+                var visualizationHolderHeight = removeAlphabetsFromString(visualizationPanelHeight) - 2*visualizationHolderPadding;                
                 
-                $("#datasetInformation").text(datasetInformation[fileName]);
+                var visualizationPanelSVG = visualizationPanel.append("svg");                
+                visualizationPanelSVG.attr("id","visualizationPanelSVG")
+                                            .attr("height", visualizationPanelHeight)
+                                            .attr("width", visualizationPanelWidth)
+                                            .attr("left", visualizationPanel.style("left"))
+                                            .attr("top", visualizationPanel.style("top"));  
                 
-                var variableList = variablesInDataset[fileName];
-                var variableListTypes = variablesInDatasetType[fileName];
-                var variablesDiv = d3.select("#variablesDiv");
+                var visualizations = ["Histogram", "Boxplot", "Scatterplot", "Scatterplot-matrix"];
                 
-                removeElementsByClassName("variableList");
+                var visualizationHolderWidth = (removeAlphabetsFromString(visualizationPanelWidth) - (visualizations.length+1)*visualizationHolderPadding)/(visualizations.length);
                 
-                var table = variablesDiv.append("table")
-                                            .attr("border", "1")
-                                            .attr("class", "variableList");
-                
-                for(var i=0; i<variableList.length; i++)
-                {
-                    var tr = table.append("tr");
+                for(var i=0; i<visualizations.length; i++)
+                {                    
+                    visualizationPanelSVG.append("rect")
+                                                    .attr("x", visualizationHolderPadding + i*(visualizationHolderWidth + visualizationHolderPadding))
+                                                    .attr("y", visualizationHolderPadding )
+                                                    .attr("height", visualizationHolderHeight)
+                                                    .attr("width",  visualizationHolderWidth)     
+                                                    .attr("rx", radius)
+                                                    .attr("ry", radius)
+                                                    .attr("id", visualizations[i])
+                                                    .attr("fill", panelColors.normal)
+                                                    .attr("class", "visualizationHolder");
                     
-                    tr.append("td")
-                        .text(variableListTypes[i]);
-                    
-                    tr.append("td")
-                        .text(variableList[i]);
-                }
-            }
-            
-            function letsGetStarted()
-            {
-                window.location = "main.html";
-            }
+                    visualizationPanelSVG.append("image")
+                                                    .attr("x", visualizationHolderPadding + visualizationHolderWidth/2 - visualizationImageSize/2 + i*(visualizationHolderWidth + visualizationHolderPadding))
+                                                    .attr("y", visualizationHolderPadding + visualizationHolderHeight/2 - visualizationImageSize/2)
+                                                    .attr("xlink:href", "images/" + (i+1) + ".png")
+                                                    .attr("height", visualizationImageSize)
+                                                    .attr("width", visualizationImageSize)
+                                                    .attr("style", "opacity: 0.75;")
+                                                    .attr("id", visualizations[i])
+                                                    .attr("class", "visualizationHolderImage");
+                                                
+                    visualizationPanelSVG.append("text")
+                                                    .attr("x", visualizationHolderPadding + visualizationHolderWidth/2 + i*(visualizationHolderWidth + visualizationHolderPadding))
+                                                    .attr("y", visualizationHolderPadding + visualizationHolderHeight/2)
+                                                    .attr("fill", "black")
+                                                    .attr("font-size", "36px")
+                                                    .attr("text-anchor", "middle")
+                                                    .text(visualizations[i])
+                                                    .attr("id", visualizations[i])
+                                                    .attr("class", "visualizationHolderText");
+                } 
+            }       
+           
         </script>
         
-        <label>Select a dataset to explore:</label> 
-        <select name="dataset" autofocus onchange="changeDataset()" id="datasetDropDownList">
-            <option value="cars">Cars</option>
-            <option value="weightLoss">Weight loss</option>
-            <option value="impact">IMPACT</option>
-        </select>
-        
-        <br/>
-        
-        <label id="datasetInformationLabel">Dataset information:</label>
-        <label id="datasetInformation"></label>
-        
-        <br/>
-        
-        <label id="variablesLabel">variables:</label>
-        <div id="variablesDiv"></div>
-        
-        <br/>
-        
-        <input type="button" onclick="letsGetStarted()" value="Start exploring!"/>
-        
-    </body>
-    
+        <div id="variable" class="panel"></div>
+        <div id="visualization" class="panel"></div>
+        <div id="canvas"></div>        
 
-</html>
+    </body>
+</html>   
