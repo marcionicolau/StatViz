@@ -537,7 +537,7 @@ function sort(list)
             {
                 variableList["independent-levels"][i] = new Array();
                 
-                var uniqueData = variables[variableList["independent"][0]]["dataset"].unique();
+                var uniqueData = variables[variableList["independent"][i]]["dataset"].unique();
         
                 for(var k=0; k<uniqueData.length; k++)
                 {

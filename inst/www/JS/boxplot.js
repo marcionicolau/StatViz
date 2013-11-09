@@ -70,7 +70,7 @@ function makeBoxplot()
                         console.log("splitData");
                         console.dir(splitData);
                         console.log("variableList");
-                        console.dir(variableList);
+                        console.dir(variableList);`
                         
                         for(var i=0; i<variableList["independent-levels"][0].length; i++)
                         {
