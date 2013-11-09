@@ -311,6 +311,7 @@ function invalidate(list)
     {        
         if(visualizations[i].getAttribute("id").indexOf(list) != -1)
         {
+            console.log(visualizations[i]);
             visualizations[i].setAttribute("fill", "black");
             visualizations[i].setAttribute("opacity", "0.9");
             visualizations[i].setAttribute("class", "invalid");            
