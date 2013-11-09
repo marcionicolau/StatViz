@@ -1,6 +1,6 @@
 // Data
 var fileName;
-localStorage.fileName = "impact";
+localStorage.fileName = "cars";
 var pathToFile = "http://hci.rwth-aachen.de/~subramanian/datasets/" + localStorage.fileName +".txt";
 
 var experimentalDesign = "between-groups";
