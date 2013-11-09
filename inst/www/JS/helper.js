@@ -114,7 +114,8 @@ function pickOutVisualizations()
                     switch(variableList["dependent"].length)
                     {
                         case 0:
-                                {                                 
+                                {  
+                                    console.log("hola there");
                                     currentVisualizationSelection = "Boxplot";
                                     break;
                                 }
