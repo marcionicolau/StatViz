@@ -66,7 +66,6 @@ function makeHistogram()
     } 
     
     drawHistogramLegends(varNames);
-    console.dir(data);
     
     
     // combine the collected data

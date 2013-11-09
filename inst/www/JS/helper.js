@@ -66,6 +66,7 @@ function makePlot()
     drawFullScreenButton();
     
     var variableList = sort(currentVisualizationSelection);
+    c
     
     console.dir(variableList);
     
@@ -337,16 +338,6 @@ function sort(list)
         else
         {
             variableList["dependent"].push(list[i]);
-        }
-    }
-    
-    if(variableList["independent"].length > 0)
-    {
-        var uniqueData = variables[variableList["independent"][0]]["dataset"].unique();
-    
-        for(var i=0; i<uniqueData.length; i++)
-        {
-            variableList["independent-levels"][i] = uniqueData[i];
         }
     }
     
