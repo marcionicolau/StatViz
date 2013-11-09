@@ -227,7 +227,7 @@ function OnMouseOver(e)
     {		
         setup(e, target);
         
-        var visualizationHolder = d3.selectAll("#" + target.id + ".visualizationHolder");
+        var visualizationHolder = d3.selectAll("#" + target.id + ".visualizationHolderFront");
         visualizationHolder.attr("cursor","pointer");
     }
     else if(target.className.baseVal == "variableSelectionButton")

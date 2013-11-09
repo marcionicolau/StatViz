@@ -226,12 +226,12 @@ function toggleFillColorsForVisualizations()
                         case 0: 
                                 break;
                         case 1:
-                                invalidate(viz[2],viz[3]);
+                                invalidate([viz[2],viz[3]]);
                                 break;
                         case 2:
                                 break;
                         default:
-                                invalidate(viz[2]);
+                                invalidate([viz[2]]);
                     }
                     
                     break;
@@ -241,12 +241,12 @@ function toggleFillColorsForVisualizations()
                     switch(variableList["dependent"].length)
                     {
                         case 0: 
-                                invalidate(viz[1],viz[2],viz[3]);
+                                invalidate([ viz[1],viz[2],viz[3]]);
                                 break;
                         case 1:
                                 break;
                         default:
-                                invalidate(viz[0], viz[1], viz[2]);
+                                invalidate([viz[0], viz[1], viz[2]]);
                                 break;
                     }
                     
@@ -257,13 +257,13 @@ function toggleFillColorsForVisualizations()
                     switch(variableList["dependent"].length)
                     {
                         case 0: 
-                                invalidate(viz[0], viz[1]);
+                                invalidate([viz[0], viz[1]]);
                                 break;
                         case 1:
-                                invalidate(viz[0]);
+                                invalidate([viz[0]]);
                                 break;
                         default:
-                                invalidate(viz[0], viz[1], viz[2]);
+                                invalidate([viz[0], viz[1], viz[2]]);
                                 break;
                     }
                     
