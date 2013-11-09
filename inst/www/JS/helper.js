@@ -78,15 +78,13 @@ function pickOutVisualizations()
                     switch(variableList["dependent"].length)
                     {
                         case 0:
-                                {
-                                    if(currentVisualizationSelection == undefined)
-                                        currentVisualizationSelection = "Histogram";
+                                {                                 
+                                    currentVisualizationSelection = "Histogram";
                                     break;
                                 }
                         case 1:
-                                {
-                                    if(currentVisualizationSelection == "Histogram")
-                                        currentVisualizationSelection = "Boxplot";
+                                {                                 
+                                    currentVisualizationSelection = "Boxplot";
                                     break
                                 }
                         default:
