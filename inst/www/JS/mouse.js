@@ -26,7 +26,7 @@ function OnMouseDown(e)
         toggleFillColorsForVisualizations(); //manages the fill colors of vizualizations (only one at a time)
     }
     
-    else if((e.button == 1 && window.event != null || e.button == 0) && ((target.className.baseVal == "visualizationHolder") || (target.className.baseVal == "visualizationHolderText") || (target.className.baseVal == "visualizationHolderImage")))
+    else if((e.button == 1 && window.event != null || e.button == 0) && ((target.className.baseVal == "visualizationHolder"))
     {
         setup(e, target);    
         currentVisualizationSelection = target.id;

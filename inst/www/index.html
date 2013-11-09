@@ -126,18 +126,7 @@
                 var visualizationHolderWidth = (removeAlphabetsFromString(visualizationPanelWidth) - (visualizations.length+1)*visualizationHolderPadding)/(visualizations.length);
                 
                 for(var i=0; i<visualizations.length; i++)
-                {                    
-                    visualizationPanelSVG.append("rect")
-                                                    .attr("x", visualizationHolderPadding + i*(visualizationHolderWidth + visualizationHolderPadding))
-                                                    .attr("y", visualizationHolderPadding )
-                                                    .attr("height", visualizationHolderHeight)
-                                                    .attr("width",  visualizationHolderWidth)     
-                                                    .attr("rx", radius)
-                                                    .attr("ry", radius)
-                                                    .attr("id", visualizations[i])
-                                                    .attr("fill", panelColors.normal)
-                                                    .attr("class", "visualizationHolder");
-                    
+                {    
                     visualizationPanelSVG.append("image")
                                                     .attr("x", visualizationHolderPadding + visualizationHolderWidth/2 - visualizationImageSize/2 + i*(visualizationHolderWidth + visualizationHolderPadding))
                                                     .attr("y", visualizationHolderPadding + visualizationHolderHeight/2 - visualizationImageSize/2)
@@ -157,6 +146,18 @@
                                                     .text(visualizations[i])
                                                     .attr("id", visualizations[i])
                                                     .attr("class", "visualizationHolderText");
+                    visualizationPanelSVG.append("rect")
+                                                    .attr("x", visualizationHolderPadding + i*(visualizationHolderWidth + visualizationHolderPadding))
+                                                    .attr("y", visualizationHolderPadding )
+                                                    .attr("height", visualizationHolderHeight)
+                                                    .attr("width",  visualizationHolderWidth)     
+                                                    .attr("rx", radius)
+                                                    .attr("ry", radius)
+                                                    .attr("id", visualizations[i])
+                                                    .attr("fill", "transparent")
+                                                    .attr("class", "visualizationHolder");
+                    
+                    
                 } 
             }       
            
