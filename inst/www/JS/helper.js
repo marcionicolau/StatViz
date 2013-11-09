@@ -258,9 +258,9 @@ function validateAll()
     var visualizations = document.getElementsByClassName("invalid");
     
     for(var i=0; i<visualizations.length; i++)
-    {        
-        visualizations[i].setAttribute("class", "visualizationHolder");         
+    {   
         visualizations[i].setAttribute("fill", panelColors.normal);
+        visualizations[i].setAttribute("class", "visualizationHolder");                 
     }
 }
 
