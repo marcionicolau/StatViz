@@ -307,6 +307,11 @@ function invalidate(list)
     console.log("invalidating " + list);
     var visualizations = document.getElementsByClassName("visualizationHolderFront");
     
+    for(var i=0; i<list.length; i++)
+    {
+        console.log(list[i]);
+    }
+    
     for(var i=0; i<visualizations.length; i++)
     {    
         console.log(visualizations[i].getAttribute("id") + " : " + visualizations[i].getAttribute("id").indexOf(list));
