@@ -69,6 +69,7 @@ function makeBoxplot()
                     {
                         altBoxPlot = true;
                         var splitData = splitThisLevelBy(variableList["independent"][0], variableList["independent"][1], variableList["dependent"][0]);
+                        var index = 0;
                         
                         for(var i=0; i<variableList["independent-levels"][0].length; i++)
                         {
@@ -78,13 +79,15 @@ function makeBoxplot()
                                 {
                                     levels.push("[" + variableList["independent-levels"][0][i] + "][" + variableList["independent-levels"][1][j] + "]");
                                 
-                                    data[i*variableList["independent-levels"][0].length + j] = splitData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][j]];                                
-                                    mins[i*variableList["independent-levels"][0].length + j] = Array.min(data[i*variableList["independent-levels"][0].length + j]);
-                                    maxs[i*variableList["independent-levels"][0].length + j] = Array.max(data[i*variableList["independent-levels"][0].length + j]);
-                                    means[i*variableList["independent-levels"][0].length + j] = mean(data[i*variableList["independent-levels"][0].length + j]);
-                                    medians[i*variableList["independent-levels"][0].length + j] = median(data[i*variableList["independent-levels"][0].length + j]);
-                                    iqrs[i*variableList["independent-levels"][0].length + j] = findIQR(data[i*variableList["independent-levels"][0].length + j]);
-                                    cis[i*variableList["independent-levels"][0].length + j] = findCI(data[i*variableList["independent-levels"][0].length + j]);
+                                    data[index] = splitData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][j]];                                
+                                    mins[index] = Array.min(data[index]);
+                                    maxs[index] = Array.max(data[index]);
+                                    means[index] = mean(data[index]);
+                                    medians[index] = median(data[index]);
+                                    iqrs[index] = findIQR(data[index]);
+                                    cis[index] = findCI(data[index]);
+                                    
+                                    index++;
                                 }
                             }
                         }
