@@ -45,6 +45,22 @@
                 
                 $("#datasetInformation").text(datasetInformation[dataset]);
                 
+                var variableList = variablesInDataset[dataset];
+                var variablesDiv = d3.select("#variablesDiv");
+                
+                var table = variablesDiv.append("table")
+                                            .attr("border", "1");
+                
+                for(var i=0; i<variableList.length; i++)
+                {
+                    var tr = table.append("tr");
+                    
+                    tr.append("td")
+                        .text("x");
+                    
+                    tr.append("td")
+                        .text(variableList[i]);
+                }
             }
         </script>
         
@@ -62,7 +78,10 @@
         
         <br/>
         
+        <label id="variablesLabel">variables:</label>
+        <div id="variablesDiv"></div>
         
+        <br/>
     </body>
     
 

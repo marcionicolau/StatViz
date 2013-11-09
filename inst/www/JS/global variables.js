@@ -4,6 +4,11 @@ var datasetInformation = new Object();
     datasetInformation["cars"] = "Dataset with details about different cars"
     datasetInformation["weightLoss"] = "Dataset comparing the weight lost by participants in 3 groups: those who skipped breakfast, those who skipped lunch, and those who skipped dinner"
 
+var variablesInDataset = new Object();
+    variablesInDataset["impact"] = ["subject","condition","verbalMemoryPre","visualMemoryPre","visualMotorSpeedPre","reactionTimePre","impulseControlPre","totalSymptomPre","verbalMemoryPost","visualMemoryPost","visualMotorSpeedPost","reactionTimePost","impulseConstrolPost","totalSymptomPost"]
+    variablesInDataset["cars"] = ["Car","MPG","Cylinders","Displacement","Horsepower","Weight","Acceleration","Model","Origin"];
+    variablesInDataset["weightLoss"] = ["Participant", "Condition", "WeightLost"];
+
 var variables = new Object();     
 var variableTypes = new Object(); //dependent/independent
 var variableDataTypes = new Object(); //numeric/string (todo: further classification)
