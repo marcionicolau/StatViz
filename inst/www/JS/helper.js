@@ -68,9 +68,24 @@ function pickOutVisualizations()
     {
         case 0:
                 {
-                    if(currentVisualizationSelection == undefined)
-                        currentVisualizationSelection = "Histogram";
-                    
+                    switch(variableList["dependent"].length)
+                    {
+                        case 1:
+                                {                                
+                                    currentVisualizationSelection = "Histogram";                    
+                                    break;
+                                }
+                        case 2:
+                                {
+                                    currentVisualizationSelection = "Scatterplot";
+                                    break;
+                                }
+                        default:
+                                {
+                                    currentVisualizationSelection = "Scatterplot-matrix";
+                                    break;
+                                }
+                    }
                     break;
                 }
         case 1:
@@ -198,6 +213,29 @@ function addElementToArrayWithUniqueElements(array, element)
 //Manages the fill colors for visualisation-holders
 function toggleFillColorsForVisualizations()
 {
+    var variableList = sort(currentVariableSelection);
+    var viz = ["Histogram", "Boxplot", "Scatterplot", "Scatterplot-matrix"];
+    validateAll();
+    
+    switch(variableList["independent"].length)
+    {
+        case 0:
+                {
+                    switch(variableList["dependent"].length)
+                    {
+                        case 1:
+                                invalidate(viz[3], viz[4]);
+                                break;
+                        case 2:
+                                break;
+                        default:
+                                invalidate(viz[3], viz[4]);
+                    
+                    break;
+                }
+    }
+    
+    
     var visualizations = document.getElementsByClassName("visualizationHolder");
     
     for(var i=0; i<visualizations.length; i++)
@@ -213,6 +251,29 @@ function toggleFillColorsForVisualizations()
     }
 }
 
+function validateAll()
+{
+    var visualizations = document.getElementsByClassName("invalid");
+    
+    for(var i=0; i<visualizations.length; i++)
+    {        
+        visualizations[i].setAttribute("class", "visualizationHolder");         
+    }
+}
+
+
+function invalidate(list)
+{
+    var visualizations = document.getElementsByClassName("visualizationHolder");
+    
+    for(var i=0; i<visualizations.length; i++)
+    {        
+        if(visualizations[i].getAttribute("id").indexOf(list) != -1)
+        {
+            visualizations[i].setAttribute("class", "invalid");
+        }        
+    }
+}
 //Strings/numbers processing
 
 var toString = Object.prototype.toString;
