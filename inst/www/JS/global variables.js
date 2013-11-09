@@ -8,6 +8,12 @@ var variablesInDataset = new Object();
     variablesInDataset["impact"] = ["subject","condition","verbalMemoryPre","visualMemoryPre","visualMotorSpeedPre","reactionTimePre","impulseControlPre","totalSymptomPre","verbalMemoryPost","visualMemoryPost","visualMotorSpeedPost","reactionTimePost","impulseConstrolPost","totalSymptomPost"]
     variablesInDataset["cars"] = ["Car","MPG","Cylinders","Displacement","Horsepower","Weight","Acceleration","Model","Origin"];
     variablesInDataset["weightLoss"] = ["Participant", "Condition", "WeightLost"];
+ 
+var types = ["participant/subject", "dependent variable", "independent variable"];
+var variablesInDatasetType = new Object();
+    variablesInDatasetType["impact"] = [types[0], types[2], types[1], types[1], types[1], types[1], types[1], types[1], types[1], types[1], types[1], types[1], types[1], types[1]];
+    variablesInDatasetType["cars"] = [types[0], types[1], types[2], types[1], types[1], types[1], types[1], types[1], types[2]];
+    variablesInDatasetType["weightLoss"] = [types[0], types[2], types[1]];
 
 var variables = new Object();     
 var variableTypes = new Object(); //dependent/independent
