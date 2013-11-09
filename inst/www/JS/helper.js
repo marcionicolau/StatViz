@@ -485,7 +485,7 @@ function drawFullScreenButton()
     var canvas = d3.select("#svgCanvas");
     
     canvas.append("image")
-                .attr("x", canvasWidth - fullScreenButtonSize - fullScreenButtonOffset)
+                .attr("x", canvas.attr("width") - (fullScreenButtonSize + fullScreenButtonOffset))
                 .attr("y", fullScreenButtonOffset)
                 .attr("xlink:href", "images/fullscreennormal.png")
                 .attr("height", fullScreenButtonSize)
