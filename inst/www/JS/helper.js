@@ -273,7 +273,7 @@ function toggleFillColorsForVisualizations()
     }
     
     
-    var visualizations = document.getElementsByClassName("visualizationHolder");
+    var visualizations = document.getElementsByClassName("visualizationHolderBack");
     
     for(var i=0; i<visualizations.length; i++)
     {        
@@ -296,7 +296,8 @@ function validateAll()
     for(var i=0; i<visualizations.length; i++)
     {   
         visualizations[i].setAttribute("fill", panelColors.normal);
-        visualizations[i].setAttribute("class", "visualizationHolder");                 
+        visualizations[i].setAttribute("opacity", "0.1");
+        visualizations[i].setAttribute("class", "visualizationHolderFront");                 
     }
 }
 
@@ -304,13 +305,14 @@ function validateAll()
 function invalidate(list)
 {
     console.log("invalidating " + list);
-    var visualizations = document.getElementsByClassName("visualizationHolder");
+    var visualizations = document.getElementsByClassName("visualizationHolderFront");
     
     for(var i=0; i<visualizations.length; i++)
     {        
         if(visualizations[i].getAttribute("id").indexOf(list) != -1)
         {
             visualizations[i].setAttribute("fill", "black");
+            visualizations[i].setAttribute("opacity", "0.9");
             visualizations[i].setAttribute("class", "invalid");            
         }        
     }

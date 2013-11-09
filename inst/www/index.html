@@ -136,7 +136,7 @@
                                                     .attr("ry", radius)
                                                     .attr("id", visualizations[i])
                                                     .attr("fill", panelColors.normal)
-                                                    .attr("class", "visualizationHolder");
+                                                    .attr("class", "visualizationHolderBack");
                                                     
                     visualizationPanelSVG.append("image")
                                                     .attr("x", visualizationHolderPadding + visualizationHolderWidth/2 - visualizationImageSize/2 + i*(visualizationHolderWidth + visualizationHolderPadding))
@@ -167,7 +167,7 @@
                                                     .attr("id", visualizations[i])
                                                     .attr("fill", panelColors.normal)
                                                     .attr("opacity", "0.1")
-                                                    .attr("class", "dummy");
+                                                    .attr("class", "visualizationHolderFront");
                     
                     
                 } 

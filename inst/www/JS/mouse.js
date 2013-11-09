@@ -26,7 +26,7 @@ function OnMouseDown(e)
         toggleFillColorsForVisualizations(); //manages the fill colors of vizualizations (only one at a time)
     }
     
-    else if((e.button == 1 && window.event != null || e.button == 0) && (target.className.baseVal == "visualizationHolder"))
+    else if((e.button == 1 && window.event != null || e.button == 0) && (target.className.baseVal == "visualizationHolderFront"))
     {
         setup(e, target);    
         currentVisualizationSelection = target.id;
@@ -223,7 +223,7 @@ function OnMouseOver(e)
         var variableNameHolder = d3.selectAll("#" + target.id + ".variableNameHolder");
         variableNameHolder.attr("cursor","pointer");
     }
-    else if(target.className.baseVal == "visualizationHolder")
+    else if(target.className.baseVal == "visualizationHolderFront")
     {		
         setup(e, target);
         
