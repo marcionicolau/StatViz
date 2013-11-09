@@ -65,12 +65,13 @@ function findIQR(values)
         for(var i=Math.floor(values.length/2); i<values.length; i++)
             half2.push(values[i]);
     }
-    console.log("half1:" + half1 + ", half2:" + half2);
     
     var q1, q3;
     q1 = median(half1);
     q3 = median(half2);
     
+    if(half1.length == 0)
+        return 0;
     return q3 - q1;
 } 
 
