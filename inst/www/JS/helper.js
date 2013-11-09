@@ -66,7 +66,6 @@ function makePlot()
     drawFullScreenButton();
     
     var variableList = sort(currentVisualizationSelection);
-    c
     
     console.dir(variableList);
     
