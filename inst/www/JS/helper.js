@@ -59,15 +59,51 @@ function InitializeMouseEventHandlers()
     document.onmouseout = OnMouseOut;
 }
 
+function pickOutVisualizations()
+{
+    var variableList = sort(currentVariableSelection);    
+    console.dir(variableList);
+    
+    switch(variableList["independent"].length)
+    {
+        case 0:
+                {
+                    if(currentVisualizationSelection == undefined)
+                        currentVisualizationSelection = "Histogram";
+                    
+                    break;
+                }
+        case 1:
+                {
+                    switch(variableList["dependent"].length)
+                    {
+                        case 0:
+                                {
+                                    if(currentVisualizationSelection == undefined)
+                                        currentVisualizationSelection = "Histogram";
+                                    break;
+                                }
+                        case 1:
+                                {
+                                    if(currentVisualizationSelection == "Histogram")
+                                        currentVisualizationSelection = "Boxplot";
+                                    break
+                                }
+                        default:
+                                {                                    
+                                    currentVisualizationSelection = "Scatterplot-matrix";
+                                }
+                    }
+                    break;
+                }           
+    }
+}
+
 //Resets SVG canvas, draws plot based on the visualisation selected
 function makePlot()
 {   
     resetSVGCanvas();
     drawFullScreenButton();
-    
-    var variableList = sort(currentVariableSelection);
-    
-    console.dir(variableList);
     
     switch(currentVisualizationSelection)
     {

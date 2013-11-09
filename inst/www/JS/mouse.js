@@ -20,7 +20,8 @@ function OnMouseDown(e)
         //display the current variable selection
         console.log("************************************************************************************************************************************************************");        
         console.log("\ncurrent variable selection: [" + currentVariableSelection + "]\n");
-                            
+              
+        pickOutVisualizations();      
         makePlot(); //checks which plot is selected and draws that plot
         toggleFillColorsForVisualizations(); //manages the fill colors of vizualizations (only one at a time)
     }

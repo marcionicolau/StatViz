@@ -26,7 +26,7 @@ var splitData = new Object();
 var variableNames = new Array();
 
 var currentVariableSelection = [];    
-    var currentVisualizationSelection = "Histogram"; // Select histogram by default
+var currentVisualizationSelection;
 
 var fullScreen = false;
     
