@@ -1,8 +1,6 @@
 // Data
-var dataset = "mtcars";
-
-var fileName = "weightLossData-3-not.txt";//"cars-mod.txt";"news-sports-business.txt"; "IMPACT.txt";
-var pathToFile = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/" + fileName;
+var dataset;
+var pathToFile = "/datasets/" + dataset + ".txt" ;
 
 var experimentalDesign = "between-groups";
 

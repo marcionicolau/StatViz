@@ -41,7 +41,7 @@
             
             function changeDataset()
             {
-                var dataset = $("#datasetDropDownList").val();
+                dataset = $("#datasetDropDownList").val();
                 
                 $("#datasetInformation").text(datasetInformation[dataset]);
                 
@@ -69,7 +69,8 @@
             
             function letsGetStarted()
             {
-            
+                //load dataset
+                loadFile(pathToFile); 
             }
         </script>
         
