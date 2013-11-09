@@ -26,6 +26,8 @@ function makeBoxplot()
     var means = [];
     var cis = [];
     
+        var levels = new Array();
+    
     var variableList = sort(currentVariableSelection);
     
     if(currentVariableSelection.length > 1)
@@ -72,15 +74,18 @@ function makeBoxplot()
                         {
                             for(var j=0; j<variableList["independent-levels"][1].length; j++)
                             {   
-                                console.log("[" + variableList["independent-levels"][0][i] + "][" + variableList["independent-levels"][1][j] + "]");
+                                if(splitData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][j]].length > 0)
+                                {
+                                    levels.push("[" + variableList["independent-levels"][0][i] + "][" + variableList["independent-levels"][1][j] + "]");
                                 
-                                data[i*variableList["independent-levels"][0].length + j] = splitData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][j]];                                
-                                mins[i*variableList["independent-levels"][0].length + j] = Array.min(data[i*variableList["independent-levels"][0].length + j]);
-                                maxs[i*variableList["independent-levels"][0].length + j] = Array.max(data[i*variableList["independent-levels"][0].length + j]);
-                                means[i*variableList["independent-levels"][0].length + j] = mean(data[i*variableList["independent-levels"][0].length + j]);
-                                medians[i*variableList["independent-levels"][0].length + j] = median(data[i*variableList["independent-levels"][0].length + j]);
-                                iqrs[i*variableList["independent-levels"][0].length + j] = findIQR(data[i*variableList["independent-levels"][0].length + j]);
-                                cis[i*variableList["independent-levels"][0].length + j] = findCI(data[i*variableList["independent-levels"][0].length + j]);
+                                    data[i*variableList["independent-levels"][0].length + j] = splitData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][j]];                                
+                                    mins[i*variableList["independent-levels"][0].length + j] = Array.min(data[i*variableList["independent-levels"][0].length + j]);
+                                    maxs[i*variableList["independent-levels"][0].length + j] = Array.max(data[i*variableList["independent-levels"][0].length + j]);
+                                    means[i*variableList["independent-levels"][0].length + j] = mean(data[i*variableList["independent-levels"][0].length + j]);
+                                    medians[i*variableList["independent-levels"][0].length + j] = median(data[i*variableList["independent-levels"][0].length + j]);
+                                    iqrs[i*variableList["independent-levels"][0].length + j] = findIQR(data[i*variableList["independent-levels"][0].length + j]);
+                                    cis[i*variableList["independent-levels"][0].length + j] = findCI(data[i*variableList["independent-levels"][0].length + j]);
+                                }
                             }
                         }
                         
@@ -115,22 +120,11 @@ function makeBoxplot()
     console.dir(cis);
     
     var labels;
-    var levels = new Array();
     
     if(variableList["independent"].length == 1)
     {
         levels = variableList["independent-levels"];
-    }
-    else if(variableList["independent"].length == 2)
-    {
-        for(var i=0; i<variableList["independent-levels"][0].length; i++)
-        {
-            for(var j=0; j<variableList["independent-levels"][1].length; j++)
-            {
-                levels.push(variableList["independent-levels"][0][i] + "." +  variableList["independent-levels"][1][j]);
-            }
-        }
-    }   
+    }  
     
     
     if(altBoxPlot == true)    
