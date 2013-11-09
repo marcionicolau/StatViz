@@ -7,6 +7,9 @@
         
         <!-- Title - change if possible -->
         <title>Preprocessing</title>
+        <script>
+            window.fileName = "none";
+        </script>
         <script type="text/javascript" src="d3/d3.v3.js"></script>
         
         <script type="text/javascript" src="JS/mouse.js"></script>
@@ -42,7 +45,7 @@
             function changeDataset()
             {
                 fileName = $("#datasetDropDownList").val();
-                window["x"] = fileName;
+                window.fileName = fileName;
                 
                 $("#datasetInformation").text(datasetInformation[fileName]);
                 
