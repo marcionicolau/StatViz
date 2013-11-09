@@ -259,8 +259,7 @@ function validateAll()
     for(var i=0; i<visualizations.length; i++)
     {        
         visualizations[i].setAttribute("class", "visualizationHolder");         
-        visualizations[i].setAttribute("opacity", "1.0");
-        visualizations[i].setAttribute("fill", "transparent");
+        visualizations[i].setAttribute("fill", panelColors.normal);
     }
 }
 
@@ -273,8 +272,7 @@ function invalidate(list)
     {        
         if(visualizations[i].getAttribute("id").indexOf(list) != -1)
         {
-            visualizations[i].setAttribute("fill", "grey");
-            visualizations[i].setAttribute("opacity", "0.5");
+            visualizations[i].setAttribute("fill", "black");
             visualizations[i].setAttribute("class", "invalid");            
         }        
     }
