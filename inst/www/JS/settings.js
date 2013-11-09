@@ -1,6 +1,6 @@
 // Data
 var dataset;
-var pathToFile = "/datasets/" + dataset + ".txt" ;
+var pathToFile = "http://hci.rwth-aachen.de/~subramanian/datasets/" + dataset +".txt";
 
 var experimentalDesign = "between-groups";
 
