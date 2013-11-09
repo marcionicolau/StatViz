@@ -42,7 +42,9 @@
             function changeDataset()
             {
                 var dataset = $("#datasetDropDownList").val();
-                console.log("selected dataset=" + dataset);
+                
+                $("#datasetInformation").val(datasetInformation[dataset]);
+                
             }
         </script>
         
@@ -52,6 +54,11 @@
             <option value="weightLoss">Weight loss</option>
             <option value="impact">IMPACT</option>
         </select>
+        
+        <br/>
+        
+        <label id="datasetInformationLabel">Dataset information:</label>
+        <label id="datasetInformation"></label>
         
         <br/>
         
