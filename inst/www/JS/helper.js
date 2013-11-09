@@ -295,7 +295,6 @@ function validateAll()
     visualizations.attr("fill", panelColors.normal).attr("opacity", "0.1").attr("class", "visualizationHolderFront");                 
 }
 
-
 function invalidate(list)
 {
     var visualizations = document.getElementsByClassName("visualizationHolderFront");
@@ -469,11 +468,28 @@ function sort(list)
     
     if(variableList["independent"].length > 0)
     {
-        var uniqueData = variables[variableList["independent"][0]]["dataset"].unique();
-        
-        for(var i=0; i<uniqueData.length; i++)
+        if(variableList["independent"].length == 1)
         {
-            variableList["independent-levels"].push(uniqueData[i]);
+            var uniqueData = variables[variableList["independent"][0]]["dataset"].unique();
+        
+            for(var i=0; i<uniqueData.length; i++)
+            {
+                variableList["independent-levels"].push(uniqueData[i]);
+            }
+        }
+        else
+        {
+            for(var i=0; i<variableList["independent"].length; i++)
+            {
+                variableList["independent-levels"][i] = new Array();
+                
+                var uniqueData = variables[variableList["independent"][0]]["dataset"].unique();
+        
+                for(var k=0; k<uniqueData.length; k++)
+                {
+                    variableList["independent-levels"][i].push(uniqueData[k]);
+                }
+            }
         }
     }
     
