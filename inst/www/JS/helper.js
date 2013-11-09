@@ -254,6 +254,7 @@ function toggleFillColorsForVisualizations()
 
 function validateAll()
 {
+    console.log("validating");
     var visualizations = document.getElementsByClassName("invalid");
     
     for(var i=0; i<visualizations.length; i++)
@@ -266,6 +267,7 @@ function validateAll()
 
 function invalidate(list)
 {
+    console.log("invalidating " + list);
     var visualizations = document.getElementsByClassName("visualizationHolder");
     
     for(var i=0; i<visualizations.length; i++)
