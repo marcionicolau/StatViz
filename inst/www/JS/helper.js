@@ -115,12 +115,12 @@ function pickOutVisualizations()
                     {
                         case 0:
                                 {  
-                                    currentVisualizationSelection = "Boxplot";
+                                    currentVisualizationSelection = "Scatterplot";
                                     break;
                                 }
                         case 1:
                                 {                                 
-                                    currentVisualizationSelection = "Scatterplot";
+                                    currentVisualizationSelection = "Boxplot";
                                     break;
                                 }
                         default:
@@ -143,7 +143,6 @@ function makePlot()
     {
         case "Histogram":
                                     {
-                                        console.log("hi");
                                         curveX = [];
                                         curveY = [];
                                         makeHistogram();
@@ -151,7 +150,6 @@ function makePlot()
                                     }
         case "Boxplot":
                                     { 
-                                        console.log("ih");
                                         boxes = [];
                                         meanCircles = [];
                                         medianLines = [];
