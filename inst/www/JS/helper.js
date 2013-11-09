@@ -340,6 +340,16 @@ function sort(list)
         }
     }
     
+    if(variableList["independent"].length > 0)
+    {
+        var uniqueData = variables[variableList["independent"][0]]["dataset"].unique();
+        
+        for(var i=0; i<uniqueData.length; i++)
+        {
+            variableList["independent-levels"].push(uniqueData[i]);
+        }
+    }
+    
     return variableList;
 }
 
