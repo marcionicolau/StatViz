@@ -486,7 +486,7 @@ function drawFullScreenButton()
     
     canvas.append("image")
                 .attr("x", canvas.attr("width") - (fullScreenButtonSize + fullScreenButtonOffset))
-                .attr("y", fullScreenButtonOffset)
+                .attr("y", 10)
                 .attr("xlink:href", "images/fullscreennormal.png")
                 .attr("height", fullScreenButtonSize)
                 .attr("width", fullScreenButtonSize)
