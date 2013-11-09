@@ -74,7 +74,7 @@ function makeBoxplot()
                         {
                             for(var j=0; j<variableList["independent-levels"][1].length; j++)
                             {   
-                                console.log("[" + variableList["independent-levels"][0][i] + "][" + variableList["independent-levels"][1][j] + "]";
+                                console.log("[" + variableList["independent-levels"][0][i] + "][" + variableList["independent-levels"][1][j] + "]");
                                 
                                 data[i*variableList["independent-levels"][0].length + j] = splitData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][j]];                                
                                 mins[i*variableList["independent-levels"][0].length + j] = Array.min(data[i*variableList["independent-levels"][0].length + j]);
