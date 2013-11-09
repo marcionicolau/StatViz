@@ -69,7 +69,7 @@ function splitThisLevelBy(independentVariableA, independentVariableB, dependentV
         }
     }
     
-    for(var i=0; i<dep.length; i++
+    for(var i=0; i<dep.length; i++)
     {
         var indexA = indepA[i];
         var indexB = indepB[i];
