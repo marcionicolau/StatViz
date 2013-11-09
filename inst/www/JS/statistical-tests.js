@@ -108,8 +108,6 @@ function setDistribution(dependentVariable, level, normal)
     if(getObjectLength(distributions[dependentVariable]) == (document.getElementsByClassName("completeLines").length + 1))
     {       
         var variableList = getSelectedVariables();
-        console.log("variableList=");
-        console.dir(variableList);
         var normal = true;
         
         for(var i=0; i<variableList["independent-levels"].length; i++)
@@ -123,7 +121,6 @@ function setDistribution(dependentVariable, level, normal)
                 d3.select("#svgCanvas").transition().duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight*1.5);
                 
                 drawBoxPlotInRed(dependentVariable, variableList["independent-levels"][i]);
-                console.log("level=" + variableList["independent-levels"][i]);
                 drawNormalityPlot(dependentVariable, variableList["independent-levels"][i], "notnormal");
             }
         }

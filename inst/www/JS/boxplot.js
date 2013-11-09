@@ -27,7 +27,6 @@ function makeBoxplot()
     var cis = [];
     
     var variableList = sort(currentVariableSelection);
-    console.dir(variableList);
     
     if(currentVariableSelection.length > 1)
     {
@@ -72,7 +71,7 @@ function makeBoxplot()
                         {
                             for(var j=0; j<variableList["independent-levels"][1].length; j++)
                             {   
-                                console.log(variableList["dependent"][0] + "[" + variableList["independent-levels"][0][i] + "][" + variableList["independent-levels"][1][j] + "]");
+                                //console.log(variableList["dependent"][0] + "[" + variableList["independent-levels"][0][i] + "][" + variableList["independent-levels"][1][j] + "]");
                             }
                         }
                         
@@ -97,8 +96,7 @@ function makeBoxplot()
     
     min = Array.min(mins);
     max = Array.max(maxs);
-    
-    console.log("min=" + min + ", max=" + max);
+
     
     var labels;
     var levels = variableList["independent-levels"];
@@ -231,8 +229,6 @@ function makeBoxplot()
         //end fringes
         BOTTOMFringe = (medians[i] - 1.5*iqrs[i]) < min ? min : (medians[i] - 1.5*iqrs[i]);
         TOPFringe = (medians[i] + 1.5*iqrs[i]) > max ? max : (medians[i] + 1.5*iqrs[i]);
-        
-        console.log("top fringe=" + TOPFringe + ", bottom fringe = " + BOTTOMFringe);
     
         topFringes.push(canvas.append("line")
                     .attr("x1", canvasWidth/2 - boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
@@ -403,13 +399,8 @@ function redrawBoxPlot()
         cis[0] = CI[currentVariableSelection[0]]["dataset"];
     }   
     
-    console.log("cis:");
-    console.dir(cis);
     min = Array.min(mins);
     max = Array.max(maxs);
-    
-    console.log(min);
-    console.log(max);
     
     
     var labels;
@@ -581,7 +572,6 @@ function getOutliers(data, TOPFringe, BOTTOMFringe)
             outliers.push(data[i]);
         }
     }   
-    console.log("outliers = [" + outliers + "]");
     return outliers;
 }
 

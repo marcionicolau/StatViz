@@ -21,7 +21,6 @@ function makeHistogram()
     var altHistogram = false;
     
     var variableList = sort(currentVariableSelection);
-    console.dir(variableList);
     
     if(currentVariableSelection.length > 1)
     {

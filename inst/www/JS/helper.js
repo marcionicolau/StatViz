@@ -65,6 +65,10 @@ function makePlot()
     resetSVGCanvas();
     drawFullScreenButton();
     
+    var variableList = sort(currentVisualizationSelection);
+    
+    console.dir(variableList);
+    
     switch(currentVisualizationSelection)
     {
         case "Histogram":
@@ -339,7 +343,6 @@ function sort(list)
     if(variableList["independent"].length > 0)
     {
         var uniqueData = variables[variableList["independent"][0]]["dataset"].unique();
-        console.log("uniquedata="  +uniqueData);
     
         for(var i=0; i<uniqueData.length; i++)
         {
