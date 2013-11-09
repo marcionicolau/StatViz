@@ -290,21 +290,14 @@ function toggleFillColorsForVisualizations()
 
 function validateAll()
 {
-    console.log("validating");
-    var visualizations = document.getElementsByClassName("invalid");
+    var visualizations = d3.selectAll(".invalid");
     
-    for(var i=0; i<visualizations.length; i++)
-    {   
-        visualizations[i].setAttribute("fill", panelColors.normal);
-        visualizations[i].setAttribute("opacity", "0.1");
-        visualizations[i].setAttribute("class", "visualizationHolderFront");                 
-    }
+    visualizations.attr("fill", panelColors.normal).attr("opacity", "0.1").attr("class", "visualizationHolderFront");                 
 }
 
 
 function invalidate(list)
 {
-    console.log("invalidating " + list);
     var visualizations = document.getElementsByClassName("visualizationHolderFront");
     
     for(var i=0; i<list.length; i++)
@@ -312,18 +305,6 @@ function invalidate(list)
         var viz = d3.select("#" + list[i] + ".visualizationHolderFront");
         viz.attr("fill", "black").attr("opacity", "0.9").attr("class", "invalid");
     }
-//     
-//     for(var i=0; i<visualizations.length; i++)
-//     {    
-//         console.log(visualizations[i].getAttribute("id") + " : " + visualizations[i].getAttribute("id").indexOf(list));
-//         if(visualizations[i].getAttribute("id").indexOf(list) != -1)
-//         {
-//             console.log(visualizations[i]);
-//             visualizations[i].setAttribute("fill", "black");
-//             visualizations[i].setAttribute("opacity", "0.9");
-//             visualizations[i].setAttribute("class", "invalid");            
-//         }        
-//     }
 }
 //Strings/numbers processing
 
