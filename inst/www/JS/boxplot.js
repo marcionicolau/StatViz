@@ -105,7 +105,14 @@ function makeBoxplot()
     
     min = Array.min(mins);
     max = Array.max(maxs);
-
+    
+    console.dir(data);
+    console.dir(mins);
+    console.dir(maxs);
+    console.dir(means);
+    console.dir(medians);
+    console.dir(iqrs);
+    console.dir(cis);
     
     var labels;
     var levels = new Array();
