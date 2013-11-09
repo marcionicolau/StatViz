@@ -308,7 +308,8 @@ function invalidate(list)
     var visualizations = document.getElementsByClassName("visualizationHolderFront");
     
     for(var i=0; i<visualizations.length; i++)
-    {        
+    {    
+        console.log(visualizations[i].getAttribute("id") + " : " visualizations[i].getAttribute("id").indexOf(list));
         if(visualizations[i].getAttribute("id").indexOf(list) != -1)
         {
             console.log(visualizations[i]);
