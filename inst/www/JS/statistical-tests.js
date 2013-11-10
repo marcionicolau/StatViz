@@ -98,6 +98,8 @@ function loadAssumptionCheckList()
 function performNormalityTests()
 {
     var variableList = getSelectedVariables();
+    console.log("\n color bpd: ");
+    console.dir(colourBoxPlotData);
     
     //normality
     distributions[variableList["dependent"][0]] = {};
@@ -108,7 +110,7 @@ function performNormalityTests()
         {
             for(var j=0; j<variableList["independent-levels"][1].length; j++)
             {
-                performNormalityTest(colourBoxPlotData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][j]], variableList["dependent"][0], variableList["independent-levels"][0][i] + "-" + variableList["independent-levels"][1][j]);
+                performNormalityTest(colourBoxPlotData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][j]], variableList["dependent"][0], (variableList["independent-levels"][0][i] + "-" + variableList["independent-levels"][1][j]));
             }
         }
     }
