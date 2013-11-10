@@ -478,12 +478,26 @@ function makeHistogram()
 
 function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, dependentVariable, level, distributionType)
 {
+    var variableList = sort(currentVariableSelection);
+    
     var RIGHT = LEFT + histWidth;
     var BOTTOM = TOP + histHeight;
     
-    var data = variables[dependentVariable][level];
-    var min = MIN[dependentVariable][level];
-    var max = MAX[dependentVariable][level];
+    var data;
+    var min;
+    var max;
+    
+    if(variableList["independent"].length == 2)
+    {
+        console.log("level = " + level);
+        data = colourBoxPlot[][];
+    }
+    else
+    {   
+        data = variables[dependentVariable][level];
+    }
+    min = Array.min(data);
+    max = Array.max(data);;
     
     var shortAxesOffset = axesOffset*(histWidth/plotWidth);
     

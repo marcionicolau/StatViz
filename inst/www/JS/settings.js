@@ -1,6 +1,6 @@
 // Data
 var fileName;
-localStorage.fileName = "impact";
+localStorage.fileName = "cars";
 var pathToFile = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/" + "twoway.csv";//"http://hci.rwth-aachen.de/~subramanian/datasets/" + localStorage.fileName +".txt";
 
 var experimentalDesign = "between-groups";
