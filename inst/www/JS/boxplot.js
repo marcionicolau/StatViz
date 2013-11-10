@@ -76,7 +76,7 @@ function makeBoxplot()
                             for(var j=0; j<variableList["independent-levels"][1].length; j++)
                             {   
 
-                                levels.push("[" + variableList["independent-levels"][0][i] + "][" + variableList["independent-levels"][1][j] + "]");
+                                levels.push(variableList["independent-levels"][0][i] + "-" + variableList["independent-levels"][1][j]);
                             
                                 data[index] = splitData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][j]];                                
                                 mins[index] = Array.min(data[index]);
@@ -131,6 +131,7 @@ function makeBoxplot()
     }
     
     var ids = getValidIds(labels);
+    console.log("ids for boxplot = [" + ids);
     
     var canvas = d3.select("#svgCanvas");
 
