@@ -106,6 +106,7 @@ function performNormalityTests()
     
     if(variableList["independent"].length == 2)
     {
+        variableList = sort(currentVariableSelection);
         for(var i=0; i<variableList["independent-levels"][0].length; i++)
         {
             for(var j=0; j<variableList["independent-levels"][1].length; j++)
