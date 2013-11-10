@@ -13,7 +13,21 @@ function compareMeans()
                     var variableList = getSelectedVariables();
                     loadAssumptionCheckList();
                     
-                    var sampleSize = variables[variableList["dependent"][0]][variableList["independent-levels"][0]].length;
+                    
+                    var sampleSize;
+                    
+                    if(variableList["independent"].length == 2)
+                    {
+                        var levelsOfIndependentVariableA = variables["independent-levels"][0];
+                        var levelsOfIndependentVariableB = variables["independent-levels"][1];
+                        
+                        sampleSize = colourBoxPlotData[levelsOfIndependentVariableA[0]][levelsOfIndependentVariableB[0]];
+                    }
+                    else
+                    {
+                        sampleSize = variables[variableList["dependent"][0]][variableList["independent-levels"][0]].length;
+                    }
+                    
                     
                     if(sampleSize < 20)
                     {
@@ -36,8 +50,7 @@ function compareMeans()
                     var variableList = getSelectedVariables();
                     console.dir(variableList);
                     
-                    loadAssumptionCheckList();
-                    
+                    loadAssumptionCheckList();                    
                     performNormalityTests();
         
                     break;
@@ -88,12 +101,26 @@ function performNormalityTests()
     
     //normality
     distributions[variableList["dependent"][0]] = {};
-
-    for(var i=0; i<variableList["dependent"].length; i++)                        
+    
+    if(variableList["independent"].length == 2)
     {
-        for(var j=0; j<variableList["independent-levels"].length; j++)
-        {                            
-            performNormalityTest(variables[variableList["dependent"][i]][variableList["independent-levels"][j]], variableList["dependent"][i], variableList["independent-levels"][j]);
+        for(var i=0; i<variableList["independent-levels"][0].length; i++)
+        {
+            for(var j=0; j<variableList["independent-levels"][1].length; j++)
+            {
+                performNormalityTest(colourBoxPlotData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][j]], variableList["dependent"][0], variableList["independent-levels"][0][i] + "-" + variableList["independent-levels"][1][j]);
+            }
+        }
+    }
+    else
+    {
+        for(var i=0; i<variableList["dependent"].length; i++)                        
+        {
+            for(var j=0; j<variableList["independent-levels"].length; j++)
+            {   
+                //performNormalityTest(dist, dependentVariable, level)
+                performNormalityTest(variables[variableList["dependent"][i]][variableList["independent-levels"][j]], variableList["dependent"][i], variableList["independent-levels"][j]);
+            }
         }
     }
 }

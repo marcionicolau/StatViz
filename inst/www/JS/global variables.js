@@ -24,6 +24,7 @@ var MAX = new Object();
 var CI = new Object();
 var splitData = new Object();
 var variableNames = new Array();
+var colourBoxPlotData = new Object();
 
 var currentVariableSelection = [];    
 var currentVisualizationSelection;
