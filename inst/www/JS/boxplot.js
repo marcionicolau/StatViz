@@ -345,7 +345,7 @@ function makeBoxplot()
                     .attr("id", ids[i])
                     .attr("class", "means")
                     .attr("data-indepenentVariableA", dataAttributeForIndependentVariableA)
-                    .attr("data-indepenentVariableB", dataAttributeForIndependentVariableB);
+                    .attr("data-indepenentVariableB", dataAttributeForIndependentVariableB));
     }        
 }
 
