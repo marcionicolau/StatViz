@@ -134,6 +134,12 @@ function pickOutVisualizations()
                                     currentVisualizationSelection = "Boxplot";
                                     break;
                                 }
+                        case 2:
+                                {
+                                    currentVisualizationSelection = "Scatterplot";
+                                    break;
+                                }
+                                    
                         default:
                                 {                                    
                                     currentVisualizationSelection = "Scatterplot-matrix";
@@ -297,6 +303,9 @@ function toggleFillColorsForVisualizations()
                                 invalidate([ viz[1],viz[2],viz[3]]);
                                 break;
                         case 1:
+                                break;
+                        case 2:
+                                invalidate([viz[0], viz[1]]);
                                 break;
                         default:
                                 invalidate([viz[0], viz[1], viz[2]]);
