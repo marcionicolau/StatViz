@@ -343,7 +343,7 @@ function makeBoxplot()
                     .attr("fill", meanColors["normal"])
                     .attr("style", "z-index: 5;")
                     .attr("id", ids[i])
-                    .attr("class", "means"))
+                    .attr("class", "means")
                     .attr("data-indepenentVariableA", dataAttributeForIndependentVariableA)
                     .attr("data-indepenentVariableB", dataAttributeForIndependentVariableB);
     }        
