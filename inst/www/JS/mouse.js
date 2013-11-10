@@ -240,6 +240,7 @@ function OnMouseOver(e)
     else if(target.className.baseVal == "means")
     {		
         setup(e, target);
+        console.log("you hovered on a mean with id = " + target.id);
         
         var meanCircle = d3.select("#" + target.id + ".means");
         

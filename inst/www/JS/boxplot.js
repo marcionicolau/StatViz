@@ -75,20 +75,19 @@ function makeBoxplot()
                         {
                             for(var j=0; j<variableList["independent-levels"][1].length; j++)
                             {   
-                                if(splitData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][j]].length > 0)
-                                {
-                                    levels.push("[" + variableList["independent-levels"][0][i] + "][" + variableList["independent-levels"][1][j] + "]");
+
+                                levels.push("[" + variableList["independent-levels"][0][i] + "][" + variableList["independent-levels"][1][j] + "]");
+                            
+                                data[index] = splitData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][j]];                                
+                                mins[index] = Array.min(data[index]);
+                                maxs[index] = Array.max(data[index]);
+                                means[index] = mean(data[index]);
+                                medians[index] = median(data[index]);
+                                iqrs[index] = findIQR(data[index]);
+                                cis[index] = findCI(data[index]);
                                 
-                                    data[index] = splitData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][j]];                                
-                                    mins[index] = Array.min(data[index]);
-                                    maxs[index] = Array.max(data[index]);
-                                    means[index] = mean(data[index]);
-                                    medians[index] = median(data[index]);
-                                    iqrs[index] = findIQR(data[index]);
-                                    cis[index] = findCI(data[index]);
-                                    
-                                    index++;
-                                }
+                                index++;
+                                
                             }
                         }
                         
@@ -113,14 +112,6 @@ function makeBoxplot()
     
     min = Array.min(mins);
     max = Array.max(maxs);
-    
-    console.dir(data);
-    console.dir(mins);
-    console.dir(maxs);
-    console.dir(means);
-    console.dir(medians);
-    console.dir(iqrs);
-    console.dir(cis);
     
     var labels;
     
@@ -184,7 +175,7 @@ function makeBoxplot()
         labels = currentVariableSelection;
     }
     
-    var xStep = plotWidth/nGroovesX;       
+    var xStep = plotWidth/nGroovesX;   
 
     for(i=0; i<nGroovesX; i++)
     {
@@ -337,6 +328,13 @@ function makeBoxplot()
                     .attr("class", "outliers");
         }
         
+        var dataAttributeForIndependentVariableA, dataAttributeForIndependentVariableB;
+        if(variableList["independent"].length == 2)
+        {
+            dataAttributeForIndependentVariableA = variableList["independent"][0];
+            dataAttributeForIndependentVariableB = variableList["independent"][1];
+        }   
+        
         
         meanCircles.push(canvas.append("circle")
                     .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
@@ -345,7 +343,9 @@ function makeBoxplot()
                     .attr("fill", meanColors["normal"])
                     .attr("style", "z-index: 5;")
                     .attr("id", ids[i])
-                    .attr("class", "means"));
+                    .attr("class", "means"))
+                    .attr("data-indepenentVariableA", dataAttributeForIndependentVariableA)
+                    .attr("data-indepenentVariableB", dataAttributeForIndependentVariableB);
     }        
 }
 
