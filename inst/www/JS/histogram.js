@@ -490,7 +490,6 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
     if(variableList["independent"].length == 2)
     {
         console.log("level = " + level);
-        data = colourBoxPlot[][];
     }
     else
     {   
