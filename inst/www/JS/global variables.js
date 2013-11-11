@@ -60,6 +60,7 @@ var significanceTestNames = new Object();
 var currentTestType;
 var testResults = new Object();
 var distributions = new Object();
+var variances = new Object();
 
 //transformations
 var transformationType;

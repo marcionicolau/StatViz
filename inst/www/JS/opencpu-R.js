@@ -289,54 +289,74 @@ function performHomoscedasticityTestNormal(dependent, independent)
                 console.log("\t\t Levene's test for (" + dependent + " ~ " + independent + ")");
                 console.log("\t\t\t p = " + output.p);
                 
-                variableList = getSelectedVariables();
-                console.log("number of levels: " + variableList["independent-levels"].length);
+                variableList = sort(currentVariableSelection);
                 
-                if(variableList["independent-levels"].length > 2)
+                if(variableList["independent"].length == 2)
                 {
                     if(output.p < 0.05)
-                    {
-                      d3.select("#homogeneity.crosses").attr("display", "inline");                  
-                  
-                      //Welch's ANOVA
-                      performWelchANOVA(variableList["dependent"][0], variableList["independent"][0]);
+                    {        
+                        setHomogeneityOfVariances(dependent, independent, false);
                     }
                     else
                     {   
-                        //equal variances
-                        d3.select("#homogeneity.ticks").attr("display","inline");
-                    
-                        if(experimentalDesign == "between-groups")
-                        {
-                            performANOVA(variableList["dependent"][0], variableList["independent"][0]);
-                        }
-                        else
-                        {
-                            console.log("repeated-measures ANOVA");
-                        }                                        
+                        setHomogeneityOfVariances(dependent, independent, false);
                     }
-                }
+                }                
+                
                 else
-                {               
-                    if(output.p < 0.05)
+                {
+                
+                    variableList = getSelectedVariables();
+                    console.log("number of levels: " + variableList["independent-levels"].length);
+                
+            
+                
+                    if(variableList["independent-levels"].length > 2)
                     {
-                      d3.select("#homogeneity.crosses").attr("display", "inline");                  
-                  
-                      performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE");
-                    }
-                    else
-                    {   
-                        //equal variances
-                        d3.select("#homogeneity.ticks").attr("display","inline");
-                    
-                        if(experimentalDesign == "between-groups")
+                        if(output.p < 0.05)
                         {
-                            performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "TRUE", "FALSE");
+                          d3.select("#homogeneity.crosses").attr("display", "inline");                  
+                  
+                          //Welch's ANOVA
+                          performWelchANOVA(variableList["dependent"][0], variableList["independent"][0]);
                         }
                         else
+                        {   
+                            //equal variances
+                            d3.select("#homogeneity.ticks").attr("display","inline");
+                    
+                            if(experimentalDesign == "between-groups")
+                            {
+                                performANOVA(variableList["dependent"][0], variableList["independent"][0]);
+                            }
+                            else
+                            {
+                                console.log("repeated-measures ANOVA");
+                            }                                        
+                        }
+                    }
+                    else
+                    {               
+                        if(output.p < 0.05)
                         {
-                            performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "TRUE", "TRUE");
-                        }                                        
+                          d3.select("#homogeneity.crosses").attr("display", "inline");                  
+                  
+                          performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE");
+                        }
+                        else
+                        {   
+                            //equal variances
+                            d3.select("#homogeneity.ticks").attr("display","inline");
+                    
+                            if(experimentalDesign == "between-groups")
+                            {
+                                performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "TRUE", "FALSE");
+                            }
+                            else
+                            {
+                                performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "TRUE", "TRUE");
+                            }                                        
+                        }
                     }
                 }
         

@@ -151,7 +151,7 @@ function setDistribution(dependentVariable, level, normal)
                 console.log("dependentVariable=" + dependentVariable);
                 console.log("\nvariableList[\"independent-levels\"][i]: " + variableList["independent-levels"][i]);
                 drawBoxPlotInRed(dependentVariable, variableList["independent-levels"][i]);
-//                 drawNormalityPlot(dependentVariable, variableList["independent-levels"][i], "notnormal");
+                drawNormalityPlot(dependentVariable, variableList["independent-levels"][i], "notnormal");
             }
         }
         
@@ -160,12 +160,53 @@ function setDistribution(dependentVariable, level, normal)
             console.log("\n\tall distributions are normal!");
             
             d3.select("#normality.ticks").attr("display", "inline");  
-            performHomoscedasticityTestNormal(variableList["dependent"][0], variableList["independent"][0]);
+            
+            for(var i=0; i<variableList["independent"].length; i++)
+            {
+                performHomoscedasticityTestNormal(variableList["dependent"][0], variableList["independent"][i]);
+            }
         }
         else
         {
             console.log("\n\tchecking if normality transform is possible...");            
             findTransform(variableList["dependent"][0], variableList["independent"][0]);
+        }
+    }    
+}
+
+function setHomogeneityOfVariances(dependentVariable, independentVariable, homogeneous)
+{    
+    if(variances[dependentVariable] == undefined)
+        variances[dependentVariable] = new Object();
+    
+    distributions[dependentVariable][independentVariable] = homogeneous;
+
+    
+    if(getObjectLength(distributions[dependentVariable]) == (currentVariableSelection.length - 1))
+    {       
+        var variableList = sort(currentVariableSelection);
+        var homogeneous = true;
+        
+        for(var i=0; i<variableList["independent"].length; i++)
+        {   
+            if(variances[dependentVariable][variableList["independent"][i]] == false)
+            {
+                d3.select("#homogeneity.crosses").attr("display", "inline");                  
+                homogeneity = false;
+            }
+        }
+        
+        if(homogeneity)
+        {         
+            console.log("\n\tHomogeneous requirement satisfied!");
+            
+            d3.select("#homogeneous.ticks").attr("display", "inline");  
+            
+            console.log("2 way ANOVA yo!");
+        }
+        else
+        {
+            console.log("Friedman's test");
         }
     }    
 }
