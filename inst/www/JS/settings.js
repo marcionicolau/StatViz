@@ -1,7 +1,7 @@
 // Data
 var fileName;
 localStorage.fileName = "cars";
-var pathToFile = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/" + "cars-mod.txt";//"http://hci.rwth-aachen.de/~subramanian/datasets/" + localStorage.fileName +".txt";
+var pathToFile = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/" + "IMPACT.txt";//"http://hci.rwth-aachen.de/~subramanian/datasets/" + localStorage.fileName +".txt";
 
 var experimentalDesign = "between-groups";
 
