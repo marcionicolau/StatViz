@@ -166,7 +166,7 @@ function OnMouseDown(e)
         
         var variableList = sort(currentVariableSelection);
         
-        console.log("finding the regression model between causal variable (" + variableList["dependent"][0] + ") and predictor variable (" + variableList["independent"][0] + ")";
+        console.log("finding the regression model between causal variable (" + variableList["dependent"][0] + ") and predictor variable (" + variableList["independent"][0] + ")");
     }
     else
     {
