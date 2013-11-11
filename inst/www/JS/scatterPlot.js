@@ -207,6 +207,8 @@ function drawRegressionLine(intercept, slope)
     
     var Y1, Y2;
     
+    intercept = intercept*(canvasWidth/plotWidth);
+    
     Y1 = canvasHeight;
     Y2 = 0;
     
