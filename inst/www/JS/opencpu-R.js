@@ -839,6 +839,8 @@ function getLinearModelCoefficients(causalVariable, predictorVariable)
                   
                 console.log("X = [" + output.xIntercept + "]");
                 console.log("Y= [" + output.yIntercept + "]");
+                
+                
         
       }).fail(function(){
           alert("Failure: " + req.responseText);

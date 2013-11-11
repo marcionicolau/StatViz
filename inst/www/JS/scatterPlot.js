@@ -1,20 +1,22 @@
 
-var mins = [];
-var maxs = [];
-   
+//boundaries    
+var LEFT = canvasWidth/2 - plotWidth/2;
+var RIGHT = canvasWidth/2 + plotWidth/2;
+
+var TOP = canvasHeight/2 - plotHeight/2 - topOffset;
+var BOTTOM = canvasHeight/2 + plotHeight/2 - topOffset;
+
+var data = new Object(); 
+var mins = new Object();
+var maxs = new Object();
+
+var uniqueDataX, uniqueDataY;
+var xStep, yStep;
+    
    
 function makeScatterplot()
 {   
-    //boundaries    
-    var LEFT = canvasWidth/2 - plotWidth/2;
-    var RIGHT = canvasWidth/2 + plotWidth/2;
     
-    var TOP = canvasHeight/2 - plotHeight/2 - topOffset;
-    var BOTTOM = canvasHeight/2 + plotHeight/2 - topOffset;
-    
-    var data = new Object(); 
-    var mins = new Object();
-    var maxs = new Object();
     
     data["X"] = variables[currentVariableSelection[0]]["dataset"];
     data["Y"] = variables[currentVariableSelection[1]]["dataset"];
@@ -94,15 +96,15 @@ function makeScatterplot()
     
     //grooves
     
-    var uniqueDataX = data["X"].unique();
-    var uniqueDataY = data["Y"].unique();  
+    uniqueDataX = data["X"].unique();
+    uniqueDataY = data["Y"].unique();  
     
     var numberOfGroovesInXAxis = uniqueDataX.length > numberOfGrooves ? numberOfGrooves : uniqueDataX.length;
     var numberOfGroovesInYAxis = uniqueDataY.length > numberOfGrooves ? numberOfGrooves : uniqueDataY.length;
     
     //y-axis grooves
-    var xStep = uniqueDataX.length <= numberOfGrooves ? plotWidth/numberOfGroovesInXAxis : plotWidth/(numberOfGroovesInXAxis - 1);
-    var yStep = uniqueDataY.length <= numberOfGrooves ? plotHeight/numberOfGroovesInYAxis : plotHeight/(numberOfGroovesInYAxis - 1);
+    xStep = uniqueDataX.length <= numberOfGrooves ? plotWidth/numberOfGroovesInXAxis : plotWidth/(numberOfGroovesInXAxis - 1);
+    yStep = uniqueDataY.length <= numberOfGrooves ? plotHeight/numberOfGroovesInYAxis : plotHeight/(numberOfGroovesInYAxis - 1);
     
     var xSlice = (maxs["X"] - mins["X"])/(numberOfGroovesInXAxis - 1);    
     var ySlice = (maxs["Y"] - mins["Y"])/(numberOfGroovesInYAxis - 1);    
@@ -192,6 +194,30 @@ function makeScatterplot()
                     .attr("id", "data" + i)
                     .attr("class", "datapoints");     
     }
+}
+
+function drawRegressionLine(intercept, slope)
+{
+    var canvas = d3.select("#svgCanvas");
+    
+    var x,y;
+        
+    if(uniqueDataX.length <= numberOfGrooves)
+        x = LEFT + uniqueDataX.indexOf(intercept)*xStep + xStep/2;    
+    else
+        x = LEFT + getValue1(intercept, mins["X"], maxs["X"])*plotWidth;
+        
+    if(uniqueDataY.length <= numberOfGrooves)
+        y = BOTTOM - uniqueDataY.indexOf(0)*yStep - yStep/2;
+    else
+        y = BOTTOM - getValue1(0, mins["Y"], maxs["Y"])*plotHeight;
+            
+    canvas.append("circle")
+            .attr("cx", x)
+            .attr("cy", y)
+            .attr("r", datapointRadius)
+            .attr("fill", "magenta");
+            
 }
 
 function getValue1(number, min, max)
