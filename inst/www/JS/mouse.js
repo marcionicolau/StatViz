@@ -462,7 +462,7 @@ function OnMouseOver(e)
         console.log(e.pageX);
         
         canvas.append("circle")
-                .attr("cx", e.pageX - (width - canvasWidth))
+                .attr("cx", (e.pageX - (width - canvasWidth))*(canvasWidth + 800)/canvasWidth)
                 .attr("cy", e.pageY)
                 .attr("r", "5px")
                 .attr("fill", "goldenrod")
