@@ -689,6 +689,48 @@ function performANOVA(dependentVariable, independentVariable)
     });
 }
 
+function performTwoWayANOVA(dependentVariable, independentVariableA, independentVariableB)
+{
+    // (dataset, dependentVariable, independentVariableA, independentVariableB)
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("performTwoWayANOVA", {
+                    dataset: dataset,
+                    dependentVariable: dependentVariable,
+                    independentVariableA: independentVariableA,
+                    independentVariableB: independentVariableB
+                  }, function(output) {                                                   
+                  
+                  console.log("\t\t Two-way ANOVA for (" + dependentVariable + " ~ " + independentVariableA + " + " + independentVariableB + " " + independentVariableA + "*" + independentVariableB +")");
+                  console.log("\t\t\t F = " + output.F);
+                  console.log("\t\t\t method used = Two-way ANOVA"); //todo
+                  console.log("\t\t\t DF = " + output.numDF + "/" + output.denomDF);
+                  console.log("\t\t\t Eta-squared: " + output.etaSquared);
+                  
+                  testResults["df"] = output.numDF + "/" + output.denomDF;
+                  testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;   
+                  testResults["method"] = "ANOVA"; //todo
+                  testResults["effect-size"] = "η^2 = " + output.etaSquared;
+                           
+                  
+                //drawing stuff
+                removeElementsByClassName("completeLines");           
+
+                displaySignificanceTestResults();               
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+
 function performWelchANOVA(dependentVariable, independentVariable)
 {
     //get data from variable names
