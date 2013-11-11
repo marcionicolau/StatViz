@@ -204,23 +204,43 @@ function drawRegressionLine(intercept, slope)
 {
     var canvas = d3.select("#svgCanvas");
     
-    var x,y;
+    var x1, y1, x2, y2;
+    
+    var Y1, Y2;
+    
+    Y1 = canvasHeight;
+    Y2 = 0;
+    
+    
         
     if(uniqueDataX.length <= numberOfGrooves)
-        x = LEFT + uniqueDataX.indexOf(intercept)*xStep + xStep/2;    
+        x1 = LEFT + uniqueDataX.indexOf(slope*Y1 + intercept)*xStep + xStep/2;    
     else
-        x = LEFT + getValue1(intercept, mins["X"], maxs["X"])*plotWidth;
+        x1 = LEFT + getValue1(slope*Y1 + intercept, mins["X"], maxs["X"])*plotWidth;
         
     if(uniqueDataY.length <= numberOfGrooves)
-        y = BOTTOM - uniqueDataY.indexOf(0)*yStep - yStep/2;
+        y1 = BOTTOM - uniqueDataY.indexOf(Y1)*yStep - yStep/2;
     else
-        y = BOTTOM - getValue1(0, mins["Y"], maxs["Y"])*plotHeight;
+        y1 = BOTTOM - getValue1(Y1, mins["Y"], maxs["Y"])*plotHeight;
+    
+    if(uniqueDataX.length <= numberOfGrooves)
+        x2 = LEFT + uniqueDataX.indexOf(slope*Y2 + intercept)*xStep + xStep/2;    
+    else
+        x2 = LEFT + getValue1(slope*Y2 + intercept, mins["X"], maxs["X"])*plotWidth;
+        
+    if(uniqueDataY.length <= numberOfGrooves)
+        y2 = BOTTOM - uniqueDataY.indexOf(Y2)*yStep - yStep/2;
+    else
+        y2 = BOTTOM - getValue1(Y2, mins["Y"], maxs["Y"])*plotHeight;
             
-    canvas.append("circle")
-            .attr("cx", x)
-            .attr("cy", y)
-            .attr("r", datapointRadius)
-            .attr("fill", "magenta");
+    
+    canvas.append("line")
+            .attr("x1", x1)
+            .attr("y1", y1)
+            .attr("x2", x2)
+            .attr("y2", y2)
+            .attr("stroke", "magenta");
+    
             
 }
 
