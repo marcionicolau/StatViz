@@ -453,6 +453,19 @@ function OnMouseOver(e)
     {
         var regressionElements = d3.selectAll(".regression").attr("cursor", "pointer");
     }
+    else if(target.id == "regressionLine")
+    {
+        var regressionLine = d3.select("#regressionLine");
+        
+        var canvas = d3.select("#svgCanvas");
+        
+        canvas.append("circle")
+                .attr("cx", e.pageX)
+                .attr("cy", e.pageY)
+                .attr("r", "5px")
+                .attr("fill", "goldenrod")
+                .attr("class", "regressionPrediction");
+    }
 }
 
 function OnMouseOut(e)
@@ -503,6 +516,10 @@ function OnMouseOut(e)
     else if((target.className.baseVal == "CIs") || (target.className.baseVal == "CITopFringes") || (target.className.baseVal == "CIBottomFringes"))
     {
         removeElementsByClassName("hover");
+    }
+    else if(target.id == "regressionLine")
+    {
+        removeElementsByClassName("regressionPrediction");
     }
     
 }	
