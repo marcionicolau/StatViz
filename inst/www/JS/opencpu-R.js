@@ -829,3 +829,26 @@ function getCorrelationCoefficient(variableA, variableB)
         
     });
 }
+
+function getLinearModelCoefficients(causalVariable, predictorVariable)
+{
+    var req = opencpu.r_fun_json("getLinearModelCoefficients", {
+                    causal: causalVariable,
+                    predictor: predictorVariable
+                  }, function(output) {                                                   
+                  
+                console.log("X = [" + output.xIntercept + "]");
+                console.log("Y= [" + output.yIntercept + "]");
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}

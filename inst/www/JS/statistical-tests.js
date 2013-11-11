@@ -432,14 +432,14 @@ function alertPossibleRegressionModel()
     
     canvas.append("circle")
             .attr("cx", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
-            .attr("cy", canvasHeight/2 - 3*significanceTestResultOffset)
-            .attr("r", "10px")
+            .attr("cy", canvasHeight/2 - 4*significanceTestResultOffset)
+            .attr("r", "20px")
             .attr("id", "circle")
             .attr("class", "regression");
             
     canvas.append("text")
             .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
-            .attr("y", canvasHeight/2 - 3*significanceTestResultOffset)
+            .attr("y", canvasHeight/2 - 4*significanceTestResultOffset)
             .attr("text-anchor", "middle")
             .attr("font-size", "20px")
             .attr("fill", "orange")

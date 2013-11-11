@@ -166,7 +166,7 @@ function OnMouseDown(e)
         
         var variableList = sort(currentVariableSelection);
         
-        console.log("finding the regression model between causal variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[0] + ")");
+        console.log("finding the regression model between causal variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[1] + ")");
     }
     else
     {
@@ -443,6 +443,10 @@ function OnMouseOver(e)
                 .attr("class", "hover");
                 
         
+    }
+    else if(target.className.baseVal == "regression")
+    {
+        var regressionElements = d3.selectAll(".regression").attr("cursor", "pointer");
     }
 }
 
