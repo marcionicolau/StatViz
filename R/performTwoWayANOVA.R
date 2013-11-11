@@ -10,7 +10,7 @@ performTwoWayANOVA <- function(dataset, dependentVariable, independentVariableA,
     
     n = eval(parse(text = paste("length(table$",dependentVariable,")")));
     
-    es = ci.pvaf(result$fstatistic[["value"]], result$fstatistic[["numdf"]], result$fstatistic[["denomDF"]], n);
+    es = ci.pvaf(result$fstatistic[["value"]], result$fstatistic[["numdf"]], result$fstatistic[["dendf"]], n);
     
     
     list(F = result$fstatistic[["value"]], numDF = result$fstatistic[["numdf"]], denomDF = result$fstatistic[["dendf"]], rSquared = result$r.squared, etaSquared = es[["Upper.Limit.Proportion.of.Variance.Accounted.for"]]);
