@@ -179,7 +179,7 @@ function setHomogeneityOfVariances(dependentVariable, independentVariable, homog
     if(variances[dependentVariable] == undefined)
         variances[dependentVariable] = new Object();
     
-    distributions[dependentVariable][independentVariable] = homogeneous;
+    variances[dependentVariable][independentVariable] = homogeneous;
 
     
     if(getObjectLength(distributions[dependentVariable]) == (currentVariableSelection.length - 1))
