@@ -459,6 +459,8 @@ function OnMouseOver(e)
         
         var canvas = d3.select("#svgCanvas");
         
+        console.log(e.pageX);
+        
         canvas.append("circle")
                 .attr("cx", e.pageX - (width - canvasWidth))
                 .attr("cy", e.pageY)
