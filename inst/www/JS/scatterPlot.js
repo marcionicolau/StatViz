@@ -25,11 +25,9 @@ function makeScatterplot()
     maxs["X"] = MAX[currentVariableSelection[0]]["dataset"];
     maxs["Y"] = MAX[currentVariableSelection[1]]["dataset"];
     
-    //Find correlation coefficient between X and Y
-    if((variableTypes[currentVariableSelection[0]] == "dependent") && (variableTypes[currentVariableSelection[1]] == "dependent"))
-    {
-        getCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1]);
-    }
+
+    getCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1]);
+
     
     var colorData;
     var uniqueColorData;
