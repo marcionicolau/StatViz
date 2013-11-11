@@ -1,10 +1,9 @@
-
 //boundaries    
-var LEFT = canvasWidth/2 - plotWidth/2;
-var RIGHT = canvasWidth/2 + plotWidth/2;
+var LEFT;
+var RIGHT;
 
-var TOP = canvasHeight/2 - plotHeight/2 - topOffset;
-var BOTTOM = canvasHeight/2 + plotHeight/2 - topOffset;
+var TOP;
+var BOTTOM;
 
 var data = new Object(); 
 var mins = new Object();
@@ -16,8 +15,13 @@ var xStep, yStep;
    
 function makeScatterplot()
 {   
-    
-    
+    LEFT = canvasWidth/2 - plotWidth/2;
+    RIGHT = canvasWidth/2 + plotWidth/2;
+
+    TOP = canvasHeight/2 - plotHeight/2 - topOffset;
+    BOTTOM = canvasHeight/2 + plotHeight/2 - topOffset;
+
+
     data["X"] = variables[currentVariableSelection[0]]["dataset"];
     data["Y"] = variables[currentVariableSelection[1]]["dataset"];
     
