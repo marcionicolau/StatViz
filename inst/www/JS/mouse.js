@@ -202,7 +202,7 @@ function OnMouseDown(e)
             removeElementsByClassName("regression");
             removeElementsByClassName("significanceTest");
             getLinearModelCoefficients(currentVariableSelection[0], currentVariableSelection[1]);
-        }, 200);        
+        }, 300);        
     
     }
     else
