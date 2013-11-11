@@ -169,6 +169,8 @@ function OnMouseDown(e)
         console.log("finding the regression model between causal variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[1] + ")");
         
         //some interaction to get the variables :)
+        removeElementsByClassName("regression");
+        removeElementsByClassName("significanceTest");
         getLinearModelCoefficients(currentVariableSelection[0], currentVariableSelection[1]);
     }
     else

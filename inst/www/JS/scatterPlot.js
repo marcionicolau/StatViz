@@ -241,9 +241,13 @@ function drawRegressionLine(intercept, slope)
             .attr("x2", x2)
             .attr("y2", y2)
             .attr("stroke", "magenta");
+            
+
+    
     
             
 }
+
 
 function getValue1(number, min, max)
 {

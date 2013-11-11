@@ -4,6 +4,7 @@ getLinearModelCoefficients <- function(causal, predictor)
     predictor <- c(predictor)
     
     model = lm(causal ~ predictor);
+    results = summary(model);
     
     list(xIntercept = model$coefficients[[1]], yIntercept = model$coefficients[[2]]);
 }
