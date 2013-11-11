@@ -807,7 +807,7 @@ function getCorrelationCoefficient(variableA, variableB)
                   testResults["statistic"] = "t(" + output.df + ") = " + output.t;
                   testResults["p"] = output.p;                  
                   testResults["method"] = output.method; 
-                  testResults["cor"] = output.cor;
+                  testResults["effect-size"] = output.cor;
                   testResults["CI"] = [output.CI_min, output.CI_max];
                   
                   displayCorrelationResults();

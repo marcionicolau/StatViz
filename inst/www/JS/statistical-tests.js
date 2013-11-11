@@ -418,7 +418,7 @@ function displayCorrelationResults()
             .attr("text-anchor", "middle")
             .attr("font-size", "24px")
             .attr("fill", "orange")
-            .text(testResults["cor"])
+            .text(testResults["effect-size"])
             .attr("class", "significanceTest");
  
 }
