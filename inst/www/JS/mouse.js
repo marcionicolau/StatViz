@@ -463,7 +463,7 @@ function OnMouseOver(e)
         
         canvas.append("circle")
                 .attr("cx", (e.pageX - (width - canvasWidth))*(canvasWidth + 800)/canvasWidth)
-                .attr("cy", e.pageY)
+                .attr("cy", e.pageY*((3*(canvasWidth+800)/4)))/canvasHeight)
                 .attr("r", "5px")
                 .attr("fill", "goldenrod")
                 .attr("class", "regressionPrediction");
