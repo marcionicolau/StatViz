@@ -460,8 +460,8 @@ function OnMouseOver(e)
         var canvas = d3.select("#svgCanvas");
         
         canvas.append("circle")
-                .attr("cx", e.pageX)
-                .attr("cy", e.pageY)
+                .attr("cx", e.clientX)
+                .attr("cy", e.clientY)
                 .attr("r", "5px")
                 .attr("fill", "goldenrod")
                 .attr("class", "regressionPrediction");
