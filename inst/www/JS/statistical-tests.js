@@ -387,7 +387,7 @@ function displayCorrelationResults()
             .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
             .attr("y", canvasHeight/2 + significanceTestResultOffset)
             .attr("text-anchor", "middle")
-            .attr("font-size", "22px")
+            .attr("font-size", "20px")
             .attr("fill", "orange")
             .text(testResults["method"])
             .attr("class", "significanceTest");
@@ -396,7 +396,7 @@ function displayCorrelationResults()
             .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
             .attr("y", canvasHeight/2 + 2*significanceTestResultOffset)
             .attr("text-anchor", "middle")
-            .attr("font-size", "22px")
+            .attr("font-size", "20px")
             .attr("fill", "orange")
             .text(testResults["statistic"])
             .attr("class", "significanceTest");
@@ -418,7 +418,7 @@ function displayCorrelationResults()
             .attr("text-anchor", "middle")
             .attr("font-size", "24px")
             .attr("fill", "orange")
-            .text(testResults["effect-size"])
+            .text(testResults["cor"])
             .attr("class", "significanceTest");
  
 }
