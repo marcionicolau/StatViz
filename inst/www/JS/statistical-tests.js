@@ -414,7 +414,7 @@ function displayCorrelationResults()
     //Effect sizes
     canvas.append("text")
             .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
-            .attr("y", (cyMin + cyMax)/2)
+            .attr("y", canvasHeight/2 - 2*significanceTestResultOffset)
             .attr("text-anchor", "middle")
             .attr("font-size", "24px")
             .attr("fill", "orange")
