@@ -299,7 +299,7 @@ function performHomoscedasticityTestNormal(dependent, independent)
                     }
                     else
                     {   
-                        setHomogeneityOfVariances(dependent, independent, false);
+                        setHomogeneityOfVariances(dependent, independent, true);
                     }
                 }                
                 
