@@ -841,6 +841,12 @@ function getLinearModelCoefficients(causalVariable, predictorVariable)
                 console.log("Y= [" + output.yIntercept + "]");
                 
                 drawRegressionLine(output.xIntercept, output.yIntercept);
+                
+                testResults["effect-size"] = output.rSquared;
+                testResults["method"] = "Linear Regression Model";
+                testResults["equation"] = causalVariable + " = " + output.yIntercept + predictorVariable + " + " + output.xIntercept;
+                
+                displayRegressionResults();
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
