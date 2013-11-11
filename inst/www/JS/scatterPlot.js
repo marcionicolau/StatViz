@@ -203,7 +203,7 @@ function makeScatterplot()
 function drawRegressionLine(intercept, slope)
 {
     var canvas = d3.select("#svgCanvas");
-    canvas.attr("viewBox", "0 0 " + (canvasWidth + 800) + " " + (canvasHeight - 300));
+    canvas.attr("viewBox", "0 0 " + (canvasWidth + 800) + " " + (canvasHeight - 200));
     
     var x1, y1, x2, y2;
     
