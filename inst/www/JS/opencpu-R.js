@@ -833,8 +833,8 @@ function getCorrelationCoefficient(variableA, variableB)
 function getLinearModelCoefficients(causalVariable, predictorVariable)
 {
     var req = opencpu.r_fun_json("getLinearModelCoefficients", {
-                    causal: causalVariable,
-                    predictor: predictorVariable
+                    causal: variables[causalVariable]["dataset"],
+                    predictor: variables[predictorVariable]["dataset"]
                   }, function(output) {                                                   
                   
                 console.log("X = [" + output.xIntercept + "]");
