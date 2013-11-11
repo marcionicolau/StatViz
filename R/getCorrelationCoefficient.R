@@ -8,5 +8,7 @@ getCorrelationCoefficient <- function(distributionX, distributionY, method = "pe
         method = "pearson";
     }
     
-    list(correlationCoefficient = cor(X, Y, method = method));
+    result = cor.test(X, Y, method = method);
+    
+    list(t = result$statistic[["t"]], df = result$parameter[["df"]], p = result$p.value, cor = result$estimate[["cor"]], method = result$method, CI_min = result$conf.int[1], CI_max = result$conf.int[2]);
 }

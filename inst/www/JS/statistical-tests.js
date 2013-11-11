@@ -375,3 +375,50 @@ function drawScales(cx, cy)
         }           
     }
 }
+
+function displayCorrelationResults()
+{   
+    var canvas = d3.select("#svgCanvas");
+    
+    var spaceOnRight = (canvasWidth - plotWidth)/2;
+    
+    
+    canvas.append("text")
+            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+            .attr("y", canvasHeight/2 + significanceTestResultOffset)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "22px")
+            .attr("fill", "orange")
+            .text(testResults["method"])
+            .attr("class", "significanceTest");
+    
+    canvas.append("text")
+            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+            .attr("y", canvasHeight/2 + 2*significanceTestResultOffset)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "22px")
+            .attr("fill", "orange")
+            .text(testResults["statistic"])
+            .attr("class", "significanceTest");
+    
+    canvas.append("text")
+            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+            .attr("y", canvasHeight/2 + 3*significanceTestResultOffset)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "16px")
+            .attr("fill", "orange")
+            .text("p = " + testResults["p"])
+            .attr("class", "significanceTest");
+    
+    
+    //Effect sizes
+    canvas.append("text")
+            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+            .attr("y", (cyMin + cyMax)/2)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "24px")
+            .attr("fill", "orange")
+            .text(testResults["effect-size"])
+            .attr("class", "significanceTest");
+ 
+}
