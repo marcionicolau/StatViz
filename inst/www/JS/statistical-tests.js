@@ -130,7 +130,7 @@ function setDistribution(dependentVariable, level, normal)
         distributions[dependentVariable] = new Object();
     
     distributions[dependentVariable][level] = normal;
-    console.log("'ello there mate");
+
     
     if(getObjectLength(distributions[dependentVariable]) == (document.getElementsByClassName("completeLines").length + 1))
     {       
@@ -147,8 +147,9 @@ function setDistribution(dependentVariable, level, normal)
                 d3.select("#svgCanvas").transition().duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight*1.5);
                 
                 //draw boxplots in red 
-                drawBoxPlotInRed(dependentVariable, variableList["independent-levels"][i]);
-                drawNormalityPlot(dependentVariable, variableList["independent-levels"][i], "notnormal");
+                // 
+//                 drawBoxPlotInRed(dependentVariable, variableList["independent-levels"][i]);
+//                 drawNormalityPlot(dependentVariable, variableList["independent-levels"][i], "notnormal");
             }
         }
         
