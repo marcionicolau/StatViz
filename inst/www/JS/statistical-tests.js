@@ -48,7 +48,6 @@ function compareMeans()
                     console.log("\t Significance test for more than 2 variables...\n\n");
                                         
                     var variableList = getSelectedVariables();
-                    console.dir(variableList);
                     
                     loadAssumptionCheckList();                    
                     performNormalityTests();
@@ -97,10 +96,7 @@ function loadAssumptionCheckList()
 
 function performNormalityTests()
 {
-    var variableList = getSelectedVariables();
-    console.log("\n color bpd: ");
-    console.dir(colourBoxPlotData);
-    
+    var variableList = getSelectedVariables();    
     //normality
     distributions[variableList["dependent"][0]] = {};
     
@@ -134,6 +130,7 @@ function setDistribution(dependentVariable, level, normal)
         distributions[dependentVariable] = new Object();
     
     distributions[dependentVariable][level] = normal;
+    console.log("'ello there mate");
     
     if(getObjectLength(distributions[dependentVariable]) == (document.getElementsByClassName("completeLines").length + 1))
     {       
