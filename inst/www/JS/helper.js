@@ -616,8 +616,8 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
                 .attr("id", "regression")
                 .attr("class", "dialogBox");
         canvas.append("text")
-                .attr("x", centerX - dialogBoxWidth/3)
-                .attr("y", centerY + i*dialogBoxHeight/6)
+                .attr("x", centerX)
+                .attr("y", centerY + i*dialogBoxHeight/6 + dialogBoxHeight/16)
                 .attr("text-anchor", "middle")
                 .text(currentVariableSelection[i]);
     }
