@@ -577,8 +577,8 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
 {
     var canvas = d3.select("#svgCanvas");
     
-    var dialogBoxHeight = canvasHeight/2;
-    var dialogBoxWidth = canvasWidth/2;
+    var dialogBoxHeight = plotHeight/2;
+    var dialogBoxWidth = plotWidth/2;
     
     var centerX = canvasWidth/2 - plotWidth/2;
     var centerY = canvasHeight/2 - plotHeight/2;
