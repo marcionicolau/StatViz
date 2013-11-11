@@ -583,6 +583,12 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
     var centerX = canvasWidth/2 - plotWidth/2;
     var centerY = canvasHeight/2 - plotHeight/2;
     
+    console.log("canvasWidth=" + canvasWidth);
+    console.log("canvasHeight=" + canvasHeight);
+    console.log("plotWidth=" + plotWidth);
+    console.log("plotHeight=" + plotHeight);
+    
+    
     canvas.append("rect")
             .attr("x", centerX - dialogBoxWidth/2)
             .attr("y", centerY - dialogBoxHeight/2)
