@@ -190,7 +190,7 @@ function OnMouseDown(e)
             setTimeout(function(){
             removeElementsByClassName("significanceTest");
             removeElementsByClassName("regression");
-            }, 3000);
+            }, 500);
         }
         
         var variableList = sort(currentVariableSelection);
