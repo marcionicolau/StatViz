@@ -164,14 +164,16 @@ function OnMouseDown(e)
         
         regressionCircle.transition().duration(2000).attr("opacity", "0.1");
         
-        var variableList = sort(currentVariableSelection);
+        drawDialogBoxToGetCausalAndPredictorVariables();
         
-        console.log("finding the regression model between causal variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[1] + ")");
-        
-        //some interaction to get the variables :)
-        removeElementsByClassName("regression");
-        removeElementsByClassName("significanceTest");
-        getLinearModelCoefficients(currentVariableSelection[0], currentVariableSelection[1]);
+//         var variableList = sort(currentVariableSelection);
+//         
+//         console.log("finding the regression model between causal variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[1] + ")");
+//         
+//         //some interaction to get the variables :)
+//         removeElementsByClassName("regression");
+//         removeElementsByClassName("significanceTest");
+//         getLinearModelCoefficients(currentVariableSelection[0], currentVariableSelection[1]);
     }
     else
     {
@@ -463,7 +465,7 @@ function OnMouseOver(e)
         
         canvas.append("circle")
                 .attr("cx", (e.pageX - (width - canvasWidth) - 300*(canvasWidth)/(canvasWidth+800))*(canvasWidth + 800)/canvasWidth)
-                .attr("cy", (e.pageY - (400 + (height - canvasHeight))*(canvasHeight/(canvasWidth+800)/2))*((canvasWidth+800)/2)/canvasHeight)
+                .attr("cy", (e.pageY - (200)*(canvasHeight/(canvasWidth+800)/2))*((canvasWidth+800)/2)/canvasHeight)
                 .attr("r", "5px")
                 .attr("fill", "goldenrod")
                 .attr("class", "regressionPrediction");

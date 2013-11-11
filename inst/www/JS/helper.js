@@ -572,6 +572,26 @@ function drawFullScreenButton()
                 .attr("style", "opacity: 1.0;")
                 .attr("class", "fullscreen");
 }
+
+function drawDialogBoxToGetCausalAndPredictorVariables()
+{
+    var canvas = d3.select("#svgCanvas");
+    
+    var dialogBoxHeight = canvasHeight/2;
+    var dialogBoxWidth = canvasWidth/2;
+    
+    var centerX = canvasWidth/2 - plotWidth/2;
+    var centerY = canvasHeight/2 - plotHeight/2;
+    
+    canvas.append("rect")
+            .attr("x", centerX - dialogBoxWidth/2)
+            .attr("y", centerY - dialogBoxHeight/2)
+            .attr("width", dialogBoxWidth)
+            .attr("height", dialogBoxHeight)
+            .attr("fill", "beige")
+            .attr("id", "regression")
+            .attr("class", "dialogBox");
+}
             
 
       
