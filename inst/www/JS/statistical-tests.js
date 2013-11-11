@@ -182,7 +182,7 @@ function setHomogeneityOfVariances(dependentVariable, independentVariable, homog
     variances[dependentVariable][independentVariable] = homogeneous;
 
     
-    if(getObjectLength(distributions[dependentVariable]) == (currentVariableSelection.length - 1))
+    if(getObjectLength(variances[dependentVariable]) == (currentVariableSelection.length - 1))
     {       
         var variableList = sort(currentVariableSelection);
         var homogeneous = true;
