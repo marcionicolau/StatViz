@@ -794,23 +794,28 @@ function getCorrelationCoefficient(variableA, variableB)
                     method: "pearson"
                   }, function(output) {                                                   
                   
-                  //(t = result$statistic[["t"]], df = result$parameter[["df"]], p = result$p.value, cor = result$estimate[["cor"]], method = result$method, CI_min = result$conf.int[1], CI_max = result$conf.int[2]);
-                  console.log("\t\t Correlation-coefficient for (" + variableA + " , " + variableB + ")");
-                  console.log("\t\t\t t = " + output.t);
-                  console.log("\t\t\t p = " + output.p);
-                  console.log("\t\t\t method used = " + output.method);
-                  console.log("\t\t\t DF = " + output.df);
-                  console.log("\t\t\t r = " + output.cor);
-                  console.log("\t\t\t CI = [" + output.CI_min + ", " + output.CI_max + "]");
-                  
-                  testResults["df"] = output.df;
-                  testResults["statistic"] = "t(" + output.df + ") = " + output.t;
-                  testResults["p"] = output.p;                  
-                  testResults["method"] = output.method; 
-                  testResults["effect-size"] = output.cor;
-                  testResults["CI"] = [output.CI_min, output.CI_max];
-                  
-                  displayCorrelationResults();
+                //(t = result$statistic[["t"]], df = result$parameter[["df"]], p = result$p.value, cor = result$estimate[["cor"]], method = result$method, CI_min = result$conf.int[1], CI_max = result$conf.int[2]);
+                console.log("\t\t Correlation-coefficient for (" + variableA + " , " + variableB + ")");
+                console.log("\t\t\t t = " + output.t);
+                console.log("\t\t\t p = " + output.p);
+                console.log("\t\t\t method used = " + output.method);
+                console.log("\t\t\t DF = " + output.df);
+                console.log("\t\t\t r = " + output.cor);
+                console.log("\t\t\t CI = [" + output.CI_min + ", " + output.CI_max + "]");
+
+                testResults["df"] = output.df;
+                testResults["statistic"] = "t(" + output.df + ") = " + output.t;
+                testResults["p"] = output.p;                  
+                testResults["method"] = output.method; 
+                testResults["effect-size"] = output.cor;
+                testResults["CI"] = [output.CI_min, output.CI_max];
+
+                displayCorrelationResults();
+
+                if(variableTypes[variableA] == "independent" ? variableTypes[variableB] == "dependent" : variableTypes[variableB] == "independent")
+                {                
+                    alertPossibleRegressionModel();
+                }
         
       }).fail(function(){
           alert("Failure: " + req.responseText);

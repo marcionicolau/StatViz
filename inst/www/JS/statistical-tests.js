@@ -422,3 +422,28 @@ function displayCorrelationResults()
             .attr("class", "significanceTest");
  
 }
+
+function alertPossibleRegressionModel()
+{
+    var canvas = d3.select("#svgCanvas");
+    
+    var spaceOnRight = (canvasWidth - plotWidth)/2;
+    
+    
+    canvas.append("circle")
+            .attr("cx", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+            .attr("cy", canvasHeight/2 - 3*significanceTestResultOffset)
+            .attr("r", "10px")
+            .attr("id", "circle")
+            .attr("class", "regression");
+            
+    canvas.append("text")
+            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+            .attr("y", canvasHeight/2 - 3*significanceTestResultOffset)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "20px")
+            .attr("fill", "orange")
+            .text("!")
+            .attr("id", "text")
+            .attr("class", "regression"); 
+}

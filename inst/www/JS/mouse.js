@@ -157,6 +157,17 @@ function OnMouseDown(e)
             d3.select("#svgCanvas").attr("height", canvasHeight).attr("width", canvasWidth);
         }
     }
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "regression")
+    {
+        var regressionCircle = d3.select("#circle.regression");
+        var regressionText = d3.select("#text.regression");
+        
+        regressionCircle.transition().duration(2000).attr("opacity", "0.1");
+        
+        var variableList = sort(currentVariableSelection);
+        
+        console.log("finding the regression model between causal variable (" + variableList["dependent"][0] + ") and predictor variable (" + variableList["independent"][0] + ")";
+    }
     else
     {
         //the user clicked outside
