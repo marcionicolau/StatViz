@@ -187,21 +187,23 @@ function OnMouseDown(e)
             
             makePlot("no");  
             
+            setTimeout(function(){
             removeElementsByClassName("significanceTest");
             removeElementsByClassName("regression");
+            }, 3000);
         }
         
-        // var variableList = sort(currentVariableSelection);
-//         
-//         console.log("finding the regression model between causal variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[1] + ")");
-//         
-//         //some interaction to get the variables :)
-//         
-//         removeElementsByClassName("causalVariable");
-//         removeElementsByClassName("dialogBox");
-//         removeElementsByClassName("regression");
-//         removeElementsByClassName("significanceTest");
-//         getLinearModelCoefficients(currentVariableSelection[0], currentVariableSelection[1]);
+        var variableList = sort(currentVariableSelection);
+        
+        console.log("finding the regression model between causal variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[1] + ")");
+        
+        //some interaction to get the variables :)
+        
+        removeElementsByClassName("causalVariable");
+        removeElementsByClassName("dialogBox");
+        removeElementsByClassName("regression");
+        removeElementsByClassName("significanceTest");
+        getLinearModelCoefficients(currentVariableSelection[0], currentVariableSelection[1]);
     
     }
     else
