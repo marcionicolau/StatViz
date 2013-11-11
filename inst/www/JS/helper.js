@@ -610,7 +610,7 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
             .text("Please select the causal variable and the predictor variable");
     
     var selectEl = canvas.append("select")
-                            .attr("style", "position: relative; top: " + (centerY + dialogBoxHeight/4) + "px; left: " + (centerX) + "px;";
+                            .attr("style", "position: relative; top: " + (centerY + dialogBoxHeight/4) + "px; left: " + (centerX) + "px;");
     
     selectEl.append("option")
                 .attr("value", currentVariableSelection[0])
