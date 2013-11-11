@@ -783,3 +783,28 @@ function getDFromT(n)
         
     });
 }
+
+
+// Correlation & Regression
+function getCorrelationCoefficient(variableA, variableB)
+{
+    var req = opencpu.r_fun_json("getCorrelationCoefficient", {
+                    distributionX: variables[variableA]["dataset"],                    
+                    distributionY: variables[variableB]["dataset"],
+                    method: "pearson"
+                  }, function(output) {                                                   
+                  
+                  console.log("Correlation-coefficient between " + variableA + " and " + variableB + " is " + output.correlationCoefficient);
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}

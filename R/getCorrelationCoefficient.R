@@ -1,25 +1,12 @@
-    getCorrelationCoefficient <- function(dataset = "",columnNameX = "", columnNameY = "", method = "") 
+getCorrelationCoefficient <- function(distributionX, distributionY, method = "pearson") 
+{
+    X = c(distributionX);
+    Y = c(distributionY);
+    
+    if(method == "")
     {
-        if(dataset == "")
-        {   
-            dataset = "beaver1";
-            columnNameX = "time";
-            columnNameY = "temp";
-        }
-        else if(columnNameX == "" || columnNameY == "")
-        {
-            # Load the first column name by default
-            columnNameX = names(eval(parse(text = dataset)))[1]; 
-            columnNameY = names(eval(parse(text = dataset)))[2]; 
-        }
-        
-        distributionX = eval(parse(text = paste(dataset,"$",columnNameX)));
-        distributionY = eval(parse(text = paste(dataset,"$",columnNameY)));
-        
-        if(method == "")
-        {
-            method = "pearson";
-        }
-        
-        list(correlationCoefficient = cor(distributionX, distributionY, method = method), dataset = dataset, columnName1 = columnNameX, columnName2 = columnNameY, method = method);
+        method = "pearson";
     }
+    
+    list(correlationCoefficient = cor(X, Y, method = method));
+}
