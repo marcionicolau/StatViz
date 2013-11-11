@@ -159,13 +159,13 @@ function setDistribution(dependentVariable, level, normal)
         {         
             console.log("\n\tall distributions are normal!");
             
-            // d3.select("#normality.ticks").attr("display", "inline");  
-//             performHomoscedasticityTestNormal(variableList["dependent"][0], variableList["independent"][0]);
+            d3.select("#normality.ticks").attr("display", "inline");  
+            performHomoscedasticityTestNormal(variableList["dependent"][0], variableList["independent"][0]);
         }
         else
         {
             console.log("\n\tchecking if normality transform is possible...");            
-            // findTransform(variableList["dependent"][0], variableList["independent"][0]);
+            findTransform(variableList["dependent"][0], variableList["independent"][0]);
         }
     }    
 }
