@@ -175,6 +175,32 @@ function OnMouseDown(e)
 //         removeElementsByClassName("significanceTest");
 //         getLinearModelCoefficients(currentVariableSelection[0], currentVariableSelection[1]);
     }
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "causalVariable")
+    {
+        var choice = target.id;
+        
+        if(choice != currentVariableSelection[0])
+        {   
+            var temp = currentVariableSelection[1];
+            currentVariableSelection[1] = currentVariableSelection[0];
+            currentVariableSelection[0] = temp;
+            
+            makePlot();
+        }
+        
+        var variableList = sort(currentVariableSelection);
+        
+        console.log("finding the regression model between causal variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[1] + ")");
+        
+        //some interaction to get the variables :)
+        
+        removeElementsByClassName("causalVariable");
+        removeElementsByClassName("dialogBox");
+        removeElementsByClassName("regression");
+        removeElementsByClassName("significanceTest");
+        getLinearModelCoefficients(currentVariableSelection[0], currentVariableSelection[1]);
+    
+    }
     else
     {
         //the user clicked outside
@@ -469,6 +495,13 @@ function OnMouseOver(e)
                 .attr("r", "5px")
                 .attr("fill", "goldenrod")
                 .attr("class", "regressionPrediction");
+    }
+    else if(target.className.baseVal == "causalVariable")
+    {
+        var choice = d3.selectAll("#" + target.id + ".causalVariable");
+        choice.attr("cursor", "pointer");
+        
+        choice.attr("stroke", "black").attr("stroke-width", "2px");
     }
 }
 

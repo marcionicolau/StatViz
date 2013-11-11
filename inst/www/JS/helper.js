@@ -601,7 +601,9 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
             .attr("y", centerY - dialogBoxHeight/4)
             .attr("fill", "black")
             .attr("text-anchor", "middle")
-            .text("Please select the causal variable");
+            .text("Please select the causal variable")
+            .attr("id", "regression")
+            .attr("class", "dialogBox");
     
     for(var i=0; i<currentVariableSelection.length; i++)
     {
@@ -613,13 +615,15 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
                 .attr("rx", "10px")
                 .attr("ry", "10px")
                 .attr("fill", "Moccasin")
-                .attr("id", "regression")
-                .attr("class", "dialogBox");
+                .attr("id", currentVariableSelection[i])
+                .attr("class", "causalVariable");
         canvas.append("text")
                 .attr("x", centerX)
                 .attr("y", centerY + i*dialogBoxHeight/6 + dialogBoxHeight/16)
                 .attr("text-anchor", "middle")
-                .text(currentVariableSelection[i]);
+                .text(currentVariableSelection[i])
+                .attr("id", currentVariableSelection[i])
+                .attr("class", "causalVariable");
     }
 }
             
