@@ -812,7 +812,7 @@ function getCorrelationCoefficient(variableA, variableB)
 
                 displayCorrelationResults();
 
-                if(variableTypes[variableA] == "independent" ? variableTypes[variableB] == "dependent" : variableTypes[variableB] == "independent")
+                if((variableTypes[variableA] == "independent" ? variableTypes[variableB] == "dependent" : variableTypes[variableB] == "independent") && ((output.cor < -0.5) || (output.cor > 0.5)))
                 {                
                     alertPossibleRegressionModel();
                 }
