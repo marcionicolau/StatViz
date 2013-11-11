@@ -202,37 +202,36 @@ function makeScatterplot()
 
 function drawRegressionLine(intercept, slope)
 {
-    var canvas = d3.select("#svgCanvas");    
+    var canvas = d3.select("#svgCanvas");
+    canvas.attr("viewBox", "0 0 " + (canvasWidth + 500) + " " + (canvasHeight + 500));
     var x1, y1, x2, y2;
     
     var Y1, Y2;
     
-    intercept = intercept*(canvasWidth/plotWidth);
-    
-    Y1 = canvasHeight;
-    Y2 = 0;
+    Y1 = 2*(maxs["Y"] - mins["Y"]);
+    Y2 = -2*(maxs["Y"] - mins["Y"]);
     
     
         
     if(uniqueDataX.length <= numberOfGrooves)
         x1 = LEFT + uniqueDataX.indexOf(slope*Y1 + intercept)*xStep + xStep/2;    
     else
-        x1 = (slope*Y1 + intercept);
+        x1 = LEFT + getValue1(slope*Y1 + intercept, mins["X"], maxs["X"])*plotWidth;
         
     if(uniqueDataY.length <= numberOfGrooves)
         y1 = BOTTOM - uniqueDataY.indexOf(Y1)*yStep - yStep/2;
     else
-        y1 = Y1;
+        y1 = BOTTOM - getValue1(Y1, mins["Y"], maxs["Y"])*plotHeight;
     
     if(uniqueDataX.length <= numberOfGrooves)
         x2 = LEFT + uniqueDataX.indexOf(slope*Y2 + intercept)*xStep + xStep/2;    
     else
-        x2 = (slope*Y2 + intercept);
+        x2 = LEFT + getValue1(slope*Y2 + intercept, mins["X"], maxs["X"])*plotWidth;
         
     if(uniqueDataY.length <= numberOfGrooves)
         y2 = BOTTOM - uniqueDataY.indexOf(Y2)*yStep - yStep/2;
     else
-        y2 = Y2;
+        y2 = BOTTOM - getValue1(Y2, mins["Y"], maxs["Y"])*plotHeight;
             
     
     canvas.append("line")
@@ -241,8 +240,6 @@ function drawRegressionLine(intercept, slope)
             .attr("x2", x2)
             .attr("y2", y2)
             .attr("stroke", "magenta");
-    
-    canvas.attr("viewBox", "0 0 " + (canvasWidth + 500) + " " + (canvasHeight + 500));
     
             
 }
