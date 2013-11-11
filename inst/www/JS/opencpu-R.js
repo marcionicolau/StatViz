@@ -804,7 +804,7 @@ function getCorrelationCoefficient(variableA, variableB)
                   console.log("\t\t\t CI = [" + output.CI_min + ", " + output.CI_max + "]");
                   
                   testResults["df"] = output.df;
-                  testResults["statistic"] = "t(" output.df + ") = " + output.t;
+                  testResults["statistic"] = "t(" + output.df + ") = " + output.t;
                   testResults["p"] = output.p;                  
                   testResults["method"] = output.method; 
                   testResults["cor"] = output.cor;
