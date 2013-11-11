@@ -597,6 +597,12 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
             .attr("fill", "beige")
             .attr("id", "regression")
             .attr("class", "dialogBox");
+    
+    canvas.append("circle")
+            .attr("cx", centerX)
+            .attr("cy", centerY)
+            .attr("r", "10px")
+            .attr("fill", "GreenYellow");
 }
             
 
