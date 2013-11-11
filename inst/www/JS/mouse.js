@@ -186,6 +186,8 @@ function OnMouseDown(e)
             currentVariableSelection[0] = temp;
             
             makePlot();
+            removeElementsByClassName("significanceTest");
+            removeElementsByClassName("regression");
         }
         
         var variableList = sort(currentVariableSelection);
