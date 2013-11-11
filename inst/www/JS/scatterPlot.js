@@ -208,8 +208,8 @@ function drawRegressionLine(intercept, slope)
     
     var Y1, Y2;
     
-    Y1 = canvasHeight;
-    Y2 = 0;
+    Y1 = Infinity;
+    Y2 = -Infinity;
     
     
         
