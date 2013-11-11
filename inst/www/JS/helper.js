@@ -172,7 +172,7 @@ function pickOutVisualizations()
 }
 
 //Resets SVG canvas, draws plot based on the visualisation selected
-function makePlot()
+function makePlot(x)
 {   
     resetSVGCanvas();
     drawFullScreenButton();
@@ -200,7 +200,7 @@ function makePlot()
                                         CIBottomLines = [];
                                         yAxisTexts = [];
                                         
-                                        makeBoxplot();
+                                        makeBoxplot(x);
                                         break;
                                     }
         case "Scatterplot":

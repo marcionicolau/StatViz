@@ -13,7 +13,7 @@ var uniqueDataX, uniqueDataY;
 var xStep, yStep;
     
    
-function makeScatterplot()
+function makeScatterplot(withoutCorrelation)
 {   
     LEFT = canvasWidth/2 - plotWidth/2;
     RIGHT = canvasWidth/2 + plotWidth/2;
@@ -32,7 +32,8 @@ function makeScatterplot()
     maxs["Y"] = MAX[currentVariableSelection[1]]["dataset"];
     
 
-    getCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1]);
+    if(withoutCorrelation == undefined)
+        getCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1]);
 
     
     var colorData;

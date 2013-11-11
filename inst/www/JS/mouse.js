@@ -185,7 +185,7 @@ function OnMouseDown(e)
             currentVariableSelection[1] = currentVariableSelection[0];
             currentVariableSelection[0] = temp;
             
-            makePlot();  
+            makePlot("no");  
             
             removeElementsByClassName("significanceTest");
             removeElementsByClassName("regression");
