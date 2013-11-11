@@ -188,8 +188,7 @@ function OnMouseDown(e)
             makePlot("no");  
         }
         
-        setTimeout(function(){
-            var variableList = sort(currentVariableSelection);
+        var variableList = sort(currentVariableSelection);
         
             console.log("finding the regression model between causal variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[1] + ")");
         
@@ -197,10 +196,13 @@ function OnMouseDown(e)
         
             removeElementsByClassName("causalVariable");
             removeElementsByClassName("dialogBox");
+        
+        setTimeout(function(){
+            
             removeElementsByClassName("regression");
             removeElementsByClassName("significanceTest");
             getLinearModelCoefficients(currentVariableSelection[0], currentVariableSelection[1]);
-        }, 100);        
+        }, 200);        
     
     }
     else
