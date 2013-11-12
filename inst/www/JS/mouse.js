@@ -578,7 +578,7 @@ function OnMouseOver(e)
         var slopeOfRegressionLine = (regressionLine.attr("y2") - regressionLine.attr("y1"))/(regressionLine.attr("x2") - regressionLine.attr("x1"));
                 
         mouseX = canvasWidth/2;//(canvasHeight-mouseY)*slopeOfRegressionLine + interceptCircle.attr("cy");
-        mouseY = slopeOfRegressionLine*mouseX + interceptCircle.attr("cx");
+        mouseY = slopeOfRegressionLine*(mouseX - (width - canvasWidth)) + interceptCircle.attr("cx");
         
         canvas.append("circle")
                 .attr("cx", mouseX)
