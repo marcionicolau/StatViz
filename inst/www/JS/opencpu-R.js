@@ -968,24 +968,22 @@ function getLinearModelCoefficients(causalVariable, predictorVariable)
 
 function performMultipleRegression(causalVariable, predictorVariables)
 {
-    var req = opencpu.r_fun_json("getLinearModelCoefficients", {
+    var req = opencpu.r_fun_json("performMultipleRegression", {
                     causal: causalVariable,
                     predictorVariable: predictorVariables,
                     dataset: dataset                
                   }, function(output) {                                                   
                   
-                console.log("X = [" + output.xIntercept + "]");
-                console.log("Y= [" + output.yIntercept + "]");
-                
+                console.log("Performing Multiple Regression for " + causalVariable + " ~ [" + predictorVariables + "]");
+                console.log("Intercept = " + output.intercept + ", coefficients = " + output.coefficients);
                 drawRegressionLine(output.xIntercept, output.yIntercept);
                 
                 testResults["effect-size"] = output.rSquared;
-                testResults["method"] = "Linear Regression Model";
-                testResults["equation"] = causalVariable + " = " + output.yIntercept + " x " + predictorVariable + " + " + output.xIntercept;
-                testResults["intercept"] = output.xIntercept;
-                testResults["slope"] = output.yIntercept;
+                testResults["method"] = "Multiple Regression";
+                testResults["equation"] = "TBD";
+                testResults["intercept"] = output.intercept;
                 
-                displayRegressionResults();
+//                 displayRegressionResults();
         
       }).fail(function(){
           alert("Failure: " + req.responseText);

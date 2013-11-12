@@ -206,8 +206,19 @@ function OnMouseDown(e)
             resetSVGCanvas();
             drawFullScreenButton();
             
+            var predictorVariables = [];
+            var causalVariable = choice;
             
-            makeScatterplotMatrixForMultipleRegression(choice);
+            for(var i=0; i<currentVariableSelection.length; i++)
+            {
+                if(currentVariableSelection[i] != causalVariable)
+                {
+                    predictorVariables.push(currentVariableSelection[i]);
+                }
+            }
+            
+            performMultipleRegression(causalVariable, predictorVariables)
+            makeScatterplotMatrixForMultipleRegression(causalVariable);
         }
     }
     else if((e.button == 1 && window.event != null || e.button == 0) && target.id == "regressionLine")
