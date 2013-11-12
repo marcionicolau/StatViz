@@ -107,3 +107,34 @@ function getStandardDeviation(values)
     
     return Math.sqrt(SS/values.length);
 }
+function sumOf(values)
+{
+    var sum = 0;
+    
+    for(var i=0; i<values.length; i++)
+    {
+        sum += values[i];
+    }
+    
+    return sum;
+}
+
+function getPearsonCorrelation(X, Y)
+{
+    var XY = [];
+    var XS = [];
+    var YS = [];
+    
+    for(var i=0; i<X.length; i++)
+    {
+        XY[i] = X[i].Y[i];
+        XS[i] = X[i]*X[i];
+        YS[i] = Y[i]*Y[i];
+    }
+    
+    var numerator = X.length*sumOf(XY) - sumOf(X)*sumOf(Y);
+    var denominator = sqrt((n*sumOf(XS) - sumOf(X)*sumOf(X))*(n*sumOf(YS) - sumOf(Y)*sumOf(Y)));
+    var r = numerator/denominator;
+    
+    return r;
+}

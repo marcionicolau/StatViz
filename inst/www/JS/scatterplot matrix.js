@@ -68,6 +68,8 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     var dataX = variables[variableX]["dataset"];
     var dataY = variables[variableY]["dataset"];
     
+    console.log("r(" + variableX + "," + variableY + ") = " + getPearsonCorrelation(dataX, dataY));
+    
     var uniqueDataX = dataX.unique();
     var uniqueDataY = dataY.unique();  
 
