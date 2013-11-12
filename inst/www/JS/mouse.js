@@ -574,13 +574,22 @@ function OnMouseOver(e)
         var canvas = d3.select("#svgCanvas");
         
         //t
-        var mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
-        var mouseY = toModifiedViewBoxForRegressionLineYCoordinate(e.pageY);
+//         var mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
+//         var mouseY = toModifiedViewBoxForRegressionLineYCoordinate(e.pageY);
+
+        var mouseX = e.pageX - (width - canvasWidth);
+        var mouseY = e.pageY;
         
         var slope = ((canvasHeight - regressionLine.attr("y2")) - (canvasHeight - regressionLine.attr("y1")))/(regressionLine.attr("x2") - regressionLine.attr("x1"));
         console.log("intercept=" + intercept + "\nslope=" + slope);
         
-        mouseY = canvasHeight - (toX(mouseX)*slope + intercept);
+//         mouseY = canvasHeight - (mouseX*slope + intercept);
+        
+        canvas.append("circle")
+                .attr("cx", toX(mouseX))
+                .attr("cy", toY(mouseY))
+                .attr("radius", "5px")
+                .attr("fill", "blue");
         
 //         canvas.append("line")
 //                 .attr("x1", toX(0))
