@@ -744,10 +744,10 @@ function performTwoWayANOVA(dependentVariable, independentVariableA, independent
 function performOneWayRepeatedMeasuresANOVA(dependentVariable, independentVariable)
 {
     var req = opencpu.r_fun_json("performOneWayRepeatedMeasuresANOVA", {
-                    dataset: dataset,
                     dependentVariable: dependentVariable,
                     independentVariable: independentVariable,
-                    participantVariable: participants
+                    participantVariable: participants,
+                    dataset: dataset
                   }, function(output) {                                                   
                   
                   console.log("\t\t Repeated-measures ANOVA for (" + dependentVariable + " ~ " + independentVariable + " + Error(" + participants + "/" + independentVariable + ")");
