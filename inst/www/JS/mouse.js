@@ -575,12 +575,12 @@ function OnMouseOver(e)
         var mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
         var mouseY = toModifiedViewBoxForRegressionLineYCoordinate(e.pageY);
         
-        var slopeOfRegressionLine = (regressionLine.attr("y2") - regressionLine.attr("y1"))/(regressionLine.attr("x2") - regressionLine.attr("x1"));
-    
-         
-         
-        mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
-        mouseY = toModifiedViewBoxForRegressionLineYCoordinate(parseFloat(slopeOfRegressionLine*((e.pageX - (width - canvasWidth)))) + parseFloat(interceptCircle.attr("cy")));
+      //   var slopeOfRegressionLine = (regressionLine.attr("y2") - regressionLine.attr("y1"))/(regressionLine.attr("x2") - regressionLine.attr("x1"));
+//     
+//          
+//          
+//         mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
+//         mouseY = toModifiedViewBoxForRegressionLineYCoordinate(parseFloat(slopeOfRegressionLine*((e.pageX - (width - canvasWidth)))) + parseFloat(interceptCircle.attr("cy")));
         
         canvas.append("circle")
                 .attr("cx", mouseX)
