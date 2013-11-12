@@ -587,12 +587,14 @@ function OnMouseOver(e)
                 .attr("y2", toY(slope*canvasWidth))
                 .attr("stroke", "red");
         
-//         mouseY = slope*mouseX + intercept;
+//         mouseY = slope*mouseX + intercept;   
+        
+        console.log("BmouseX=" + mouseX +", mouseY=" + mouseY);
 
         mouseX = (mouseX*viewBoxWidthForRegressionLine/canvasWidth + viewBoxXForRegressionLine);
         mouseY = (mouseY*viewBoxHeightForRegressionLine/canvasHeight + viewBoxYForRegressionLine);
         
-        console.log("mouseX=" + mouseX +", mouseY=" + mouseY);
+        console.log("AmouseX=" + mouseX +", mouseY=" + mouseY);
         
         mouseY = viewBoxHeightForRegressionLine - mouseY;
         
