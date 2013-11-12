@@ -582,6 +582,8 @@ function OnMouseOver(e)
         var slopeOfRegressionLine = (regressionLine.attr("y2") - regressionLine.attr("y1"))/(regressionLine.attr("x2") - regressionLine.attr("x1"));
                 
         console.log("slope of the regression line = " + slopeOfRegressionLine);
+        console.log("intercept " + );
+        
         
         
         if(mouseX < toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
