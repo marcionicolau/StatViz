@@ -951,7 +951,7 @@ function getLinearModelCoefficients(causalVariable, predictorVariable)
                 testResults["intercept"] = output.xIntercept;
                 testResults["slope"] = output.yIntercept;
                 
-                displayRegressionResults();
+                displaySimpleRegressionResults();
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -989,7 +989,7 @@ function performMultipleRegression(causalVariable, predictorVariables)
                 
                 testResults["intercept"] = output.intercept;
                 
-                displayRegressionResults();
+                displayMultipleRegressionResults();
         
       }).fail(function(){
           alert("Failure: " + req.responseText);

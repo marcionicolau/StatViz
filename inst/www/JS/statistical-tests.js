@@ -463,7 +463,7 @@ function displayCorrelationResults()
  
 }
 
-function displayRegressionResults()
+function displaySimpleRegressionResults()
 {   
     var canvas = d3.select("#svgCanvas");
     
@@ -493,6 +493,43 @@ function displayRegressionResults()
     canvas.append("text")
             .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
             .attr("y", canvasHeight/2 - 2*significanceTestResultOffset)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "24px")
+            .attr("fill", "orange")
+            .text(testResults["effect-size"])
+            .attr("class", "significanceTest");
+ 
+}
+
+function displayMultipleRegressionResults()
+{   
+    var canvas = d3.select("#svgCanvas");
+    
+    
+    
+    canvas.append("text")
+            .attr("x", canvasWidth/2)
+            .attr("y", 3*(TOP+BOTTOM)/4 + significanceTestResultOffset)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "20px")
+            .attr("fill", "orange")
+            .text(testResults["method"])
+            .attr("class", "significanceTest");
+    
+    canvas.append("text")
+            .attr("x", canvasWidth/2)
+            .attr("y", 3*(TOP+BOTTOM)/4 + 2*significanceTestResultOffset)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "20px")
+            .attr("fill", "orange")
+            .text(testResults["equation"])
+            .attr("class", "significanceTest");
+    
+    
+    //Effect sizes
+    canvas.append("text")
+            .attr("x", canvasWidth/2)
+            .attr("y", 3*(TOP+BOTTOM)/4 - 2*significanceTestResultOffset)
             .attr("text-anchor", "middle")
             .attr("font-size", "24px")
             .attr("fill", "orange")

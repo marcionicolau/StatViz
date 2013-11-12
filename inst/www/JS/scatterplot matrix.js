@@ -102,7 +102,7 @@ function makeScatterplotMatrixForMultipleRegression(dependentVariable)
     {        
         for(var i=0; i<numberOfVariables; i++)
         {
-            makeScatterPlotAt(LEFT + i*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis), (TOP + BOTTOM)/4, (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), dependentVariable, predictorVariables[i], "true");             
+            makeScatterPlotAt(LEFT + i*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis), TOP, (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), dependentVariable, predictorVariables[i], "true");             
         }
     }
 }
