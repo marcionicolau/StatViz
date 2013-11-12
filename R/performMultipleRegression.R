@@ -26,7 +26,7 @@ performMultipleRegression <- function(causalVariable, predictorVariables, datase
     
     pretext = paste("c(",sep="");
     
-    for(i in length(predictorVariables))
+    for(i in 1:length(predictorVariables))
     {
         if(i != length(predictorVariables))
         {
