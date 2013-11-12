@@ -226,34 +226,26 @@ function OnMouseDown(e)
                 .attr("fill", "steelblue")
                 .attr("class", "regressionPrediction");        
         
-        canvas.append("text")
-                    .attr("x", canvasWidth/2)
-                    .attr("y", canvasHeight)
-                    .attr("font-size", "36px")
-                    .attr("fill", "blue")
-                    .text("e.pageX = " + e.pageX + ", e.pageY = " + e.pageY)
-                    .attr("id", "dummyText");
         
-        
-//         canvas.append("line")
-//                 .attr("x1", mouseX)
-//                 .attr("y1", mouseY)
-//                 .attr("x2", toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
-//                 .attr("y2", mouseY)
-//                 .attr("stroke", "purple")
-//                 .attr("stroke-dasharray", "5,5")
-//                 .attr("id", "x")
-//                 .attr("class", "LineToAxis");
-//                     
-//         canvas.append("line")
-//                 .attr("x1", mouseX)
-//                 .attr("y1", mouseY)
-//                 .attr("x2", mouseX)
-//                 .attr("y2", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset))
-//                 .attr("stroke", "purple")
-//                 .attr("stroke-dasharray", "5,5")
-//                 .attr("id", "y")
-//                 .attr("class", "LineToAxis");
+        canvas.append("line")
+                .attr("x1", mouseX)
+                .attr("y1", mouseY)
+                .attr("x2", toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
+                .attr("y2", mouseY)
+                .attr("stroke", "purple")
+                .attr("stroke-dasharray", "5,5")
+                .attr("id", "x")
+                .attr("class", "LineToAxis");
+                    
+        canvas.append("line")
+                .attr("x1", mouseX)
+                .attr("y1", mouseY)
+                .attr("x2", mouseX)
+                .attr("y2", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset))
+                .attr("stroke", "purple")
+                .attr("stroke-dasharray", "5,5")
+                .attr("id", "y")
+                .attr("class", "LineToAxis");
     }
     else
     {
@@ -302,37 +294,37 @@ function OnMouseMove(e)
         }
         if(_dragElement.id == "regressionLine")
         {
-            var regressionPoint = d3.select(".regressionPrediction");
-            
-            var xLine = d3.select("#x.lineToAxis");
-            var yLine = d3.select("#y.lineToAxis");
-            
-            var mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
-            var mouseY = toModifiedViewBoxForRegressionLineYCoordinate(e.pageY);
-            
-//             xLine.attr("x1", ((height - mouseY) + testResults["intercept"])/testResults["slope"])
-//                                  .attr("y1", mouseY)                                                 
-//                                  .attr("y2", mouseY);
-//                          
-//             mouseX = ((canvasHeight - mouseY) + testResults["intercept"])/testResults["slope"];
+//             var regressionPoint = d3.select(".regressionPrediction");
 //             
-//     
-//             yLine.attr("x1", mouseX)
-//                  .attr("y1", height - (testResults["slope"]*mouseX - testResults["intercept"]))
-//                  .attr("x2", mouseX);
-
-//             mouseY = toModifiedViewBoxForRegressionLineYCoordinate(testResults["slope"]*mouseX + testResults["intercept"]);
-            
-            mouseX = toModifiedViewBoxForRegressionLineXCoordinate(LEFT + getValue1(testResults["slope"]*(canvasHeight - mouseY) + testResults["intercept"], mins["X"], maxs["X"])*plotWidth);
-            
-            var canvas = d3.select("#svgCanvas");
-            
-            var dT = d3.select("#dummyText");
-            dT.text("X = " + mouseX + " , Y = " + mouseY);
-            
-            
-            regressionPoint.attr("cx", mouseX)
-                           .attr("cy", mouseY);
+//             var xLine = d3.select("#x.lineToAxis");
+//             var yLine = d3.select("#y.lineToAxis");
+//             
+//             var mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
+//             var mouseY = toModifiedViewBoxForRegressionLineYCoordinate(e.pageY);
+//             
+// //             xLine.attr("x1", ((height - mouseY) + testResults["intercept"])/testResults["slope"])
+// //                                  .attr("y1", mouseY)                                                 
+// //                                  .attr("y2", mouseY);
+// //                          
+// //             mouseX = ((canvasHeight - mouseY) + testResults["intercept"])/testResults["slope"];
+// //             
+// //     
+// //             yLine.attr("x1", mouseX)
+// //                  .attr("y1", height - (testResults["slope"]*mouseX - testResults["intercept"]))
+// //                  .attr("x2", mouseX);
+// 
+// //             mouseY = toModifiedViewBoxForRegressionLineYCoordinate(testResults["slope"]*mouseX + testResults["intercept"]);
+//             
+//             mouseX = toModifiedViewBoxForRegressionLineXCoordinate(LEFT + getValue1(testResults["slope"]*(canvasHeight - mouseY) + testResults["intercept"], mins["X"], maxs["X"])*plotWidth);
+//             
+//             var canvas = d3.select("#svgCanvas");
+//             
+//             var dT = d3.select("#dummyText");
+//             dT.text("X = " + mouseX + " , Y = " + mouseY);
+//             
+//             
+//             regressionPoint.attr("cx", mouseX)
+//                            .attr("cy", mouseY);
         }
         
     }
@@ -575,6 +567,39 @@ function OnMouseOver(e)
     {
         var regressionLine = d3.select("#regressionLine");
         regressionLine.attr("cursor", "pointer");   
+        
+        var canvas = d3.select("#svgCanvas");
+        
+        var mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
+        var mouseY = toModifiedViewBoxForRegressionLineYCoordinate(e.pageY);
+        
+        canvas.append("circle")
+                .attr("cx", mouseX)
+                .attr("cy", mouseY)
+                .attr("r", "7px")
+                .attr("fill", "steelblue")
+                .attr("class", "regressionPrediction");        
+        
+        
+        canvas.append("line")
+                .attr("x1", mouseX)
+                .attr("y1", mouseY)
+                .attr("x2", toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
+                .attr("y2", mouseY)
+                .attr("stroke", "purple")
+                .attr("stroke-dasharray", "5,5")
+                .attr("id", "x")
+                .attr("class", "LineToAxis");
+                    
+        canvas.append("line")
+                .attr("x1", mouseX)
+                .attr("y1", mouseY)
+                .attr("x2", mouseX)
+                .attr("y2", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset))
+                .attr("stroke", "purple")
+                .attr("stroke-dasharray", "5,5")
+                .attr("id", "y")
+                .attr("class", "LineToAxis");
     }
     else if(target.className.baseVal == "causalVariable")
     {
