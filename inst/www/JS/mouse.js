@@ -578,16 +578,22 @@ function OnMouseOver(e)
         intercept = getNormalYAxisCoordinateFromScaledViewBoxCoordinate(intercept);
         slope = (getNormalYAxisCoordinateFromScaledViewBoxCoordinate(regressionLine.attr("y2")) - getNormalYAxisCoordinateFromScaledViewBoxCoordinate(regressionLine.attr("y1")))/(getNormalXAxisCoordinateFromScaledViewBoxCoordinate(regressionLine.attr("x2")) - getNormalXAxisCoordinateFromScaledViewBoxCoordinate(regressionLine.attr("x1")));
         
-        //we now have everything in actual x,y terms
-        
-        mouseY = slope*mouseX + intercept;
+        console.log("m=" + slope + "; intercept=" + intercept);
         
         canvas.append("line")
-                .attr("x1", toX(mouseX))
-                .attr("y1", toY(mouseY))
-                .attr("x2", toX(0))
-                .attr("y2", toY(mouseY))
-                .attr("stroke", "green");
+                .attr("x1", toX(0))
+                .attr("y1", toY(0))
+                .attr("x2", toX(canvasWidth))
+                .attr("y2", toY(slope*canvasWidth))
+                .attr("stroke", "red");
+        
+//         mouseY = slope*mouseX + intercept;
+        
+        canvas.append("circle")
+                .attr("cx", toX(mouseY))
+                .attr("cy", toY(mouseY))
+                .attr("r", "10px")
+                .attr("fill", "green");
                 
     
     }
