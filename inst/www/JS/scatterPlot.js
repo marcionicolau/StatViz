@@ -239,7 +239,7 @@ function drawRegressionLine(intercept, slope)
             .attr("cy", BOTTOM - getValue1(0, mins["Y"], maxs["Y"])*plotHeight)
             .attr("r", "10px")
             .attr("fill", "red")
-            .attr("id", "interceptPoint")
+            .attr("id", "interceptCircle")
             .attr("class", "regressionLines");
     
     canvas.append("line")

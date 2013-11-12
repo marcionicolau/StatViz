@@ -568,6 +568,8 @@ function OnMouseOver(e)
         var regressionLine = d3.select("#regressionLine");
         regressionLine.attr("cursor", "pointer");   
         
+        var interceptCircle = d3.select("#interceptCircle");
+        
         var canvas = d3.select("#svgCanvas");
         
         var mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
@@ -582,8 +584,9 @@ function OnMouseOver(e)
         var slopeOfRegressionLine = (regressionLine.attr("y2") - regressionLine.attr("y1"))/(regressionLine.attr("x2") - regressionLine.attr("x1"));
                 
         console.log("slope of the regression line = " + slopeOfRegressionLine);
-        // console.log("intercept " + );
+        console.log("intercept " + interceptCircle.attr("cy"));
         
+        mouseX = mouseY*slopeOfRegressionLine + interceptCircle.attr("cy");        
         
         
         if(mouseX < toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
