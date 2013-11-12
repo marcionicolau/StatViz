@@ -130,7 +130,7 @@ function getPearsonCorrelation(X, Y)
     
     for(var i=0; i<X.length; i++)
     {
-        XY[i] = X[i].Y[i];
+        XY[i] = X[i]*Y[i];
         XS[i] = X[i]*X[i];
         YS[i] = Y[i]*Y[i];
     }
