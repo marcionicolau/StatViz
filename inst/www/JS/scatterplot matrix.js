@@ -107,7 +107,7 @@ function makeScatterplotMatrixForMultipleRegression(dependentVariable)
     }
 }
 
-function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, variableColor, noColor)
+function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, noColor)
 {
     // make sure that all preprocessing is done in the makeScatterPlotMatrix() function
     var canvas = d3.select("#svgCanvas");
