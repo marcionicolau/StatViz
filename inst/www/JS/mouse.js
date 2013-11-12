@@ -591,7 +591,7 @@ function OnMouseOver(e)
         mouseX = (mouseX*viewBoxWidthForRegressionLine/canvasWidth + viewBoxXForRegressionLine);
         mouseY = (mouseY*viewBoxHeightForRegressionLine/canvasHeight + viewBoxYForRegressionLine);
         
-        mouseY = getNormalYAxisCoordinateFromScaledViewBoxCoordinate(mouseX*slope + intercept);
+        mouseY = viewBoxHeightForRegressionLine - (mouseX*slope + intercept);
         
         canvas.append("circle")
                 .attr("cx", mouseX)
