@@ -249,7 +249,17 @@ function drawRegressionLine(intercept, slope)
             .attr("y2", y2)
             .attr("stroke", "magenta")
             .attr("stroke-width", "10px")
-            .attr("id", "regressionLine");            
+            .attr("id", "regressionLine");
+            
+    canvas.append("line")
+            .attr("x1", x1)
+            .attr("y1", y1)
+            .attr("x2", x2)
+            .attr("y2", y2)
+            .attr("stroke", "transparent")
+            .attr("stroke-width", "30px")
+            .attr("id", "regressionLine");
+            
 }
 
 
