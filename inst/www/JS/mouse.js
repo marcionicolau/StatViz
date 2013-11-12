@@ -581,10 +581,10 @@ function OnMouseOver(e)
         console.log("intercept=" + intercept + "\nslope=" + slope);
         
         canvas.append("line")
-                .attr("x1", 0)
-                .attr("y1", canvasHeight - 0)
-                .attr("x2", canvasWidth)
-                .attr("y2", canvasHeight - slope*canvasWidth)
+                .attr("x1", toModifiedViewBoxForRegressionLineXCoordinate(0))
+                .attr("y1", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight - 0))
+                .attr("x2", toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth))
+                .attr("y2", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight - slope*canvasWidth))
                 .attr("stroke", "red")
                 .attr("stroke-width", "3px");
          
