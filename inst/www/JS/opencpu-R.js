@@ -104,6 +104,7 @@ function getData(dataset, variableName, level)
         if(variableName == variableNames[variableNames.length - 1])
         {
             console.log("complete");
+            clearInterval(loadingDataAnimation);
         }
     
         

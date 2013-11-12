@@ -86,3 +86,4 @@ var densityCurveColors = new Object();
     densityCurveColors["notnormal"] = "red";
     
 //animations B-)
+var loadingDataAnimation;

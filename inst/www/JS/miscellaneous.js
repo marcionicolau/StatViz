@@ -3,8 +3,11 @@ function initiateLoadingDatasetAnimation()
     var canvas = d3.select("#svgCanvas");
     
             
-    loadingDatasetAnimation = setInterval(function()
+    loadingDataAnimation = setInterval(function()
     {
+        if(document.getElementsByClassName("loadingAnimation").length > 0)
+            removeElementsByClassName("loadingAnimation");
+            
         var t = canvas.append("text")
             .attr("x", canvasWidth/2)
             .attr("y", canvasHeight/2)
