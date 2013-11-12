@@ -9,24 +9,24 @@ findEffect <- function(dependentVariable, independentVariables, dataset)
     {
         if(i != length(independentVariables))
         {
-            pretext = paste(pretext, independentVariable[i], " + ", sep="");
+            pretext = paste(pretext, independentVariables[i], " + ", sep="");
         }
         else
         {
-            pretext = paste(pretext, independentVariable[i], sep="");
+            pretext = paste(pretext, independentVariables[i], sep="");
         }
     }
     
     if(length(independentVariables) == 2)
     {
-        pretext = paste(pretext," + ", independentVariable[1], "*", independentVariable[2], ",data = table)",sep="");
+        pretext = paste(pretext," + ", independentVariables[1], "*", independentVariables[2], ",data = table)",sep="");
     }
     
     model <- eval(parse(text = pretext));
     
     if(length(independentVariables) == 2)
     {
-        result <- eval(parse(text = paste("effect(term=",independentVariable[1],":",independentVariable[2],", model)",sep="")));
+        result <- eval(parse(text = paste("effect(term=",independentVariables[1],":",independentVariables[2],", model)",sep="")));
     }
     
     list(fit = result$fit);
