@@ -588,16 +588,22 @@ function OnMouseOver(e)
         console.log("e.pageX = " + e.pageX + ", e.pageY = " + e.pageY);
         
         canvas.append("circle")
-                .attr("cx", toX(mouseX))
-                .attr("cy", toY(mouseY))
-                .attr("r", "5px")
-                .attr("fill", "blue");
-                
-        canvas.append("circle")
-                .attr("cx", toX(0))
-                .attr("cy", toY(intercept))
-                .attr("r", "10px")
-                .attr("fill", "green");
+                .attr("cx", toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset)
+                .attr("cy", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset)
+                .attr("r", "20px")
+                .attr("fill", "red");
+        
+//         canvas.append("circle")
+//                 .attr("cx", toX(mouseX))
+//                 .attr("cy", toY(mouseY))
+//                 .attr("r", "5px")
+//                 .attr("fill", "blue");
+//                 
+//         canvas.append("circle")
+//                 .attr("cx", toX(0))
+//                 .attr("cy", toY(intercept))
+//                 .attr("r", "10px")
+//                 .attr("fill", "green");
         
 //         canvas.append("line")
 //                 .attr("x1", toX(0))
@@ -731,6 +737,17 @@ function toY(y)
 {
     return toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight - y)
 }
+
+function toModifiedViewBoxForRegressionLineXCoordinate(value)
+{
+    return (value - (width - canvasWidth) + viewBoxXForRegressionLine*(canvasWidth/viewBoxWidthForRegressionLine))*(viewBoxWidthForRegressionLine/canvasWidth);
+}
+
+function toModifiedViewBoxForRegressionLineYCoordinate(value)
+{
+    return (value + viewBoxYForRegressionLine*(canvasHeight/viewBoxHeightForRegressionLine))*(viewBoxHeightForRegressionLine/canvasHeight)
+}
+
 
 function setup(e, target)
 {
