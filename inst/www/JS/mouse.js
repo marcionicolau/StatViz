@@ -578,7 +578,7 @@ function OnMouseOver(e)
 //         var mouseY = toModifiedViewBoxForRegressionLineYCoordinate(e.pageY);
 
         var mouseX = e.pageX - (width - canvasWidth);
-        var mouseY = e.pageY;
+        var mouseY = (canvasHeight - e.pageY);
         
         var slope = ((canvasHeight - regressionLine.attr("y2")) - (canvasHeight - regressionLine.attr("y1")))/(regressionLine.attr("x2") - regressionLine.attr("x1"));
         console.log("intercept=" + intercept + "\nslope=" + slope);
