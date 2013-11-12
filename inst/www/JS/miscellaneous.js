@@ -17,7 +17,7 @@ function initiateLoadingDatasetAnimation()
             .attr("id", "loadingData")
             .attr("class", "loadingAnimation");
         
-        t.transition().duration(700).attr("opacity", "0.3");
+        t.transition().duration(800).attr("opacity", "0.3");
     }, 800);
             
 }
