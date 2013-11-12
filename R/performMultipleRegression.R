@@ -34,7 +34,7 @@ performMultipleRegression <- function(causalVariable, predictorVariables, datase
         }
         else
         {
-            pretext = paste(pretext, model$coefficients[[i+1]],")"sep="");
+            pretext = paste(pretext, model$coefficients[[i+1]],")",sep="");
         }
     }
     coefficients = eval(parse(text = pretext));
