@@ -105,6 +105,7 @@ function getData(dataset, variableName, level)
         {
             console.log("complete");
             clearInterval(loadingDataAnimation);
+            removeElementsByClassName("loadingAnimations");
         }
     
         
