@@ -582,9 +582,9 @@ function OnMouseOver(e)
         
         canvas.append("line")
                 .attr("x1", toX(0))
-                .attr("y1", toY(0))
+                .attr("y1", toY(intercept))
                 .attr("x2", toX(canvasWidth))
-                .attr("y2", toY(slope*canvasWidth))
+                .attr("y2", toY(slope*canvasWidth + intercept))
                 .attr("stroke", "red");
         
 //         mouseY = slope*mouseX + intercept;
