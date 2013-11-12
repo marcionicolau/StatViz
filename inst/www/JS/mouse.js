@@ -584,7 +584,7 @@ function OnMouseOver(e)
                 .attr("x1", toModifiedViewBoxForRegressionLineXCoordinate((width - canvasWidth) + 0))
                 .attr("y1", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight - 0))
                 .attr("x2", toModifiedViewBoxForRegressionLineXCoordinate((width - canvasWidth) + canvasWidth))
-                .attr("y2", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight - slope*((width - canvasWidth) + 0))))
+                .attr("y2", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight - slope*((width - canvasWidth) + 0)))
                 .attr("stroke", "red")
                 .attr("stroke-width", "3px");
 
