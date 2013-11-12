@@ -582,9 +582,9 @@ function OnMouseOver(e)
         
         canvas.append("line")
                 .attr("x1", 0)
-                .attr("y1", 0)
+                .attr("y1", canvasHeight - 0)
                 .attr("x2", canvasWidth)
-                .attr("y2", slope*canvasWidth)
+                .attr("y2", canvasHeight - slope*canvasWidth)
                 .attr("stroke", "red")
                 .attr("stroke-width", "3px");
          
