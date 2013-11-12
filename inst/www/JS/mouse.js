@@ -302,7 +302,8 @@ function OnMouseMove(e)
 //                                  .attr("y1", mouseY)                                                 
 //                                  .attr("y2", mouseY);
                          
-            mouseX = ((height - mouseY) + testResults["intercept"])/testResults["slope"];
+            mouseX = ((canvasHeight - mouseY) + testResults["intercept"])/testResults["slope"];
+            mouseY = testResults["slope"]*mouseX + testResults["intercept"];
     
 //             yLine.attr("x1", mouseX)
 //                  .attr("y1", height - (0.98*mouseX - 124))
