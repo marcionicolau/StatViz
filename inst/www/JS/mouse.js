@@ -583,7 +583,7 @@ function OnMouseOver(e)
         var slope = ((canvasHeight - regressionLine.attr("y2")) - (canvasHeight - regressionLine.attr("y1")))/(regressionLine.attr("x2") - regressionLine.attr("x1"));
         console.log("intercept=" + intercept + "\nslope=" + slope);
         
-//         mouseY = canvasHeight - (mouseX*slope + intercept);
+        mouseY = canvasHeight - (slope*mouseX + intercept);
         
         console.log("e.pageX = " + e.pageX + ", e.pageY = " + e.pageY);
         
