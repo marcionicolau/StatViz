@@ -35,9 +35,7 @@ function makeScatterplotMatrix()
     var TOP = canvasHeight/2 - plotHeight/2;
     
     if(numberOfVariables >= 2)
-    {
-        // we'll do just this case for now...
-        
+    {        
         for(var i=0; i<numberOfVariables; i++)
         {
             for(var j=0; j<numberOfVariables; j++)
@@ -55,6 +53,8 @@ function makeScatterplotMatrix()
                 }
             }
         }
+        
+        alertPossibleRegressionModel();
     }
 }
 
