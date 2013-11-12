@@ -340,7 +340,7 @@ function performHomoscedasticityTestNormal(dependent, independent)
                             }
                             else
                             {
-                                performRepeatedMeasuresANOVA(variableList["dependent"][0], variableList["independent"][0]);
+                                performOneWayRepeatedMeasuresANOVA(variableList["dependent"][0], variableList["independent"][0]);
                             }                                        
                         }
                     }
@@ -741,9 +741,9 @@ function performTwoWayANOVA(dependentVariable, independentVariableA, independent
     });
 }
 
-function performRepeatedMeasuresANOVA(dependentVariable, independentVariable)
+function performOneWayRepeatedMeasuresANOVA(dependentVariable, independentVariable)
 {
-    var req = opencpu.r_fun_json("performRepeatedMeasuresANOVA", {
+    var req = opencpu.r_fun_json("performOneWayRepeatedMeasuresANOVA", {
                     dataset: dataset,
                     dependentVariable: dependentVariable,
                     independentVariable: independentVariable,
