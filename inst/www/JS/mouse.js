@@ -313,7 +313,7 @@ function OnMouseMove(e)
 //                  .attr("y1", height - (testResults["slope"]*mouseX - testResults["intercept"]))
 //                  .attr("x2", mouseX);
 
-            mouseY = toModifiedViewBoxForRegressionLineYCoordinate(testResults["slope"]*e.pageX + testResults["intercept"]);
+            mouseY = toModifiedViewBoxForRegressionLineYCoordinate(testResults["slope"]*mouseX + testResults["intercept"]);
             
             regressionPoint.attr("cx", mouseX)
                            .attr("cy", mouseY);
