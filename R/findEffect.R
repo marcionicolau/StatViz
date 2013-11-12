@@ -1,5 +1,7 @@
 findEffect <- function(dependentVariable, independentVariables, dataset)
 {
+    install.packages("effects");
+    library(effects);
     table <- as.data.frame(dataset);
     independentVariables = c(independentVariables);
     
