@@ -264,6 +264,7 @@ function OnMouseMove(e)
         }
         if(_dragElement.id == "regressionLine")
         {
+            console.log("hi");
             var point = d3.select(".regressionPrediction");
             
             point.attr("cx", (e.pageX - (width - canvasWidth) + viewBoxXForRegressionLine*(canvasWidth/viewBoxWidthForRegressionLine))*(viewBoxWidthForRegressionLine/canvasWidth))
