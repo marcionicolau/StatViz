@@ -240,7 +240,7 @@ function drawRegressionLine(intercept, slope)
             .attr("x2", x2)
             .attr("y2", y2)
             .attr("stroke", "magenta")
-            .attr("stroke-width", "3px")
+            .attr("stroke-width", "5px")
             .attr("id", "regressionLine");
             
 }

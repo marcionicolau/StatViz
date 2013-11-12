@@ -205,6 +205,19 @@ function OnMouseDown(e)
         }, 300);        
     
     }
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.id == "regressionLine")
+    {
+        //TODO: fade out the datapoints
+        
+        var canvas = d3.select("#svgCanvas");
+        
+        canvas.append("circle")
+                .attr("cx", (e.pageX - (width - canvasWidth) + viewBoxXForRegressionLine*(canvasWidth/viewBoxWidthForRegressionLine))*(viewBoxWidthForRegressionLine/canvasWidth))
+                .attr("cy", (e.pageY + viewBoxYForRegressionLine*(canvasHeight/viewBoxHeightForRegressionLine))*(viewBoxHeightForRegressionLine/canvasHeight))
+                .attr("r", "7px")
+                .attr("fill", "steelblue")
+                .attr("class", "regressionPrediction");        
+    }
     else
     {
         //the user clicked outside
@@ -249,8 +262,16 @@ function OnMouseMove(e)
                         .attr("y2", (e.pageY/height) * canvasHeight);
             }
         }
+        if(_dragElement.id == "regressionLine")
+        {
+            var point = d3.select(".regressionPrediction");
+            
+            point.attr("cx", (e.pageX - (width - canvasWidth) + viewBoxXForRegressionLine*(canvasWidth/viewBoxWidthForRegressionLine))*(viewBoxWidthForRegressionLine/canvasWidth))
+                 .attr("cy", (e.pageY + viewBoxYForRegressionLine*(canvasHeight/viewBoxHeightForRegressionLine))*(viewBoxHeightForRegressionLine/canvasHeight));
+        }
         
     }
+
 }
 
 function OnMouseOver(e)			
@@ -488,7 +509,8 @@ function OnMouseOver(e)
     else if(target.id == "regressionLine")
     {
         var regressionLine = d3.select("#regressionLine");
-        
+        regressionLine.attr("cursor", "pointer");   
+    
         var canvas = d3.select("#svgCanvas");
         
         canvas.append("circle")
