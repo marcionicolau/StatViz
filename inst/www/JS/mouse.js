@@ -510,15 +510,6 @@ function OnMouseOver(e)
     {
         var regressionLine = d3.select("#regressionLine");
         regressionLine.attr("cursor", "pointer");   
-    
-        var canvas = d3.select("#svgCanvas");
-        
-        canvas.append("circle")
-                .attr("cx", (e.pageX - (width - canvasWidth) + viewBoxXForRegressionLine*(canvasWidth/viewBoxWidthForRegressionLine))*(viewBoxWidthForRegressionLine/canvasWidth))
-                .attr("cy", (e.pageY + viewBoxYForRegressionLine*(canvasHeight/viewBoxHeightForRegressionLine))*(viewBoxHeightForRegressionLine/canvasHeight))
-                .attr("r", "7px")
-                .attr("fill", "cyan")
-                .attr("class", "regressionPrediction");
     }
     else if(target.className.baseVal == "causalVariable")
     {
@@ -578,7 +569,7 @@ function OnMouseOut(e)
     {
         removeElementsByClassName("hover");
     }
-    else if(target.id == "regressionLine")
+    else if((target.id == "regressionLine") && (document.getElementsByClassName("regressionPrediction").length == 0))
     {
         removeElementsByClassName("regressionPrediction");
     }
