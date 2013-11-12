@@ -581,16 +581,16 @@ function OnMouseOver(e)
         console.log("intercept=" + intercept + "\nslope=" + slope);
         
         canvas.append("line")
-                .attr("x1", toModifiedViewBoxForRegressionLineXCoordinate((width - canvasWidth) + 0))
-                .attr("y1", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight - 0))
-                .attr("x2", toModifiedViewBoxForRegressionLineXCoordinate((width - canvasWidth) + canvasWidth))
-                .attr("y2", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight - (slope*((width - canvasWidth) + 0)) + (canvasHeight - 0)))
+                .attr("x1", toX(0))
+                .attr("y1", toY(0))
+                .attr("x2", toX(canvasWidth))
+                .attr("y2", toY(slope*canvasWidth))
                 .attr("stroke", "red")
                 .attr("stroke-width", "3px");
 
         canvas.append("circle")
-                .attr("cx", toModifiedViewBoxForRegressionLineXCoordinate(0 + (width - canvasWidth)))
-                .attr("cy", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight - 0))
+                .attr("cx", toX(0))
+                .attr("cy", toY(0))
                 .attr("r", "20px")
                 .attr("fill", "blue");
          
@@ -702,7 +702,16 @@ function OnMouseOut(e)
     }
     
 }	
-	
+
+function toX(x)
+{
+    return toModifiedViewBoxForRegressionLineXCoordinate(x + (width - canvasWidth))
+}
+
+function toY(y)
+{
+    return toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight - y)
+}
 
 function setup(e, target)
 {
