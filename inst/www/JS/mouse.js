@@ -580,13 +580,19 @@ function OnMouseOver(e)
         var slope = ((canvasHeight - regressionLine.attr("y2")) - (canvasHeight - regressionLine.attr("y1")))/(regressionLine.attr("x2") - regressionLine.attr("x1"));
         console.log("intercept=" + intercept + "\nslope=" + slope);
         
-        canvas.append("line")
-                .attr("x1", toModifiedViewBoxForRegressionLineXCoordinate(0))
-                .attr("y1", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight - 0))
-                .attr("x2", toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth))
-                .attr("y2", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight - slope*canvasWidth))
-                .attr("stroke", "red")
-                .attr("stroke-width", "3px");
+//         canvas.append("line")
+//                 .attr("x1", toModifiedViewBoxForRegressionLineXCoordinate(0))
+//                 .attr("y1", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight - 0))
+//                 .attr("x2", toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth))
+//                 .attr("y2", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight - slope*canvasWidth))
+//                 .attr("stroke", "red")
+//                 .attr("stroke-width", "3px");
+
+        canvas.append("circle")
+                .attr("cx", toModifiedViewBoxForRegressionLineXCoordinate(0))
+                .attr("cy", toModifiedViewBoxForRegressionLineYCoordinate(0))
+                .attr("r", "20px")
+                .attr("fill", "blue");
          
         mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
         // mouseY = ;
