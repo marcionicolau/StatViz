@@ -948,6 +948,8 @@ function getLinearModelCoefficients(causalVariable, predictorVariable)
                 testResults["effect-size"] = output.rSquared;
                 testResults["method"] = "Linear Regression Model";
                 testResults["equation"] = causalVariable + " = " + output.yIntercept + " x " + predictorVariable + " + " + output.xIntercept;
+                testResults["intercept"] = output.xIntercept;
+                testResults["slope"] = output.yIntercept;
                 
                 displayRegressionResults();
         

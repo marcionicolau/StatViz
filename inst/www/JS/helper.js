@@ -626,6 +626,17 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
                 .attr("class", "causalVariable");
     }
 }
+
+function toModifiedViewBoxForRegressionLineXCoordinate(value)
+{
+    return (value - (width - canvasWidth) + viewBoxXForRegressionLine*(canvasWidth/viewBoxWidthForRegressionLine))*(viewBoxWidthForRegressionLine/canvasWidth);
+}
+
+function toModifiedViewBoxForRegressionLineYCoordinate(value)
+{
+    return (value + viewBoxYForRegressionLine*(canvasHeight/viewBoxHeightForRegressionLine))*(viewBoxHeightForRegressionLine/canvasHeight)
+}
+
             
 
       
