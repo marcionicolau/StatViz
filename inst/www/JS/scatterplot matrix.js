@@ -69,13 +69,13 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     var dataY = variables[variableY]["dataset"];
     
     var r = getPearsonCorrelation(dataX, dataY);
-    var BGColor = "rgba(0, 255, 0, " + 0.75*Math.abs(r) + ")";
+    var BGColor = "rgba(0, 255, 0, " + 0.6*Math.abs(r) + ")";
     
     canvas.append("rect")
             .attr("x", x)
             .attr("y", y-shortHeight)
-            .attr("rx", "2px")
-            .attr("ry", "2px")
+            .attr("rx", "5px")
+            .attr("ry", "5px")
             .attr("width", shortWidth)
             .attr("height", shortHeight)
             .attr("fill", BGColor);
