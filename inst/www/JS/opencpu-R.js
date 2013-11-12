@@ -741,7 +741,7 @@ function performRepeatedMeasuresANOVA(dependentVariable, independentVariable)
                     participantVariable: "subject"
                   }, function(output) {                                                   
                   
-                  console.log("\t\t Repeated-measures ANOVA for (" + dependentVariable + " ~ " + independentVariableA + " + " + independentVariableB + " " + independentVariableA + "*" + independentVariableB +")");
+                  console.log("\t\t Repeated-measures ANOVA for (" + dependentVariable + " ~ " + independentVariable + " + " + independentVariableB + " " + independentVariableA + "*" + independentVariableB +")");
                   console.log("\t\t\t F = " + output.F);
                   console.log("\t\t\t method used = Two-way ANOVA"); //todo
                   console.log("\t\t\t DF = " + output.numDF + "/" + output.denomDF);
