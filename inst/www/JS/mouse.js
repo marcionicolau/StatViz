@@ -579,7 +579,19 @@ function OnMouseOver(e)
                 .attr("r", "7px")
                 .attr("fill", "steelblue")
                 .attr("class", "regressionPrediction");        
+        var slopeOfRegressionLine = (regressionLine.attr("y2") - regressionLine.attr("y1"))/(regressionLine.attr("x2") - regressionLine.attr("x1"));
+                
+        console.log("slope of the regression line = " + slopeOfRegressionLine);
         
+        
+        if(mouseX < toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
+        {
+            console.log("left of x-axis");
+        }
+        if(mouseY > toModifiedViewBoxForRegressionLineXCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset))
+        {
+            console.log("bottom of y-axis");
+        }
         
         canvas.append("line")
                 .attr("x1", mouseX)
