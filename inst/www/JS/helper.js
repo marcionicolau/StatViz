@@ -627,6 +627,24 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
     }
 }
 
+function setVariableTypes()
+{
+    for(var i=0; i<variableNames.length; i++)
+    {
+        variableTypes[variableNames[i]] = variablesInDatasetType[i];
+    }
+    
+    for(var i=0; i<variableNames.length; i++)
+    {
+        if(variableTypes[variableNames[i]] == "independent")
+        {
+            var variableSelectionButton = d3.selectAll("#" + variableNames[i] + ".variableSelectionButton");
+            variableSelectionButton.attr("fill", panelColors["active"]);
+            splitTheData();
+        }
+    }
+}
+
             
 
       
