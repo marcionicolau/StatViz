@@ -633,13 +633,13 @@ function setVariableTypes()
     {
         variableTypes[variableNames[i]] = variablesInDatasetType[i];
     }
-    console.dir(variableNames);
+    console.dir(variableTypes);
     
     for(var i=0; i<variableNames.length; i++)
     {
         if(variableTypes[variableNames[i]] == "independent")
         {
-            var variableSelectionButton = d3.selectAll("#" + variableNames[i] + ".variableSelectionButton");
+            var variableSelectionButton = d3.select("#" + variableNames[i] + ".variableSelectionButton");
             variableSelectionButton.attr("fill", panelColors["active"]);
             splitTheData();
         }
