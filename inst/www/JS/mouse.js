@@ -586,7 +586,9 @@ function OnMouseOver(e)
         console.log("slope of the regression line = " + slopeOfRegressionLine);
         console.log("intercept " + interceptCircle.attr("cy"));
         
-        mouseY = mouseX*slopeOfRegressionLine + interceptCircle.attr("cy");        
+        mouseX = (canvasHeight-mouseY)*slopeOfRegressionLine + interceptCircle.attr("cy");
+        mouseY = (mouseX - interceptCircle.attr("cy"))/slopeOfRegressionLine;
+        
         
         console.log("mouseX = " + mouseX + " , mouseY = " + mouseY);
         
