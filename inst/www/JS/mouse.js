@@ -588,6 +588,8 @@ function OnMouseOver(e)
         
         mouseX = mouseY*slopeOfRegressionLine + interceptCircle.attr("cy");        
         
+        console.log("mouseX = " + mouseX + " , mouseY = " + mouseY);
+        
         
         if(mouseX < toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
         {
