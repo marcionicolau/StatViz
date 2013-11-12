@@ -63,7 +63,16 @@ function makeScatterplotMatrixForMultipleRegression(dependentVariable)
     var variableList = sort(currentVariableSelection);
     
     //any number of dependent variables -> should work
-    var numberOfVariables = variables["dependent"].length;
+    var predictorVariables = [];
+    for(var i=0; i<currentVariableSelection.length; i++)
+    {
+        if(currentVariableSelection[i] != dependentVariable)
+        {
+            predictorVariables.push(currentVariableSelection[i]);
+        }
+    }
+    
+    var numberOfVariables = currentVariableSelection.length - 1;
     
     // Scatterplot matrix
     shortAxesOffset = axesOffset/numberOfVariables;
@@ -93,7 +102,7 @@ function makeScatterplotMatrixForMultipleRegression(dependentVariable)
     {        
         for(var i=0; i<numberOfVariables; i++)
         {
-            makeScatterPlotAt(LEFT + i*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis), TOP, (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), dependentVariable, currentVariableSelection[i]);             
+            makeScatterPlotAt(LEFT + i*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis), TOP, (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), dependentVariable, predictorVariables[i]);             
         }
     }
 }
