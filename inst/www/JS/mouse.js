@@ -571,30 +571,22 @@ function OnMouseOver(e)
         
         var interceptCircle = d3.select("#interceptCircle");
         var intercept = interceptCircle.attr("cy");
+        var slope;
+        var regressionLine = d3.select("#regressionLine");
         
-        intercept = viewBoxHeightForRegressionLine - (intercept*viewBoxHeightForRegressionLine/canvasHeight - 200);
+        //get intercept and slope
+        intercept = getNormalYAxisCoordinateFromScaledViewBoxCoordinate(intercept);
+        slope = (getNormalYAxisCoordinateFromScaledViewBoxCoordinate(regressionLine.attr("y2")) - getNormalYAxisCoordinateFromScaledViewBoxCoordinate(regressionLine.attr("y1")))/(getNormalXAxisCoordinateFromScaledViewBoxCoordinate(regressionLine.attr("x2")) - getNormalXAxisCoordinateFromScaledViewBoxCoordinate(regressionLine.attr("x1")));
         
-        canvas.append("circle")
-                .attr("cx", toX(canvasWidth/2))
-                .attr("cy", toY(intercept))
-                .attr("r", "10px")
-                .attr("fill", "green");
+        console.log("m=" + slope + "; intercept=" + intercept);
         
-        var canvas = d3.select("#svgCanvas");
-        
-        if(document.getElementsByClassName("dummyText").length == 0)
-        {
-            canvas.append("text")
-                .attr("x", canvasWidth/2)
-                .attr("y", canvasHeight + 4*axesOffset)
-                .attr("text-anchor", "middle")
-                .attr("fill", "red")
-                .attr("font-size", "30px")
-                .text(mouseX + ", " + mouseY)
-                .attr("class", "dummyText");
-        }
-        
-        var text = d3.select(".dummyText").text(mouseX + ", " + mouseY);
+        canvas.append("line")
+                .attr("x1", toX(0))
+                .attr("y1", toY(0))
+                .attr("x2", toX(canvasWidth))
+                .attr("y2", toY(slope*canvasWidth))
+                .attr("stroke", "red");
+    
     }
     else if(target.className.baseVal == "causalVariable")
     {
@@ -680,6 +672,18 @@ function toModifiedViewBoxForRegressionLineXCoordinate(value)
 function toModifiedViewBoxForRegressionLineYCoordinate(value)
 {
     return (value + viewBoxYForRegressionLine*(canvasHeight/viewBoxHeightForRegressionLine))*(viewBoxHeightForRegressionLine/canvasHeight)
+}
+
+
+//Used to get the normal x,y coordinates from a scaled view box coordinate
+function getNormalXAxisCoordinateFromScaledViewBoxCoordinate(value)
+{
+    return (value*viewBoxWidthForRegressionLine/canvasWidth + viewBoxXForRegressionLine);
+}
+
+function getNormalYAxisCoordinateFromScaledViewBoxCoordinate(value)
+{
+    return viewBoxHeightForRegressionLine - (value*viewBoxHeightForRegressionLine/canvasHeight + viewBoxYForRegressionLine);
 }
 
 
