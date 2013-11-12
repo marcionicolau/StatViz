@@ -588,10 +588,17 @@ function OnMouseOver(e)
                 .attr("stroke", "red");
         
 //         mouseY = slope*mouseX + intercept;
+
+        mouseX = (mouseX*viewBoxWidthForRegressionLine/canvasWidth + viewBoxXForRegressionLine);
+        mouseY = (mouseY*viewBoxHeightForRegressionLine/canvasHeight + viewBoxYForRegressionLine);
+        
+        console.log("mouseX=" + mouseX +", mouseY=" + mouseY);
+        
+        mouseY = viewBoxHeightForRegressionLine - mouseY;
         
         canvas.append("circle")
-                .attr("cx", (mouseX*viewBoxWidthForRegressionLine/canvasWidth + viewBoxXForRegressionLine))
-                .attr("cy", (mouseY*viewBoxHeightForRegressionLine/canvasHeight + viewBoxYForRegressionLine))
+                .attr("cx", )
+                .attr("cy", )
                 .attr("r", "10px")
                 .attr("fill", "green");
                 
