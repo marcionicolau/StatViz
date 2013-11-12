@@ -585,7 +585,7 @@ function OnMouseOver(e)
         
 //         mouseY = canvasHeight - (mouseX*slope + intercept);
         
-        console.log("e.pageX = " + e.pagex + ", e.pageY = " + e.pageY);
+        console.log("e.pageX = " + e.pageX + ", e.pageY = " + e.pageY);
         
         canvas.append("circle")
                 .attr("cx", toX(mouseX))
@@ -621,34 +621,34 @@ function OnMouseOver(e)
 
         
         
-        if(mouseX < toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
-        {
-            console.log("left of x-axis");
-        }
-        if(mouseY > toModifiedViewBoxForRegressionLineXCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset))
-        {
-            console.log("bottom of y-axis");
-        }
-        
-        canvas.append("line")
-                .attr("x1", mouseX)
-                .attr("y1", mouseY)
-                .attr("x2", toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
-                .attr("y2", mouseY)
-                .attr("stroke", "purple")
-                .attr("stroke-dasharray", "5,5")
-                .attr("id", "x")
-                .attr("class", "lineToAxis");
-                    
-        canvas.append("line")
-                .attr("x1", mouseX)
-                .attr("y1", mouseY)
-                .attr("x2", mouseX)
-                .attr("y2", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset))
-                .attr("stroke", "purple")
-                .attr("stroke-dasharray", "5,5")
-                .attr("id", "y")
-                .attr("class", "lineToAxis");
+//         if(mouseX < toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
+//         {
+//             console.log("left of x-axis");
+//         }
+//         if(mouseY > toModifiedViewBoxForRegressionLineXCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset))
+//         {
+//             console.log("bottom of y-axis");
+//         }
+//         
+//         canvas.append("line")
+//                 .attr("x1", mouseX)
+//                 .attr("y1", mouseY)
+//                 .attr("x2", toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
+//                 .attr("y2", mouseY)
+//                 .attr("stroke", "purple")
+//                 .attr("stroke-dasharray", "5,5")
+//                 .attr("id", "x")
+//                 .attr("class", "lineToAxis");
+//                     
+//         canvas.append("line")
+//                 .attr("x1", mouseX)
+//                 .attr("y1", mouseY)
+//                 .attr("x2", mouseX)
+//                 .attr("y2", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset))
+//                 .attr("stroke", "purple")
+//                 .attr("stroke-dasharray", "5,5")
+//                 .attr("id", "y")
+//                 .attr("class", "lineToAxis");
     }
     else if(target.className.baseVal == "causalVariable")
     {
