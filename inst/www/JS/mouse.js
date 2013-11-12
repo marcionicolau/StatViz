@@ -315,6 +315,15 @@ function OnMouseMove(e)
 
             mouseY = toModifiedViewBoxForRegressionLineYCoordinate(testResults["slope"]*mouseX + testResults["intercept"]);
             
+            var canvas = d3.select("#svgCanvas");
+            
+            canvas.append("text")
+                    .attr("x", canvasWidth/2)
+                    .attr("y", canvasHeight)
+                    .attr("font-size", "36px")
+                    .attr("fill", "blue")
+                    .text("e.pageX = " + e.pageX + ", e.pageY = " + e.pageY);
+            
             regressionPoint.attr("cx", mouseX)
                            .attr("cy", mouseY);
         }
