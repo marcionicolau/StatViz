@@ -976,14 +976,20 @@ function performMultipleRegression(causalVariable, predictorVariables)
                   
                 console.log("Performing Multiple Regression for " + causalVariable + " ~ [" + predictorVariables + "]");
                 console.log("Intercept = " + output.intercept + ", coefficients = " + output.coefficients);
-                drawRegressionLine(output.xIntercept, output.yIntercept);
                 
                 testResults["effect-size"] = output.rSquared;
                 testResults["method"] = "Multiple Regression";
-                testResults["equation"] = "TBD";
+                testResults["equation"] = causalVariable + " = ";
+                
+                for(var i=0; i<predictorVariables.length; i++)
+                {
+                    testResults["method"] = testResults["method"] + coefficients[i] + " x " + predictorVariables[i] + "  + ";
+                }
+                testResults["method"] = testResults["method"] + " + " + output.intercept;
+                
                 testResults["intercept"] = output.intercept;
                 
-//                 displayRegressionResults();
+                displayRegressionResults();
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
