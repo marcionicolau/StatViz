@@ -174,31 +174,37 @@ function OnMouseDown(e)
         
         var choice = target.id;
         
-        if(choice != currentVariableSelection[0])
-        {   
-            var temp = currentVariableSelection[1];
-            currentVariableSelection[1] = currentVariableSelection[0];
-            currentVariableSelection[0] = temp;
+        if(currentVisualizationSelection == "Scatterplot")
+        {
+            if(choice != currentVariableSelection[0])
+            {   
+                var temp = currentVariableSelection[1];
+                currentVariableSelection[1] = currentVariableSelection[0];
+                currentVariableSelection[0] = temp;
             
-            makePlot("no");  
+                makePlot("no");  
+            }
+        
+            var variableList = sort(currentVariableSelection);
+        
+                console.log("finding the regression model between causal variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[1] + ")");
+        
+                //some interaction to get the variables :)
+        
+                removeElementsByClassName("causalVariable");
+                removeElementsByClassName("dialogBox");
+        
+            setTimeout(function(){
+            
+                removeElementsByClassName("regression");
+                removeElementsByClassName("significanceTest");
+                getLinearModelCoefficients(currentVariableSelection[0], currentVariableSelection[1]);
+            }, 300);  
         }
-        
-        var variableList = sort(currentVariableSelection);
-        
-            console.log("finding the regression model between causal variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[1] + ")");
-        
-            //some interaction to get the variables :)
-        
-            removeElementsByClassName("causalVariable");
-            removeElementsByClassName("dialogBox");
-        
-        setTimeout(function(){
+        else if(currentVisualizationSelection == "Scatterplot-matrix")
+        {
             
-            removeElementsByClassName("regression");
-            removeElementsByClassName("significanceTest");
-            getLinearModelCoefficients(currentVariableSelection[0], currentVariableSelection[1]);
-        }, 300);        
-    
+        }
     }
     else if((e.button == 1 && window.event != null || e.button == 0) && target.id == "regressionLine")
     {

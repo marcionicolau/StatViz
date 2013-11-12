@@ -58,6 +58,46 @@ function makeScatterplotMatrix()
     }
 }
 
+function makeScatterplotMatrixForMultipleRegression(dependentVariable)
+{
+    var variableList = sort(currentVariableSelection);
+    
+    //any number of dependent variables -> should work
+    var numberOfVariables = variables["dependent"].length;
+    
+    // Scatterplot matrix
+    shortAxesOffset = axesOffset/numberOfVariables;
+    shortTickLength = tickLength/numberOfVariables;
+    shortDataPointRadius = datapointRadius/numberOfVariables < 1 ? 1 : datapointRadius/numberOfVariables;
+    shortNumberOfGrooves = Math.ceil(numberOfGrooves/(numberOfVariables * 1.5)) < 5 ? 5 : Math.ceil(numberOfGrooves/(numberOfVariables * 1.5));
+    shortTickTextOffsetXAxis = tickTextOffsetXAxis/(numberOfVariables);
+    shortTickTextOffsetYAxis = tickTextOffsetYAxis/(numberOfVariables);
+    shortYAxisTickTextOffset = yAxisTickTextOffset/numberOfVariables;
+    shortFontSize = fontSize;
+    
+    if(numberOfVariables == 3)
+    {
+        shortFontSize = fontSize - 3;
+    }
+    if(numberOfVariables > 3)
+    {
+        shortFontSize = 0;
+    }
+        
+    var canvas = d3.select("#svgCanvas");    
+    
+    var LEFT = canvasWidth/2 - plotWidth/2;
+    var TOP = canvasHeight/2 - plotHeight/2;
+    
+    if(numberOfVariables >= 1)
+    {        
+        for(var i=0; i<numberOfVariables; i++)
+        {
+            makeScatterPlotAt(LEFT + i*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis), TOP, (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), dependentVariable, currentVariableSelection[i]);             
+        }
+    }
+}
+
 function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, variableColor)
 {
     // make sure that all preprocessing is done in the makeScatterPlotMatrix() function
