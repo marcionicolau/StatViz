@@ -754,12 +754,14 @@ function performOneWayRepeatedMeasuresANOVA(dependentVariable, independentVariab
                   console.log("\t\t\t F = " + output.F);
                   console.log("\t\t\t method used = Repeated-measures ANOVA"); //todo
                   console.log("\t\t\t DF = " + output.numDF + "/" + output.denomDF);
+                  console.log("\t\t\t p = " + output.p);
                   console.log("\t\t\t Eta-squared: " + output.etaSquared);
                   
                   testResults["df"] = output.numDF + "/" + output.denomDF;
                   testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;   
                   testResults["method"] = "Repeated Measures ANOVA ANOVA"; //todo
                   testResults["effect-size"] = "η^2 = " + output.etaSquared;
+                  testResults["p"] = output.p;
                            
                   
                 //drawing stuff
