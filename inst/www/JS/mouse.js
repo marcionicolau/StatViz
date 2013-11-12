@@ -590,7 +590,7 @@ function OnMouseOver(e)
         canvas.append("circle")
                 .attr("cx", toX(mouseX))
                 .attr("cy", toY(mouseY))
-                .attr("radius", "5px")
+                .attr("r", "5px")
                 .attr("fill", "blue");
         
 //         canvas.append("line")
