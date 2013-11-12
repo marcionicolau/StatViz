@@ -592,14 +592,20 @@ function OnMouseOver(e)
                 .attr("cy", toY(mouseY))
                 .attr("r", "5px")
                 .attr("fill", "blue");
+                
+        canvas.append("circle")
+                .attr("cx", toX(intercept))
+                .attr("cy", toY(0))
+                .attr("r", "10px")
+                .attr("fill", "green");
         
-        canvas.append("line")
-                .attr("x1", toX(0))
-                .attr("y1", toY(intercept))
-                .attr("x2", toX(canvasWidth))
-                .attr("y2", toY(slope*canvasWidth + intercept))
-                .attr("stroke", "red")
-                .attr("stroke-width", "3px");
+//         canvas.append("line")
+//                 .attr("x1", toX(0))
+//                 .attr("y1", toY(intercept))
+//                 .attr("x2", toX(canvasWidth))
+//                 .attr("y2", toY(slope*canvasWidth + intercept))
+//                 .attr("stroke", "red")
+//                 .attr("stroke-width", "3px");
 // 
 //         canvas.append("circle")
 //                 .attr("cx", toX(0))
