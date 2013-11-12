@@ -328,7 +328,7 @@ function OnMouseMove(e)
             var canvas = d3.select("#svgCanvas");
             
             var dT = d3.select("#dummyText");
-            dT.text("e.pageX = " + e.pageX + ", e.pageY = " + e.pageY);
+            dT.text("X = " + mouseX + " , Y = " + mouseY);
             
             
             regressionPoint.attr("cx", mouseX)
