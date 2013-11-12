@@ -568,6 +568,11 @@ function OnMouseOver(e)
         var mouseX = e.pageX - (width - canvasWidth);
         var mouseY = e.pageY; 
         
+        var interceptCircle = d3.select("#interceptCircle");
+        var intercept = interceptCircle.attr("cy");
+        
+        console.log(intercept);
+        
         var canvas = d3.select("#svgCanvas");
         
         if(document.getElementsByClassName("dummyText").length == 0)
@@ -577,6 +582,7 @@ function OnMouseOver(e)
                 .attr("y", canvasHeight + 4*axesOffset)
                 .attr("text-anchor", "middle")
                 .attr("fill", "red")
+                .attr("font-size", "30px")
                 .text(mouseX + ", " + mouseY)
                 .attr("class", "dummyText");
         }
