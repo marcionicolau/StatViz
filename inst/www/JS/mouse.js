@@ -693,7 +693,7 @@ function toModifiedViewBoxForRegressionLineYCoordinate(value)
 //Used to get the normal x,y coordinates from a scaled view box coordinate
 function getNormalXAxisCoordinateFromScaledViewBoxCoordinate(value)
 {
-    return (value*viewBoxWidthForRegressionLine/canvasWidth + viewBoxXForRegressionLine);
+    return (value*viewBoxWidthForRegressionLine/canvasWidth - viewBoxXForRegressionLine);
 }
 
 function getNormalYAxisCoordinateFromScaledViewBoxCoordinate(value)
