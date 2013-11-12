@@ -592,7 +592,7 @@ function OnMouseOver(e)
         mouseY = (mouseY*viewBoxHeightForRegressionLine/canvasHeight + viewBoxYForRegressionLine);
         
         console.log("mouseX=" + mouseX + ", mouseY=" + mouseY);
-        console.log("mouseX=" + getNormalXAxisCoordinateFromScaledViewBoxCoordinate(mouseX) + ", mouseY=" + getNormalYAxisCoordinateFromScaledViewBoxCoordinate(mouseY));
+        console.log("mouseX=" + toModifiedViewBoxForRegressionLineXCoordinate(mouseX) + ", mouseY=" + toModifiedViewBoxForRegressionLineYCoordinate(mouseY));
         
         
         canvas.append("circle")
@@ -693,12 +693,12 @@ function toModifiedViewBoxForRegressionLineYCoordinate(value)
 //Used to get the normal x,y coordinates from a scaled view box coordinate
 function getNormalXAxisCoordinateFromScaledViewBoxCoordinate(value)
 {
-    return (value*viewBoxWidthForRegressionLine/canvasWidth - viewBoxXForRegressionLine*canvasWidth/viewBoxWidthForRegressionLine);
+    return (value*viewBoxWidthForRegressionLine/canvasWidth - viewBoxXForRegressionLine);
 }
 
 function getNormalYAxisCoordinateFromScaledViewBoxCoordinate(value)
 {
-    return viewBoxHeightForRegressionLine - (value*viewBoxHeightForRegressionLine/canvasHeight + viewBoxYForRegressionLine*canvasHeight/viewBoxHeightForRegressionLine);
+    return viewBoxHeightForRegressionLine - (value*viewBoxHeightForRegressionLine/canvasHeight + viewBoxYForRegressionLine);
 }
 
 
