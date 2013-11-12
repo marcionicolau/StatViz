@@ -13,8 +13,10 @@ var uniqueDataX, uniqueDataY;
 var xStep, yStep;
     
    
-function makeScatterplot(withoutCorrelation)
+function makeScatterplot()
 {   
+    getCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1]);
+    
     LEFT = canvasWidth/2 - plotWidth/2;
     RIGHT = canvasWidth/2 + plotWidth/2;
 
@@ -30,11 +32,6 @@ function makeScatterplot(withoutCorrelation)
     
     maxs["X"] = MAX[currentVariableSelection[0]]["dataset"];
     maxs["Y"] = MAX[currentVariableSelection[1]]["dataset"];
-    
-
-    if(withoutCorrelation == undefined)
-        getCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1]);
-
     
     var colorData;
     var uniqueColorData;
@@ -204,7 +201,7 @@ function makeScatterplot(withoutCorrelation)
 function drawRegressionLine(intercept, slope)
 {
     var canvas = d3.select("#svgCanvas");
-    canvas.attr("viewBox", "-300 -200 " + (canvasWidth + 800) + " " + ((canvasWidth+800)/2)).attr("preserveAspectRatio", "none");// - 75));
+//     canvas.attr("viewBox", "-300 -200 " + (canvasWidth + 800) + " " + ((canvasWidth+800)/2)).attr("preserveAspectRatio", "none");// - 75));
     
     var x1, y1, x2, y2;
     
