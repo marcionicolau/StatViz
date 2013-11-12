@@ -226,6 +226,14 @@ function OnMouseDown(e)
                 .attr("fill", "steelblue")
                 .attr("class", "regressionPrediction");        
         
+        canvas.append("text")
+                    .attr("x", canvasWidth/2)
+                    .attr("y", canvasHeight)
+                    .attr("font-size", "36px")
+                    .attr("fill", "blue")
+                    .text("e.pageX = " + e.pageX + ", e.pageY = " + e.pageY)
+                    .attr("id", "dummyText");
+        
         
 //         canvas.append("line")
 //                 .attr("x1", mouseX)
@@ -317,12 +325,9 @@ function OnMouseMove(e)
             
             var canvas = d3.select("#svgCanvas");
             
-            canvas.append("text")
-                    .attr("x", canvasWidth/2)
-                    .attr("y", canvasHeight)
-                    .attr("font-size", "36px")
-                    .attr("fill", "blue")
-                    .text("e.pageX = " + e.pageX + ", e.pageY = " + e.pageY);
+            var dT = d3.select("#dummyText");
+            dT.text("e.pageX = " + e.pageX + ", e.pageY = " + e.pageY);
+            
             
             regressionPoint.attr("cx", mouseX)
                            .attr("cy", mouseY);
