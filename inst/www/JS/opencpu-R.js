@@ -969,7 +969,7 @@ function getLinearModelCoefficients(causalVariable, predictorVariable)
 function performMultipleRegression(causalVariable, predictorVariables)
 {
     var req = opencpu.r_fun_json("performMultipleRegression", {
-                    causal: causalVariable,
+                    causalVariable: causalVariable,
                     predictorVariable: predictorVariables,
                     dataset: dataset                
                   }, function(output) {                                                   

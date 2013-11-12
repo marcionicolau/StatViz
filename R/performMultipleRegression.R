@@ -20,7 +20,7 @@ performMultipleRegression <- function(causalVariable, predictorVariables, datase
     
     model <- eval(parse(text = pretext));
     
-    result <- summary(model);
+    results <- summary(model);
     
     intercept <- model$coefficients[["(Intercept)"]];
     
