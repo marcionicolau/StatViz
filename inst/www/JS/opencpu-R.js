@@ -103,10 +103,10 @@ function getData(dataset, variableName, level)
         
         if(variableName == variableNames[variableNames.length - 1])
         {
-            setVariableTypes();
+//             setVariableTypes();
             clearInterval(loadingDataAnimation);
             removeElementsByClassName("loadingAnimation");
-            experimentalDesign = findExperimentalDesign();
+//             experimentalDesign = findExperimentalDesign();
             
             console.log(experimentalDesign);
         }
