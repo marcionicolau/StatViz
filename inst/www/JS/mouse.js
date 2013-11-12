@@ -597,7 +597,7 @@ function OnMouseOver(e)
         
         canvas.append("circle")
                 .attr("cx", toX(mouseX))
-                .attr("cy", canvasWidth - toY(mouseY))
+                .attr("cy", canvasHeight - toY(mouseY))
                 .attr("r", "10px")
                 .attr("fill", "green");
                 
