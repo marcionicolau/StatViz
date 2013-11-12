@@ -590,8 +590,8 @@ function OnMouseOver(e)
 //         mouseY = slope*mouseX + intercept;
         
         canvas.append("circle")
-                .attr("cx", getNormalXAxisCoordinateFromScaledViewBoxCoordinate(mouseX))
-                .attr("cy", getNormalYAxisCoordinateFromScaledViewBoxCoordinate(mouseY))
+                .attr("cx", toX(getNormalXAxisCoordinateFromScaledViewBoxCoordinate(mouseX)))
+                .attr("cy", toY(getNormalYAxisCoordinateFromScaledViewBoxCoordinate(mouseY)))
                 .attr("r", "10px")
                 .attr("fill", "green");
                 
