@@ -569,7 +569,7 @@ function OnMouseOver(e)
         regressionLine.attr("cursor", "pointer");   
         
         var interceptCircle = d3.select("#interceptCircle");
-        var intercept = viewBoxHeightForRegressionLine - interceptCircle.attr("cy");
+        var intercept = interceptCircle.attr("cy");
         
         var canvas = d3.select("#svgCanvas");
         
@@ -587,11 +587,11 @@ function OnMouseOver(e)
         
         console.log("e.pageX = " + e.pageX + ", e.pageY = " + e.pageY);
         
-//         canvas.append("circle")
-//                 .attr("cx", toX(mouseX))
-//                 .attr("cy", toY(mouseY))
-//                 .attr("r", "5px")
-//                 .attr("fill", "blue");
+        canvas.append("circle")
+                .attr("cx", canvasWidth/2 - plotWidth/2 - axesOffset)
+                .attr("cy", intercept)
+                .attr("r", "5px")
+                .attr("fill", "blue");
 //                 
         canvas.append("circle")
                 .attr("cx", toX(0))
