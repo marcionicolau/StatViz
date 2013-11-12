@@ -985,7 +985,7 @@ function performMultipleRegression(causalVariable, predictorVariables)
                 {
                     testResults["method"] = testResults["method"] + output.coefficients[i] + " x " + predictorVariables[i] + "  + ";
                 }
-                testResults["method"] = testResults["method"] + " + " + output.intercept;
+                testResults["method"] = testResults["method"] + output.intercept;
                 
                 testResults["intercept"] = output.intercept;
                 
