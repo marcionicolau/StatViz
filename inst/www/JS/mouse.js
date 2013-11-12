@@ -570,7 +570,7 @@ function OnMouseOver(e)
         
         var canvas = d3.select("#svgCanvas");
         
-        if(document.getElementById("dummyText").length == 0)
+        if(document.getElementsByClassName("dummyText").length == 0)
         {
             canvas.append("text")
                 .attr("x", canvasWidth/2)
@@ -578,10 +578,10 @@ function OnMouseOver(e)
                 .attr("text-anchor", "middle")
                 .attr("fill", "red")
                 .text(mouseX + ", " + mouseY)
-                .attr("id", "dummyText");
+                .attr("class", "dummyText");
         }
         
-        var text = d3.select("#dummyText").text(mouseX + ", " + mouseY);
+        var text = d3.select(".dummyText").text(mouseX + ", " + mouseY);
     }
     else if(target.className.baseVal == "causalVariable")
     {
