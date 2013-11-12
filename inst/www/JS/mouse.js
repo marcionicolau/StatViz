@@ -321,7 +321,7 @@ function OnMouseMove(e)
 //                  .attr("y1", height - (testResults["slope"]*mouseX - testResults["intercept"]))
 //                  .attr("x2", mouseX);
 
-            mouseY = toModifiedViewBoxForRegressionLineYCoordinate(testResults["slope"]*mouseX + testResults["intercept"]);
+//             mouseY = toModifiedViewBoxForRegressionLineYCoordinate(testResults["slope"]*mouseX + testResults["intercept"]);
             
             var canvas = d3.select("#svgCanvas");
             
