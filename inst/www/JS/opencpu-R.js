@@ -340,7 +340,7 @@ function performHomoscedasticityTestNormal(dependent, independent)
                             }
                             else
                             {
-                                console.log("repeated-measures ANOVA");
+                                performRepeatedMeasuresANOVA(variableList["dependent"][0], variableList["independent"][0]);
                             }                                        
                         }
                     }
