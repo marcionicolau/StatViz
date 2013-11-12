@@ -203,7 +203,7 @@ function OnMouseDown(e)
         }
         else if(currentVisualizationSelection == "Scatterplot-matrix")
         {
-            
+            makeScatterplotMatrixForMultipleRegression(choice);
         }
     }
     else if((e.button == 1 && window.event != null || e.button == 0) && target.id == "regressionLine")
