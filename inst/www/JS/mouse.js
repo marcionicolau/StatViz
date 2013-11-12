@@ -580,7 +580,7 @@ function OnMouseOver(e)
          
          
         mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
-        mouseY = parseFloat(slopeOfRegressionLine*(toModifiedViewBoxForRegressionLineXCoordinate(e.pageX - (width - canvasWidth)))) + parseFloat(interceptCircle.attr("cy"));
+        mouseY = parseFloat(slopeOfRegressionLine*((e.pageX - (width - canvasWidth)))) + parseFloat(interceptCircle.attr("cy"));
         
         canvas.append("circle")
                 .attr("cx", mouseX)
