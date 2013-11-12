@@ -597,7 +597,7 @@ function OnMouseOver(e)
         
         canvas.append("circle")
                 .attr("cx", toX(mouseX))
-                .attr("cy", viewBoxHeightForRegressionLine - toY(mouseY))
+                .attr("cy", toY(viewBoxHeightForRegressionLine - mouseY))
                 .attr("r", "10px")
                 .attr("fill", "green");
                 
