@@ -43,6 +43,7 @@
                 d3.select("#visualization.panel").attr("style", "width: " + canvasWidth + "px; height: " + height/3 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth) + "px;");                    
                 d3.select("#canvas").attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth) + "px;");    
                 
+                resetSVGCanvas();
                 initiateLoadingDatasetAnimation();
                 // Load data from a given file
                 loadFile(pathToFile); 

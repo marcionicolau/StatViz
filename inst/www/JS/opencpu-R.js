@@ -35,7 +35,6 @@ function loadFile(filePath)
       alert("Server error: " + req.responseText);
     });
     req.complete(function(){
-        console.log("complete");
     });
 }
 
@@ -100,6 +99,11 @@ function getData(dataset, variableName, level)
             {
                 variableDataTypes[variableName] = "quantitative";           
             }
+        }
+        
+        if(variableName == variableNames[variableNames.length - 1])
+        {
+            console.log("complete");
         }
     
         
