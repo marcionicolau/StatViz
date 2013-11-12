@@ -2,6 +2,7 @@ findEffect <- function(dependentVariable, independentVariables, dataset)
 {
     install.packages("effects");
     library(effects);
+    
     table <- as.data.frame(dataset);
     independentVariables = c(independentVariables);
     
@@ -28,7 +29,7 @@ findEffect <- function(dependentVariable, independentVariables, dataset)
     
     if(length(independentVariables) == 2)
     {
-        result <- eval(parse(text = paste("effect(term=",independentVariables[1],":",independentVariables[2],", model)",sep="")));
+        result <- eval(parse(text = paste("effect(term=\"",independentVariables[1],":",independentVariables[2],"\", model)",sep="")));
     }
     
     list(fit = result$fit);
