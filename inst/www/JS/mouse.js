@@ -571,7 +571,7 @@ function OnMouseOver(e)
         var interceptCircle = d3.select("#interceptCircle");
         var intercept = interceptCircle.attr("cy");
         
-        console.log(intercept * viewBoxHeightForRegressionLine/canvasHeight);
+        console.log(intercept*viewBoxHeightForRegressionLine/canvasHeight - 200);
         
         var canvas = d3.select("#svgCanvas");
         
