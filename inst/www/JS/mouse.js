@@ -203,6 +203,8 @@ function OnMouseDown(e)
         }
         else if(currentVisualizationSelection == "Scatterplot-matrix")
         {
+            resetSVGCanvas();
+            drawFullScreenButton();
             makeScatterplotMatrixForMultipleRegression(choice);
         }
     }
