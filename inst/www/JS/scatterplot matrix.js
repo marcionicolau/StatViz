@@ -68,7 +68,17 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     var dataX = variables[variableX]["dataset"];
     var dataY = variables[variableY]["dataset"];
     
-    console.log("r(" + variableX + "," + variableY + ") = " + getPearsonCorrelation(dataX, dataY));
+    var r = getPearsonCorrelation(dataX, dataY);
+    var BGColor = "rgba(0, 255, 0, " + 0.75*Math.abs(r) + ")";
+    
+    canvas.append("rect")
+            .attr("x", x)
+            .attr("y", y-shortHeight)
+            .attr("rx", "2px")
+            .attr("ry", "2px")
+            .attr("width", shortWidth)
+            .attr("height", shortHeight)
+            .attr("fill", BGColor);
     
     var uniqueDataX = dataX.unique();
     var uniqueDataY = dataY.unique();  
@@ -86,6 +96,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
         maxY = MAX[variableY]["dataset"];
         minY = MIN[variableY]["dataset"];
     }
+    
     
     // x-axis
     canvas.append("line")
