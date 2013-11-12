@@ -588,8 +588,8 @@ function OnMouseOver(e)
         console.log("e.pageX = " + e.pageX + ", e.pageY = " + e.pageY);
         
         canvas.append("circle")
-                .attr("cx", toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset)
-                .attr("cy", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset)
+                .attr("cx", toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
+                .attr("cy", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset))
                 .attr("r", "20px")
                 .attr("fill", "red");
         
