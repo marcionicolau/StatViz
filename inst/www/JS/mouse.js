@@ -205,6 +205,8 @@ function OnMouseDown(e)
         {
             resetSVGCanvas();
             drawFullScreenButton();
+            
+            
             makeScatterplotMatrixForMultipleRegression(choice);
         }
     }

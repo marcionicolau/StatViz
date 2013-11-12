@@ -965,3 +965,37 @@ function getLinearModelCoefficients(causalVariable, predictorVariable)
         
     });
 }
+
+function performMultipleRegression(causalVariable, predictorVariables)
+{
+    var req = opencpu.r_fun_json("getLinearModelCoefficients", {
+                    causal: causalVariable,
+                    predictorVariable: predictorVariables,
+                    dataset: dataset                
+                  }, function(output) {                                                   
+                  
+                console.log("X = [" + output.xIntercept + "]");
+                console.log("Y= [" + output.yIntercept + "]");
+                
+                drawRegressionLine(output.xIntercept, output.yIntercept);
+                
+                testResults["effect-size"] = output.rSquared;
+                testResults["method"] = "Linear Regression Model";
+                testResults["equation"] = causalVariable + " = " + output.yIntercept + " x " + predictorVariable + " + " + output.xIntercept;
+                testResults["intercept"] = output.xIntercept;
+                testResults["slope"] = output.yIntercept;
+                
+                displayRegressionResults();
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}

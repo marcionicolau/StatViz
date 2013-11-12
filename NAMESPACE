@@ -20,6 +20,7 @@ export(performWilcoxonTest)
 export(performMannWhitneyTest)
 export(performHomoscedasticityTest)
 export(performShapiroWilkTest)
+export(performMultipleRegression)
 
 export(performTukeyHSD)
 
