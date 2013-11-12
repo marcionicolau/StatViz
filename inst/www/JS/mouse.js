@@ -585,6 +585,8 @@ function OnMouseOver(e)
         
 //         mouseY = canvasHeight - (mouseX*slope + intercept);
         
+        console.log("e.pageX = " + e.pagex + ", e.pageY = " + e.pageY);
+        
         canvas.append("circle")
                 .attr("cx", toX(mouseX))
                 .attr("cy", toY(mouseY))
@@ -605,15 +607,15 @@ function OnMouseOver(e)
 //                 .attr("r", "20px")
 //                 .attr("fill", "blue");
          
-        mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
-        // mouseY = ;
-        
-        canvas.append("circle")
-                .attr("cx", mouseX)
-                .attr("cy", mouseY)
-                .attr("r", "7px")
-                .attr("fill", "steelblue")
-                .attr("class", "regressionPrediction");        
+       //  mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
+//         // mouseY = ;
+//         
+//         canvas.append("circle")
+//                 .attr("cx", mouseX)
+//                 .attr("cy", mouseY)
+//                 .attr("r", "7px")
+//                 .attr("fill", "steelblue")
+//                 .attr("class", "regressionPrediction");        
 
         
 
