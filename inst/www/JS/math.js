@@ -134,7 +134,7 @@ function getPearsonCorrelation(X, Y)
     
     var n = X.length;
     var numerator = n*sumOf(XY) - sumOf(X)*sumOf(Y);
-    var denominator = sqrt((n*sumOf(XS) - sumOf(X)*sumOf(X))*(n*sumOf(YS) - sumOf(Y)*sumOf(Y)));
+    var denominator = Math.sqrt((n*sumOf(XS) - sumOf(X)*sumOf(X))*(n*sumOf(YS) - sumOf(Y)*sumOf(Y)));
     var r = numerator/denominator;
     
     return r;
