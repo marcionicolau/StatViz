@@ -102,12 +102,12 @@ function makeScatterplotMatrixForMultipleRegression(dependentVariable)
     {        
         for(var i=0; i<numberOfVariables; i++)
         {
-            makeScatterPlotAt(LEFT + i*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis), TOP, (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), dependentVariable, predictorVariables[i]);             
+            makeScatterPlotAt(LEFT + i*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis), (TOP + BOTTOM)/2, (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), dependentVariable, predictorVariables[i], "true");             
         }
     }
 }
 
-function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, variableColor)
+function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, variableColor, noColor)
 {
     // make sure that all preprocessing is done in the makeScatterPlotMatrix() function
     var canvas = d3.select("#svgCanvas");
@@ -117,17 +117,20 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, va
     var dataX = variables[variableX]["dataset"];
     var dataY = variables[variableY]["dataset"];
     
-    var r = getPearsonCorrelation(dataX, dataY);
-    var BGColor = "rgba(0, 255, 0, " + 0.6*Math.abs(r) + ")";
+    if(noColor == undefined)
+    {
+        var r = getPearsonCorrelation(dataX, dataY);
+        var BGColor = "rgba(0, 255, 0, " + 0.6*Math.abs(r) + ")";
     
-    canvas.append("rect")
-            .attr("x", x)
-            .attr("y", y-shortHeight)
-            .attr("rx", "5px")
-            .attr("ry", "5px")
-            .attr("width", shortWidth)
-            .attr("height", shortHeight)
-            .attr("fill", BGColor);
+        canvas.append("rect")
+                .attr("x", x)
+                .attr("y", y-shortHeight)
+                .attr("rx", "5px")
+                .attr("ry", "5px")
+                .attr("width", shortWidth)
+                .attr("height", shortHeight)
+                .attr("fill", BGColor);
+    }
     
     var uniqueDataX = dataX.unique();
     var uniqueDataY = dataY.unique();  
