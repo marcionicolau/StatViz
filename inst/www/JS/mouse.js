@@ -224,7 +224,7 @@ function OnMouseDown(e)
                 .attr("cy", mouseY)
                 .attr("r", "7px")
                 .attr("fill", "steelblue")
-                .attr("class", "regressionPrediction");        
+                .attr("class", "regressionPredictionInstance");        
         
         
         canvas.append("line")
@@ -235,7 +235,7 @@ function OnMouseDown(e)
                 .attr("stroke", "purple")
                 .attr("stroke-dasharray", "5,5")
                 .attr("id", "x")
-                .attr("class", "LineToAxis");
+                .attr("class", "LineToAxisInstance");
                     
         canvas.append("line")
                 .attr("x1", mouseX)
@@ -245,7 +245,7 @@ function OnMouseDown(e)
                 .attr("stroke", "purple")
                 .attr("stroke-dasharray", "5,5")
                 .attr("id", "y")
-                .attr("class", "LineToAxis");
+                .attr("class", "LineToAxisInstance");
     }
     else
     {
@@ -589,7 +589,7 @@ function OnMouseOver(e)
                 .attr("stroke", "purple")
                 .attr("stroke-dasharray", "5,5")
                 .attr("id", "x")
-                .attr("class", "LineToAxis");
+                .attr("class", "lineToAxis");
                     
         canvas.append("line")
                 .attr("x1", mouseX)
@@ -599,7 +599,7 @@ function OnMouseOver(e)
                 .attr("stroke", "purple")
                 .attr("stroke-dasharray", "5,5")
                 .attr("id", "y")
-                .attr("class", "LineToAxis");
+                .attr("class", "lineToAxis");
     }
     else if(target.className.baseVal == "causalVariable")
     {
@@ -659,9 +659,10 @@ function OnMouseOut(e)
     {
         removeElementsByClassName("hover");
     }
-    else if((target.id == "regressionLine") && (document.getElementsByClassName("regressionPrediction").length == 0))
+    else if((target.id == "regressionLine"))
     {
         removeElementsByClassName("regressionPrediction");
+        removeElementsByClassName("lineToAxis")
     }
     
 }	
