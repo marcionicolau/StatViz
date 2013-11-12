@@ -167,15 +167,6 @@ function OnMouseDown(e)
         regressionCircle.transition().duration(2000).attr("opacity", "0.1");
         
         drawDialogBoxToGetCausalAndPredictorVariables();
-        
-//         var variableList = sort(currentVariableSelection);
-//         
-//         console.log("finding the regression model between causal variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[1] + ")");
-//         
-//         //some interaction to get the variables :)
-//         removeElementsByClassName("regression");
-//         removeElementsByClassName("significanceTest");
-//         getLinearModelCoefficients(currentVariableSelection[0], currentVariableSelection[1]);
     }
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "causalVariable")
     {
@@ -226,6 +217,15 @@ function OnMouseDown(e)
                 .attr("fill", "steelblue")
                 .attr("class", "regressionPredictionInstance");        
         
+        
+        if(mouseX < toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
+        {
+            console.log("left of x-axis");
+        }
+        if(mouseY > toModifiedViewBoxForRegressionLineXCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset))
+        {
+            console.log("bottom of y-axis");
+        }
         
         canvas.append("line")
                 .attr("x1", mouseX)
