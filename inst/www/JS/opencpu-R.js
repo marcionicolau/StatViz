@@ -983,7 +983,7 @@ function performMultipleRegression(causalVariable, predictorVariables)
                 
                 for(var i=0; i<predictorVariables.length; i++)
                 {
-                    testResults["method"] = testResults["method"] + coefficients[i] + " x " + predictorVariables[i] + "  + ";
+                    testResults["method"] = testResults["method"] + output.coefficients[i] + " x " + predictorVariables[i] + "  + ";
                 }
                 testResults["method"] = testResults["method"] + " + " + output.intercept;
                 
