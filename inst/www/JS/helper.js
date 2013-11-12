@@ -633,6 +633,7 @@ function setVariableTypes()
     {
         variableTypes[variableNames[i]] = variablesInDatasetType[i];
     }
+    console.dir(variableNames);
     
     for(var i=0; i<variableNames.length; i++)
     {
