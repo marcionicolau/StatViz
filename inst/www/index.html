@@ -69,7 +69,7 @@
                                             .attr("top", variablePanel.style("top"));  
                 
                 for(var i=0; i<variableNames.length; i++)
-                {                    
+                {                
                     variablePanelSVG.append("rect")
                                                     .attr("x", variableNameHolderPadding)
                                                     .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding))                                                   
@@ -101,6 +101,7 @@
                                                     .text(variableNames[i])
                                                     .attr("id", variableNames[i])
                                                     .attr("class", "variableNameHolderText");
+                        
                 }                    
             }
             

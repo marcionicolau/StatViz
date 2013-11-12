@@ -689,6 +689,8 @@ function performANOVA(dependentVariable, independentVariable)
     });
 }
 
+
+
 function performTwoWayANOVA(dependentVariable, independentVariableA, independentVariableB)
 {
     // (dataset, dependentVariable, independentVariableA, independentVariableB)
@@ -708,7 +710,46 @@ function performTwoWayANOVA(dependentVariable, independentVariableA, independent
                   
                   testResults["df"] = output.numDF + "/" + output.denomDF;
                   testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;   
-                  testResults["method"] = "ANOVA"; //todo
+                  testResults["method"] = "Two-way ANOVA"; //todo
+                  testResults["effect-size"] = "η^2 = " + output.etaSquared;
+                           
+                  
+                //drawing stuff
+                removeElementsByClassName("completeLines");           
+
+                displaySignificanceTestResults();               
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function performRepeatedMeasuresANOVA(dependentVariable, independentVariable)
+{
+    var req = opencpu.r_fun_json("performRepeatedMeasuresANOVA", {
+                    dataset: dataset,
+                    dependentVariable: dependentVariable,
+                    independentVariable: independentVariable,
+                    participantVariable: "subject"
+                  }, function(output) {                                                   
+                  
+                  console.log("\t\t Repeated-measures ANOVA for (" + dependentVariable + " ~ " + independentVariableA + " + " + independentVariableB + " " + independentVariableA + "*" + independentVariableB +")");
+                  console.log("\t\t\t F = " + output.F);
+                  console.log("\t\t\t method used = Two-way ANOVA"); //todo
+                  console.log("\t\t\t DF = " + output.numDF + "/" + output.denomDF);
+                  console.log("\t\t\t Eta-squared: " + output.etaSquared);
+                  
+                  testResults["df"] = output.numDF + "/" + output.denomDF;
+                  testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;   
+                  testResults["method"] = "Two-way ANOVA"; //todo
                   testResults["effect-size"] = "η^2 = " + output.etaSquared;
                            
                   
