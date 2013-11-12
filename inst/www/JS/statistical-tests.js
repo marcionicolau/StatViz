@@ -531,7 +531,7 @@ function displayMultipleRegressionResults()
             .attr("x", canvasWidth/2)
             .attr("y", 3*(TOP+BOTTOM)/4 - 2*significanceTestResultOffset)
             .attr("text-anchor", "middle")
-            .attr("font-size", "18px")
+            .attr("font-size", "14px")
             .attr("fill", "orange")
             .text(testResults["effect-size"])
             .attr("class", "significanceTest");
