@@ -589,7 +589,7 @@ function OnMouseOver(e)
 //                 .attr("stroke-width", "3px");
 
         canvas.append("circle")
-                .attr("cx", toModifiedViewBoxForRegressionLineXCoordinate(0))
+                .attr("cx", toModifiedViewBoxForRegressionLineXCoordinate(0 + (width - canvasWidth)))
                 .attr("cy", toModifiedViewBoxForRegressionLineYCoordinate(0))
                 .attr("r", "20px")
                 .attr("fill", "blue");
