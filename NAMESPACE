@@ -37,6 +37,7 @@ export(getESFromP)
 export(getESFromRawMeanScores)
 
 export(findTransform)
+export(findEffect)
 
 export(runThisRCode)
 

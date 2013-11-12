@@ -2,7 +2,7 @@
 
 localStorage.fileName = "store";
 var fileName = "store";//change this!
-var pathToFile = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/" + "repmeasures.txt";//"http://hci.rwth-aachen.de/~subramanian/datasets/" + localStorage.fileName +".txt";
+var pathToFile = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/" + "twoway.csv";//"http://hci.rwth-aachen.de/~subramanian/datasets/" + localStorage.fileName +".txt";
 
 // Skeleton
 var width = document.width;

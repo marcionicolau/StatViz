@@ -722,7 +722,7 @@ function performTwoWayANOVA(dependentVariable, independentVariableA, independent
                   testResults["method"] = "Two-way ANOVA"; //todo
                   testResults["effect-size"] = "η^2 = " + output.etaSquared;
                            
-                  
+                  findEffect(dependentVariable, [independentVariableA, independentVariableB]);
                 //drawing stuff
                 removeElementsByClassName("completeLines");           
 
@@ -781,6 +781,36 @@ function performOneWayRepeatedMeasuresANOVA(dependentVariable, independentVariab
         
     });
 }
+
+function findEffect(dependentVariable, independentVariables)
+{
+    var req = opencpu.r_fun_json("findEffect", {
+                    dependentVariable: dependentVariable,
+                    independentVariables: independentVariables,                    
+                    dataset: dataset
+                  }, function(output) {                                                   
+                  
+                  console.log("fit = " + output.fit);                          
+                  
+                //drawing stuff
+//                 removeElementsByClassName("completeLines");           
+// 
+//                 displaySignificanceTestResults();               
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+
 
 
 function performWelchANOVA(dependentVariable, independentVariable)
