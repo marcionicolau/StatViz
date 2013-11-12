@@ -570,7 +570,6 @@ function OnMouseOver(e)
         
         var interceptCircle = d3.select("#interceptCircle");
         var intercept = interceptCircle.attr("cy");
-        console.log("interecept = " + intercept);
         
         var canvas = d3.select("#svgCanvas");
         
@@ -595,8 +594,8 @@ function OnMouseOver(e)
                 .attr("fill", "blue");
                 
         canvas.append("circle")
-                .attr("cx", toX(intercept))
-                .attr("cy", toY(0))
+                .attr("cx", toX(0))
+                .attr("cy", toY(intercept))
                 .attr("r", "10px")
                 .attr("fill", "green");
         
