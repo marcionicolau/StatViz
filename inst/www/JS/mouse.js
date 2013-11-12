@@ -575,22 +575,20 @@ function OnMouseOver(e)
         var mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
         var mouseY = toModifiedViewBoxForRegressionLineYCoordinate(e.pageY);
         
+        var slopeOfRegressionLine = (regressionLine.attr("y2") - regressionLine.attr("y1"))/(regressionLine.attr("x2") - regressionLine.attr("x1"));
+                
+        mouseX = canvasWidth/2;//(canvasHeight-mouseY)*slopeOfRegressionLine + interceptCircle.attr("cy");
+        mouseY = (mouseX - interceptCircle.attr("cy"))/slopeOfRegressionLine;
+        
         canvas.append("circle")
                 .attr("cx", mouseX)
                 .attr("cy", mouseY)
                 .attr("r", "7px")
                 .attr("fill", "steelblue")
                 .attr("class", "regressionPrediction");        
-        var slopeOfRegressionLine = (regressionLine.attr("y2") - regressionLine.attr("y1"))/(regressionLine.attr("x2") - regressionLine.attr("x1"));
-                
-        console.log("slope of the regression line = " + slopeOfRegressionLine);
-        console.log("intercept " + interceptCircle.attr("cy"));
+
         
-        mouseX = canvasWidth/2;//(canvasHeight-mouseY)*slopeOfRegressionLine + interceptCircle.attr("cy");
-        mouseY = (mouseX - interceptCircle.attr("cy"))/slopeOfRegressionLine;
-        
-        
-        console.log("mouseX = " + mouseX + " , mouseY = " + mouseY);
+
         
         
         if(mouseX < toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
