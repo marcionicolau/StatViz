@@ -652,6 +652,29 @@ function setVariableTypes()
     }
 }
 
+function findExperimentalDesign()
+{
+    var participantData = [];
+    
+    for(var i=0; i<variableNames.length; i++)
+    {
+        if(variableTypes[variableNames[i]] == "participant")
+        {
+            participantData = variables[variableNames[i]]["dataset"];
+            participants = variableNames[i];
+        }
+    }
+    
+    if(participantData.length > participantData.unique().length)
+    {
+        return "Between-groups";
+    }
+    else
+    {
+        return "Within-groups";
+    }
+}
+
             
 
       

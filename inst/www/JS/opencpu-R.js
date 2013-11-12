@@ -106,6 +106,9 @@ function getData(dataset, variableName, level)
             setVariableTypes();
             clearInterval(loadingDataAnimation);
             removeElementsByClassName("loadingAnimation");
+            experimentalDesign = findExperimentalDesign();
+            
+            console.log(experimentalDesign);
         }
     
         
@@ -744,18 +747,18 @@ function performRepeatedMeasuresANOVA(dependentVariable, independentVariable)
                     dataset: dataset,
                     dependentVariable: dependentVariable,
                     independentVariable: independentVariable,
-                    participantVariable: "subject"
+                    participantVariable: participants
                   }, function(output) {                                                   
                   
-                  console.log("\t\t Repeated-measures ANOVA for (" + dependentVariable + " ~ " + independentVariable + " + " + independentVariableB + " " + independentVariableA + "*" + independentVariableB +")");
+                  console.log("\t\t Repeated-measures ANOVA for (" + dependentVariable + " ~ " + independentVariable + " + Error(" + participants + "/" + independentVariable + ")");
                   console.log("\t\t\t F = " + output.F);
-                  console.log("\t\t\t method used = Two-way ANOVA"); //todo
+                  console.log("\t\t\t method used = Repeated-measures ANOVA"); //todo
                   console.log("\t\t\t DF = " + output.numDF + "/" + output.denomDF);
                   console.log("\t\t\t Eta-squared: " + output.etaSquared);
                   
                   testResults["df"] = output.numDF + "/" + output.denomDF;
                   testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;   
-                  testResults["method"] = "Two-way ANOVA"; //todo
+                  testResults["method"] = "Repeated Measures ANOVA ANOVA"; //todo
                   testResults["effect-size"] = "η^2 = " + output.etaSquared;
                            
                   

@@ -1,10 +1,8 @@
 // Data
 
-localStorage.fileName = "cars";
-var fileName = "cars";//change this!
-var pathToFile = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/" + "cars-mod.txt";//"http://hci.rwth-aachen.de/~subramanian/datasets/" + localStorage.fileName +".txt";
-
-var experimentalDesign = "between-groups";
+localStorage.fileName = "store";
+var fileName = "store";//change this!
+var pathToFile = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/" + "repmeasures.txt";//"http://hci.rwth-aachen.de/~subramanian/datasets/" + localStorage.fileName +".txt";
 
 // Skeleton
 var width = document.width;
@@ -39,7 +37,7 @@ var buttonColors = new Object();
     buttonColors["hover"] = "lightgrey";
     buttonColors["click"] = "BlanchedAlmond";
     buttonColors["independent"] = "Peru";
-    buttonColors["subject"] = "Fuchsia";
+    buttonColors["subject"] = "Orchid";
 
 
 //Define colors for histogram bars, color scatterplot
