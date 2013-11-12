@@ -38,6 +38,8 @@ var buttonColors = new Object();
     buttonColors["normal"] = "white";
     buttonColors["hover"] = "lightgrey";
     buttonColors["click"] = "BlanchedAlmond";
+    buttonColors["independent"] = "Peru";
+    buttonColors["subject"] = "Fuchsia";
 
 
 //Define colors for histogram bars, color scatterplot

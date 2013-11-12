@@ -640,7 +640,13 @@ function setVariableTypes()
         if(variableTypes[variableNames[i]] == "independent")
         {
             var variableSelectionButton = d3.select("#" + variableNames[i] + ".variableSelectionButton");
-            variableSelectionButton.attr("fill", panelColors["active"]);
+            variableSelectionButton.attr("fill", buttonColors["independent"]);
+            splitTheData();
+        }
+        else if(variableTypes[variableNames[i]] == "participant")
+        {
+            var variableSelectionButton = d3.select("#" + variableNames[i] + ".variableSelectionButton");
+            variableSelectionButton.attr("fill", buttonColors["participant"]);
             splitTheData();
         }
     }
