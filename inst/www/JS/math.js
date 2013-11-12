@@ -125,6 +125,9 @@ function getPearsonCorrelation(X, Y)
     var XS = [];
     var YS = [];
     
+    console.log(X);
+    console.log(Y);
+    
     for(var i=0; i<X.length; i++)
     {
         XY[i] = X[i].Y[i];
