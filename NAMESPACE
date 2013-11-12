@@ -12,6 +12,7 @@ export(splitDataByColumnName)
 
 export(performTTest)
 export(performANOVA)
+export(performRepeatedMeasuresANOVA)
 export(performTwoWayANOVA)
 export(performWelchANOVA)
 export(performFriedmanTest)
