@@ -234,7 +234,8 @@ function OnMouseDown(e)
                 .attr("y2", mouseY)
                 .attr("stroke", "purple")
                 .attr("stroke-dasharray", "5,5")
-                .attr("class", "regressionAxis");
+                .attr("id", "x")
+                .attr("class", "LineToAxis");
                     
         canvas.append("line")
                 .attr("x1", mouseX)
@@ -243,7 +244,8 @@ function OnMouseDown(e)
                 .attr("y2", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset))
                 .attr("stroke", "purple")
                 .attr("stroke-dasharray", "5,5")
-                .attr("class", "regressionAxis");
+                .attr("id", "y")
+                .attr("class", "LineToAxis");
     }
     else
     {
@@ -294,20 +296,22 @@ function OnMouseMove(e)
         {
             console.log("hi");
             var regressionPoint = d3.select(".regressionPrediction");
+            var xLine = d3.select("#x.lineToAxis");
+            var yLine = d3.select("#y.lineToAxis");
             
             var mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
             var mouseY = toModifiedViewBoxForRegressionLineYCoordinate(e.pageY);
             
-//             xLine.attr("x1", ((height - mouseY) + 124)/0.98)
-//                                  .attr("y1", mouseY)                                                 
-//                                  .attr("y2", mouseY);
+            xLine.attr("x1", ((height - mouseY) + testResults["intercept"])/testResults["slope"])
+                                 .attr("y1", mouseY)                                                 
+                                 .attr("y2", mouseY);
                          
             mouseX = ((canvasHeight - mouseY) + testResults["intercept"])/testResults["slope"];
-            mouseY = testResults["slope"]*mouseX + testResults["intercept"];
+            // mouseY = testResults["slope"]*mouseX + testResults["intercept"];
     
-//             yLine.attr("x1", mouseX)
-//                  .attr("y1", height - (0.98*mouseX - 124))
-//                  .attr("x2", mouseX);
+            yLine.attr("x1", mouseX)
+                 .attr("y1", height - (testResults["slope"]*mouseX - testResults["intercept"]))
+                 .attr("x2", mouseX);
         
             regressionPoint.attr("cx", mouseX)
                     .attr("cy", mouseY);
