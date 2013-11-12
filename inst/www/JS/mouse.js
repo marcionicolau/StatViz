@@ -565,6 +565,7 @@ function OnMouseOver(e)
     }
     else if(target.id == "regressionLine")
     {
+        var canvas = d3.select("#svgCanvas");
         var mouseX = e.pageX - (width - canvasWidth);
         var mouseY = e.pageY; 
         
