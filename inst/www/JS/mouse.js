@@ -492,10 +492,10 @@ function OnMouseOver(e)
         var canvas = d3.select("#svgCanvas");
         
         canvas.append("circle")
-                .attr("cx", (e.pageX - (width - canvasWidth) - 300*(canvasWidth)/(canvasWidth+800))*(canvasWidth + 800)/canvasWidth)
-                .attr("cy", (e.pageY - (200)*(canvasHeight/(canvasWidth+800)/2))*((canvasWidth+800)/2)/canvasHeight)
-                .attr("r", "5px")
-                .attr("fill", "goldenrod")
+                .attr("cx", (e.pageX - (width - canvasWidth) + viewBoxXForRegressionLine*(canvasWidth/viewBoxWidthForRegressionLine))*(viewBoxWidthForRegressionLine/canvasWidth))
+                .attr("cy", (e.pageY + viewBoxYForRegressionLine*(canvasHeight/viewBoxHeightForRegressionLine))*(viewBoxHeightForRegressionLine/canvasHeight))
+                .attr("r", "7px")
+                .attr("fill", "cyan")
                 .attr("class", "regressionPrediction");
     }
     else if(target.className.baseVal == "causalVariable")

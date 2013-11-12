@@ -101,6 +101,13 @@ var sampleSizeCutoff = 20;
 var fullScreenButtonSize = 75;
 var fullScreenButtonOffset = 15;
 
+//Regression
+var viewBoxXForRegressionLine = -300;
+var viewBoxYForRegressionLine = -200;
+
+var viewBoxWidthForRegressionLine = canvasWidth+800;
+var viewBoxHeightForRegressionLine = viewBoxWidthForRegressionLine/2;
+
 
 
 
