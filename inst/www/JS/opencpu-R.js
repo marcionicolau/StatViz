@@ -35,7 +35,7 @@ function loadFile(filePath)
       alert("Server error: " + req.responseText);
     });
     req.complete(function(){
- 
+        console.log("complete");
     });
 }
 

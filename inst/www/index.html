@@ -26,6 +26,7 @@
         <script type="text/javascript" src="JS/math.js"></script>
         <script type="text/javascript" src="JS/settings.js"></script>
         <script type="text/javascript" src="JS/global variables.js"></script>
+        <script type="text/javascript" src="JS/miscellaneous.js"></script>
         
         <script src="opencpu/jquery-1.10.1.min.js"></script>
         <script src="opencpu/opencpu.js"></script>
@@ -42,6 +43,7 @@
                 d3.select("#visualization.panel").attr("style", "width: " + canvasWidth + "px; height: " + height/3 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth) + "px;");                    
                 d3.select("#canvas").attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth) + "px;");    
                 
+                initiateLoadingDatasetAnimation();
                 // Load data from a given file
                 loadFile(pathToFile); 
                 
