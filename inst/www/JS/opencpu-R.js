@@ -794,8 +794,8 @@ function findEffect(dependentVariable, independentVariables)
 
                 var variableList = getSelectedVariables();
                 console.dir(variableList);
-                var levelsA = variableList["independent"][0].unique();
-                var levelsB = variableList["independent"][1].unique();;
+                var levelsA = variables[variableList["independent"][0]]["dataset"].unique();
+                var levelsB = variables[variableList["independent"][1]]["dataset"].unique();;
 
                 for(var i=0; i<levelsB.length; i++)
                 {
