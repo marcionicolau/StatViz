@@ -433,6 +433,34 @@ function getValidIds(labels)
     }
 }
 
+function getValidId(label)
+{
+    var validId = true;
+    
+
+    if(isString(label) == false)
+    {
+        validId = false;    
+    }       
+    
+    console.log("validId = " + validId);
+    if(!validId)
+    {
+        var string = "";
+        
+        for(var j=0; j<label.toString().length; j++)
+        {            
+            string = string + stringForNumber[label.toString().charAt(j)];
+        }
+        
+        return string;
+    }
+    else
+    {
+        return label;
+    }
+}
+
 //convert numbers to strings
 function convertIntegersToStrings(numbers)
 {
