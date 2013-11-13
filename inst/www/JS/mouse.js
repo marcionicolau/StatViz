@@ -45,8 +45,10 @@ function OnMouseDown(e)
     {
         setup(e, target);
         
-        resetSVGCanvas();
-        drawFullScreenButton();
+        if(document.getElementById("svgCanvas") != null)
+                    removeElementById("svgCanvas");
+        
+        removeElementsByClass("displayDataTable");
         
         displayDataForVariable(target.id);
     }
