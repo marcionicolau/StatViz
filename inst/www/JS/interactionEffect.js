@@ -132,7 +132,7 @@ function drawInteractionEffectPlot()
         
         for(var j=0; j<levelsOfIndependentVariableXAxis.length; j++)
         {
-            circles.push(d3.select("#" + colors[i] + j + ".effs");
+            circles.push(d3.select("#" + colors[i] + j + ".effs"));
         }
         
         canvas.append("line")
