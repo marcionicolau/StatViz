@@ -126,7 +126,7 @@ function drawInteractionEffectPlot()
                     .attr("class", "effs");     
     }
     
-    for(var i=0; i<levelsOfIndepenentVariableColor.length; i++)
+    for(var i=0; i<levelsOfIndependentVariableColor.length; i++)
     {
         var circles = [];
         
