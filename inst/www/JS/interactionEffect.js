@@ -117,12 +117,12 @@ function drawInteractionEffectPlot()
         x = LEFT + levelsOfIndependentVariableXAxis.indexOf(levelsOfIndependentVariableXAxis[i%levelsOfIndependentVariableXAxis.length])*xStep;
         y = BOTTOM - getValue1(interactions[i], min, max)*plotHeight;        
         
-//         var color = getObjectLength(colorsForPlot) > 0 ? colorsForPlot[colorData[i]] : "black";        
+        var color = colors[Math.floor(i/(interactions.length/levelsOfIndependentVariableColor.length))];
         
         canvas.append("circle")
                     .attr("cx", x)
                     .attr("cy", y)
-                    .attr("r", datapointRadius)
+                    .attr("r", "5px")
                     .attr("fill", color)
                     .attr("id", "data" + i)
                     .attr("class", "datapoints");     
