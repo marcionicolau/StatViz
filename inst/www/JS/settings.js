@@ -19,10 +19,11 @@
         var variableNameHolderPadding = 15;
         var radius = "15px";
         var variableNameHolderHeight = 75*(height/1105); // TODO: Find this dynamically based on number of variable names (50 is the maximum), do this for font-size as well
+        variableSelectionButtonWidth = 50*(height/1105);
 
     // Visualization panel
-        var visualizationImageSize = 200;  
-        variableSelectionButtonWidth = 50;   
+        var visualizationImageSize = 200*(width/1920);  
+   
         
 // Plots (general)
 var axesOffset = 25; //distance from plots to axes (for an R-like appearance)
