@@ -132,16 +132,17 @@ function drawInteractionEffectPlot()
         
         for(var j=0; j<levelsOfIndependentVariableXAxis.length; j++)
         {
-            console.log("i=" + i + ", j=" + j);
-            console.log("#c" + i + j + ".effs");
             circles.push(d3.select("#c" + i + j + ".effs"));
+            
+            if(j != 0)
+            {
+                canvas.append("line")
+                        .attr("x1", circles[j+1].attr("cx"))
+                        .attr("y1", circles[j+1].attr("cy"))
+                        .attr("x2", circles[j].attr("cx"))
+                        .attr("y2", circles[j].attr("cy"))
+                        .attr("stroke", colors[i]);
+            }
         }        
-        
-        canvas.append("line")
-                .attr("x1", circles[i].attr("cx"))
-                .attr("y1", circles[i].attr("cy"))
-                .attr("x2", circles[i+1].attr("cx"))
-                .attr("y2", circles[i+1].attr("cy"))
-                .attr("stroke", colors[i]);
     }
 }
