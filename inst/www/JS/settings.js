@@ -26,13 +26,13 @@
    
         
 // Plots (general)
-var axesOffset = 25; //distance from plots to axes (for an R-like appearance)
-var tickTextOffsetXAxis = 25;
-var tickTextOffsetYAxis = 10;
-var yAxisTickTextOffset = 6;
-var fontSize = 14;
-var tickLength = 10;
-var border = 20;
+var axesOffset = scaleForWindowSize(15); //distance from plots to axes (for an R-like appearance)
+var tickTextOffsetXAxis = scaleForWindowSize(25);
+var tickTextOffsetYAxis = scaleForWindowSize(10);
+var yAxisTickTextOffset = scaleForWindowSize(6);
+var fontSize = scaleForWindowSize(14);
+var tickLength = scaleForWindowSize(10);
+var border = scaleForWindowSize(20);
 
 var plotHeight = canvasHeight - 2*(axesOffset + tickTextOffsetXAxis + border);
 var plotWidth = 4*plotHeight/3;
