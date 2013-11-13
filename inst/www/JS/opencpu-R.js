@@ -792,7 +792,7 @@ function findEffect(dependentVariable, independentVariables)
                   
                 console.log("fit = " + output.fit);
 
-                var variableList = getVariableSelection();
+                var variableList = getSelectedVariables();
                 console.dir(variableList);
 
                 for(var i=0; i<variableList["independent-levels"][1].length; i++)
