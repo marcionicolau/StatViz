@@ -34,4 +34,20 @@ function findCorrelationCoefficient()
         }
     }
 }
+
+function testIfEvilVariable()
+{  
+    var variable = currentVariableSelection[0];
+    var variableData = variables[variable]["dataset"];
+    var uniqueVariableData = variableData.unique();
+    
+    if((variableDataTypes[variable] == "nominal") || (variableDataTypes[variable] == "ordinal"))
+    {
+        if(uniqueVariableData.length > 7)
+        {
+            console.log("making " + variable " as an evil variable");
+            setThisVariableEvil(currentVariableSelection[0]);
+        }
+    }
+}
         

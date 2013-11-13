@@ -105,6 +105,8 @@ function getData(dataset, variableName, level)
         {
             setVariableTypes();
             setVariableDataTypes();
+            setVariableIsEvil();
+            
             clearInterval(loadingDataAnimation);
             removeElementsByClassName("loadingAnimation");
             experimentalDesign = findExperimentalDesign();

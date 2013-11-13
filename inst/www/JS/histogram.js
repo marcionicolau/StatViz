@@ -1,6 +1,8 @@
 var LEFT, RIGHT, TOP, BOTTOM, xStep;
 function makeHistogram()
-{    
+{      
+    if(currentVariableSelection.length == 1)
+        testIfEvilVariable();
     // TODO: Need to constrain the selection to 3 variables
     
     // boundaries

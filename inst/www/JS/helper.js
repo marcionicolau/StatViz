@@ -94,7 +94,6 @@ function initMouseEventHandlers()
 function pickOutVisualizations()
 {
     var variableList = sort(currentVariableSelection);    
-    console.dir(variableList);
     
     switch(variableList["independent"].length)
     {
@@ -283,9 +282,13 @@ function toggleFillColorsForVisualizations()
                     switch(variableList["dependent"].length)
                     {
                         case 0: 
+                                invalidate([viz[0], viz[1], viz[2],viz[3]]);
                                 break;
                         case 1:
-                                invalidate([viz[2],viz[3]]);
+                                if(variableIsEvil[variableList["dependent"][0]] == "true")
+                                    invalidate([viz[1], viz[2], viz[3]]);
+                                else
+                                    invalidate([viz[2],viz[3]]);
                                 break;
                         case 2:
                                 break;
@@ -359,7 +362,6 @@ function validateAll()
 
 function invalidate(list)
 {
-    console.log("invalidating " + list);
     var visualizations = document.getElementsByClassName("visualizationHolderFront");
     
     for(var i=0; i<list.length; i++)
@@ -677,6 +679,14 @@ function setVariableDataTypes()
     }
 }
 
+function setVariableIsEvil()
+{
+    for(var i=0; i<variableNames.length; i++)
+    {
+        variableIsEvil[variableNames[i]] = "false";
+    }
+}
+
 function findExperimentalDesign()
 {
     var participantData = [];
@@ -750,6 +760,11 @@ function getNormalXAxisCoordinateFromScaledViewBoxCoordinate(value)
 function getNormalYAxisCoordinateFromScaledViewBoxCoordinate(value)
 {
     return viewBoxHeightForRegressionLine - (value*viewBoxHeightForRegressionLine/canvasHeight + viewBoxYForRegressionLine);
+}
+
+function setThisVariableEvil(variable)
+{
+    variableIsEvil[variable] = "true";
 }
 
             
