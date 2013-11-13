@@ -693,6 +693,40 @@ function scaleForWindowSize(value)
 {
     return value*(height/1105);
 }
+
+
+function toX(x)
+{
+    return toModifiedViewBoxForRegressionLineXCoordinate(x + (width - canvasWidth))
+}
+
+function toY(y)
+{
+    return toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight - y)
+}
+
+function toModifiedViewBoxForRegressionLineXCoordinate(value)
+{
+    return (value - (width - canvasWidth) + viewBoxXForRegressionLine*(canvasWidth/viewBoxWidthForRegressionLine))*(viewBoxWidthForRegressionLine/canvasWidth);
+}
+
+function toModifiedViewBoxForRegressionLineYCoordinate(value)
+{
+    return (value + viewBoxYForRegressionLine*(canvasHeight/viewBoxHeightForRegressionLine))*(viewBoxHeightForRegressionLine/canvasHeight)
+}
+
+
+//Used to get the normal x,y coordinates from a scaled view box coordinate
+function getNormalXAxisCoordinateFromScaledViewBoxCoordinate(value)
+{
+    return (value*viewBoxWidthForRegressionLine/canvasWidth - viewBoxXForRegressionLine);
+}
+
+function getNormalYAxisCoordinateFromScaledViewBoxCoordinate(value)
+{
+    return viewBoxHeightForRegressionLine - (value*viewBoxHeightForRegressionLine/canvasHeight + viewBoxYForRegressionLine);
+}
+
             
 
       

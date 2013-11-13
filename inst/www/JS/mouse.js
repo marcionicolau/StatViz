@@ -1,16 +1,11 @@
 function OnMouseDown(e)
 {
-    // IE is retarded and doesn't pass the event object
     if (e == null) 
         e = window.event; 
 
-    // IE uses srcElement, others use target
     var target = e.target != null ? e.target : e.srcElement;
    
-    // for IE, left click == 1
-    // for Firefox, left click == 0
-   
-    if((e.button == 1 && window.event != null || e.button == 0) && ((target.className.baseVal == "variableNameHolder") || (target.className.baseVal == "variableNameHolderText")))
+    if((e.button == 1 && window.event != null || e.button == 0) && (target.className.baseVal == "variableNameHolderFront"))
     {
         setup(e, target);        
         
@@ -300,7 +295,7 @@ function OnMouseDown(e)
         }   
     }
 }
- 
+
 function OnMouseMove(e)
 {
     if (e == null) 
@@ -375,11 +370,11 @@ function OnMouseOver(e)
     // for IE, left click == 1
     // for Firefox, left click == 0
 
-    if(target.className.baseVal == "variableNameHolder")
+    if(target.className.baseVal == "variableNameHolderFront")
     {		
         setup(e, target);
         
-        var variableNameHolder = d3.selectAll("#" + target.id + ".variableNameHolder");
+        var variableNameHolder = d3.selectAll("#" + target.id + ".variableNameHolderFront");
         variableNameHolder.attr("cursor","pointer");
     }
     else if(target.className.baseVal == "visualizationHolderFront")
@@ -702,37 +697,6 @@ function OnMouseOut(e)
     
 }	
 
-function toX(x)
-{
-    return toModifiedViewBoxForRegressionLineXCoordinate(x + (width - canvasWidth))
-}
-
-function toY(y)
-{
-    return toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight - y)
-}
-
-function toModifiedViewBoxForRegressionLineXCoordinate(value)
-{
-    return (value - (width - canvasWidth) + viewBoxXForRegressionLine*(canvasWidth/viewBoxWidthForRegressionLine))*(viewBoxWidthForRegressionLine/canvasWidth);
-}
-
-function toModifiedViewBoxForRegressionLineYCoordinate(value)
-{
-    return (value + viewBoxYForRegressionLine*(canvasHeight/viewBoxHeightForRegressionLine))*(viewBoxHeightForRegressionLine/canvasHeight)
-}
-
-
-//Used to get the normal x,y coordinates from a scaled view box coordinate
-function getNormalXAxisCoordinateFromScaledViewBoxCoordinate(value)
-{
-    return (value*viewBoxWidthForRegressionLine/canvasWidth - viewBoxXForRegressionLine);
-}
-
-function getNormalYAxisCoordinateFromScaledViewBoxCoordinate(value)
-{
-    return viewBoxHeightForRegressionLine - (value*viewBoxHeightForRegressionLine/canvasHeight + viewBoxYForRegressionLine);
-}
 
 
 function setup(e, target)

@@ -18,8 +18,8 @@
     // Variable panel
         var variableNameHolderPadding = scaleForWindowSize(15);
         var radius = variableNameHolderPadding + "px";
-        var variableNameHolderHeight = scaleForWindowSize(75); // TODO: Find this dynamically based on number of variable names (50 is the maximum), do this for font-size as well
-        variableSelectionButtonWidth = scaleForWindowSize(50);
+        var variableNameHolderHeight = scaleForWindowSize(60); // TODO: Find this dynamically based on number of variable names (50 is the maximum), do this for font-size as well
+        variableSelectionButtonWidth = scaleForWindowSize(60);
 
     // Visualization panel
         var visualizationImageSize = scaleForWindowSize(200);  
@@ -105,14 +105,14 @@ var boxPlotTransformationDuration = 700;
 var sampleSizeCutoff = 20;
 
 //full screen button
-var fullScreenButtonSize = 75;
-var fullScreenButtonOffset = 0;
+var fullScreenButtonSize = scaleForWindowSize(75);
+var fullScreenButtonOffset = scaleForWindowSize(10);
 
 //Regression
-var viewBoxXForRegressionLine = -300;
-var viewBoxYForRegressionLine = -200;
+var viewBoxXForRegressionLine = -scaleForWindowSize(300);
+var viewBoxYForRegressionLine = -scaleForWindowSize(200);
 
-var viewBoxWidthForRegressionLine = canvasWidth+800;
+var viewBoxWidthForRegressionLine = canvasWidth+scaleForWindowSize(800);
 var viewBoxHeightForRegressionLine = viewBoxWidthForRegressionLine/2;
 
 
