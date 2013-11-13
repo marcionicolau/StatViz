@@ -571,9 +571,10 @@ function OnMouseOver(e)
     else if((target.className.baseVal == "CIs") || (target.className.baseVal == "CITopFringes") || (target.className.baseVal == "CIBottomFringes"))
     {
         var canvas = d3.select("#svgCanvas");
+    
         
-        var topFringe = d3.select("#" + target.id + ".CITopFringes");
-        var bottomFringe = d3.select("#" + target.id + ".CIBottomFringes");
+        var topFringe = d3.select("#" + getValidId(target.id) + ".CITopFringes");
+        var bottomFringe = d3.select("#" + getValidId(target.id) + ".CIBottomFringes");
     
         var variableList = sort(currentVariableSelection);
         
@@ -614,8 +615,6 @@ function OnMouseOver(e)
                 .attr("text-anchor", "middle")
                 .text(format(CI[variableList["dependent"][0]][target.id][1]))
                 .attr("class", "hover");
-                
-        
     }
     
     else if(target.className.baseVal == "regression")
