@@ -675,6 +675,18 @@ function findExperimentalDesign()
     }
 }
 
+function drawInteractionEffectButton()
+{
+    var canvas = d3.select("#svgCanvas");
+    var rad = 10;
+    canvas.append("circle")
+            .attr("cx", canvasWidth/2 + plotWidth + axesOffset + rad/2)
+            .attr("cy", canvasHeight/2 - plotWidth/4)
+            .attr("r", rad)
+            .attr("fill", "steelblue")
+            .attr("id", "button")
+            .attr("class", "iEff");
+}
             
 
       

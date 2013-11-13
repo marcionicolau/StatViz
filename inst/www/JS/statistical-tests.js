@@ -418,10 +418,8 @@ function drawScales(cx, cy)
 
 function displayCorrelationResults()
 {   
-    var canvas = d3.select("#svgCanvas");
-    
-    var spaceOnRight = (canvasWidth - plotWidth)/2;
-    
+    var canvas = d3.select("#svgCanvas");    
+    var spaceOnRight = (canvasWidth - plotWidth)/2;    
     
     canvas.append("text")
             .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
@@ -448,8 +446,7 @@ function displayCorrelationResults()
             .attr("font-size", "16px")
             .attr("fill", "orange")
             .text("p = " + testResults["p"])
-            .attr("class", "significanceTest");
-    
+            .attr("class", "significanceTest");    
     
     //Effect sizes
     canvas.append("text")
@@ -465,10 +462,8 @@ function displayCorrelationResults()
 
 function displaySimpleRegressionResults()
 {   
-    var canvas = d3.select("#svgCanvas");
-    
+    var canvas = d3.select("#svgCanvas");    
     var spaceOnRight = (canvasWidth - plotWidth)/2;
-    
     
     canvas.append("text")
             .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
@@ -488,7 +483,6 @@ function displaySimpleRegressionResults()
             .text(testResults["equation"])
             .attr("class", "significanceTest");
     
-    
     //Effect sizes
     canvas.append("text")
             .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
@@ -504,8 +498,6 @@ function displaySimpleRegressionResults()
 function displayMultipleRegressionResults()
 {   
     var canvas = d3.select("#svgCanvas");
-    
-    
     
     canvas.append("text")
             .attr("x", canvasWidth/2)
@@ -523,8 +515,7 @@ function displayMultipleRegressionResults()
             .attr("font-size", "20px")
             .attr("fill", "orange")
             .text(testResults["equation"])
-            .attr("class", "significanceTest");
-    
+            .attr("class", "significanceTest");    
     
     //Effect sizes
     canvas.append("text")
@@ -540,10 +531,8 @@ function displayMultipleRegressionResults()
 
 function alertPossibleRegressionModel()
 {
-    var canvas = d3.select("#svgCanvas");
-    
-    var spaceOnRight = (canvasWidth - plotWidth)/2;
-    
+    var canvas = d3.select("#svgCanvas");    
+    var spaceOnRight = (canvasWidth - plotWidth)/2;    
     
     canvas.append("circle")
             .attr("cx", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)

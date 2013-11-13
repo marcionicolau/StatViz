@@ -268,6 +268,18 @@ function OnMouseDown(e)
                 .attr("id", "y")
                 .attr("class", "LineToAxisInstance");
     }
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.id == "iEff")
+    {
+        setup(e, target);
+        
+        var button = d3.select("#button.iEff");
+        button.attr("fill", "lightblue");
+        
+        resetSVGCanvas();
+        drawFullScreenButton();
+        
+        drawInteractionEffectPlot();
+    }
     else
     {
         //the user clicked outside

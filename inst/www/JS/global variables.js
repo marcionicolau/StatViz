@@ -45,6 +45,7 @@ var testResults = new Object();
 var distributions = new Object();
 var variances = new Object();
 var participants;
+var interactions = [];
 
 //transformations
 var transformationType;
