@@ -790,8 +790,18 @@ function findEffect(dependentVariable, independentVariables)
                     dataset: dataset
                   }, function(output) {                                                   
                   
-                  console.log("fit = " + output.fit);                          
-                  
+                console.log("fit = " + output.fit);
+
+                var variableList = getVariableSelection();
+                console.dir(variableList);
+
+                for(var i=0; i<variableList["independent-levels"][1].length; i++)
+                {
+                    for(var j=0; j<variableList["independent-levels"][0].length; j++)
+                    {
+                        console.log(variableList["independent-levels"][0][j] + ":" + variableList["independent-levels"][1][i] + " = " + output.fit[i*variableList["independent-levels"][1].length +j]);
+                    }
+                }
                 //drawing stuff
 //                 removeElementsByClassName("completeLines");           
 // 
