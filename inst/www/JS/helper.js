@@ -285,10 +285,7 @@ function toggleFillColorsForVisualizations()
                                 invalidate([viz[0], viz[1], viz[2],viz[3]]);
                                 break;
                         case 1:
-                                if(variableIsEvil[variableList["dependent"][0]] == "true")
-                                    invalidate([viz[1], viz[2], viz[3]]);
-                                else
-                                    invalidate([viz[2],viz[3]]);
+                               invalidate([viz[2],viz[3]]);
                                 break;
                         case 2:
                                 break;
