@@ -17,7 +17,7 @@ function findCorrelationCoefficient()
     {
         //both are not binary
         
-        if(((variableDataTypes[currentVariableSelection[0]] == "ordinal") || (variableDataTypes[currentVariableSelection[1]] == "ordinal")) && ((variableDataTypes[currentVariableSelection[0]] != "nominal") || (variableDataTypes[currentVariableSelection[1]] != "nominal")))
+        if(((variableDataTypes[currentVariableSelection[0]] == "ordinal") || (variableDataTypes[currentVariableSelection[1]] == "ordinal")) && ((variableDataTypes[currentVariableSelection[0]] != "nominal") && (variableDataTypes[currentVariableSelection[1]] != "nominal")))
         {
             console.log("Kendall's Tau");            
             getCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1], "kendall");
