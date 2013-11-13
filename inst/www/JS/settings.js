@@ -57,13 +57,14 @@ var meanColors = new Object(); //Colors for mean, and ?
 // Histogram
 var nBins = 10; 
 var binCountFontSize = "16px";
-var histLegendOffsetX = 35;
-var histLegendOffsetY = 35;
-var histLegendSize = 35;
+var histLegendOffsetX = scaleForWindowSize(45);
+var histLegendOffsetY = scaleForWindowSize(45);
+var histLegendSize = scaleForWindowSize(35);
+var histDistanceBetweenLegendAndText = scaleForWindowSize(15);
 
 
 // Boxplots
-var boxWidth = 75;
+var boxWidth = scaleForWindowSize(75);
 var intervals = new Object(); //for keeping track of animations
 var meanRadius = "5px";
 var outlierRadius = "3px";
