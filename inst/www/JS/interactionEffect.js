@@ -135,7 +135,7 @@ function drawInteractionEffectPlot()
             circles.push(d3.select("#" + colors[i] + j + ".effs");
         }
         
-        canvs.append("line")
+        canvas.append("line")
                 .attr("x1", circles[0].attr("cx"))
                 .attr("y1", circles[0].attr("cy"))
                 .attr("x2", circles[1].attr("cx"))
