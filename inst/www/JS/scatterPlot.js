@@ -15,7 +15,7 @@ var xStep, yStep;
    
 function makeScatterplot()
 {   
-    getCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1]);
+    findCorrelationCoefficient();
     
     LEFT = canvasWidth/2 - plotWidth/2;
     RIGHT = canvasWidth/2 + plotWidth/2;

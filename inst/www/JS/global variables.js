@@ -1,6 +1,6 @@
 var variables = new Object();     
-var variableTypes = new Object(); //dependent/independent
-var variableDataTypes = new Object(); //numeric/string (todo: further classification)
+var variableTypes = new Object(); //dependent, independent, participant
+var variableDataTypes = new Object(); //nominal, ordinal, interval, ratio
 var IQR = new Object();   
 var MIN = new Object();
 var MAX = new Object();

@@ -633,7 +633,6 @@ function setVariableTypes()
     {
         variableTypes[variableNames[i]] = variablesInDatasetType[fileName][i];
     }
-    console.dir(variableTypes);
     
     for(var i=0; i<variableNames.length; i++)
     {
@@ -647,7 +646,33 @@ function setVariableTypes()
         {
             var variableSelectionButton = d3.select("#" + variableNames[i] + ".variableSelectionButton");
             variableSelectionButton.attr("fill", buttonColors["participant"]);
-            splitTheData();
+        }
+    }
+}
+
+function setVariableDataTypes()
+{
+    for(var i=0; i<variableNames.length; i++)
+    {
+        variableDataTypes[variableNames[i]] = variablesInDatasetDataType[fileName][i];
+    }
+    
+    for(var i=0; i<variableNames.length; i++)
+    {
+        switch(variableDataTypes[variableNames[i]])
+        {
+            case "nominal":
+                            //do something
+                            break;
+            case "ordinal":
+                            //do something
+                            break;
+            case "interval":
+                            //do something
+                            break;
+            case "ratio":
+                            //do something
+                            break;
         }
     }
 }

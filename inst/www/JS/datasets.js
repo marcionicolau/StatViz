@@ -19,3 +19,10 @@ var variablesInDatasetType = new Object();
     variablesInDatasetType["cars"] = [types[0], types[1], types[2], types[1], types[1], types[1], types[1], types[1], types[2]];
     variablesInDatasetType["weightLoss"] = [types[0], types[2], types[1]];
     variablesInDatasetType["store"] = [types[1], types[1], types[2], types[0]];
+    
+var dataTypes = ["nominal", "ordinal", "interval", "ratio"];
+var variablesInDatasetDataType = new Object();
+    variablesInDatasetDataType["impact"] = [dataTypes[0], dataTypes[0], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3]];
+    variablesInDatasetDataType["cars"] = [dataTypes[0], dataTypes[3], dataTypes[1], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[0], dataTypes[0]];
+    variablesInDatasetDataType["weightLoss"] = [dataTypes[0], dataTypes[0], dataTypes[3]];
+    variablesInDatasetDataType["store"] = [dataTypes[0], dataTypes[3], dataTypes[0], dataTypes[0]];

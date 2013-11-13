@@ -13,8 +13,7 @@ function OnMouseDown(e)
         currentVariableSelection = toggleFillColorsForVariables(currentVariableSelection, target.id);
         
         //display the current variable selection
-        console.log("************************************************************************************************************************************************************");        
-        console.log("\ncurrent variable selection: [" + currentVariableSelection + "]\n");
+        console.log("\n\n\ncurrent variable selection: [" + currentVariableSelection + "]\n");
               
         pickOutVisualizations();      
         makePlot(); //checks which plot is selected and draws that plot
@@ -52,8 +51,7 @@ function OnMouseDown(e)
         {
             meanCircle.attr("fill", meanColors["click"]);
             
-            //check if we are finishing here
-            
+            //check if we are finishing here            
             var incompleteLines = d3.selectAll(".incompleteLines");
             
             if(document.getElementsByClassName("incompleteLines").length > 0)
@@ -109,22 +107,16 @@ function OnMouseDown(e)
     }
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "fullscreen")
     {
-        // grab the mouse position
         _startX = e.clientX;
         _startY = e.clientY;
         
-        // we need to access the element in OnMouseMove
         _dragElement = target;
-
-        // tell our code to start moving the element with the mouse
-    //     document.onmousemove = OnMouseMove;
-
-        // cancel out any text selections
+        
+        document.onmousemove = OnMouseMove;
         document.body.focus();
 
-        // prevent text selection in IE
         document.onselectstart = function () { return false; };
-        // prevent IE from trying to drag an image
+
         target.ondragstart = function() { return false; };
         
         var button = d3.select(".fullscreen");
@@ -177,7 +169,7 @@ function OnMouseDown(e)
                 currentVariableSelection[1] = currentVariableSelection[0];
                 currentVariableSelection[0] = temp;
             
-                makePlot("no");  
+                makePlot();  
             }
         
             var variableList = sort(currentVariableSelection);

@@ -103,10 +103,11 @@ function getData(dataset, variableName, level)
         
         if(variableName == variableNames[variableNames.length - 1])
         {
-//             setVariableTypes();
+            setVariableTypes();
+            setVariableDataTypes();
             clearInterval(loadingDataAnimation);
             removeElementsByClassName("loadingAnimation");
-//             experimentalDesign = findExperimentalDesign();
+            experimentalDesign = findExperimentalDesign();
             
             console.log(experimentalDesign);
         }
@@ -942,12 +943,12 @@ function getDFromT(n)
 
 
 // Correlation & Regression
-function getCorrelationCoefficient(variableA, variableB)
+function getCorrelationCoefficient(variableA, variableB, method)
 {
     var req = opencpu.r_fun_json("getCorrelationCoefficient", {
                     distributionX: variables[variableA]["dataset"],                    
                     distributionY: variables[variableB]["dataset"],
-                    method: "pearson"
+                    method: method
                   }, function(output) {                                                   
                   
                 //(t = result$statistic[["t"]], df = result$parameter[["df"]], p = result$p.value, cor = result$estimate[["cor"]], method = result$method, CI_min = result$conf.int[1], CI_max = result$conf.int[2]);
