@@ -101,7 +101,7 @@ function getData(dataset, variableName, level)
             }
         }
         
-        if(variableName == variableNames[variableNames.length - 1])
+        if(getObjectLength(variables) == variableNames.length)
         {
             setVariableTypes();
             setVariableDataTypes();
