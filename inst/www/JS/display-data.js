@@ -13,7 +13,7 @@ function displayDataForVariable(variable)
     canvas.append("p")
             .text("Unfortunately, this variable has too many levels and does not have a meaningful visualization!")
             .attr("align", "center")
-            .attr("font-size", "22px")
+            .attr("font-size", "32px")
             .attr("class", "displayDataText");
     
     var table = canvas.append("table")
@@ -27,13 +27,13 @@ function displayDataForVariable(variable)
     {
         if(i < displayDataLimit)
         {
-            if(i > 4*displayDataLimit/5)
+            if(i > 3*displayDataLimit/5)
             {
-                table.append("tr").append("tr").text(variableData[i]).attr("opacity", ((displayDataLimit - i)/(displayDataLimit/5))*1);
+                table.append("tr").append("td").text(variableData[i]).attr("color", "rgba(0, 0, 0, " + ((displayDataLimit - i)/(displayDataLimit/5))*1 + ")");
             }
             else
             {
-                table.append("tr").append("tr").text(variableData[i]);            
+                table.append("tr").append("td").text(variableData[i]);            
             }
         }
     }
