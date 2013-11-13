@@ -83,11 +83,12 @@ function drawInteractionEffectPlot()
     //Y-axis grooves
     var numberOfGroovesInYAxis = 10;
     var ySlice = (max - min)/(numberOfGroovesInYAxis - 1);   
+
     
     for(i=0; i<numberOfGroovesInYAxis; i++)
     {
-        axisText = format(min + i*ySlice);
-        textPosition = BOTTOM - i*yStep;                  
+        var axisText = format(min + i*ySlice);
+        var textPosition = BOTTOM - i*yStep;                  
         
         canvas.append("line")
                     .attr("x1", LEFT - 10 - axesOffset)
