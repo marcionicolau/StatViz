@@ -135,13 +135,13 @@ function drawInteractionEffectPlot()
             console.log("i=" + i + ", j=" + j);
             console.log("#c" + i + j + ".effs");
             circles.push(d3.select("#c" + i + j + ".effs"));
-        }
+        }        
         
         canvas.append("line")
-                .attr("x1", circles[0].attr("cx"))
-                .attr("y1", circles[0].attr("cy"))
-                .attr("x2", circles[1].attr("cx"))
-                .attr("y2", circles[1].attr("cy"))
+                .attr("x1", circles[i].attr("cx"))
+                .attr("y1", circles[i].attr("cy"))
+                .attr("x2", circles[i+1].attr("cx"))
+                .attr("y2", circles[i+1].attr("cy"))
                 .attr("stroke", colors[i]);
     }
 }
