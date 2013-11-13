@@ -35,18 +35,21 @@ function findCorrelationCoefficient()
     }
 }
 
-function testIfEvilVariable()
+function testForEvilVariables()
 {  
-    var variable = currentVariableSelection[0];
-    var variableData = variables[variable]["dataset"];
-    var uniqueVariableData = variableData.unique();
-    
-    if((variableDataTypes[variable] == "nominal") || (variableDataTypes[variable] == "ordinal"))
+    for(var i=0; i<variableNames.length; i++)
     {
-        if(uniqueVariableData.length > 7)
+        var variable = variableNames[i];
+        var variableData = variables[variable]["dataset"];
+        var uniqueVariableData = variableData.unique();
+
+        if((variableDataTypes[variable] == "nominal") || (variableDataTypes[variable] == "ordinal"))
         {
-            console.log("making " + variable + " as an evil variable");
-            setThisVariableEvil(currentVariableSelection[0]);
+            if(uniqueVariableData.length > 7)
+            {
+                console.log("making " + variable + " as an evil variable");
+                setThisVariableEvil(variableNames[i]);
+            }
         }
     }
 }
