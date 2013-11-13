@@ -794,12 +794,14 @@ function findEffect(dependentVariable, independentVariables)
 
                 var variableList = getSelectedVariables();
                 console.dir(variableList);
+                var levelsA = variableList["independent"][0].unique();
+                var levelsB = variableList["independent"][1].unique();;
 
-                for(var i=0; i<variableList["independent-levels"][1].length; i++)
+                for(var i=0; i<levelsB.length; i++)
                 {
-                    for(var j=0; j<variableList["independent-levels"][0].length; j++)
+                    for(var j=0; j<levelsA.length; j++)
                     {
-                        console.log(variableList["independent-levels"][0][j] + ":" + variableList["independent-levels"][1][i] + " = " + output.fit[i*variableList["independent-levels"][1].length +j]);
+                        console.log(levelsA[j] + ":" + levelsB[i] + " = " + output.fit[i*levelsB.length + j]);
                     }
                 }
                 //drawing stuff
