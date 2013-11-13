@@ -19,7 +19,7 @@ function findCorrelationCoefficient()
         
         if((variableDataTypes[currentVariableSelection[0]] == "ordinal") || (variableDataTypes[currentVariableSelection[1]] == "ordinal"))
         {
-            //both are interval/ratio
+            console.log("Kendall's Tau");            
             getCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1], "kendall");
         }
         else if((variableDataTypes[currentVariableSelection[0]] == "nominal") || (variableDataTypes[currentVariableSelection[1]] == "nominal"))
@@ -29,6 +29,7 @@ function findCorrelationCoefficient()
         }
         else
         {
+            console.log("Pearson's correlation");
             getCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1], "pearson");
         }
     }

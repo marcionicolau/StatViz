@@ -132,7 +132,6 @@ function makeBoxplot()
     }
     
     var ids = getValidIds(labels);
-    console.log("ids for boxplot = [" + ids);
     
     var canvas = d3.select("#svgCanvas");
 
