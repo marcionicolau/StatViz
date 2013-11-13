@@ -29,7 +29,7 @@ function displayDataForVariable(variable)
         {
             if(i > 3*displayDataLimit/5)
             {
-                table.append("tr").append("td").text(variableData[i]).attr("color", "rgba(0, 0, 0, " + ((displayDataLimit - i)/(displayDataLimit/5))*1 + ")");
+                table.append("tr").append("td").text(variableData[i]).attr("align", "center").attr("style", "color: rgba(0, 0, 0, " + ((displayDataLimit - i)/(displayDataLimit/5))*1 + ")");
             }
             else
             {
