@@ -802,7 +802,7 @@ function findEffect(dependentVariable, independentVariables)
                     for(var j=0; j<levelsA.length; j++)
                     {
                         console.log(i*levelsB.length + j);
-                        console.log(levelsA[j] + ":" + levelsB[i] + " = " + output.fit[i*levelsB.length + j]);
+                        console.log(levelsA[j] + ":" + levelsB[i] + " = " + output.fit[i*levelsA.length + j]);
                     }
                 }
                 //drawing stuff
