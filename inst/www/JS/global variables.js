@@ -9,6 +9,8 @@ var splitData = new Object();
 var variableNames = new Array();
 var colourBoxPlotData = new Object();
 
+var ticker = 0;
+
 var currentVariableSelection = [];    
 var currentVisualizationSelection;
 

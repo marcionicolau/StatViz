@@ -100,9 +100,10 @@ function getData(dataset, variableName, level)
                 variableDataTypes[variableName] = "quantitative";           
             }
         }
+        ticker++;
         
-        console.log(getObjectLength(variables) + ", " + getObjectLength(variableNames));
-        if(getObjectLength(variables) == getObjectLength(variableNames))
+        console.log(ticker + ", " + getObjectLength(variableNames));
+        if(ticker == getObjectLength(variableNames))
         {
             setVariableTypes();
             setVariableDataTypes();
