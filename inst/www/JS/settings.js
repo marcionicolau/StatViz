@@ -18,7 +18,7 @@
     // Variable panel
         var variableNameHolderPadding = 15;
         var radius = "15px";
-        var variableNameHolderHeight = 50; // TODO: Find this dynamically based on number of variable names (50 is the maximum), do this for font-size as well
+        var variableNameHolderHeight = 75*(height/1105); // TODO: Find this dynamically based on number of variable names (50 is the maximum), do this for font-size as well
 
     // Visualization panel
         var visualizationImageSize = 200;  
