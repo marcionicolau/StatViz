@@ -422,6 +422,7 @@ function getValidIds(labels)
         }            
     }    
     
+    console.log("validIds = " + validIds);
     if(!validIds)
     {
         return convertIntegersToStrings(labels);        
