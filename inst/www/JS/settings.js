@@ -101,7 +101,7 @@ var assumptions = ["normality", "homogeneity"];
 var significanceTestResultOffset = 40;
 
 //transformation
-var normalityPlotWidth = scaleForWindowSize(150);
+var normalityPlotWidth = scaleForWindowSize(125);
 var normalityPlotHeight = normalityPlotWidth*(3/4);
 var normalityPlotOffset = scaleForWindowSize(75); //from canvasHeight
 var buttonOffset = (100);
