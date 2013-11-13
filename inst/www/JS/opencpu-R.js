@@ -951,27 +951,49 @@ function getCorrelationCoefficient(variableA, variableB, method)
                     method: method
                   }, function(output) {                                                   
                   
-                //(t = result$statistic[["t"]], df = result$parameter[["df"]], p = result$p.value, cor = result$estimate[["cor"]], method = result$method, CI_min = result$conf.int[1], CI_max = result$conf.int[2]);
-                console.log("\t\t Correlation-coefficient for (" + variableA + " , " + variableB + ")");
-                console.log("\t\t\t t = " + output.t);
-                console.log("\t\t\t p = " + output.p);
-                console.log("\t\t\t method used = " + output.method);
-                console.log("\t\t\t DF = " + output.df);
-                console.log("\t\t\t r = " + output.cor);
-                console.log("\t\t\t CI = [" + output.CI_min + ", " + output.CI_max + "]");
+                if(method == "pearson")
+                {
+                    console.log("\t\t Pearson's Correlation-coefficient for (" + variableA + " , " + variableB + ")");
+                    console.log("\t\t\t t = " + output.statistic);
+                    console.log("\t\t\t p = " + output.p);
+                    console.log("\t\t\t method used = " + output.method);
+                    console.log("\t\t\t DF = " + output.df);
+                    console.log("\t\t\t r = " + output.cor);
+                    console.log("\t\t\t CI = [" + output.CI_min + ", " + output.CI_max + "]");
 
-                testResults["df"] = output.df;
-                testResults["statistic"] = "t(" + output.df + ") = " + output.t;
-                testResults["p"] = output.p;                  
-                testResults["method"] = output.method; 
-                testResults["effect-size"] = output.cor;
-                testResults["CI"] = [output.CI_min, output.CI_max];
+                    testResults["df"] = output.df;
+                    testResults["statistic"] = "t(" + output.df + ") = " + output.statistic;
+                    testResults["p"] = output.p;                  
+                    testResults["method"] = output.method; 
+                    testResults["effect-size"] = output.cor;
+                    testResults["CI"] = [output.CI_min, output.CI_max];
 
-                displayCorrelationResults();
+                    displayCorrelationResults();
 
-                if((output.cor < -0.5) || (output.cor > 0.5))
-                {                
-                    alertPossibleRegressionModel();
+                    if((output.cor < -0.5) || (output.cor > 0.5))
+                    {                
+                        alertPossibleRegressionModel();
+                    }
+                }
+                else if(method == "kendall")
+                {
+                    console.log("\t\t Kendall's Correlation-coefficient for (" + variableA + " , " + variableB + ")");
+                    console.log("\t\t\t z = " + output.statistic);
+                    console.log("\t\t\t p = " + output.p);
+                    console.log("\t\t\t method used = " + output.method);
+                    console.log("\t\t\t Tau = " + output.cor);
+
+                    testResults["statistic"] = "z = " + output.statistic;
+                    testResults["p"] = output.p;                  
+                    testResults["method"] = output.method; 
+                    testResults["effect-size"] = output.cor;
+
+                    displayCorrelationResults();
+
+                    if((output.cor < -0.5) || (output.cor > 0.5))
+                    {                
+                        alertPossibleRegressionModel();
+                    }
                 }
         
       }).fail(function(){
