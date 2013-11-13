@@ -66,23 +66,22 @@ var histDistanceBetweenLegendAndText = scaleForWindowSize(15);
 // Boxplots
 var boxWidth = scaleForWindowSize(75);
 var intervals = new Object(); //for keeping track of animations
-var meanRadius = "5px";
-var outlierRadius = "3px";
+var meanRadius = scaleForWindowSize(7) < 5 ? 5 : scaleForWindowSize(7);
+var outlierRadius = "2px";
 
 var boxColors = new Object();
     boxColors["normal"] = "lightgrey";
     boxColors["notnormal"] = "crimson";
 
-var CIFringeLength = 5;
+var CIFringeLength = scaleForWindowSize(5);
 
 // Scatterplot
-var datapointRadius = 3;
+var datapointRadius = scaleForWindowSize(4);
 var numberOfGrooves = 10;
-var topOffset = 25;
-var labelOffset = 45;
+var topOffset = scaleForWindowSize(25);
+var labelOffset = scaleForWindowSize(45);
 
 // Significance test
-
 var significanceTestScaleOffset = 25;
 var assumptionsSpace = 30;
 var assumptionImageSize = 30;
