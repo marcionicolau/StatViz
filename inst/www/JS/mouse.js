@@ -602,6 +602,8 @@ function OnMouseOver(e)
         
         bottomLine.transition().duration(1000)
                     .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
+                    
+        console.dir(CI);
         
         canvas.append("text")
                 .attr("x",(parseFloat(bottomFringe.attr("x1")) - 20))
