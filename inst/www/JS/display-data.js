@@ -19,7 +19,7 @@ function displayDataForVariable(variable)
     var table = canvas.append("table")
             .attr("border", "1")
             .attr("class", "displayDataTable")
-            .attr("style", "font-size: 16px; position: relative; width: 100%; top: 100px; margin: 0 auto");
+            .attr("style", "font-size: 16px; position: relative; width: 40%; top: 100px; margin: 0 auto; border-spacing: 0; border-collapse: collapse;");
             
     table.append("tr").append("th").text(variable);      
             
@@ -27,13 +27,13 @@ function displayDataForVariable(variable)
     {
         if(i < displayDataLimit)
         {
-            if(i > 3*displayDataLimit/5)
+            if(i > rangeToFade)
             {
-                table.append("tr").append("td").text(variableData[i]).attr("align", "center").attr("style", "color: rgba(0, 0, 0, " + ((displayDataLimit - i)/(displayDataLimit/5))*1 + ")");
+                table.append("tr").append("td").text(variableData[i]).attr("align", "center").attr("style", "color: rgba(0, 0, 0, " + ((displayDataLimit - i)/(displayLimit - rangeToFade))*1 + ")");
             }
             else
             {
-                table.append("tr").append("td").text(variableData[i]);            
+                table.append("tr").append("td").attr("align", "center").text(variableData[i]);            
             }
         }
     }
