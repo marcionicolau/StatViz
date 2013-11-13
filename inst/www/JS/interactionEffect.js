@@ -64,7 +64,6 @@ function drawInteractionEffectPlot()
                     .attr("y1", BOTTOM  + axesOffset)
                     .attr("x2", LEFT + i*xStep + xStep/2)
                     .attr("y2", BOTTOM + 10 + axesOffset)
-                    .attr("id", ids[i])
                     .attr("class", "xAxisGrooves");
 
         canvas.append("text")
@@ -73,7 +72,6 @@ function drawInteractionEffectPlot()
                     .text(levelsOfIndependentVariableXAxis[i])
                     .attr("fill", "black")
                     .attr("text-anchor", "middle")
-                    .attr("id", ids[i])
                     .attr("class", "xAxisGrooveText");
     }
    
