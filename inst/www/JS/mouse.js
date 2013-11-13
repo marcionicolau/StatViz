@@ -604,12 +604,14 @@ function OnMouseOver(e)
                     .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
                     
         console.dir(CI);
+        console.log(target.id);
+        console.log(CI[variableList["dependent"][0]][target.id]);
         
         canvas.append("text")
                 .attr("x",(parseFloat(bottomFringe.attr("x1")) - 20))
                 .attr("y", bottomFringe.attr("y1") - 5)
                 .attr("text-anchor", "middle")
-                .text(format(CI[variableList["dependent"][0]][target.id][0]))
+                .text(format(CI[variableList["dependent"][0]][target.id]))
                 .attr("class", "hover");
         
         canvas.append("text")
