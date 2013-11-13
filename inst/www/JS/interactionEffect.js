@@ -137,10 +137,10 @@ function drawInteractionEffectPlot()
             if(j != 0)
             {
                 canvas.append("line")
-                        .attr("x1", circles[j+1].attr("cx"))
-                        .attr("y1", circles[j+1].attr("cy"))
-                        .attr("x2", circles[j].attr("cx"))
-                        .attr("y2", circles[j].attr("cy"))
+                        .attr("x1", circles[j].attr("cx"))
+                        .attr("y1", circles[j].attr("cy"))
+                        .attr("x2", circles[j-1].attr("cx"))
+                        .attr("y2", circles[j-1].attr("cy"))
                         .attr("stroke", colors[i]);
             }
         }        
