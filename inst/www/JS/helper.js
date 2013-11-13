@@ -681,7 +681,7 @@ function drawInteractionEffectButton()
     
     var rad = 10;
     canvas.append("circle")
-            .attr("cx", canvasWidth/2 + plotWidth)
+            .attr("cx", canvasWidth/2 + plotWidth/2)
             .attr("cy", canvasHeight/2 - plotWidth/4)
             .attr("r", rad + "px")
             .attr("fill", "black")
