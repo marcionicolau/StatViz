@@ -268,7 +268,7 @@ function OnMouseDown(e)
                 .attr("id", "y")
                 .attr("class", "LineToAxisInstance");
     }
-    else if((e.button == 1 && window.event != null || e.button == 0) && target.id == "iEff")
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "iEff")
     {
         setup(e, target);
         
