@@ -11,8 +11,8 @@ findTransform <- function(dependentVariable, independentVariable, dataset)
     
     for(i in 1:numberOfLevels)
     {
-        eval(parse(text = paste(levels[i]," = subset(D, D$",independentVariable," == \"",levels[i],"\")",sep="")));
-        eval(parse(text = paste(levels[i]," = ",levels[i],"$",dependentVariable)))
+        eval(parse(text = paste("level.",levels[i]," = subset(D, D$",independentVariable," == \"",levels[i],"\")",sep="")));
+        eval(parse(text = paste("level.",levels[i]," = ","level.",levels[i],"$",dependentVariable)))
     }
     
     type = "none";
@@ -23,7 +23,7 @@ findTransform <- function(dependentVariable, independentVariable, dataset)
     	{	
     		for(k in 1:numberOfLevels)
     		{
-    			temp = eval(parse(text = paste("sqrt(",levels[k],")")));
+    			temp = eval(parse(text = paste("sqrt(level.",levels[k],")")));
     			
     			result <- shapiro.test(temp);
     			if(!is.nan(result$p.value))    
@@ -47,7 +47,7 @@ findTransform <- function(dependentVariable, independentVariable, dataset)
     	{	
     		for(k in 1:numberOfLevels)
     		{
-    			temp = eval(parse(text = paste(levels[k],"^(1/3)")));
+    			temp = eval(parse(text = paste("level.",levels[k],"^(1/3)")));
     			
     			result <- shapiro.test(temp);
     			if(!is.nan(result$p.value))    
@@ -70,7 +70,7 @@ findTransform <- function(dependentVariable, independentVariable, dataset)
     	{
     		for(k in 1:numberOfLevels)
     		{
-    			temp = eval(parse(text = paste("1/",levels[k])));
+    			temp = eval(parse(text = paste("1/level.",levels[k])));
     			
     			result <- shapiro.test(temp);
     			if(!is.nan(result$p.value))    
@@ -93,7 +93,7 @@ findTransform <- function(dependentVariable, independentVariable, dataset)
     	{
     		for(k in 1:numberOfLevels)
     		{
-    			temp = eval(parse(text = paste("log10(",levels[k],")")));
+    			temp = eval(parse(text = paste("log10(level.",levels[k],")")));
     			
     			result <- shapiro.test(temp);
     			if(!is.nan(result$p.value))    
