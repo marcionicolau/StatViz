@@ -12,7 +12,8 @@ function displayDataForVariable(variable)
     
     var table = canvas.append("table")
             .attr("border", "1")
-            .attr("class", "displayDataTable");
+            .attr("class", "displayDataTable")
+            .attr("style", "font-size: 20px; position: relative; left: " + canvasWidth/2 + "px; top: 100px;");
             
     table.append("tr").append("th").text(variable);      
             
