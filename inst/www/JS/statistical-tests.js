@@ -147,9 +147,6 @@ function setDistribution(dependentVariable, level, normal)
                 d3.select("#svgCanvas").transition().duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight*1.5);
                 
                 //draw boxplots in red 
-                
-                console.log("dependentVariable=" + dependentVariable);
-                console.log("\nvariableList[\"independent-levels\"][i]: " + variableList["independent-levels"][i]);
                 drawBoxPlotInRed(dependentVariable, variableList["independent-levels"][i]);
                 drawNormalityPlot(dependentVariable, variableList["independent-levels"][i], "notnormal");
             }
@@ -213,7 +210,7 @@ function setHomogeneityOfVariances(dependentVariable, independentVariable, homog
 function drawNormalityPlot(dependentVariable, level, type)
 {
     //make histogram with these variables in a separate svg
-    var mean = d3.select("#" + level + ".means");
+    var mean = d3.select("#" + getValidId(level) + ".means");
     var centerX = mean.attr("cx");   
     
     

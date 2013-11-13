@@ -575,8 +575,7 @@ function redrawBoxPlot()
 function drawBoxPlotInRed(dependentVariable, level)
 {
     level = getValidId(level);
-    
-    console.log("level now: " + level);
+
     var box = d3.select("#" + level + ".IQRs");    
     box.attr("fill", boxColors["notnormal"]);
     
