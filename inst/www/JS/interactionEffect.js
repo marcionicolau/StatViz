@@ -122,7 +122,7 @@ function drawInteractionEffectPlot()
                     .attr("cy", y)
                     .attr("r", "5px")
                     .attr("fill", color)
-                    .attr("id", color + (i%levelsOfIndependentVariableXAxis.length))
+                    .attr("id", "c" + Math.floor(i/(interactions.length/levelsOfIndependentVariableColor.length)) + (i%levelsOfIndependentVariableXAxis.length))
                     .attr("class", "effs");     
     }
     
