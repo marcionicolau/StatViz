@@ -112,8 +112,6 @@ function drawInteractionEffectPlot()
     {
         var x,y;
         
-        console.log(levelsOfIndependentVariableXAxis[i]%levelsOfIndependentVariableXAxis.length);
-        
         x = LEFT + levelsOfIndependentVariableXAxis.indexOf(levelsOfIndependentVariableXAxis[i%levelsOfIndependentVariableXAxis.length])*xStep;
         y = BOTTOM - getValue1(interactions[i], min, max)*plotHeight;        
         
