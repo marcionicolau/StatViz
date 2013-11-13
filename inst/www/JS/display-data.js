@@ -8,7 +8,7 @@ function displayDataForVariable(variable)
     var TOP = canvasHeight/2 - plotHeight/2;
     var BOTTOM = canvasHeight/2 + plotHeight/2;
     
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#canvas");
     
     var table = canvas.append("table")
             .attr("border", "1")
