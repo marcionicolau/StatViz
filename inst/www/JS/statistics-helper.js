@@ -45,7 +45,7 @@ function testIfEvilVariable()
     {
         if(uniqueVariableData.length > 7)
         {
-            console.log("making " + variable " as an evil variable");
+            console.log("making " + variable + " as an evil variable");
             setThisVariableEvil(currentVariableSelection[0]);
         }
     }
