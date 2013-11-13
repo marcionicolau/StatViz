@@ -688,6 +688,11 @@ function drawInteractionEffectButton()
             .attr("id", "button")
             .attr("class", "iEff");
 }
+
+function scaleForWindowSize(value)
+{
+    return value*(height/1105);
+}
             
 
       

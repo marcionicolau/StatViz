@@ -16,13 +16,13 @@
     var canvasWidth = width*0.75; 
 
     // Variable panel
-        var variableNameHolderPadding = 15;
-        var radius = "15px";
-        var variableNameHolderHeight = 75*(height/1105); // TODO: Find this dynamically based on number of variable names (50 is the maximum), do this for font-size as well
-        variableSelectionButtonWidth = 50*(height/1105);
+        var variableNameHolderPadding = scaleForWindowSize(15);
+        var radius = variableNameHolderPadding + "px";
+        var variableNameHolderHeight = scaleForWindowSize(75); // TODO: Find this dynamically based on number of variable names (50 is the maximum), do this for font-size as well
+        variableSelectionButtonWidth = scaleForWindowSize(50);
 
     // Visualization panel
-        var visualizationImageSize = 200*(width/1920);  
+        var visualizationImageSize = scaleForWindowSize(200);  
    
         
 // Plots (general)
