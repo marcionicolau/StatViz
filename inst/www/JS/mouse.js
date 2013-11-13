@@ -14,6 +14,9 @@ function OnMouseDown(e)
         
         //display the current variable selection
         console.log("\n\n\ncurrent variable selection: [" + currentVariableSelection + "]\n");
+        
+        removeElementsByClassName("displayDataTable");
+        removeElementsByClassName("displayDataText");
               
         pickOutVisualizations();      
         makePlot(); //checks which plot is selected and draws that plot
@@ -23,8 +26,7 @@ function OnMouseDown(e)
     else if((e.button == 1 && window.event != null || e.button == 0) && (target.className.baseVal == "visualizationHolderFront"))
     {
         setup(e, target);    
-        currentVisualizationSelection = target.id;
-        
+        currentVisualizationSelection = target.id;        
         toggleFillColorsForVisualizations();        
         makePlot();
     }

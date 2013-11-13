@@ -13,7 +13,7 @@ function displayDataForVariable(variable)
     canvas.append("p")
             .text("Unfortunately, this variable has too many levels and does not have a meaningful visualization!")
             .attr("align", "center")
-            .attr("font-size", "48px")
+            .attr("style", "font-size: 36px")
             .attr("class", "displayDataText");
     
     var table = canvas.append("table")
