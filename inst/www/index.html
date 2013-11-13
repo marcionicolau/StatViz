@@ -56,7 +56,7 @@
             {   
                 var variablePanel = d3.select("#variable.panel");                
                 var variablePanelWidth = removeAlphabetsFromString(variablePanel.style("width")) - variableSelectionButtonWidth;
-                            
+                var variableNameHolderWidth = variablePanelWidth - 3*variableNameHolderPadding;                                        
                 var variablePanelSVG = variablePanel.append("svg");                
                 variablePanelSVG.attr("id","variablePanelSVG")
                                             .attr("height", variablePanel.style("height"))
