@@ -29,7 +29,7 @@ function displayDataForVariable(variable)
         {
             if(i > rangeToFade)
             {
-                table.append("tr").append("td").text(variableData[i]).attr("align", "center").attr("style", "color: rgba(0, 0, 0, " + ((displayDataLimit - i)/(displayLimit - rangeToFade))*1 + ")");
+                table.append("tr").append("td").text(variableData[i]).attr("align", "center").attr("style", "color: rgba(0, 0, 0, " + ((displayDataLimit - i)/(displayDataLimit - rangeToFade))*1 + ")");
             }
             else
             {
