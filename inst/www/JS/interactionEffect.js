@@ -16,6 +16,8 @@ function drawInteractionEffectPlot()
     var independentVariableColor = variableList["independent"][1];
     
     var dependentVariableData = variables[dependentVariable]["dataset"];
+    var max = Array.max(dependentVariableData);
+    var min = Array.min(dependentVariableData);
     
     var independentVariableXAxisData = variables[independentVariableXAxis]["dataset"];
     var independentVariableColorData = variables[independentVariableColor]["dataset"];
@@ -52,27 +54,52 @@ function drawInteractionEffectPlot()
                 .text(dependentVariable)
                 .attr("fill", "orange");
                 
-    //X-axis labels 
+    //X-axis grooves
     var numberOfGroovesInXAxis = levelsOfIndependentVariableXAxis.length;
     
-    var xStep = plotWidth/numberOfGroovesInXAxis;   
+    var xStep = plotWidth/(numberOfGroovesInXAxis - 1);   
 
     for(i=0; i<numberOfGroovesInXAxis; i++)
     {
         canvas.append("line")
-                    .attr("x1", LEFT + i*xStep + xStep/2)
+                    .attr("x1", LEFT + i*xStep)
                     .attr("y1", BOTTOM  + axesOffset)
-                    .attr("x2", LEFT + i*xStep + xStep/2)
+                    .attr("x2", LEFT + i*xStep)
                     .attr("y2", BOTTOM + 10 + axesOffset)
                     .attr("class", "xAxisGrooves");
 
         canvas.append("text")
-                    .attr("x", LEFT + i*xStep + xStep/2)
+                    .attr("x", LEFT + i*xStep)
                     .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
                     .text(levelsOfIndependentVariableXAxis[i])
                     .attr("fill", "black")
                     .attr("text-anchor", "middle")
                     .attr("class", "xAxisGrooveText");
     }
-   
+    
+    //Y-axis grooves
+    var numberOfGroovesInYAxis = 10;
+    var ySlice = (max - min)/(numberOfGroovesInYAxis - 1);   
+    
+    for(i=0; i<numberOfGroovesInYAxis; i++)
+    {
+        axisText = format(min + i*ySlice);
+        textPosition = BOTTOM - i*yStep;                  
+        
+        canvas.append("line")
+                    .attr("x1", LEFT - 10 - axesOffset)
+                    .attr("y1", textPosition)
+                    .attr("x2", LEFT  - axesOffset)
+                    .attr("y2", textPosition)
+                    .attr("id", "groove" + i)
+                    .attr("class", "yAxisGrooves");
+        
+        canvas.append("text")
+                    .attr("x", LEFT - tickTextOffsetYAxis - axesOffset)
+                    .attr("y", textPosition + yAxisTickTextOffset)                     
+                    .text(axisText)
+                    .attr("text-anchor", "end")
+                    .attr("id", "groove" + i)
+                    .attr("class", "yAxisGrooveText");
+    }   
 }
