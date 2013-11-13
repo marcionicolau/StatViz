@@ -1,24 +1,30 @@
 // Data
-
-localStorage.fileName = "store";
-var fileName = "store";//change this!
-var pathToFile = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/" + "twoway.csv";//"http://hci.rwth-aachen.de/~subramanian/datasets/" + localStorage.fileName +".txt";
+    localStorage.fileName = "store";
+    var fileName = "store";//change this!
+    var wd = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/";//"http://hci.rwth-aachen.de/~subramanian/datasets/" + localStorage.fileName +".txt";
+    var pathToFile =  wd + "twoway.csv";
 
 // Skeleton
-var width = document.width;
-var height = document.height;  
+    var width = document.width;
+    var height = document.height;  
 
-var panelColors = new Object();
-    panelColors.normal = "white";
-    panelColors.active = "darkgrey";
+    var panelColors = new Object();
+        panelColors.normal = "white";
+        panelColors.active = "darkgrey";
 
-var canvasHeight = height*(2/3);
-var canvasWidth = width*0.75; 
+    var canvasHeight = height*(2/3);
+    var canvasWidth = width*0.75; 
 
-var visualizationImageSize = 200;  
-variableSelectionButtonWidth = 50;   
-      
+    // Variable panel
+        var variableNameHolderPadding = 15;
+        var variableNameHolderHeight = (canvasHeight/10)*variableNameHolderPadding; // TODO: Find this dynamically based on number of variable names (50 is the maximum), do this for font-size as well
+        var radius = "15px";
+        var variableNameHolderWidth = variablePanelWidth - 3*variableNameHolderPadding;                        
 
+    // Visualization panel
+        var visualizationImageSize = 200;  
+        variableSelectionButtonWidth = 50;   
+        
 // Plots (general)
 var axesOffset = 25; //distance from plots to axes (for an R-like appearance)
 var tickTextOffsetXAxis = 25;

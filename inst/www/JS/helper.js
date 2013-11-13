@@ -83,7 +83,7 @@ function splitThisLevelBy(independentVariableA, independentVariableB, dependentV
 }
 
 //Initialise the mouse event handlers
-function InitializeMouseEventHandlers()
+function initMouseEventHandlers()
 {
     document.onmousedown = OnMouseDown;
     document.onmousemove = OnMouseMove;
