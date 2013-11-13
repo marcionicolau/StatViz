@@ -679,14 +679,6 @@ function setVariableDataTypes()
     }
 }
 
-function setVariableIsEvil()
-{
-    for(var i=0; i<variableNames.length; i++)
-    {
-        variableIsEvil[variableNames[i]] = "false";
-    }
-}
-
 function findExperimentalDesign()
 {
     var participantData = [];
@@ -763,11 +755,9 @@ function getNormalYAxisCoordinateFromScaledViewBoxCoordinate(value)
 }
 
 function setThisVariableEvil(variable)
-{
-    variableIsEvil[variable] = "true";
-    
-    d3.select("#variable.variableNameHolderFront").attr("class", "disabled");
-    d3.select("#variable.variableNameHolderBack").attr("fill", variablePanelColors["disabled"]);
+{    
+    d3.select("#" + variable + ".variableNameHolderFront").attr("class", "disabled");
+    d3.select("#" + variable + ".variableNameHolderBack").attr("fill", variablePanelColors["disabled"]);
 }
 
             

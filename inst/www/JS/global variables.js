@@ -1,7 +1,6 @@
 var variables = new Object();     
 var variableTypes = new Object(); //dependent, independent, participant
 var variableDataTypes = new Object(); //nominal, ordinal, interval, ratio
-var variableIsEvil = new Object();
 
 var IQR = new Object();   
 var MIN = new Object();
