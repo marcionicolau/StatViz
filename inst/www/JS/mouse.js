@@ -571,8 +571,6 @@ function OnMouseOver(e)
     else if((target.className.baseVal == "CIs") || (target.className.baseVal == "CITopFringes") || (target.className.baseVal == "CIBottomFringes"))
     {
         var canvas = d3.select("#svgCanvas");
-    
-        console.log(stringForNumber.indexOf(target.id));
         
         var topFringe = d3.select("#" + target.id + ".CITopFringes");
         var bottomFringe = d3.select("#" + target.id + ".CIBottomFringes");
@@ -603,15 +601,11 @@ function OnMouseOver(e)
         bottomLine.transition().duration(1000)
                     .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
                     
-        console.dir(CI);
-        console.log(target.id);
-        console.log(CI[variableList["dependent"][0]][target.id]);
-        
         canvas.append("text")
                 .attr("x",(parseFloat(bottomFringe.attr("x1")) - 20))
                 .attr("y", bottomFringe.attr("y1") - 5)
                 .attr("text-anchor", "middle")
-                .text(format(CI[variableList["dependent"][0]][stringForNumber.indexOf(target.id)]))
+                .text(format(CI[variableList["dependent"][0]][stringForNumber.indexOf(target.id)][0]))
                 .attr("class", "hover");
         
         canvas.append("text")
