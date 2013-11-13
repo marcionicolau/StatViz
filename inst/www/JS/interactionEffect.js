@@ -124,7 +124,24 @@ function drawInteractionEffectPlot()
                     .attr("cy", y)
                     .attr("r", "5px")
                     .attr("fill", color)
-                    .attr("id", "data" + i)
-                    .attr("class", "datapoints");     
+                    .attr("id", color + (i%levelsOfIndependentVariableXAxis.length))
+                    .attr("class", "effs");     
+    }
+    
+    for(var i=0; i<levelsOfIndepenentVariableColor.length; i++)
+    {
+        var circles = [];
+        
+        for(var j=0; j<levelsOfIndependentVariableXAxis.length; j++)
+        {
+            circles.push(d3.select("#" + colors[i] + j + ".effs");
+        }
+        
+        canvs.append("line")
+                .attr("x1", circles[0].attr("cx"))
+                .attr("y1", circles[0].attr("cy"))
+                .attr("x2", circles[1].attr("cx"))
+                .attr("y2", circles[1].attr("cy"))
+                .attr("stroke", colors[i]);
     }
 }
