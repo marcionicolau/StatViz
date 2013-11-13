@@ -49,6 +49,7 @@ function OnMouseDown(e)
                     removeElementById("svgCanvas");
         
         removeElementsByClassName("displayDataTable");
+        removeElementsByClassName("displayDataText");
         
         displayDataForVariable(target.id);
     }

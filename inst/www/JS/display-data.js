@@ -10,10 +10,14 @@ function displayDataForVariable(variable)
     
     var canvas = d3.select("#canvas");
     
+    canvas.append("p")
+            .text("Unfortunately, this variable has too many levels and does not have a meaningful visualization!")
+            .attr("class", "displayDataText");
+    
     var table = canvas.append("table")
             .attr("border", "1")
             .attr("class", "displayDataTable")
-            .attr("style", "font-size: 20px; position: relative; left: " + canvasWidth/2 + "px; top: 100px;");
+            .attr("style", "font-size: 18px; position: relative; width: 100%; top: 150px; margin: 0 auto");
             
     table.append("tr").append("th").text(variable);      
             
