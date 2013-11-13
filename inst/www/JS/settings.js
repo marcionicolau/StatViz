@@ -27,7 +27,9 @@
 
     // Visualization panel
         var visualizationImageSize = scaleForWindowSize(200);  
-   
+
+// Displaying Data
+    var displayDataLimit = 20;
         
 // Plots (general)
 var axesOffset = scaleForWindowSize(25); //distance from plots to axes (for an R-like appearance)

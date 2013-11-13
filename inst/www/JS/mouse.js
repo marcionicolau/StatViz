@@ -41,6 +41,16 @@ function OnMouseDown(e)
         splitTheData();
     }
     
+    else if((e.button == 1 && window.event != null || e.button == 0) && (target.className.baseVal == "disabled"))
+    {
+        setup(e, target);
+        
+        resetSVGCanvas();
+        drawFullScreenButton();
+        
+        displayDataForVariable(target.id);
+    }
+    
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "means")
     {
         setup(e, target);    
@@ -84,6 +94,7 @@ function OnMouseDown(e)
             }
         }   
     }
+    
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "transformToNormal")
     {
         setup(e, target);
@@ -105,6 +116,7 @@ function OnMouseDown(e)
             applyTransform(variableList["dependent"][0], "dataset", true);
         }        
     }
+    
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "fullscreen")
     {
         _startX = e.clientX;
@@ -144,6 +156,7 @@ function OnMouseDown(e)
             d3.select("#svgCanvas").attr("height", canvasHeight).attr("width", canvasWidth);
         }
     }
+    
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "regression")
     {
         setup(e, target);
@@ -155,6 +168,7 @@ function OnMouseDown(e)
         
         drawDialogBoxToGetCausalAndPredictorVariables();
     }
+    
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "causalVariable")
     {
         setup(e, target);
@@ -208,6 +222,7 @@ function OnMouseDown(e)
             makeScatterplotMatrixForMultipleRegression(causalVariable);
         }
     }
+    
     else if((e.button == 1 && window.event != null || e.button == 0) && target.id == "regressionLine")
     {
         //TODO: fade out the datapoints
@@ -255,6 +270,7 @@ function OnMouseDown(e)
                 .attr("id", "y")
                 .attr("class", "LineToAxisInstance");
     }
+    
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "iEff")
     {
         setup(e, target);
@@ -267,6 +283,7 @@ function OnMouseDown(e)
         
         drawInteractionEffectPlot();
     }
+    
     else
     {
         //the user clicked outside
@@ -369,6 +386,7 @@ function OnMouseOver(e)
         var variableNameHolder = d3.selectAll("#" + target.id + ".variableNameHolderFront");
         variableNameHolder.attr("cursor","pointer");
     }
+    
     else if(target.className.baseVal == "visualizationHolderFront")
     {		
         setup(e, target);
@@ -376,6 +394,7 @@ function OnMouseOver(e)
         var visualizationHolder = d3.selectAll("#" + target.id + ".visualizationHolderFront");
         visualizationHolder.attr("cursor","pointer");
     }
+    
     else if(target.className.baseVal == "variableSelectionButton")
     {		
         setup(e, target);
@@ -383,6 +402,15 @@ function OnMouseOver(e)
         var variableSelectionButton = d3.selectAll("#" + target.id + ".variableSelectionButton");
         variableSelectionButton.attr("cursor","pointer");
     }
+    
+    else if(target.className.baseVal == "disabled")
+    {
+        setup(e, target);
+        
+        var variableHolder = d3.select("#" + target.id + ".disabled");
+        variableHolder.attr("cursor", "pointer");
+    }
+    
     else if(target.className.baseVal == "means")
     {		
         setup(e, target);
@@ -411,12 +439,14 @@ function OnMouseOver(e)
             }
         }
     }
+    
     else if(target.className.baseVal == "bins")
     {		
         setup(e, target);
         
         highlightBinWithId(target.id);
     }   
+    
     else if(target.className.baseVal == "datapoints")
     {		
         setup(e, target);
@@ -495,6 +525,7 @@ function OnMouseOver(e)
                 
         
     }   
+    
     else if(target.className.baseVal == "transformToNormal")
     {
         setup(e, target);
@@ -508,6 +539,7 @@ function OnMouseOver(e)
             buttonText.attr("cursor", "pointer");
         }        
     }
+    
     else if(target.className.baseVal == "fullscreen")
     {
         // grab the mouse position
@@ -530,6 +562,7 @@ function OnMouseOver(e)
         var button = d3.select(".fullscreen");
         button.attr("cursor", "pointer");
     }
+    
     else if((target.className.baseVal == "CIs") || (target.className.baseVal == "CITopFringes") || (target.className.baseVal == "CIBottomFringes"))
     {
         var canvas = d3.select("#svgCanvas");
@@ -579,10 +612,12 @@ function OnMouseOver(e)
                 
         
     }
+    
     else if(target.className.baseVal == "regression")
     {
         var regressionElements = d3.selectAll(".regression").attr("cursor", "pointer");
     }
+    
     else if(target.id == "regressionLine")
     {
         var canvas = d3.select("#svgCanvas");
@@ -623,6 +658,7 @@ function OnMouseOver(e)
                 
     
     }
+    
     else if(target.className.baseVal == "causalVariable")
     {
         var choice = d3.selectAll("#" + target.id + ".causalVariable");
