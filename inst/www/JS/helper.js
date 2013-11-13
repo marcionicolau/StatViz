@@ -250,9 +250,9 @@ function removeElementsByClassName(className)
 }
 
 //Adds a given element to an array by maintain unique elements
-function addElementToArrayWithUniqueElements(array, element)
+function toggleFillColorsForVariables(array, element)
 {   
-    var variable = d3.select("#" + element + ".variableNameHolder");
+    var variable = d3.select("#" + element + ".variableNameHolderFront");
     
     if(array.indexOf(element) == -1)
     {

@@ -10,7 +10,7 @@ function OnMouseDown(e)
         setup(e, target);        
         
         //add to list of variables selected
-        currentVariableSelection = addElementToArrayWithUniqueElements(currentVariableSelection, target.id);
+        currentVariableSelection = toggleFillColorsForVariables(currentVariableSelection, target.id);
         
         //display the current variable selection
         console.log("************************************************************************************************************************************************************");        
