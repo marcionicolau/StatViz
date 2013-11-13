@@ -19,6 +19,9 @@ function drawInteractionEffectPlot()
     var max = Array.max(dependentVariableData);
     var min = Array.min(dependentVariableData);
     
+    console.log("max=" + max);
+    console.log("min=" + min);
+    
     var independentVariableXAxisData = variables[independentVariableXAxis]["dataset"];
     var independentVariableColorData = variables[independentVariableColor]["dataset"];
     
