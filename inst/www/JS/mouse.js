@@ -572,6 +572,7 @@ function OnMouseOver(e)
     {
         var canvas = d3.select("#svgCanvas");
     
+        console.log(getValidId(target.id));
         
         var topFringe = d3.select("#" + getValidId(target.id) + ".CITopFringes");
         var bottomFringe = d3.select("#" + getValidId(target.id) + ".CIBottomFringes");
