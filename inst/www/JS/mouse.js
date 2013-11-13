@@ -606,14 +606,14 @@ function OnMouseOver(e)
                 .attr("x",(parseFloat(bottomFringe.attr("x1")) - 20))
                 .attr("y", bottomFringe.attr("y1") - 5)
                 .attr("text-anchor", "middle")
-                .text(format(CI[variableList["dependent"][0]][target.id][0]))
+                .text(format(CI[variableList["dependent"][0]][getValidId(target.id)][0]))
                 .attr("class", "hover");
         
         canvas.append("text")
                 .attr("x",(parseFloat(topFringe.attr("x1")) - 20))
                 .attr("y", topFringe.attr("y1") - 5)
                 .attr("text-anchor", "middle")
-                .text(format(CI[variableList["dependent"][0]][target.id][1]))
+                .text(format(CI[variableList["dependent"][0]][getValidId(target.id)][1]))
                 .attr("class", "hover");
     }
     
