@@ -765,6 +765,9 @@ function getNormalYAxisCoordinateFromScaledViewBoxCoordinate(value)
 function setThisVariableEvil(variable)
 {
     variableIsEvil[variable] = "true";
+    
+    d3.select("#variable.variableNameHolderFront").attr("class", "disabled");
+    d3.select("#variable.variableNameHolderBack").attr("fill", variablePanelColors["disabled"]);
 }
 
             

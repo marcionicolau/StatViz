@@ -45,7 +45,7 @@ function testForEvilVariables()
 
         if((variableDataTypes[variable] == "nominal") || (variableDataTypes[variable] == "ordinal"))
         {
-            if(uniqueVariableData.length > 7)
+            if(uniqueVariableData.length > 15)
             {
                 console.log("making " + variable + " as an evil variable");
                 setThisVariableEvil(variableNames[i]);

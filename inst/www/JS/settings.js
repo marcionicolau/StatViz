@@ -20,6 +20,10 @@
         var radius = variableNameHolderPadding + "px";
         var variableNameHolderHeight = scaleForWindowSize(60); // TODO: Find this dynamically based on number of variable names (50 is the maximum), do this for font-size as well
         variableSelectionButtonWidth = scaleForWindowSize(60);
+        
+        var variablePanelColors = new Object();
+            variablePanelColors["active"] = "lightgrey";
+            variablePanelColors["disabled"] = "darkgrey";
 
     // Visualization panel
         var visualizationImageSize = scaleForWindowSize(200);  
