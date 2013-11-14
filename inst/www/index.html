@@ -56,7 +56,7 @@
                 $("#datasetInformation").text(datasetInformation[fileName]);
                 
                 var variableList = variablesInDataset[fileName];
-                var variableListTypes = localStorage.variablesInDatasetType[fileName];
+                var variableListTypes = variablesInDatasetType[fileName];
                 var variableListDataTypes = variablesInDatasetDataType[fileName];
                 var variablesDiv = d3.select("#variablesDiv");
                 
@@ -115,8 +115,14 @@
                 for(var i=0; i<variablesInDataset[fileName].length; i++)
                 {
                     var option = document.getElementById(variablesInDataset[fileName][i]).value;//d3.select("#" + variablesInDataset[fileName][i] + ".variableTypeDropDown").attr("value");
-                    localStorage.variablesInDatasetType[fileName][i] = option;                 
-                }      
+                    variablesInDatasetType[fileName][i] = option;                 
+                }   
+                
+                for(var i=0; i<variablesInDatasetType[fileName].length; i++)
+                {
+                    localStorage.setItem(variablesInDataset[fileName][i], variablesInDatasetType[fileName][i]);
+                }
+                
                 window.location = "main.html";
             }
         </script>
