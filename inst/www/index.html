@@ -40,10 +40,11 @@
         
             window.onload = function()
             {  
-               changeDataset();
+
                d3.select("body").style("font-size", scaleForWindowSize(100)+"%");
                
                initVariablesInDatasetDataTypes();
+               changeDataset();
             }
             
             function changeDataset()
