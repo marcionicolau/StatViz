@@ -422,7 +422,7 @@ function makeHistogram()
                 {                    
                     canvas.append("text")
                             .attr("x", LEFT + j*xStep + xStep/2)                        
-                            .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*invidualPlotHeight - i*yDiffForPlots + yAxisTickTextOffset)
+                            .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*individualPlotHeight - i*yDiffForPlots + yAxisTickTextOffset)
                             .attr("fill", "black")
                             .attr("text-anchor", "start")
                             .attr("font-size", binCountFontSize)
