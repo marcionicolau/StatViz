@@ -305,7 +305,7 @@ function makeHistogram()
         var individualPlotHeight = (plotHeight/currentVariableSelection.length) - 3*axesOffset;
         var yDiffForPlots = individualPlotHeight + 3*axesOffset;
         
-        nGroovesY = nGroovesY * (individualPlotHeight/plotHeight);
+        nGroovesY = Math.ceil(nGroovesY * (individualPlotHeight/plotHeight));
         var binSlice = Array.max(binMaxs)/(nGroovesY-1);
     
         // Draw axes    
