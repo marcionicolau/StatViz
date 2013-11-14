@@ -630,7 +630,7 @@ function OnMouseOver(e)
         
         canvas.append("text")
                 .attr("x", (parseFloat(bFringe.attr("x1")) + parseFloat(bFringe.attr("x2")))/2)
-                .attr("y", parseFloat(bFringe.attr("y1")) + 10)
+                .attr("y", parseFloat(bFringe.attr("y1")) + 15)
                 .attr("text-anchor", "middle")
                 .text(format(getActualValue(bFringe.attr("y1"))))
                 .attr("class", "hover");

@@ -235,6 +235,45 @@ function performOneWayRepeatedMeasuresANOVA(dependentVariable, independentVariab
     });
 }
 
+function performFriedmanTest(dependentVariable, independentVariable)
+{
+    var req = opencpu.r_fun_json("performFriedmanTest", {
+                    dependentVariable: dependentVariable,
+                    independentVariable: independentVariable,
+                    participantVariable: participants,
+                    dataset: dataset
+                  }, function(output) {                                                   
+                  
+                  console.log("\t\t Friedman's Rank-sum Test for (" + dependentVariable + " ~ " + independentVariable + " + Error(" + participants + "/" + independentVariable + ")");
+                  console.log("\t\t\t ChiSquared = " + output.chiSquared);
+                  console.log("\t\t\t method used = " + output.method; //todo
+                  console.log("\t\t\t DF = " + output.df);
+                  console.log("\t\t\t p = " + output.p);
+                  
+                  testResults["df"] = output.df;
+                  testResults["statistic"] = "ChiSquared(" + testResults["df"] + ") = " + output.chiSquared;   
+                  testResults["method"] = output.method; 
+                  testResults["p"] = output.p;
+                           
+                  
+                //drawing stuff
+                removeElementsByClassName("completeLines");           
+
+                displaySignificanceTestResults();               
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
 function findEffect(dependentVariable, independentVariables)
 {
     var req = opencpu.r_fun_json("findEffect", {

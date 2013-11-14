@@ -248,7 +248,7 @@ function performHomoscedasticityTestNotNormal(dependent, independent)
                         }
                         else
                         {
-                            console.log("Friedman's Test");
+                            performFriedmanTest(variableList["dependent"][0], variableList["independent"][0]);
                         }                                        
                     }
                 }
