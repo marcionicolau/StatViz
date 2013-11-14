@@ -39,6 +39,8 @@
 
 #submitButton
 {
+    position: absolute;
+    left: 50%;
     color:#08233e;
     font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
     font-size:70%;
@@ -53,6 +55,11 @@
     -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
     box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
     cursor:pointer;
+}
+
+#buttonWrapper
+{
+    text-align: center;
 }
 
 body
