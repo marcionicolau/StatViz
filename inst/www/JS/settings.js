@@ -5,8 +5,8 @@
     var pathToFile =  wd + "cars-mod.txt";
 
 // Skeleton
-    var width = document.body.clientWidth;
-    var height = document.body.clientHeight;  
+    var width = $(document).width();
+    var height = $(document).height();  
     
     console.log("width = " + width + ", height = " + height);
 
