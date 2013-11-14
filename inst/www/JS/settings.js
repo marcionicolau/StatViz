@@ -33,7 +33,7 @@
     var rangeToFade = 3*displayDataLimit/5;
         
 // Plots (general)
-var axesOffset = scaleForWindowSize(25); //distance from plots to axes (for an R-like appearance)
+var axesOffset = scaleForWindowSize(10); //distance from plots to axes (for an R-like appearance)
 var tickTextOffsetXAxis = 25;
 var tickTextOffsetYAxis = 10;
 var yAxisTickTextOffset = 6;

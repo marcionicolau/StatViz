@@ -358,12 +358,20 @@ function makeHistogram()
             }
         }
     
-        
-        var yStep = plotHeight/(nGroovesY-1);
-        
+        nGroovesY = nGroovesY * (individualPlotHeight/plotHeight);
+        var yStep;
         for(i=0; i<labels.length; i++)
         {
             yStep = individualPlotHeight/(nGroovesY-1);
+            
+//             canvas.append("line")
+//                     .attr("x1", LEFT - axesOffset)
+//                     .attr("y1", BOTTOM -  i*yDiffForPlots)
+//                     .attr("x2", LEFT - axesOffset)
+//                     .attr("y2", BOTTOM -  i*yDiffForPlots)
+//                     .attr("stroke", "black")
+//                     .attr("id", "yAxis")
+//                     .attr("class", "axes");
             
             for(j=0; j<nGroovesY; j++)
             {
