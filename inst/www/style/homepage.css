@@ -2,6 +2,9 @@
 {
     font-size: 30px;
     margin: 0 auto;    
+    height: 5em;
+    font: 1.2em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color:#08233e;
 }
 
 #datasetDisplayTable
@@ -10,7 +13,7 @@
     height: 80%;
     border-collapse:collapse;
     background-color: FloralWhite;
-    font:1.2em "Lucida Sans Unicode", "Lucida Grande", sans-serif
+    font:1.2em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 .variableList
