@@ -1,4 +1,5 @@
 var LEFT, RIGHT, TOP, BOTTOM, xStep;
+var yDiffForPlots;
 function makeHistogram()
 {      
     // TODO: Need to constrain the selection to 3 variables
@@ -144,9 +145,10 @@ function makeHistogram()
          // Find ticks   
         var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));    
         var individualPlotHeight = (plotHeight/labels.length) - 4*axesOffset;
-        var yDiffForPlots = individualPlotHeight + 4*axesOffset;
+        yDiffForPlots = individualPlotHeight + 4*axesOffset;
         
         nGroovesY = Math.ceil(nGroovesY * (individualPlotHeight/plotHeight));
+        nGroovesY = nGroovesY < 2 ? 2 : nGroovesY;
         var binSlice = Array.max(binMaxs)/(nGroovesY-1);
     
         // Draw axes    
@@ -306,9 +308,10 @@ function makeHistogram()
          // Find ticks   
         var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));  
         var individualPlotHeight = (plotHeight/labels.length) - 4*axesOffset;
-        var yDiffForPlots = individualPlotHeight + 4*axesOffset;
+        yDiffForPlots = individualPlotHeight + 4*axesOffset;
         
         nGroovesY = Math.ceil(nGroovesY * (individualPlotHeight/plotHeight));
+        nGroovesY = nGroovesY < 2 ? 2 : nGroovesY;
         var binSlice = Array.max(binMaxs)/(nGroovesY-1);
     
         // Draw axes    
@@ -605,7 +608,7 @@ function drawHistogramLegends(varNames)
     {
         canvas.append("rect")
                 .attr("x", RIGHT + histLegendOffsetX)
-                .attr("y", TOP + histLegendOffsetY + i*yStep)
+                .attr("y", TOP + histLegendOffsetY + i*yStep + i*yDiffForPlots)
                 .attr("width", histLegendSize)
                 .attr("height", histLegendSize)
                 .attr("fill", colors[(varNames.length-i-1)])
@@ -615,7 +618,7 @@ function drawHistogramLegends(varNames)
         
         canvas.append("text")
                 .attr("x", RIGHT + histLegendOffsetX + histDistanceBetweenLegendAndText + histLegendSize)
-                .attr("y", TOP + histLegendOffsetY + i*yStep + histLegendSize/2 + 3)
+                .attr("y", TOP + histLegendOffsetY + i*yStep + histLegendSize/2 + 3 + i*yDiffForPlots)
                 .attr("fill", "black")
                 .text(varNames[(varNames.length-i-1)])
                 .attr("id", "legend" + (varNames.length-i-1))
