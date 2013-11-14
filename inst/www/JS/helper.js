@@ -662,6 +662,9 @@ function setVariableTypes()
         variableTypes[variableNames[i]] = variablesInDatasetType[fileName][i];
     }
     
+    console.dir(variableTypes);
+    console.log(variablesInDatasetType[fileName];
+    
     for(var i=0; i<variableNames.length; i++)
     {
         if(variableTypes[variableNames[i]] == "independent")
