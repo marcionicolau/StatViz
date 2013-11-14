@@ -572,6 +572,7 @@ function OnMouseOver(e)
     {
         setup(e, target);
         
+        console.log("hover");
         var canvas = d3.select("#svgCanvas");
         var outlier = d3.select("#" + target.id + ".outliers");
         
