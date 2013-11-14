@@ -360,24 +360,29 @@ function makeHistogram()
     
         
         var yStep = plotHeight/(nGroovesY-1);
-    
-        for(i=0; i<nGroovesY; i++)
-        {
-            canvas.append("line")
-                        .attr("x1", LEFT - 10 - axesOffset)
-                        .attr("y1", BOTTOM - i*yStep)
-                        .attr("x2", LEFT - axesOffset)
-                        .attr("y2", BOTTOM - i*yStep)
-                        .attr("id", "groove" + i)
-                        .attr("class", "yAxisGrooves");
         
-            canvas.append("text")
-                        .attr("x", LEFT - tickTextOffsetYAxis - axesOffset)
-                        .attr("y", BOTTOM - i*yStep + yAxisTickTextOffset)                                        
-                        .text(Math.round(i*binSlice))
-                        .attr("text-anchor", "end")
-                        .attr("id", "groove" + i)
-                        .attr("class", "yAxisGrooveText");
+        for(i=0; i<labels.length; i++)
+        {
+            yStep = individualPlotHeight/(nGroovesY-1);
+            
+            for(j=0; j<nGroovesY; j++)
+            {
+                canvas.append("line")
+                            .attr("x1", LEFT - 10 - axesOffset)
+                            .attr("y1", BOTTOM - j*yStep - i*yDiffForPlots)
+                            .attr("x2", LEFT - axesOffset)
+                            .attr("y2", BOTTOM - j*yStep -  i*yDiffForPlots)
+                            .attr("id", "groove" + i)
+                            .attr("class", "yAxisGrooves");
+        
+                canvas.append("text")
+                            .attr("x", LEFT - tickTextOffsetYAxis - axesOffset)
+                            .attr("y", BOTTOM - i*yStep + yAxisTickTextOffset - i*yDiffForPlots)                                        
+                            .text(Math.round(j*binSlice))
+                            .attr("text-anchor", "end")
+                            .attr("id", "groove" + j)
+                            .attr("class", "yAxisGrooveText");
+            }
         }
         
         // var curve = canvas.append("path")                            
