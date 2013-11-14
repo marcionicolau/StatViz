@@ -662,6 +662,8 @@ function setVariableTypes()
         variableTypes[variableNames[i]] = sessionStorage.getItem(variableNames[i]);
     }
     
+    console.dir(variableTypes);
+    
     for(var i=0; i<variableNames.length; i++)
     {
         if(variableTypes[variableNames[i]] == "independent")
