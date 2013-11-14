@@ -588,7 +588,7 @@ function OnMouseOver(e)
                 .attr("x", outlier.attr("cx"))
                 .attr("y", outlier.attr("cy") - 5)
                 .attr("text-anchor", "middle")
-                .text(getValue(outlier.attr("cy")))
+                .text(getActualValue(outlier.attr("cy")))
                 .attr("class", "hover");
                 
     }

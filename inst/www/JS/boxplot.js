@@ -592,7 +592,7 @@ function getFraction(number)
     return (number - min)/(max - min);
 }
 
-function getValue(fraction)
+function getActualValue(fraction)
 {
     console.log("max=" + max + ", min=" + min);
     return (fraction*(max - min)) + min;
