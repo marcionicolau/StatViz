@@ -36,6 +36,7 @@ th
     background-color: DarkSlateGray;
     font:1.2em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     padding: 15px;
+    color: white;
 }
 
 #left
@@ -62,9 +63,10 @@ th
     width: 20em;
     height: 7em;
     position: absolute;
+    top: 75%;
     left: 40%;
     color:#08233e;
-    font:1.5em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+    font:1.7em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
     padding:14px;
     background-color:rgba(255,204,0,1);
     border:1px solid #ffcc00;
