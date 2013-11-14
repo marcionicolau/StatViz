@@ -51,7 +51,7 @@
             {
                 fileName = $("#datasetDropDownList").val();
                 
-                localStorage.fileName = fileName;
+                sessionStorage.fileName = fileName;
                 
                 $("#datasetInformation").text(datasetInformation[fileName]);
                 
@@ -120,7 +120,7 @@
                 
                 for(var i=0; i<variablesInDatasetType[fileName].length; i++)
                 {
-                    localStorage.setItem(variablesInDataset[fileName][i], variablesInDatasetType[fileName][i]);
+                    sessionStorage.setItem(variablesInDataset[fileName][i], variablesInDatasetType[fileName][i]);
                 }
                 
                 window.location = "main.html";

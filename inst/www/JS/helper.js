@@ -659,7 +659,7 @@ function setVariableTypes()
 {
     for(var i=0; i<variableNames.length; i++)
     {
-        variableTypes[variableNames[i]] = localStorage.getItem(variableNames[i]);
+        variableTypes[variableNames[i]] = sessionStorage.getItem(variableNames[i]);
     }
     
     console.dir(variableTypes);
