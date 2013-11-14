@@ -5,8 +5,8 @@
     var pathToFile =  wd + "cars-mod.txt";
 
 // Skeleton
-    var width = document.width;
-    var height = document.height;  
+    var width = screen.width;
+    var height = screen.height;  
 
     var panelColors = new Object();
         panelColors.normal = "white";
