@@ -305,14 +305,14 @@ function makeHistogram()
         var binSlice = Array.max(binMaxs)/(nGroovesY-1);
     
         // Draw axes    
-        var yAxis = canvas.append("line")
-                                        .attr("x1", LEFT - axesOffset)
-                                        .attr("y1", TOP)
-                                        .attr("x2", LEFT - axesOffset)
-                                        .attr("y2", BOTTOM)
-                                        .attr("stroke", "black")
-                                        .attr("id", "yAxis")
-                                        .attr("class", "axes");
+//         var yAxis = canvas.append("line")
+//                                         .attr("x1", LEFT - axesOffset)
+//                                         .attr("y1", TOP)
+//                                         .attr("x2", LEFT - axesOffset)
+//                                         .attr("y2", BOTTOM)
+//                                         .attr("stroke", "black")
+//                                         .attr("id", "yAxis")
+//                                         .attr("class", "axes");
         
         canvas.append("text")
                 .attr("x", LEFT - axesOffset - labelOffset)
