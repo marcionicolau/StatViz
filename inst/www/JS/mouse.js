@@ -600,8 +600,8 @@ function OnMouseOver(e)
         var tFringe = d3.select("#" + target.id + ".TOPFringes");
         var bFringe = d3.select("#" + target.id + ".BOTTOMFringes");
         
-        tFringe.attr("stroke-width", parseInt(tFringe.attr("stroke-width"))*2);
-        bFringe.attr("stroke-width", parseInt(bFringe.attr("stroke-width"))*2);
+        tFringe.attr("stroke-width", 8);
+        bFringe.attr("stroke-width", 8);
         
         canvas.append("line")       
                 .attr("x1", tFringe.attr("x1"))
@@ -801,8 +801,8 @@ function OnMouseOut(e)
         var tFringe = d3.select("#" + target.id + ".TOPFringes");
         var bFringe = d3.select("#" + target.id + ".BOTTOMFringes");
         
-        tFringe.attr("stroke-width", parseInt(tFringe.attr("stroke"))/2);
-        bFringe.attr("stroke-width", parseInt(bFringe.attr("stroke"))/2);
+        tFringe.attr("stroke-width", 4);
+        bFringe.attr("stroke-width", 4);
         
         removeElementsByClassName("hover");
     }
