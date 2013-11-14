@@ -246,7 +246,7 @@ function performFriedmanTest(dependentVariable, independentVariable)
                   
                   console.log("\t\t Friedman's Rank-sum Test for (" + dependentVariable + " ~ " + independentVariable + " + Error(" + participants + "/" + independentVariable + ")");
                   console.log("\t\t\t ChiSquared = " + output.chiSquared);
-                  console.log("\t\t\t method used = " + output.method; //todo
+                  console.log("\t\t\t method used = " + output.method); //todo
                   console.log("\t\t\t DF = " + output.df);
                   console.log("\t\t\t p = " + output.p);
                   
