@@ -656,13 +656,11 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
 }
 
 function setVariableTypes()
-{
+{    
     for(var i=0; i<variableNames.length; i++)
     {
         variableTypes[variableNames[i]] = sessionStorage.getItem(variableNames[i]);
     }
-    
-    console.dir(variableTypes);
     
     for(var i=0; i<variableNames.length; i++)
     {
@@ -684,7 +682,10 @@ function setVariableDataTypes()
 {
     for(var i=0; i<variableNames.length; i++)
     {
-        variableDataTypes[variableNames[i]] = variablesInDatasetDataType[fileName][i];
+        if(variables[variableNames[i]]["dataset"].unique().length == 2)
+            variableDataTypes[variableNames[i]] = "binary";
+        else
+            variableDataTypes[variableNames[i]] = variablesInDatasetDataType[fileName][i];
     }
     
     for(var i=0; i<variableNames.length; i++)
@@ -701,6 +702,9 @@ function setVariableDataTypes()
                             //do something
                             break;
             case "ratio":
+                            //do something
+                            break;
+            case "binary":
                             //do something
                             break;
         }
