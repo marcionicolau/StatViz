@@ -457,6 +457,31 @@ function displayCorrelationResults()
  
 }
 
+function displayBiserialCorrelationResults()
+{   
+    var canvas = d3.select("#svgCanvas");    
+    var spaceOnRight = (canvasWidth - plotWidth)/2;    
+    
+    canvas.append("text")
+            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+            .attr("y", canvasHeight/2 + significanceTestResultOffset)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "20px")
+            .attr("fill", "orange")
+            .text(testResults["method"])
+            .attr("class", "significanceTest");  
+    
+    //Effect sizes
+    canvas.append("text")
+            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+            .attr("y", canvasHeight/2 - 2*significanceTestResultOffset)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "24px")
+            .attr("fill", "orange")
+            .text(testResults["effect-size"])
+            .attr("class", "significanceTest"); 
+}
+
 function displaySimpleRegressionResults()
 {   
     var canvas = d3.select("#svgCanvas");    

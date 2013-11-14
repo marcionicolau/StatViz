@@ -1019,14 +1019,14 @@ function getBiserialCorrelationCoefficient(continuousVariable, binaryVariable)
                     binaryVariable: variables[binaryVariable]["dataset"]
                   }, function(output) {                                                   
               
-                console.log("\t\t Biserial Correlation-coefficient for (" + variableA + " , " + variableB + ")");                
+                console.log("\t\t Biserial Correlation-coefficient for (" + continuousVarible + " , " + binaryVariable + ")");                
                 console.log("\t\t\t method used = " + "Biserial Correlation-coefficient");
                 console.log("\t\t\t r = " + output.cor);
 
                 testResults["method"] = "Biserial Correlation-coefficient";
                 testResults["effect-size"] = output.cor;               
 
-                displayCorrelationResults();
+                displayBiserialCorrelationResults();
 
                 if((output.cor < -0.5) || (output.cor > 0.5))
                 {                
