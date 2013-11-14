@@ -325,7 +325,9 @@ function makeBoxplot()
                     .attr("cx", canvasWidth/2 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("cy", BOTTOM - getFraction(outliers[j])*plotHeight)
                     .attr("r", outlierRadius)
-                    .attr("id", ids[i])
+                    .attr("fill", "red")
+                    .attr("stroke", "none")
+                    .attr("id", ids[i] + j)
                     .attr("class", "outliers");
         }
         
@@ -565,7 +567,7 @@ function redrawBoxPlot()
                     .attr("r", outlierRadius)
                     .attr("fill", "red")
                     .attr("stroke", "none")
-                    .attr("id", ids[i])
+                    .attr("id", ids[i] + j)
                     .attr("class", "outliers");
         }
     
