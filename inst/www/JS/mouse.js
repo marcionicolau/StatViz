@@ -588,7 +588,51 @@ function OnMouseOver(e)
                 .attr("x", outlier.attr("cx"))
                 .attr("y", outlier.attr("cy") - 5)
                 .attr("text-anchor", "middle")
-                .text(getActualValue(outlier.attr("cy")))
+                .text(format(getActualValue(outlier.attr("cy"))))
+                .attr("class", "hover");
+                
+    }
+    
+    else if((target.className.baseVal == "TOPFringes") || (target.className.baseVal == "BOTTOMFringes"))
+    {
+        setup(e, target);
+        var canvas = d3.select("#svgCanvas");
+        var tFringe = d3.select("#" + target.id + ".TOPFringes");
+        var bFringe = d3.select("#" + target.id + ".BOTTOMFringes");
+        
+        tFringe.attr("stroke-width", parseInt(fringe.attr("stroke-width"))*2);
+        bFringe.attr("stroke-width", parseInt(fringe.attr("stroke-width"))*2);
+        
+        canvas.append("line")       
+                .attr("x1", tFringe.attr("x1"))
+                .attr("y1", tFringe.attr("y1"))
+                .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
+                .attr("y2", tFringe.attr("y1"))
+                .attr("stroke-dasharray", "5,5")
+                .attr("stroke", "black")
+                .attr("class", "hover");    
+        
+         canvas.append("line")       
+                .attr("x1", bFringe.attr("x1"))
+                .attr("y1", bFringe.attr("y1"))
+                .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
+                .attr("y2", bFringe.attr("y1"))
+                .attr("stroke-dasharray", "5,5")
+                .attr("stroke", "black")
+                .attr("class", "hover");    
+    
+        canvas.append("text")
+                .attr("x", (parseFloat(tFringe.attr("x1")) + parseFloat(tFringe.attr("x2")))/2)
+                .attr("y", tFringe.attr("y1") - 5)
+                .attr("text-anchor", "middle")
+                .text(format(getActualValue(tFringe.attr("y1"))))
+                .attr("class", "hover");
+        
+        canvas.append("text")
+                .attr("x", (parseFloat(bFringe.attr("x1")) + parseFloat(bFringe.attr("x2")))/2)
+                .attr("y", bFringe.attr("y1") + 5)
+                .attr("text-anchor", "middle")
+                .text(format(getActualValue(bFringe.attr("y1"))))
                 .attr("class", "hover");
                 
     }
@@ -749,6 +793,20 @@ function OnMouseOut(e)
         outlier.attr("r", outlierRadius).attr("stroke", "none");
         removeElementsByClassName("hover");
     }
+    
+    else if((target.className.baseVal == "TOPFringes") || (target.className.baseVal == "BOTTOMFringes"))
+    {
+        var canvas = d3.select("#svgCanvas");
+        
+        var tFringe = d3.select("#" + target.id + ".TOPFringes");
+        var bFringe = d3.select("#" + target.id + ".BOTTOMFringes");
+        
+        tFringe.attr("stroke", parseInt(tFringe.attr("stroke"))/2);
+        bFringe.attr("stroke", parseInt(bFringe.attr("stroke"))/2);
+        
+        removeElementsByClassName("hover");
+    }
+    
     else if((target.className.baseVal == "CIs") || (target.className.baseVal == "CITopFringes") || (target.className.baseVal == "CIBottomFringes"))
     {
         removeElementsByClassName("hover");
