@@ -355,7 +355,7 @@ function makeHistogram()
                         .attr("class", "xAxisGrooveText");
         }
     
-        var individualPlotHeight = (plotHeight/currentVariableSelection.length) - axesOffset;
+        var individualPlotHeight = (plotHeight/currentVariableSelection.length) - 2*axesOffset;
         var yStep = plotHeight/(nGroovesY-1);
     
         for(i=0; i<nGroovesY; i++)
@@ -422,7 +422,7 @@ function makeHistogram()
                         
                 canvas.append("rect")
                             .attr("x", LEFT + j*xStep)
-                            .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*individualPlotHeight - i*(individualPlotHeight+axesOffset))
+                            .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*individualPlotHeight - i*(individualPlotHeight+2*axesOffset))
                             .attr("height", (bins[labels[i]][j]/Array.max(binMaxs))*individualPlotHeight)
                             .attr("width", plotWidth/nBins)          
                             .attr("fill", colors[i])         
