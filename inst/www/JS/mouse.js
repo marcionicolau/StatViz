@@ -571,12 +571,26 @@ function OnMouseOver(e)
     else if(target.className.baseVal == "outliers")
     {
         setup(e, target);
-        
-        console.log("hover");
         var canvas = d3.select("#svgCanvas");
         var outlier = d3.select("#" + target.id + ".outliers");
         
-        outlier.attr("stroke", "lightgoldenrodyellow").attr("stroke-width", "2px");
+        outlier.attr("r", outlierRadius*2).attr("stroke", "lightgoldenrodyellow").attr("stroke-width", "2px");
+        canvas.append("line")       
+                .attr("x1", outlier.attr("cx"))
+                .attr("y1", outlier.attr("cy"))
+                .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
+                .attr("y2", outlier.attr("cy"))
+                .attr("stroke-dasharray", "5,5")
+                .attr("stroke", "black")
+                .attr("class", "hover");    
+        
+        canvas.append("text")
+                .attr("x", outlier.attr("cx"))
+                .attr("y", outlier.attr("cy") - 5)
+                .attr("text-anchor", "middle")
+                .text(getValue(outlier.attr("cy")))
+                .attr("class", "hover");
+                
     }
     
     else if((target.className.baseVal == "CIs") || (target.className.baseVal == "CITopFringes") || (target.className.baseVal == "CIBottomFringes"))
@@ -726,6 +740,14 @@ function OnMouseOut(e)
         
         datapoint.transition().duration(300).attr("r", datapointRadius);
         removeElementsByClassName("hoverText");
+    }
+    else if(target.className.baseVal == "outliers")
+    {
+        var canvas = d3.select("#svgCanvas");
+        var outlier = d3.select("#" + target.id + ".outliers");
+        
+        outlier.attr("r", outlierRadius).attr("stroke", "none");
+        removeElementsByClassName("hover");
     }
     else if((target.className.baseVal == "CIs") || (target.className.baseVal == "CITopFringes") || (target.className.baseVal == "CIBottomFringes"))
     {
