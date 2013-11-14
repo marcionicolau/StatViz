@@ -358,7 +358,7 @@ function makeHistogram()
             }
         }
     
-        nGroovesY = nGroovesY * (individualPlotHeight/plotHeight);
+//         nGroovesY = nGroovesY * (individualPlotHeight/plotHeight);
         var yStep;
         console.log(individualPlotHeight);
         for(i=0; i<labels.length; i++)
