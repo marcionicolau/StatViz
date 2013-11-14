@@ -16,6 +16,11 @@
     font:1.2em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
+#variablesDiv
+{
+    text-align: center;
+}
+
 .variableList
 {
     border-collapse: collapse; 
@@ -29,7 +34,8 @@
 th
 {
     background-color: DarkSlateGray;
-    font:1.5em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font:1.3em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    padding: 15px;
 }
 
 #left
