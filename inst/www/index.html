@@ -76,7 +76,7 @@
                     tr.append("td")
                         .text(variableList[i]);
                         
-                    var select = tr.append("td").append("select").attr("name", "varType").attr("onchange", "changeVariableType(variableList[i])").attr("id", ).attr("class", "variableTypeDropDown");                    
+                    var select = tr.append("td").append("select").attr("name", "varType").attr("onchange", "changeVariableType(variableList[i])").attr("class", "variableTypeDropDown");                    
                     
                     var participant = select.append("option").attr("value", "participant").text("Participant/Subject/ID");
                     var dependent = select.append("option").attr("value", "dependent").text("Dependent Variable");
