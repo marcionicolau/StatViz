@@ -608,7 +608,7 @@ function drawHistogramLegends(varNames)
     {
         canvas.append("rect")
                 .attr("x", RIGHT + histLegendOffsetX)
-                .attr("y", TOP + i*yDiffForPlots + yDiffForPlots/2 - histLegendSize/2)
+                .attr("y", BOTTOM - i*yDiffForPlots - yDiffForPlots/2 - histLegendSize/2)
                 .attr("width", histLegendSize)
                 .attr("height", histLegendSize)
                 .attr("fill", colors[(varNames.length-i-1)])
