@@ -16,7 +16,7 @@
     width: 100%;
     height: 80%;
     border-collapse:collapse;
-    background-color: Khaki;
+    background-color: LemonChiffon;
     font:1.2em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
@@ -29,7 +29,7 @@
 {
     border-collapse: collapse; 
     padding: 10px;
-    background-color: Khaki;
+    background-color: LemonChiffon;
     color: black;
     table-layout: fixed;
     font:1.0em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -70,11 +70,11 @@ th
 
 #submitButton
 {
-    width: 20em;
-    height: 7em;
+    width: 15em;
+    height: 5em;
     position: relative;
     top: 90%;
-    color:Khaki;
+    color: LemonChiffon;
     font:1.7em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
     padding:14px;
     background-color:DarkKhaki;
@@ -97,5 +97,5 @@ th
 
 body
 {
-    background-color: FloralWhite;
+    background-color: LemonChiffon;
 }
