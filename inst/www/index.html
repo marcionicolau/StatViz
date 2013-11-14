@@ -42,6 +42,8 @@
             {  
                changeDataset();
                d3.select("body").style("font-size", scaleForWindowSize(100)+"%");
+               
+               initVariablesInDatasetDataTypes();
             }
             
             function changeDataset()
@@ -113,7 +115,7 @@
                 {
                     var option = document.getElementById(variablesInDataset[fileName][i]).value;//d3.select("#" + variablesInDataset[fileName][i] + ".variableTypeDropDown").attr("value");
                     variablesInDatasetType[fileName][i] = option;                 
-                }            
+                }      
                 window.location = "main.html";
             }
         </script>
