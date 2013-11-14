@@ -79,10 +79,9 @@
                     var select = tr.append("td").append("select").attr("name", "varType").attr("onchange", "changeVariableType()").attr("id", "variableTypeDropDown").attr("class", "c" + i);
                     
                     select.append("option").attr("value", "participant").text("Participant/Subject/ID");
-                    select.append("option").attr("value", "dependent").text("Dependent Variable");
+                    select.append("option").attr("value", "dependent").text("Dependent Variable").attr("selected");
                     select.append("option").attr("value", "independent").text("Independent Variable");
-                    
-                    document.getElementsByClassName("c"+i).setAttribute("value", variableListTypes[i]);
+
                     
                     tr.append("td")
                         .text(variableListDataTypes[i]);
