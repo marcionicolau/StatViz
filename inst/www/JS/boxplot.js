@@ -594,6 +594,7 @@ function getFraction(number)
 
 function getValue(fraction)
 {
+    console.log("max=" + max + ", min=" + min);
     return (fraction*(max - min)) + min;
 }
 

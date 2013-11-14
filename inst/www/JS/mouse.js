@@ -574,7 +574,7 @@ function OnMouseOver(e)
         var canvas = d3.select("#svgCanvas");
         var outlier = d3.select("#" + target.id + ".outliers");
         
-        outlier.attr("r", outlierRadius*2).attr("stroke", "lightgoldenrodyellow").attr("stroke-width", "2px");
+        outlier.attr("r", outlierRadius*2).attr("stroke", "yellow").attr("stroke-width", "2px");
         canvas.append("line")       
                 .attr("x1", outlier.attr("cx"))
                 .attr("y1", outlier.attr("cy"))
