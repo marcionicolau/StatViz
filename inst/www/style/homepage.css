@@ -25,16 +25,16 @@
 {
     border-collapse: collapse; 
     padding: 10px;
-    background-color: DimGray;
-    color: white;
+    background-color: LightYellow;
+    color: black;
     table-layout: fixed;
-    font:1.2em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font:1.0em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 th
 {
     background-color: DarkSlateGray;
-    font:1.3em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font:1.2em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     padding: 15px;
 }
 
@@ -60,6 +60,7 @@ th
 #submitButton
 {
     width: 20em;
+    height: 7em;
     position: absolute;
     left: 40%;
     color:#08233e;
