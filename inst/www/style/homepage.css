@@ -78,14 +78,14 @@ th
     font:1.7em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
     padding:14px;
     background-color:DarkKhaki;
-    border:1px solid #ffcc00;
+    border:1px solid #ffee00;
     -moz-border-radius:10px;
     -webkit-border-radius:10px;
     border-radius:10px;
     border-bottom:1px solid #9f9f9f;
-    -moz-box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
-    -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
+    -moz-box-shadow:inset 0 1px 0 DarkKhaki;
+    -webkit-box-shadow:inset 0 1px 0 DarkKhaki;
+    box-shadow:inset 0 1px 0 DarkKhaki;
     cursor:pointer;
 }
 
