@@ -659,11 +659,11 @@ function setVariableTypes()
 {
     for(var i=0; i<variableNames.length; i++)
     {
-        variableTypes[variableNames[i]] = variablesInDatasetType[fileName][i];
+        variableTypes[variableNames[i]] = localStorage.variablesInDatasetType[fileName][i];
     }
     
     console.dir(variableTypes);
-    console.log(variablesInDatasetType);
+    console.log(localStorage.variablesInDatasetType);
     
     for(var i=0; i<variableNames.length; i++)
     {
