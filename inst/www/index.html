@@ -82,7 +82,7 @@
                     select.append("option").attr("value", "dependent").text("Dependent Variable");
                     select.append("option").attr("value", "independent").text("Independent Variable");
                     
-                    document.getElementsByClassName("c"+).setAttribute("value", variableListTypes[i]);
+                    document.getElementsByClassName("c"+i).setAttribute("value", variableListTypes[i]);
                     
                     tr.append("td")
                         .text(variableListDataTypes[i]);
