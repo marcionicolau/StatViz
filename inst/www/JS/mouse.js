@@ -630,7 +630,7 @@ function OnMouseOver(e)
         
         canvas.append("text")
                 .attr("x", (parseFloat(bFringe.attr("x1")) + parseFloat(bFringe.attr("x2")))/2)
-                .attr("y", bFringe.attr("y1") + 10)
+                .attr("y", bFringe.attr("y1") + 25)
                 .attr("text-anchor", "middle")
                 .text(format(getActualValue(bFringe.attr("y1"))))
                 .attr("class", "hover");
@@ -801,8 +801,8 @@ function OnMouseOut(e)
         var tFringe = d3.select("#" + target.id + ".TOPFringes");
         var bFringe = d3.select("#" + target.id + ".BOTTOMFringes");
         
-        tFringe.attr("stroke-width", 4);
-        bFringe.attr("stroke-width", 4);
+        tFringe.attr("stroke-width", 2);
+        bFringe.attr("stroke-width", 2);
         
         removeElementsByClassName("hover");
     }
