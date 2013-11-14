@@ -27,17 +27,23 @@
     text-align: right;
     width: 50%;
     padding-right: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #right
 {
     text-align: left;
     width: 50%;
+    padding-left: 35px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     overflow: hidden;
 }
 
 #submitButton
 {
+    width: 20em;
     position: absolute;
     left: 50%;
     color:#08233e;
