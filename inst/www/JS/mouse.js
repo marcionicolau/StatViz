@@ -623,14 +623,14 @@ function OnMouseOver(e)
     
         canvas.append("text")
                 .attr("x", (parseFloat(tFringe.attr("x1")) + parseFloat(tFringe.attr("x2")))/2)
-                .attr("y", tFringe.attr("y1") - 5)
+                .attr("y", parseFloat(tFringe.attr("y1")) - 5)
                 .attr("text-anchor", "middle")
                 .text(format(getActualValue(tFringe.attr("y1"))))
                 .attr("class", "hover");
         
         canvas.append("text")
                 .attr("x", (parseFloat(bFringe.attr("x1")) + parseFloat(bFringe.attr("x2")))/2)
-                .attr("y", bFringe.attr("y1") + 45)
+                .attr("y", parseFloat(bFringe.attr("y1")) + 10)
                 .attr("text-anchor", "middle")
                 .text(format(getActualValue(bFringe.attr("y1"))))
                 .attr("class", "hover");
