@@ -9,8 +9,17 @@
     width: 100%;
     border-collapse:collapse;
     padding: 15px;
+    padding-top: 20px;
     background-color: FloralWhite;
     font-size: 24px;
+}
+
+.variableList
+{
+    border-collapse: collapse; 
+    padding: 10px;
+    background-color: DimGray;
+    color: white;
 }
 
 #left
