@@ -336,7 +336,7 @@ function makeHistogram()
         
         xStep = plotWidth/numberOfGroovesInXAxis;
         
-        for(var j=0 j<levels.length; j++)
+        for(var j=0; j<levels.length; j++)
         {
             //grooves
             for(i=0; i<=numberOfGroovesInXAxis; i++)
