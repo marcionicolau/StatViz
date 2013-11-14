@@ -66,8 +66,6 @@ function makeHistogram()
         maxs[0] = MAX[currentVariableSelection[0]]["dataset"];       
     } 
     
-    drawHistogramLegends(varNames);
-    
     
     // combine the collected data
     for(var i=0; i<data.length; i++)
@@ -146,6 +144,7 @@ function makeHistogram()
         var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));    
         var individualPlotHeight = (plotHeight/labels.length) - 4*axesOffset;
         yDiffForPlots = individualPlotHeight + 4*axesOffset;
+        drawHistogramLegends(varNames);
         
         nGroovesY = Math.ceil(nGroovesY * (individualPlotHeight/plotHeight));
         nGroovesY = nGroovesY < 2 ? 2 : nGroovesY;
@@ -309,6 +308,7 @@ function makeHistogram()
         var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));  
         var individualPlotHeight = (plotHeight/labels.length) - 4*axesOffset;
         yDiffForPlots = individualPlotHeight + 4*axesOffset;
+        drawHistogramLegends(varNames);
         
         nGroovesY = Math.ceil(nGroovesY * (individualPlotHeight/plotHeight));
         nGroovesY = nGroovesY < 2 ? 2 : nGroovesY;
@@ -618,7 +618,7 @@ function drawHistogramLegends(varNames)
         
         canvas.append("text")
                 .attr("x", RIGHT + histLegendOffsetX + histDistanceBetweenLegendAndText + histLegendSize)
-                .attr("y", TOP + i*yDiffForPlots + yDiffForPlots/2 + 3)
+                .attr("y", BOTTOM - i*yDiffForPlots - yDiffForPlots/2 + 3)
                 .attr("fill", "black")
                 .text(varNames[(varNames.length-i-1)])
                 .attr("id", "legend" + (varNames.length-i-1))
