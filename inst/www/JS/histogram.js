@@ -221,29 +221,29 @@ function makeHistogram()
         {
             for(j=0; j<uniqueData.length+2; j++)
             {           
-                if(bins[labels[i]][j] != 0)
-                {
-                    canvas.append("line")
-                            .attr("x1", LEFT + j*xStep + (plotWidth/uniqueData.length)/2)
-                            .attr("y1", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight)
-                            .attr("x2", LEFT + j*xStep + (plotWidth/uniqueData.length)/2 + ((i+1)/labels.length)*plotWidth*0.15)    
-                            .attr("y2", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight - ((i+1)/uniqueData.length)*plotHeight*0.35)
-                            .attr("display", "none")
-                            .attr("stroke", "black")
-                            .attr("id", ids[i] + j)
-                            .attr("class", "binTextLines");
-                    
-                    canvas.append("text")
-                            .attr("x", LEFT + j*xStep + (plotWidth/uniqueData.length)/2 + ((i+1)/labels.length)*plotWidth*0.15)                        
-                            .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight + yAxisTickTextOffset - ((i+1)/uniqueData.length)*plotHeight*0.35)
-                            .attr("fill", "black")
-                            .attr("text-anchor", "start")
-                            .attr("font-size", binCountFontSize)
-                            .attr("display", "none")
-                            .text(bins[labels[i]][j] + "[" + labels[i] +"]")
-                            .attr("id", ids[i] + j)
-                            .attr("class", "binTexts");
-                }
+//                 if(bins[labels[i]][j] != 0)
+//                 {
+//                     canvas.append("line")
+//                             .attr("x1", LEFT + j*xStep + (plotWidth/uniqueData.length)/2)
+//                             .attr("y1", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight)
+//                             .attr("x2", LEFT + j*xStep + (plotWidth/uniqueData.length)/2 + ((i+1)/labels.length)*plotWidth*0.15)    
+//                             .attr("y2", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight - ((i+1)/uniqueData.length)*plotHeight*0.35)
+//                             .attr("display", "none")
+//                             .attr("stroke", "black")
+//                             .attr("id", ids[i] + j)
+//                             .attr("class", "binTextLines");
+//                     
+//                     canvas.append("text")
+//                             .attr("x", LEFT + j*xStep + (plotWidth/uniqueData.length)/2 + ((i+1)/labels.length)*plotWidth*0.15)                        
+//                             .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight + yAxisTickTextOffset - ((i+1)/uniqueData.length)*plotHeight*0.35)
+//                             .attr("fill", "black")
+//                             .attr("text-anchor", "start")
+//                             .attr("font-size", binCountFontSize)
+//                             .attr("display", "none")
+//                             .text(bins[labels[i]][j] + "[" + labels[i] +"]")
+//                             .attr("id", ids[i] + j)
+//                             .attr("class", "binTexts");
+//                 }
                         
                 canvas.append("rect")
                             .attr("x", LEFT + j*xStep)
@@ -387,92 +387,48 @@ function makeHistogram()
 //                                 .attr("cy", BOTTOM)
 //                                 .attr("r", "5px")
 //                                 .attr("fill", "darkgoldenrod");
-    
+        
+        var individualPlotHeight = plotHeight/currentVariableSelection.length;
+        
         //bars
         for(i=0; i<labels.length; i++)
         {
             for(j=0; j<nBins; j++)
             {           
-                if(bins[labels[i]][j] != 0)
-                {
-                    canvas.append("line")
-                            .attr("x1", LEFT + j*xStep + (plotWidth/nBins)/2)
-                            .attr("y1", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight)
-                            .attr("x2", LEFT + j*xStep + (plotWidth/nBins)/2 + ((i+1)/labels.length)*plotWidth*0.15)    
-                            .attr("y2", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight - ((i+1)/nBins)*plotHeight*0.35)
-                            .attr("display", "none")
-                            .attr("stroke", "black")
-                            .attr("id", ids[i] + j)
-                            .attr("class", "binTextLines");
-                    
-                    canvas.append("text")
-                            .attr("x", LEFT + j*xStep + (plotWidth/nBins)/2 + ((i+1)/labels.length)*plotWidth*0.15)                        
-                            .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight + yAxisTickTextOffset - ((i+1)/nBins)*plotHeight*0.35)
-                            .attr("fill", "black")
-                            .attr("text-anchor", "start")
-                            .attr("font-size", binCountFontSize)
-                            .attr("display", "none")
-                            .text(bins[labels[i]][j] + "[" + labels[i] + "]")
-                            .attr("id", ids[i] + j)
-                            .attr("class", "binTexts");
-                }
+//                 if(bins[labels[i]][j] != 0)
+//                 {
+//                     canvas.append("line")
+//                             .attr("x1", LEFT + j*xStep + (plotWidth/nBins)/2)
+//                             .attr("y1", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight)
+//                             .attr("x2", LEFT + j*xStep + (plotWidth/nBins)/2 + ((i+1)/labels.length)*plotWidth*0.15)    
+//                             .attr("y2", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight - ((i+1)/nBins)*plotHeight*0.35)
+//                             .attr("display", "none")
+//                             .attr("stroke", "black")
+//                             .attr("id", ids[i] + j)
+//                             .attr("class", "binTextLines");
+//                     
+//                     canvas.append("text")
+//                             .attr("x", LEFT + j*xStep + (plotWidth/nBins)/2 + ((i+1)/labels.length)*plotWidth*0.15)                        
+//                             .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight + yAxisTickTextOffset - ((i+1)/nBins)*plotHeight*0.35)
+//                             .attr("fill", "black")
+//                             .attr("text-anchor", "start")
+//                             .attr("font-size", binCountFontSize)
+//                             .attr("display", "none")
+//                             .text(bins[labels[i]][j] + "[" + labels[i] + "]")
+//                             .attr("id", ids[i] + j)
+//                             .attr("class", "binTexts");
+//                 }
                         
                 canvas.append("rect")
                             .attr("x", LEFT + j*xStep)
-                            .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight)
-                            .attr("height", (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight)
+                            .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*individualPlotHeight)
+                            .attr("height", (bins[labels[i]][j]/Array.max(binMaxs))*individualPlotHeight)
                             .attr("width", plotWidth/nBins)          
                             .attr("fill", colors[i])         
                             .attr("id", ids[i] + j)
                             .attr("class", "bins");
-                
-                // if(i == 0 && j == 0)
-//                 {
-// //                     d = d + "C" + getBinCenterX(j) + " " + (BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+1) + " " + (BOTTOM - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+2) + " " + (BOTTOM - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + " ";                    
-//                     d = d + "Q" + getBinCenterX(j) + " " + (BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+1) + " " + (BOTTOM - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + " ";                    
-//                     
-//                     canvas.append("circle")
-//                                 .attr("cx", getBinCenterX(j))
-//                                 .attr("cy", (BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight))
-//                                 .attr("r", "5px")
-//                                 .attr("fill", "darkgoldenrod");
-//                     
-//                     canvas.append("circle")
-//                                 .attr("cx", getBinCenterX(j+1))
-//                                 .attr("cy", (BOTTOM - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight))
-//                                 .attr("r", "5px")
-//                                 .attr("fill", "darkgoldenrod");
-//                     
-//                     canvas.append("circle")
-//                                 .attr("cx", getBinCenterX(j+2))
-//                                 .attr("cy", (BOTTOM - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight))
-//                                 .attr("r", "5px")
-//                                 .attr("fill", "darkgoldenrod");
-//                     
-//                 }
-//                 else if(j%2 == 1)
-//                 {
-// //                     d = d + "S" + getBinCenterX(j+2) + " " + (BOTTOM - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight) + ", " + getBinCenterX(j+3) + " " + (BOTTOM - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight) + " ";
-//                        d = d + "T" + getBinCenterX(j+1) + " " + (BOTTOM - (bins[labels[i]][j+1]/Array.max(binMaxs))*plotHeight) + " ";
-//                     
-//                     canvas.append("circle")
-//                                 .attr("cx", getBinCenterX(j+2))
-//                                 .attr("cy", (BOTTOM - (bins[labels[i]][j+2]/Array.max(binMaxs))*plotHeight))
-//                                 .attr("r", "5px")
-//                                 .attr("fill", "darkgoldenrod");
-//                     
-//                     canvas.append("circle")
-//                                 .attr("cx", getBinCenterX(j+3))
-//                                 .attr("cy", (BOTTOM - (bins[labels[i]][j+3]/Array.max(binMaxs))*plotHeight))
-//                                 .attr("r", "5px")
-//                                 .attr("fill", "darkgoldenrod");
-//                 }
-                        
             }
         }
-//         curve.attr("d", d + "Z");        
-        
-        
     }
 }
 
