@@ -65,29 +65,43 @@
             }
         </script>
         
-        <label>Select a dataset to explore:</label> 
-        <select name="dataset" autofocus onchange="changeDataset()" id="datasetDropDownList">
-            <option value="cars">Cars</option>
-            <option value="weightLoss">Weight loss</option>
-            <option value="impact">IMPACT</option>
-            <option value="store">Store-Price</option>
-        </select>
-        
-        <br/>
-        
-        <label id="datasetInformationLabel">Dataset information:</label>
-        <label id="datasetInformation"></label>
-        
-        <br/>
-        
-        <label id="variablesLabel">variables:</label>
-        <div id="variablesDiv"></div>
-        
-        <br/>
-        
-        <input type="button" onclick="letsGetStarted()" value="Start exploring!"/>
-        
+        <table border="none">
+            <tr>
+                <td>
+                    <label id="dataset" class="labels">Select a dataset to explore:</label>
+                </td>
+                <td>
+                    <select name="dataset" autofocus onchange="changeDataset()" id="datasetDropDownList">                    
+                        <option value="cars">Cars</option>
+                        <option value="weightLoss">Weight loss</option>
+                        <option value="impact">IMPACT</option>
+                        <option value="store">Store-Price</option>
+                    </select>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <label id="datasetInformationLabel">Dataset information:</label>
+                </td>
+                <td>
+                    <label id="datasetInformation"></label>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <label id="variablesLabel">variables:</label>
+                </td>
+                <td>
+                    <div id="variablesDiv"></div>
+                </td>
+            </tr>
+            <tr>        
+                <td colspan="2">
+                    <input type="button" onclick="letsGetStarted()" value="Start exploring!"/>
+                </td>
+            </tr>
+        </table>
     </body>
-    
-
 </html>
