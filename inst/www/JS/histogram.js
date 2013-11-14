@@ -362,16 +362,16 @@ function makeHistogram()
         var yStep;
         for(i=0; i<labels.length; i++)
         {
-            yStep = yDiffForPlots/(nGroovesY-1);
+            yStep = individualPlotHeight/(nGroovesY-1);
             
-//             canvas.append("line")
-//                     .attr("x1", LEFT - axesOffset)
-//                     .attr("y1", BOTTOM -  i*yDiffForPlots)
-//                     .attr("x2", LEFT - axesOffset)
-//                     .attr("y2", BOTTOM -  i*yDiffForPlots)
-//                     .attr("stroke", "black")
-//                     .attr("id", "yAxis")
-//                     .attr("class", "axes");
+            canvas.append("line")
+                    .attr("x1", LEFT - axesOffset)
+                    .attr("y1", BOTTOM - i*yDiffForPlots)
+                    .attr("x2", LEFT - axesOffset)
+                    .attr("y2", BOTTOM - plotHeight - i*yDiffForPlots)
+                    .attr("stroke", "black")
+                    .attr("id", "yAxis")
+                    .attr("class", "axes");
             
             for(j=0; j<nGroovesY; j++)
             {
