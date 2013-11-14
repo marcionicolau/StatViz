@@ -302,6 +302,7 @@ function makeHistogram()
         
          // Find ticks   
         var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));    
+        nGroovesY = nGroovesY * (individualPlotHeight/plotHeight);
         var binSlice = Array.max(binMaxs)/(nGroovesY-1);
     
         // Draw axes    
@@ -357,8 +358,7 @@ function makeHistogram()
                             .attr("class", "xAxisGrooveText");
             }
         }
-    
-//         nGroovesY = nGroovesY * (individualPlotHeight/plotHeight);
+
         var yStep;
         console.log(individualPlotHeight);
         for(i=0; i<labels.length; i++)
