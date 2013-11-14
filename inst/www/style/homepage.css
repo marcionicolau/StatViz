@@ -66,9 +66,9 @@ th
 {
     width: 20em;
     height: 7em;
-    position: absolute;
-    top: 60%;
-    left: 37%;
+    position: relative;
+    top: 70%;
+    left: 35%;
     color:#08233e;
     font:1.7em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
     padding:14px;
