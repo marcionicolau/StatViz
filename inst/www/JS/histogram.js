@@ -362,7 +362,7 @@ function makeHistogram()
         var yStep;
         for(i=0; i<labels.length; i++)
         {
-            yStep = individualPlotHeight/(nGroovesY-1);
+            yStep = yDiffForPlots/(nGroovesY-1);
             
 //             canvas.append("line")
 //                     .attr("x1", LEFT - axesOffset)
