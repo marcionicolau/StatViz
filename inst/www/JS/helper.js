@@ -663,7 +663,7 @@ function setVariableTypes()
     }
     
     console.dir(variableTypes);
-    console.log(variablesInDatasetType[fileName];
+    console.log(variablesInDatasetType[fileName]);
     
     for(var i=0; i<variableNames.length; i++)
     {
