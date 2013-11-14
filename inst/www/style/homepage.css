@@ -20,14 +20,18 @@
     padding: 10px;
     background-color: DimGray;
     color: white;
+    table-layout: fixed;
 }
 
 #left
 {
     text-align: right;
+    width: 40%;
 }
 
 #right
 {
     text-align: left;
+    width: 60%;
+    overflow: hidden;
 }
