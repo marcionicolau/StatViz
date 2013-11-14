@@ -595,7 +595,7 @@ function getFraction(number)
 function getActualValue(fraction)
 {
     console.log("max=" + max + ", min=" + min);
-    return (fraction*(max - min)) + min;
+    return ((fraction*(max - min)) + min)/plotHeight + canvasHeight/2 + plotHeight/2;
 }
 
 function getOutliers(data, TOPFringe, BOTTOMFringe)
