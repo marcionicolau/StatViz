@@ -142,27 +142,13 @@ function makeHistogram()
         
          // Find ticks   
         var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));    
+        var individualPlotHeight = (plotHeight/currentVariableSelection.length) - 4*axesOffset;
+        var yDiffForPlots = individualPlotHeight + 4*axesOffset;
+        
+        nGroovesY = Math.ceil(nGroovesY * (individualPlotHeight/plotHeight));
         var binSlice = Array.max(binMaxs)/(nGroovesY-1);
     
-        // Draw axes
-        
-        var xAxis = canvas.append("line")
-                                        .attr("x1", LEFT)
-                                        .attr("y1", BOTTOM + axesOffset)
-                                        .attr("x2", RIGHT)
-                                        .attr("y2", BOTTOM + axesOffset) 
-                                        .attr("stroke", "black")
-                                        .attr("id", "xAxis")
-                                        .attr("class", "axes");
-    
-        var yAxis = canvas.append("line")
-                                        .attr("x1", LEFT - axesOffset)
-                                        .attr("y1", TOP)
-                                        .attr("x2", LEFT - axesOffset)
-                                        .attr("y2", BOTTOM)
-                                        .attr("stroke", "black")
-                                        .attr("id", "yAxis")
-                                        .attr("class", "axes");
+        // Draw axes    
         canvas.append("text")
                 .attr("x", LEFT - axesOffset - labelOffset)
                 .attr("y", (TOP + BOTTOM)/2 + 6)
@@ -176,44 +162,70 @@ function makeHistogram()
         xStep = plotWidth/numberOfGroovesInXAxis;
     
         //grooves
-        for(i=0; i<=numberOfGroovesInXAxis; i++)
+        for(i=0; i<labels.length; i++)
         {
             canvas.append("line")
-                        .attr("x1", LEFT + i*xStep)
-                        .attr("y1", BOTTOM  + axesOffset)
-                        .attr("x2", LEFT + i*xStep)
-                        .attr("y2", BOTTOM + 10 + axesOffset)
-                        .attr("id", "groove" + i)
-                        .attr("class", "xAxisGrooves");
+                                        .attr("x1", LEFT)
+                                        .attr("y1", BOTTOM + axesOffset - i*yDiffForPlots)
+                                        .attr("x2", RIGHT)
+                                        .attr("y2", BOTTOM + axesOffset - i*yDiffForPlots) 
+                                        .attr("stroke", "black")
+                                        .attr("id", "xAxis")
+                                        .attr("class", "axes");
+                                        
+            for(j=0; j<=numberOfGroovesInXAxis; j++)
+            {
+                canvas.append("line")
+                            .attr("x1", LEFT + j*xStep)
+                            .attr("y1", BOTTOM  + axesOffset - i*yDiffForPlots)
+                            .attr("x2", LEFT + j*xStep)
+                            .attr("y2", BOTTOM + 10 + axesOffset - i*yDiffForPlots)
+                            .attr("id", "groove" + j)
+                            .attr("class", "xAxisGrooves");
         
-            canvas.append("text")
-                        .attr("x", LEFT + i*xStep + xStep/2)
-                        .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
-                        .text(uniqueData[i])
-                        .attr("text-anchor", "middle")
-                        .attr("id", "groove" + i)
-                        .attr("class", "xAxisGrooveText");
+                canvas.append("text")
+                            .attr("x", LEFT + j*xStep + xStep/2)
+                            .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset - i*yDiffForPlots)                    
+                            .text(uniqueData[j])
+                            .attr("text-anchor", "middle")
+                            .attr("id", "groove" + j)
+                            .attr("class", "xAxisGrooveText");
+            }
         }
     
-        var yStep = plotHeight/(nGroovesY-1);
+        var yStep;
     
-        for(i=0; i<nGroovesY; i++)
+        for(i=0; i<labels.length; i++)
         {
+            yStep = individualPlotHeight/(nGroovesY-1);
+            
             canvas.append("line")
-                        .attr("x1", LEFT - 10 - axesOffset)
-                        .attr("y1", BOTTOM - i*yStep)
-                        .attr("x2", LEFT - axesOffset)
-                        .attr("y2", BOTTOM - i*yStep)
-                        .attr("id", "groove" + i)
-                        .attr("class", "yAxisGrooves");
+                    .attr("x1", LEFT - axesOffset)
+                    .attr("y1", BOTTOM - individualPlotHeight - i*yDiffForPlots)
+                    .attr("x2", LEFT - axesOffset)
+                    .attr("y2", BOTTOM - i*yDiffForPlots)
+                    .attr("stroke", "black")
+                    .attr("id", "yAxis")
+                    .attr("class", "axes");
         
-            canvas.append("text")
-                        .attr("x", LEFT - tickTextOffsetYAxis - axesOffset)
-                        .attr("y", BOTTOM - i*yStep + yAxisTickTextOffset)                                        
-                        .text(Math.round(i*binSlice))
-                        .attr("text-anchor", "end")
-                        .attr("id", "groove" + i)
-                        .attr("class", "yAxisGrooveText");
+            for(j=0; j<nGroovesY; j++)
+            {
+                canvas.append("line")
+                            .attr("x1", LEFT - 10 - axesOffset)
+                            .attr("y1", BOTTOM - j*yStep - i*yDiffForPlots)
+                            .attr("x2", LEFT - axesOffset)
+                            .attr("y2", BOTTOM - j*yStep - i*yDiffForPlots)
+                            .attr("id", "groove" + j)
+                            .attr("class", "yAxisGrooves");
+        
+                canvas.append("text")
+                            .attr("x", LEFT - tickTextOffsetYAxis - axesOffset)
+                            .attr("y", BOTTOM - j*yStep + yAxisTickTextOffset - i*yDiffForPlots)                                        
+                            .text(Math.round(j*binSlice))
+                            .attr("text-anchor", "end")
+                            .attr("id", "groove" + j)
+                            .attr("class", "yAxisGrooveText");
+            }
         }
     
         //bars
