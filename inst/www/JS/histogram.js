@@ -304,17 +304,7 @@ function makeHistogram()
         var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));    
         var binSlice = Array.max(binMaxs)/(nGroovesY-1);
     
-        // Draw axes
-        
-        var xAxis = canvas.append("line")
-                                        .attr("x1", LEFT)
-                                        .attr("y1", BOTTOM + axesOffset)
-                                        .attr("x2", RIGHT)
-                                        .attr("y2", BOTTOM + axesOffset) 
-                                        .attr("stroke", "black")
-                                        .attr("id", "xAxis")
-                                        .attr("class", "axes");
-    
+        // Draw axes    
         var yAxis = canvas.append("line")
                                         .attr("x1", LEFT - axesOffset)
                                         .attr("y1", TOP)
@@ -332,26 +322,35 @@ function makeHistogram()
                 .text("Frequency")
                 .attr("fill", "orange");
 
-        var individualPlotHeight = (plotHeight/currentVariableSelection.length) - 2*axesOffset;                  
+        var individualPlotHeight = (plotHeight/currentVariableSelection.length) - 3*axesOffset;  
+        var yDiffForPlots = individualPlotHeight + 3*axesOffset;
         
         xStep = plotWidth/numberOfGroovesInXAxis;
         
         for(i=0; i<labels.length; i++)
         {
+            canvas.append("line")
+                                        .attr("x1", LEFT)
+                                        .attr("y1", BOTTOM + axesOffset - i*yDiffForPlots)
+                                        .attr("x2", RIGHT)
+                                        .attr("y2", BOTTOM + axesOffset - i*yDiffForPlots) 
+                                        .attr("stroke", "black")
+                                        .attr("id", "xAxis")
+                                        .attr("class", "axes");
             //grooves
             for(j=0; j<=numberOfGroovesInXAxis; j++)
             {
                 canvas.append("line")
                             .attr("x1", LEFT + j*xStep)
-                            .attr("y1", BOTTOM  + axesOffset - i*(individualPlotHeight+2*axesOffset))
+                            .attr("y1", BOTTOM  + axesOffset - i*yDiffForPlots)
                             .attr("x2", LEFT + j*xStep)
-                            .attr("y2", BOTTOM + 10 + axesOffset - i*(individualPlotHeight+2*axesOffset))
+                            .attr("y2", BOTTOM + 10 + axesOffset - i*yDiffForPlots)
                             .attr("id", "groove" + i)
                             .attr("class", "xAxisGrooves");
         
                 canvas.append("text")
                             .attr("x", LEFT + j*xStep)
-                            .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset - i*(individualPlotHeight+2*axesOffset))                    
+                            .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset - i*yDiffForPlots)                    
                             .text(format(min + j*slice))
                             .attr("text-anchor", "middle")
                             .attr("id", "groove" + j)
@@ -426,7 +425,7 @@ function makeHistogram()
                         
                 canvas.append("rect")
                             .attr("x", LEFT + j*xStep)
-                            .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*individualPlotHeight - i*(individualPlotHeight+2*axesOffset))
+                            .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*individualPlotHeight - i*yDiffForPlots)
                             .attr("height", (bins[labels[i]][j]/Array.max(binMaxs))*individualPlotHeight)
                             .attr("width", plotWidth/nBins)          
                             .attr("fill", colors[i])         
