@@ -611,17 +611,17 @@ function drawHistogramLegends(varNames)
                 .attr("y", BOTTOM - i*yDiffForPlots - yDiffForPlots/2 - histLegendSize/2)
                 .attr("width", histLegendSize)
                 .attr("height", histLegendSize)
-                .attr("fill", colors[(varNames.length-i-1)])
+                .attr("fill", colors[i])
                 .attr("stroke", "black")
-                .attr("id", "legend" + (varNames.length-i-1))
+                .attr("id", "legend" + i)
                 .attr("class", "rect");
         
         canvas.append("text")
                 .attr("x", RIGHT + histLegendOffsetX + histDistanceBetweenLegendAndText + histLegendSize)
                 .attr("y", BOTTOM - i*yDiffForPlots - yDiffForPlots/2 + 3)
                 .attr("fill", "black")
-                .text(varNames[(varNames.length-i-1)])
-                .attr("id", "legend" + (varNames.length-i-1))
+                .text(varNames[i])
+                .attr("id", "legend" + i)
                 .attr("class", "text");
             
     }
