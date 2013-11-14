@@ -8,3 +8,21 @@
 {
     font-size: 30px;
 }
+
+#datasetDisplayTable
+{
+    width: 100%;
+    border-collapse:collapse;
+    padding: 15px;
+    background-color: "FloralWhite";
+}
+
+#left
+{
+    text-align: right;
+}
+
+#right
+{
+    text-align: left;
+}

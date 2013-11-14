@@ -65,12 +65,12 @@
             }
         </script>
         
-        <table border="none">
+        <table border="1" align="center" id="datasetDisplayTable">
             <tr>
-                <td>
+                <td id="left">
                     <label id="dataset" class="labels">Select a dataset to explore:</label>
                 </td>
-                <td>
+                <td id="right">
                     <select name="dataset" autofocus onchange="changeDataset()" id="datasetDropDownList">                    
                         <option value="cars">Cars</option>
                         <option value="weightLoss">Weight loss</option>
@@ -81,19 +81,19 @@
             </tr>
             
             <tr>
-                <td>
+                <td id="left"> 
                     <label id="datasetInformationLabel">Dataset information:</label>
                 </td>
-                <td>
+                <td id="right">
                     <label id="datasetInformation"></label>
                 </td>
             </tr>
             
             <tr>
-                <td>
+                <td id="left">
                     <label id="variablesLabel">variables:</label>
                 </td>
-                <td>
+                <td id="right">
                     <div id="variablesDiv"></div>
                 </td>
             </tr>
