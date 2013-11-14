@@ -14,7 +14,7 @@ var variablesInDataset = new Object();
     variablesInDataset["store"] = ["ID", "price", "store", "subject"];
  
 var types = ["participant", "dependent", "independent"];
-var localStorage.variablesInDatasetType = new Object();
+
 
 var dataTypes = ["nominal", "ordinal", "interval", "ratio"];
 var variablesInDatasetDataType = new Object();
@@ -24,7 +24,9 @@ var variablesInDatasetDataType = new Object();
     variablesInDatasetDataType["store"] = [dataTypes[0], dataTypes[3], dataTypes[0], dataTypes[0]];
     
 function initVariablesInDatasetTypes()
-{  
+{ 
+    var localStorage.variablesInDatasetType = new Object();
+    
     localStorage.variablesInDatasetType["impact"] = [types[0], types[2], types[1], types[1], types[1], types[1], types[1], types[1], types[1], types[1], types[1], types[1], types[1], types[1]];
     localStorage.variablesInDatasetType["cars"] = [types[0], types[1], types[2], types[1], types[1], types[1], types[1], types[1], types[2]];
     localStorage.variablesInDatasetType["weightLoss"] = [types[0], types[2], types[1]];
