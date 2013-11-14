@@ -302,8 +302,8 @@ function makeHistogram()
         
          // Find ticks   
         var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));  
-        var individualPlotHeight = (plotHeight/currentVariableSelection.length) - 3*axesOffset;
-        var yDiffForPlots = individualPlotHeight + 3*axesOffset;
+        var individualPlotHeight = (plotHeight/currentVariableSelection.length) - 4*axesOffset;
+        var yDiffForPlots = individualPlotHeight + 4*axesOffset;
         
         nGroovesY = Math.ceil(nGroovesY * (individualPlotHeight/plotHeight));
         var binSlice = Array.max(binMaxs)/(nGroovesY-1);
