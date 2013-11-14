@@ -7,6 +7,8 @@
 // Skeleton
     var width = document.width;
     var height = document.height;  
+    
+    console.log("width = " + width + ", height = " + height);
 
     var panelColors = new Object();
         panelColors.normal = "white";
