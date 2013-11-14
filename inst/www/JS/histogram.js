@@ -616,7 +616,7 @@ function drawHistogramLegends(varNames)
         
         canvas.append("text")
                 .attr("x", RIGHT + histLegendOffsetX + histDistanceBetweenLegendAndText + histLegendSize)
-                .attr("y", TOP + histLegendOffsetY + histLegendSize/2 + 3 + i*yDiffForPlots)
+                .attr("y", TOP + histLegendOffsetY+ histLegendSize/2 + 3 + i*yDiffForPlots)
                 .attr("fill", "black")
                 .text(varNames[(varNames.length-i-1)])
                 .attr("id", "legend" + (varNames.length-i-1))
