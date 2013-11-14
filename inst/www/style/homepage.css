@@ -16,7 +16,7 @@
     width: 100%;
     height: 80%;
     border-collapse:collapse;
-    background-color: FloralWhite;
+    background-color: Khaki;
     font:1.2em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
@@ -29,7 +29,7 @@
 {
     border-collapse: collapse; 
     padding: 10px;
-    background-color: LightYellow;
+    background-color: Khaki;
     color: black;
     table-layout: fixed;
     font:1.0em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -74,10 +74,10 @@ th
     height: 7em;
     position: relative;
     top: 90%;
-    color:#08233e;
+    color:Khaki;
     font:1.7em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
     padding:14px;
-    background-color:rgba(255,204,0,1);
+    background-color:DarkKhaki;
     border:1px solid #ffcc00;
     -moz-border-radius:10px;
     -webkit-border-radius:10px;
