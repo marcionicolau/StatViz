@@ -568,6 +568,16 @@ function OnMouseOver(e)
         button.attr("cursor", "pointer");
     }
     
+    else if(target.className.baseVal == "outliers")
+    {
+        setup(e, target);
+        
+        var canvas = d3.select("#svgCanvas");
+        var outlier = d3.select("#" + target.id + ".outliers");
+        
+        outlier.attr("stroke", "lightgoldenrodyellow").attr("stroke-width", "2px");
+    }
+    
     else if((target.className.baseVal == "CIs") || (target.className.baseVal == "CITopFringes") || (target.className.baseVal == "CIBottomFringes"))
     {
         var canvas = d3.select("#svgCanvas");
@@ -602,14 +612,14 @@ function OnMouseOver(e)
                     .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
                     
         canvas.append("text")
-                .attr("x",(parseFloat(bottomFringe.attr("x1")) - 20))
-                .attr("y", bottomFringe.attr("y1") - 5)
+                .attr("x",parseFloat(bottomFringe.attr("x1")))
+                .attr("y", bottomFringe.attr("y1") + 5)
                 .attr("text-anchor", "middle")
                 .text(format(CI[variableList["dependent"][0]][stringForNumber.indexOf(target.id)][0]))
                 .attr("class", "hover");
         
         canvas.append("text")
-                .attr("x",(parseFloat(topFringe.attr("x1")) - 20))
+                .attr("x",parseFloat(topFringe.attr("x1")))
                 .attr("y", topFringe.attr("y1") - 5)
                 .attr("text-anchor", "middle")
                 .text(format(CI[variableList["dependent"][0]][stringForNumber.indexOf(target.id)][1]))

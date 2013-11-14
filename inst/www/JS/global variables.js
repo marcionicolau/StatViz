@@ -16,6 +16,11 @@ var currentVariableSelection = [];
 var currentVisualizationSelection;
 
 var fullScreen = false;
+
+// Scatterplot
+var outlierValues = [];
+var topFringeValues = [];
+var bottomFringeValues = [];
     
     
 // Mouse events

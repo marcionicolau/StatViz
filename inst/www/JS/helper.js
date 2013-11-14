@@ -198,6 +198,9 @@ function makePlot(x)
                                         CITopLines = [];
                                         CIBottomLines = [];
                                         yAxisTexts = [];
+                                        outlierValues = [];
+                                        topFringeValues = [];
+                                        bottomFringeValues = [];
                                         
                                         makeBoxplot(x);
                                         break;
