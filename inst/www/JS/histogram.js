@@ -332,30 +332,34 @@ function makeHistogram()
                 .text("Frequency")
                 .attr("fill", "orange");
 
-                                    
-        xStep = plotWidth/numberOfGroovesInXAxis;
-    
-        //grooves
-        for(i=0; i<=numberOfGroovesInXAxis; i++)
-        {
-            canvas.append("line")
-                        .attr("x1", LEFT + i*xStep)
-                        .attr("y1", BOTTOM  + axesOffset)
-                        .attr("x2", LEFT + i*xStep)
-                        .attr("y2", BOTTOM + 10 + axesOffset)
-                        .attr("id", "groove" + i)
-                        .attr("class", "xAxisGrooves");
+        var individualPlotHeight = (plotHeight/currentVariableSelection.length) - 2*axesOffset;                  
         
-            canvas.append("text")
-                        .attr("x", LEFT + i*xStep)
-                        .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
-                        .text(format(min + i*slice))
-                        .attr("text-anchor", "middle")
-                        .attr("id", "groove" + i)
-                        .attr("class", "xAxisGrooveText");
+        xStep = plotWidth/numberOfGroovesInXAxis;
+        
+        for(var j=0 j<levels.length; j++)
+        {
+            //grooves
+            for(i=0; i<=numberOfGroovesInXAxis; i++)
+            {
+                canvas.append("line")
+                            .attr("x1", LEFT + i*xStep)
+                            .attr("y1", BOTTOM  + axesOffset - i*(individualPlotHeight+2*axesOffset))
+                            .attr("x2", LEFT + i*xStep)
+                            .attr("y2", BOTTOM + 10 + axesOffset - i*(individualPlotHeight+2*axesOffset))
+                            .attr("id", "groove" + i)
+                            .attr("class", "xAxisGrooves");
+        
+                canvas.append("text")
+                            .attr("x", LEFT + i*xStep)
+                            .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset - i*(individualPlotHeight+2*axesOffset))                    
+                            .text(format(min + i*slice))
+                            .attr("text-anchor", "middle")
+                            .attr("id", "groove" + i)
+                            .attr("class", "xAxisGrooveText");
+            }
         }
     
-        var individualPlotHeight = (plotHeight/currentVariableSelection.length) - 2*axesOffset;
+        
         var yStep = plotHeight/(nGroovesY-1);
     
         for(i=0; i<nGroovesY; i++)
