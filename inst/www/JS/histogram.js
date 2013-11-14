@@ -368,7 +368,7 @@ function makeHistogram()
                     .attr("x1", LEFT - axesOffset)
                     .attr("y1", BOTTOM - i*yDiffForPlots)
                     .attr("x2", LEFT - axesOffset)
-                    .attr("y2", BOTTOM - plotHeight - i*yDiffForPlots)
+                    .attr("y2", BOTTOM - individualPlotHeight - i*yDiffForPlots)
                     .attr("stroke", "black")
                     .attr("id", "yAxis")
                     .attr("class", "axes");
