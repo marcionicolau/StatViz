@@ -7,7 +7,7 @@
     color:#08233e;
     padding:5px;
     width: 7em;
-    text-align: center;
+    background-color:rgba(255,254,255,0.85);
 }
 
 #datasetDisplayTable
