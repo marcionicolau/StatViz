@@ -74,7 +74,7 @@ var histDistanceBetweenLegendAndText = scaleForWindowSize(15);
 var boxWidth = scaleForWindowSize(75);
 var intervals = new Object(); //for keeping track of animations
 var meanRadius = scaleForWindowSize(7) < 5 ? 5 : scaleForWindowSize(7);
-var outlierRadius = "2px";
+var outlierRadius = 2;
 
 var boxColors = new Object();
     boxColors["normal"] = "lightgrey";
