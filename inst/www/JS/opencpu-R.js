@@ -1014,7 +1014,7 @@ function getCorrelationCoefficient(variableA, variableB, method)
 
 function getBiserialCorrelationCoefficient(continuousVariable, binaryVariable)
 {
-    var req = opencpu.r_fun_json("getCorrelationCoefficient", {
+    var req = opencpu.r_fun_json("getBiserialCorrelationCoefficient", {
                     continuousVariable: continuousVariable,
                     binaryVariable: binaryVariable
                   }, function(output) {                                                   
