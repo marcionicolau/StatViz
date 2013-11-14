@@ -1012,6 +1012,41 @@ function getCorrelationCoefficient(variableA, variableB, method)
     });
 }
 
+function getBiserialCorrelationCoefficient(continuousVariable, binaryVariable)
+{
+    var req = opencpu.r_fun_json("getCorrelationCoefficient", {
+                    continuousVariable: continuousVariable,
+                    binaryVariable: binaryVariable
+                  }, function(output) {                                                   
+              
+                console.log("\t\t Biserial Correlation-coefficient for (" + variableA + " , " + variableB + ")");                
+                console.log("\t\t\t method used = " + "Biserial Correlation-coefficient");
+                console.log("\t\t\t r = " + output.cor);
+
+                testResults["method"] = "Biserial Correlation-coefficient";
+                testResults["effect-size"] = output.cor;               
+
+                displayCorrelationResults();
+
+                if((output.cor < -0.5) || (output.cor > 0.5))
+                {                
+                    alertPossibleRegressionModel();
+                }
+            
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
 function getLinearModelCoefficients(causalVariable, predictorVariable)
 {
     var req = opencpu.r_fun_json("getLinearModelCoefficients", {
