@@ -602,11 +602,13 @@ function drawHistogramLegends(varNames)
 {
     var canvas = d3.select("#svgCanvas");
     
+    var yStep = plotHeight/10;
+    
     for(var i=0; i<varNames.length; i++)
     {
         canvas.append("rect")
                 .attr("x", RIGHT + histLegendOffsetX)
-                .attr("y", TOP + histLegendOffsetY + i*yDiffForPlots)
+                .attr("y", TOP + histLegendOffsetY + i*yStep + i*yDiffForPlots)
                 .attr("width", histLegendSize)
                 .attr("height", histLegendSize)
                 .attr("fill", colors[(varNames.length-i-1)])
@@ -616,7 +618,7 @@ function drawHistogramLegends(varNames)
         
         canvas.append("text")
                 .attr("x", RIGHT + histLegendOffsetX + histDistanceBetweenLegendAndText + histLegendSize)
-                .attr("y", TOP + histLegendOffsetY+ histLegendSize/2 + 3 + i*yDiffForPlots)
+                .attr("y", TOP + histLegendOffsetY + i*yStep + histLegendSize/2 + 3 + i*yDiffForPlots)
                 .attr("fill", "black")
                 .text(varNames[(varNames.length-i-1)])
                 .attr("id", "legend" + (varNames.length-i-1))
