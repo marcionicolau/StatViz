@@ -93,6 +93,7 @@ function makeHistogram()
     {        
         labels = currentVariableSelection;
     }
+    console.log("labels= " + labels.length);
     
     var ids = getValidIds(labels);
     
@@ -142,7 +143,7 @@ function makeHistogram()
         
          // Find ticks   
         var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));    
-        var individualPlotHeight = (plotHeight/currentVariableSelection.length) - 4*axesOffset;
+        var individualPlotHeight = (plotHeight/labels.length) - 4*axesOffset;
         var yDiffForPlots = individualPlotHeight + 4*axesOffset;
         
         nGroovesY = Math.ceil(nGroovesY * (individualPlotHeight/plotHeight));
@@ -233,29 +234,19 @@ function makeHistogram()
         {
             for(j=0; j<uniqueData.length+2; j++)
             {           
-//                 if(bins[labels[i]][j] != 0)
-//                 {
-//                     canvas.append("line")
-//                             .attr("x1", LEFT + j*xStep + (plotWidth/uniqueData.length)/2)
-//                             .attr("y1", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight)
-//                             .attr("x2", LEFT + j*xStep + (plotWidth/uniqueData.length)/2 + ((i+1)/labels.length)*plotWidth*0.15)    
-//                             .attr("y2", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight - ((i+1)/uniqueData.length)*plotHeight*0.35)
-//                             .attr("display", "none")
-//                             .attr("stroke", "black")
-//                             .attr("id", ids[i] + j)
-//                             .attr("class", "binTextLines");
-//                     
-//                     canvas.append("text")
-//                             .attr("x", LEFT + j*xStep + (plotWidth/uniqueData.length)/2 + ((i+1)/labels.length)*plotWidth*0.15)                        
-//                             .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight + yAxisTickTextOffset - ((i+1)/uniqueData.length)*plotHeight*0.35)
-//                             .attr("fill", "black")
-//                             .attr("text-anchor", "start")
-//                             .attr("font-size", binCountFontSize)
-//                             .attr("display", "none")
-//                             .text(bins[labels[i]][j] + "[" + labels[i] +"]")
-//                             .attr("id", ids[i] + j)
-//                             .attr("class", "binTexts");
-//                 }
+                if(bins[labels[i]][j] != 0)
+                {                    
+                    canvas.append("text")
+                            .attr("x", LEFT + j*xStep + xStep/2)                        
+                            .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*individualPlotHeight + yAxisTickTextOffset - i*yDiffForPlots)
+                            .attr("fill", "black")
+                            .attr("text-anchor", "start")
+                            .attr("font-size", binCountFontSize)
+                            .attr("display", "none")
+                            .text(bins[labels[i]][j] + "[" + labels[i] +"]")
+                            .attr("id", ids[i] + j)
+                            .attr("class", "binTexts");
+                }
                         
                 canvas.append("rect")
                             .attr("x", LEFT + j*xStep)
@@ -314,7 +305,7 @@ function makeHistogram()
         
          // Find ticks   
         var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));  
-        var individualPlotHeight = (plotHeight/currentVariableSelection.length) - 4*axesOffset;
+        var individualPlotHeight = (plotHeight/labels.length) - 4*axesOffset;
         var yDiffForPlots = individualPlotHeight + 4*axesOffset;
         
         nGroovesY = Math.ceil(nGroovesY * (individualPlotHeight/plotHeight));
@@ -427,29 +418,19 @@ function makeHistogram()
         {
             for(j=0; j<nBins; j++)
             {           
-//                 if(bins[labels[i]][j] != 0)
-//                 {
-//                     canvas.append("line")
-//                             .attr("x1", LEFT + j*xStep + (plotWidth/nBins)/2)
-//                             .attr("y1", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight)
-//                             .attr("x2", LEFT + j*xStep + (plotWidth/nBins)/2 + ((i+1)/labels.length)*plotWidth*0.15)    
-//                             .attr("y2", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight - ((i+1)/nBins)*plotHeight*0.35)
-//                             .attr("display", "none")
-//                             .attr("stroke", "black")
-//                             .attr("id", ids[i] + j)
-//                             .attr("class", "binTextLines");
-//                     
-//                     canvas.append("text")
-//                             .attr("x", LEFT + j*xStep + (plotWidth/nBins)/2 + ((i+1)/labels.length)*plotWidth*0.15)                        
-//                             .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*plotHeight + yAxisTickTextOffset - ((i+1)/nBins)*plotHeight*0.35)
-//                             .attr("fill", "black")
-//                             .attr("text-anchor", "start")
-//                             .attr("font-size", binCountFontSize)
-//                             .attr("display", "none")
-//                             .text(bins[labels[i]][j] + "[" + labels[i] + "]")
-//                             .attr("id", ids[i] + j)
-//                             .attr("class", "binTexts");
-//                 }
+                if(bins[labels[i]][j] != 0)
+                {                    
+                    canvas.append("text")
+                            .attr("x", LEFT + j*xStep + xStep/2)                        
+                            .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*invidualPlotHeight - i*yDiffForPlots + yAxisTickTextOffset)
+                            .attr("fill", "black")
+                            .attr("text-anchor", "start")
+                            .attr("font-size", binCountFontSize)
+                            .attr("display", "none")
+                            .text(bins[labels[i]][j] + "[" + labels[i] + "]")
+                            .attr("id", ids[i] + j)
+                            .attr("class", "binTexts");
+                }
                         
                 canvas.append("rect")
                             .attr("x", LEFT + j*xStep)
@@ -675,7 +656,6 @@ function highlightBinWithId(ID)
 {
     var bins = document.getElementsByClassName("bins");
     var binTexts = document.getElementsByClassName("binTexts");
-    var binTextLines = document.getElementsByClassName("binTexts");
     
     for(var i=0; i<bins.length; i++)
     {    
@@ -688,15 +668,10 @@ function highlightBinWithId(ID)
             bins[i].setAttribute("opacity", "1.0");
             
             binText = d3.select("#" + bins[i].getAttribute("id") + ".binTexts");
-            binTextLine = d3.select("#" + bins[i].getAttribute("id") + ".binTextLines");
             
             if(binText.length > 0)
             {                
-                binText.attr("display", "inline");
-                if(binTextLine.length > 0)
-                {
-                    binTextLine.attr("display", "inline");
-                }
+                binText.attr("display", "inline");                
             }
         }
     }
@@ -707,22 +682,16 @@ function unhighlightBins()
 {
     var bins = document.getElementsByClassName("bins");
     var binTexts = document.getElementsByClassName("binTexts");
-    var binTextLines = document.getElementsByClassName("binTextLines");
     
     for(var i=0; i<bins.length; i++)
     {   
         bins[i].setAttribute("opacity", "1.0");
 
         binTexts = d3.selectAll(".binTexts");
-        binTextLines = d3.selectAll(".binTextLines");
             
         if(binTexts.length > 0)
         {
             binTexts.attr("display", "none");
-            if(binTextLines.length > 0)
-            {
-                binTextLines.attr("display", "none");
-            }
         }
     }
 }
