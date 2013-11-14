@@ -421,7 +421,7 @@ function makeHistogram()
                         
                 canvas.append("rect")
                             .attr("x", LEFT + j*xStep)
-                            .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*individualPlotHeight*(i+1))
+                            .attr("y", BOTTOM - (bins[labels[i]][j]/Array.max(binMaxs))*individualPlotHeight - i*individualPlotHeight)
                             .attr("height", (bins[labels[i]][j]/Array.max(binMaxs))*individualPlotHeight)
                             .attr("width", plotWidth/nBins)          
                             .attr("fill", colors[i])         
