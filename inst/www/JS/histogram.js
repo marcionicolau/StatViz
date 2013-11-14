@@ -336,25 +336,25 @@ function makeHistogram()
         
         xStep = plotWidth/numberOfGroovesInXAxis;
         
-        for(var j=0; j<levels.length; j++)
+        for(i=0; i<levels.length; i++)
         {
             //grooves
-            for(i=0; i<=numberOfGroovesInXAxis; i++)
+            for(j=0; j<=numberOfGroovesInXAxis; j++)
             {
                 canvas.append("line")
-                            .attr("x1", LEFT + i*xStep)
+                            .attr("x1", LEFT + j*xStep)
                             .attr("y1", BOTTOM  + axesOffset - i*(individualPlotHeight+2*axesOffset))
-                            .attr("x2", LEFT + i*xStep)
+                            .attr("x2", LEFT + j*xStep)
                             .attr("y2", BOTTOM + 10 + axesOffset - i*(individualPlotHeight+2*axesOffset))
                             .attr("id", "groove" + i)
                             .attr("class", "xAxisGrooves");
         
                 canvas.append("text")
-                            .attr("x", LEFT + i*xStep)
+                            .attr("x", LEFT + j*xStep)
                             .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset - i*(individualPlotHeight+2*axesOffset))                    
-                            .text(format(min + i*slice))
+                            .text(format(min + j*slice))
                             .attr("text-anchor", "middle")
-                            .attr("id", "groove" + i)
+                            .attr("id", "groove" + j)
                             .attr("class", "xAxisGrooveText");
             }
         }
