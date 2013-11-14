@@ -6,9 +6,9 @@
     font: 1.2em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     color:#08233e;
     padding:5px;
-    width: 7em;
-    height: 2em;
-    background-color:rgba(255,254,255,0.85);
+    width: 10em;
+    height: 2.2em;
+    background-color:rgba(253,252,253,0.85);
 }
 
 #datasetDisplayTable
@@ -48,8 +48,8 @@ th
     text-align: right;
     width: 50%;
     padding-right: 25px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 #right
@@ -57,9 +57,15 @@ th
     text-align: left;
     width: 50%;
     padding-left: 35px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     overflow: hidden;
+}
+
+#middle
+{
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 #submitButton
@@ -67,7 +73,7 @@ th
     width: 20em;
     height: 7em;
     position: relative;
-    top: 70%;
+    top: 90%;
     color:#08233e;
     font:1.7em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
     padding:14px;
