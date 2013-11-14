@@ -9,7 +9,10 @@ function findCorrelationCoefficient()
     }
     else if(((variableDataTypes[currentVariableSelection[0]] == "binary") || (variableDataTypes[currentVariableSelection[1]] == "binary")) && ((variableDataTypes[currentVariableSelection[0]] != "binary") || (variableDataTypes[currentVariableSelection[1]] != "binary")))
     {
-        //one is binary        
+        //one is binary
+        
+        console.log("Biserial Correlation Coefficient");
+        
         if(variableDataTypes[currentVariableSelection[0]] == "binary")
             getBiserialCorrelationCoefficient(currentVariableSelection[1], currentVariableSelection[0]);
         else
@@ -21,12 +24,13 @@ function findCorrelationCoefficient()
         
         if(((variableDataTypes[currentVariableSelection[0]] == "ordinal") || (variableDataTypes[currentVariableSelection[1]] == "ordinal")) && ((variableDataTypes[currentVariableSelection[0]] != "nominal") && (variableDataTypes[currentVariableSelection[1]] != "nominal")))
         {
+            console.log("Kendall's Tau");            
             getCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1], "kendall");
         }
         else if((variableDataTypes[currentVariableSelection[0]] == "nominal") || (variableDataTypes[currentVariableSelection[1]] == "nominal"))
         {
             //do nothing
-            console.log("doing nothing :(");
+            console.log("doing nothing");
         }
         else
         {
