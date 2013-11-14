@@ -109,10 +109,10 @@
             
             function letsGetStarted()
             {
-                for(var i=0; i<variableList.length; i++)
+                for(var i=0; i<variablesInDataset[fileName].length; i++)
                 {
-                    var option = d3.select("#" + variableList[i] + ".variableTypeDropDown").attr("value");
-                    console.log("selected option for " + variableList[i] + " is = " + option);
+                    var option = d3.select("#" + variablesInDataset[fileName][i] + ".variableTypeDropDown").attr("value");
+                    console.log("selected option for " + variablesInDataset[fileName][i] + " is = " + option);
                 }            
                 window.location = "main.html";
             }
