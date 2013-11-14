@@ -14,9 +14,15 @@ function findCorrelationCoefficient()
         console.log("Biserial Correlation Coefficient");
         
         if(variableDataTypes[currentVariableSelection[0]] == "binary")
-            getBiserialCorrelationCoefficient(currentVariableSelection[1], currentVariableSelection[0]);
+        {
+            if(!isNaN(variables[currentVariableSelection[0]]["dataset"][0]))
+                getBiserialCorrelationCoefficient(currentVariableSelection[1], currentVariableSelection[0]);
+        }
         else
-            getBiserialCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1]);
+        {
+            if(!isNaN(variables[currentVariableSelection[1]]["dataset"][0]))
+                getBiserialCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1]);
+        }
     }
     else
     {
