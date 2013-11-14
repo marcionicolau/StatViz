@@ -25,6 +25,7 @@ var variablesInDatasetDataType = new Object();
     
 function initVariablesInDatasetDataTypes()
 {    
+    console.log("hola");
     variablesInDatasetDataType["impact"] = [dataTypes[0], dataTypes[0], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3]];
     variablesInDatasetDataType["cars"] = [dataTypes[0], dataTypes[3], dataTypes[1], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[3], dataTypes[0], dataTypes[0]];
     variablesInDatasetDataType["weightLoss"] = [dataTypes[0], dataTypes[0], dataTypes[3]];
