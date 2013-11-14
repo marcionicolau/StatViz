@@ -6,8 +6,8 @@
     font: 1.2em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     color:#08233e;
     padding:5px;
-    width: 15em;
-    background-color:rgba(255,204,0,1);
+    width: 7em;
+    text-align: center;
 }
 
 #datasetDisplayTable
