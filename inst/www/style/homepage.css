@@ -11,9 +11,11 @@
     border-collapse:collapse;
     padding: 15px;
     padding-top: 20px;
+    padding-right: 50px;
+    padding-left: 30px;
     background-color: FloralWhite;
     font-size: 16px;
-    font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+    font:2.4em "Lucida Sans Unicode", "Lucida Grande", sans-serif
 }
 
 .variableList
@@ -28,13 +30,13 @@
 #left
 {
     text-align: right;
-    width: 40%;
+    width: 50%;
 }
 
 #right
 {
     text-align: left;
-    width: 60%;
+    width: 50%;
     overflow: hidden;
 }
 
