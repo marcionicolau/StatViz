@@ -301,7 +301,10 @@ function makeHistogram()
         }
         
          // Find ticks   
-        var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));    
+        var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));  
+        var individualPlotHeight = (plotHeight/currentVariableSelection.length) - 3*axesOffset;
+        var yDiffForPlots = individualPlotHeight + 3*axesOffset;
+        
         nGroovesY = nGroovesY * (individualPlotHeight/plotHeight);
         var binSlice = Array.max(binMaxs)/(nGroovesY-1);
     
@@ -323,8 +326,7 @@ function makeHistogram()
                 .text("Frequency")
                 .attr("fill", "orange");
 
-        var individualPlotHeight = (plotHeight/currentVariableSelection.length) - 3*axesOffset;  
-        var yDiffForPlots = individualPlotHeight + 3*axesOffset;
+  
         
         xStep = plotWidth/numberOfGroovesInXAxis;
         
