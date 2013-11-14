@@ -23,6 +23,13 @@
     background-color: DimGray;
     color: white;
     table-layout: fixed;
+    font:1.2em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+th
+{
+    background-color: DarkSlateGray;
+    font:1.5em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 #left

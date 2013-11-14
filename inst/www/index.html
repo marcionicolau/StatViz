@@ -53,6 +53,7 @@
                 
                 var variableList = variablesInDataset[fileName];
                 var variableListTypes = variablesInDatasetType[fileName];
+                var variableListDataTypes = variablesInDatasetDataType[fileName];
                 var variablesDiv = d3.select("#variablesDiv");
                 
                 removeElementsByClassName("variableList");
@@ -60,16 +61,24 @@
                 var table = variablesDiv.append("table")
                                             .attr("border", "1")
                                             .attr("class", "variableList");
+                                            
+                var tr = table.append("tr");
+                tr.append("th").text("Variable name");
+                tr.append("th").text("Type of variable");
+                tr.append("th").text("Datatype");
                 
                 for(var i=0; i<variableList.length; i++)
                 {
                     var tr = table.append("tr");
                     
                     tr.append("td")
+                        .text(variableList[i]);
+                        
+                    tr.append("td")
                         .text(variableListTypes[i]);
                     
                     tr.append("td")
-                        .text(variableList[i]);
+                        .text(variableListDataTypes[i]);
                 }
             }
             
@@ -104,10 +113,7 @@
             </tr>
             
             <tr>
-                <td id="left">
-                    <label id="variablesLabel">variables:</label>
-                </td>
-                <td id="right">
+                <td id="center" colspan="2">
                     <div id="variablesDiv"></div>
                 </td>
             </tr>
