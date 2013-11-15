@@ -77,7 +77,8 @@ function drawTukeyHSDPlot()
 
     
     for(i=0; i<numberOfGroovesInYAxis; i++)
-    {
+    {  
+        console.log("min + i*ySlice" + (min+i*ySlice));
         var axisText = format(min + i*ySlice);
         var textPosition = BOTTOM - i*yStep;                  
         
