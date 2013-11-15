@@ -54,6 +54,7 @@ var distributions = new Object();
 var variances = new Object();
 var participants;
 var interactions = [];
+var tukeyResults = new Object();
 
 //transformations
 var transformationType;
