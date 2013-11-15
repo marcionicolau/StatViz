@@ -24,7 +24,8 @@ export(performHomoscedasticityTest)
 export(performShapiroWilkTest)
 export(performMultipleRegression)
 
-export(performTukeyHSDTest)
+export(performTukeyHSDTestOneIndependentVariable)
+export(performTukeyHSDTestTwoIndependentVariables)
 
 export(applyTransform)
 

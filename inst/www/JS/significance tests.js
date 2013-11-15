@@ -405,30 +405,57 @@ function performKruskalWallisTest(dependentVariable, independentVariable)
     });
 }
 
-function performTukeyHSDTest(dependentVariable, independentVariables)
-{
-//     (dependentVariable, independentVariables, dataset)   
-    console.log("independent variables=[" + independentVariables + "]");
-    var req = opencpu.r_fun_json("performTukeyHSDTest", {
+function performTukeyHSDTestOneIndependentVariable(dependentVariable, independentVariable)
+{ 
+    var req = opencpu.r_fun_json("performTukeyHSDTestOneIndependentVariable", {
                     dependentVariable: dependentVariable,
-                    independentVariables: independentVariables,
+                    independentVariable: independentVariable,
                     dataset: dataset
                   }, function(output) {                                                   
                   
-                if(independentVariables.length == 1)
-                {
-                    console.log("TukeyHSD test for " + dependentVariable + " ~ " + independentVariables[0]);
+
+                    console.log("TukeyHSD test for " + dependentVariable + " ~ " + independentVariable);
                     
                     console.log(output.difference);
                     console.log(output.lower);
                     console.log(output.upper);
                     console.log(output.adjustedP);
-                }
-                else if(independentVariables.length == 2)
-                {
-                    console.log("TukeyHSD results: " + output.meIV1 + "\n MEIV2: " + output.meIV2 + "\n IE: " + output.ie);
-                }                           
+            
+                //drawing stuff
+                removeElementsByClassName("completeLines");   
+                
+//                 displaySignificanceTestResults();
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function performTukeyHSDTestTwoIndependentVariables(dependentVariable, independentVariableA, independentVariableB)
+{ 
+    var req = opencpu.r_fun_json("performTukeyHSDTestOneIndependentVariable", {
+                    dependentVariable: dependentVariable,
+                    independentVariableA: independentVariableA,
+                    independentVariableB: independentVariableB,
+                    dataset: dataset
+                  }, function(output) {                                                   
                   
+
+                    console.log("TukeyHSD test for " + dependentVariable + " ~ " + independentVariableA + " + " + independentVariableB);
+                    
+                    console.log(output.difference);
+                    console.log(output.lower);
+                    console.log(output.upper);
+                    console.log(output.adjustedP);
+            
                 //drawing stuff
                 removeElementsByClassName("completeLines");   
                 
