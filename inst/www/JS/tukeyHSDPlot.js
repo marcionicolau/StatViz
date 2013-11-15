@@ -16,8 +16,6 @@ function drawTukeyHSDPlot()
     var min = sessionStorage.tukeyResultsMin;
     var max = sessionStorage.tukeyResultsMax;
     
-    console.log(min + ", " + max);
-    
     //Axes
     var xAxis = canvas.append("line")
                         .attr("x1", LEFT)
@@ -73,13 +71,11 @@ function drawTukeyHSDPlot()
     var numberOfGroovesInYAxis = 10;
     var yStep = plotHeight/(numberOfGroovesInYAxis - 1);   
     var ySlice = (max - min)/(numberOfGroovesInYAxis - 1);  
-    console.log("ySlice=" + ySlice);
 
     
     for(i=0; i<numberOfGroovesInYAxis; i++)
     {  
-        console.log("min + i*ySlice" + (min+i*ySlice));
-        var axisText = format(min + i*ySlice);
+        var axisText = format3(min + i*ySlice);
         var textPosition = BOTTOM - i*yStep;                  
         
         canvas.append("line")

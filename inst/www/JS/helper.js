@@ -1,4 +1,6 @@
 var format = d3.format(".1f");
+var format2 = d3.format(".2f");
+var format3 = d3.format(".3f");
 
 function splitTheData()
 {
