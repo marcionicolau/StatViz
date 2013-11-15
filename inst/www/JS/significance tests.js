@@ -409,7 +409,7 @@ function performTukeyHSDTest(dependentVariable, independentVariables)
 {
 //     (dependentVariable, independentVariables, dataset)   
     console.log("independent variables=[" + independentVariables + "]");
-    var req = opencpu.r_fun_json("performKruskalWallisTest", {
+    var req = opencpu.r_fun_json("performTukeyHSDTest", {
                     dependentVariable: dependentVariable,
                     independentVariables: independentVariables,
                     dataset: dataset
