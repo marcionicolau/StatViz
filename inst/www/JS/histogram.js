@@ -17,7 +17,8 @@ function makeHistogram()
             .attr("y", TOP)
             .attr("width", plotWidth)
             .attr("height", plotHeight)
-            .attr("stroke", "goldrenrod");
+            .attr("stroke", "goldrenrod")
+            .attr("fill", "transparent");
             
 
     var data = [];
