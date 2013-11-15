@@ -182,26 +182,23 @@ function makeHistogram()
                     .attr("class", "axes");
     
         //grooves
-        for(i=0; i<labels.length; i++)
-        {                                        
-            for(j=0; j<=numberOfGroovesInXAxis; j++)
-            {
-                canvas.append("line")
-                            .attr("x1", LEFT + j*xStep)
-                            .attr("y1", BOTTOM  + axesOffset - i*yDiffForPlots)
-                            .attr("x2", LEFT + j*xStep)
-                            .attr("y2", BOTTOM + 10 + axesOffset - i*yDiffForPlots)
-                            .attr("id", "groove" + j)
-                            .attr("class", "xAxisGrooves");
-        
-                canvas.append("text")
-                            .attr("x", LEFT + j*xStep + xStep/2)
-                            .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset - i*yDiffForPlots)                    
-                            .text(uniqueData[j])
-                            .attr("text-anchor", "middle")
-                            .attr("id", "groove" + j)
-                            .attr("class", "xAxisGrooveText");
-            }
+        for(j=0; j<=numberOfGroovesInXAxis; j++)
+        {
+            canvas.append("line")
+                        .attr("x1", LEFT + j*xStep)
+                        .attr("y1", BOTTOM  + axesOffset)
+                        .attr("x2", LEFT + j*xStep)
+                        .attr("y2", BOTTOM + 10 + axesOffset)
+                        .attr("id", "groove" + j)
+                        .attr("class", "xAxisGrooves");
+    
+            canvas.append("text")
+                        .attr("x", LEFT + j*xStep + xStep/2)
+                        .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)
+                        .text(uniqueData[j])
+                        .attr("text-anchor", "middle")
+                        .attr("id", "groove" + j)
+                        .attr("class", "xAxisGrooveText");
         }
     
         var yStep;
@@ -354,28 +351,25 @@ function makeHistogram()
         
         xStep = plotWidth/numberOfGroovesInXAxis;
         
-        for(i=0; i<labels.length; i++)
+
+        //grooves
+        for(j=0; j<=numberOfGroovesInXAxis; j++)
         {
-            
-            //grooves
-            for(j=0; j<=numberOfGroovesInXAxis; j++)
-            {
-                canvas.append("line")
-                            .attr("x1", LEFT + j*xStep)
-                            .attr("y1", BOTTOM  + axesOffset - i*yDiffForPlots)
-                            .attr("x2", LEFT + j*xStep)
-                            .attr("y2", BOTTOM + 10 + axesOffset - i*yDiffForPlots)
-                            .attr("id", "groove" + i)
-                            .attr("class", "xAxisGrooves");
-        
-                canvas.append("text")
-                            .attr("x", LEFT + j*xStep)
-                            .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset - i*yDiffForPlots)                    
-                            .text(format(min + j*slice))
-                            .attr("text-anchor", "middle")
-                            .attr("id", "groove" + j)
-                            .attr("class", "xAxisGrooveText");
-            }
+            canvas.append("line")
+                        .attr("x1", LEFT + j*xStep)
+                        .attr("y1", BOTTOM  + axesOffset)
+                        .attr("x2", LEFT + j*xStep)
+                        .attr("y2", BOTTOM + 10 + axesOffset)
+                        .attr("id", "groove" + j)
+                        .attr("class", "xAxisGrooves");
+
+            canvas.append("text")
+                        .attr("x", LEFT + j*xStep)
+                        .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)
+                        .text(format(min + j*slice))
+                        .attr("text-anchor", "middle")
+                        .attr("id", "groove" + j)
+                        .attr("class", "xAxisGrooveText");
         }
 
         var yStep;
