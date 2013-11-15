@@ -1,8 +1,8 @@
 // Data
     localStorage.fileName = "store";
-    var fileName = "weightLoss";//change this!
+    var fileName = "impact";//change this!
     var wd = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/";//"http://hci.rwth-aachen.de/~subramanian/datasets/" + localStorage.fileName +".txt";
-    var pathToFile =  wd + "twoway.csv";
+    var pathToFile =  wd + "IMPACT.txt";
 
 // Skeleton
     var width = document.width;
