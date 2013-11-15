@@ -415,8 +415,8 @@ function performTukeyHSDTestOneIndependentVariable(dependentVariable, independen
                   
 
                     console.log("TukeyHSD test for " + dependentVariable + " ~ " + independentVariable);
-                    tukeyResultsMin = Array.min(output.lower);
-                    tukeyResultsMax = Array.max(output.upper);
+                    sessionStorage.tukeyResultsMin = Array.min(output.lower);
+                    sessionStorage.tukeyResultsMax = Array.max(output.upper);
                     
                     //make a data structure to hold all this
                     
@@ -431,10 +431,11 @@ function performTukeyHSDTestOneIndependentVariable(dependentVariable, independen
                         tukeyResults[levels[i]] = new Object();
                         for(j=i+1; j<levels.length; j++)
                         {
+                            if(tukeyResults[levels[j]] == undefined)
+                                tukeyResults[levels[j]] = new Object();
                             if(i != j)
                             {
-                                tukeyResults[levels[i]][levels[j]] = new Object();
-                                
+                                tukeyResults[levels[i]][levels[j]] = new Object();                                
                                 tukeyResults[levels[j]][levels[i]] = new Object();
                                 
                                 tukeyResults[levels[j]][levels[i]]["difference"] = output.difference[index];
