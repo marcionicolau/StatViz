@@ -16,6 +16,8 @@ function drawTukeyHSDPlot()
     var min = tukeyResultsMin;
     var max = tukeyResultsMax;
     
+    console.log(min + ", " + max);
+    
     //Axes
     var xAxis = canvas.append("line")
                         .attr("x1", LEFT)
