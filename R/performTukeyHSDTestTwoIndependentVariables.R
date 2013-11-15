@@ -14,7 +14,7 @@ performTukeyHSDTestTwoIndependentVariables <- function(dependentVariable, indepe
     interactionEffect = as.data.frame(interactionEffect);
         
     list(difference = c(mainEffectForIndependentVariableA[["diff"]], mainEffectForIndependentVariableB[["diff"]], interactionEffect[["diff"]]), 
-    c(mainEffectForIndependentVariableA[["lwr"]], mainEffectForIndependentVariableB[["lwr"]], interactionEffect[["lwr"]]), 
-    c(mainEffectForIndependentVariableA[["upr"]], mainEffectForIndependentVariableB[["upr"]], interactionEffect[["upr"]]), 
-    c(mainEffectForIndependentVariableA[["p adj"]], mainEffectForIndependentVariableB[["p adj"]], interactionEffect[["p adj"]]));
+    lower = c(mainEffectForIndependentVariableA[["lwr"]], mainEffectForIndependentVariableB[["lwr"]], interactionEffect[["lwr"]]), 
+    upper = c(mainEffectForIndependentVariableA[["upr"]], mainEffectForIndependentVariableB[["upr"]], interactionEffect[["upr"]]), 
+    adjustedP = c(mainEffectForIndependentVariableA[["p adj"]], mainEffectForIndependentVariableB[["p adj"]], interactionEffect[["p adj"]]));
 }
