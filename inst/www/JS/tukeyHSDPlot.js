@@ -70,7 +70,8 @@ function drawTukeyHSDPlot()
     //Y-axis grooves
     var numberOfGroovesInYAxis = 10;
     var yStep = plotHeight/(numberOfGroovesInYAxis - 1);   
-    var ySlice = (max - min)/(numberOfGroovesInYAxis - 1);   
+    var ySlice = (max - min)/(numberOfGroovesInYAxis - 1);  
+    console.log("ySlice=" + ySlice);
 
     
     for(i=0; i<numberOfGroovesInYAxis; i++)
