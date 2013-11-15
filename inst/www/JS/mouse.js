@@ -683,27 +683,32 @@ function OnMouseOver(e)
                     .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
         
         bottomLine.transition().duration(1000)
-                    .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
-        
-        var level = stringForNumber.indexOf(target.id) == -1 ? target.id : stringForNumber.indexOf(target.id);
-        if(variableList["independent"].length == 0)
-            level = "dataset";
-            
-        console.log("level= " + level);
-        console.dir(CI);
-        canvas.append("text")
-                .attr("x",parseFloat(bottomFringe.attr("x1")))
-                .attr("y", bottomFringe.attr("y1") + 5)
-                .attr("text-anchor", "middle")
-                .text(format(CI[variableList["dependent"][0]][level][0]))
-                .attr("class", "hover");
+                    .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);// 
+//         
+//         var level;
+//         
+//         if(variableList["independent"].length == 0)
+//             level = "dataset";
+//         else if(variableList["independent"].length == 1)        
+//             level = stringForNumber.indexOf(target.id) == -1 ? target.id : stringForNumber.indexOf(target.id);
+//         else
+//             console.dir(splitData);
         
         canvas.append("text")
                 .attr("x",parseFloat(topFringe.attr("x1")))
                 .attr("y", topFringe.attr("y1") - 5)
                 .attr("text-anchor", "middle")
-                .text(format(CI[variableList["dependent"][0]][level][1]))
+                .text(format(getActualValue(parseFloat(topFringe.attr("y1")))))
                 .attr("class", "hover");
+                
+        canvas.append("text")
+                .attr("x",parseFloat(bottomFringe.attr("x1")))
+                .attr("y", bottomFringe.attr("y1") + 15)
+                .attr("text-anchor", "middle")
+                .text(format(getActualValue(parseFloat(bottomFringe.attr("y1")))))
+                .attr("class", "hover");
+        
+        
     }
     
     else if(target.className.baseVal == "regression")
