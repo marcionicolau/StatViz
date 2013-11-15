@@ -686,7 +686,7 @@ function OnMouseOver(e)
                     .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
         
         console.log(variableList["dependent"][0]);
-        console.dir(CI["weightLost"]);
+        console.dir(CI);
         var level = stringForNumber.indexOf(target.id) == -1 ? target.id : stringForNumber.indexOf(target.id);
         canvas.append("text")
                 .attr("x",parseFloat(bottomFringe.attr("x1")))
