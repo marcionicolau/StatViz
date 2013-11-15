@@ -289,6 +289,13 @@ function OnMouseDown(e)
         drawInteractionEffectPlot();
     }
     
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.id == "tukey")
+    {
+        var variableList = sort(currentVariableSelection);
+        
+        performTukeyHSDTest(variableList["dependent"][0], variableList["independent"]);
+    }
+    
     else
     {
         //the user clicked outside
@@ -738,6 +745,7 @@ function OnMouseOver(e)
         
         choice.attr("stroke", "black").attr("stroke-width", "2px");
     }
+
 }
 
 function OnMouseOut(e)

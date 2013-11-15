@@ -405,6 +405,42 @@ function performKruskalWallisTest(dependentVariable, independentVariable)
     });
 }
 
+function performTukeyHSDTest(dependentVariable, independentVariables)
+{
+//     (dependentVariable, independentVariables, dataset)   
+    console.log("independent variables=[" + independentVariables + "]");
+    var req = opencpu.r_fun_json("performKruskalWallisTest", {
+                    dependentVariable: dependentVariable,
+                    independentVariables: independentVariables,
+                    dataset: dataset
+                  }, function(output) {                                                   
+                  
+                if(independentVariables.length == 1)
+                {
+                    console.log("TukeyHSD results: " + output.meIV1);
+                }
+                else if(independentVariables.length == 2)
+                {
+                    console.log("TukeyHSD results: " + output.meIV1 + "\n MEIV2: " + output.meIV2 + "\n IE: " + output.ie);
+                }                           
+                  
+                //drawing stuff
+                removeElementsByClassName("completeLines");   
+                
+//                 displaySignificanceTestResults();
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
 
 // Effect sizes
 

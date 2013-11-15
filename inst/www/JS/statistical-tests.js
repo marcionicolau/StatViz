@@ -323,7 +323,13 @@ function displaySignificanceTestResults()
             .attr("fill", "orange")
             .text(testResults["effect-size"])
             .attr("class", "significanceTest");
- 
+    
+    canvas.append("circle")
+            .attr("cx", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+            .attr("cy", cyMax + 25)
+            .attr("r", 20)
+            .attr("id", "tukey")
+            .attr("class", "significance"); 
 }
 
 function drawScales(cx, cy)
