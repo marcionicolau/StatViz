@@ -10,6 +10,8 @@ function makeHistogram()
     
     TOP = canvasHeight/2 - plotHeight/2;
     BOTTOM = canvasHeight/2 + plotHeight/2;            
+    
+    var canvas = d3.select("#svgCanvas");
 
     var data = [];
     var mins = [];
