@@ -428,10 +428,10 @@ function performTukeyHSDTestOneIndependentVariable(dependentVariable, independen
                     //sort it
                     levels = levels.sort();
                     
-                    for(var i=0; i<levels.length; i++)
+                    for(i=0; i<levels.length; i++)
                     {
                         tukeyResults[levels[i]] = new Object();
-                        for(var j=0; j<levels.length. j++)
+                        for(j=0; j<levels.length; j++)
                         {
                             if(i != j)
                             {
