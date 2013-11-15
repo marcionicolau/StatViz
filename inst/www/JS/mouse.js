@@ -293,6 +293,7 @@ function OnMouseDown(e)
     {
         var variableList = sort(currentVariableSelection);
         console.dir(variableList);
+        console.log(variableList["independent"].length);
         
         if(variableList["independent"].length == 1)
         {
