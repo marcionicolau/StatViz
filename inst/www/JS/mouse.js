@@ -660,9 +660,7 @@ function OnMouseOver(e)
         var topFringe = d3.select("#" + target.id + ".CITopFringes");
         var bottomFringe = d3.select("#" + target.id + ".CIBottomFringes");
     
-        var variableList = sort(currentVariableSelection);
-        console.dir(variableList);
-        
+        var variableList = sort(currentVariableSelection);        
         var topLine = canvas.append("line")
                 .attr("x1", (parseFloat(topFringe.attr("x1")) + parseFloat(topFringe.attr("x2")))/2)
                 .attr("y1", topFringe.attr("y1"))
@@ -686,7 +684,8 @@ function OnMouseOver(e)
         
         bottomLine.transition().duration(1000)
                     .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
-                    
+        
+        console.log(variableList["dependent"][0]);
         var level = stringForNumber.indexOf(target.id) == -1 ? target.id : stringForNumber.indexOf(target.id);
         canvas.append("text")
                 .attr("x",parseFloat(bottomFringe.attr("x1")))
