@@ -292,6 +292,7 @@ function performHomoscedasticityTestNotNormal(dependent, independent)
 
 function performHomoscedasticityTestNormal(dependent, independent)
 {
+    console.log("dependent = " + dependent + ", independent = " + independent);
     // Get variable names and their data type
     var req = opencpu.r_fun_json("performHomoscedasticityTest", {
                     dependentVariable: dependent,
