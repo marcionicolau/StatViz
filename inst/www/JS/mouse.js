@@ -783,6 +783,7 @@ function OnMouseOver(e)
     else if((target.className.baseVal == "tukeyCI") || (target.className.baseVal == "tukeyCITop") || (target.className.baseVal == "tukeyCIBottom"))
     {
         setup(e, target);
+        console.log("'ola");
         
         var CI = d3.select("#" + target.id + ".tukeyCI");
         var CITop = d3.select("#" + target.id + ".tukeyCITop");
