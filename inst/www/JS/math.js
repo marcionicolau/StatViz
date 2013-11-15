@@ -29,6 +29,11 @@ function median(values)
         return (values[half-1] + values[half]) / 2.0;
 }
 
+function findNumberOfCombinations(n, y)
+{
+    return factorials[n]/(factorials[y]*factorials[n-y]);
+}
+
 function isPrime(num) 
 {
     if(num < 2) return false;

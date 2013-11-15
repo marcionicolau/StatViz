@@ -81,3 +81,6 @@ var densityCurveColors = new Object();
     
 //animations B-)
 var loadingDataAnimation;
+
+//miscellaneous
+var factorials = [0, 1, 2, 6, 24, 120];

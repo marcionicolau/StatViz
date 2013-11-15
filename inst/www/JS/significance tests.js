@@ -416,11 +416,6 @@ function performTukeyHSDTestOneIndependentVariable(dependentVariable, independen
 
                     console.log("TukeyHSD test for " + dependentVariable + " ~ " + independentVariable);
                     
-                    console.log(output.difference);
-                    console.log(output.lower);
-                    console.log(output.upper);
-                    console.log(output.adjustedP);
-                    
                     //make a data structure to hold all this
                     
                     //get levels of the independent variable
@@ -437,6 +432,13 @@ function performTukeyHSDTestOneIndependentVariable(dependentVariable, independen
                             if(i != j)
                             {
                                 tukeyResults[levels[i]][levels[j]] = new Object();
+                                
+                                tukeyResults[levels[j]][levels[i]] = new Object();
+                                
+                                tukeyResults[levels[j]][levels[i]]["difference"] = output.difference[index];
+                                tukeyResults[levels[j]][levels[i]]["lower"] = output.lower[index];
+                                tukeyResults[levels[j]][levels[i]]["upper"] = output.upper[index];
+                                tukeyResults[levels[j]][levels[i]]["p"] = output.adjustedP[index];
                                 
                                 tukeyResults[levels[i]][levels[j]]["difference"] = output.difference[index];
                                 tukeyResults[levels[i]][levels[j]]["lower"] = output.lower[index];

@@ -9,26 +9,9 @@ function drawTukeyHSDPlot()
     
     var canvas = d3.select("#svgCanvas");
     
-    //data
-    var variableList = sort(currentVariableSelection);
-    
-    var dependentVariable = variableList["dependent"][0];    
-    var independentVariableXAxis = variableList["independent"][0];
-    var independentVariableColor = variableList["independent"][1];
-    
-    var dependentVariableData = variables[dependentVariable]["dataset"];
-    var max = Array.max(dependentVariableData);
-    var min = Array.min(dependentVariableData);
-    
-    console.log("max=" + max);
-    console.log("min=" + min);
-    
-    var independentVariableXAxisData = variables[independentVariableXAxis]["dataset"];
-    var independentVariableColorData = variables[independentVariableColor]["dataset"];
-    
-    var levelsOfIndependentVariableXAxis = independentVariableXAxisData.unique();
-    var levelsOfIndependentVariableColor = independentVariableColorData.unique();
-    
+    //data - we have already sorted them into "tukeyResults" object 
+    var variableList = sort(currentVariableSelection);    
+    var levels = variables[variableList["independent"][0]]["dataset"].unique();    
     
     //Axes
     var xAxis = canvas.append("line")
@@ -50,36 +33,35 @@ function drawTukeyHSDPlot()
                         .attr("class", "axes");
     
     //Y-axis label
-//     canvas.append("text")
-//                 .attr("x", LEFT - axesOffset - labelOffset)
-//                 .attr("y", (TOP + BOTTOM)/2 + 6)
-//                 .attr("text-anchor", "end")
-//                 .attr("font-size", "24px")
-//                 .text(dependentVariable)
-//                 .attr("fill", "orange");
-//                 
-//     //X-axis grooves
-//     var numberOfGroovesInXAxis = levelsOfIndependentVariableXAxis.length;
-//     
-//     var xStep = plotWidth/(numberOfGroovesInXAxis - 1);   
-// 
-//     for(i=0; i<numberOfGroovesInXAxis; i++)
-//     {
-//         canvas.append("line")
-//                     .attr("x1", LEFT + i*xStep)
-//                     .attr("y1", BOTTOM  + axesOffset)
-//                     .attr("x2", LEFT + i*xStep)
-//                     .attr("y2", BOTTOM + 10 + axesOffset)
-//                     .attr("class", "xAxisGrooves");
-// 
-//         canvas.append("text")
-//                     .attr("x", LEFT + i*xStep)
-//                     .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
-//                     .text(levelsOfIndependentVariableXAxis[i])
-//                     .attr("fill", "black")
-//                     .attr("text-anchor", "middle")
-//                     .attr("class", "xAxisGrooveText");
-//     }
+    canvas.append("text")
+                .attr("x", LEFT - axesOffset - labelOffset)
+                .attr("y", (TOP + BOTTOM)/2 + 6)
+                .attr("text-anchor", "end")
+                .attr("font-size", "24px")
+                .text("Mean Difference in " + dependentVariable)
+                .attr("fill", "orange");
+                
+    //X-axis grooves
+    var numberOfGroovesInXAxis = findNumberOfCombinations(levels.length,2);    
+    var xStep = plotWidth/(numberOfGroovesInXAxis - 1);   
+
+    for(i=0; i<numberOfGroovesInXAxis; i++)
+    {
+        canvas.append("line")
+                    .attr("x1", LEFT + i*xStep)
+                    .attr("y1", BOTTOM  + axesOffset)
+                    .attr("x2", LEFT + i*xStep)
+                    .attr("y2", BOTTOM + 10 + axesOffset)
+                    .attr("class", "xAxisGrooves");
+
+        canvas.append("text")
+                    .attr("x", LEFT + i*xStep)
+                    .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
+                    .text(levels[i] + "-" + levels[(i+1)%levels.length])
+                    .attr("fill", "black")
+                    .attr("text-anchor", "middle")
+                    .attr("class", "xAxisGrooveText");
+    }
 //     
 //     //Y-axis grooves
 //     var numberOfGroovesInYAxis = 10;
