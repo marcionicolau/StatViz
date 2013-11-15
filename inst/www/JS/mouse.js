@@ -905,7 +905,7 @@ function OnMouseOut(e)
         removeElementsByClassName("lineToAxis")
     }
     
-    else if(target.className.baseVal.slice(0,5) == "tukey")
+    else if((target.className.baseVal == "tukeyMean") || (target.className.baseVal == "tukeyCI") || (target.className.baseVal == "tukeyCITop") || (target.className.baseVal == "tukeyCIBottom"))
     {
         removeElementsByClassName("hover");
     }
