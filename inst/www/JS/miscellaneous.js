@@ -20,6 +20,8 @@ function initiateLoadingDatasetAnimation()
         t.transition().duration(500).attr("opacity", "0.3");
         
         t.transition().delay(500).duration(500).attr("opacity", "1.0");
-    }, 1000);
+        
+        t.transition().delay(1000).duration(500).attr("opacity", "0.3");
+    }, 1500);
             
 }
