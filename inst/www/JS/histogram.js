@@ -152,10 +152,10 @@ function makeHistogram()
     
         // Draw axes    
         canvas.append("text")
-                .attr("x", LEFT - axesOffset - labelOffset)
+                .attr("x", LEFT - axesOffset - 2*labelOffset)
                 .attr("y", (TOP + BOTTOM)/2)
                 .attr("text-anchor", "middle")
-                .attr("transform", "rotate (-90 " + (LEFT - axesOffset - labelOffset) + " " + ((TOP + BOTTOM)/2) + ")")
+                .attr("transform", "rotate (-90 " + (LEFT - axesOffset - 2*labelOffset) + " " + ((TOP + BOTTOM)/2) + ")")
                 .attr("font-size", "24px")
                 .text("Frequency")
                 .attr("fill", "orange");
