@@ -13,6 +13,9 @@ function drawTukeyHSDPlot()
     var variableList = sort(currentVariableSelection);    
     var levels = variables[variableList["independent"][0]]["dataset"].unique();    
     
+    var min = tukeyResultsMin;
+    var max = tukeyResultsMax;
+    
     //Axes
     var xAxis = canvas.append("line")
                         .attr("x1", LEFT)
@@ -24,9 +27,9 @@ function drawTukeyHSDPlot()
                         .attr("class", "axes");
     
     var yAxis = canvas.append("line")
-                        .attr("x1", LEFT - axesOffset)
+                        .attr("x1", LEFT - 2*axesOffset)
                         .attr("y1", TOP)
-                        .attr("x2", LEFT - axesOffset)
+                        .attr("x2", LEFT - 2*axesOffset)
                         .attr("y2", BOTTOM)
                         .attr("stroke", "black")
                         .attr("id", "yAxis")
@@ -39,6 +42,7 @@ function drawTukeyHSDPlot()
                 .attr("text-anchor", "end")
                 .attr("font-size", "24px")
                 .text("Mean Difference in " + variableList["dependent"][0])
+                .attr("transform", "rotate(-90 " + (LEFT - axesOffset - labelOffset) + " " + ((TOP + BOTTOM)/2 + 6) + ")")
                 .attr("fill", "orange");
                 
     //X-axis grooves
@@ -62,34 +66,34 @@ function drawTukeyHSDPlot()
                     .attr("text-anchor", "middle")
                     .attr("class", "xAxisGrooveText");
     }
-//     
-//     //Y-axis grooves
-//     var numberOfGroovesInYAxis = 10;
-//     var yStep = plotHeight/(numberOfGroovesInYAxis - 1);   
-//     var ySlice = (max - min)/(numberOfGroovesInYAxis - 1);   
-// 
-//     
-//     for(i=0; i<numberOfGroovesInYAxis; i++)
-//     {
-//         var axisText = format(min + i*ySlice);
-//         var textPosition = BOTTOM - i*yStep;                  
-//         
-//         canvas.append("line")
-//                     .attr("x1", LEFT - 10 - axesOffset)
-//                     .attr("y1", textPosition)
-//                     .attr("x2", LEFT  - axesOffset)
-//                     .attr("y2", textPosition)
-//                     .attr("id", "groove" + i)
-//                     .attr("class", "yAxisGrooves");
-//         
-//         canvas.append("text")
-//                     .attr("x", LEFT - tickTextOffsetYAxis - axesOffset)
-//                     .attr("y", textPosition + yAxisTickTextOffset)                     
-//                     .text(axisText)
-//                     .attr("text-anchor", "end")
-//                     .attr("id", "groove" + i)
-//                     .attr("class", "yAxisGrooveText");
-//     }   
+    
+    //Y-axis grooves
+    var numberOfGroovesInYAxis = 10;
+    var yStep = plotHeight/(numberOfGroovesInYAxis - 1);   
+    var ySlice = (max - min)/(numberOfGroovesInYAxis - 1);   
+
+    
+    for(i=0; i<numberOfGroovesInYAxis; i++)
+    {
+        var axisText = format(min + i*ySlice);
+        var textPosition = BOTTOM - i*yStep;                  
+        
+        canvas.append("line")
+                    .attr("x1", LEFT - 10 - axesOffset)
+                    .attr("y1", textPosition)
+                    .attr("x2", LEFT  - axesOffset)
+                    .attr("y2", textPosition)
+                    .attr("id", "groove" + i)
+                    .attr("class", "yAxisGrooves");
+        
+        canvas.append("text")
+                    .attr("x", LEFT - tickTextOffsetYAxis - axesOffset)
+                    .attr("y", textPosition + yAxisTickTextOffset)                     
+                    .text(axisText)
+                    .attr("text-anchor", "end")
+                    .attr("id", "groove" + i)
+                    .attr("class", "yAxisGrooveText");
+    }   
 //     
 //     for(var i=0; i<interactions.length; i++)
 //     {
