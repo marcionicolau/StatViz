@@ -787,43 +787,43 @@ function OnMouseOver(e)
         setup(e, target);
         console.log("'ola");
         
-        var CI = d3.select("#" + target.id + ".tukeyCI");
-        var CITop = d3.select("#" + target.id + ".tukeyCITop");
-        var CIBottom = d3.select("#" + target.id + ".tukeyCIBottom");
+        var tCI = d3.select("#" + target.id + ".tukeyCI");
+        var tCITop = d3.select("#" + target.id + ".tukeyCITop");
+        var tCIBottom = d3.select("#" + target.id + ".tukeyCIBottom");
         
         var canvas = d3.select("#svgCanvas");
         
         canvas.append("line")
-                .attr("x1", CITop.attr("x1"))
-                .attr("y1", CITop.attr("y1"))
+                .attr("x1", tCITop.attr("x1"))
+                .attr("y1", tCITop.attr("y1"))
                 .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
-                .attr("y2", CITop.attr("y1"))
-                .attr("stroke", CITop.attr("stroke"))
+                .attr("y2", tCITop.attr("y1"))
+                .attr("stroke", tCITop.attr("stroke"))
                 .attr("stroke-dasharray", "5,5")
                 .attr("class", "hover");
         canvas.append("line")
-                .attr("x1", CIBottom.attr("x1"))
-                .attr("y1", CIBottom.attr("y1"))
+                .attr("x1", tCIBottom.attr("x1"))
+                .attr("y1", tCIBottom.attr("y1"))
                 .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
-                .attr("y2", CIBottom.attr("y1"))
-                .attr("stroke", CIBottom.attr("stroke"))
+                .attr("y2", tCIBottom.attr("y1"))
+                .attr("stroke", tCIBottom.attr("stroke"))
                 .attr("stroke-dasharray", "5,5")
                 .attr("class", "hover");
         
         canvas.append("text")
-                .attr("x", CITop.attr("x1"))
-                .attr("y", CITop.attr("y1") - 5)
+                .attr("x", tCITop.attr("x1"))
+                .attr("y", tCITop.attr("y1") - 5)
                 .attr("text-anchor", "middle")
                 .attr("fill", "black")
-                .text(tukeyResults[CITop.attr("data-index1")][CITop.attr("data-index2")]["upper"])
+                .text(tukeyResults[tCITop.attr("data-index1")][tCITop.attr("data-index2")]["upper"])
                 .attr("class", "hover");
         
         canvas.append("text")
-                .attr("x", CIBottom.attr("x1"))
-                .attr("y", CIBottom.attr("y2") + 15)
+                .attr("x", tCIBottom.attr("x1"))
+                .attr("y", tCIBottom.attr("y2") + 15)
                 .attr("text-anchor", "middle")
                 .attr("fill", "black")
-                .text(tukeyResults[CIBottom.attr("data-index1")][CIBottom.attr("data-index2")]["lower"])
+                .text(tukeyResults[tCIBottom.attr("data-index1")][tCIBottom.attr("data-index2")]["lower"])
                 .attr("class", "hover");
     }
 
