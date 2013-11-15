@@ -427,20 +427,21 @@ function performTukeyHSDTestOneIndependentVariable(dependentVariable, independen
                     var levels = variables[independentVariable]["dataset"].unique();
                     //sort it
                     levels = levels.sort();
+                    var index = 0;
                     
                     for(i=0; i<levels.length; i++)
                     {
                         tukeyResults[levels[i]] = new Object();
-                        for(j=0; j<levels.length; j++)
+                        for(j=i+1; j<levels.length; j++)
                         {
                             if(i != j)
                             {
                                 tukeyResults[levels[i]][levels[j]] = new Object();
                                 
-                                tukeyResults[levels[i]][levels[j]]["difference"] = output.difference[i*levels.length + j];
-                                tukeyResults[levels[i]][levels[j]]["lower"] = output.lower[i*levels.length + j];
-                                tukeyResults[levels[i]][levels[j]]["upper"] = output.upper[i*levels.length + j];
-                                tukeyResults[levels[i]][levels[j]]["p"] = output.adjustedP[i*levels.length + j];
+                                tukeyResults[levels[i]][levels[j]]["difference"] = output.difference[index];
+                                tukeyResults[levels[i]][levels[j]]["lower"] = output.lower[index];
+                                tukeyResults[levels[i]][levels[j]]["upper"] = output.upper[index];
+                                tukeyResults[levels[i]][levels[j]]["p"] = output.adjustedP[index];
                             }
                         }
                     }
