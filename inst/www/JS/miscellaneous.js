@@ -18,6 +18,8 @@ function initiateLoadingDatasetAnimation()
             .attr("class", "loadingAnimation");
         
         t.transition().duration(800).attr("opacity", "0.3");
-    }, 800);
+        
+        t.transition().duration(800).attr("opacity", "1.0");
+    }, 1800);
             
 }

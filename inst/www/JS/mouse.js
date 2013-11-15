@@ -683,17 +683,8 @@ function OnMouseOver(e)
                     .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
         
         bottomLine.transition().duration(1000)
-                    .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);// 
-//         
-//         var level;
-//         
-//         if(variableList["independent"].length == 0)
-//             level = "dataset";
-//         else if(variableList["independent"].length == 1)        
-//             level = stringForNumber.indexOf(target.id) == -1 ? target.id : stringForNumber.indexOf(target.id);
-//         else
-//             console.dir(splitData);
-        
+                    .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
+                    
         canvas.append("text")
                 .attr("x",parseFloat(topFringe.attr("x1")))
                 .attr("y", parseFloat(topFringe.attr("y1")) + 15)
