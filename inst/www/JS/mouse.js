@@ -755,11 +755,11 @@ function OnMouseOver(e)
         choice.attr("stroke", "black").attr("stroke-width", "2px");
     }
     
-    else if(target.className.baseVal == "tukeyMeans")
+    else if(target.className.baseVal == "tukeyMean")
     {
         setup(e, target);
         
-        var mean = d3.select("#" + target.id + ".tukeyMeans");
+        var mean = d3.select("#" + target.id + ".tukeyMean");
         var canvas = d3.select("#svgCanvas");
         
         canvas.append("line")
