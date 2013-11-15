@@ -150,8 +150,8 @@ function makeHistogram()
         
          // Find ticks   
         var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));    
-        var individualPlotHeight = labels.length > 1 ? (plotHeight/labels.length) - 4*axesOffset : plotHeight;
-        yDiffForPlots = labels.length > 1 ? individualPlotHeight + 4*axesOffset : plotHeight;
+        var individualPlotHeight = labels.length > 1 ? (plotHeight/labels.length) : plotHeight;
+        yDiffForPlots = labels.length > 1 ? individualPlotHeight : plotHeight;
         drawHistogramLegends(varNames);
         
         nGroovesY = Math.ceil(nGroovesY * (individualPlotHeight/plotHeight));
@@ -315,8 +315,8 @@ function makeHistogram()
         
          // Find ticks   
         var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));  
-        var individualPlotHeight = labels.length > 1 ? (plotHeight/labels.length) - 4*axesOffset : plotHeight;
-        yDiffForPlots = labels.length > 1 ? individualPlotHeight + 4*axesOffset : plotHeight;
+        var individualPlotHeight = labels.length > 1 ? (plotHeight/labels.length) : plotHeight;
+        yDiffForPlots = labels.length > 1 ? individualPlotHeight : plotHeight;
 
         drawHistogramLegends(varNames);
         
