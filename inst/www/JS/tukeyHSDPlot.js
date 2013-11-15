@@ -38,7 +38,7 @@ function drawTukeyHSDPlot()
                 .attr("y", (TOP + BOTTOM)/2 + 6)
                 .attr("text-anchor", "end")
                 .attr("font-size", "24px")
-                .text("Mean Difference in " + dependentVariable)
+                .text("Mean Difference in " + variableList["dependent"][0])
                 .attr("fill", "orange");
                 
     //X-axis grooves
