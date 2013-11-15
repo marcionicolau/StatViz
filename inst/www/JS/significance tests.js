@@ -441,7 +441,7 @@ function performTukeyHSDTestOneIndependentVariable(dependentVariable, independen
                                 tukeyResults[levels[i]][levels[j]]["difference"] = output.difference[index];
                                 tukeyResults[levels[i]][levels[j]]["lower"] = output.lower[index];
                                 tukeyResults[levels[i]][levels[j]]["upper"] = output.upper[index];
-                                tukeyResults[levels[i]][levels[j]]["p"] = output.adjustedP[index];
+                                tukeyResults[levels[i]][levels[j]]["p"] = output.adjustedP[index++];
                             }
                         }
                     }
