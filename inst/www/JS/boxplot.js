@@ -157,6 +157,18 @@ function makeBoxplot()
                                     .attr("stroke", "black")
                                     .attr("id", "yAxis")
                                     .attr("class", "axes");
+    if(variableList["independent"].length > 0)
+    {
+        canvas.append("text")
+                .attr("x", canvasWidth/2 - plotWidth/2 - 2*labelOffset)
+                .attr("y", (TOP + BOTTOM)/2)
+                .attr("text-anchor", "middle")
+                .attr("transform", "rotate (-90 " + (LEFT - axesOffset - 2*labelOffset) + " " + ((TOP + BOTTOM)/2) + ")")
+                .attr("font-size", "24px")
+                .text(variableList["dependent"][0])
+                .attr("fill", "orange");
+    }
+
                                     
     
     //grooves
