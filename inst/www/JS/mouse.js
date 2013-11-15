@@ -303,11 +303,6 @@ function OnMouseDown(e)
         {
             performTukeyHSDTestTwoIndependentVariables(variableList["dependent"][0], variableList["independent"][0], variableList["independent"][1]);
         }
-        
-        resetSVGCanvas();
-        drawFullScreenButton();
-        
-        drawTukeyHSDPlot();
     }
     
     else

@@ -453,6 +453,11 @@ function performTukeyHSDTestOneIndependentVariable(dependentVariable, independen
                     
                     console.dir(tukeyResults);
                     
+                    resetSVGCanvas();
+                    drawFullScreenButton();
+        
+                    drawTukeyHSDPlot();
+                    
             
                 //drawing stuff
                 removeElementsByClassName("completeLines");   
