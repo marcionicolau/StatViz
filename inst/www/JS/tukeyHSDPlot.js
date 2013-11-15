@@ -13,8 +13,8 @@ function drawTukeyHSDPlot()
     var variableList = sort(currentVariableSelection);    
     var levels = variables[variableList["independent"][0]]["dataset"].unique();    
     
-    var min = tukeyResultsMin;
-    var max = tukeyResultsMax;
+    var min = sessionStorage.tukeyResultsMin;
+    var max = sessionStorage.tukeyResultsMax;
     
     console.log(min + ", " + max);
     
