@@ -771,9 +771,10 @@ function OnMouseOver(e)
                 .attr("stroke-dasharray", "5,5")
                 .attr("class", "hover");
         
+        console.log(mean.attr("data-index1"));
         canvas.append("text")
-                .attr("x", e.pageX + 9)
-                .attr("y", e.pageY + 9)
+                .attr("x", e.pageX - (width - canvasWidth) + 9)
+                .attr("y", e.pageY - (width - canvasWidth) + 9)
                 .attr("fill", "black")
                 .text(tukeyResults[mean.attr("data-index1")][mean.attr("data-index2")]["difference"])
                 .attr("class", "hover");
