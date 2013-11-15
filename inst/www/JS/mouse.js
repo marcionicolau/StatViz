@@ -754,6 +754,74 @@ function OnMouseOver(e)
         
         choice.attr("stroke", "black").attr("stroke-width", "2px");
     }
+    
+    else if(target.className.baseVal == "tukeyMeans")
+    {
+        setup(e, target);
+        
+        var mean = d3.select("#" + target.id + ".tukeyMeans");
+        var canvas = d3.select("#svgCanvas");
+        
+        canvas.append("line")
+                .attr("x1", mean.attr("cx"))
+                .attr("y1", mean.attr("cy"))
+                .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
+                .attr("y2", mean.attr("cy"))
+                .attr("stroke", mean.attr("fill"))
+                .attr("stroke-dasharray", "5,5")
+                .attr("class", "hover");
+        
+        canvas.append("text")
+                .attr("x", e.pageX + 9)
+                .attr("y", e.pageY + 9)
+                .attr("fill", "black")
+                .text(tukeyResults[mean.attr("data-index1")][mean.attr("data-index2")]["difference"])
+                .attr("class", "hover");
+    }
+    
+    else if((target.className.baseVal == "tukeyCI") || (target.className.baseVal == "tukeyCITop") || (target.className.baseVal == "tukeyCIBottom"))
+    {
+        setup(e, target);
+        
+        var CI = d3.select("#" + target.id + ".tukeyCI");
+        var CITop = d3.select("#" + target.id + ".tukeyCITop");
+        var CIBottom = d3.select("#" + target.id + ".tukeyCIBottom");
+        
+        var canvas = d3.select("#svgCanvas");
+        
+        canvas.append("line")
+                .attr("x1", CITop.attr("cx"))
+                .attr("y1", CITop.attr("cy"))
+                .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
+                .attr("y2", CITop.attr("cy"))
+                .attr("stroke", CITop.attr("stroke"))
+                .attr("stroke-dasharray", "5,5")
+                .attr("class", "hover");
+        canvas.append("line")
+                .attr("x1", CIBottom.attr("cx"))
+                .attr("y1", CIBottom.attr("cy"))
+                .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
+                .attr("y2", CIBottom.attr("cy"))
+                .attr("stroke", CIBottom.attr("stroke"))
+                .attr("stroke-dasharray", "5,5")
+                .attr("class", "hover");
+        
+        canvas.append("text")
+                .attr("x", CITop.attr("cx"))
+                .attr("y", CITop.attr("cy") - 5)
+                .attr("text-anchor", "middle")
+                .attr("fill", "black")
+                .text(tukeyResults[CITop.attr("data-index1")][CITop.attr("data-index2")]["upper"])
+                .attr("class", "hover");
+        
+        canvas.append("text")
+                .attr("x", CIBottom.attr("cx"))
+                .attr("y", CIBottom.attr("cy") - 5)
+                .attr("text-anchor", "middle")
+                .attr("fill", "black")
+                .text(tukeyResults[CIBottom.attr("data-index1")][CIBottom.attr("data-index2")]["lower"])
+                .attr("class", "hover");
+    }
 
 }
 

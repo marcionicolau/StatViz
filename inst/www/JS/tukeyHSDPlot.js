@@ -27,9 +27,9 @@ function drawTukeyHSDPlot()
                         .attr("class", "axes");
     
     var yAxis = canvas.append("line")
-                        .attr("x1", LEFT - 2*axesOffset)
+                        .attr("x1", LEFT - axesOffset)
                         .attr("y1", TOP)
-                        .attr("x2", LEFT - 2*axesOffset)
+                        .attr("x2", LEFT - axesOffset)
                         .attr("y2", BOTTOM)
                         .attr("stroke", "black")
                         .attr("id", "yAxis")
@@ -93,8 +93,17 @@ function drawTukeyHSDPlot()
                     .attr("text-anchor", "end")
                     .attr("id", "groove" + i)
                     .attr("class", "yAxisGrooveText");
-    }   
-     
+    } 
+    
+    //zero line
+    canvas.append("line")
+            .attr("x1", LEFT-axesOffset)
+            .attr("y1", BOTTOM - getValue1(0, min, max)*plotHeight)
+            .attr("x2", RIGHT)
+            .attr("y2", BOTTOM - getValue1(0, min, max)*plotHeight)
+            .attr("stroke", "gold")
+            .attr("class", "zeroLine");
+            
     for(var i=0; i<levels.length; i++)
     {
         for(var j=i+1; j<levels.length; j++)
@@ -110,9 +119,10 @@ function drawTukeyHSDPlot()
                             .attr("cx", x)
                             .attr("cy", y)
                             .attr("r", "5px")
-                            .attr("fill", "magenta")
+                            .attr("fill", "DeepSkyBlue")
                             .attr("data-index1", levels[i])
                             .attr("data-index2", levels[j])
+                            .attr("id", levels[i] + levels[j])
                             .attr("class", "tukeyMean");
                             
                 var x1, y1, x2, y2;
@@ -120,14 +130,16 @@ function drawTukeyHSDPlot()
                 x1 = x2 = LEFT + (i+j-1)*xStep;
                 y1 = BOTTOM - getValue1(tukeyResults[levels[i]][levels[j]]["lower"], min, max)*plotHeight;        
                 y2 = BOTTOM - getValue1(tukeyResults[levels[i]][levels[j]]["upper"], min, max)*plotHeight;        
+                
+                var color = (tukeyResults[levels[i]][levels[j]]["lower"]*tukeyResults[levels[i]][levels[j]]["upper"] > 0 ? "green" : "red");
 
                 canvas.append("line")
                             .attr("x1", x1)
                             .attr("y1", y1)
                             .attr("x2", x2)
                             .attr("y2", y2)
-                            .attr("stroke", "magenta")
-                            .attr("stroke-width", 2)
+                            .attr("stroke", color)
+                            .attr("stroke-width", "2")
                             .attr("data-index1", levels[i])
                             .attr("data-index2", levels[j])
                             .attr("class", "tukeyCI");
@@ -136,7 +148,7 @@ function drawTukeyHSDPlot()
                             .attr("y1", y1)
                             .attr("x2", x1 + 5)
                             .attr("y2", y1)
-                            .attr("stroke", "magenta")
+                            .attr("stroke", color)
                             .attr("stroke-width", 1)
                             .attr("data-index1", levels[i])
                             .attr("data-index2", levels[j])
@@ -146,7 +158,7 @@ function drawTukeyHSDPlot()
                             .attr("y1", y2)
                             .attr("x2", x2 + 5)
                             .attr("y2", y2)
-                            .attr("stroke", "magenta")
+                            .attr("stroke", color)
                             .attr("stroke-width", 1)
                             .attr("data-index1", levels[i])
                             .attr("data-index2", levels[j])
