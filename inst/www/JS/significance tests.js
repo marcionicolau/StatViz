@@ -441,7 +441,7 @@ function performTukeyHSDTestOneIndependentVariable(dependentVariable, independen
 
 function performTukeyHSDTestTwoIndependentVariables(dependentVariable, independentVariableA, independentVariableB)
 { 
-    var req = opencpu.r_fun_json("performTukeyHSDTestOneIndependentVariable", {
+    var req = opencpu.r_fun_json("performTukeyHSDTestTwoIndependentVariables", {
                     dependentVariable: dependentVariable,
                     independentVariableA: independentVariableA,
                     independentVariableB: independentVariableB,
