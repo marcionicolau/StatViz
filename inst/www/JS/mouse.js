@@ -295,11 +295,11 @@ function OnMouseDown(e)
         
         if(variableList["independent"].length == 1)
         {
-            performTukeyHSDTest(variableList["dependent"][0], variableList["independent"][0]);
+            performTukeyHSDTestOneIndependentVariable(variableList["dependent"][0], variableList["independent"][0]);
         }
         else if(variableList["independent"].length == 2)
         {
-            performTukeyHSDTest(variableList["dependent"][0], variableList["independent"][0], variableList["independent"][1]);
+            performTukeyHSDTestTwoIndependentVariables(variableList["dependent"][0], variableList["independent"][0], variableList["independent"][1]);
         }
     }
     
