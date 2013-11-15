@@ -109,22 +109,7 @@ function drawTukeyHSDPlot()
         for(var j=i+1; j<levels.length; j++)
         {
             if(i != j)
-            {
-                var x,y;
-
-                x = LEFT + (i+j-1)*xStep;
-                y = BOTTOM - getValue1(tukeyResults[levels[i]][levels[j]]["difference"], min, max)*plotHeight;        
-
-                canvas.append("circle")
-                            .attr("cx", x)
-                            .attr("cy", y)
-                            .attr("r", "5px")
-                            .attr("fill", "DeepSkyBlue")
-                            .attr("data-index1", levels[i])
-                            .attr("data-index2", levels[j])
-                            .attr("id", levels[i] + levels[j])
-                            .attr("class", "tukeyMean");
-                            
+            {                            
                 var x1, y1, x2, y2;
                 
                 x1 = x2 = LEFT + (i+j-1)*xStep;
@@ -139,9 +124,10 @@ function drawTukeyHSDPlot()
                             .attr("x2", x2)
                             .attr("y2", y2)
                             .attr("stroke", color)
-                            .attr("stroke-width", "2")
+                            .attr("stroke-width", "3")
                             .attr("data-index1", levels[i])
                             .attr("data-index2", levels[j])
+                            .attr("id", levels[i] + levels[j])
                             .attr("class", "tukeyCI");
                 canvas.append("line")
                             .attr("x1", x1 - 5)
@@ -149,9 +135,10 @@ function drawTukeyHSDPlot()
                             .attr("x2", x1 + 5)
                             .attr("y2", y1)
                             .attr("stroke", color)
-                            .attr("stroke-width", 1)
+                            .attr("stroke-width", "4")
                             .attr("data-index1", levels[i])
                             .attr("data-index2", levels[j])
+                            .attr("id", levels[i] + levels[j])
                             .attr("class", "tukeyCILower");
                  canvas.append("line")
                             .attr("x1", x2 - 5)
@@ -159,10 +146,26 @@ function drawTukeyHSDPlot()
                             .attr("x2", x2 + 5)
                             .attr("y2", y2)
                             .attr("stroke", color)
-                            .attr("stroke-width", 1)
+                            .attr("stroke-width", "4")
                             .attr("data-index1", levels[i])
                             .attr("data-index2", levels[j])
+                            .attr("id", levels[i] + levels[j])
                             .attr("class", "tukeyCIUpper");
+                
+                var x,y;
+
+                x = LEFT + (i+j-1)*xStep;
+                y = BOTTOM - getValue1(tukeyResults[levels[i]][levels[j]]["difference"], min, max)*plotHeight;        
+
+                canvas.append("circle")
+                            .attr("cx", x)
+                            .attr("cy", y)
+                            .attr("r", "5px")
+                            .attr("fill", "DeepSkyBlue")
+                            .attr("data-index1", levels[i])
+                            .attr("data-index2", levels[j])
+                            .attr("id", levels[i] + levels[j])
+                            .attr("class", "tukeyMean");
             }
         }
     }
