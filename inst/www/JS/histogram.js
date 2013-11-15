@@ -150,8 +150,8 @@ function makeHistogram()
         
          // Find ticks   
         var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));    
-        var individualPlotHeight = labels.length > 1 ? (plotHeight/labels.length) : plotHeight;
-        yDiffForPlots = labels.length > 1 ? individualPlotHeight : plotHeight;
+        var individualPlotHeight = labels.length > 1 ? (plotHeight/labels.length)-axesOffset : plotHeight;
+        yDiffForPlots = labels.length > 1 ? (plotHeight/labels.length) : plotHeight;
         drawHistogramLegends(varNames);
         
         nGroovesY = Math.ceil(nGroovesY * (individualPlotHeight/plotHeight));
@@ -171,19 +171,19 @@ function makeHistogram()
 
                                     
         xStep = plotWidth/numberOfGroovesInXAxis;
+        
+        canvas.append("line")
+                    .attr("x1", LEFT)
+                    .attr("y1", BOTTOM + axesOffset)
+                    .attr("x2", RIGHT)
+                    .attr("y2", BOTTOM + axesOffset) 
+                    .attr("stroke", "black")
+                    .attr("id", "xAxis")
+                    .attr("class", "axes");
     
         //grooves
         for(i=0; i<labels.length; i++)
-        {
-            canvas.append("line")
-                                        .attr("x1", LEFT)
-                                        .attr("y1", BOTTOM + axesOffset - i*yDiffForPlots)
-                                        .attr("x2", RIGHT)
-                                        .attr("y2", BOTTOM + axesOffset - i*yDiffForPlots) 
-                                        .attr("stroke", "black")
-                                        .attr("id", "xAxis")
-                                        .attr("class", "axes");
-                                        
+        {                                        
             for(j=0; j<=numberOfGroovesInXAxis; j++)
             {
                 canvas.append("line")
@@ -315,8 +315,8 @@ function makeHistogram()
         
          // Find ticks   
         var nGroovesY = findTicksForHistogramFrequencyAxis(Array.max(binMaxs));  
-        var individualPlotHeight = labels.length > 1 ? (plotHeight/labels.length) : plotHeight;
-        yDiffForPlots = labels.length > 1 ? individualPlotHeight : plotHeight;
+        var individualPlotHeight = labels.length > 1 ? (plotHeight/labels.length)-axesOffset : plotHeight;
+        yDiffForPlots = labels.length > 1 ? (plotHeight/labels.length) : plotHeight;
 
         drawHistogramLegends(varNames);
         
@@ -341,21 +341,22 @@ function makeHistogram()
                 .attr("font-size", "24px")
                 .text("Frequency")
                 .attr("fill", "orange");
-
+        
+        canvas.append("line")
+                    .attr("x1", LEFT)
+                    .attr("y1", BOTTOM + axesOffset)
+                    .attr("x2", RIGHT)
+                    .attr("y2", BOTTOM + axesOffset) 
+                    .attr("stroke", "black")
+                    .attr("id", "xAxis")
+                    .attr("class", "axes");
   
         
         xStep = plotWidth/numberOfGroovesInXAxis;
         
         for(i=0; i<labels.length; i++)
         {
-            canvas.append("line")
-                                        .attr("x1", LEFT)
-                                        .attr("y1", BOTTOM + axesOffset - i*yDiffForPlots)
-                                        .attr("x2", RIGHT)
-                                        .attr("y2", BOTTOM + axesOffset - i*yDiffForPlots) 
-                                        .attr("stroke", "black")
-                                        .attr("id", "xAxis")
-                                        .attr("class", "axes");
+            
             //grooves
             for(j=0; j<=numberOfGroovesInXAxis; j++)
             {
