@@ -11,7 +11,15 @@ function makeHistogram()
     TOP = canvasHeight/2 - plotHeight/2;
     BOTTOM = canvasHeight/2 + plotHeight/2;
     
-    
+    var canvas = d3.select("#svgCanvas");
+    canvas.append("rect")    
+            .attr("x", LEFT)
+            .attr("y", TOP)
+            .attr("width", plotWidth)
+            .attr("height", plotHeight)
+            .attr("stroke", "goldrenrod");
+            
+
     var data = [];
     var mins = [];
     var maxs = [];
@@ -106,7 +114,6 @@ function makeHistogram()
         var slice = (max - min)/uniqueData.length;    
     
         var bins = new Object();
-        var canvas = d3.select("#svgCanvas");
     
         // Set all bin count to zero
         for(var i=0; i<labels.length; i++)
