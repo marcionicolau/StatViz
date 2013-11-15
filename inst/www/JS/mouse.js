@@ -686,6 +686,9 @@ function OnMouseOver(e)
                     .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
         
         var level = stringForNumber.indexOf(target.id) == -1 ? target.id : stringForNumber.indexOf(target.id);
+        if(variableList["independent"].length > 0)
+            level = "dataset";
+            
         console.log("level= " + level);
         console.dir(CI);
         canvas.append("text")
