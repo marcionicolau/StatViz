@@ -1,8 +1,8 @@
 // Data
     localStorage.fileName = "store";
-    var fileName = "cars";//change this!
+    var fileName = "weightLoss";//change this!
     var wd = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/";//"http://hci.rwth-aachen.de/~subramanian/datasets/" + localStorage.fileName +".txt";
-    var pathToFile =  wd + "cars-mod.txt";
+    var pathToFile =  wd + "twoway.csv";
 
 // Skeleton
     var width = document.width;
@@ -33,7 +33,7 @@
     var rangeToFade = 3*displayDataLimit/5;
         
 // Plots (general)
-var axesOffset = scaleForWindowSize(10); //distance from plots to axes (for an R-like appearance)
+var axesOffset = scaleForWindowSize(25); //distance from plots to axes (for an R-like appearance)
 var tickTextOffsetXAxis = 25;
 var tickTextOffsetYAxis = 10;
 var yAxisTickTextOffset = 6;

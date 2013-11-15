@@ -49,22 +49,28 @@ function drawTukeyHSDPlot()
     var numberOfGroovesInXAxis = findNumberOfCombinations(levels.length,2);    
     var xStep = plotWidth/(numberOfGroovesInXAxis - 1);   
 
-    for(i=0; i<numberOfGroovesInXAxis; i++)
+    for(var i=0; i<levels.length; i++)
     {
-        canvas.append("line")
-                    .attr("x1", LEFT + i*xStep)
-                    .attr("y1", BOTTOM  + axesOffset)
-                    .attr("x2", LEFT + i*xStep)
-                    .attr("y2", BOTTOM + 10 + axesOffset)
-                    .attr("class", "xAxisGrooves");
+        for(var j=i+1; j<levels.length; j++)
+        {
+            if(i != j)
+            {  
+                canvas.append("line")
+                            .attr("x1", LEFT + (i+j-1)*xStep)
+                            .attr("y1", BOTTOM  + axesOffset)
+                            .attr("x2", LEFT + (i+j-1)*xStep)
+                            .attr("y2", BOTTOM + 10 + axesOffset)
+                            .attr("class", "xAxisGrooves");
 
-        canvas.append("text")
-                    .attr("x", LEFT + i*xStep)
-                    .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
-                    .text(levels[i] + "-" + levels[(i+1)%levels.length])
-                    .attr("fill", "black")
-                    .attr("text-anchor", "middle")
-                    .attr("class", "xAxisGrooveText");
+                canvas.append("text")
+                            .attr("x", LEFT + (i+j-1)*xStep)
+                            .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
+                            .text(levels[i] + "-" + levels[j])
+                            .attr("fill", "black")
+                            .attr("text-anchor", "middle")
+                            .attr("class", "xAxisGrooveText");
+            }
+        }
     }
     
     //Y-axis grooves
