@@ -818,7 +818,7 @@ function OnMouseOver(e)
         
         canvas.append("text")
                 .attr("x", CIBottom.attr("x1"))
-                .attr("y", CIBottom.attr("x2") - 5)
+                .attr("y", CIBottom.attr("y2") + 5)
                 .attr("text-anchor", "middle")
                 .attr("fill", "black")
                 .text(tukeyResults[CIBottom.attr("data-index1")][CIBottom.attr("data-index2")]["lower"])
