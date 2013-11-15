@@ -103,14 +103,54 @@ function drawTukeyHSDPlot()
             {
                 var x,y;
 
-                x = LEFT + (i+j)*xStep;
+                x = LEFT + (i+j-1)*xStep;
                 y = BOTTOM - getValue1(tukeyResults[levels[i]][levels[j]]["difference"], min, max)*plotHeight;        
 
                 canvas.append("circle")
                             .attr("cx", x)
                             .attr("cy", y)
                             .attr("r", "5px")
-                            .attr("fill", "magenta")    
+                            .attr("fill", "magenta")
+                            .attr("data-index1", levels[i])
+                            .attr("data-index2", levels[j])
+                            .attr("class", "tukeyMean");
+                            
+                var x1, y1, x2, y2;
+                
+                x1 = x2 = LEFT + (i+j-1)*xStep;
+                y1 = BOTTOM - getValue1(tukeyResults[levels[i]][levels[j]]["lower"], min, max)*plotHeight;        
+                y2 = BOTTOM - getValue1(tukeyResults[levels[i]][levels[j]]["upper"], min, max)*plotHeight;        
+
+                canvas.append("line")
+                            .attr("x1", x1)
+                            .attr("y1", y1)
+                            .attr("x2", x2)
+                            .attr("y2", y2)
+                            .attr("stroke", "magenta")
+                            .attr("stroke-width", 2)
+                            .attr("data-index1", levels[i])
+                            .attr("data-index2", levels[j])
+                            .attr("class", "tukeyCI");
+                canvas.append("line")
+                            .attr("x1", x1 - 5)
+                            .attr("y1", y1)
+                            .attr("x2", x1 + 5)
+                            .attr("y2", y1)
+                            .attr("stroke", "magenta")
+                            .attr("stroke-width", 1)
+                            .attr("data-index1", levels[i])
+                            .attr("data-index2", levels[j])
+                            .attr("class", "tukeyCILower");
+                 canvas.append("line")
+                            .attr("x1", x2 - 5)
+                            .attr("y1", y2)
+                            .attr("x2", x2 + 5)
+                            .attr("y2", y2)
+                            .attr("stroke", "magenta")
+                            .attr("stroke-width", 1)
+                            .attr("data-index1", levels[i])
+                            .attr("data-index2", levels[j])
+                            .attr("class", "tukeyCIUpper");
             }
         }
     }
