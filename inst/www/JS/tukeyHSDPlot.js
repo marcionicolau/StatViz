@@ -139,7 +139,7 @@ function drawTukeyHSDPlot()
                             .attr("data-index1", levels[i])
                             .attr("data-index2", levels[j])
                             .attr("id", levels[i] + levels[j])
-                            .attr("class", "tukeyCILower");
+                            .attr("class", "tukeyCIBottom");
                  canvas.append("line")
                             .attr("x1", x2 - 5)
                             .attr("y1", y2)
@@ -150,7 +150,7 @@ function drawTukeyHSDPlot()
                             .attr("data-index1", levels[i])
                             .attr("data-index2", levels[j])
                             .attr("id", levels[i] + levels[j])
-                            .attr("class", "tukeyCIUpper");
+                            .attr("class", "tukeyCITop");
                 
                 var x,y;
 
