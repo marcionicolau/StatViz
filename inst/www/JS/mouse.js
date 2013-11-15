@@ -292,6 +292,7 @@ function OnMouseDown(e)
     else if((e.button == 1 && window.event != null || e.button == 0) && target.id == "tukey")
     {
         var variableList = sort(currentVariableSelection);
+        console.dir(variableList);
         
         if(variableList["independent"].length == 1)
         {
