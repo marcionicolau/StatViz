@@ -8,7 +8,11 @@ performTukeyHSDTest <- function(dependentVariable, independentVariables, dataset
         
         result <- TukeyHSD(model);
         
-        list(meIV1 = eval(parse(text = paste("result[[\"",independentVariables[1],"\"]]",sep=""))));
+        mainEffect = eval(parse(text = paste("result[[\"",independentVariables[1],"\"]]",sep="")));
+        
+        mainEffect = as.data.frame(mainEffect);
+        
+        list(difference = mainEffect[["diff"]], lower = mainEffect[["lwr"]], upper = mainEffect[["upr"]], adjustedP = mainEffect[["p adj"]]);
     }
     if(length(independentVariables) == 2)
     {

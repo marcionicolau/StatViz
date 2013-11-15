@@ -417,7 +417,12 @@ function performTukeyHSDTest(dependentVariable, independentVariables)
                   
                 if(independentVariables.length == 1)
                 {
-                    console.log("TukeyHSD results: " + output.meIV1);
+                    console.log("TukeyHSD test for " + dependentVariable + " ~ " + independentVariables[0]);
+                    
+                    console.log(output.difference);
+                    console.log(output.lower);
+                    console.log(output.upper);
+                    console.log(output.adjustedP);
                 }
                 else if(independentVariables.length == 2)
                 {
