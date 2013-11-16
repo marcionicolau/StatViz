@@ -169,6 +169,8 @@ function getCI(dataset, variableName, level)
         
         CI[variableName][level] = new Array();
         
+        console.log("min=" + min + ", max= " + max);
+        
         CI[variableName][level][0] = output.min;
         CI[variableName][level][1] = output.max;
                 
