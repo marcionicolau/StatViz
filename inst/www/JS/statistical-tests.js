@@ -440,15 +440,16 @@ function displaySignificanceTestResults()
     
     sideBar.append("circle")
             .attr("cx", sideBarWidth/2)
-            .attr("cy", 2*significanceTestResultOffset)
+            .attr("cy", canvasHeight - 2*significanceTestResultOffset)
             .attr("r", 50)
             .attr("id", "tukey")
             .attr("class", "significance"); 
     
     sideBar.append("text")
             .attr("x", sideBarWidth/2)
-            .attr("y", 2*significanceTestResultOffset-6)
+            .attr("y", canvasHeight - 2*significanceTestResultOffset-6)
             .attr("fill", "white")
+            .attr("text-anchor", "middle")
             .text("Tukey's HSD")
             .attr("id", "tukey")
             .attr("class", "significance"); 
