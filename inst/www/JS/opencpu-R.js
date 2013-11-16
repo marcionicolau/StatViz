@@ -72,16 +72,16 @@ function getVariables(dataset)
 function getData(dataset, variableName, level)
 {
     // Get variable names and their data type
-    var req = opencpu.r_fun_json("getData", {
-                    dataset: dataset,
-                    columnName: variableName
-                  }, function(output) {    
-        
+    // var req = opencpu.r_fun_json("getData", {
+//                     dataset: dataset,
+//                     columnName: variableName
+//                   }, function(output) {    
+//         
         if(level === undefined)
         {   
             level = "dataset";
         }         
-        variables[variableName][level] = output.data;
+        variables[variableName][level] = dataset[variableName];
         MIN[variableName][level] = Array.min(variables[variableName][level]);
         MAX[variableName][level] = Array.max(variables[variableName][level]);
         
@@ -148,7 +148,7 @@ function getIQR(dataset, variableName, level)
         {   
             level = "dataset";
         }         
-        IQR[variableName][level] = output.IQR; 
+        IQR[variableName][level] = findIQR(dataset[variableName]);
       
       }).fail(function(){
           alert("Failure: " + req.responseText);
