@@ -20,7 +20,7 @@ function loadFile(filePath)
         IQR[output.variableNames[i]] = new Object();
         CI[output.variableNames[i]] = new Object();
         
-        getData(dataset, output.variableNames[i]);                 
+        getData(filePath, output.variableNames[i]);                 
         getIQR(dataset, output.variableNames[i]);  
     }
     
@@ -51,7 +51,7 @@ function getVariables(dataset)
     
     for(var i=0; i<output.varNames.length; i++)
     {
-        getData(dataset, output.varNames[i]);                 
+        getData(filePath, output.varNames[i]);                 
         getIQR(dataset, output.varNames[i]);                    
     }
     
@@ -67,11 +67,11 @@ function getVariables(dataset)
     });   
 }
 
-function getData(dataset, variableName, level)
+function getData(filePath, variableName, level)
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("getData", {
-                    dataset: dataset,
+                    filePath: filePath,
                     columnName: variableName
                   }, function(output) {    
         
