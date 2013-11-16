@@ -173,10 +173,10 @@ function pickOutVisualizations()
 }
 
 //Resets SVG canvas, draws plot based on the visualisation selected
-function makePlot(x)
+function makePlot()
 {   
     resetSVGCanvas();
-    drawFullScreenButton();
+//     drawFullScreenButton();
     
     switch(currentVisualizationSelection)
     {
@@ -219,6 +219,8 @@ function makePlot(x)
                                     }
     }
 }
+
+//Deletes the current SVG canvas and draws an empty canvas 
 
 //Removes a single element with the given ID
 function removeElementById(id)
@@ -578,7 +580,7 @@ function sort(list)
 
 function drawDialogBoxToGetCausalAndPredictorVariables()
 {
-    var canvas = d3.select("#plotCanvas");
+    var canvas = d3.select("#svgCanvas");
     
     var dialogBoxHeight = plotHeight/2;
     var dialogBoxWidth = plotWidth/2;
@@ -711,7 +713,7 @@ function findExperimentalDesign()
 
 function drawInteractionEffectButton()
 {
-    var canvas = d3.select("#plotCanvas");
+    var canvas = d3.select("#svgCanvas");
     
     var rad = 10;
     canvas.append("circle")
