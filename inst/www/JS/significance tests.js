@@ -58,7 +58,7 @@ function performOneSampleWilcoxonTest(variable, expectedMean)
                   console.log("\t\t\t mean = " + output.estimate);
                   console.log("\t\t\t r = " + output.r);
                   
-                  testResults["statistic"] = "V = " + output.t;
+                  testResults["statistic"] = "V = " + output.V;
                   testResults["p"] = output.p; 
                   testResults["method"] = output.method;
                   testResults["estimate"] = output.estimate;
