@@ -94,7 +94,6 @@ function OnMouseDown(e)
             }
             else
             {
-                console.log("hey");
                 //we are done
                 compareMeans();
             }
