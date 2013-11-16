@@ -1,7 +1,6 @@
 // Correlation & Regression
 function getCorrelationCoefficient(variableA, variableB, method, noDisplay)
 {
-    console.log("method=" + method + "; noDisplay=" + noDisplay);
     var req = opencpu.r_fun_json("getCorrelationCoefficient", {
                     distributionX: variables[variableA]["dataset"],                    
                     distributionY: variables[variableB]["dataset"],

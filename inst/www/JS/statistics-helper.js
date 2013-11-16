@@ -1,7 +1,7 @@
 function findCorrelationCoefficient(variableA, variableB, noDisplay)
 {
-    console.log("CORRELATION");
-    console.log("\t\ttype of variable 1: " + variableDataTypes[variableA] + ", type of variable 2: " + variableDataTypes[variableB]);
+    console.log("\nCORRELATION");
+    console.log("\t\ttypeOf(" + variableA + ")=" + variableDataTypes[variableA] + ", typeOf(" + variableB + ")=" + variableDataTypes[variableB]);
     
     
     if((variableDataTypes[variableA] == "binary") && (variableDataTypes[variableB] == "binary"))
