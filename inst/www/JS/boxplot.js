@@ -588,7 +588,7 @@ function redrawBoxPlot()
                     .attr("cy", BOTTOM - getFraction(means[i])*plotHeight);
     }        
 }
-function drawBoxPlotInRed(dependentVariable, level)
+function drawBoxPlotInRed(level)
 {
     level = getValidId(level);
 

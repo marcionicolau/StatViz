@@ -406,7 +406,13 @@ function performNormalityTest(dist, dependentVariable, level)
                     if(variableList["independent"].length == 0)
                     {
                         //one sample t-test
-                        d3.select("#normality.crosses").attr("display", "inline");                  
+                        d3.select("#normality.crosses").attr("display", "inline");                                  
+                        d3.select("#svgCanvas").transition().duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight*1.5);
+                
+                        //draw boxplots in red 
+                        drawBoxPlotInRed(variableList["dependent"][0]);
+                        drawNormalityPlot(variableList["dependent"][0], "dataset", "notnormal");
+                
                         findTransformForDependentVariables(getNumericVariables());
                     }
                     else
