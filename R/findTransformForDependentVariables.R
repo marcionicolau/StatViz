@@ -1,9 +1,9 @@
-findTransformForDependentVariables <- function(dataset)
+findTransformForDependentVariables <- function(dataset, numericVariables)
 {
     D <- as.data.frame(dataset);
     
     
-    levels = names(D);
+    levels = c(numericVariables);
     numberOfLevels = length(levels);
     
     transformations = c("sqrt", "cube", "reciprocal", "log");

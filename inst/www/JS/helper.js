@@ -793,6 +793,20 @@ function setThisVariableEvil(variable)
     d3.select("#" + variable + ".variableNameHolderBack").attr("fill", variablePanelColors["disabled"]);
 }
 
+function getNumericVariables()
+{
+    var numericVariables = [];
+    for(var i=0; i<variableNames.length; i++)
+    {
+        if((variableDataTypes[i] != "nominal") && (variableDataTypes[i] != "ordinal"))
+        {
+            numericVariables.push(variableNames[i]);
+        }
+    }
+    
+    return numericVariables;
+}
+
             
 
       

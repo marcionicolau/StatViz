@@ -407,7 +407,7 @@ function performNormalityTest(dist, dependentVariable, level)
                     {
                         //one sample t-test
                         d3.select("#normality.crosses").attr("display", "inline");                  
-                        findTransformForDependentVariables();
+                        findTransformForDependentVariables(getNumericVariables());
                     }
                     else
                     {
@@ -503,51 +503,52 @@ function findTransform(dependentVariable, independentVariable)
     });
 }
 
-function findTransformForDependentVariables()
+function findTransformForDependentVariables(numericVariables)
 {
     // Get variable names and their data type
     var req = opencpu.r_fun_json("findTransformForDependentVariables", {                    
-                    dataset: dataset
+                    dataset: dataset,
+                    numericVariables: numericVariables
                   }, function(output) {                                                   
                   
                 console.log("type=" + output.type);
                 
-//                 if(output.type == "none")
-//                 {
-//                     var variableList = getSelectedVariables();
-//                     performHomoscedasticityTestNotNormal(variableList["dependent"][0], variableList["independent"][0]);
-//                     d3.select("#svgCanvas").transition().delay(3000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
-//                 }
-//                 else
-//                 {
-//                     console.log("type=" + output.type);
-//                     transformationType = output.type;
-//                     //offer choice
-//                     var canvas = d3.select("#svgCanvas");
-//                     
-//                     canvas.append("rect")
-//                             .attr("x", canvasWidth/2 + plotWidth/2 + buttonOffset)
-//                             .attr("y", canvasHeight/2 - plotHeight/2 + buttonOffset)
-//                             .attr("width", buttonWidth)
-//                             .attr("height", buttonHeight)
-//                             .attr("rx", "10")
-//                             .attr("ry", "10")
-//                             .attr("fill", "white")
-//                             .attr("stroke", "black")
-//                             .attr("id", "button")
-//                             .attr("class", "transformToNormal");
-//                     
-//                     canvas.append("text")
-//                             .attr("x", canvasWidth/2 + plotWidth/2 + buttonOffset + buttonWidth/2)
-//                             .attr("y", canvasHeight/2 - plotHeight/2 + buttonOffset + buttonHeight/2)
-//                             .attr("fill", "orange")
-//                             .attr("text-anchor", "middle")
-//                             .attr("font-size", "24px")
-//                             .text("transform all to normal distributions")
-//                             .attr("id", "text")
-//                             .attr("class", "transformToNormal");
-//                             
-//                 }
+                if(output.type == "none")
+                {
+                    d3.select("#svgCanvas").transition().delay(3000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
+                    console.log("One-sample Wilcoxon Test");
+                }
+                else
+                {
+                    console.log("type=" + output.type);
+                    
+                    transformationType = output.type;
+                    //offer choice
+                    var canvas = d3.select("#svgCanvas");
+                    
+                    canvas.append("rect")
+                            .attr("x", canvasWidth/2 + plotWidth/2 + buttonOffset)
+                            .attr("y", canvasHeight/2 - plotHeight/2 + buttonOffset)
+                            .attr("width", buttonWidth)
+                            .attr("height", buttonHeight)
+                            .attr("rx", "10")
+                            .attr("ry", "10")
+                            .attr("fill", "white")
+                            .attr("stroke", "black")
+                            .attr("id", "button")
+                            .attr("class", "transformToNormal");
+                    
+                    canvas.append("text")
+                            .attr("x", canvasWidth/2 + plotWidth/2 + buttonOffset + buttonWidth/2)
+                            .attr("y", canvasHeight/2 - plotHeight/2 + buttonOffset + buttonHeight/2)
+                            .attr("fill", "orange")
+                            .attr("text-anchor", "middle")
+                            .attr("font-size", "24px")
+                            .text("transform all to normal distributions")
+                            .attr("id", "text")
+                            .attr("class", "transformToNormal");
+                            
+                }
                   
       }).fail(function(){
           alert("Failure: " + req.responseText);
