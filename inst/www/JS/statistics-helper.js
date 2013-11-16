@@ -15,35 +15,32 @@ function findCorrelationCoefficient(variableA, variableB, noDisplay)
     else if(((variableDataTypes[variableA] == "binary") || (variableDataTypes[variableB] == "binary")) && ((variableDataTypes[variableA] != "binary") || (variableDataTypes[variableB] != "binary")))
     {
         //one is binary
-        
-        
-        console.log("in");
+    
         if(variableDataTypes[variableA] == "binary")
         {
-            console.log(isNaN(variables[variableA]["dataset"][0]));
-//             if(!isNaN(variables[variableA]["dataset"][0]))
-//             {
+            if(!isNaN(variables[variableB]["dataset"][0]))
+            {
                 console.log("\t\t\tBiserial Correlation Coefficient");
                 getBiserialCorrelationCoefficient(variableB, variableA, noDisplay);
-            // }
-//             else
-//             {   
-//                 console.log("\t\t\tDoing nothing");
-//                 return -1;
-//             }
+            }
+            else
+            {   
+                console.log("\t\t\tDoing nothing");
+                return -1;
+            }
         }
         else
         {
-            // if(!isNaN(variables[variableB]["dataset"][0]))
-//             {
+            if(!isNaN(variables[variableA]["dataset"][0]))
+            {
                 console.log("\t\t\tBiserial Correlation Coefficient");
                 getBiserialCorrelationCoefficient(variableA, variableB, noDisplay);
-            // }
-//             else
-//             {
-//                 console.log("\t\t\tDoing nothing");
-//                 return -1;
-//             }            
+            }
+            else
+            {
+                console.log("\t\t\tDoing nothing");
+                return -1;
+            }            
         }
     }
     else
