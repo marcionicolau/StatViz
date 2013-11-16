@@ -520,10 +520,12 @@ function findTransformForDependentVariables(numericVariables)
                   
                 console.log("type=" + output.type);
                 
+                var variableList = getSelectedVariables();
+                
                 if(output.type == "none")
                 {
                     d3.select("#svgCanvas").transition().delay(3000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
-                    console.log("One-sample Wilcoxon Test");
+                    performOneSampleWilcoxonTest(variableList["dependent"][0]);
                 }
                 else
                 {
