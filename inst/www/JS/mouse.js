@@ -600,8 +600,8 @@ function OnMouseOver(e)
                 .attr("class", "hover");    
         
         canvas.append("text")
-                .attr("x", outlier.attr("cx"))
-                .attr("y", outlier.attr("cy") - 5)
+                .attr("x", e.pageX - (window-canvasWidth) + 9)
+                .attr("y", e.pageY + 9)
                 .attr("text-anchor", "middle")
                 .text(format(getActualValue(outlier.attr("cy"))))
                 .attr("class", "hover");
@@ -638,14 +638,14 @@ function OnMouseOver(e)
     
         canvas.append("text")
                 .attr("x", (parseFloat(tFringe.attr("x1")) + parseFloat(tFringe.attr("x2")))/2)
-                .attr("y", parseFloat(tFringe.attr("y1")) - 5)
+                .attr("y", parseFloat(tFringe.attr("y1")) - displayOffsetTop)
                 .attr("text-anchor", "middle")
                 .text(format(getActualValue(tFringe.attr("y1"))))
                 .attr("class", "hover");
         
         canvas.append("text")
                 .attr("x", (parseFloat(bFringe.attr("x1")) + parseFloat(bFringe.attr("x2")))/2)
-                .attr("y", parseFloat(bFringe.attr("y1")) + 15)
+                .attr("y", parseFloat(bFringe.attr("y1")) + displayOffsetBottom)
                 .attr("text-anchor", "middle")
                 .text(format(getActualValue(bFringe.attr("y1"))))
                 .attr("class", "hover");
@@ -680,14 +680,14 @@ function OnMouseOver(e)
                    
         canvas.append("text")
                 .attr("x",parseFloat(topFringe.attr("x1")))
-                .attr("y", parseFloat(topFringe.attr("y1")) - 5)
+                .attr("y", parseFloat(topFringe.attr("y1")) - displayOffsetTop)
                 .attr("text-anchor", "middle")
                 .text(format(getActualValue(parseFloat(topFringe.attr("y1")))))
                 .attr("class", "hover");
                 
         canvas.append("text")
                 .attr("x",parseFloat(bottomFringe.attr("x1")))
-                .attr("y", parseFloat(bottomFringe.attr("y1")) + 15)
+                .attr("y", parseFloat(bottomFringe.attr("y1")) + displayOffsetBottom)
                 .attr("text-anchor", "middle")
                 .text(format(getActualValue(parseFloat(bottomFringe.attr("y1")))))
                 .attr("class", "hover");
@@ -802,7 +802,7 @@ function OnMouseOver(e)
         
         canvas.append("text")
                 .attr("x", tCITop.attr("x1"))
-                .attr("y", tCITop.attr("y1") - 5)
+                .attr("y", tCITop.attr("y1") - displayOffsetTop)
                 .attr("text-anchor", "middle")
                 .attr("fill", "black")
                 .text(tukeyResults[tCITop.attr("data-index1")][tCITop.attr("data-index2")]["upper"])
@@ -810,7 +810,7 @@ function OnMouseOver(e)
         
         canvas.append("text")
                 .attr("x", tCIBottom.attr("x1"))
-                .attr("y", tCIBottom.attr("y2") + 15)
+                .attr("y", tCIBottom.attr("y2") + displayOffsetBottom)
                 .attr("text-anchor", "middle")
                 .attr("fill", "black")
                 .text(tukeyResults[tCIBottom.attr("data-index1")][tCIBottom.attr("data-index2")]["lower"])

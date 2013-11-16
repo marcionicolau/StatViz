@@ -35,16 +35,19 @@
     var fontSizeForDisplayDataTableElements = scaleForWindowSize(20);
         
 // Plots (general)
-var axesOffset = scaleForWindowSize(25); //distance from plots to axes (for an R-like appearance)
-var tickTextOffsetXAxis = 25;
-var tickTextOffsetYAxis = 10;
-var yAxisTickTextOffset = 6;
-var fontSize = scaleForWindowSize(14);
-var tickLength = scaleForWindowSize(10);
-var border = scaleForWindowSize(20);
+    var axesOffset = scaleForWindowSize(25); //distance from plots to axes (for an R-like appearance)
+    var tickTextOffsetXAxis = 25;
+    var tickTextOffsetYAxis = 10;
+    var yAxisTickTextOffset = 6;
+    var fontSize = scaleForWindowSize(14);
+    var tickLength = scaleForWindowSize(10);
+    var border = scaleForWindowSize(20);
 
-var plotHeight = canvasHeight - 2*(axesOffset + tickTextOffsetXAxis + border);
-var plotWidth = 4*plotHeight/3;
+    var plotHeight = canvasHeight - 2*(axesOffset + tickTextOffsetXAxis + border);
+    var plotWidth = 4*plotHeight/3;
+    
+    var displayOffsetTop = scaleForWindowSize(10);
+    var displayOffsetBottom = scaleForWindowSize(25);
 
 // Buttons
 var buttonColors = new Object();   
