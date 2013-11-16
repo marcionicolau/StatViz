@@ -98,16 +98,16 @@ var topOffset = scaleForWindowSize(25);
 var labelOffset = scaleForWindowSize(45);
 
 // Significance test
-var significanceTestScaleOffset = 25;
-var assumptionsSpace = 30;
-var assumptionImageSize = 30;
+var significanceTestScaleOffset = scaleForWindowSize(25);
+var assumptionsSpace = scaleForWindowSize(30);
+var assumptionImageSize = scaleForWindowSize(30);
 
 var assumptionsText = new Object();
     assumptionsText["normality"] = "Normality of distributions";
     assumptionsText["homogeneity"] = "Homogeneity of variances";
     
 var assumptions = ["normality", "homogeneity"];
-var significanceTestResultOffset = 40;
+var significanceTestResultOffset = scaleForWindowSize(40);
 
 //transformation
 var normalityPlotWidth = scaleForWindowSize(125);
