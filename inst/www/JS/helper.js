@@ -176,7 +176,7 @@ function pickOutVisualizations()
 function makePlot()
 {   
     resetSVGCanvas();
-//     drawFullScreenButton();
+    drawFullScreenButton();
     
     switch(currentVisualizationSelection)
     {
@@ -204,7 +204,7 @@ function makePlot()
                                         topFringeValues = [];
                                         bottomFringeValues = [];
                                         
-                                        makeBoxplot(x);
+                                        makeBoxplot();
                                         break;
                                     }
         case "Scatterplot":
