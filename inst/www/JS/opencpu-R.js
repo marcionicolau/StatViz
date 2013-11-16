@@ -398,14 +398,31 @@ function performNormalityTest(dist, dependentVariable, level)
                   
                 console.log("\t\t Shapiro-wilk test for (" + dependentVariable + "." + level + ")");
                 console.log("\t\t\t p = " + output.p);
-                  
+                
+                var variableList = getSelectedVariables(); 
+                
                 if(output.p < 0.05)
-                {        
-                    setDistribution(dependentVariable, level, false);
+                {   
+                    if(variableList["independent"].length == 0)
+                    {
+                        //one sample t-test
+                        d3.select("#normality.crosses").attr("display", "inline");                  
+                        findTransformForDependentVariables();
+                    }
+                    {
+                        setDistribution(dependentVariable, level, false);
+                    }
                 }
                 else
                 {   
-                    setDistribution(dependentVariable, level, true);
+                    if(variableList["independent"].length == 0)
+                    {
+                        d3.select("#normality.ticks").attr("display", "inline");                          
+                        performOneSampleTTest(variableList["dependent"][0]);
+                    }
+                    {
+                        setDistribution(dependentVariable, level, true);
+                    }
                 }
                   
       }).fail(function(){
@@ -425,8 +442,6 @@ function performNormalityTest(dist, dependentVariable, level)
 function findTransform(dependentVariable, independentVariable)
 {
     // Get variable names and their data type
-    
-    
     var req = opencpu.r_fun_json("findTransform", {
                     dependentVariable: dependentVariable,
                     independentVariable: independentVariable,
@@ -486,6 +501,65 @@ function findTransform(dependentVariable, independentVariable)
     });
 }
 
+function findTransformForDependentVariables()
+{
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("findTransformForDependentVariables", {                    
+                    dataset: dataset
+                  }, function(output) {                                                   
+                  
+                console.log("type=" + output.type);
+                
+//                 if(output.type == "none")
+//                 {
+//                     var variableList = getSelectedVariables();
+//                     performHomoscedasticityTestNotNormal(variableList["dependent"][0], variableList["independent"][0]);
+//                     d3.select("#svgCanvas").transition().delay(3000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
+//                 }
+//                 else
+//                 {
+//                     console.log("type=" + output.type);
+//                     transformationType = output.type;
+//                     //offer choice
+//                     var canvas = d3.select("#svgCanvas");
+//                     
+//                     canvas.append("rect")
+//                             .attr("x", canvasWidth/2 + plotWidth/2 + buttonOffset)
+//                             .attr("y", canvasHeight/2 - plotHeight/2 + buttonOffset)
+//                             .attr("width", buttonWidth)
+//                             .attr("height", buttonHeight)
+//                             .attr("rx", "10")
+//                             .attr("ry", "10")
+//                             .attr("fill", "white")
+//                             .attr("stroke", "black")
+//                             .attr("id", "button")
+//                             .attr("class", "transformToNormal");
+//                     
+//                     canvas.append("text")
+//                             .attr("x", canvasWidth/2 + plotWidth/2 + buttonOffset + buttonWidth/2)
+//                             .attr("y", canvasHeight/2 - plotHeight/2 + buttonOffset + buttonHeight/2)
+//                             .attr("fill", "orange")
+//                             .attr("text-anchor", "middle")
+//                             .attr("font-size", "24px")
+//                             .text("transform all to normal distributions")
+//                             .attr("id", "text")
+//                             .attr("class", "transformToNormal");
+//                             
+//                 }
+                  
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+        
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
 function applyTransform(dependentVariable, level, last)
 {
     // Get variable names and their data type

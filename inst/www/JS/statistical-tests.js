@@ -10,7 +10,7 @@ function compareMeans()
                 //One sample t-test
                 if(variableList["dependent"].length == 1)
                 {
-                    performOneSampleTTest(variableList["dependent"][0]);
+                    performNormalityTest(variables[variableList["dependent"][0]]["dataset"], variableList["dependent"][0], "dataset");                    
                 }
                 
                 break;
