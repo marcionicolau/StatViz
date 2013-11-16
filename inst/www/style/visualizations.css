@@ -27,3 +27,15 @@
     stroke: black;   
 }
 
+.displayDataTable
+{
+    background-color: LemonChiffon;
+    font:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+th
+{
+    background-color: DarkSlateGray;
+    color: white;
+}
+
