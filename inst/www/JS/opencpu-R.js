@@ -587,9 +587,6 @@ function applyTransform(dependentVariable, level, last)
                 
                 if(last)
                 {
-                    console.dir(variables);
-                    console.log("CI=");
-                    console.dir(CI);
                     redrawBoxPlot();
                     
                     removeElementsByClassName("densityCurve");
@@ -613,10 +610,14 @@ function applyTransform(dependentVariable, level, last)
                     
                     d3.select("#normality.crosses").attr("display", "none");  
                     d3.select("#normality.ticks").attr("display", "inline");  
-                    var variableList = sort(currentVariableSelection);                    
-                    performHomoscedasticityTestNormal(dependentVariable, variableList["independent"][0]);
+                    var variableList = sort(currentVariableSelection);                                        
                     
                     d3.select("#svgCanvas").transition().delay(3000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
+                    
+                    if(variableList["independent"].length > 0)
+                        performHomoscedasticityTestNormal(dependentVariable, variableList["independent"][0]);
+                    else
+                        performOneSampleTTest(dependentVariable);
                 }
             
                   

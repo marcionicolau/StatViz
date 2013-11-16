@@ -232,7 +232,7 @@ function drawNormalityPlot(dependentVariable, level, type)
     makeHistogramWithDensityCurve(centerX - normalityPlotWidth/2, canvasHeight + normalityPlotOffset, normalityPlotWidth, normalityPlotHeight, dependentVariable, level, type);//left, top, histWidth, histHeight, dependentVariable, level;
 }
 
-function displayOneSampleTTestResults()
+function displayOneSampleTestResults()
 {    
     var cx = [];
     var cy = [];

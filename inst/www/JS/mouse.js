@@ -114,7 +114,8 @@ function OnMouseDown(e)
             var variableList = getSelectedVariables();
             
             for(var i=0; i<variableList["independent-levels"].length; i++)
-            {                
+            {    
+                console.log("i=" + i);
                 applyTransform(variableList["dependent"][0], variableList["independent-levels"][i], false);
             }
             

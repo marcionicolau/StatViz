@@ -27,7 +27,47 @@ function performOneSampleTTest(variable, expectedMean)
                 //drawing stuff
                 removeElementsByClassName("completeLines");
                 
-                displayOneSampleTTestResults();
+                displayOneSampleTestResults();
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function performOneSampleWilcoxonTest(variable, expectedMean)
+{
+    if(expectedMean == undefined)
+        expectedMean = "0";
+    
+    var req = opencpu.r_fun_json("performOneSampleWilcoxonTest", {
+                    distribution: variables[variable]["dataset"],
+                    trueMean: expectedMean
+                  }, function(output) {                                                   
+                  
+                  console.log("\t\t " + output.method);
+                  console.log("\t\t\t p = " + output.p);
+                  console.log("\t\t\t V = " + output.V);
+                  console.log("\t\t\t mean = " + output.estimate);
+                  console.log("\t\t\t r = " + output.r);
+                  
+                  testResults["statistic"] = "V = " + output.t;
+                  testResults["p"] = output.p; 
+                  testResults["method"] = output.method;
+                  testResults["estimate"] = output.estimate;
+                  testResults["effect-size"] = output.r;
+                  
+                //drawing stuff
+                removeElementsByClassName("completeLines");
+                
+                displayOneSampleTestResults();
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
