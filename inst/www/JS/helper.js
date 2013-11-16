@@ -800,9 +800,10 @@ function setThisVariableEvil(variable)
 function getNumericVariables()
 {
     var numericVariables = [];
+    
     for(var i=0; i<variableNames.length; i++)
     {
-        if((variableDataTypes[i] != "nominal") && (variableDataTypes[i] != "ordinal"))
+        if((variableDataTypes[i] != "nominal") || (variableDataTypes[i] != "ordinal"))
         {
             numericVariables.push(variableNames[i]);
         }

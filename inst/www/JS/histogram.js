@@ -93,7 +93,6 @@ function makeHistogram()
     {        
         labels = currentVariableSelection;
     }
-    console.log("labels= " + labels.length);
     
     var ids = getValidIds(labels);
     
