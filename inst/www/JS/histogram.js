@@ -577,7 +577,7 @@ function drawHistogramLegends(varNames)
     for(var i=0; i<varNames.length; i++)
     {
         canvas.append("rect")
-                .attr("x", sideBarWidth/2 - histLegendSize/2)
+                .attr("x", sideBarWidth/2 - histLegendSize - histLegendSize/2)
                 .attr("y", BOTTOM - i*yDiffForPlots - yDiffForPlots/2 - histLegendSize/2)
                 .attr("width", histLegendSize)
                 .attr("height", histLegendSize)
@@ -587,7 +587,7 @@ function drawHistogramLegends(varNames)
                 .attr("class", "rect");
         
         canvas.append("text")
-                .attr("x", sideBarWidth/2)
+                .attr("x", sideBarWidth/2 + histLegendSize)
                 .attr("y", BOTTOM - i*yDiffForPlots - yDiffForPlots/2 + 3)
                 .attr("text-anchor", "middle")
                 .attr("fill", "black")

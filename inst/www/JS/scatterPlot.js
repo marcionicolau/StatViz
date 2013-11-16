@@ -273,14 +273,14 @@ function getValue1(number, min, max)
 
 function drawScatterPlotLegends(varNames)
 {
-    var canvas = d3.select("#plotCanvas");
+    var canvas = d3.select("#sideBarCanvas");
     
     var yStep = plotHeight/10;
     
     for(var i=0; i<varNames.length; i++)
     {
         canvas.append("circle")
-                .attr("cx", RIGHT + histLegendOffsetX)
+                .attr("cx", sideBarWidth/2 - histLegendSize - histLegendSize/2)
                 .attr("cy", TOP + histLegendOffsetY + i*yStep)
                 .attr("r", datapointRadius)
                 .attr("fill", colors[i])
@@ -288,9 +288,10 @@ function drawScatterPlotLegends(varNames)
                 .attr("class", "circles");
         
         canvas.append("text")
-                .attr("x", RIGHT + 2*histLegendOffsetX + histLegendSize)
+                .attr("x", sideBarWidth/2 + histLegendSize)
                 .attr("y", TOP + histLegendOffsetY + i*yStep + 3)
                 .attr("fill", "black")
+                .attr("text-anchor", "middle")
                 .text(varNames[i])
                 .attr("id", "legend" + i)
                 .attr("class", "text");
