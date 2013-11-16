@@ -46,7 +46,8 @@
                 // Set the width and height of panels
                 d3.select("#variable.panel").attr("style", "width: " + (width - canvasWidth - sideTabWidth) + "px; height: " + height + "px;");    
                 d3.select("#visualization.panel").attr("style", "width: " + (canvasWidth + sideTabWidth) + "px; height: " + height/3 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth - sideTabWidth) + "px;");                    
-                d3.select("#canvas").attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth) + "px;");    
+                d3.select("#canvas").attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth - sideTabWidth) + "px;");    
+                d3.select("#sideTab").attr("style", "position: absolute; width: " + sideTabWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - sideTabWidth) + "px;");    
                 
                 // Load SVG and start the loading animation
                 resetSVGCanvas();
@@ -190,7 +191,8 @@
         
         <div id="variable" class="panel"></div>
         <div id="visualization" class="panel"></div>
-        <div id="canvas"></div>        
+        <div id="canvas"></div>    
+        <div id="sideTab"></div>    
 
     </body>
 </html>   
