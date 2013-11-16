@@ -28,7 +28,7 @@ function resetSVGCanvas()
 
 function drawFullScreenButton()
 {
-    var canvas = d3.select("#plotCanvas");
+    var canvas = d3.select("#sideBarCanvas");
     
     canvas.append("image")
                 .attr("x", canvas.attr("width") - (fullScreenButtonSize + fullScreenButtonOffset))
