@@ -122,45 +122,45 @@ function getData(dataset, variableName, level)
         }
     
         
-      }).fail(function(){
-          alert("Failure: " + req.responseText);
-    });
-
-    //if R returns an error, alert the error message
-    req.fail(function(){
-      alert("Server error: " + req.responseText);
-    });
-    req.complete(function(){
-        
-    });
+     //  }).fail(function(){
+//           alert("Failure: " + req.responseText);
+//     });
+// 
+//     //if R returns an error, alert the error message
+//     req.fail(function(){
+//       alert("Server error: " + req.responseText);
+//     });
+//     req.complete(function(){
+//         
+//     });
 }
 
 function getIQR(dataset, variableName, level)
 {
     // Get variable names and their data type
-    var req = opencpu.r_fun_json("getIQR", {
-                    dataset: dataset,
-                    columnName: variableName
-                  }, function(output) {                                 
-        
-    
+    // var req = opencpu.r_fun_json("getIQR", {
+//                     dataset: dataset,
+//                     columnName: variableName
+//                   }, function(output) {                                 
+//         
+//     
         if(level === undefined)
         {   
             level = "dataset";
         }         
         IQR[variableName][level] = findIQR(dataset[variableName]);
       
-      }).fail(function(){
-          alert("Failure: " + req.responseText);
-    });
-
-    //if R returns an error, alert the error message
-    req.fail(function(){
-      alert("Server error: " + req.responseText);
-    });
-    req.complete(function(){
-        
-    });
+     //  }).fail(function(){
+//           alert("Failure: " + req.responseText);
+//     });
+// 
+//     //if R returns an error, alert the error message
+//     req.fail(function(){
+//       alert("Server error: " + req.responseText);
+//     });
+//     req.complete(function(){
+//         
+//     });
 }
 
 function getCI(dataset, variableName, level)
