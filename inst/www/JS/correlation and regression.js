@@ -83,7 +83,7 @@ function getCorrelationCoefficient(variableA, variableB, method, noDisplay)
     });
 }
 
-function getBiserialCorrelationCoefficient(continuousVariable, binaryVariable)
+function getBiserialCorrelationCoefficient(continuousVariable, binaryVariable, noDisplay)
 {
     var req = opencpu.r_fun_json("getBiserialCorrelationCoefficient", {
                     continuousVariable: variables[continuousVariable]["dataset"],
@@ -96,12 +96,21 @@ function getBiserialCorrelationCoefficient(continuousVariable, binaryVariable)
 
                 testResults["method"] = "Biserial Correlation-coefficient";
                 testResults["effect-size"] = output.cor;               
+                
+                if(noDisplay)
+                {
+                    var scatRect = d3.select("#" + getValidId(continuousVariable) + getValidId(binaryVariable) + ".scatterplotMatrixCellRect");
+                    
+                    scatRect.attr("fill", "rgba(0, 255, 0, " + 0.6*Math.abs(testResults["effect-size"]) + ")");                
+                }
+                else
+                {
+                    displayCorrelationResults();
 
-                displayBiserialCorrelationResults();
-
-                if((output.cor < -0.5) || (output.cor > 0.5))
-                {                
-                    alertPossibleRegressionModel();
+                    if((output.cor < -0.5) || (output.cor > 0.5))
+                    {                
+                        alertPossibleRegressionModel();
+                    }
                 }
             
         

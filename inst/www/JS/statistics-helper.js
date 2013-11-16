@@ -23,7 +23,7 @@ function findCorrelationCoefficient(variableA, variableB, noDisplay)
             if(!isNaN(variables[variableA]["dataset"][0]))
             {
                 console.log("\t\t\tBiserial Correlation Coefficient");
-                getBiserialCorrelationCoefficient(variableB, variableA);
+                getBiserialCorrelationCoefficient(variableB, variableA, noDisplay);
             }
             else
             {   
@@ -36,7 +36,7 @@ function findCorrelationCoefficient(variableA, variableB, noDisplay)
             if(!isNaN(variables[variableB]["dataset"][0]))
             {
                 console.log("\t\t\tBiserial Correlation Coefficient");
-                getBiserialCorrelationCoefficient(variableA, variableB);
+                getBiserialCorrelationCoefficient(variableA, variableB, noDisplay);
             }
             else
             {
