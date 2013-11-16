@@ -24,7 +24,7 @@ function makeBoxplot()
     var canvas = d3.select("#svgCanvas");
     
     //get data    
-    
+    var variableList = sort(currentVariableSelection);    
     
     getDataFromCurrentlySelectedVariables();
     min = Array.min(mins);
