@@ -17,7 +17,7 @@ function findCorrelationCoefficient(variableA, variableB, noDisplay)
         //one is binary
         
         
-        
+        console.log("in");
         if(variableDataTypes[variableA] == "binary")
         {
             if(!isNaN(variables[variableA]["dataset"][0]))
