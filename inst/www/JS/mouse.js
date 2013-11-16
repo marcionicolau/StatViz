@@ -663,42 +663,34 @@ function OnMouseOver(e)
         var topLine = canvas.append("line")
                 .attr("x1", (parseFloat(topFringe.attr("x1")) + parseFloat(topFringe.attr("x2")))/2)
                 .attr("y1", topFringe.attr("y1"))
-                .attr("x2", (parseFloat(topFringe.attr("x1")) + parseFloat(topFringe.attr("x2")))/2)
+                .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
                 .attr("y2", topFringe.attr("y1"))
                 .attr("stroke", "black")
                 .attr("stroke-dasharray", "5,5")
                 .attr("class", "hover");
-        
+                
         var bottomLine = canvas.append("line")
                 .attr("x1", (parseFloat(bottomFringe.attr("x1")) + parseFloat(bottomFringe.attr("x2")))/2)
                 .attr("y1", bottomFringe.attr("y1"))
-                .attr("x2", (parseFloat(bottomFringe.attr("x1")) + parseFloat(bottomFringe.attr("x2")))/2)
+                .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
                 .attr("y2", bottomFringe.attr("y1"))
                 .attr("stroke", "black")
                 .attr("stroke-dasharray", "5,5")
                 .attr("class", "hover");
-        
-        topLine.transition().duration(1000)
-                    .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
-        
-        bottomLine.transition().duration(1000)
-                    .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset);
-                    
+                   
         canvas.append("text")
                 .attr("x",parseFloat(topFringe.attr("x1")))
-                .attr("y", parseFloat(topFringe.attr("y1")) + 15)
+                .attr("y", parseFloat(topFringe.attr("y1")) - 5)
                 .attr("text-anchor", "middle")
                 .text(format(getActualValue(parseFloat(topFringe.attr("y1")))))
                 .attr("class", "hover");
                 
         canvas.append("text")
                 .attr("x",parseFloat(bottomFringe.attr("x1")))
-                .attr("y", parseFloat(bottomFringe.attr("y1")) - 5)
+                .attr("y", parseFloat(bottomFringe.attr("y1")) + 15)
                 .attr("text-anchor", "middle")
                 .text(format(getActualValue(parseFloat(bottomFringe.attr("y1")))))
                 .attr("class", "hover");
-        
-        
     }
     
     else if(target.className.baseVal == "regression")
