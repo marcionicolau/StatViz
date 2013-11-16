@@ -24,7 +24,7 @@ function makeBoxplot()
     var canvas = d3.select("#svgCanvas");
     
     //get data    
-    var variableList = sort(currentVariableSelection);    
+    
     
     getDataFromCurrentlySelectedVariables();
     min = Array.min(mins);
@@ -576,6 +576,7 @@ function startLoopAnimation(meanCircle)
 
 function getDataFromCurrentlySelectedVariables()
 {
+    var variableList = sort(currentVariableSelection);    
     if(currentVariableSelection.length > 1)
     {
         //if more than 2 variables are selected
