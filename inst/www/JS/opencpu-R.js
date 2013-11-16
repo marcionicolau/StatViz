@@ -8,7 +8,7 @@ function loadFile(filePath)
     dataset = output.dataset;
          
          console.log(dataset);
-         break;
+         return;
     //render the variable names
     renderVariableNames(output.variableNames);
     variableNames = output.variableNames;
