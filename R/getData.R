@@ -1,11 +1,6 @@
-getData <- function(filePath, columnName = "Unemployed")
+getData <- function(dataset, columnName = "Unemployed")
 {   
-    fileType = substr(filePath, nchar(filePath) - 3 + 1, nchar(filePath));
+    table <- as.data.frame(dataset)
     
-    if(fileType == "txt")
-        dataset <- read.table(filePath, head=T);
-    if(fileType == "csv")
-        dataset <- read.csv(filePath, head=T);
-        
-    list(data = eval(parse(text = paste("dataset","$",columnName))));
+    list(data = eval(parse(text = paste("table","$",columnName))));
 }
