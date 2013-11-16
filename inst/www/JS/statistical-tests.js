@@ -218,8 +218,14 @@ function setHomogeneityOfVariances(dependentVariable, independentVariable, homog
 
 function drawNormalityPlot(dependentVariable, level, type)
 {
-    //make histogram with these variables in a separate svg
-    var mean = d3.select("#" + getValidId(level) + ".means");
+    //9make histogram with these variables in a separate svg
+    
+    var mean;
+    if(level == "dataset")
+        mean = d3.select("#" + dependentVariable + ".means");
+    else
+        mean = d3.select("#" + getValidId(level) + ".means");
+        
     var centerX = mean.attr("cx");   
     
     
