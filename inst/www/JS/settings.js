@@ -2,7 +2,7 @@
     localStorage.fileName = "store";
     var fileName = "impact";//change this!
     var wd = "/Users/krishnasubramanian/Documents/Media Informatics/Semester 4/Thesis/Implementation/Possible Datasets/Datasets/";//"http://hci.rwth-aachen.de/~subramanian/datasets/" + localStorage.fileName +".txt";
-    var pathToFile =  wd + "weightLossData-3-not normal.txt";
+    var pathToFile =  wd + "weightLossData-3-n-not.txt";
 
 // Skeleton
     var width = document.width;
