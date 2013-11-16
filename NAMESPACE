@@ -12,6 +12,8 @@ export(getStandardError)
 export(splitDataByColumnName)
 
 export(performOneSampleTTest)
+export(performOneSampleWilcoxonTest)
+
 export(performTTest)
 export(performANOVA)
 export(performOneWayRepeatedMeasuresANOVA)
