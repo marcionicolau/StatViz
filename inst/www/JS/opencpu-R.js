@@ -608,7 +608,7 @@ function applyTransform(dependentVariable, level, last)
                     {
                         var mean = d3.select("#" + variableList["dependent"][0] + ".means");
                         var centerX = mean.attr("cx");   
-                        makeHistogramWithDensityCurve(centerX - normalityPlotWidth/2, canvasHeight + normalityPlotOffset, normalityPlotWidth, normalityPlotHeight, variableList["dependent"][0], variableList["independent-levels"][i], "normal");//left, top, histWidth, histHeight, dependentVariable, level;
+                        makeHistogramWithDensityCurve(centerX - normalityPlotWidth/2, canvasHeight + normalityPlotOffset, normalityPlotWidth, normalityPlotHeight, variableList["dependent"][0], "dataset", "normal");
                     }
                     
                     removeElementsByClassName("transformToNormal");
