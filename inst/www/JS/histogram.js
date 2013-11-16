@@ -311,16 +311,6 @@ function makeHistogram()
         nGroovesY = Math.ceil(nGroovesY * (individualPlotHeight/plotHeight));
         nGroovesY = nGroovesY < 2 ? 2 : nGroovesY;
         var binSlice = Array.max(binMaxs)/(nGroovesY-1);
-    
-        // Draw axes    
-//         var yAxis = canvas.append("line")
-//                                         .attr("x1", LEFT - axesOffset)
-//                                         .attr("y1", TOP)
-//                                         .attr("x2", LEFT - axesOffset)
-//                                         .attr("y2", BOTTOM)
-//                                         .attr("stroke", "black")
-//                                         .attr("id", "yAxis")
-//                                         .attr("class", "axes");
         
         canvas.append("text")
                 .attr("x", LEFT - axesOffset - 1.5*labelOffset)
@@ -338,11 +328,9 @@ function makeHistogram()
                     .attr("y2", BOTTOM + axesOffset) 
                     .attr("stroke", "black")
                     .attr("id", "xAxis")
-                    .attr("class", "axes");
-  
+                    .attr("class", "axes");  
         
         xStep = plotWidth/numberOfGroovesInXAxis;
-        
 
         //grooves
         for(j=0; j<=numberOfGroovesInXAxis; j++)
@@ -397,20 +385,6 @@ function makeHistogram()
                             .attr("class", "yAxisGrooveText");
             }
         }
-        
-        // var curve = canvas.append("path")                            
-//                             .attr("fill", "transparent")
-//                             .attr("stroke", "red");
-//                             
-//         var d = "M" + LEFT + " " + BOTTOM + " ";
-//         
-//         canvas.append("circle")
-//                                 .attr("cx", LEFT)
-//                                 .attr("cy", BOTTOM)
-//                                 .attr("r", "5px")
-//                                 .attr("fill", "darkgoldenrod");
-        
-        
         
         //bars
         for(i=0; i<labels.length; i++)
@@ -596,14 +570,14 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
 
 function drawHistogramLegends(varNames)
 {
-    var canvas = d3.select("#plotCanvas");
+    var canvas = d3.select("#sideBarCanvas");
     
     var yStep = plotHeight/10;
     
     for(var i=0; i<varNames.length; i++)
     {
         canvas.append("rect")
-                .attr("x", RIGHT + histLegendOffsetX)
+                .attr("x", sideBarWidth/2 - histLegendSize/2)
                 .attr("y", BOTTOM - i*yDiffForPlots - yDiffForPlots/2 - histLegendSize/2)
                 .attr("width", histLegendSize)
                 .attr("height", histLegendSize)
@@ -613,8 +587,9 @@ function drawHistogramLegends(varNames)
                 .attr("class", "rect");
         
         canvas.append("text")
-                .attr("x", RIGHT + histLegendOffsetX + histDistanceBetweenLegendAndText + histLegendSize)
+                .attr("x", sideBarWidth/2)
                 .attr("y", BOTTOM - i*yDiffForPlots - yDiffForPlots/2 + 3)
+                .attr("text-anchor", "middle")
                 .attr("fill", "black")
                 .text(varNames[i])
                 .attr("id", "legend" + i)

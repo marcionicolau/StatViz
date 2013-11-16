@@ -41,7 +41,7 @@ function drawTukeyHSDPlot()
                 .attr("y", (TOP + BOTTOM)/2)
                 .attr("text-anchor", "middle")
                 .attr("font-size", "24px")
-                .text("Mean Difference in " + variableList["dependent"][0])
+                .text("Mean difference in " + variableList["dependent"][0])
                 .attr("transform", "rotate(-90 " + (LEFT - axesOffset - 2*labelOffset) + " " + ((TOP + BOTTOM)/2 + 6) + ")")
                 .attr("fill", "orange");
                 
