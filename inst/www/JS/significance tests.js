@@ -13,14 +13,16 @@ function performOneSampleTTest(variable, expectedMean)
                   console.log("\t\t " + output.method);
                   console.log("\t\t\t DF = " + output.df);
                   console.log("\t\t\t p = " + output.p);
-                  console.log("\t\t\t t = " + output.statistic);
+                  console.log("\t\t\t t = " + output.t);
                   console.log("\t\t\t mean = " + output.estimate);
+                  console.log("\t\t\t d = " + output.d);
                   
                   testResults["df"] = output.df;
-                  testResults["statistic"] = "t(" + testResults["df"] +") = " + output.statistic;
+                  testResults["statistic"] = "t(" + testResults["df"] +") = " + output.t;
                   testResults["p"] = output.p; 
                   testResults["method"] = output.method;
                   testResults["estimate"] = output.estimate;
+                  testResults["effect-size"] = output.d;
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines");

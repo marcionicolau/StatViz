@@ -4,5 +4,9 @@ performOneSampleTTest <- function(distribution, trueMean = "0")
     
     result = t.test(distribution, mu = eval(parse(text = trueMean)));
     
-    list(statistic = result$statistic[["t"]], df = result$parameter[["df"]], p = result$p.value, estimate = result$estimate[["mean of x"]], method = result$method);
+    require(powerAnalysis);
+    
+    d = ES.t.one(n = length(distribution), mu = estimate = result$estimate[["mean of x"]], t = result$statistic[["t"]])[["d"]];
+    
+    list(t = result$statistic[["t"]], df = result$parameter[["df"]], p = result$p.value, estimate = result$estimate[["mean of x"]], method = result$method, d = d);
 }
