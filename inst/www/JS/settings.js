@@ -12,12 +12,10 @@
         panelColors.normal = "white";
         panelColors.active = "darkgrey";
 
-    var sideBarWidth = width*0.20;
-    
     var canvasHeight = height*(2/3);
-    var canvasWidth = width - sideBarWidth; 
+    var canvasWidth = width*0.55; 
     
-
+    var sideBarWidth = width*0.25;
 
     // Variable panel
         var variableNameHolderPadding = scaleForWindowSize(15);
