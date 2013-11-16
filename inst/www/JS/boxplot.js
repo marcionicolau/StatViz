@@ -160,10 +160,11 @@ function makeBoxplot()
     
     //grooves
     
-    //x-axis grooves       
-    
+    //x-axis grooves           
     nGroovesX = labels.length;    
     widthOfEachBox = plotWidth/labels.length*2 > boxWidth ? boxWidth : plotWidth/labels.length*2;
+    
+    console.log("boxWidth=" + boxWidth + ", widthOfEachBox=" + widthOfEachBox);
     var xStep = plotWidth/nGroovesX;  
     
 
