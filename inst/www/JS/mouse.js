@@ -156,8 +156,8 @@ function OnMouseDown(e)
             button.attr("xlink:href", "images/fullscreennormal.png");
             d3.select("#variable.panel").attr("style", "width: " + (width - canvasWidth - sideBarWidth) + "px; height: " + height + "px;"); 
             d3.select("#variablePanelSVG").attr("width", (width - canvasWidth - sideBarWidth));            
-            d3.select("#visualization.panel").attr("style", "width: " + (canvasWidth + sideBarWidth) + "px; height: " + height/3 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth - sideBarWidth) + "px;");                    
-            d3.select("#visualizationPanelSVG").attr("height", height/3);
+            d3.select("#visualization.panel").attr("style", "width: " + (canvasWidth + sideBarWidth) + "px; height: " + height/4 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth - sideBarWidth) + "px;");                    
+            d3.select("#visualizationPanelSVG").attr("height", height/4);
             d3.select("#canvas").attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth - sideBarWidth) + "px;");    
             d3.select("#plotCanvas").attr("height", canvasHeight).attr("width", canvasWidth);
         }
