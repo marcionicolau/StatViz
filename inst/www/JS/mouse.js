@@ -439,9 +439,8 @@ function OnMouseOver(e)
         
         var meanCircle = d3.select("#" + target.id + ".means");
         
-        if(document.getElementsByClassName("completeLines").length+1 < (document.getElementsByClassName("means").length))
-        {
-            
+        if((document.getElementsByClassName("completeLines").length+1 < (document.getElementsByClassName("means").length)) || (document.getElementsByClassName("means").length == 1))
+        {            
             meanCircle.attr("cursor","pointer");
         
             //change color of the mean circle
