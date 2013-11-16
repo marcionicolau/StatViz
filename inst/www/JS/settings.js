@@ -32,7 +32,7 @@
     var displayDataLimit = 20;
     var rangeToFade = 3*displayDataLimit/5;
     var fontSizeForDisplayDataTitle = scaleForWindowSize(36);
-    var fontSizeForDisplayDataTableElements = scaleForWindowSize(18);
+    var fontSizeForDisplayDataTableElements = scaleForWindowSize(20);
         
 // Plots (general)
 var axesOffset = scaleForWindowSize(25); //distance from plots to axes (for an R-like appearance)
