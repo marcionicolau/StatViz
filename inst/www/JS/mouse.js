@@ -18,7 +18,7 @@ function OnMouseDown(e)
         removeElementsByClassName("displayDataTable");
         removeElementsByClassName("displayDataText");
               
-//         pickOutVisualizations();      
+        pickOutVisualizations();      
 //         makePlot(); //checks which plot is selected and draws that plot
 //         toggleFillColorsForVisualizations(); //manages the fill colors of vizualizations (only one at a time)
     }
