@@ -1,12 +1,12 @@
 // Correlation & Regression
-function getCorrelationCoefficient(variableA, variableB, method)
+function getCorrelationCoefficient(variableA, variableB, method, noDisplay)
 {
     var req = opencpu.r_fun_json("getCorrelationCoefficient", {
                     distributionX: variables[variableA]["dataset"],                    
                     distributionY: variables[variableB]["dataset"],
                     method: method
                   }, function(output) {                                                   
-                  
+                
                 if(method == "pearson")
                 {
                     console.log("\t\t Pearson's Correlation-coefficient for (" + variableA + " , " + variableB + ")");
@@ -23,12 +23,21 @@ function getCorrelationCoefficient(variableA, variableB, method)
                     testResults["method"] = output.method; 
                     testResults["effect-size"] = output.cor;
                     testResults["CI"] = [output.CI_min, output.CI_max];
+                    
+                    if(noDisplay)
+                    {
+                        var scatRect = d3.select("#" + getValidId(variableA) + getValidId(variableB) + ".scatterplotMatrixCellRect");
+                        
+                        scatRect.attr("fill", "rgba(0, 255, 0, " + 0.6*Math.abs(testResults["effect-size"]) + ")");                
+                    }
+                    else
+                    {
+                        displayCorrelationResults();
 
-                    displayCorrelationResults();
-
-                    if((output.cor < -0.5) || (output.cor > 0.5))
-                    {                
-                        alertPossibleRegressionModel();
+                        if((output.cor < -0.5) || (output.cor > 0.5))
+                        {                
+                            alertPossibleRegressionModel();
+                        }
                     }
                 }
                 else if(method == "kendall")
@@ -44,11 +53,20 @@ function getCorrelationCoefficient(variableA, variableB, method)
                     testResults["method"] = output.method; 
                     testResults["effect-size"] = output.cor;
 
-                    displayCorrelationResults();
+                    if(noDisplay)
+                    {
+                        var scatRect = d3.select("#" + getValidId(variableA) + getValidId(variableB) + ".scatterplotMatrixCellRect");
+                        
+                        scatRect.attr("fill", "rgba(0, 255, 0, " + 0.6*Math.abs(testResults["effect-size"]) + ")");                
+                    }
+                    else
+                    {
+                        displayCorrelationResults();
 
-                    if((output.cor < -0.5) || (output.cor > 0.5))
-                    {                
-                        alertPossibleRegressionModel();
+                        if((output.cor < -0.5) || (output.cor > 0.5))
+                        {                
+                            alertPossibleRegressionModel();
+                        }
                     }
                 }
         

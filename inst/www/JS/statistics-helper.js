@@ -1,40 +1,46 @@
-function findCorrelationCoefficient()
+function findCorrelationCoefficient(variableA, variableB, noDisplay)
 {
-    if((variableDataTypes[currentVariableSelection[0]] == "binary") && (variableDataTypes[currentVariableSelection[1]] == "binary"))
+    console.log("type of variable 1: " + variableDataTypes[variableA] + ", type of variable 2: " + variableDataTypes[variableB]);
+    
+    
+    if((variableDataTypes[variableA] == "binary") && (variableDataTypes[variableB] == "binary"))
     {
         //both are binary 
         
         //2x2 => Phi; Cramer's V otherwise
         console.log("Cramer's V");
+        return -1;
     }
-    else if(((variableDataTypes[currentVariableSelection[0]] == "binary") || (variableDataTypes[currentVariableSelection[1]] == "binary")) && ((variableDataTypes[currentVariableSelection[0]] != "binary") || (variableDataTypes[currentVariableSelection[1]] != "binary")))
+    else if(((variableDataTypes[variableA] == "binary") || (variableDataTypes[variableB] == "binary")) && ((variableDataTypes[variableA] != "binary") || (variableDataTypes[variableB] != "binary")))
     {
         //one is binary
         
         
         
-        if(variableDataTypes[currentVariableSelection[0]] == "binary")
+        if(variableDataTypes[variableA] == "binary")
         {
-            if(!isNaN(variables[currentVariableSelection[0]]["dataset"][0]))
+            if(!isNaN(variables[variableA]["dataset"][0]))
             {
                 console.log("Biserial Correlation Coefficient");
-                getBiserialCorrelationCoefficient(currentVariableSelection[1], currentVariableSelection[0]);
+                getBiserialCorrelationCoefficient(variableB, variableA);
             }
             else
             {   
                 console.log("Doing nothing");
+                return -1;
             }
         }
         else
         {
-            if(!isNaN(variables[currentVariableSelection[1]]["dataset"][0]))
+            if(!isNaN(variables[variableB]["dataset"][0]))
             {
                 console.log("Biserial Correlation Coefficient");
-                getBiserialCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1]);
+                getBiserialCorrelationCoefficient(variableA, variableB);
             }
             else
             {
                 console.log("Doing nothing");
+                return -1;
             }            
         }
     }
@@ -42,20 +48,21 @@ function findCorrelationCoefficient()
     {
         //both are not binary
         
-        if(((variableDataTypes[currentVariableSelection[0]] == "ordinal") || (variableDataTypes[currentVariableSelection[1]] == "ordinal")) && ((variableDataTypes[currentVariableSelection[0]] != "nominal") && (variableDataTypes[currentVariableSelection[1]] != "nominal")))
+        if(((variableDataTypes[variableA] == "ordinal") || (variableDataTypes[variableB] == "ordinal")) && ((variableDataTypes[variableA] != "nominal") && (variableDataTypes[variableB] != "nominal")))
         {
             console.log("Kendall's Tau");            
-            getCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1], "kendall");
+            getCorrelationCoefficient(variableA, variableB, "kendall", noDisplay);
         }
-        else if((variableDataTypes[currentVariableSelection[0]] == "nominal") || (variableDataTypes[currentVariableSelection[1]] == "nominal"))
+        else if((variableDataTypes[variableA] == "nominal") || (variableDataTypes[variableB] == "nominal"))
         {
             //do nothing
             console.log("doing nothing");
+            return -1;
         }
         else
         {
             console.log("Pearson's correlation");
-            getCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1], "pearson");
+            getCorrelationCoefficient(variableA, variableB, "pearson", noDisplay);
         }
     }
 }

@@ -15,15 +15,16 @@ var xStep, yStep;
    
 function makeScatterplot()
 {   
-    findCorrelationCoefficient();
-    
+    // graphics
     LEFT = canvasWidth/2 - plotWidth/2;
     RIGHT = canvasWidth/2 + plotWidth/2;
 
     TOP = canvasHeight/2 - plotHeight/2 - topOffset;
     BOTTOM = canvasHeight/2 + plotHeight/2 - topOffset;
+    
+    var canvas = d3.select("#svgCanvas");
 
-
+    // getting data
     data["X"] = variables[currentVariableSelection[0]]["dataset"];
     data["Y"] = variables[currentVariableSelection[1]]["dataset"];
     
@@ -32,6 +33,8 @@ function makeScatterplot()
     
     maxs["X"] = MAX[currentVariableSelection[0]]["dataset"];
     maxs["Y"] = MAX[currentVariableSelection[1]]["dataset"];
+    
+    findCorrelationCoefficient(currentVariableSelection[0], currentVariableSelection[1]);
     
     var colorData;
     var uniqueColorData;
@@ -56,8 +59,7 @@ function makeScatterplot()
     }    
     
     var ids = currentVariableSelection;
-     
-    var canvas = d3.select("#svgCanvas");
+    
     
     // Draw axes
         
@@ -72,7 +74,7 @@ function makeScatterplot()
               
     canvas.append("text")
                 .attr("x", (LEFT + RIGHT)/2)
-                .attr("y", BOTTOM + axesOffset + labelOffset)
+                .attr("y", BOTTOM + axesOffset + 2*labelOffset)
                 .attr("text-anchor", "middle")
                 .attr("font-size", "24px")
                 .text(currentVariableSelection[0])
@@ -88,9 +90,10 @@ function makeScatterplot()
               .attr("class", "axes");
     
     canvas.append("text")
-                .attr("x", LEFT - axesOffset - labelOffset)
-                .attr("y", (TOP + BOTTOM)/2 + 6)
-                .attr("text-anchor", "end")
+                .attr("x", LEFT - axesOffset - 2*labelOffset)
+                .attr("y", (TOP + BOTTOM)/2)
+                .attr("text-anchor", "middle")
+                .attr("transform", "rotate (-90 " + (LEFT - axesOffset - 2*labelOffset) + " " + ((TOP + BOTTOM)/2) + ")")
                 .attr("font-size", "24px")
                 .text(currentVariableSelection[1])
                 .attr("fill", "orange");
