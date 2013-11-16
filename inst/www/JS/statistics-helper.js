@@ -20,6 +20,7 @@ function findCorrelationCoefficient(variableA, variableB, noDisplay)
         console.log("in");
         if(variableDataTypes[variableA] == "binary")
         {
+            console.log(isNaN(variables[variableA]["dataset"][0]));
             if(!isNaN(variables[variableA]["dataset"][0]))
             {
                 console.log("\t\t\tBiserial Correlation Coefficient");
