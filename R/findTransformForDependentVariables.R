@@ -21,7 +21,7 @@ findTransformForDependentVariables <- function(dataset)
     	{	
     		for(k in 1:numberOfLevels)
     		{
-    		    if(!is.nan(eval(parse(text = paste("level.", levels[k],"[1]",sep="")))))
+    		    if(!is.string(eval(parse(text = paste("level.", levels[k],"[1]",sep="")))))
     		    {
                     temp = eval(parse(text = paste("sqrt(level.",levels[k],")",sep="")));
                 
@@ -48,7 +48,7 @@ findTransformForDependentVariables <- function(dataset)
     	{	
     		for(k in 1:numberOfLevels)
     		{
-    		    !is.nan(eval(parse(text = paste("level.", levels[k],"[1]",sep=""))))
+    		    if(!is.string(eval(parse(text = paste("level.", levels[k],"[1]",sep="")))))
     		    {
                     temp = eval(parse(text = paste("level.",levels[k],"^(1/3)",sep="")));
                 
@@ -74,7 +74,7 @@ findTransformForDependentVariables <- function(dataset)
     	{
     		for(k in 1:numberOfLevels)
     		{
-    		    !is.nan(eval(parse(text = paste("level.", levels[k],"[1]",sep=""))))
+    		    if(!is.string(eval(parse(text = paste("level.", levels[k],"[1]",sep="")))))
     		    {    		
                     temp = eval(parse(text = paste("1/level.",levels[k],sep="")));
                 
@@ -100,7 +100,7 @@ findTransformForDependentVariables <- function(dataset)
     	{
     		for(k in 1:numberOfLevels)
     		{
-    		    !is.nan(eval(parse(text = paste("level.", levels[k],"[1]",sep=""))))
+    		    if(!is.string(eval(parse(text = paste("level.", levels[k],"[1]",sep="")))))
     		    {
                     temp = eval(parse(text = paste("log10(level.",levels[k],")",sep="")));
                 
