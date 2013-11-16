@@ -19,7 +19,7 @@ function OnMouseDown(e)
         removeElementsByClassName("displayDataText");
               
 //         pickOutVisualizations();      
-        makePlot(); //checks which plot is selected and draws that plot
+//         makePlot(); //checks which plot is selected and draws that plot
 //         toggleFillColorsForVisualizations(); //manages the fill colors of vizualizations (only one at a time)
     }
     
