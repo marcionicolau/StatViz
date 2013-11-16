@@ -119,7 +119,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
     
     if(noColor == undefined)
     {
-        getCorrelationCoefficient(variableX, variableY, );
+        getCorrelationCoefficient(variableX, variableY, "true");
     
         canvas.append("rect")
                 .attr("x", x)
