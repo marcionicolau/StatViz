@@ -62,7 +62,7 @@ function OnMouseDown(e)
         
         var meanCircle = d3.selectAll("#" + target.id + ".means");
         
-        if(document.getElementsByClassName("completeLines").length+1 < (document.getElementsByClassName("means").length))
+        if((document.getElementsByClassName("completeLines").length+1 < (document.getElementsByClassName("means").length)) || (document.getElementsByClassName("means").length == 1))
         {
             meanCircle.attr("fill", meanColors["click"]);
             
