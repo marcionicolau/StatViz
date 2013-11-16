@@ -13,13 +13,13 @@ function displayDataForVariable(variable)
     canvas.append("p")
             .text("Unfortunately, this variable has too many levels and does not have a meaningful visualization!")
             .attr("align", "center")
-            .attr("style", "font-size: 36px")
+            .attr("style", "font-size: " + fontSizeForDisplayDataTitle + "px")
             .attr("class", "displayDataText");
     
     var table = canvas.append("table")
             .attr("border", "1")
             .attr("class", "displayDataTable")
-            .attr("style", "font-size: 18px; position: relative; width: 30%; top: 60px; margin: 0 auto; border-spacing: 0; border-collapse: collapse;");
+            .attr("style", "font-size: " + fontSizeForDisplayDataTableElements + "px; position: relative; width: 30%; top: 60px; margin: 0 auto; border-spacing: 0; border-collapse: collapse;");
             
     table.append("tr").append("th").text(variable);      
             
