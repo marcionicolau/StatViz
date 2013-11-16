@@ -48,7 +48,7 @@ findTransformForDependentVariables <- function(dataset)
     	{	
     		for(k in 1:numberOfLevels)
     		{
-    		    !is.nan(eval(parse(text = paste("level.", levels[k],"[0]",sep=""))))if(!is.nan(eval(parse(text = paste("level.", levels[k],"[1]",sep="")))))
+    		    !is.nan(eval(parse(text = paste("level.", levels[k],"[0]",sep=""))))
     		    {
                     temp = eval(parse(text = paste("level.",levels[k],"^(1/3)",sep="")));
                 
