@@ -1,4 +1,45 @@
 //Significance Tests
+//0 IV, 1 DV
+function performOneSampleTTest(variable, expectedMean)
+{
+    if(expectedMean == undefined)
+        expectedMean = "0";
+    
+    var req = opencpu.r_fun_json("performOneSampleTTest", {
+                    distribution: variables[variable]["dataset"],
+                    trueMean: expectedMean
+                  }, function(output) {                                                   
+                  
+                  console.log("\t\t " + output.method);
+                  console.log("\t\t\t DF = " + output.df);
+                  console.log("\t\t\t p = " + output.p);
+                  console.log("\t\t\t t = " + output.statistic);
+                  console.log("\t\t\t mean = " + output.estimate);
+                  
+                  testResults["df"] = output.df;
+                  testResults["statistic"] = "t(" + testResults["df"] +") = " + output.statistic;
+                  testResults["p"] = output.p; 
+                  testResults["method"] = output.method;
+                  testResults["estimate"] = output.estimate;
+                  
+                //drawing stuff
+                removeElementsByClassName("completeLines");
+                
+                displaySignificanceTestResults();
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+    
 
 function performTTest(groupA, groupB, varianceEqual, paired) //groupA, groupB, paired = "FALSE", alternative = "two.sided", alpha = 0.95, var = "FALSE"
 {

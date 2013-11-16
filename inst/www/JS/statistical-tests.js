@@ -4,6 +4,14 @@ function compareMeans()
     
     switch(document.getElementsByClassName("completeLines").length)
     {
+        case 0:
+                //One sample t-test
+                if(variableList["dependent"].length == 1)
+                {
+                    performOneSampleTTest(variableList["dependent"][0]);
+                }
+                
+                break;
         case 1:
                 //T-test
                 {
