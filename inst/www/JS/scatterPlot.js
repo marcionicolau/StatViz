@@ -22,7 +22,7 @@ function makeScatterplot()
     TOP = canvasHeight/2 - plotHeight/2 - topOffset;
     BOTTOM = canvasHeight/2 + plotHeight/2 - topOffset;
     
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
 
     // getting data
     data["X"] = variables[currentVariableSelection[0]]["dataset"];
@@ -203,7 +203,7 @@ function makeScatterplot()
 
 function drawRegressionLine(intercept, slope)
 {
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
     canvas.attr("viewBox", viewBoxXForRegressionLine + " " + viewBoxYForRegressionLine + " " + viewBoxWidthForRegressionLine + " " + viewBoxHeightForRegressionLine)
           .attr("preserveAspectRatio", "none");
     
@@ -273,7 +273,7 @@ function getValue1(number, min, max)
 
 function drawScatterPlotLegends(varNames)
 {
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
     
     var yStep = plotHeight/10;
     

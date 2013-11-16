@@ -29,7 +29,7 @@ function makeScatterplotMatrix()
         shortFontSize = 0;
     }
         
-    var canvas = d3.select("#svgCanvas");    
+    var canvas = d3.select("#plotCanvas");    
     
     var LEFT = canvasWidth/2 - plotWidth/2;
     var TOP = canvasHeight/2 - plotHeight/2;
@@ -93,7 +93,7 @@ function makeScatterplotMatrixForMultipleRegression(dependentVariable)
         shortFontSize = 0;
     }
         
-    var canvas = d3.select("#svgCanvas");    
+    var canvas = d3.select("#plotCanvas");    
     
     var LEFT = canvasWidth/2 - plotWidth/2;
     var TOP = canvasHeight/2 - plotHeight/2;
@@ -110,7 +110,7 @@ function makeScatterplotMatrixForMultipleRegression(dependentVariable)
 function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, noColor)
 {
     // make sure that all preprocessing is done in the makeScatterPlotMatrix() function
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
     
     y = y + shortHeight;
 

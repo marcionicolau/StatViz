@@ -413,7 +413,7 @@ function performNormalityTest(dist, dependentVariable, level)
                     {
                         //one sample t-test
                         d3.select("#normality.crosses").attr("display", "inline");                                  
-                        d3.select("#svgCanvas").transition().duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight*1.5);
+                        d3.select("#plotCanvas").transition().duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight*1.5);
                 
                         //draw boxplots in red 
                         drawBoxPlotInRed(variableList["dependent"][0]);
@@ -468,14 +468,14 @@ function findTransform(dependentVariable, independentVariable)
                 {
                     var variableList = getSelectedVariables();
                     performHomoscedasticityTestNotNormal(variableList["dependent"][0], variableList["independent"][0]);
-                    d3.select("#svgCanvas").transition().delay(3000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
+                    d3.select("#plotCanvas").transition().delay(3000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
                 }
                 else
                 {
                     console.log("type=" + output.type);
                     transformationType = output.type;
                     //offer choice
-                    var canvas = d3.select("#svgCanvas");
+                    var canvas = d3.select("#plotCanvas");
                     
                     canvas.append("rect")
                             .attr("x", canvasWidth/2 + plotWidth/2 + buttonOffset)
@@ -530,7 +530,7 @@ function findTransformForDependentVariables(numericVariables)
                 
                 if(output.type == "none")
                 {
-                    d3.select("#svgCanvas").transition().delay(3000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
+                    d3.select("#plotCanvas").transition().delay(3000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
                     performOneSampleWilcoxonTest(variableList["dependent"][0]);
                 }
                 else
@@ -539,7 +539,7 @@ function findTransformForDependentVariables(numericVariables)
                     
                     transformationType = output.type;
                     //offer choice
-                    var canvas = d3.select("#svgCanvas");
+                    var canvas = d3.select("#plotCanvas");
                     
                     canvas.append("rect")
                             .attr("x", canvasWidth/2 + plotWidth/2 + buttonOffset)
@@ -629,7 +629,7 @@ function applyTransform(dependentVariable, level, last)
                     d3.select("#normality.ticks").attr("display", "inline");  
                     var variableList = sort(currentVariableSelection);                                        
                     
-                    d3.select("#svgCanvas").transition().delay(2000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
+                    d3.select("#plotCanvas").transition().delay(2000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
                     
                     setTimeout(function()
                     {

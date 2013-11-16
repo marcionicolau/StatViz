@@ -9,7 +9,7 @@ function makeBoxplot()
     var TOP = canvasHeight/2 - plotHeight/2;
     var BOTTOM = canvasHeight/2 + plotHeight/2;
 
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
     
     //initializations
     var variableList = sort(currentVariableSelection);
@@ -441,7 +441,7 @@ function redrawBoxPlot()
     
     var ids = getValidIds(labels);
     
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
 
     // changeable
     var nGroovesY = 10;             
@@ -607,7 +607,7 @@ function getOutliers(data, TOPFringe, BOTTOMFringe)
 //Loop animation
 function startLoopAnimation(meanCircle)
 {
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
         
     //insert animation
     var loop = canvas.append("circle")

@@ -220,22 +220,6 @@ function makePlot(x)
     }
 }
 
-//Deletes the current SVG canvas and draws an empty canvas 
-function resetSVGCanvas()
-{
-      if(document.getElementById("svgCanvas") != null)
-            removeElementById("svgCanvas");
-            
-        var svgCanvas = d3.select("#canvas").append("svg");
-        
-        svgCanvas.attr("id", "svgCanvas")
-                                .attr("x", 0)
-                                .attr("y", 0)
-                                .attr("height", canvasHeight)
-                                .attr("width", canvasWidth)
-                                .attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
-}
-
 //Removes a single element with the given ID
 function removeElementById(id)
 {
@@ -592,23 +576,9 @@ function sort(list)
     return variableList;
 }
 
-function drawFullScreenButton()
-{
-    var canvas = d3.select("#svgCanvas");
-    
-    canvas.append("image")
-                .attr("x", canvas.attr("width") - (fullScreenButtonSize + fullScreenButtonOffset))
-                .attr("y", 0)
-                .attr("xlink:href", "images/fullscreennormal.png")
-                .attr("height", fullScreenButtonSize)
-                .attr("width", fullScreenButtonSize)
-                .attr("style", "opacity: 1.0;")
-                .attr("class", "fullscreen");
-}
-
 function drawDialogBoxToGetCausalAndPredictorVariables()
 {
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
     
     var dialogBoxHeight = plotHeight/2;
     var dialogBoxWidth = plotWidth/2;
@@ -741,7 +711,7 @@ function findExperimentalDesign()
 
 function drawInteractionEffectButton()
 {
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
     
     var rad = 10;
     canvas.append("circle")

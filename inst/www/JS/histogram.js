@@ -11,7 +11,7 @@ function makeHistogram()
     TOP = canvasHeight/2 - plotHeight/2;
     BOTTOM = canvasHeight/2 + plotHeight/2;            
     
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
 
     var data = [];
     var mins = [];
@@ -267,7 +267,7 @@ function makeHistogram()
         var slice = (max - min)/nBins;    
     
         var bins = new Object();
-        var canvas = d3.select("#svgCanvas");
+        var canvas = d3.select("#plotCanvas");
     
         // Set all bin count to zero
         for(var i=0; i<labels.length; i++)
@@ -475,7 +475,7 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
     var slice = (max - min)/nBins;    
 
     var bins = [];
-    var canvas = d3.select("#svgCanvas"); //this should be changed
+    var canvas = d3.select("#plotCanvas"); //this should be changed
     
     curveX = [];
     curveY = [];
@@ -596,7 +596,7 @@ function makeHistogramWithDensityCurve(LEFT, TOP, histWidth, histHeight, depende
 
 function drawHistogramLegends(varNames)
 {
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
     
     var yStep = plotHeight/10;
     

@@ -7,7 +7,7 @@ function drawTukeyHSDPlot()
     var TOP = canvasHeight/2 - plotHeight/2;
     var BOTTOM = canvasHeight/2 + plotHeight/2;
     
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
     
     //data - we have already sorted them into "tukeyResults" object 
     var variableList = sort(currentVariableSelection);    

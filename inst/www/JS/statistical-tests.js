@@ -68,7 +68,7 @@ function compareMeans()
 
 function loadAssumptionCheckList()
 {
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
     
     for(var i=0; i<assumptions.length; i++)
     {
@@ -153,7 +153,7 @@ function setDistribution(dependentVariable, level, normal)
                 d3.select("#normality.crosses").attr("display", "inline");                  
                 normal = false;
                 
-                d3.select("#svgCanvas").transition().duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight*1.5);
+                d3.select("#plotCanvas").transition().duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight*1.5);
                 
                 //draw boxplots in red 
                 drawBoxPlotInRed(variableList["independent-levels"][i]);
@@ -242,7 +242,7 @@ function displayOneSampleTestResults()
     var means = document.getElementsByClassName("means");
     var meanRefLines = [];
     
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
 
     for(var i=0; i<means.length; i++)
     {
@@ -339,7 +339,7 @@ function displaySignificanceTestResults()
     var means = document.getElementsByClassName("means");
     var meanRefLines = [];
     
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
 
     for(var i=0; i<means.length; i++)
     {
@@ -450,7 +450,7 @@ function drawScales(cx, cy)
     var yMin = Array.min(cy);
     var yMax = Array.max(cy);
     
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
     canvas.append("line")
             .attr("x1", canvasWidth/2 + plotWidth/2 + significanceTestScaleOffset)
             .attr("y1", yMin)
@@ -533,7 +533,7 @@ function drawScales(cx, cy)
 
 function displayCorrelationResults()
 {   
-    var canvas = d3.select("#svgCanvas");    
+    var canvas = d3.select("#plotCanvas");    
     var spaceOnRight = (canvasWidth - plotWidth)/2;    
     
     canvas.append("text")
@@ -577,7 +577,7 @@ function displayCorrelationResults()
 
 function displayBiserialCorrelationResults()
 {   
-    var canvas = d3.select("#svgCanvas");    
+    var canvas = d3.select("#plotCanvas");    
     var spaceOnRight = (canvasWidth - plotWidth)/2;    
     
     canvas.append("text")
@@ -602,7 +602,7 @@ function displayBiserialCorrelationResults()
 
 function displaySimpleRegressionResults()
 {   
-    var canvas = d3.select("#svgCanvas");    
+    var canvas = d3.select("#plotCanvas");    
     var spaceOnRight = (canvasWidth - plotWidth)/2;
     
     canvas.append("text")
@@ -637,7 +637,7 @@ function displaySimpleRegressionResults()
 
 function displayMultipleRegressionResults()
 {   
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
     
     canvas.append("text")
             .attr("x", canvasWidth/2)
@@ -671,7 +671,7 @@ function displayMultipleRegressionResults()
 
 function alertPossibleRegressionModel()
 {
-    var canvas = d3.select("#svgCanvas");    
+    var canvas = d3.select("#plotCanvas");    
     var spaceOnRight = (canvasWidth - plotWidth)/2;    
     
     canvas.append("circle")

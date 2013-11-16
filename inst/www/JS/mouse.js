@@ -47,8 +47,8 @@ function OnMouseDown(e)
     {
         setup(e, target);
         
-        if(document.getElementById("svgCanvas") != null)
-                    removeElementById("svgCanvas");
+        if(document.getElementById("plotCanvas") != null)
+                    removeElementById("plotCanvas");
         
         removeElementsByClassName("displayDataTable");
         removeElementsByClassName("displayDataText");
@@ -81,7 +81,7 @@ function OnMouseDown(e)
             
             if(document.getElementsByClassName("completeLines").length+1 < document.getElementsByClassName("means").length)
             {
-                var canvas = d3.select("#svgCanvas");
+                var canvas = d3.select("#plotCanvas");
                 canvas.append("line")
                         .attr("x1", meanCircle.attr("cx"))
                         .attr("y1", meanCircle.attr("cy"))
@@ -148,7 +148,7 @@ function OnMouseDown(e)
             d3.select("#visualization.panel").attr("style", "height: " + 0 + "px;"); 
             d3.select("#visualizationPanelSVG").attr("height", 0);
             d3.select("#canvas").attr("style", "left: 0px; height: " + height + "px;");
-            d3.select("#svgCanvas").attr("height", height).attr("width", width);
+            d3.select("#plotCanvas").attr("height", height).attr("width", width);
         }
         else if(button.attr("xlink:href") == "images/fullscreenclick.png")
         {
@@ -159,7 +159,7 @@ function OnMouseDown(e)
             d3.select("#visualization.panel").attr("style", "width: " + canvasWidth + "px; height: " + height/3 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth) + "px;");                    
             d3.select("#visualizationPanelSVG").attr("height", height/3);
             d3.select("#canvas").attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth) + "px;");    
-            d3.select("#svgCanvas").attr("height", canvasHeight).attr("width", canvasWidth);
+            d3.select("#plotCanvas").attr("height", canvasHeight).attr("width", canvasWidth);
         }
     }
     
@@ -234,7 +234,7 @@ function OnMouseDown(e)
         //TODO: fade out the datapoints
         setup(e, target);
         
-        var canvas = d3.select("#svgCanvas");
+        var canvas = d3.select("#plotCanvas");
         
         var mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
         var mouseY = toModifiedViewBoxForRegressionLineYCoordinate(e.pageY);
@@ -376,7 +376,7 @@ function OnMouseMove(e)
 //             
 //             mouseX = toModifiedViewBoxForRegressionLineXCoordinate(LEFT + getValue1(testResults["slope"]*(canvasHeight - mouseY) + testResults["intercept"], mins["X"], maxs["X"])*plotWidth);
 //             
-//             var canvas = d3.select("#svgCanvas");
+//             var canvas = d3.select("#plotCanvas");
 //             
 //             var dT = d3.select("#dummyText");
 //             dT.text("X = " + mouseX + " , Y = " + mouseY);
@@ -511,7 +511,7 @@ function OnMouseOver(e)
             }             
         }
         
-        var canvas = d3.select("#svgCanvas");
+        var canvas = d3.select("#plotCanvas");
         canvas.append("text")
                 .attr("x", e.pageX + 10 - (width - canvasWidth))
                 .attr("y", e.pageY + 15)
@@ -586,7 +586,7 @@ function OnMouseOver(e)
     else if(target.className.baseVal == "outliers")
     {
         setup(e, target);
-        var canvas = d3.select("#svgCanvas");
+        var canvas = d3.select("#plotCanvas");
         var outlier = d3.select("#" + target.id + ".outliers");
         
         outlier.attr("r", outlierRadius*2).attr("stroke", "yellow").attr("stroke-width", "2px");
@@ -611,7 +611,7 @@ function OnMouseOver(e)
     else if((target.className.baseVal == "TOPFringes") || (target.className.baseVal == "BOTTOMFringes"))
     {
         setup(e, target);
-        var canvas = d3.select("#svgCanvas");
+        var canvas = d3.select("#plotCanvas");
         var tFringe = d3.select("#" + target.id + ".TOPFringes");
         var bFringe = d3.select("#" + target.id + ".BOTTOMFringes");
         
@@ -654,7 +654,7 @@ function OnMouseOver(e)
     
     else if((target.className.baseVal == "CIs") || (target.className.baseVal == "CITopFringes") || (target.className.baseVal == "CIBottomFringes"))
     {
-        var canvas = d3.select("#svgCanvas");
+        var canvas = d3.select("#plotCanvas");
         
         var topFringe = d3.select("#" + target.id + ".CITopFringes");
         var bottomFringe = d3.select("#" + target.id + ".CIBottomFringes");
@@ -700,7 +700,7 @@ function OnMouseOver(e)
     
     else if(target.id == "regressionLine")
     {
-        var canvas = d3.select("#svgCanvas");
+        var canvas = d3.select("#plotCanvas");
         var mouseX = e.pageX - (width - canvasWidth);
         var mouseY = e.pageY; 
         
@@ -752,7 +752,7 @@ function OnMouseOver(e)
         setup(e, target);
         
         var mean = d3.select("#" + target.id + ".tukeyMean");
-        var canvas = d3.select("#svgCanvas");
+        var canvas = d3.select("#plotCanvas");
         
         canvas.append("line")
                 .attr("x1", mean.attr("cx"))
@@ -781,7 +781,7 @@ function OnMouseOver(e)
         var tCITop = d3.select("#" + target.id + ".tukeyCITop");
         var tCIBottom = d3.select("#" + target.id + ".tukeyCIBottom");
         
-        var canvas = d3.select("#svgCanvas");
+        var canvas = d3.select("#plotCanvas");
         
         canvas.append("line")
                 .attr("x1", tCITop.attr("x1"))
@@ -866,7 +866,7 @@ function OnMouseOut(e)
     }
     else if(target.className.baseVal == "outliers")
     {
-        var canvas = d3.select("#svgCanvas");
+        var canvas = d3.select("#plotCanvas");
         var outlier = d3.select("#" + target.id + ".outliers");
         
         outlier.attr("r", outlierRadius).attr("stroke", "none");
@@ -875,7 +875,7 @@ function OnMouseOut(e)
     
     else if((target.className.baseVal == "TOPFringes") || (target.className.baseVal == "BOTTOMFringes"))
     {
-        var canvas = d3.select("#svgCanvas");
+        var canvas = d3.select("#plotCanvas");
         
         var tFringe = d3.select("#" + target.id + ".TOPFringes");
         var bFringe = d3.select("#" + target.id + ".BOTTOMFringes");

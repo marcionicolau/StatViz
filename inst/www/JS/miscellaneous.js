@@ -1,6 +1,6 @@
 function initiateLoadingDatasetAnimation()
 {
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
     
             
     loadingDataAnimation = setInterval(function()
