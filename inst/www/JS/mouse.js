@@ -20,7 +20,7 @@ function OnMouseDown(e)
               
         pickOutVisualizations();      
         makePlot(); //checks which plot is selected and draws that plot
-//         toggleFillColorsForVisualizations(); //manages the fill colors of vizualizations (only one at a time)
+        toggleFillColorsForVisualizations(); //manages the fill colors of vizualizations (only one at a time)
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && (target.className.baseVal == "visualizationHolderFront"))
@@ -148,17 +148,17 @@ function OnMouseDown(e)
             d3.select("#visualization.panel").attr("style", "height: " + 0 + "px;"); 
             d3.select("#visualizationPanelSVG").attr("height", 0);
             d3.select("#canvas").attr("style", "left: 0px; height: " + height + "px;");
-            d3.select("#plotCanvas").attr("height", height).attr("width", width);
+            d3.select("#plotCanvas").attr("height", height).attr("width", width-sideBarWidth);
         }
         else if(button.attr("xlink:href") == "images/fullscreenclick.png")
         {
             fullScreen = false;
             button.attr("xlink:href", "images/fullscreennormal.png");
-            d3.select("#variable.panel").attr("style", "width: " + (width - canvasWidth) + "px; height: " + height + "px;"); 
-            d3.select("#variablePanelSVG").attr("width", (width - canvasWidth));            
-            d3.select("#visualization.panel").attr("style", "width: " + canvasWidth + "px; height: " + height/3 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth) + "px;");                    
+            d3.select("#variable.panel").attr("style", "width: " + (width - canvasWidth - sideBarWidth) + "px; height: " + height + "px;"); 
+            d3.select("#variablePanelSVG").attr("width", (width - canvasWidth - sideBarWidth));            
+            d3.select("#visualization.panel").attr("style", "width: " + (canvasWidth + sideBarWidth) + "px; height: " + height/3 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth - sideBarWidth) + "px;");                    
             d3.select("#visualizationPanelSVG").attr("height", height/3);
-            d3.select("#canvas").attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth) + "px;");    
+            d3.select("#canvas").attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth - sideBarWidth) + "px;");    
             d3.select("#plotCanvas").attr("height", canvasHeight).attr("width", canvasWidth);
         }
     }
