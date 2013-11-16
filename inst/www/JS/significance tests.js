@@ -25,7 +25,7 @@ function performOneSampleTTest(variable, expectedMean)
                 //drawing stuff
                 removeElementsByClassName("completeLines");
                 
-                displaySignificanceTestResults();
+                displayOneSampleTTestResults();
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
