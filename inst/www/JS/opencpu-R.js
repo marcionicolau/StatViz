@@ -6,9 +6,7 @@ function loadFile(filePath)
                     filePath: filePath
                   }, function(output) {                   
     dataset = output.dataset;
-         
-         console.log(dataset);
-         return;
+    
     //render the variable names
     renderVariableNames(output.variableNames);
     variableNames = output.variableNames;
