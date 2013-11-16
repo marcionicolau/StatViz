@@ -223,6 +223,103 @@ function drawNormalityPlot(dependentVariable, level, type)
     
     makeHistogramWithDensityCurve(centerX - normalityPlotWidth/2, canvasHeight + normalityPlotOffset, normalityPlotWidth, normalityPlotHeight, dependentVariable, level, type);//left, top, histWidth, histHeight, dependentVariable, level;
 }
+
+function displayOneSampleTTestResults()
+{    
+    var cx = [];
+    var cy = [];
+
+    removeElementsByClassName("significanceTest");
+    
+    var means = document.getElementsByClassName("means");
+    var meanRefLines = [];
+    
+    var canvas = d3.select("#svgCanvas");
+
+    for(var i=0; i<means.length; i++)
+    {
+        if(means[i].getAttribute("fill") == meanColors["click"])
+        {								
+            cx.push(means[i].getAttribute("cx"));
+            cy.push(means[i].getAttribute("cy"));
+        
+            meanRefLines[i] = canvas.append("line")
+                                 .attr("x1", means[i].getAttribute("cx"))
+                                 .attr("y1", means[i].getAttribute("cy"))
+                                 .attr("x2", canvasWidth/2 + plotWidth/2)
+                                 .attr("y2", means[i].getAttribute("cy"))
+                                 .attr("stroke", meanColors["normal"])
+                                 .attr("stroke-dasharray","5,5")
+                                 .attr("id", "meanrefLine")
+                                 .attr("class", "significanceTest");
+                                 
+                            canvas.append("line")
+                                 .attr("x1", means[i].getAttribute("cx"))
+                                 .attr("y1", means[i].getAttribute("cy"))
+                                 .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
+                                 .attr("y2", means[i].getAttribute("cy"))
+                                 .attr("stroke", meanColors["normal"])
+                                 .attr("opacity", "0.45")
+                                 .attr("stroke-dasharray","5,5")
+                                 .attr("id", "meanrefLine")
+                                 .attr("class", "significanceTest");
+        }
+        else
+        {									
+            cx.splice(i, 1);
+            cy.splice(i, 1);								
+        }	
+    }
+    var cyMax = cy[0];
+    var cyMin = cy[0]; 
+
+    var x = canvasWidth/2 + plotWidth/2;
+    var y = cyMin;			 
+    var head = canvas.append("path")
+                  .attr("d", "M " + x + " " + y + " L " + (x-5)+ " " + (y+5) + " L " + (x+5) + " " + (y+5) + " z")
+                  .attr("stroke", "red")
+                  .attr("fill", "red")
+                  .attr("class", "significanceTest");
+        
+    var spaceOnRight = (canvasWidth - plotWidth)/2;
+    canvas.append("text")
+            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+            .attr("y", cyMax + significanceTestResultOffset)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "22px")
+            .attr("fill", "orange")
+            .text(testResults["method"])
+            .attr("class", "significanceTest");
+    
+    canvas.append("text")
+            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+            .attr("y", cyMax + 2*significanceTestResultOffset)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "22px")
+            .attr("fill", "orange")
+            .text(testResults["statistic"])
+            .attr("class", "significanceTest");
+    
+    canvas.append("text")
+            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+            .attr("y", cyMax + 3*significanceTestResultOffset)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "16px")
+            .attr("fill", "orange")
+            .text("p = " + testResults["p"])
+            .attr("class", "significanceTest");
+    
+    
+    //Effect sizes
+    canvas.append("text")
+            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+            .attr("y", (cyMin + cyMax)/2)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "24px")
+            .attr("fill", "orange")
+            .text(testResults["effect-size"])
+            .attr("class", "significanceTest");
+}
   
 function displaySignificanceTestResults()
 {    
