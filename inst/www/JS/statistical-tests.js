@@ -270,8 +270,8 @@ function displayOneSampleTTestResults()
             cy.splice(i, 1);								
         }	
     }
-    var cyMax = cy[0];
-    var cyMin = cy[0]; 
+    var cyMax = parseFloat(cy[0]);
+    var cyMin = parseFloat(cy[0]); 
 
     var x = canvasWidth/2 + plotWidth/2;
     var y = cyMin;			 
