@@ -1,9 +1,11 @@
 function compareMeans()
 {
     var completeLines = d3.selectAll(".completeLines");
+    var variableList = getSelectedVariables();    
     
     switch(document.getElementsByClassName("completeLines").length)
     {
+
         case 0:
                 //One sample t-test
                 if(variableList["dependent"].length == 1)
@@ -18,7 +20,6 @@ function compareMeans()
                     console.log("\t Significance test for 2 variables...\n\n");
 
                     //homoscedasticity
-                    var variableList = getSelectedVariables();
                     loadAssumptionCheckList();
                     
                     
@@ -54,8 +55,6 @@ function compareMeans()
                 //ANOVA
                 {
                     console.log("\t Significance test for more than 2 variables...\n\n");
-                                        
-                    var variableList = getSelectedVariables();
                     
                     loadAssumptionCheckList();                    
                     performNormalityTests();
