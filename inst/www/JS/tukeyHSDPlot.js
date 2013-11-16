@@ -49,6 +49,8 @@ function drawTukeyHSDPlot()
     var numberOfGroovesInXAxis = findNumberOfCombinations(levels.length,2);    
     var xStep = plotWidth/(numberOfGroovesInXAxis - 1);   
 
+    var index = 0;   
+        
     for(var i=0; i<levels.length; i++)
     {
         for(var j=i+1; j<levels.length; j++)
@@ -56,14 +58,14 @@ function drawTukeyHSDPlot()
             if(i != j)
             {  
                 canvas.append("line")
-                            .attr("x1", LEFT + (i+j-1)*xStep)
+                            .attr("x1", LEFT + (index)*xStep)
                             .attr("y1", BOTTOM  + axesOffset)
-                            .attr("x2", LEFT + (i+j-1)*xStep)
+                            .attr("x2", LEFT + (index)*xStep)
                             .attr("y2", BOTTOM + 10 + axesOffset)
                             .attr("class", "xAxisGrooves");
 
                 canvas.append("text")
-                            .attr("x", LEFT + (i+j-1)*xStep)
+                            .attr("x", LEFT + (index++)*xStep)
                             .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
                             .text(levels[i] + "-" + levels[j])
                             .attr("fill", "black")
@@ -109,8 +111,8 @@ function drawTukeyHSDPlot()
             .attr("y2", BOTTOM - getValue1(0, min, max)*plotHeight)
             .attr("stroke", "gold")
             .attr("class", "zeroLine");
-
-    var index = 0;        
+    
+    index = 0;
     for(var i=0; i<levels.length; i++)
     {
         for(var j=i+1; j<levels.length; j++)

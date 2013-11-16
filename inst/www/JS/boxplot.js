@@ -162,7 +162,6 @@ function makeBoxplot()
     
     //x-axis grooves           
     nGroovesX = labels.length;    
-    console.log(plotWidth/(labels.length*2));
     widthOfEachBox = plotWidth/(labels.length*2) > boxWidth ? boxWidth : plotWidth/(labels.length*2);
     
     console.log("boxWidth=" + boxWidth + ", widthOfEachBox=" + widthOfEachBox);
@@ -466,7 +465,7 @@ function redrawBoxPlot()
     }
     
     var xStep = plotWidth/nGroovesX;      
-    
+    widthOfEachBox = plotWidth/(labels.length*2) > boxWidth ? boxWidth : plotWidth/(labels.length*2);
     //y-axis grooves
     var yStep = plotHeight/(nGroovesY-1);
     var slice = (max - min)/(nGroovesY-1);    

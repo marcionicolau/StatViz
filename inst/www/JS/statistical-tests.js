@@ -68,21 +68,21 @@ function compareMeans()
 
 function loadAssumptionCheckList()
 {
-    var canvas = d3.select("#plotCanvas");
+    var canvas = d3.select("#sideBarCanvas");
     
     for(var i=0; i<assumptions.length; i++)
     {
         canvas.append("text")
-            .attr("x", canvasWidth/2 + plotWidth/2)
-            .attr("y", canvasHeight/2 - plotHeight/2 +i*assumptionsSpace)
-            .attr("font-size", "20px")
+            .attr("x", assumptionImageSize*2)
+            .attr("y", i*assumptionsSpace)
+            .attr("font-size", fontSizeLabels + "px")
             .attr("fill", meanColors["normal"])
             .text(assumptionsText[assumptions[i]])
             .attr("id", assumptions[i])
             .attr("class", "assumptions");
         canvas.append("image")
-            .attr("x", canvasWidth/2 + plotWidth/2 - assumptionImageSize)
-            .attr("y", canvasHeight/2 - plotHeight/2 + i*assumptionsSpace - assumptionImageSize/2 - 10)
+            .attr("x", 0)
+            .attr("y", i*assumptionsSpace - assumptionImageSize/2 - 10)
             .attr("text-anchor", "end")
             .attr("xlink:href", "images/tick.png")
             .attr("height", assumptionImageSize)            
@@ -91,8 +91,8 @@ function loadAssumptionCheckList()
             .attr("id", assumptions[i])
             .attr("class", "ticks");
         canvas.append("image")
-            .attr("x", canvasWidth/2 + plotWidth/2 - assumptionImageSize)
-            .attr("y", canvasHeight/2 - plotHeight/2 + i*assumptionsSpace - assumptionImageSize/2 - 10)
+            .attr("x", 0)
+            .attr("y", i*assumptionsSpace - assumptionImageSize/2 - 10)
             .attr("text-anchor", "end")
             .attr("xlink:href", "images/cross.png")
             .attr("height", assumptionImageSize)
