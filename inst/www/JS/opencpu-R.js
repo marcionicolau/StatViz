@@ -22,7 +22,6 @@ function loadFile(filePath)
         
         getData(dataset, output.variableNames[i]);                 
         getIQR(dataset, output.variableNames[i]);  
-        getCI(dataset, output.variableNames[i]);
     }
     
     
@@ -105,6 +104,11 @@ function getData(dataset, variableName, level)
         {
             setVariableTypes();
             setVariableDataTypes();
+            
+            for(var i=0; i<variableNames.length; i++)
+            {
+                CI[variableNames[i]]["dataset"] = findCI(variables[variableNames[i]]["dataset"]);   
+            }
             
             testForEvilVariables();
             
