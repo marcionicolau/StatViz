@@ -506,10 +506,7 @@ function getSelectedVariables()
     
     //add the dependent variable
     for(var i=0; i<currentVariableSelection.length; i++)
-    {
-        console.log(currentVariableSelection[i]);
-        console.log(variableTypes[currentVariableSelection[i]]);
-        
+    {        
         if(variableTypes[currentVariableSelection[i]] == "dependent")
         {
             variableList["dependent"].push(currentVariableSelection[i]);

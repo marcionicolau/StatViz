@@ -505,6 +505,7 @@ function findTransform(dependentVariable, independentVariable)
 
 function findTransformForDependentVariables(numericVariables)
 {
+    console.log("numeric variables = [" + numericVariables + "]");
     // Get variable names and their data type
     var req = opencpu.r_fun_json("findTransformForDependentVariables", {                    
                     dataset: dataset,
