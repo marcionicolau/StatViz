@@ -507,6 +507,8 @@ function getSelectedVariables()
     //add the dependent variable
     for(var i=0; i<currentVariableSelection.length; i++)
     {
+        console.log(variableTypes[currentVariableSelection[i]]);
+        
         if(variableTypes[currentVariableSelection[i]] == "dependent")
         {
             variableList["dependent"].push(currentVariableSelection[i]);
@@ -518,21 +520,25 @@ function getSelectedVariables()
     }    
     
     
+    
     //add the levels of the independent variable
-    for(var i=0; i<means.length; i++)
+    if(variableList["independent"].length > 0)
     {
-        if(means[i].getAttribute("fill") == meanColors["click"])
+        for(var i=0; i<means.length; i++)
         {
-            if(stringForNumber.indexOf(means[i].getAttribute("id")) != -1)
-            {                
-                variableList["independent-levels"].push(stringForNumber.indexOf(means[i].getAttribute("id")));
-            }
-            else
+            if(means[i].getAttribute("fill") == meanColors["click"])
             {
-                variableList["independent-levels"].push(means[i].getAttribute("id"));
+                if(stringForNumber.indexOf(means[i].getAttribute("id")) != -1)
+                {                
+                    variableList["independent-levels"].push(stringForNumber.indexOf(means[i].getAttribute("id")));
+                }
+                else
+                {
+                    variableList["independent-levels"].push(means[i].getAttribute("id"));
+                }
             }
-        }
-    }   
+        }   
+    }
     
     return variableList; 
 }
