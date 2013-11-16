@@ -409,6 +409,7 @@ function performNormalityTest(dist, dependentVariable, level)
                         d3.select("#normality.crosses").attr("display", "inline");                  
                         findTransformForDependentVariables();
                     }
+                    else
                     {
                         setDistribution(dependentVariable, level, false);
                     }
@@ -420,6 +421,7 @@ function performNormalityTest(dist, dependentVariable, level)
                         d3.select("#normality.ticks").attr("display", "inline");                          
                         performOneSampleTTest(variableList["dependent"][0]);
                     }
+                    else
                     {
                         setDistribution(dependentVariable, level, true);
                     }
