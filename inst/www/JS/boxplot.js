@@ -34,6 +34,8 @@ function makeBoxplot()
     min = Array.min(mins);
     max = Array.max(maxs);
     
+    console.log(min + ", " + max);
+    
     var labels;
     
     if(variableList["independent"].length == 1)
@@ -74,6 +76,7 @@ function makeBoxplot()
                                     .attr("stroke", "black")
                                     .attr("id", "yAxis")
                                     .attr("class", "axes");
+                                    
     if(variableList["independent"].length > 0)
     {
         canvas.append("text")
