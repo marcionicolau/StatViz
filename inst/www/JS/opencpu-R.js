@@ -592,15 +592,24 @@ function applyTransform(dependentVariable, level, last)
                     removeElementsByClassName("densityCurve");
                     var variableList = getSelectedVariables();
                     
-                    for(var i=0; i<variableList["independent-levels"].length; i++)
-                    {   
-                        if(distributions[dependentVariable][variableList["independent-levels"][i]] == false)
-                        {
-                            var mean = d3.select("#" + variableList["independent-levels"][i] + ".means");
-                            var centerX = mean.attr("cx");   
-                            makeHistogramWithDensityCurve(centerX - normalityPlotWidth/2, canvasHeight + normalityPlotOffset, normalityPlotWidth, normalityPlotHeight, variableList["dependent"][0], variableList["independent-levels"][i], "normal");//left, top, histWidth, histHeight, dependentVariable, level;
-                        }
-                    }                 
+                    if(variableList["independent"].length > 0)
+                    {
+                        for(var i=0; i<variableList["independent-levels"].length; i++)
+                        {   
+                            if(distributions[dependentVariable][variableList["independent-levels"][i]] == false)
+                            {
+                                var mean = d3.select("#" + variableList["independent-levels"][i] + ".means");
+                                var centerX = mean.attr("cx");   
+                                makeHistogramWithDensityCurve(centerX - normalityPlotWidth/2, canvasHeight + normalityPlotOffset, normalityPlotWidth, normalityPlotHeight, variableList["dependent"][0], variableList["independent-levels"][i], "normal");//left, top, histWidth, histHeight, dependentVariable, level;
+                            }
+                        }                 
+                    }
+                    else
+                    {
+                        var mean = d3.select("#" + variableList["dependent"][0] + ".means");
+                        var centerX = mean.attr("cx");   
+                        makeHistogramWithDensityCurve(centerX - normalityPlotWidth/2, canvasHeight + normalityPlotOffset, normalityPlotWidth, normalityPlotHeight, variableList["dependent"][0], variableList["independent-levels"][i], "normal");//left, top, histWidth, histHeight, dependentVariable, level;
+                    }
                     
                     removeElementsByClassName("transformToNormal");
                     removeElementsByClassName("completeLines");
@@ -614,12 +623,12 @@ function applyTransform(dependentVariable, level, last)
                     
                     d3.select("#svgCanvas").transition().delay(2000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
                     
-                    setTimer(function()
+                    setTimeout(function()
                     {
-                    if(variableList["independent"].length > 0)
-                        performHomoscedasticityTestNormal(dependentVariable, variableList["independent"][0]);
-                    else
-                        performOneSampleTTest(dependentVariable);
+                        if(variableList["independent"].length > 0)
+                            performHomoscedasticityTestNormal(dependentVariable, variableList["independent"][0]);
+                        else
+                            performOneSampleTTest(dependentVariable);
                     }, 1500);
                 }
             
