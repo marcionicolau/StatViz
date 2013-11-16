@@ -1,17 +1,5 @@
 var max, min, data, iqr, TOPFringe, BOTTOMFringe;
 
-
-    var altBoxPlot = false;
-    var data = [];
-    var mins = [];
-    var maxs = [];
-    var iqrs = [];
-    var medians = [];
-    var means = [];
-    var CIs = [];    
-    var levels = [];
-    
-
 function makeBoxplot()
 {
     //drawing
@@ -23,61 +11,142 @@ function makeBoxplot()
 
     var canvas = d3.select("#svgCanvas");
     
-    //get data    
-    var variableList = sort(currentVariableSelection);    
+    //initializations
+    var variableList = sort(currentVariableSelection);
     
-    getDataFromCurrentlySelectedVariables();
-    console.log(data);
-    console.log(mins);
-    console.log(maxs);
+    var altBoxPlot = false;
+    var data = [];
+    var mins = [];
+    var maxs = [];
+    var iqrs = [];
+    var medians = [];
+    var means = [];
+    var CIs = [];    
+    var levels = [];
+    var labels;
+    var nGroovesX, nGroovesY;
+    var ids = [];
+    var widthOfEachBox;
+    
+    //get data
+    if(currentVariableSelection.length > 1)
+    {
+        //if more than 2 variables are selected
+        switch(variableList["independent"].length)
+        {
+            case 0:
+                    {
+                        for(var i=0; i<variableList["dependent"].length; i++)
+                        {
+                            data[i] = variables[variableList["dependent"][i]]["dataset"];      
+                            mins[i] = MIN[variableList["dependent"][i]]["dataset"];      
+                            maxs[i] = MAX[variableList["dependent"][i]]["dataset"];      
+                            means[i] = mean(data[i]);
+                            medians[i] = median(data[i]);
+                            iqrs[i] = IQR[variableList["dependent"][i]]["dataset"]; 
+                            CIs[i] = CI[variableList["dependent"][i]]["dataset"]; 
+                        }
+                        
+                        break;                    
+                    }
+            case 1:
+                    {
+                        altBoxPlot = true;
+                        for(var i=0; i<variableList["independent-levels"].length; i++)
+                        {
+                            data[i] = variables[variableList["dependent"]][variableList["independent-levels"][i]];
+                            mins[i] = MIN[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            maxs[i] = MAX[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            means[i] = mean(data[i]);
+                            medians[i] = median(data[i]);
+                            iqrs[i] = IQR[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            CIs[i] = CI[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                        }
+                        break;
+                    }
+            case 2: 
+                    {
+                        altBoxPlot = true;
+                        var splitData = splitThisLevelBy(variableList["independent"][0], variableList["independent"][1], variableList["dependent"][0]);
+                        colourBoxPlotData = splitData;
+                        var index = 0;
+                        
+                        for(var i=0; i<variableList["independent-levels"][0].length; i++)
+                        {
+                            for(var j=0; j<variableList["independent-levels"][1].length; j++)
+                            {   
+
+                                levels.push(variableList["independent-levels"][0][i] + "-" + variableList["independent-levels"][1][j]);
+                            
+                                data[index] = splitData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][j]];                                
+                                mins[index] = Array.min(data[index]);
+                                maxs[index] = Array.max(data[index]);
+                                means[index] = mean(data[index]);
+                                medians[index] = median(data[index]);
+                                iqrs[index] = findIQR(data[index]);
+                                CIs[index] = findCI(data[index]);
+                                
+                                index++;
+                                
+                            }
+                        }
+                        
+                        break;                        
+                    }
+            default:
+                    {
+                        //this shouldn't happen!
+                    }
+        }
+    }
+    else
+    {
+        data[0] = variables[currentVariableSelection[0]]["dataset"];      
+        mins[0] = MIN[currentVariableSelection[0]]["dataset"];      
+        maxs[0] = MAX[currentVariableSelection[0]]["dataset"];
+        medians[0] = median(data[0]);
+        iqrs[0] = IQR[currentVariableSelection[0]]["dataset"];
+        CIs[0] = CI[currentVariableSelection[0]]["dataset"];
+        means[0] = mean(data[0]);  
+    }   
     
     min = Array.min(mins);
     max = Array.max(maxs);
     
-    console.log(min + ", " + max);
-    
-    var labels;
-    
-    if(variableList["independent"].length == 1)
-    {
-        levels = variableList["independent-levels"];
-    }      
-    
-    if(altBoxPlot == true)    
-    {
+    if(variableList["independent"].length == 1)    
+        levels = variableList["independent-levels"]; //otherwise the arrays are contained into independent-levels
+     
+    //alt boxplot is the one with independent variable
+    if(altBoxPlot)    
         labels = levels;
-    }    
     else    
-    {        
         labels = currentVariableSelection;
-    }
     
-    var ids = getValidIds(labels);
+    ids = getValidIds(labels);
 
-    // changeable
-    var nGroovesY = 10;
+    nGroovesY = numberOfGrooves;
     
-    // Draw axes
-        
-    var xAxis = canvas.append("line")
-                                    .attr("x1", LEFT)
-                                    .attr("y1", BOTTOM + axesOffset)
-                                    .attr("x2", RIGHT)
-                                    .attr("y2", BOTTOM + axesOffset) 
-                                    .attr("stroke", "black")
-                                    .attr("id", "xAxis")
-                                    .attr("class", "axes");
+    // Draw axes        
+    canvas.append("line")
+            .attr("x1", LEFT)
+            .attr("y1", BOTTOM + axesOffset)
+            .attr("x2", RIGHT)
+            .attr("y2", BOTTOM + axesOffset) 
+            .attr("stroke", "black")
+            .attr("id", "xAxis")
+            .attr("class", "axes");
     
-    var yAxis = canvas.append("line")
-                                    .attr("x1", LEFT - axesOffset)
-                                    .attr("y1", TOP)
-                                    .attr("x2", LEFT - axesOffset)
-                                    .attr("y2", BOTTOM)
-                                    .attr("stroke", "black")
-                                    .attr("id", "yAxis")
-                                    .attr("class", "axes");
-                                    
-    if(variableList["independent"].length > 0)
+    canvas.append("line")
+            .attr("x1", LEFT - axesOffset)
+            .attr("y1", TOP)
+            .attr("x2", LEFT - axesOffset)
+            .attr("y2", BOTTOM)
+            .attr("stroke", "black")
+            .attr("id", "yAxis")
+            .attr("class", "axes");
+
+    //axes labels
+    if(altBoxPlot)
     {
         canvas.append("text")
                 .attr("x", canvasWidth/2 - plotWidth/2 - 2*labelOffset)
@@ -88,27 +157,15 @@ function makeBoxplot()
                 .text(variableList["dependent"][0])
                 .attr("fill", "orange");
     }
-
-                                    
     
     //grooves
     
-    //x-axis grooves    
-    var nGroovesX;
-    var labels;
+    //x-axis grooves       
     
-    if(altBoxPlot == true)    
-    {
-        nGroovesX = levels.length;
-        labels = levels;
-    }    
-    else    
-    {
-        nGroovesX = currentVariableSelection.length;            
-        labels = currentVariableSelection;
-    }
+    nGroovesX = labels.length;    
+    widthOfEachBox = plotWidth/labels.length*2 > boxWidth ? boxWidth : plotWidth/labels.length*2;
+    var xStep = plotWidth/nGroovesX;  
     
-    var xStep = plotWidth/nGroovesX;   
 
     for(i=0; i<nGroovesX; i++)
     {
@@ -116,7 +173,7 @@ function makeBoxplot()
                     .attr("x1", LEFT + i*xStep + xStep/2)
                     .attr("y1", BOTTOM  + axesOffset)
                     .attr("x2", LEFT + i*xStep + xStep/2)
-                    .attr("y2", BOTTOM + 10 + axesOffset)
+                    .attr("y2", BOTTOM + tickLength + axesOffset)
                     .attr("id", ids[i])
                     .attr("class", "xAxisGrooves");
     
@@ -137,7 +194,7 @@ function makeBoxplot()
     for(i=0; i<nGroovesY; i++)
     {
         canvas.append("line")
-                    .attr("x1", LEFT - 10 - axesOffset)
+                    .attr("x1", LEFT - tickLength - axesOffset)
                     .attr("y1", BOTTOM - i*yStep)
                     .attr("x2", LEFT - axesOffset)
                     .attr("y2", BOTTOM - i*yStep)
@@ -155,16 +212,17 @@ function makeBoxplot()
     
     var widthSlice = plotWidth/(nGroovesX);
     
+    
     for(var i=0; i<nGroovesX; i++)
     {
         var rectBottom = (medians[i] - iqrs[i]/2) < min ? min : (medians[i] - iqrs[i]/2);
         var rectTop = (medians[i] + iqrs[i]/2) > max ? max : (medians[i] + iqrs[i]/2);
         
         boxes.push(canvas.append("rect")
-                    .attr("x", LEFT + i*widthSlice - boxWidth/2 + xStep/2)
+                    .attr("x", LEFT + i*widthSlice - widthOfEachBox/2 + xStep/2)
                     .attr("y", BOTTOM - getFraction(rectTop)*plotHeight)
                     .attr("height", getFraction(rectTop)*plotHeight - getFraction(rectBottom)*plotHeight)
-                    .attr("width", boxWidth)
+                    .attr("width", widthOfEachBox)
                     .attr("fill", boxColors["normal"])
                     .attr("stroke", "black")
                     .attr("id", ids[i])
@@ -172,9 +230,9 @@ function makeBoxplot()
                 
         // median
         medianLines.push(canvas.append("line")
-                    .attr("x1", LEFT + i*widthSlice - boxWidth/2 + xStep/2)
+                    .attr("x1", LEFT + i*widthSlice - widthOfEachBox/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(medians[i])*plotHeight)
-                    .attr("x2", LEFT + i*widthSlice + boxWidth/2 + xStep/2)
+                    .attr("x2", LEFT + i*widthSlice + widthOfEachBox/2 + xStep/2)
                     .attr("y2", BOTTOM - getFraction(medians[i])*plotHeight)
                     .attr("id", ids[i])
                     .attr("class", "medians"));
@@ -184,9 +242,9 @@ function makeBoxplot()
         TOPFringe = (medians[i] + 1.5*iqrs[i]) > max ? max : (medians[i] + 1.5*iqrs[i]);
     
         topFringes.push(canvas.append("line")
-                    .attr("x1", canvasWidth/2 - boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("x1", canvasWidth/2 - widthOfEachBox/4 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(TOPFringe)*plotHeight)
-                    .attr("x2", canvasWidth/2 + boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("x2", canvasWidth/2 + widthOfEachBox/4 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y2", BOTTOM - getFraction(TOPFringe)*plotHeight)
                     .attr("id", ids[i])
                     .attr("stroke-width", "2")
@@ -201,9 +259,9 @@ function makeBoxplot()
                     .attr("class", "TOPFringeConnectors"));    
     
         bottomFringes.push(canvas.append("line")
-                    .attr("x1", canvasWidth/2 - boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("x1", canvasWidth/2 - widthOfEachBox/4 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(BOTTOMFringe)*plotHeight)
-                    .attr("x2", canvasWidth/2 + boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("x2", canvasWidth/2 + widthOfEachBox/4 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y2", BOTTOM - getFraction(BOTTOMFringe)*plotHeight)
                     .attr("id", ids[i])
                     .attr("stroke-width", "2")
@@ -293,76 +351,75 @@ function redrawBoxPlot()
     var TOP = canvasHeight/2 - plotHeight/2;
     var BOTTOM = canvasHeight/2 + plotHeight/2;
     
-    getDataFromCurrentlySelectedVariables();
     
-    // var altBoxPlot = false;
-//     var data = [];
-//     var mins = [];
-//     var maxs = [];
-//     var iqrs = [];
-//     var medians = [];
-//     var means = [];
-//     var CIs = [];
-//     
-//     var variableList = getSelectedVariables(currentVariableSelection);
-//     
-//     if(currentVariableSelection.length > 1)
-//     {
-//         //if more than 2 variables are selected
-//         switch(variableList["independent"].length)
-//         {
-//             case 0:
-//                     {
-//                         for(var i=0; i<variableList["dependent"].length; i++)
-//                         {
-//                             data[i] = variables[variableList["dependent"][i]]["dataset"];      
-//                             mins[i] = MIN[variableList["dependent"][i]]["dataset"];      
-//                             maxs[i] = MAX[variableList["dependent"][i]]["dataset"];      
-//                             means[i] = mean(data[i]);
-//                             medians[i] = median(data[i]);
-//                             iqrs[i] = IQR[variableList["dependent"][i]]["dataset"]; 
-//                             CIs[i] = CI[variableList["dependent"][i]]["dataset"]; 
-//                         }
-//                         
-//                         break;                    
-//                     }
-//             case 1:
-//                     {
-//                         altBoxPlot = true;
-//                         for(var i=0; i<variableList["independent-levels"].length; i++)
-//                         {
-//                             data[i] = variables[variableList["dependent"][0]][variableList["independent-levels"][i]];
-//                             mins[i] = MIN[variableList["dependent"][0]][variableList["independent-levels"][i]];
-//                             maxs[i] = MAX[variableList["dependent"][0]][variableList["independent-levels"][i]];
-//                             means[i] = mean(data[i]);
-//                             medians[i] = median(data[i]);
-//                             iqrs[i] = IQR[variableList["dependent"][0]][variableList["independent-levels"][i]];
-//                             CIs[i] = CI[variableList["dependent"][0]][variableList["independent-levels"][i]];
-//                         }
-//                         break;
-//                     }
-//             case 2: 
-//                     {
-//                         altBoxPlot = true;
-//                         //color plot
-//                         break;                        
-//                     }
-//             default:
-//                     {
-//                         //this shouldn't happen!
-//                     }
-//         }
-//     }
-//     else
-//     {
-//         data[0] = variables[currentVariableSelection[0]]["dataset"];      
-//         mins[0] = MIN[currentVariableSelection[0]]["dataset"];      
-//         maxs[0] = MAX[currentVariableSelection[0]]["dataset"];
-//         medians[0] = median(data[0]);
-//         iqrs[0] = IQR[currentVariableSelection[0]]["dataset"];
-//         means[0] = mean(data[0]); 
-//         CIs[0] = CI[currentVariableSelection[0]]["dataset"];
-//     }   
+    var altBoxPlot = false;
+    var data = [];
+    var mins = [];
+    var maxs = [];
+    var iqrs = [];
+    var medians = [];
+    var means = [];
+    var CIs = [];
+    
+    var variableList = getSelectedVariables(currentVariableSelection);
+    
+    if(currentVariableSelection.length > 1)
+    {
+        //if more than 2 variables are selected
+        switch(variableList["independent"].length)
+        {
+            case 0:
+                    {
+                        for(var i=0; i<variableList["dependent"].length; i++)
+                        {
+                            data[i] = variables[variableList["dependent"][i]]["dataset"];      
+                            mins[i] = MIN[variableList["dependent"][i]]["dataset"];      
+                            maxs[i] = MAX[variableList["dependent"][i]]["dataset"];      
+                            means[i] = mean(data[i]);
+                            medians[i] = median(data[i]);
+                            iqrs[i] = IQR[variableList["dependent"][i]]["dataset"]; 
+                            CIs[i] = CI[variableList["dependent"][i]]["dataset"]; 
+                        }
+                        
+                        break;                    
+                    }
+            case 1:
+                    {
+                        altBoxPlot = true;
+                        for(var i=0; i<variableList["independent-levels"].length; i++)
+                        {
+                            data[i] = variables[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            mins[i] = MIN[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            maxs[i] = MAX[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            means[i] = mean(data[i]);
+                            medians[i] = median(data[i]);
+                            iqrs[i] = IQR[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            CIs[i] = CI[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                        }
+                        break;
+                    }
+            case 2: 
+                    {
+                        altBoxPlot = true;
+                        //color plot
+                        break;                        
+                    }
+            default:
+                    {
+                        //this shouldn't happen!
+                    }
+        }
+    }
+    else
+    {
+        data[0] = variables[currentVariableSelection[0]]["dataset"];      
+        mins[0] = MIN[currentVariableSelection[0]]["dataset"];      
+        maxs[0] = MAX[currentVariableSelection[0]]["dataset"];
+        medians[0] = median(data[0]);
+        iqrs[0] = IQR[currentVariableSelection[0]]["dataset"];
+        means[0] = mean(data[0]); 
+        CIs[0] = CI[currentVariableSelection[0]]["dataset"];
+    }   
     
     min = Array.min(mins);
     max = Array.max(maxs);
@@ -429,17 +486,17 @@ function redrawBoxPlot()
         var rectTop = (medians[i] + iqrs[i]/2) > max ? max : (medians[i] + iqrs[i]/2);
         
         boxes[i].transition().duration(boxPlotTransformationDuration)
-                    .attr("x", LEFT + i*widthSlice - boxWidth/2 + xStep/2)
+                    .attr("x", LEFT + i*widthSlice - widthOfEachBox/2 + xStep/2)
                     .attr("y", BOTTOM - getFraction(rectTop)*plotHeight)
                     .attr("height", getFraction(rectTop)*plotHeight - getFraction(rectBottom)*plotHeight)
-                    .attr("width", boxWidth)
+                    .attr("width", widthOfEachBox)
                     .attr("fill", boxColors["normal"]);
                 
         // median
         medianLines[i].transition().duration(boxPlotTransformationDuration)
-                    .attr("x1", LEFT + i*widthSlice - boxWidth/2 + xStep/2)
+                    .attr("x1", LEFT + i*widthSlice - widthOfEachBox/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(medians[i])*plotHeight)
-                    .attr("x2", LEFT + i*widthSlice + boxWidth/2 + xStep/2)
+                    .attr("x2", LEFT + i*widthSlice + widthOfEachBox/2 + xStep/2)
                     .attr("y2", BOTTOM - getFraction(medians[i])*plotHeight);
     
         //end fringes
@@ -447,9 +504,9 @@ function redrawBoxPlot()
         TOPFringe = (medians[i] + 1.5*iqrs[i]) > max ? max : (medians[i] + 1.5*iqrs[i]);
     
         topFringes[i].transition().duration(boxPlotTransformationDuration)
-                    .attr("x1", canvasWidth/2 - boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("x1", canvasWidth/2 - widthOfEachBox/4 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(TOPFringe)*plotHeight)
-                    .attr("x2", canvasWidth/2 + boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("x2", canvasWidth/2 + widthOfEachBox/4 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y2", BOTTOM - getFraction(TOPFringe)*plotHeight);
     
         topFringeConnectors[i].transition().duration(boxPlotTransformationDuration)
@@ -459,9 +516,9 @@ function redrawBoxPlot()
                     .attr("y2", BOTTOM- getFraction(rectTop)*plotHeight);    
     
         bottomFringes[i].transition().duration(boxPlotTransformationDuration)
-                    .attr("x1", canvasWidth/2 - boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("x1", canvasWidth/2 - widthOfEachBox/4 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y1", BOTTOM - getFraction(BOTTOMFringe)*plotHeight)
-                    .attr("x2", canvasWidth/2 + boxWidth/4 + i*widthSlice - plotWidth/2 + xStep/2)
+                    .attr("x2", canvasWidth/2 + widthOfEachBox/4 + i*widthSlice - plotWidth/2 + xStep/2)
                     .attr("y2", BOTTOM - getFraction(BOTTOMFringe)*plotHeight);
                 
         bottomFringeConnectors[i].transition().duration(boxPlotTransformationDuration)
@@ -579,89 +636,4 @@ function startLoopAnimation(meanCircle)
        loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.5").attr("stroke","lightgrey");
        loop.transition().delay(2500).attr("opacity", "0");
     },700);
-}
-
-function getDataFromCurrentlySelectedVariables()
-{
-    var variableList = sort(currentVariableSelection);    
-    if(currentVariableSelection.length > 1)
-    {
-        //if more than 2 variables are selected
-        switch(variableList["independent"].length)
-        {
-            case 0:
-                    {
-                        for(var i=0; i<variableList["dependent"].length; i++)
-                        {
-                            data[i] = variables[variableList["dependent"][i]]["dataset"];      
-                            mins[i] = MIN[variableList["dependent"][i]]["dataset"];      
-                            maxs[i] = MAX[variableList["dependent"][i]]["dataset"];      
-                            means[i] = mean(data[i]);
-                            medians[i] = median(data[i]);
-                            iqrs[i] = IQR[variableList["dependent"][i]]["dataset"]; 
-                            CIs[i] = CI[variableList["dependent"][i]]["dataset"]; 
-                        }
-                        
-                        break;                    
-                    }
-            case 1:
-                    {
-                        altBoxPlot = true;
-                        for(var i=0; i<variableList["independent-levels"].length; i++)
-                        {
-                            data[i] = variables[variableList["dependent"]][variableList["independent-levels"][i]];
-                            mins[i] = MIN[variableList["dependent"][0]][variableList["independent-levels"][i]];
-                            maxs[i] = MAX[variableList["dependent"][0]][variableList["independent-levels"][i]];
-                            means[i] = mean(data[i]);
-                            medians[i] = median(data[i]);
-                            iqrs[i] = IQR[variableList["dependent"][0]][variableList["independent-levels"][i]];
-                            CIs[i] = CI[variableList["dependent"][0]][variableList["independent-levels"][i]];
-                        }
-                        break;
-                    }
-            case 2: 
-                    {
-                        altBoxPlot = true;
-                        var splitData = splitThisLevelBy(variableList["independent"][0], variableList["independent"][1], variableList["dependent"][0]);
-                        colourBoxPlotData = splitData;
-                        var index = 0;
-                        
-                        for(var i=0; i<variableList["independent-levels"][0].length; i++)
-                        {
-                            for(var j=0; j<variableList["independent-levels"][1].length; j++)
-                            {   
-
-                                levels.push(variableList["independent-levels"][0][i] + "-" + variableList["independent-levels"][1][j]);
-                            
-                                data[index] = splitData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][j]];                                
-                                mins[index] = Array.min(data[index]);
-                                maxs[index] = Array.max(data[index]);
-                                means[index] = mean(data[index]);
-                                medians[index] = median(data[index]);
-                                iqrs[index] = findIQR(data[index]);
-                                CIs[index] = findCI(data[index]);
-                                
-                                index++;
-                                
-                            }
-                        }
-                        
-                        break;                        
-                    }
-            default:
-                    {
-                        //this shouldn't happen!
-                    }
-        }
-    }
-    else
-    {
-        data[0] = variables[currentVariableSelection[0]]["dataset"];      
-        mins[0] = MIN[currentVariableSelection[0]]["dataset"];      
-        maxs[0] = MAX[currentVariableSelection[0]]["dataset"];
-        medians[0] = median(data[0]);
-        iqrs[0] = IQR[currentVariableSelection[0]]["dataset"];
-        CIs[0] = CI[currentVariableSelection[0]]["dataset"];
-        means[0] = mean(data[0]);  
-    } 
 }
