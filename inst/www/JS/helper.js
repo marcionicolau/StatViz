@@ -802,8 +802,8 @@ function getNumericVariables()
     var numericVariables = [];
     
     for(var i=0; i<variableNames.length; i++)
-    {
-        if((variableDataTypes[i] != "nominal") || (variableDataTypes[i] != "ordinal"))
+    {   
+        if((variableDataTypes[variableNames[i]] != "nominal") || (variableDataTypes[variableNames[i]] != "ordinal"))
         {
             numericVariables.push(variableNames[i]);
         }
