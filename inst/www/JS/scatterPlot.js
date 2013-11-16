@@ -74,9 +74,9 @@ function makeScatterplot()
               
     canvas.append("text")
                 .attr("x", (LEFT + RIGHT)/2)
-                .attr("y", BOTTOM + axesOffset + 2*labelOffset)
+                .attr("y", BOTTOM + axesOffset + 1.25*labelOffset)
                 .attr("text-anchor", "middle")
-                .attr("font-size", "24px")
+                .attr("font-size", "20px")
                 .text(currentVariableSelection[0])
                 .attr("fill", "orange");
     
@@ -90,10 +90,10 @@ function makeScatterplot()
               .attr("class", "axes");
     
     canvas.append("text")
-                .attr("x", LEFT - axesOffset - 2*labelOffset)
+                .attr("x", LEFT - axesOffset - 2.5*labelOffset)
                 .attr("y", (TOP + BOTTOM)/2)
                 .attr("text-anchor", "middle")
-                .attr("transform", "rotate (-90 " + (LEFT - axesOffset - 2*labelOffset) + " " + ((TOP + BOTTOM)/2) + ")")
+                .attr("transform", "rotate (-90 " + (LEFT - axesOffset - 2.5*labelOffset) + " " + ((TOP + BOTTOM)/2) + ")")
                 .attr("font-size", "24px")
                 .text(currentVariableSelection[1])
                 .attr("fill", "orange");
