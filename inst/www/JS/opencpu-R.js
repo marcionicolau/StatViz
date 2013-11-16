@@ -612,12 +612,15 @@ function applyTransform(dependentVariable, level, last)
                     d3.select("#normality.ticks").attr("display", "inline");  
                     var variableList = sort(currentVariableSelection);                                        
                     
-                    d3.select("#svgCanvas").transition().delay(3000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
+                    d3.select("#svgCanvas").transition().delay(2000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
                     
+                    setTimer(function()
+                    {
                     if(variableList["independent"].length > 0)
                         performHomoscedasticityTestNormal(dependentVariable, variableList["independent"][0]);
                     else
                         performOneSampleTTest(dependentVariable);
+                    }, 1500);
                 }
             
                   
