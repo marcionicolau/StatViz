@@ -1,6 +1,7 @@
 // Correlation & Regression
 function getCorrelationCoefficient(variableA, variableB, method, noDisplay)
 {
+    console.log("method=" + method + "; noDisplay=" + noDisplay);
     var req = opencpu.r_fun_json("getCorrelationCoefficient", {
                     distributionX: variables[variableA]["dataset"],                    
                     distributionY: variables[variableB]["dataset"],
@@ -9,13 +10,13 @@ function getCorrelationCoefficient(variableA, variableB, method, noDisplay)
                 
                 if(method == "pearson")
                 {
-                    console.log("\t\t Pearson's Correlation-coefficient for (" + variableA + " , " + variableB + ")");
-                    console.log("\t\t\t t = " + output.statistic);
-                    console.log("\t\t\t p = " + output.p);
-                    console.log("\t\t\t method used = " + output.method);
-                    console.log("\t\t\t DF = " + output.df);
-                    console.log("\t\t\t r = " + output.cor);
-                    console.log("\t\t\t CI = [" + output.CI_min + ", " + output.CI_max + "]");
+                    console.log("\t\t\t Pearson's Correlation-coefficient for (" + variableA + " , " + variableB + ")");
+                    console.log("\t\t\t\t t = " + output.statistic);
+                    console.log("\t\t\t\t p = " + output.p);
+                    console.log("\t\t\t\t method used = " + output.method);
+                    console.log("\t\t\t\t DF = " + output.df);
+                    console.log("\t\t\t\t r = " + output.cor);
+                    console.log("\t\t\t\t CI = [" + output.CI_min + ", " + output.CI_max + "]");
 
                     testResults["df"] = output.df;
                     testResults["statistic"] = "t(" + output.df + ") = " + output.statistic;
@@ -42,11 +43,11 @@ function getCorrelationCoefficient(variableA, variableB, method, noDisplay)
                 }
                 else if(method == "kendall")
                 {
-                    console.log("\t\t Kendall's Correlation-coefficient for (" + variableA + " , " + variableB + ")");
-                    console.log("\t\t\t z = " + output.statistic);
-                    console.log("\t\t\t p = " + output.p);
-                    console.log("\t\t\t method used = " + output.method);
-                    console.log("\t\t\t Tau = " + output.cor);
+                    console.log("\t\t\t Kendall's Correlation-coefficient for (" + variableA + " , " + variableB + ")");
+                    console.log("\t\t\t\t z = " + output.statistic);
+                    console.log("\t\t\t\t p = " + output.p);
+                    console.log("\t\t\t\t method used = " + output.method);
+                    console.log("\t\t\t\t Tau = " + output.cor);
 
                     testResults["statistic"] = "z = " + output.statistic;
                     testResults["p"] = output.p;                  

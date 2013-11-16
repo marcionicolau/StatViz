@@ -426,8 +426,6 @@ function getValidIds(labels)
             break;
         }            
     }    
-    
-    console.log("validIds = " + validIds);
     if(!validIds)
     {
         return convertIntegersToStrings(labels);        
@@ -447,8 +445,6 @@ function getValidId(label)
     {
         validId = false;    
     }       
-    
-    console.log("validId = " + validId);
     if(!validId)
     {
         var string = "";
@@ -666,8 +662,6 @@ function setVariableTypes()
     {
         variableTypes[variableNames[i]] = sessionStorage.getItem(variableNames[i]);
     }
-    
-    console.dir(variableTypes);
     
     for(var i=0; i<variableNames.length; i++)
     {

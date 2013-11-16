@@ -1,6 +1,7 @@
 function findCorrelationCoefficient(variableA, variableB, noDisplay)
 {
-    console.log("type of variable 1: " + variableDataTypes[variableA] + ", type of variable 2: " + variableDataTypes[variableB]);
+    console.log("CORRELATION");
+    console.log("\t\ttype of variable 1: " + variableDataTypes[variableA] + ", type of variable 2: " + variableDataTypes[variableB]);
     
     
     if((variableDataTypes[variableA] == "binary") && (variableDataTypes[variableB] == "binary"))
@@ -8,7 +9,7 @@ function findCorrelationCoefficient(variableA, variableB, noDisplay)
         //both are binary 
         
         //2x2 => Phi; Cramer's V otherwise
-        console.log("Cramer's V");
+        console.log("\t\t\tCramer's V");
         return -1;
     }
     else if(((variableDataTypes[variableA] == "binary") || (variableDataTypes[variableB] == "binary")) && ((variableDataTypes[variableA] != "binary") || (variableDataTypes[variableB] != "binary")))
@@ -21,12 +22,12 @@ function findCorrelationCoefficient(variableA, variableB, noDisplay)
         {
             if(!isNaN(variables[variableA]["dataset"][0]))
             {
-                console.log("Biserial Correlation Coefficient");
+                console.log("\t\t\tBiserial Correlation Coefficient");
                 getBiserialCorrelationCoefficient(variableB, variableA);
             }
             else
             {   
-                console.log("Doing nothing");
+                console.log("\t\t\tDoing nothing");
                 return -1;
             }
         }
@@ -34,12 +35,12 @@ function findCorrelationCoefficient(variableA, variableB, noDisplay)
         {
             if(!isNaN(variables[variableB]["dataset"][0]))
             {
-                console.log("Biserial Correlation Coefficient");
+                console.log("\t\t\tBiserial Correlation Coefficient");
                 getBiserialCorrelationCoefficient(variableA, variableB);
             }
             else
             {
-                console.log("Doing nothing");
+                console.log("\t\t\tDoing nothing");
                 return -1;
             }            
         }
@@ -50,18 +51,18 @@ function findCorrelationCoefficient(variableA, variableB, noDisplay)
         
         if(((variableDataTypes[variableA] == "ordinal") || (variableDataTypes[variableB] == "ordinal")) && ((variableDataTypes[variableA] != "nominal") && (variableDataTypes[variableB] != "nominal")))
         {
-            console.log("Kendall's Tau");            
+            console.log("\t\t\tKendall's Tau");            
             getCorrelationCoefficient(variableA, variableB, "kendall", noDisplay);
         }
         else if((variableDataTypes[variableA] == "nominal") || (variableDataTypes[variableB] == "nominal"))
         {
             //do nothing
-            console.log("doing nothing");
+            console.log("\t\t\tDoing nothing");
             return -1;
         }
         else
         {
-            console.log("Pearson's correlation");
+            console.log("\t\t\tPearson's correlation");
             getCorrelationCoefficient(variableA, variableB, "pearson", noDisplay);
         }
     }

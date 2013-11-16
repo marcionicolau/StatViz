@@ -365,7 +365,6 @@ function makeHistogram()
         }
 
         var yStep;
-        console.log(individualPlotHeight);
         for(i=0; i<labels.length; i++)
         {
             yStep = individualPlotHeight/(nGroovesY-1);
