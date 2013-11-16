@@ -109,7 +109,8 @@ function drawTukeyHSDPlot()
             .attr("y2", BOTTOM - getValue1(0, min, max)*plotHeight)
             .attr("stroke", "gold")
             .attr("class", "zeroLine");
-            
+
+    var index = 0;        
     for(var i=0; i<levels.length; i++)
     {
         for(var j=i+1; j<levels.length; j++)
@@ -118,7 +119,7 @@ function drawTukeyHSDPlot()
             {                            
                 var x1, y1, x2, y2;
                 
-                x1 = x2 = LEFT + (i+j-1)*xStep;
+                x1 = x2 = LEFT + (index)*xStep;
                 y1 = BOTTOM - getValue1(tukeyResults[levels[i]][levels[j]]["lower"], min, max)*plotHeight;        
                 y2 = BOTTOM - getValue1(tukeyResults[levels[i]][levels[j]]["upper"], min, max)*plotHeight;        
                 
@@ -160,7 +161,7 @@ function drawTukeyHSDPlot()
                 
                 var x,y;
 
-                x = LEFT + (i+j-1)*xStep;
+                x = LEFT + (index++)*xStep;
                 y = BOTTOM - getValue1(tukeyResults[levels[i]][levels[j]]["difference"], min, max)*plotHeight;        
 
                 canvas.append("circle")
