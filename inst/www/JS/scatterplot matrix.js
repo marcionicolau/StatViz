@@ -7,6 +7,7 @@ function makeScatterplotMatrix()
 {
     var variableList = sort(currentVariableSelection);
     
+    
     //any number of dependent variables -> should work
     var numberOfVariables = currentVariableSelection.length;
     
