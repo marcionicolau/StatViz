@@ -567,7 +567,7 @@ function sort(list)
 
 function drawDialogBoxToGetCausalAndPredictorVariables()
 {
-    var canvas = d3.select("#svgCanvas");
+    var canvas = d3.select("#plotCanvas");
     
     var dialogBoxHeight = plotHeight/2;
     var dialogBoxWidth = plotWidth/2;

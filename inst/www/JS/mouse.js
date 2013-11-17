@@ -342,11 +342,7 @@ function OnMouseDown(e)
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "regression")
     {
         setup(e, target);
-        
-        var regressionCircle = d3.select("#circle.regression");
-        var regressionText = d3.select("#text.regression");
-        
-        regressionCircle.transition().duration(2000).attr("opacity", "0.1");
+        removeElementsByClassName("regression");
         
         drawDialogBoxToGetCausalAndPredictorVariables();
     }
