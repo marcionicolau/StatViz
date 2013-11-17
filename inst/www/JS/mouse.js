@@ -93,7 +93,17 @@ function OnMouseDown(e)
                                .attr("stroke", meanColors["click"])
                                .attr("class", "completeLines");
             }
-        
+            var means = document.getElementsByClassName("means");
+            
+            for(var i=0; i<means.length; i++)
+            {
+                if(means[i].getAttribute("fill") == meanColors["normal"])
+                {
+                    console.log("starting animation for mean with id = " + means[i].getAttribute("id"));
+                    var thisMean = d3.select("#" + means[i].getAttribute("id") + ".means");
+                    startLoopingAnimation(thisMean);       
+                }
+            }
             //if we still have means to select, start an incomplete line
             if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means").length - 1))
             {
@@ -131,6 +141,7 @@ function OnMouseDown(e)
                 .attr("class", "compareNow");
         
         setOpacityForElementsWithClassNames(["IQRs","medians", "TOPFringes", "BOTTOMFringes", "TOPFringeConnectors", "BOTTOMFringeConnectors", "outliers", "CIs", "CITopFringes", "CIBottomFringes"], 0.1);
+        d3.selectAll(".means").attr("r", engorgedMeanRadius);
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "transformToNormal")

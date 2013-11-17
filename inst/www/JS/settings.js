@@ -83,7 +83,8 @@ var histDistanceBetweenLegendAndText = scaleForWindowSize(15);
 // Boxplots
 var boxWidth = scaleForWindowSize(75);
 var intervals = new Object(); //for keeping track of animations
-var meanRadius = scaleForWindowSize(7) < 5 ? 5 : scaleForWindowSize(7);
+var meanRadius = scaleForWindowSize(5) < 5 ? 5 : scaleForWindowSize(5);
+var engorgedMeanRadius = scaleForWindowSize(10) < 7 ? 7 : scaleForWindowSize(10);
 var outlierRadius = 2;
 
 var boxColors = new Object();
