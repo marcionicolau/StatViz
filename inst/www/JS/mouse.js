@@ -520,6 +520,7 @@ function OnMouseOver(e)
             {
                 incompleteLines.attr("x2", meanCircle.attr("cx"))
                                 .attr("y2", meanCircle.attr("cy"))
+                                .attr("display", "inline")
                                 .attr("stroke", meanColors["hover"]);
             }
         }
