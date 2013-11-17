@@ -347,13 +347,17 @@ function makeBoxplot()
 
 function redrawBoxPlot()
 {
-    //boundaries    
     var LEFT = canvasWidth/2 - plotWidth/2;
     var RIGHT = canvasWidth/2 + plotWidth/2;
     
     var TOP = canvasHeight/2 - plotHeight/2;
     var BOTTOM = canvasHeight/2 + plotHeight/2;
+
+    var canvas = d3.select("#plotCanvas");
+    drawCompareMeansButton();
     
+    //initializations
+    var variableList = sort(currentVariableSelection);
     
     var altBoxPlot = false;
     var data = [];
@@ -362,10 +366,14 @@ function redrawBoxPlot()
     var iqrs = [];
     var medians = [];
     var means = [];
-    var CIs = [];
+    var CIs = [];    
+    var levels = [];
+    var labels;
+    var nGroovesX, nGroovesY;
+    var ids = [];
+    var widthOfEachBox;
     
-    var variableList = getSelectedVariables(currentVariableSelection);
-    
+    //get data
     if(currentVariableSelection.length > 1)
     {
         //if more than 2 variables are selected
@@ -391,7 +399,7 @@ function redrawBoxPlot()
                         altBoxPlot = true;
                         for(var i=0; i<variableList["independent-levels"].length; i++)
                         {
-                            data[i] = variables[variableList["dependent"][0]][variableList["independent-levels"][i]];
+                            data[i] = variables[variableList["dependent"]][variableList["independent-levels"][i]];
                             mins[i] = MIN[variableList["dependent"][0]][variableList["independent-levels"][i]];
                             maxs[i] = MAX[variableList["dependent"][0]][variableList["independent-levels"][i]];
                             means[i] = mean(data[i]);
@@ -404,7 +412,30 @@ function redrawBoxPlot()
             case 2: 
                     {
                         altBoxPlot = true;
-                        //color plot
+                        var splitData = splitThisLevelBy(variableList["independent"][0], variableList["independent"][1], variableList["dependent"][0]);
+                        colourBoxPlotData = splitData;
+                        var index = 0;
+                        
+                        for(var i=0; i<variableList["independent-levels"][0].length; i++)
+                        {
+                            for(var j=0; j<variableList["independent-levels"][1].length; j++)
+                            {   
+
+                                levels.push(variableList["independent-levels"][0][i] + "-" + variableList["independent-levels"][1][j]);
+                            
+                                data[index] = splitData[variableList["independent-levels"][0][i]][variableList["independent-levels"][1][j]];                                
+                                mins[index] = Array.min(data[index]);
+                                maxs[index] = Array.max(data[index]);
+                                means[index] = mean(data[index]);
+                                medians[index] = median(data[index]);
+                                iqrs[index] = findIQR(data[index]);
+                                CIs[index] = findCI(data[index]);
+                                
+                                index++;
+                                
+                            }
+                        }
+                        
                         break;                        
                     }
             default:
@@ -420,56 +451,70 @@ function redrawBoxPlot()
         maxs[0] = MAX[currentVariableSelection[0]]["dataset"];
         medians[0] = median(data[0]);
         iqrs[0] = IQR[currentVariableSelection[0]]["dataset"];
-        means[0] = mean(data[0]); 
         CIs[0] = CI[currentVariableSelection[0]]["dataset"];
+        means[0] = mean(data[0]);  
     }   
     
     min = Array.min(mins);
     max = Array.max(maxs);
     
-    
-    var labels;
-    var levels = variableList["independent-levels"];
-    
-    if(altBoxPlot == true)    
-    {
+    if(variableList["independent"].length == 1)    
+        levels = variableList["independent-levels"]; //otherwise the arrays are contained into independent-levels
+     
+    //alt boxplot is the one with independent variable
+    if(altBoxPlot)    
         labels = levels;
-    }    
     else    
-    {        
         labels = currentVariableSelection;
-    }
     
-    var ids = getValidIds(labels);
-    
-    var canvas = d3.select("#plotCanvas");
+    ids = getValidIds(labels);
 
-    // changeable
-    var nGroovesY = 10;             
+    nGroovesY = numberOfGrooves;
+    
+    // Draw axes        
+    canvas.append("line")
+            .attr("x1", LEFT)
+            .attr("y1", BOTTOM + axesOffset)
+            .attr("x2", RIGHT)
+            .attr("y2", BOTTOM + axesOffset) 
+            .attr("stroke", "black")
+            .attr("id", "xAxis")
+            .attr("class", "axes");
+    
+    canvas.append("line")
+            .attr("x1", LEFT - axesOffset)
+            .attr("y1", TOP)
+            .attr("x2", LEFT - axesOffset)
+            .attr("y2", BOTTOM)
+            .attr("stroke", "black")
+            .attr("id", "yAxis")
+            .attr("class", "axes");
+
+    //axes labels
+    if(altBoxPlot)
+    {
+        canvas.append("text")
+                .attr("x", canvasWidth/2 - plotWidth/2 - 1.5*labelOffset)
+                .attr("y", (TOP + BOTTOM)/2)
+                .attr("text-anchor", "middle")
+                .attr("transform", "rotate (-90 " + (LEFT - axesOffset - 1.5*labelOffset) + " " + ((TOP + BOTTOM)/2) + ")")
+                .attr("font-size", fontSizeLabels + "px")
+                .text(variableList["dependent"][0])
+                .attr("fill", "orange");
+    }
     
     //grooves
     
-    //x-axis grooves    
-    var nGroovesX;
-    var labels;
-    
-    if(altBoxPlot == true)    
-    {
-        nGroovesX = levels.length;
-        labels = levels;
-    }    
-    else    
-    {
-        nGroovesX = currentVariableSelection.length;            
-        labels = currentVariableSelection;
-    }
-    
-    var xStep = plotWidth/nGroovesX;      
+    //x-axis grooves           
+    nGroovesX = labels.length;    
     widthOfEachBox = plotWidth/(labels.length*2) > boxWidth ? boxWidth : plotWidth/(labels.length*2);
+    
+    var xStep = plotWidth/nGroovesX; 
+    
     //y-axis grooves
     var yStep = plotHeight/(nGroovesY-1);
     var slice = (max - min)/(nGroovesY-1);    
-    
+
     for(i=0; i<nGroovesY; i++)
     {
         yAxisTexts[i].transition().duration(boxPlotTransformationDuration)        
