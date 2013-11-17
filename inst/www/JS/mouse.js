@@ -250,8 +250,27 @@ function OnMouseDown(e)
         var canvas = d3.select("#plotCanvas");
         var variableList = getSelectedVariables();
         
-        var inText = variableList["independent"].length > 0 ? "SELECT TWO OR MORE MEANS" : "SELECT ONE OR MORE MEANS";    
-        drawButtonInSideBar(inText, "compareNow");
+        var inText = variableList["independent"].length > 0 ? "SELECT TWO OR MORE MEANS" : "SELECT ONE OR MORE MEANS";             
+    
+        canvas.append("rect")
+                .attr("x", canvasWidth/2 - 1.5*buttonWidth)
+                .attr("y", 0)
+                .attr("width", 1.5*buttonWidth)
+                .attr("height", buttonHeight)
+                .attr("rx", "5")
+                .attr("ry", "5")
+                .attr("fill", buttonColors["normal"])
+                .attr("stroke", "black")
+                .attr("id", "button")
+                .attr("class", "compareNow");
+    
+        canvas.append("text")
+                .attr("x", canvasWidth/2)
+                .attr("y", buttonHeight/2 + yAxisTickTextOffset)
+                .attr("text-anchor", "middle")
+                .text(inText)
+                .attr("id", "text")
+                .attr("class", "compareNow");                
         
         setOpacityForElementsWithClassNames(["IQRs","medians", "TOPFringes", "BOTTOMFringes", "TOPFringeConnectors", "BOTTOMFringeConnectors", "outliers", "CIs", "CITopFringes", "CIBottomFringes"], 0.1);
         d3.selectAll(".means").attr("r", engorgedMeanRadius);

@@ -56,7 +56,7 @@
 
 // Buttons
 var buttonColors = new Object();   
-    buttonColors["normal"] = "Orchid";
+    buttonColors["normal"] = "LightSkyBlue";
     buttonColors["hover"] = "lightgrey";
     buttonColors["click"] = "BlanchedAlmond";
     buttonColors["independent"] = "Peru";
