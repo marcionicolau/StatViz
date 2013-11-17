@@ -334,8 +334,10 @@ function toggleFillColorsForVisualizations()
 function validateAll()
 {
     var visualizations = d3.selectAll(".invalid");
+    var vizText = d3.selectAll("#" + visualizations.attr("id") + ".visualizationHolderText");
     
-    visualizations.attr("fill", panelColors.normal).attr("opacity", "0.1").attr("class", "visualizationHolderFront");                 
+    visualizations.attr("fill", panelColors.normal).attr("opacity", "0.1").attr("class", "visualizationHolderFront");                     
+    vizText.attr("fill", "black");
 }
 
 function invalidate(list)
@@ -346,6 +348,9 @@ function invalidate(list)
     {
         var viz = d3.select("#" + list[i] + ".visualizationHolderFront");
         viz.attr("fill", "black").attr("opacity", "0.9").attr("class", "invalid");
+        
+        var vizText = d3.select("#" + list[i] + ".visualizationHolderText");
+        vizText.attr("fill", "white");        
     }
 }
 //Strings/numbers processing
