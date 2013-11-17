@@ -82,7 +82,7 @@ function OnMouseDown(e)
             //if there are 2+ means            
             
             meanCircle.attr("fill", meanColors["click"]);
-            clearInterval(intervals[meanCircle.attr("id")]);
+//             clearInterval(intervals[meanCircle.attr("id")]);
             
             //check if we are finishing an incomplete line here
             if(document.getElementsByClassName("incompleteLines").length > 0)
@@ -96,15 +96,15 @@ function OnMouseDown(e)
             }
             var means = document.getElementsByClassName("means");
             
-            for(var i=0; i<means.length; i++)
-            {
-                if(means[i].getAttribute("fill") == meanColors["normal"])
-                {
-                    console.log("starting animation for mean with id = " + means[i].getAttribute("id"));
-                    var thisMean = d3.select("#" + means[i].getAttribute("id") + ".means");
-                    startLoopAnimation(thisMean);       
-                }
-            }
+//             for(var i=0; i<means.length; i++)
+//             {
+//                 if(means[i].getAttribute("fill") == meanColors["normal"])
+//                 {
+//                     console.log("starting animation for mean with id = " + means[i].getAttribute("id"));
+//                     var thisMean = d3.select("#" + means[i].getAttribute("id") + ".means");
+//                     startLoopAnimation(thisMean);       
+//                 }
+//             }
             //if we still have means to select, start an incomplete line
             if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means").length - 1))
             {
@@ -492,7 +492,7 @@ function OnMouseOver(e)
             if(meanCircle.attr("fill") == meanColors["normal"])
                 meanCircle.attr("fill", meanColors["hover"]);
             
-            startLoopAnimation(meanCircle);
+            // startLoopAnimation(meanCircle);
             
             var incompleteLines = d3.selectAll(".incompleteLines");
             
