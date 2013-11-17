@@ -39,3 +39,30 @@ function drawFullScreenButton()
                 .attr("style", "opacity: 1.0;")
                 .attr("class", "fullscreen");
 }
+
+function drawButtonInSideBar(buttonText, className, offset)
+{
+    if(offset == undefined)
+        offset = 1;
+    var canvas = d3.select("#sideBarCanvas");
+    
+    canvas.append("rect")
+            .attr("x", 0)
+            .attr("y", offset*buttonOffset)
+            .attr("width", sideBarWidth)
+            .attr("height", buttonHeight)
+            .attr("rx", sideBarWidth/10)
+            .attr("ry", sideBarWidth/10)
+            .attr("fill", buttonColors["normal"])
+            .attr("stroke", "black")
+            .attr("id", "button")
+            .attr("class", className);
+    
+    canvas.append("text")
+            .attr("x", sideBarWidth/2)
+            .attr("y", offset*buttonOffset + buttonHeight/2 + yAxisTickTextOffset)
+            .attr("text-anchor", "middle")
+            .text(buttonText)
+            .attr("id", "text")
+            .attr("class", className); 
+}

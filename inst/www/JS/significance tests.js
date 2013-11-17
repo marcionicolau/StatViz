@@ -386,7 +386,7 @@ function findEffect(dependentVariable, independentVariables)
                 }
                 interactions = output.fit;
                 
-                drawInteractionEffectButton();
+                drawButtonInSideBar("INTERACTION EFFECT", "interactionEffect");
                 //drawing stuff
 //                 removeElementsByClassName("completeLines");           
 // 

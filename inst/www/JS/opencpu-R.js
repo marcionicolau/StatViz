@@ -434,28 +434,7 @@ function findTransform(dependentVariable, independentVariable)
                     console.log("type=" + output.type);
                     transformationType = output.type;
                     //offer choice
-                    var canvas = d3.select("#sideBarCanvas");
-                    
-                    canvas.append("rect")
-                            .attr("x", 0)
-                            .attr("y", buttonOffset)
-                            .attr("width", buttonWidth)
-                            .attr("height", buttonHeight)
-                            .attr("rx", 5)
-                            .attr("ry", 5)
-                            .attr("fill", buttonColors["normal"])
-                            .attr("stroke", "black")
-                            .attr("id", "button")
-                            .attr("class", "transformToNormal");
-                    
-                    canvas.append("text")
-                            .attr("x", sideBarWidth/2)
-                            .attr("y", buttonOffset + buttonHeight/2 + yAxisTickTextOffset)
-                            .attr("text-anchor", "middle")
-                            .attr("font-size", fontSizeLabels + "px")
-                            .text("TRANSFORM TO NORMAL DISTRIBUTIONS")
-                            .attr("id", "text")
-                            .attr("class", "transformToNormal");
+                    drawButtonInSideBar("TRANSFORM TO NORMAL DISTRIBUTIONS", "transformToNormal");
                 }
                   
       }).fail(function(){
@@ -496,28 +475,7 @@ function findTransformForDependentVariables(numericVariables)
                     
                     transformationType = output.type;
                     //offer choice
-                    var canvas = d3.select("#sideBarCanvas");
-                    
-                    canvas.append("rect")
-                            .attr("x", 0)
-                            .attr("y", buttonOffset)
-                            .attr("width", buttonWidth)
-                            .attr("height", buttonHeight)
-                            .attr("rx", 5)
-                            .attr("ry", 5)
-                            .attr("fill", buttonColors["normal"])
-                            .attr("stroke", "black")
-                            .attr("id", "button")
-                            .attr("class", "transformToNormal");
-                    
-                    canvas.append("text")
-                            .attr("x", sideBarWidth/2)
-                            .attr("y", buttonOffset + buttonHeight/2 + yAxisTickTextOffset)
-                            .attr("text-anchor", "middle")
-                            .attr("font-size", fontSizeLabels + "px")
-                            .text("TRANSFORM TO NORMAL DISTRIBUTIONS")
-                            .attr("id", "text")
-                            .attr("class", "transformToNormal");                            
+                    drawButtonInSideBar("TRANSFORM TO NORMAL DISTRIBUTIONS", "transformToNormal");                         
                 }
                   
       }).fail(function(){

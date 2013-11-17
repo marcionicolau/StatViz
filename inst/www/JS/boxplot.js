@@ -354,7 +354,7 @@ function redrawBoxPlot()
     var BOTTOM = canvasHeight/2 + plotHeight/2;
 
     var canvas = d3.select("#plotCanvas");
-    drawCompareMeansButton();
+    drawButtonInSideBar("COMPARE MEANS", "compareMean");
     
     //initializations
     var variableList = sort(currentVariableSelection);
@@ -684,29 +684,4 @@ function startLoopAnimation(meanCircle)
        loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.5").attr("stroke","lightgrey");
        loop.transition().delay(2500).attr("opacity", "0");
     },700);
-}
-
-function drawCompareMeansButton()
-{
-    var canvas = d3.select("#sideBarCanvas");
-    
-    canvas.append("rect")
-            .attr("x", 0)
-            .attr("y", buttonOffset)
-            .attr("width", sideBarWidth)
-            .attr("height", buttonHeight)
-            .attr("rx", sideBarWidth/10)
-            .attr("ry", sideBarWidth/10)
-            .attr("fill", buttonColors["normal"])
-            .attr("stroke", "black")
-            .attr("id", "button")
-            .attr("class", "compareMeans");
-    
-    canvas.append("text")
-            .attr("x", sideBarWidth/2)
-            .attr("y", buttonOffset + buttonHeight/2 + yAxisTickTextOffset)
-            .attr("text-anchor", "middle")
-            .text("COMPARE MEANS")
-            .attr("id", "text")
-            .attr("class", "compareMeans");            
 }

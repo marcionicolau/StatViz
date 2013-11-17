@@ -250,27 +250,8 @@ function OnMouseDown(e)
         var canvas = d3.select("#plotCanvas");
         var variableList = getSelectedVariables();
         
-        canvas.append("rect")
-                .attr("x", canvasWidth/2 - buttonWidth*0.75)
-                .attr("y", 0)
-                .attr("width", 1.5*buttonWidth)
-                .attr("height", buttonHeight)
-                .attr("rx", 5)
-                .attr("ry", 5)
-                .attr("fill", buttonColors["normal"])
-                .attr("stroke", "black")
-                .attr("id", "button")
-                .attr("class", "compareNow");
-        
-        var inText = variableList["independent"].length > 0 ? "SELECT TWO OR MORE MEANS" : "SELECT ONE OR MORE MEANS";
-        
-        canvas.append("text")
-                .attr("x", canvasWidth/2)
-                .attr("y", buttonHeight/2 + yAxisTickTextOffset)
-                .attr("text-anchor", "middle")
-                .text(inText)
-                .attr("id", "text")
-                .attr("class", "compareNow");
+        var inText = variableList["independent"].length > 0 ? "SELECT TWO OR MORE MEANS" : "SELECT ONE OR MORE MEANS";    
+        drawButtonInSideBar(inText, "compareNow");
         
         setOpacityForElementsWithClassNames(["IQRs","medians", "TOPFringes", "BOTTOMFringes", "TOPFringeConnectors", "BOTTOMFringeConnectors", "outliers", "CIs", "CITopFringes", "CIBottomFringes"], 0.1);
         d3.selectAll(".means").attr("r", engorgedMeanRadius);
@@ -285,7 +266,7 @@ function OnMouseDown(e)
         var button = d3.select("#button." + target.className.baseVal);   
         var buttonText = d3.select("#text." + target.className.baseVal);        
         
-        button.attr("fill", buttonColors["click"]);
+        removeElementsByClassName("transformToNormal");
             
         var variableList = sort(currentVariableSelection);
         
@@ -451,12 +432,12 @@ function OnMouseDown(e)
                 .attr("class", "LineToAxisInstance");
     }
     
-    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "iEff")
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "interactionEffect")
     {
         setup(e, target);
         
-        var button = d3.select("#button.iEff");
-        button.attr("fill", "lightblue");
+        var button = d3.select("#button.interactionEffect");
+        removeElementsByClassName("interactionEffect");
         
         resetSVGCanvas();
         drawFullScreenButton();
