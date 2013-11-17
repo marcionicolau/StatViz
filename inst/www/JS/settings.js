@@ -48,7 +48,7 @@
     var tickLength = scaleForWindowSize(10);
     var border = scaleForWindowSize(20);
 
-    var plotHeight = canvasHeight - 1.65*(axesOffset + tickTextOffsetXAxis + border);
+    var plotHeight = canvasHeight - 2*(axesOffset + tickTextOffsetXAxis + border);
     var plotWidth = 4*plotHeight/3;
     
     var displayOffsetTop = scaleForWindowSize(10);
