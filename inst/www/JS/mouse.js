@@ -60,28 +60,45 @@ function OnMouseDown(e)
     {
         setup(e, target);    
         
+        //get the selected mean
         var meanCircle = d3.selectAll("#" + target.id + ".means");
         
-        if((document.getElementsByClassName("completeLines").length+1 < (document.getElementsByClassName("means").length)) || (document.getElementsByClassName("means").length == 1))
+        
+        if(documents.getElementsByClassName("means").length == 1)
         {
+            //if there is only mean (one sample tests)
+            if(meanCircle.attr("fill") == meanColors["hover"])
+            {
+                meanCircle.attr("fill", meanColors["click"]);
+                compareMeans();
+            }
+            else
+            {
+                meanCircle.attr("fill", meanColors["normal"]);
+            }
+        }
+        else if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means").length - 1))
+        {
+            //if there are 2+ means            
+            
             meanCircle.attr("fill", meanColors["click"]);
             
-            //check if we are finishing here            
-            var incompleteLines = d3.selectAll(".incompleteLines");
-            
+            //check if we are finishing an incomplete line here
             if(document.getElementsByClassName("incompleteLines").length > 0)
-            {            
+            {
+                var incompleteLines = d3.selectAll(".incompleteLines");
+                
                 incompleteLines.attr("x2", meanCircle.attr("cx"))
-                                .attr("y2", meanCircle.attr("cy"))
-                                .attr("stroke", meanColors["click"])
-                                .attr("class", "completeLines");
+                               .attr("y2", meanCircle.attr("cy"))
+                               .attr("stroke", meanColors["click"])
+                               .attr("class", "completeLines");
             }
-            
-            var completeLines = d3.selectAll(".completeLines");
-            
-            if(document.getElementsByClassName("completeLines").length+1 < document.getElementsByClassName("means").length)
+        
+            //if we still have means to select, start an incomplete line
+            if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means").length - 1))
             {
                 var canvas = d3.select("#plotCanvas");
+                
                 canvas.append("line")
                         .attr("x1", meanCircle.attr("cx"))
                         .attr("y1", meanCircle.attr("cy"))
@@ -98,6 +115,22 @@ function OnMouseDown(e)
                 compareMeans();
             }
         }   
+    }
+    
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "compareMeans")
+    {
+        setup(e, target);
+        
+        var canvas = d3.select("#plotCanvas");
+        
+        canvas.append("circle")
+                .attr("cx", canvasWidth/2)
+                .attr("cy", 50)
+                .attr("r", "50px")
+                .attr("id", "button")
+                .attr("class", "compareNow");
+        
+        setOpacityForElementsWithClassNames(["IQRs","TOPFringes", "BOTTOMFringes", "TOPFringeConnectors", "BOTTOMFringeConnectors", "outliers"], 0.25);
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "transformToNormal")

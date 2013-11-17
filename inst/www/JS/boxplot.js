@@ -10,6 +10,7 @@ function makeBoxplot()
     var BOTTOM = canvasHeight/2 + plotHeight/2;
 
     var canvas = d3.select("#plotCanvas");
+    drawCompareMeansButton();
     
     //initializations
     var variableList = sort(currentVariableSelection);
@@ -639,4 +640,16 @@ function startLoopAnimation(meanCircle)
        loop.transition().duration(1500).attr("r", "25px").attr("opacity", "0.5").attr("stroke","lightgrey");
        loop.transition().delay(2500).attr("opacity", "0");
     },700);
+}
+
+function drawCompareMeansButton()
+{
+    var canvas = d3.select("#sideBarCanvas");
+    
+    canvas.append("circle")
+            .attr("cx", sideBarWidth/2)
+            .attr("cy", significanceTestResultOffset*2)
+            .attr("r", "50px")
+            .attr("id", "button")
+            .attr("class", "compareMeans");
 }

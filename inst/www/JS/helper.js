@@ -784,6 +784,14 @@ function getNumericVariables()
     return numericVariables;
 }
 
+function setOpacityForElementsWithClassNames(classNames, opacity)
+{
+    for(var i=0; i<classNames.length; i++)
+    {
+        d3.selectAll("." + classNames[i]).attr("opacity", opacity);
+    }
+}
+
             
 
       
