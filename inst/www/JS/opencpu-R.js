@@ -90,9 +90,6 @@ function getData(dataset, variableName, level)
         
         if(++ticker == getObjectLength(variableNames))
         {
-            console.log("before calling setVariableTypes()");
-            console.dir(variables);
-            
             setVariableTypes();
             setVariableDataTypes();
             
@@ -167,7 +164,8 @@ function subsetDataByLevelsOfVariable(dataset, variableName)
                     variable: variableName
                   }, function(output) {                  
                 
-      console.log(output.data);
+      console.log("split data=[");
+      console.dir(output.data);
       
 //            getIQR(splitData[value], variableNames[i],value);                
       
