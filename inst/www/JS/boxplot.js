@@ -650,7 +650,10 @@ function drawCompareMeansButton()
             .attr("y", buttonOffset)
             .attr("width", sideBarWidth)
             .attr("height", buttonHeight)
+            .attr("rx", sideBarWidth/10)
+            .attr("ry", sideBarWidth/10)
             .attr("fill", buttonColors["normal"])
+            .attr("stroke", "black")
             .attr("id", "button")
             .attr("class", "compareMeans");
     
@@ -660,5 +663,5 @@ function drawCompareMeansButton()
             .attr("text-anchor", "middle")
             .text("COMPARE MEANS")
             .attr("id", "text")
-            .attr("class", "compareMeans");
+            .attr("class", "compareMeans");            
 }

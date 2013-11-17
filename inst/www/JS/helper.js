@@ -792,6 +792,29 @@ function setOpacityForElementsWithClassNames(classNames, opacity)
     }
 }
 
+function setCompareNowButtonText()
+{
+    var compareNowText = d3.select("#text.compareNow");
+    
+    var variableList = getSelectedVariables();
+    
+    if(variableList["independent"].length == 0)
+    {
+        compareNowText.text("TEST AGAINST POPULATION MEAN");    
+    }
+    else
+    {
+        switch(variableList["independent-levels"].length)
+        {
+            case 1:
+                    break;
+            
+            default:
+                    compareNowText.text("COMPARE MEANS");
+                    break;
+        }
+    }
+
             
 
       

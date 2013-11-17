@@ -62,7 +62,7 @@ function OnMouseDown(e)
         
         //get the selected mean
         var meanCircle = d3.selectAll("#" + target.id + ".means");
-        
+        setCompareNowButtonText();
         
         if(document.getElementsByClassName("means").length == 1)
         {
@@ -130,8 +130,11 @@ function OnMouseDown(e)
     
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "compareNow")
     {
+        d3.selectAll(".compareNow").attr("cursor", "pointer");
+        
+        //get selected means
         var means = document.getElementsByClassName("means");
-        var selectedMeans = [];
+        var selectedMeans = [];        
         
         for(var i=0; i<means.length; i++)
         {
@@ -154,21 +157,27 @@ function OnMouseDown(e)
         setup(e, target);
         
         var canvas = d3.select("#plotCanvas");
+        var variableList = getSelectedVariables();
         
         canvas.append("rect")
                 .attr("x", canvasWidth/2 - buttonWidth)
                 .attr("y", 0)
                 .attr("width", 2*buttonWidth)
                 .attr("height", buttonHeight)
+                .attr("rx", 2*buttonWidth/10)
+                .attr("ry", 2*buttonWidth/10)
                 .attr("fill", buttonColors["normal"])
+                .attr("stroke", "black")
                 .attr("id", "button")
                 .attr("class", "compareNow");
+        
+        var inText = variableList["independent"].length > 0 ? "SELECT TWO OR MORE MEANS" : "SELECT ONE OR MORE MEANS";
         
         canvas.append("text")
                 .attr("x", canvasWidth/2)
                 .attr("y", buttonHeight/2 - yAxisTickTextOffset)
                 .attr("text-anchor", "middle")
-                .text("SELECT ONE OR MORE MEANS AND CLICK HERE TO COMPARE")
+                .text(inText)
                 .attr("id", "text")
                 .attr("class", "compareNow");
         
