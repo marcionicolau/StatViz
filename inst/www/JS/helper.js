@@ -49,7 +49,9 @@ function splitTheData()
                 CI[variableNames[j]][uniqueData[k]] = findCI(variables[variableNames[j]][uniqueData[k]]);
             }
         }
-    }     
+    } 
+    
+    console.dir(variables);
 }
 
 function splitThisLevelBy(independentVariableA, independentVariableB, dependentVariable)
