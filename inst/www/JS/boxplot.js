@@ -172,7 +172,7 @@ function makeBoxplot()
         if(getObjectLength(colourBoxPlotData) > 0)
         {
             var levelsForXAxis = variableList["independent-levels"][0];
-            
+            xStep = plotWidth/levelsForXAxis.length;  
             if(i%levelsForXAxis.length)
             {
                 canvas.append("line")
@@ -216,6 +216,8 @@ function makeBoxplot()
                         .attr("class", "xAxisGrooveText");
         }
     }
+
+    xStep = plotWidth/nGroovesX;  
     
     //y-axis grooves
     var yStep = plotHeight/(nGroovesY-1);
