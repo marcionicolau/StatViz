@@ -10,7 +10,7 @@ function makeBoxplot()
     var BOTTOM = canvasHeight/2 + plotHeight/2;
 
     var canvas = d3.select("#plotCanvas");
-    drawCompareMeansButton();
+    drawButtonInSideBar("COMPARE MEANS", "compareMean");
     
     //initializations
     var variableList = sort(currentVariableSelection);
@@ -354,7 +354,6 @@ function redrawBoxPlot()
     var BOTTOM = canvasHeight/2 + plotHeight/2;
 
     var canvas = d3.select("#plotCanvas");
-    drawButtonInSideBar("COMPARE MEANS", "compareMean");
     
     //initializations
     var variableList = sort(currentVariableSelection);
