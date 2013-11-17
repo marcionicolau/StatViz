@@ -92,25 +92,63 @@ function OnMouseDown(e)
             }
             else if(lineAfter == undefined)
             {
-                lineBefore.parentNode.removeChild(lineBefore);
                 console.log("one line before");
+                
+                var canvas = d3.select("#plotCanvas");
+            
+                canvas.append("line")
+                        .attr("x1", lineBefore.getAttribute("x1"))
+                        .attr("y1", lineBefore.getAttribute("y1"))
+                        .attr("x2", lineBefore.getAttribute("x1"))
+                        .attr("y2", lineBefore.getAttribute("y1"))
+                        .attr("stroke", meanColors["normal"])
+                        .attr("stroke-dasharray", "5,5")
+                        .attr("id", meanCircle.attr("id"))
+                        .attr("class", "incompleteLines");
+                
+                lineBefore.parentNode.removeChild(lineBefore);
             }
             else if(lineBefore == undefined)
             {
-                lineAfter.parentNode.removeChild(lineAfter);
+                
                 console.log("one line after");
+                
+                var canvas = d3.select("#plotCanvas");
+            
+                canvas.append("line")
+                        .attr("x1", lineAfter.getAttribute("x2"))
+                        .attr("y1", lineAfter.getAttribute("y2")
+                        .attr("x2", lineAfter.getAttribute("x2")
+                        .attr("y2", lineAfter.getAttribute("y2")
+                        .attr("stroke", meanColors["normal"])
+                        .attr("stroke-dasharray", "5,5")
+                        .attr("id", meanCircle.attr("id"))
+                        .attr("class", "incompleteLines");
+                
+                lineAfter.parentNode.removeChild(lineAfter);
+
             }
             else
             {
+                 var canvas = d3.select("#plotCanvas");
+            
+                canvas.append("line")
+                        .attr("x1", lineAfter.getAttribute("x2"))
+                        .attr("y1", lineAfter.getAttribute("y2")
+                        .attr("x2", lineAfter.getAttribute("x2")
+                        .attr("y2", lineAfter.getAttribute("y2")
+                        .attr("stroke", meanColors["normal"])
+                        .attr("stroke-dasharray", "5,5")
+                        .attr("id", meanCircle.attr("id"))
+                        .attr("class", "incompleteLines");
+                        
                 console.log("lines before and after");
                 lineBefore.setAttribute("x2", lineAfter.getAttribute("x2"));
                 lineBefore.setAttribute("y2", lineAfter.getAttribute("y2"));
                 lineAfter.parentNode.removeChild(lineAfter);
+                
+               
             }
-            
-            
-            
-            var incompleteLines = d3.selectAll(".incompleteLines").display("none");
         }
         else
         {
