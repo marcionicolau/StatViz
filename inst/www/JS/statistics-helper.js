@@ -78,7 +78,7 @@ function testForEvilVariables()
         {
             if(uniqueVariableData.length > 15)
             {
-                console.log("making " + variable + " as an evil variable");
+                console.log("\n\tmaking " + variable + " as an evil variable");
                 setThisVariableEvil(variableNames[i]);
             }
         }

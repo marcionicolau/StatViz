@@ -50,8 +50,6 @@ function splitTheData()
             }
         }
     } 
-    
-    console.dir(variables);
 }
 
 function splitThisLevelBy(independentVariableA, independentVariableB, dependentVariable)
@@ -640,9 +638,6 @@ function setVariableTypes()
     {
         variableTypes[variableNames[i]] = sessionStorage.getItem(variableNames[i]);
     }
-    
-    console.log("variableTypes=");
-    console.dir(variableTypes);
     
     for(var i=0; i<variableNames.length; i++)
     {
