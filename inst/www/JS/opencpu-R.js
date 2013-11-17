@@ -475,30 +475,28 @@ function findTransform(dependentVariable, independentVariable)
                     console.log("type=" + output.type);
                     transformationType = output.type;
                     //offer choice
-                    var canvas = d3.select("#plotCanvas");
+                    var canvas = d3.select("#sideBarCanvas");
                     
                     canvas.append("rect")
-                            .attr("x", canvasWidth/2 + plotWidth/2 + buttonOffset)
-                            .attr("y", canvasHeight/2 - plotHeight/2 + buttonOffset)
+                            .attr("x", 0)
+                            .attr("y", buttonOffset)
                             .attr("width", buttonWidth)
                             .attr("height", buttonHeight)
-                            .attr("rx", "10")
-                            .attr("ry", "10")
-                            .attr("fill", "white")
+                            .attr("rx", 5)
+                            .attr("ry", 5)
+                            .attr("fill", buttonColors["normal"])
                             .attr("stroke", "black")
                             .attr("id", "button")
                             .attr("class", "transformToNormal");
                     
                     canvas.append("text")
-                            .attr("x", canvasWidth/2 + plotWidth/2 + buttonOffset + buttonWidth/2)
-                            .attr("y", canvasHeight/2 - plotHeight/2 + buttonOffset + buttonHeight/2)
+                            .attr("x", sideBarWidth/2)
+                            .attr("y", buttonOffset + buttonHeight/2 + yAxisTickTextOffset)
                             .attr("fill", "orange")
                             .attr("text-anchor", "middle")
-                            .attr("font-size", "24px")
-                            .text("transform all to normal distributions")
+                            .text("TRANSFORM TO NORMAL DISTRIBUTIONS")
                             .attr("id", "text")
                             .attr("class", "transformToNormal");
-                            
                 }
                   
       }).fail(function(){
@@ -539,30 +537,28 @@ function findTransformForDependentVariables(numericVariables)
                     
                     transformationType = output.type;
                     //offer choice
-                    var canvas = d3.select("#plotCanvas");
+                    var canvas = d3.select("#sideBarCanvas");
                     
                     canvas.append("rect")
-                            .attr("x", canvasWidth/2 + plotWidth/2 + buttonOffset)
-                            .attr("y", canvasHeight/2 - plotHeight/2 + buttonOffset)
+                            .attr("x", 0)
+                            .attr("y", buttonOffset)
                             .attr("width", buttonWidth)
                             .attr("height", buttonHeight)
-                            .attr("rx", "10")
-                            .attr("ry", "10")
-                            .attr("fill", "white")
+                            .attr("rx", 5)
+                            .attr("ry", 5)
+                            .attr("fill", buttonColors["normal"])
                             .attr("stroke", "black")
                             .attr("id", "button")
                             .attr("class", "transformToNormal");
                     
                     canvas.append("text")
-                            .attr("x", canvasWidth/2 + plotWidth/2 + buttonOffset + buttonWidth/2)
-                            .attr("y", canvasHeight/2 - plotHeight/2 + buttonOffset + buttonHeight/2)
+                            .attr("x", sideBarWidth/2)
+                            .attr("y", buttonOffset + buttonHeight/2 + yAxisTickTextOffset)
                             .attr("fill", "orange")
                             .attr("text-anchor", "middle")
-                            .attr("font-size", "24px")
-                            .text("transform all to normal distributions")
+                            .text("TRANSFORM TO NORMAL DISTRIBUTIONS")
                             .attr("id", "text")
-                            .attr("class", "transformToNormal");
-                            
+                            .attr("class", "transformToNormal");                            
                 }
                   
       }).fail(function(){
