@@ -103,7 +103,7 @@ var labelOffset = scaleForWindowSize(45);
 
 // Significance test
 var significanceTestScaleOffset = scaleForWindowSize(25);
-var assumptionsStep = scaleForWindowSize(30);
+var assumptionStep = scaleForWindowSize(30);
 var assumptionOffsetTop = assumptionsStep*3;
 var assumptionImageSize = scaleForWindowSize(25);
 
