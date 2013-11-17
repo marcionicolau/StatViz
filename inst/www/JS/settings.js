@@ -124,7 +124,7 @@ var sampleSizeCutoff = 20;
 //buttons
 var buttonOffset = assumptionOffsetTop + 3*assumptionStep;
 var buttonHeight = scaleForWindowSize(50);
-var buttonWidth = sideBatWidth;
+var buttonWidth = sideBarWidth;
 
 //full screen button
 var fullScreenButtonSize = scaleForWindowSize(75);
