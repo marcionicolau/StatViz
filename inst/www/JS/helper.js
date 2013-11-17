@@ -799,14 +799,21 @@ function setCompareNowButtonText()
     var variableList = getSelectedVariables();
     
     if(variableList["independent"].length == 0)
-    {
-        compareNowText.text("TEST AGAINST POPULATION MEAN");    
+    {  
+        if(variableList["dependent"].length == 0)
+            compareNowText.text("SELECT ONE OR MORE MEANS");    
+        else
+            compareNowText.text("TEST AGAINST POPULATION MEAN");    
     }
     else
     {
         switch(variableList["independent-levels"].length)
         {
+            case 0:
+                    compareNowText.text("SELECT TWO OR MORE MEANS");    
+                    break
             case 1:
+                    compareNowText.text("SELECT TWO OR MORE MEANS");    
                     break;
             
             default:
