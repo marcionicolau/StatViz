@@ -1,15 +1,22 @@
 function compareMeans()
 {
     var completeLines = d3.selectAll(".completeLines");
+    
     var variableList = getSelectedVariables();    
-    console.dir(variableList);
+    console.log("variableList = "); console.dir(variableList);
+    
     
     switch(document.getElementsByClassName("completeLines").length)
     {
 
         case 0:
                 //One sample t-test
-                if(variableList["dependent"].length == 1)
+                if(variableList["independent"].length == 1)
+                {                    
+                    loadAssumptionCheckList();
+                    performNormalityTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variableList["dependent"][0], variableList["independent-levels"][0]);                    
+                }
+                else
                 {
                     loadAssumptionCheckList();
                     performNormalityTest(variables[variableList["dependent"][0]]["dataset"], variableList["dependent"][0], "dataset");                    
