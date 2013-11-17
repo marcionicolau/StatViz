@@ -351,7 +351,10 @@ function OnMouseDown(e)
     {
         setup(e, target);
         
-        var choice = target.id;
+        var causalVariableButton = d3.select("#button.causalVariable");
+        var causalVariableText = d3.select("#text.causalVariable");
+        
+        var choice = causalVariableText.attr("data-variable");
         
         if(currentVisualizationSelection == "Scatterplot")
         {
@@ -366,15 +369,14 @@ function OnMouseDown(e)
         
             var variableList = sort(currentVariableSelection);
         
-                console.log("finding the regression model between causal variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[1] + ")");
+                console.log("\n\t\tFinding the regression model between causal variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[1] + ")");
         
                 //some interaction to get the variables :)
         
                 removeElementsByClassName("causalVariable");
                 removeElementsByClassName("dialogBox");
         
-            setTimeout(function(){
-            
+            setTimeout(function(){            
                 removeElementsByClassName("regression");
                 removeElementsByClassName("significanceTest");
                 getLinearModelCoefficients(currentVariableSelection[0], currentVariableSelection[1]);
@@ -920,10 +922,12 @@ function OnMouseOver(e)
     
     else if(target.className.baseVal == "causalVariable")
     {
-        var choice = d3.selectAll("#" + target.id + ".causalVariable");
-        choice.attr("cursor", "pointer");
+        setup(e, target);
         
-        choice.attr("stroke", "black").attr("stroke-width", "2px");
+        var causalVariableButton = d3.select("#button.causalVariable");
+        var causalVariableText = d3.select("#text.causalVariable");
+        
+        d3.selectAll(".causalVariable").attr("cursor", "pointer");
     }
     
     else if(target.className.baseVal == "tukeyMean")
