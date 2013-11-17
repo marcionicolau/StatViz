@@ -7,7 +7,7 @@ function splitTheData(independentVariable)
     for(var j=0; j<variableNames.length; j++)
     {
         //for every variable
-        var uniqueData = variables[independentVariable]]["dataset"].unique();
+        var uniqueData = variables[independentVariable]["dataset"].unique();
         for(var k=0; k<uniqueData.length; k++)
         {
             //for every level
