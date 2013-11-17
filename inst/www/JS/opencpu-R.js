@@ -102,6 +102,9 @@ function getData(dataset, variableName, level)
         
         if(++ticker == getObjectLength(variableNames))
         {
+            console.log("before calling setVariableTypes()");
+            console.dir(variables);
+            
             setVariableTypes();
             setVariableDataTypes();
             

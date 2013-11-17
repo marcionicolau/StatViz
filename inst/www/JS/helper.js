@@ -4,7 +4,6 @@ var format3 = d3.format(".3f");
 
 function splitTheData()
 {
-    console.dir(variables);
     var independentVariables = [];
     for(var i=0; i<variableNames.length; i++)
     {
@@ -51,8 +50,6 @@ function splitTheData()
             }
         }
     } 
-    
-    console.dir(variables);
 }
 
 function splitThisLevelBy(independentVariableA, independentVariableB, dependentVariable)
