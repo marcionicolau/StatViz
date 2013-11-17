@@ -166,27 +166,56 @@ function makeBoxplot()
     widthOfEachBox = plotWidth/(labels.length*2) > boxWidth ? boxWidth : plotWidth/(labels.length*2);
     
     var xStep = plotWidth/nGroovesX;  
+    var index = 0;
     
-
     for(i=0; i<nGroovesX; i++)
     {
-        canvas.append("line")
-                    .attr("x1", LEFT + i*xStep + xStep/2)
-                    .attr("y1", BOTTOM  + axesOffset)
-                    .attr("x2", LEFT + i*xStep + xStep/2)
-                    .attr("y2", BOTTOM + tickLength + axesOffset)
-                    .attr("id", ids[i])
-                    .attr("class", "xAxisGrooves");
+        if(getObjectLength(colourBoxPlot) > 0)
+        {
+            var levelsForXAxis = variables["independent-levels"][0].unique();
+            
+            if(i%levelsForXAxis.length)
+            {
+                canvas.append("line")
+                        .attr("x1", LEFT + index*xStep + xStep/2)
+                        .attr("y1", BOTTOM  + axesOffset)
+                        .attr("x2", LEFT + index*xStep + xStep/2)
+                        .attr("y2", BOTTOM + tickLength + axesOffset)
+                        .attr("id", ids[i])
+                        .attr("class", "xAxisGrooves");
     
-        canvas.append("text")
-                    .attr("x", LEFT + i*xStep + xStep/2)
-                    .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
-                    .text(labels[i])
-                    .attr("fill", "black")
-                    .attr("font-size", fontSizeTicks + "px")
-                    .attr("text-anchor", "middle")
-                    .attr("id", ids[i])
-                    .attr("class", "xAxisGrooveText");
+                canvas.append("text")
+                        .attr("x", LEFT + index*xStep + xStep/2)
+                        .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
+                        .text(levelsForXAxis[index])
+                        .attr("fill", "black")
+                        .attr("font-size", fontSizeTicks + "px")
+                        .attr("text-anchor", "middle")
+                        .attr("id", ids[i])
+                        .attr("class", "xAxisGrooveText");
+                index++;
+            }   
+        }
+        else
+        {
+            canvas.append("line")
+                        .attr("x1", LEFT + i*xStep + xStep/2)
+                        .attr("y1", BOTTOM  + axesOffset)
+                        .attr("x2", LEFT + i*xStep + xStep/2)
+                        .attr("y2", BOTTOM + tickLength + axesOffset)
+                        .attr("id", ids[i])
+                        .attr("class", "xAxisGrooves");
+    
+            canvas.append("text")
+                        .attr("x", LEFT + i*xStep + xStep/2)
+                        .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
+                        .text(labels[i])
+                        .attr("fill", "black")
+                        .attr("font-size", fontSizeTicks + "px")
+                        .attr("text-anchor", "middle")
+                        .attr("id", ids[i])
+                        .attr("class", "xAxisGrooveText");
+        }
     }
     
     //y-axis grooves
