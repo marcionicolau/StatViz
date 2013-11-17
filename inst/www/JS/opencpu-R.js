@@ -10,9 +10,7 @@ function loadFile(filePath)
     //render the variable names
     renderVariableNames(output.variableNames);
     variableNames = output.variableNames;
-    
-    console.dir(variables);
-    
+        
     //for each variable, get the data and the IQR
     for(var i=0; i<output.variableNames.length; i++)
     {
@@ -72,17 +70,16 @@ function getVariables(dataset)
 function getData(dataset, variableName, level)
 {
 //     Get variable names and their data type
-        var req = opencpu.r_fun_json("getData", {
-                    dataset: dataset,
-                    columnName: variableName
-                  }, function(output) {    
+//         var req = opencpu.r_fun_json("getData", {
+//                     dataset: dataset,
+//                     columnName: variableName
+//                   }, function(output) {    
         
         if(level === undefined)
         {   
             level = "dataset";
         } 
         
-        console.dir(variables);
         variables[variableName][level] = output.data;//dataset[variableName];
         MIN[variableName][level] = Array.min(variables[variableName][level]);
         MAX[variableName][level] = Array.max(variables[variableName][level]);
@@ -114,17 +111,17 @@ function getData(dataset, variableName, level)
         }
     
         
-      }).fail(function(){
-          alert("Failure: " + req.responseText);
-    });
-
-    //if R returns an error, alert the error message
-    req.fail(function(){
-      alert("Server error: " + req.responseText);
-    });
-    req.complete(function(){
-        
-    });
+    //   }).fail(function(){
+//           alert("Failure: " + req.responseText);
+//     });
+// 
+//     //if R returns an error, alert the error message
+//     req.fail(function(){
+//       alert("Server error: " + req.responseText);
+//     });
+//     req.complete(function(){
+//         
+//     });
 }
 
 function getIQR(dataset, variableName, level)
