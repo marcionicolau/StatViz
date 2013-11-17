@@ -645,8 +645,8 @@ function setVariableTypes()
         {
             var variableSelectionButton = d3.select("#" + variableNames[i] + ".variableSelectionButton");
             variableSelectionButton.attr("fill", buttonColors["independent"]);
-            
-            subsetDataByLevelsOfVariable(dataset, variableNames[i]);
+            splitTheData();
+//             subsetDataByLevelsOfVariable(dataset, variableNames[i]);
         }
         else if(variableTypes[variableNames[i]] == "participant")
         {
