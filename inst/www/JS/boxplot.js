@@ -169,7 +169,7 @@ function makeBoxplot()
     var index = 0;
     for(i=0; i<nGroovesX; i++)
     {
-        if(getObjectLength(colourBoxPlotData) > 0)
+        if(variableList["independent"].length == 2)
         {
             var levelsForXAxis = variableList["independent-levels"][0];
             xStep = plotWidth/levelsForXAxis.length;  
@@ -248,7 +248,7 @@ function makeBoxplot()
     {
         var boxColor = boxColors["normal"];
         
-        if(getObjectLength(colourBoxPlotData) > 0)
+        if(variableList["independent"].length == 2)
         {
             var levelsForColor = variableList["independent-levels"][1];
             boxColor = colors[i%levelsForColor.length];
