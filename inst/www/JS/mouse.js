@@ -82,6 +82,7 @@ function OnMouseDown(e)
             //if there are 2+ means            
             
             meanCircle.attr("fill", meanColors["click"]);
+            clearInterval(meanCircle.attr("id"));
             
             //check if we are finishing an incomplete line here
             if(document.getElementsByClassName("incompleteLines").length > 0)
