@@ -167,7 +167,6 @@ function makeBoxplot()
     
     var xStep = plotWidth/nGroovesX;  
     var index = 0;
-    
     for(i=0; i<nGroovesX; i++)
     {
         if(getObjectLength(colourBoxPlotData) > 0)
@@ -177,15 +176,15 @@ function makeBoxplot()
             if(i%levelsForXAxis.length)
             {
                 canvas.append("line")
-                        .attr("x1", LEFT + index*xStep + xStep/2)
+                        .attr("x1", LEFT + i*xStep + xStep/2)
                         .attr("y1", BOTTOM  + axesOffset)
-                        .attr("x2", LEFT + index*xStep + xStep/2)
+                        .attr("x2", LEFT + i*xStep + xStep/2)
                         .attr("y2", BOTTOM + tickLength + axesOffset)
                         .attr("id", ids[i])
                         .attr("class", "xAxisGrooves");
     
                 canvas.append("text")
-                        .attr("x", LEFT + index*xStep + xStep/2)
+                        .attr("x", LEFT + i*xStep + xStep/2)
                         .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
                         .text(levelsForXAxis[index])
                         .attr("fill", "black")
