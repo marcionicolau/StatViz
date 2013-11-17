@@ -176,22 +176,19 @@ function makeBoxplot()
             if(i%levelsForXAxis.length)
             {
                 canvas.append("line")
-                        .attr("x1", LEFT + i*xStep + xStep/2)
+                        .attr("x1", LEFT + index*xStep + xStep/2)
                         .attr("y1", BOTTOM  + axesOffset)
-                        .attr("x2", LEFT + i*xStep + xStep/2)
-                        .attr("y2", BOTTOM + tickLength + axesOffset)
-                        .attr("id", ids[i])
-                        .attr("class", "xAxisGrooves");
+                        .attr("x2", LEFT + index*xStep + xStep/2)
+                        .attr("y2", BOTTOM + tickLength + axesOffset);
     
                 canvas.append("text")
-                        .attr("x", LEFT + i*xStep + xStep/2)
+                        .attr("x", LEFT + index*xStep + xStep/2)
                         .attr("y", BOTTOM + tickTextOffsetXAxis + axesOffset)                    
                         .text(levelsForXAxis[index])
                         .attr("fill", "black")
                         .attr("font-size", fontSizeTicks + "px")
-                        .attr("text-anchor", "middle")
-                        .attr("id", ids[i])
-                        .attr("class", "xAxisGrooveText");
+                        .attr("text-anchor", "middle");
+                        
                 index++;
             }   
         }
