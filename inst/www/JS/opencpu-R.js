@@ -172,17 +172,7 @@ function subsetDataByLevelsOfVariable(dataset, variableName, level)
 //            getIQR(splitData[value], variableNames[i],value);                
       
                 
-     }).fail(function(){
-          alert("Failure: " + req.responseText);
-    });
-
-    //if R returns an error, alert the error message
-    req.fail(function(){
-      alert("Server error: " + req.responseText);
-    });
-    req.complete(function(){
-        
-    });   
+     });  
 }
 
 //Statistics
