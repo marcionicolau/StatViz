@@ -179,7 +179,8 @@ function makeBoxplot()
                         .attr("x1", LEFT + index*xStep + xStep/2)
                         .attr("y1", BOTTOM  + axesOffset)
                         .attr("x2", LEFT + index*xStep + xStep/2)
-                        .attr("y2", BOTTOM + tickLength + axesOffset);
+                        .attr("y2", BOTTOM + tickLength + axesOffset)
+                        .attr("stroke", "black");
     
                 canvas.append("text")
                         .attr("x", LEFT + index*xStep + xStep/2)
@@ -245,6 +246,14 @@ function makeBoxplot()
     
     for(var i=0; i<nGroovesX; i++)
     {
+        var boxColor = boxColors["normal"];
+        
+        if(getObjectLength(colourBoxPlotData) > 0)
+        {
+            var levelsForColor = variableList["independent-levels"][1];
+            boxColor = colors[i%levelsForColor.length];
+        }
+        
         var rectBottom = (medians[i] - iqrs[i]/2) < min ? min : (medians[i] - iqrs[i]/2);
         var rectTop = (medians[i] + iqrs[i]/2) > max ? max : (medians[i] + iqrs[i]/2);
         
@@ -253,7 +262,7 @@ function makeBoxplot()
                     .attr("y", BOTTOM - getFraction(rectTop)*plotHeight)
                     .attr("height", getFraction(rectTop)*plotHeight - getFraction(rectBottom)*plotHeight)
                     .attr("width", widthOfEachBox)
-                    .attr("fill", boxColors["normal"])
+                    .attr("fill", boxColor)
                     .attr("stroke", "black")
                     .attr("id", ids[i])
                     .attr("class", "IQRs"));
