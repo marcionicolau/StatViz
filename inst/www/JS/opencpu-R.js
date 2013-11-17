@@ -162,7 +162,7 @@ function getCI(dataset, variableName, level)
 function subsetDataByLevelsOfVariable(dataset, variableName)
 {   
     // Get variable names and their data type
-    var req = opencpu.r_fun_json("splitDataByColumnName", {
+    var req = opencpu.r_fun_json("subsetDataByLevelsOfVariable", {
                     dataset: dataset,
                     variable: variableName
                   }, function(output) {                  
