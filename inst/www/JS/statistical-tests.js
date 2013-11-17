@@ -74,7 +74,7 @@ function loadAssumptionCheckList()
     {
         canvas.append("text")
             .attr("x", assumptionImageSize*1.25)
-            .attr("y", i*assumptionStep + assumptionOffsetTop)
+            .attr("y", i*30 + assumptionOffsetTop)
             .attr("font-size", fontSizeAssumptions + "px")
             .attr("fill", meanColors["normal"])
             .text(assumptionsText[assumptions[i]])

@@ -103,8 +103,8 @@ var labelOffset = scaleForWindowSize(45);
 
 // Significance test
 var significanceTestScaleOffset = scaleForWindowSize(25);
-var assumptionStep = scaleForWindowSize(30);
-var assumptionOffsetTop = assumptionStep*3;
+// var assumptionStep = scaleForWindowSize(30);
+var assumptionOffsetTop = 30;
 var assumptionImageSize = scaleForWindowSize(25);
 
 var assumptionsText = new Object();
@@ -125,7 +125,7 @@ var boxPlotTransformationDuration = 700;
 var sampleSizeCutoff = 20;
 
 //buttons
-var buttonOffset = assumptionOffsetTop + 3*assumptionStep;
+var buttonOffset = assumptionOffsetTop + 3*30;
 var buttonHeight = scaleForWindowSize(75);
 var buttonWidth = scaleForWindowSize(450);
 
