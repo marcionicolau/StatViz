@@ -293,29 +293,30 @@ function displayOneSampleTestResults()
                   .attr("stroke", "red")
                   .attr("fill", "red")
                   .attr("class", "significanceTest");
-        
-    var spaceOnRight = (canvasWidth - plotWidth)/2;
-    canvas.append("text")
-            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
-            .attr("y", cyMax + significanceTestResultOffset)
+
+    sideBar = d3.select("#sideBarCanvas");
+    
+    sideBar.append("text")
+            .attr("x", sideBarWidth/2)
+            .attr("y", canvasHeight/2 + significanceTestResultOffset)
             .attr("text-anchor", "middle")
             .attr("font-size", "22px")
             .attr("fill", "orange")
             .text(testResults["method"])
             .attr("class", "significanceTest");
     
-    canvas.append("text")
-            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
-            .attr("y", cyMax + 2*significanceTestResultOffset)
+    sideBar.append("text")
+            .attr("x", sideBarWidth/2)
+            .attr("y", canvasHeight/2 + 2*significanceTestResultOffset)
             .attr("text-anchor", "middle")
             .attr("font-size", "22px")
             .attr("fill", "orange")
             .text(testResults["statistic"])
             .attr("class", "significanceTest");
     
-    canvas.append("text")
-            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
-            .attr("y", cyMax + 3*significanceTestResultOffset)
+    sideBar.append("text")
+            .attr("x", sideBarWidth/2)
+            .attr("y", canvasHeight/2 + 3*significanceTestResultOffset)
             .attr("text-anchor", "middle")
             .attr("font-size", "16px")
             .attr("fill", "orange")
@@ -324,9 +325,9 @@ function displayOneSampleTestResults()
     
     
     //Effect sizes
-    canvas.append("text")
-            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
-            .attr("y", (cyMin + cyMax)/2)
+    sideBar.append("text")
+            .attr("x", sideBarWidth/2)
+            .attr("y", canvasHeight/2 - significanceTestResultOffset)
             .attr("text-anchor", "middle")
             .attr("font-size", "24px")
             .attr("fill", "orange")
@@ -505,7 +506,7 @@ function drawScales(cx, cy)
                 .attr("class", "significanceTest")
                 .text(format(means[1] - means[0]));
     }    
-    else
+    else if(cy.length<5)
     {
         for(var i=0; i<cy.length; i++)
         {   
@@ -534,41 +535,41 @@ function drawScales(cx, cy)
 }
 
 function displayCorrelationResults()
-{   
-    var canvas = d3.select("#plotCanvas");    
-    var spaceOnRight = (canvasWidth - plotWidth)/2;    
+{ 
+    var sideBar = d3.select("#sideBarCanvas");
     
-    canvas.append("text")
-            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+    sideBar.append("text")
+            .attr("x", sideBarWidth/2)
             .attr("y", canvasHeight/2 + significanceTestResultOffset)
             .attr("text-anchor", "middle")
-            .attr("font-size", "20px")
+            .attr("font-size", "22px")
             .attr("fill", "orange")
             .text(testResults["method"])
             .attr("class", "significanceTest");
     
-    canvas.append("text")
-            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+    sideBar.append("text")
+            .attr("x", sideBarWidth/2)
             .attr("y", canvasHeight/2 + 2*significanceTestResultOffset)
             .attr("text-anchor", "middle")
-            .attr("font-size", "20px")
+            .attr("font-size", "22px")
             .attr("fill", "orange")
             .text(testResults["statistic"])
             .attr("class", "significanceTest");
     
-    canvas.append("text")
-            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+    sideBar.append("text")
+            .attr("x", sideBarWidth/2)
             .attr("y", canvasHeight/2 + 3*significanceTestResultOffset)
             .attr("text-anchor", "middle")
             .attr("font-size", "16px")
             .attr("fill", "orange")
             .text("p = " + testResults["p"])
-            .attr("class", "significanceTest");    
+            .attr("class", "significanceTest");
+    
     
     //Effect sizes
-    canvas.append("text")
-            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
-            .attr("y", canvasHeight/2 - 2*significanceTestResultOffset)
+    sideBar.append("text")
+            .attr("x", sideBarWidth/2)
+            .attr("y", canvasHeight/2 - significanceTestResultOffset)
             .attr("text-anchor", "middle")
             .attr("font-size", "24px")
             .attr("fill", "orange")
@@ -579,22 +580,21 @@ function displayCorrelationResults()
 
 function displayBiserialCorrelationResults()
 {   
-    var canvas = d3.select("#plotCanvas");    
-    var spaceOnRight = (canvasWidth - plotWidth)/2;    
+    var sideBar = d3.select("#sideBarCanvas");
     
-    canvas.append("text")
-            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+    sideBar.append("text")
+            .attr("x", sideBarWidth/2)
             .attr("y", canvasHeight/2 + significanceTestResultOffset)
             .attr("text-anchor", "middle")
-            .attr("font-size", "20px")
+            .attr("font-size", "22px")
             .attr("fill", "orange")
             .text(testResults["method"])
-            .attr("class", "significanceTest");  
+            .attr("class", "significanceTest");
     
     //Effect sizes
-    canvas.append("text")
-            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
-            .attr("y", canvasHeight/2 - 2*significanceTestResultOffset)
+    sideBar.append("text")
+            .attr("x", sideBarWidth/2)
+            .attr("y", canvasHeight/2 - significanceTestResultOffset)
             .attr("text-anchor", "middle")
             .attr("font-size", "24px")
             .attr("fill", "orange")
