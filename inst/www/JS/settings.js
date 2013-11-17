@@ -9,7 +9,7 @@
     var height = getHeight();  
 
     var panelColors = new Object();
-        panelColors.normal = "white";
+        panelColors.normal = "DodgerBlue";
         panelColors.active = "darkgrey";
 
     var canvasHeight = height*(3/4);
@@ -38,7 +38,8 @@
     var fontSizeLabels = scaleForWindowSize(28);
     var fontSizeTicks = scaleForWindowSize(18);
     var fontSizeAssumptions = scaleForWindowSize(26);
-    var fontSizePanel = scaleForWindowSize(24);
+    var fontSizeVariablePanel = scaleForWindowSize(24);
+    var fontSizeVisualizationPanel = scaleForWindowSize(32);
         
 // Plots (general)
     var axesOffset = scaleForWindowSize(25); //distance from plots to axes (for an R-like appearance)
