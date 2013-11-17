@@ -5,8 +5,8 @@
     var pathToFile =  wd + "cars.txt";
 
 // Skeleton
-    var width = document.width;
-    var height = document.height;  
+    var width = 1440;
+    var height = 900;  
 
     var panelColors = new Object();
         panelColors.normal = "white";

@@ -156,13 +156,14 @@ function getCI(dataset, variableName, level)
 }  
 
 //Split data - R based   
-function subsetDataByLevelsOfVariable(dataset, variableName)
+function subsetDataByLevelsOfVariable(dataset, variableName, level)
 {   
     console.log("dataset=" + dataset + ", variableName=" + variableName);
     // Get variable names and their data type
     var req = opencpu.r_fun_json("subsetDataByLevelsOfVariable", {
                     dataset: dataset,
-                    variable: variableName
+                    variable: variableName,
+                    level: level
                   }, function(output) {                  
                 
       console.log("split data: \t");
