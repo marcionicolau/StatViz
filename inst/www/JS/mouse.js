@@ -94,6 +94,7 @@ function OnMouseDown(e)
             {
                 console.log("one line before");
                 
+                removeElementsByClassName("incompleteLines");
                 var canvas = d3.select("#plotCanvas");
             
                 canvas.append("line")
@@ -109,10 +110,10 @@ function OnMouseDown(e)
                 lineBefore.parentNode.removeChild(lineBefore);
             }
             else if(lineBefore == undefined)
-            {
-                
+            {                
                 console.log("one line after");
                 
+                removeElementsByClassName("incompleteLines");
                 var canvas = d3.select("#plotCanvas");
             
                 canvas.append("line")
@@ -130,7 +131,9 @@ function OnMouseDown(e)
             }
             else
             {
-                 var canvas = d3.select("#plotCanvas");
+                removeElementsByClassName("incompleteLines");
+                
+                var canvas = d3.select("#plotCanvas");
             
                 canvas.append("line")
                         .attr("x1", lineAfter.getAttribute("x2"))
@@ -146,8 +149,6 @@ function OnMouseDown(e)
                 lineBefore.setAttribute("x2", lineAfter.getAttribute("x2"));
                 lineBefore.setAttribute("y2", lineAfter.getAttribute("y2"));
                 lineAfter.parentNode.removeChild(lineAfter);
-                
-               
             }
         }
         else
@@ -167,9 +168,9 @@ function OnMouseDown(e)
             }
             else if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means").length - 1))
             {
+                console.log("in");
                 //if there are 2+ means            
                 meanCircle.attr("fill", meanColors["click"]);
-    //             clearInterval(intervals[meanCircle.attr("id")]);
         
                 //check if we are finishing an incomplete line here
                 if(document.getElementsByClassName("incompleteLines").length > 0)
