@@ -243,7 +243,7 @@ function OnMouseDown(e)
         }
     }
     
-    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "compareMeans")
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "compareMean")
     {
         setup(e, target);
         
@@ -256,7 +256,7 @@ function OnMouseDown(e)
         setOpacityForElementsWithClassNames(["IQRs","medians", "TOPFringes", "BOTTOMFringes", "TOPFringeConnectors", "BOTTOMFringeConnectors", "outliers", "CIs", "CITopFringes", "CIBottomFringes"], 0.1);
         d3.selectAll(".means").attr("r", engorgedMeanRadius);
         
-        removeElementsByClassName("compareMeans");
+        removeElementsByClassName("compareMean");
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "transformToNormal")
@@ -623,11 +623,11 @@ function OnMouseOver(e)
         d3.selectAll(".compareNow").attr("cursor", "pointer");
     }    
     
-    else if(target.className.baseVal == "compareMeans")
+    else if(target.className.baseVal == "compareMean")
     {
         setup(e, target);
             
-        d3.selectAll(".compareMeans").attr("cursor", "pointer");
+        d3.selectAll(".compareMean").attr("cursor", "pointer");
     }    
     
     else if(target.className.baseVal == "bins")
