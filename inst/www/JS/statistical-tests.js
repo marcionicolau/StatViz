@@ -2,7 +2,6 @@ function compareMeans()
 {
     var completeLines = d3.selectAll(".completeLines");
     var variableList = getSelectedVariables();    
-    console.dir(variables);
     
     switch(document.getElementsByClassName("completeLines").length)
     {
@@ -24,23 +23,29 @@ function compareMeans()
                     //homoscedasticity
                     loadAssumptionCheckList();
                     
-                    
                     var sampleSize;
+                    var sampleSizesAreEqual = true;
                     
                     if(variableList["independent"].length == 2)
                     {
                         var levelsOfIndependentVariableA = variables["independent-levels"][0];
                         var levelsOfIndependentVariableB = variables["independent-levels"][1];
                         
-                        sampleSize = colourBoxPlotData[levelsOfIndependentVariableA[0]][levelsOfIndependentVariableB[0]];
+                        sampleSize = colourBoxPlotData[levelsOfIndependentVariableA[0]][levelsOfIndependentVariableB[0]].length;
                     }
                     else
                     {
                         sampleSize = variables[variableList["dependent"][0]][variableList["independent-levels"][0]].length;
+                        
+                        sampleSizesAreEqual = variables[variableList["dependent"][0]][variableList["independent-levels"][1]].length == variables[variableList["dependent"][0]][variableList["independent-levels"][0]].length ? true : false;
                     }
                     
-                    
-                    if(sampleSize < 20)
+                    if(!sampleSizesAreEqual && experimentalDesign=="Between-groups")
+                    {
+                        console.log("Welch's T-test");
+                        performTTest(variables[variableList["dependent"][0][variableList["independent-levels"][1]], variables[variableList["dependent"][0]][variableList["independent-levels"][0]], "FALSE", "TRUE") //groupA, groupB, paired = "FALSE", alternative = "two.sided", alpha = 0.95, var = "FALSE"
+                    }                    
+                    else if(sampleSize < 20)
                     {
                         console.log("sample size < 20!");
                         performHomoscedasticityTestNotNormal(variableList["dependent"][0], variableList["independent"][0]);

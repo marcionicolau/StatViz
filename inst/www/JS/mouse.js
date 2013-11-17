@@ -168,7 +168,6 @@ function OnMouseDown(e)
             }
             else if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means").length - 1))
             {
-                console.log("in");
                 //if there are 2+ means            
                 meanCircle.attr("fill", meanColors["click"]);
         
