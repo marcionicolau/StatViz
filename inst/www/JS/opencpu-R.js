@@ -22,7 +22,7 @@ function loadFile(filePath)
         IQR[output.variableNames[i]] = new Object();
         CI[output.variableNames[i]] = new Object();
         
-//         getData(dataset, output.variableNames[i]);                 
+        getData(dataset, output.variableNames[i]);                 
         getIQR(dataset, output.variableNames[i]);  
     }
     
@@ -81,6 +81,7 @@ function getData(dataset, variableName, level)
         {   
             level = "dataset";
         } 
+        
         console.dir(variables);
         variables[variableName][level] = dataset[variableName];
         MIN[variableName][level] = Array.min(variables[variableName][level]);
