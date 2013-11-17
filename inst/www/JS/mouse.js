@@ -101,7 +101,7 @@ function OnMouseDown(e)
                 {
                     console.log("starting animation for mean with id = " + means[i].getAttribute("id"));
                     var thisMean = d3.select("#" + means[i].getAttribute("id") + ".means");
-                    startLoopingAnimation(thisMean);       
+                    startLoopAnimation(thisMean);       
                 }
             }
             //if we still have means to select, start an incomplete line
