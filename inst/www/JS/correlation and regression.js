@@ -24,21 +24,13 @@ function getCorrelationCoefficient(variableA, variableB, method)
                     testResults["effect-size"] = output.cor;
                     testResults["CI"] = [output.CI_min, output.CI_max];
                     
-                    if(noDisplay)
-                    {
-                        var scatRect = d3.select("#" + getValidId(variableA) + getValidId(variableB) + ".scatterplotMatrixCellRect");
-                        
-                        scatRect.attr("fill", "rgba(0, 255, 0, " + 0.6*Math.abs(testResults["effect-size"]) + ")");                
-                    }
-                    else
-                    {
-                        displayCorrelationResults();
+                    displayCorrelationResults();
 
-                        if((output.cor < -0.5) || (output.cor > 0.5))
-                        {                
-                            alertPossibleRegressionModel();
-                        }
+                    if((output.cor < -0.5) || (output.cor > 0.5))
+                    {                
+                        alertPossibleRegressionModel();
                     }
+                    
                 }
                 else if(method == "kendall")
                 {
