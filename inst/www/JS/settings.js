@@ -56,7 +56,7 @@
 
 // Buttons
 var buttonColors = new Object();   
-    buttonColors["normal"] = "white";
+    buttonColors["normal"] = "Orchid";
     buttonColors["hover"] = "lightgrey";
     buttonColors["click"] = "BlanchedAlmond";
     buttonColors["independent"] = "Peru";
@@ -123,7 +123,7 @@ var sampleSizeCutoff = 20;
 
 //buttons
 var buttonOffset = assumptionOffsetTop + 3*assumptionStep;
-var buttonHeight = scaleForWindowSize(35);
+var buttonHeight = scaleForWindowSize(50);
 var buttonWidth = sideBatWidth;
 
 //full screen button
