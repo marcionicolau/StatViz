@@ -62,10 +62,54 @@ function OnMouseDown(e)
         
         //get the selected mean
         var meanCircle = d3.selectAll("#" + target.id + ".means");
-        setCompareNowButtonText();
+
+                
         if(meanCircle.attr("fill") == meanColors["click"])
         {
+            //we are cancelling a mean
             meanCircle.attr("fill", meanColors["normal"]);
+            
+            //remove all complete lines associated with this and join the missing ones
+            var completeLines = document.getElementsByClassName("completeLines");
+            var lineBefore, lineAfter;
+            
+            for(var i=0; i<completeLines.length; i++)
+            {
+                if(completeLines[i].getAttribute("x1") == meanCircle.attr("cx"))
+                {
+                    lineAfter = completeLines[i];
+                }
+                if(completeLines[i].getAttribute("x2") == meanCircle.attr("cx"))
+                {
+                    lineBefore = completeLines[i];
+                }
+            }
+            
+            if(lineBefore == undefined && lineAfter == undefined)
+            {
+                //it was the only mean selected - do nothing
+                console.log("no lines before or after");
+            }
+            else if(lineAfter == undefined)
+            {
+                lineBefore.parentNode.removeChild(lineBefore);
+                console.log("one line before");
+            }
+            else if(lineBefore == undefined)
+            {
+                lineAfter.parentNode.removeChild(lineAfter);
+                console.log("one line after");
+            }
+            else
+            {
+                console.log("lines before and after");
+                lineBefore.setAttribute("x2", lineAfter.getAttribute("x2"));
+                lineBefore.setAttribute("y2", lineAfter.getAttribute("y2"));
+                lineAfter.parentNode.removeChild(lineAfter);
+            }
+            
+            
+            
             var incompleteLines = d3.selectAll(".incompleteLines").display("none");
         }
         else
@@ -133,6 +177,8 @@ function OnMouseDown(e)
                 }
             }   
         }
+        
+        setCompareNowButtonText();
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "compareNow")
