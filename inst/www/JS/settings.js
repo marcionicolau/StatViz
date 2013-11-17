@@ -61,9 +61,6 @@ var buttonColors = new Object();
     buttonColors["click"] = "BlanchedAlmond";
     buttonColors["independent"] = "Peru";
     buttonColors["subject"] = "Orchid";
-    
-
-
 
 //Define colors for histogram bars, color scatterplot
 var colors = ["rgba(255,0,0,0.8)","rgba(0,255,0,0.6)","rgba(0,0,255,0.4)", "rgba(255,255,0,0.2)","rgba(0,255,255,0.25)","rgba(255,0,255,0.25)"];
@@ -103,8 +100,8 @@ var labelOffset = scaleForWindowSize(45);
 
 // Significance test
 var significanceTestScaleOffset = scaleForWindowSize(25);
-// var assumptionStep = scaleForWindowSize(30);
-var assumptionOffsetTop = 30;
+var assumptionStep = scaleForWindowSize(30);
+var assumptionOffsetTop = assumptionStep*3;
 var assumptionImageSize = scaleForWindowSize(25);
 
 var assumptionsText = new Object();
@@ -125,7 +122,7 @@ var boxPlotTransformationDuration = 700;
 var sampleSizeCutoff = 20;
 
 //buttons
-var buttonOffset = assumptionOffsetTop + 3*30;
+var buttonOffset = assumptionOffsetTop + 3*assumptionStep;
 var buttonHeight = scaleForWindowSize(75);
 var buttonWidth = scaleForWindowSize(450);
 
