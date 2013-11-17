@@ -16,6 +16,6 @@ subsetDataByLevelsOfVariable <- function(dataset, variable)
         }
     }
     
-    list(data = x);
+    list(splitData = x);
 }  
     
