@@ -129,7 +129,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
                 .attr("ry", "5px")
                 .attr("width", shortWidth)
                 .attr("height", shortHeight)
-                .attr("fill", "rgba(0, 255, 0, " + 0.6*Math.abs(r) + ")");                
+                .attr("fill", "rgba(0, 255, 0, " + 0.6*Math.abs(r) + ")")                
                 .attr("id", getValidId(variableX) + getValidId(variableY))
                 .attr("class", "scatterplotMatrixCellRect");
     }

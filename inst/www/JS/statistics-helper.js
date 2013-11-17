@@ -73,7 +73,7 @@ function findCorrelationCoefficient(variableA, variableB)
         {
             console.log("\t\t\tPearson's correlation");
             if(!isScatterPlotMatrix)
-                getCorrelationCoefficient(variableA, variableB, "pearson";
+                getCorrelationCoefficient(variableA, variableB, "pearson");
             else
                 return getPearsonCorrelation(variables[variableA]["dataset"], variables[variableB]["dataset"]);
         }
