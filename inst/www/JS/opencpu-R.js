@@ -209,11 +209,11 @@ function performHomoscedasticityTestNotNormal(dependent, independent)
                     
                         if(experimentalDesign == "between-groups")
                         {
-                            performKruskalWallisTest(variableList["dependent"][0], variableList["independent"][0]);
+                            performFriedmanTest(variableList["dependent"][0], variableList["independent"][0]);
                         }
                         else
                         {
-                            performFriedmanTest(variableList["dependent"][0], variableList["independent"][0]);
+                            performKruskalWallisTest(variableList["dependent"][0], variableList["independent"][0]);
                         }                                        
                     }
                 }
@@ -233,11 +233,11 @@ function performHomoscedasticityTestNotNormal(dependent, independent)
                     
                         if(experimentalDesign == "between-groups")
                         {                        
-                            performMannWhitneyTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]]);
+                            performWilcoxonTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]]);
                         }
                         else
                         {
-                            performWilcoxonTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]]);
+                            performMannWhitneyTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]]);
                         }                                        
                     }
                 }
@@ -306,11 +306,11 @@ function performHomoscedasticityTestNormal(dependent, independent)
                     
                             if(experimentalDesign == "between-groups")
                             {
-                                performANOVA(variableList["dependent"][0], variableList["independent"][0]);
+                                performOneWayRepeatedMeasuresANOVA(variableList["dependent"][0], variableList["independent"][0]);
                             }
                             else
                             {
-                                performOneWayRepeatedMeasuresANOVA(variableList["dependent"][0], variableList["independent"][0]);
+                                performANOVA(variableList["dependent"][0], variableList["independent"][0]);
                             }                                        
                         }
                     }
@@ -329,11 +329,11 @@ function performHomoscedasticityTestNormal(dependent, independent)
                     
                             if(experimentalDesign == "between-groups")
                             {
-                                performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "TRUE", "FALSE");
+                                performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "TRUE", "TRUE");
                             }
                             else
                             {
-                                performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "TRUE", "TRUE");
+                                performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "TRUE", "FALSE");
                             }                                        
                         }
                     }
