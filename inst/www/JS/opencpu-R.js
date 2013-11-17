@@ -11,6 +11,8 @@ function loadFile(filePath)
     renderVariableNames(output.variableNames);
     variableNames = output.variableNames;
     
+    console.dir(variables);
+    
     //for each variable, get the data and the IQR
     for(var i=0; i<output.variableNames.length; i++)
     {
@@ -20,7 +22,7 @@ function loadFile(filePath)
         IQR[output.variableNames[i]] = new Object();
         CI[output.variableNames[i]] = new Object();
         
-        getData(dataset, output.variableNames[i]);                 
+//         getData(dataset, output.variableNames[i]);                 
         getIQR(dataset, output.variableNames[i]);  
     }
     
