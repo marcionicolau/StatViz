@@ -903,8 +903,9 @@ function OnMouseOut(e)
         if(meanCircle.attr("fill") != meanColors["click"])
         {
             meanCircle.attr("fill", meanColors["normal"]);
+            var incompleteLine = d3.select(".incompleteLines").attr("display", "none");
         }
-        removeElementsByClassName("incompleteLines");
+        
 //         removeElementsByClassName("loops");
         
         
