@@ -66,3 +66,59 @@ function drawButtonInSideBar(buttonText, className, offset)
             .attr("id", "text")
             .attr("class", className); 
 }
+
+function drawDialogBoxToGetCausalAndPredictorVariables()
+{
+    var canvas = d3.select("#plotCanvas");
+    
+    var dialogBoxHeight = plotHeight/2;
+    var dialogBoxWidth = plotWidth/2;
+    
+    var centerX = canvasWidth/2;
+    var centerY = canvasHeight/2;
+    
+    var variableList = sort(currentVariableSelection);
+    
+    canvas.append("rect")
+            .attr("x", centerX - dialogBoxWidth/2)
+            .attr("y", centerY - dialogBoxHeight/2)
+            .attr("width", dialogBoxWidth)
+            .attr("height", dialogBoxHeight)
+            .attr("rx", "5px")
+            .attr("ry", "5px")
+            .attr("fill", "#5a4c29")
+            .attr("id", "regression")
+            .attr("class", "dialogBox");
+    
+    canvas.append("text")
+            .attr("x", centerX)
+            .attr("y", centerY - dialogBoxHeight/4)
+            .attr("fill", "black")
+            .attr("text-anchor", "middle")
+            .text("Please select the causal variable")
+            .attr("id", "regression")
+            .attr("class", "dialogBox");
+            
+    var step = (2*plotHeight/3)/currentVariableSelection.length;
+    
+    for(var i=0; i<currentVariableSelection.length; i++)
+    {
+        canvas.append("rect")
+                .attr("x", centerX - dialogBoxWidth/3)
+                .attr("y", i*step + centerY - dialogBoxHeight + dialogBoxHeight/3)
+                .attr("width", 2*dialogBoxWidth/3)
+                .attr("height", dialogBoxHeight/8)
+                .attr("rx", "5px")
+                .attr("ry", "5px")
+                .attr("fill", panelColors["normal"])
+                .attr("id", currentVariableSelection[i])
+                .attr("class", "causalVariable");
+        canvas.append("text")
+                .attr("x", centerX)
+                .attr("y", i*step + centerY - dialogBoxHeight + dialogBoxHeight/3 + dialogBoxHeight/16 - yAxisTickTextOffset)
+                .attr("text-anchor", "middle")
+                .text(currentVariableSelection[i])
+                .attr("id", currentVariableSelection[i])
+                .attr("class", "causalVariable");
+    }
+}
