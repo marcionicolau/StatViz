@@ -170,7 +170,7 @@ function makeBoxplot()
     
     for(i=0; i<nGroovesX; i++)
     {
-        if(getObjectLength(colourBoxPlot) > 0)
+        if(getObjectLength(colourBoxPlotData) > 0)
         {
             var levelsForXAxis = variables["independent-levels"][0].unique();
             
