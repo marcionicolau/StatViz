@@ -87,18 +87,18 @@ function getData(dataset, variableName, level)
         console.log("\tMIN[" + variableName + "][" + level + "] = " + MIN[variableName][level]);
         console.log("\tMAX[" + variableName + "][" + level + "] = " + MAX[variableName][level]);   
         
-        if(level == "dataset")
-        {
-            variableTypes[variableName] = "dependent";
-            if(typeof(variables[variableName][level][0]) == "string")
-            {           
-                variableDataTypes[variableName] = "qualitative";
-            }
-            else if(typeof(variables[variableName][level][0]) == "number")
-            {
-                variableDataTypes[variableName] = "quantitative";           
-            }
-        }
+//         if(level == "dataset")
+//         {
+//             variableTypes[variableName] = "dependent";
+//             if(typeof(variables[variableName][level][0]) == "string")
+//             {           
+//                 variableDataTypes[variableName] = "qualitative";
+//             }
+//             else if(typeof(variables[variableName][level][0]) == "number")
+//             {
+//                 variableDataTypes[variableName] = "quantitative";           
+//             }
+//         }
         
         if(++ticker == getObjectLength(variableNames))
         {
