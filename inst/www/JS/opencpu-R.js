@@ -80,7 +80,7 @@ function getData(dataset, variableName, level)
             level = "dataset";
         } 
         
-        variables[variableName][level] = output.data;//dataset[variableName];
+        variables[variableName][level] = output.data;
         MIN[variableName][level] = Array.min(variables[variableName][level]);
         MAX[variableName][level] = Array.max(variables[variableName][level]);
         
@@ -126,30 +126,11 @@ function getData(dataset, variableName, level)
 
 function getIQR(dataset, variableName, level)
 {
-    // Get variable names and their data type
-    // var req = opencpu.r_fun_json("getIQR", {
-//                     dataset: dataset,
-//                     columnName: variableName
-//                   }, function(output) {                                 
-//         
-//     
-        if(level === undefined)
-        {   
-            level = "dataset";
-        }         
-        IQR[variableName][level] = findIQR(dataset[variableName]);
-      
-     //  }).fail(function(){
-//           alert("Failure: " + req.responseText);
-//     });
-// 
-//     //if R returns an error, alert the error message
-//     req.fail(function(){
-//       alert("Server error: " + req.responseText);
-//     });
-//     req.complete(function(){
-//         
-//     });
+    if(level === undefined)
+    {   
+        level = "dataset";
+    }         
+    IQR[variableName][level] = findIQR(dataset[variableName]);      
 }
 
 function getCI(dataset, variableName, level)
@@ -164,8 +145,6 @@ function getCI(dataset, variableName, level)
         
         CI[variableName][level] = new Array();
         
-        console.log("min=" + min + ", max= " + max);
-        
         CI[variableName][level][0] = output.min;
         CI[variableName][level][1] = output.max;
                 
@@ -178,34 +157,6 @@ function getCI(dataset, variableName, level)
       alert("Server error: " + req.responseText);
     });
 }  
-
-//Split data - R based   
-// function splitDataByColumnName(dataset, columnName, value)
-// {   
-//     // Get variable names and their data type
-//     var req = opencpu.r_fun_json("splitDataByColumnName", {
-//                     dataset: dataset,
-//                     columnName: columnName,
-//                     value: value
-//                   }, function(output) {                  
-//                 
-//        splitData[value] = output.data;  
-//        
-//        for(var i=0; i<variableNames.length; i++)
-//        {  
-//            getData(splitData[value], variableNames[i],value);                
-//            getIQR(splitData[value], variableNames[i],value);                
-//        }
-//                 
-//      }).fail(function(){
-//           alert("Failure: " + req.responseText);
-//     });
-// 
-//     //if R returns an error, alert the error message
-//     req.fail(function(){
-//       alert("Server error: " + req.responseText);
-//     });   
-// }
 
 //Statistics
 
