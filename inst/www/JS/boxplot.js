@@ -172,7 +172,7 @@ function makeBoxplot()
     {
         if(getObjectLength(colourBoxPlotData) > 0)
         {
-            var levelsForXAxis = variables["independent-levels"][0].unique();
+            var levelsForXAxis = variables[variableList["independent-levels"][0]]["dataset"].unique();
             
             if(i%levelsForXAxis.length)
             {
