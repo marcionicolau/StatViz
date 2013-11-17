@@ -83,7 +83,7 @@ function OnMouseDown(e)
             
             if(meanCircle.attr("fill") == meanColors["click"])
             {
-                meanCircle.attr("fill", meanColors["normal"];
+                meanCircle.attr("fill", meanColors["normal"]);
                 var incompleteLines = d3.selectAll(".incompleteLines").display("none");
             }
             else
