@@ -13,9 +13,9 @@
         panelColors.active = "darkgrey";
 
     var canvasHeight = height*(3/4);
-    var canvasWidth = width*0.63; 
+    var canvasWidth = width*0.60; 
     
-    var sideBarWidth = width*0.17;
+    var sideBarWidth = width*0.20;
 
     // Variable panel
         var variableNameHolderPadding = scaleForWindowSize(15);
@@ -48,7 +48,7 @@
     var tickLength = scaleForWindowSize(10);
     var border = scaleForWindowSize(20);
 
-    var plotHeight = canvasHeight - 1.5*(axesOffset + tickTextOffsetXAxis + border);
+    var plotHeight = canvasHeight - 1.65*(axesOffset + tickTextOffsetXAxis + border);
     var plotWidth = 4*plotHeight/3;
     
     var displayOffsetTop = scaleForWindowSize(10);

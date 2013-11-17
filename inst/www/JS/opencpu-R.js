@@ -104,7 +104,7 @@ function getData(dataset, variableName, level)
             removeElementsByClassName("loadingAnimation");
             experimentalDesign = findExperimentalDesign();
             
-            console.log("EXPERIMENTAL DESIGN = " + experimentalDesign);
+            console.log("\n\tEXPERIMENTAL DESIGN = " + experimentalDesign);
         }
     
         
