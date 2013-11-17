@@ -70,7 +70,7 @@ function OnMouseDown(e)
             if(meanCircle.attr("fill") == meanColors["hover"])
             {
                 meanCircle.attr("fill", meanColors["click"]);
-                compareMeans();
+//                 compareMeans();
             }
             else
             {
@@ -123,11 +123,31 @@ function OnMouseDown(e)
             else
             {
                 //we are done
-                compareMeans();
+//                 compareMeans();
             }
         }   
     }
     
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "compareNow")
+    {
+        var means = document.getElementsByClassName("means");
+        var selectedMeans = [];
+        
+        for(var i=0; i<means.length; i++)
+        {
+            if(means[i].getAttribute("fill") == meanColors["click"])
+                selectedMeans.push(means[i]);
+        }
+        
+        if(selectedMeans.length == 0)
+        {
+            alert("select one or means and then press compare");
+        }
+        else
+        {
+            compareMeans();
+        }
+    }
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "compareMeans")
     {
         setup(e, target);
@@ -884,17 +904,18 @@ function OnMouseOut(e)
         {
             meanCircle.attr("fill", meanColors["normal"]);
         }
-        removeElementsByClassName("loops");
+        removeElementsByClassName("incompleteLines");
+//         removeElementsByClassName("loops");
         
         
-        clearInterval(intervals[meanCircle.attr("id")]);
+//         clearInterval(intervals[meanCircle.attr("id")]);
         
-        var incompleteLines = d3.selectAll(".incompleteLines");
-            
-        if(document.getElementsByClassName("incompleteLines").length > 0)
-        {
-            incompleteLines.attr("stroke", meanColors["normal"]);
-        }   
+//         var incompleteLines = d3.selectAll(".incompleteLines");
+//             
+//         if(document.getElementsByClassName("incompleteLines").length > 0)
+//         {
+//             incompleteLines.attr("stroke", meanColors["normal"]);
+//         }   
     }
     else if(target.className.baseVal == "bins")                
     {
