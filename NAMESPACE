@@ -9,7 +9,7 @@ export(getCI)
 export(getQQPlotCoordinates)
 export(getStandardError)
 
-export(splitDataByColumnName)
+export(subsetDataByLevelsOfVariable)
 
 export(performOneSampleTTest)
 export(performOneSampleWilcoxonTest)

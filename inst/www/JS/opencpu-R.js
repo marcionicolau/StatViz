@@ -90,6 +90,9 @@ function getData(dataset, variableName, level)
         
         if(++ticker == getObjectLength(variableNames))
         {
+            console.log("before calling setVariableTypes()");
+            console.dir(variables);
+            
             setVariableTypes();
             setVariableDataTypes();
             
@@ -104,7 +107,7 @@ function getData(dataset, variableName, level)
             removeElementsByClassName("loadingAnimation");
             experimentalDesign = findExperimentalDesign();
             
-            console.log("\n\tEXPERIMENTAL DESIGN: " + experimentalDesign + "\n");
+            console.log(experimentalDesign);
         }
     
         
@@ -154,6 +157,30 @@ function getCI(dataset, variableName, level)
       alert("Server error: " + req.responseText);
     });
 }  
+
+//Split data - R based   
+function subsetDataByLevelsOfVariable(dataset, variableName)
+{   
+    // Get variable names and their data type
+    var req = opencpu.r_fun_json("splitDataByColumnName", {
+                    dataset: dataset,
+                    variable: variableName
+                  }, function(output) {                  
+                
+      console.log(output.data);
+      
+//            getIQR(splitData[value], variableNames[i],value);                
+      
+                
+     }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });   
+}
 
 //Statistics
 
