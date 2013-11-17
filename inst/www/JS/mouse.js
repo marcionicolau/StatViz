@@ -253,7 +253,7 @@ function OnMouseDown(e)
         var inText = variableList["independent"].length > 0 ? "SELECT TWO OR MORE MEANS" : "SELECT ONE OR MORE MEANS";             
     
         canvas.append("rect")
-                .attr("x", canvasWidth/2 - 1.5*buttonWidth)
+                .attr("x", canvasWidth/2 - 1.5*buttonWidth/2)
                 .attr("y", 0)
                 .attr("width", 1.5*buttonWidth)
                 .attr("height", buttonHeight)
