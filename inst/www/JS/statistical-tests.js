@@ -43,7 +43,7 @@ function compareMeans()
                     if(!sampleSizesAreEqual && experimentalDesign=="Between-groups")
                     {
                         console.log("Welch's T-test");
-                        performTTest(variables[variableList["dependent"][0][variableList["independent-levels"][1]], variables[variableList["dependent"][0]][variableList["independent-levels"][0]], "FALSE", "TRUE");
+                        performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][1]], variables[variableList["dependent"][0]][variableList["independent-levels"][0]], "FALSE", "TRUE");
                     }                    
                     else if(sampleSize < 20)
                     {
