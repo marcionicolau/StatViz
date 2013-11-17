@@ -99,13 +99,14 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
             .attr("id", "regression")
             .attr("class", "dialogBox");
             
-    var step = (2*plotHeight/3)/currentVariableSelection.length;
+    var step = (2*dialogBoxHeight/3)/currentVariableSelection.length;
+    var yStart = centerY - dialogBoxHeight/2 + dialogBoxHeight/3;
     
     for(var i=0; i<currentVariableSelection.length; i++)
     {
         canvas.append("rect")
                 .attr("x", centerX - dialogBoxWidth/3)
-                .attr("y", i*step + centerY - dialogBoxHeight + dialogBoxHeight/3)
+                .attr("y", i*step + yStart)
                 .attr("width", 2*dialogBoxWidth/3)
                 .attr("height", dialogBoxHeight/8)
                 .attr("rx", "5px")
@@ -115,7 +116,7 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
                 .attr("class", "causalVariable");
         canvas.append("text")
                 .attr("x", centerX)
-                .attr("y", i*step + centerY - dialogBoxHeight + dialogBoxHeight/3 + dialogBoxHeight/16 - yAxisTickTextOffset)
+                .attr("y", i*step + yStart + dialogBoxHeight/16 - yAxisTickTextOffset)
                 .attr("text-anchor", "middle")
                 .text(currentVariableSelection[i])
                 .attr("id", currentVariableSelection[i])
