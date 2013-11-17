@@ -5,8 +5,8 @@
     var pathToFile =  wd + "cars.txt";
 
 // Skeleton
-    var width = $(window).width();
-    var height = $(window).height();  
+    var width = getWidth();
+    var height = getHeight();  
 
     var panelColors = new Object();
         panelColors.normal = "white";
