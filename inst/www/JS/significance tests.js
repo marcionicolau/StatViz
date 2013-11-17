@@ -1,12 +1,14 @@
 //Significance Tests
 //0 IV, 1 DV
-function performOneSampleTTest(variable, expectedMean)
+function performOneSampleTTest(variable, level, expectedMean)
 {
+    if(level == undefined)
+        level = "dataset"
     if(expectedMean == undefined)
         expectedMean = "0";
     
     var req = opencpu.r_fun_json("performOneSampleTTest", {
-                    distribution: variables[variable]["dataset"],
+                    distribution: variables[variable][level],
                     trueMean: expectedMean
                   }, function(output) {                                                   
                   
@@ -42,13 +44,15 @@ function performOneSampleTTest(variable, expectedMean)
     });
 }
 
-function performOneSampleWilcoxonTest(variable, expectedMean)
+function performOneSampleWilcoxonTest(variable, level, expectedMean)
 {
+    if(level == undefined)
+        level = "dataset";
     if(expectedMean == undefined)
         expectedMean = "0";
     
     var req = opencpu.r_fun_json("performOneSampleWilcoxonTest", {
-                    distribution: variables[variable]["dataset"],
+                    distribution: variables[variable][level],
                     trueMean: expectedMean
                   }, function(output) {                                                   
                   
