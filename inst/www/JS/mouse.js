@@ -166,7 +166,7 @@ function OnMouseDown(e)
         
         canvas.append("text")
                 .attr("x", canvasWidth/2)
-                .attr("y", buttonHeight/2 - yAxisTickOffset)
+                .attr("y", buttonHeight/2 - yAxisTickTextOffset)
                 .attr("font-anchor", "middle")
                 .text("SELECT ONE OR MORE MEANS AND CLICK HERE TO COMPARE")
                 .attr("id", "text")
