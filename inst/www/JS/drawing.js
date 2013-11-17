@@ -95,13 +95,14 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
             .attr("y", centerY - dialogBoxHeight/4)
             .attr("fill", "black")
             .attr("text-anchor", "middle")
+            .attr("font-size", fontSizeLabels + "px")
             .text("Please select the causal variable")
             .attr("id", "regression")
             .attr("class", "dialogBox");
             
     var step = (dialogBoxHeight/2)/currentVariableSelection.length;
     var yStart = centerY;
-    var buttHeight = step - 5;
+    var buttHeight = step - 10;
     
     for(var i=0; i<currentVariableSelection.length; i++)
     {
