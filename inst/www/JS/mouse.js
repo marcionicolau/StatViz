@@ -49,6 +49,8 @@ function OnMouseDown(e)
         
         if(document.getElementById("plotCanvas") != null)
                     removeElementById("plotCanvas");
+        if(document.getElementById("sideBarCanvas") != null)
+                    removeElementById("sideBarCanvas");        
         
         removeElementsByClassName("displayDataTable");
         removeElementsByClassName("displayDataText");
