@@ -284,22 +284,18 @@ function OnMouseDown(e)
         setup(e, target);
         
         var button = d3.select("#button." + target.className.baseVal);   
-        var buttonText = d3.select("#text." + target.className.baseVal);
+        var buttonText = d3.select("#text." + target.className.baseVal);        
         
-        if(button.attr("fill") == buttonColors["hover"])
-        {
-            button.attr("fill", buttonColors["click"]);
+        button.attr("fill", buttonColors["click"]);
             
-            var variableList = sort(currentVariableSelection);
-            
-            for(var i=0; i<variableList["independent-levels"].length; i++)
-            {    
-                console.log("i=" + i);
-                applyTransform(variableList["dependent"][0], variableList["independent-levels"][i], false);
-            }
-            
-            applyTransform(variableList["dependent"][0], "dataset", true);
-        }        
+        var variableList = sort(currentVariableSelection);
+        
+        for(var i=0; i<variableList["independent-levels"].length; i++)
+        {    
+            applyTransform(variableList["dependent"][0], variableList["independent-levels"][i], false);
+        }
+        
+        applyTransform(variableList["dependent"][0], "dataset", true);               
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "fullscreen")
@@ -743,15 +739,7 @@ function OnMouseOver(e)
     else if(target.className.baseVal == "transformToNormal")
     {
         setup(e, target);
-        var button = d3.select("#button." + target.className.baseVal);   
-        var buttonText = d3.select("#text." + target.className.baseVal);
-        
-        if(button.attr("fill") == buttonColors["normal"])
-        {
-            button.attr("fill", buttonColors["hover"]);
-            button.attr("cursor", "pointer");
-            buttonText.attr("cursor", "pointer");
-        }        
+        d3.selectAll(".transformToNormal").attr("cursor", "pointer");
     }
     
     else if(target.className.baseVal == "fullscreen")

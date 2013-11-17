@@ -104,7 +104,7 @@ function getData(dataset, variableName, level)
             removeElementsByClassName("loadingAnimation");
             experimentalDesign = findExperimentalDesign();
             
-            console.log(experimentalDesign);
+            console.log("EXPERIMENTAL DESIGN = " + experimentalDesign);
         }
     
         
@@ -451,9 +451,8 @@ function findTransform(dependentVariable, independentVariable)
                     canvas.append("text")
                             .attr("x", sideBarWidth/2)
                             .attr("y", buttonOffset + buttonHeight/2 + yAxisTickTextOffset)
-                            .attr("fill", "orange")
                             .attr("text-anchor", "middle")
-                            .attr("font-size", fontSizeAssumptions + "px")
+                            .attr("font-size", fontSizeLabels + "px")
                             .text("TRANSFORM TO NORMAL DISTRIBUTIONS")
                             .attr("id", "text")
                             .attr("class", "transformToNormal");
@@ -514,9 +513,8 @@ function findTransformForDependentVariables(numericVariables)
                     canvas.append("text")
                             .attr("x", sideBarWidth/2)
                             .attr("y", buttonOffset + buttonHeight/2 + yAxisTickTextOffset)
-                            .attr("fill", "orange")
                             .attr("text-anchor", "middle")
-                            .attr("font-size", fontSizeAssumptions + "px")
+                            .attr("font-size", fontSizeLabels + "px")
                             .text("TRANSFORM TO NORMAL DISTRIBUTIONS")
                             .attr("id", "text")
                             .attr("class", "transformToNormal");                            
