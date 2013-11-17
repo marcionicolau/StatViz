@@ -49,7 +49,7 @@ function getCorrelationCoefficient(variableA, variableB, method)
 
                     if((output.cor < -0.5) || (output.cor > 0.5))
                     {                
-                        alertPossibleRegressionModel();
+                        drawButtonInSideBar("CONSTRUCT MODEL", "regression");
                     }
                     
                 }
@@ -85,7 +85,7 @@ function getBiserialCorrelationCoefficient(continuousVariable, binaryVariable)
 
                 if((output.cor < -0.5) || (output.cor > 0.5))
                 {                
-                    alertPossibleRegressionModel();
+                    drawButtonInSideBar("CONSTRUCT MODEL", "regression");
                 }               
             
         
