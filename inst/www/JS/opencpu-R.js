@@ -78,7 +78,8 @@ function getData(dataset, variableName, level)
         if(level === undefined)
         {   
             level = "dataset";
-        }         
+        } 
+        console.dir(variables);
         variables[variableName][level] = dataset[variableName];
         MIN[variableName][level] = Array.min(variables[variableName][level]);
         MAX[variableName][level] = Array.max(variables[variableName][level]);
