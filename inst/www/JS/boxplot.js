@@ -659,7 +659,7 @@ function drawCompareMeansButton()
     
     canvas.append("text")
             .attr("x", sideBarWidth/2)
-            .attr("y", buttonOffset + buttonHeight/2 - yAxisTickTextOffset)
+            .attr("y", buttonOffset + buttonHeight/2 + yAxisTickTextOffset)
             .attr("text-anchor", "middle")
             .text("COMPARE MEANS")
             .attr("id", "text")
