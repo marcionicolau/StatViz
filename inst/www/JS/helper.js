@@ -50,6 +50,8 @@ function splitTheData()
             }
         }
     } 
+    
+    console.dir(variables);
 }
 
 function splitThisLevelBy(independentVariableA, independentVariableB, dependentVariable)
