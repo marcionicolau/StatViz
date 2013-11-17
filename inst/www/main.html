@@ -46,7 +46,7 @@
                 
                 // Set the width and height of panels
                 d3.select("#variable.panel").attr("style", "width: " + (width - canvasWidth - sideBarWidth) + "px; height: " + height + "px; position: absolute; left: 0px; top: 0px;");    
-                d3.select("#visualization.panel").attr("style", "width: " + (canvasWidth + sideBarWidth) + "px; height: " + height/4 + "px; top: " + canvasHeight + "px; left: " + (width - canvasWidth - sideBarWidth) + "px;");                    
+                d3.select("#visualization.panel").attr("style", "position: absolute; top: " + canvasHeight + "px; left: " + (width - canvasWidth - sideBarWidth) + "px; width: " + (canvasWidth + sideBarWidth) + "px; height: " + height/4 + "px;");                    
                 d3.select("#canvas").attr("style", "position: absolute; width: " + canvasWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - canvasWidth - sideBarWidth) + "px;");    
                 d3.select("#sideBar").attr("style", "position: absolute; width: " + sideBarWidth + "px; height: " + canvasHeight + "px; top: 0px; left: " + (width - sideBarWidth) + "px;");    
                 
