@@ -9,8 +9,8 @@
     var height = getHeight();  
 
     var panelColors = new Object();
-        panelColors.normal = "#BFD1CB";
-        panelColors.active = "#505E5A";
+        panelColors.normal = "#C5B998";
+        panelColors.active = "#2C2206";
 
     var canvasHeight = height*(3/4);
     var canvasWidth = width*0.60; 

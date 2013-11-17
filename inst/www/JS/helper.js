@@ -230,17 +230,20 @@ function removeElementsByClassName(className)
 function toggleFillColorsForVariables(array, element)
 {   
     var variable = d3.select("#" + element + ".variableNameHolderBack");
+    var variableText = d3.select("#" + element + ".variableNameHolderText");
     
     if(array.indexOf(element) == -1)
     {
         array.push(element);
         variable.attr("fill", panelColors.active);
+        variableText.attr("fill", "white");
     }
     
     else
     {     
         array.splice(array.indexOf(element), 1);
         variable.attr("fill", panelColors.normal);    
+        variableText.attr("fill", "black");
     }
 
     return array;
