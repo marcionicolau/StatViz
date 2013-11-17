@@ -814,6 +814,7 @@ function setCompareNowButtonText()
                     break;
         }
     }
+}
 
             
 
