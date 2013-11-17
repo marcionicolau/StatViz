@@ -1,7 +1,9 @@
-function findCorrelationCoefficient(variableA, variableB, noDisplay)
+function findCorrelationCoefficient(variableA, variableB)
 {
     console.log("\nCORRELATION");
     console.log("\t\ttypeOf(" + variableA + ")=" + variableDataTypes[variableA] + ", typeOf(" + variableB + ")=" + variableDataTypes[variableB]);
+    
+    var isScatterPlotMatrix = currentVisualizationSelection == "Scatterplot-matrix" ? true : false;
     
     
     if((variableDataTypes[variableA] == "binary") && (variableDataTypes[variableB] == "binary"))
@@ -10,7 +12,7 @@ function findCorrelationCoefficient(variableA, variableB, noDisplay)
         
         //2x2 => Phi; Cramer's V otherwise
         console.log("\t\t\tCramer's V");
-        return -1;
+        return null;
     }
     else if(((variableDataTypes[variableA] == "binary") || (variableDataTypes[variableB] == "binary")) && ((variableDataTypes[variableA] != "binary") || (variableDataTypes[variableB] != "binary")))
     {
@@ -21,12 +23,15 @@ function findCorrelationCoefficient(variableA, variableB, noDisplay)
             if(!isNaN(variables[variableB]["dataset"][0]))
             {
                 console.log("\t\t\tBiserial Correlation Coefficient");
-                getBiserialCorrelationCoefficient(variableB, variableA, noDisplay);
+                if(!isScatterPlotMatrix)
+                    getBiserialCorrelationCoefficient(variableB, variableA);
+                else
+                    return null;
             }
             else
             {   
                 console.log("\t\t\tDoing nothing");
-                return -1;
+                return null;
             }
         }
         else
@@ -34,12 +39,15 @@ function findCorrelationCoefficient(variableA, variableB, noDisplay)
             if(!isNaN(variables[variableA]["dataset"][0]))
             {
                 console.log("\t\t\tBiserial Correlation Coefficient");
-                getBiserialCorrelationCoefficient(variableA, variableB, noDisplay);
+                if(!isScatterPlotMatrix)
+                    getBiserialCorrelationCoefficient(variableA, variableB);
+                else
+                    return null
             }
             else
             {
                 console.log("\t\t\tDoing nothing");
-                return -1;
+                return null;
             }            
         }
     }
@@ -50,18 +58,24 @@ function findCorrelationCoefficient(variableA, variableB, noDisplay)
         if(((variableDataTypes[variableA] == "ordinal") || (variableDataTypes[variableB] == "ordinal")) && ((variableDataTypes[variableA] != "nominal") && (variableDataTypes[variableB] != "nominal")))
         {
             console.log("\t\t\tKendall's Tau");            
-            getCorrelationCoefficient(variableA, variableB, "kendall", noDisplay);
+            if(!isScatterPlotMatrix)
+                getCorrelationCoefficient(variableA, variableB, "kendall");
+            else
+                return getPearsonCorrelation(variables[variableA]["dataset"], variables[variableB]["dataset"]);
         }
         else if((variableDataTypes[variableA] == "nominal") || (variableDataTypes[variableB] == "nominal"))
         {
             //do nothing
             console.log("\t\t\tDoing nothing");
-            return -1;
+            return null;
         }
         else
         {
             console.log("\t\t\tPearson's correlation");
-            getCorrelationCoefficient(variableA, variableB, "pearson", noDisplay);
+            if(!isScatterPlotMatrix)
+                getCorrelationCoefficient(variableA, variableB, "pearson";
+            else
+                return getPearsonCorrelation(variables[variableA]["dataset"], variables[variableB]["dataset"]);
         }
     }
 }

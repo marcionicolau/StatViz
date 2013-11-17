@@ -120,8 +120,8 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
     
     if(noColor == undefined)
     {
-        findCorrelationCoefficient(variableX, variableY, "true");
-    
+        var r = findCorrelationCoefficient(variableX, variableY);
+        
         canvas.append("rect")
                 .attr("x", x)
                 .attr("y", y-shortHeight)
@@ -129,7 +129,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
                 .attr("ry", "5px")
                 .attr("width", shortWidth)
                 .attr("height", shortHeight)
-                .attr("fill", "none")
+                .attr("fill", "rgba(0, 255, 0, " + 0.6*Math.abs(r) + ")");                
                 .attr("id", getValidId(variableX) + getValidId(variableY))
                 .attr("class", "scatterplotMatrixCellRect");
     }
