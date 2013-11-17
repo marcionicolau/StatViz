@@ -645,10 +645,20 @@ function drawCompareMeansButton()
 {
     var canvas = d3.select("#sideBarCanvas");
     
-    canvas.append("circle")
-            .attr("cx", sideBarWidth/2)
-            .attr("cy", significanceTestResultOffset*2)
-            .attr("r", "50px")
+    canvas.append("rect")
+            .attr("x", 0)
+            .attr("y", buttonOffset)
+            .attr("width", sideBarWidth)
+            .attr("height", buttonHeight)
+            .attr("fill", buttonColors["normal"])
             .attr("id", "button")
+            .attr("class", "compareMeans");
+    
+    canvas.append("text")
+            .attr("x", sideBarWidth/2)
+            .attr("y", buttonOffset + buttonHeight/2 - yAxisTickTextOffset)
+            .attr("font-anchor", "middle")
+            .text("COMPARE MEANS")
+            .attr("id", "text")
             .attr("class", "compareMeans");
 }

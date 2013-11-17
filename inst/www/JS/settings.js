@@ -37,7 +37,7 @@
     var fontSizeForDisplayDataTableElements = scaleForWindowSize(20);
     var fontSizeLabels = scaleForWindowSize(28);
     var fontSizeTicks = scaleForWindowSize(18);
-    var fontSizeAssumptions = scaleForWindowSize(22);
+    var fontSizeAssumptions = scaleForWindowSize(26);
         
 // Plots (general)
     var axesOffset = scaleForWindowSize(25); //distance from plots to axes (for an R-like appearance)
@@ -61,6 +61,8 @@ var buttonColors = new Object();
     buttonColors["click"] = "BlanchedAlmond";
     buttonColors["independent"] = "Peru";
     buttonColors["subject"] = "Orchid";
+    
+
 
 
 //Define colors for histogram bars, color scatterplot
@@ -101,26 +103,31 @@ var labelOffset = scaleForWindowSize(45);
 
 // Significance test
 var significanceTestScaleOffset = scaleForWindowSize(25);
-var assumptionsSpace = scaleForWindowSize(30);
-var assumptionImageSize = scaleForWindowSize(30);
+var assumptionsStep = scaleForWindowSize(30);
+var assumptionOffsetTop = assumptionsStep*3;
+var assumptionImageSize = scaleForWindowSize(25);
 
 var assumptionsText = new Object();
     assumptionsText["normality"] = "Normality of distributions";
     assumptionsText["homogeneity"] = "Homogeneity of variances";
     
 var assumptions = ["normality", "homogeneity"];
+
+
 var significanceTestResultOffset = scaleForWindowSize(40);
 
 //transformation
 var normalityPlotWidth = scaleForWindowSize(125);
 var normalityPlotHeight = normalityPlotWidth*(3/4);
 var normalityPlotOffset = scaleForWindowSize(75); //from canvasHeight
-var buttonOffset = (100);
-var buttonHeight = (75);
-var buttonWidth = (450);
 var boxPlotTransformationDuration = 700;
 
 var sampleSizeCutoff = 20;
+
+//buttons
+var buttonOffset = assumptionOffsetTop + 3*assumptionStep;
+var buttonHeight = scaleForWindowSize(75);
+var buttonWidth = scaleForWindowSize(450);
 
 //full screen button
 var fullScreenButtonSize = scaleForWindowSize(75);

@@ -148,17 +148,28 @@ function OnMouseDown(e)
             compareMeans();
         }
     }
+    
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "compareMeans")
     {
         setup(e, target);
         
         var canvas = d3.select("#plotCanvas");
         
-        canvas.append("circle")
-                .attr("cx", canvasWidth/2)
-                .attr("cy", 50)
-                .attr("r", "50px")
+        canvas.append("rect")
+                .attr("x", canvasWidth/2 - buttonWidth)
+                .attr("y", 0)
+                .attr("width", 2*buttonWidth)
+                .attr("height", buttonHeight)
+                .attr("fill", buttonColors["normal"])
                 .attr("id", "button")
+                .attr("class", "compareNow");
+        
+        canvas.append("text")
+                .attr("x", canvasWidth/2)
+                .attr("y", buttonHeight/2 - yAxisTickOffset)
+                .attr("font-anchor", "middle")
+                .text("SELECT ONE OR MORE MEANS AND CLICK HERE TO COMPARE")
+                .attr("id", "text")
                 .attr("class", "compareNow");
         
         setOpacityForElementsWithClassNames(["IQRs","medians", "TOPFringes", "BOTTOMFringes", "TOPFringeConnectors", "BOTTOMFringeConnectors", "outliers", "CIs", "CITopFringes", "CIBottomFringes"], 0.1);
@@ -525,6 +536,13 @@ function OnMouseOver(e)
             }
         }
     }
+    
+    else if(target.className.baseVal == "compareMeans")
+    {
+        setup(e, target);
+            
+        d3.selectAll(".compareMeans").attr("cursor", "pointer");
+    }    
     
     else if(target.className.baseVal == "bins")
     {		

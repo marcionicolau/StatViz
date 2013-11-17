@@ -1,22 +1,15 @@
 function compareMeans()
 {
     var completeLines = d3.selectAll(".completeLines");
-    
     var variableList = getSelectedVariables();    
-    console.log("variableList = "); console.dir(variableList);
-    
+    console.dir(variableList);
     
     switch(document.getElementsByClassName("completeLines").length)
     {
 
         case 0:
                 //One sample t-test
-                if(variableList["independent"].length == 1)
-                {                    
-                    loadAssumptionCheckList();
-                    performNormalityTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variableList["dependent"][0], variableList["independent-levels"][0]);                    
-                }
-                else
+                if(variableList["dependent"].length == 1)
                 {
                     loadAssumptionCheckList();
                     performNormalityTest(variables[variableList["dependent"][0]]["dataset"], variableList["dependent"][0], "dataset");                    
@@ -81,7 +74,7 @@ function loadAssumptionCheckList()
     {
         canvas.append("text")
             .attr("x", assumptionImageSize*1.25)
-            .attr("y", (i+3)*assumptionsSpace)
+            .attr("y", i*assumptionStep + assumptionOffsetTop)
             .attr("font-size", fontSizeAssumptions + "px")
             .attr("fill", meanColors["normal"])
             .text(assumptionsText[assumptions[i]])
@@ -89,7 +82,7 @@ function loadAssumptionCheckList()
             .attr("class", "assumptions");
         canvas.append("image")
             .attr("x", 0)
-            .attr("y", (i+3)*assumptionsSpace - assumptionImageSize/2 - 10)
+            .attr("y", i*assumptionsStep + assumptionOffsetTop - assumptionImageSize/2 - 10)
             .attr("text-anchor", "end")
             .attr("xlink:href", "images/tick.png")
             .attr("height", assumptionImageSize)            
@@ -99,7 +92,7 @@ function loadAssumptionCheckList()
             .attr("class", "ticks");
         canvas.append("image")
             .attr("x", 0)
-            .attr("y", (i+3)*assumptionsSpace - assumptionImageSize/2 - 10)
+            .attr("y", i*assumptionsStep + assumptionOffsetTop - assumptionImageSize/2 - 10)
             .attr("text-anchor", "end")
             .attr("xlink:href", "images/cross.png")
             .attr("height", assumptionImageSize)
