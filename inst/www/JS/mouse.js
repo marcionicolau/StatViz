@@ -64,7 +64,7 @@ function OnMouseDown(e)
         var meanCircle = d3.selectAll("#" + target.id + ".means");
         
         
-        if(documents.getElementsByClassName("means").length == 1)
+        if(document.getElementsByClassName("means").length == 1)
         {
             //if there is only mean (one sample tests)
             if(meanCircle.attr("fill") == meanColors["hover"])
@@ -130,7 +130,7 @@ function OnMouseDown(e)
                 .attr("id", "button")
                 .attr("class", "compareNow");
         
-        setOpacityForElementsWithClassNames(["IQRs","TOPFringes", "BOTTOMFringes", "TOPFringeConnectors", "BOTTOMFringeConnectors", "outliers"], 0.25);
+        setOpacityForElementsWithClassNames(["IQRs","medians", "TOPFringes", "BOTTOMFringes", "TOPFringeConnectors", "BOTTOMFringeConnectors", "outliers", "CIs", "CITopFringes", "CIBottomFringes"], 0.1);
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "transformToNormal")
@@ -371,19 +371,19 @@ function OnMouseMove(e)
     if(_dragElement != undefined)
     {
         var incompleteLines = d3.selectAll(".incompleteLines");
-        if((_dragElement.className.baseVal == 'means') && (document.getElementsByClassName("incompleteLines").length > 0) && incompleteLines.attr("stroke") == meanColors["normal"])
-        {
-            if(!fullScreen)
-            {
-                incompleteLines.attr("x2", e.pageX - (width - canvasWidth - sideBarWidth))
-                        .attr("y2", e.pageY);
-            }
-            else
-            {
-                incompleteLines.attr("x2", (e.pageX/(width - sideBarWidth)) * canvasWidth)
-                        .attr("y2", (e.pageY/height) * canvasHeight);
-            }
-        }
+        // if((_dragElement.className.baseVal == 'means') && (document.getElementsByClassName("incompleteLines").length > 0) && incompleteLines.attr("stroke") == meanColors["normal"])
+//         {
+//             if(!fullScreen)
+//             {
+//                 incompleteLines.attr("x2", e.pageX - (width - canvasWidth - sideBarWidth))
+//                         .attr("y2", e.pageY);
+//             }
+//             else
+//             {
+//                 incompleteLines.attr("x2", (e.pageX/(width - sideBarWidth)) * canvasWidth)
+//                         .attr("y2", (e.pageY/height) * canvasHeight);
+//             }
+//         }
         if(_dragElement.id == "regressionLine")
         {
 //             var regressionPoint = d3.select(".regressionPrediction");
