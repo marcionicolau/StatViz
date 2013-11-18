@@ -604,31 +604,30 @@ function displayBiserialCorrelationResults()
 
 function displaySimpleRegressionResults()
 {   
-    var canvas = d3.select("#plotCanvas");    
-    var spaceOnRight = (canvasWidth - plotWidth)/2;
+    var sideBar = d3.select("#sideBarCanvas");    
     
-    canvas.append("text")
-            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+    sideBar.append("text")
+            .attr("x", sideBarWidth/2)
             .attr("y", canvasHeight/2 + significanceTestResultOffset)
             .attr("text-anchor", "middle")
-            .attr("font-size", "20px")
+            .attr("font-size", "22px")
             .attr("fill", "orange")
             .text(testResults["method"])
             .attr("class", "significanceTest");
     
-    canvas.append("text")
-            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
+    sideBar.append("text")
+            .attr("x", sideBarWidth/2)
             .attr("y", canvasHeight/2 + 2*significanceTestResultOffset)
             .attr("text-anchor", "middle")
-            .attr("font-size", "20px")
+            .attr("font-size", "22px")
             .attr("fill", "orange")
             .text(testResults["equation"])
             .attr("class", "significanceTest");
     
     //Effect sizes
-    canvas.append("text")
-            .attr("x", canvasWidth/2 + plotWidth/2 + spaceOnRight/2)
-            .attr("y", canvasHeight/2 - 2*significanceTestResultOffset)
+    sideBar.append("text")
+            .attr("x", sideBarWidth/2)
+            .attr("y", canvasHeight/2 - significanceTestResultOffset)
             .attr("text-anchor", "middle")
             .attr("font-size", "24px")
             .attr("fill", "orange")

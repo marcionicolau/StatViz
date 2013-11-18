@@ -96,7 +96,7 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
             .attr("fill", "white")
             .attr("text-anchor", "middle")
             .attr("font-size", fontSizeVariablePanel + "px")
-            .text("PLEASE SELECT THE CAUSAL VARIABLE")
+            .text("SELECT THE CAUSAL VARIABLE")
             .attr("id", "regression")
             .attr("class", "dialogBox");
             
@@ -131,6 +131,7 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
 
 function drawRegressionLine(intercept, slope)
 {
+    console.log("drawing regression line..."); 
     var canvas = d3.select("#plotCanvas");
     
 //     canvas.attr("viewBox", viewBoxXForRegressionLine + " " + viewBoxYForRegressionLine + " " + viewBoxWidthForRegressionLine + " " + viewBoxHeightForRegressionLine)

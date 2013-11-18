@@ -107,18 +107,15 @@ function getLinearModelCoefficients(causalVariable, predictorVariable)
     var req = opencpu.r_fun_json("getLinearModelCoefficients", {
                     causal: variables[causalVariable]["dataset"],
                     predictor: variables[predictorVariable]["dataset"]
-                  }, function(output) {                                                   
+                  }, function(output) {          
                   
-                console.log("X = [" + output.xIntercept + "]");
-                console.log("Y= [" + output.yIntercept + "]");
-                
-                drawRegressionLine(output.xIntercept, output.yIntercept);
-                
                 testResults["effect-size"] = output.rSquared;
                 testResults["method"] = "Linear Regression Model";
                 testResults["equation"] = causalVariable + " = " + output.yIntercept + " x " + predictorVariable + " + " + output.xIntercept;
                 testResults["intercept"] = output.xIntercept;
                 testResults["slope"] = output.yIntercept;
+                
+                drawRegressionLine(output.intercept, output.slope);                
                 
                 displaySimpleRegressionResults();
         
