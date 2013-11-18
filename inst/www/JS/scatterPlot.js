@@ -248,7 +248,7 @@ function drawRegressionLine(intercept, slope)
     
     var X1, X2;
     
-    X1 = 2*mins["X"];
+    X1 = -2*mins["X"];
     X2 = 2*maxs["X"];
         
     if(uniqueDataX.length <= numberOfGrooves)
