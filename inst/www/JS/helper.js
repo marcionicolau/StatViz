@@ -797,9 +797,8 @@ function allVariablesAreNumeric()
 }
 
 function calculateOutcome()
-{
-    
-    if(currentVariableSelection == 2)
+{    
+    if(currentVariableSelection.length == 2)
     {    
         var outcomeVariable = document.getElementById("value_" + currentVariableSelection[1]);
         var predictorVariable = document.getElementById("value_outcome");
