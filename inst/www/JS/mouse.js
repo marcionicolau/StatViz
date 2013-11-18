@@ -357,22 +357,18 @@ function OnMouseDown(e)
         
         if(currentVisualizationSelection == "Scatterplot")
         {
-            console.log("choice = " + choice + ", currentVariableSelection[1] = " + currentVariableSelection[1]);
             if(choice != currentVariableSelection[1])
             {   
-                console.log("before = " + currentVariableSelection);
                 var temp = currentVariableSelection[1];
                 currentVariableSelection[1] = currentVariableSelection[0];
                 currentVariableSelection[0] = temp;
                 
-                console.log("after = " + currentVariableSelection);
-            
                 makePlot();  
             }
         
             var variableList = sort(currentVariableSelection);
         
-                console.log("\n\t\tFinding the regression model between outcome variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[1] + ")");
+                console.log("\n\t\tFinding the regression model to predict the outcome variable (" + currentVariableSelection[1] + ") from the explanatory variable (" + currentVariableSelection[0] + ")");
         
                 //some interaction to get the variables :)
         

@@ -111,7 +111,7 @@ function getLinearModelCoefficients(outcome, explanatory)
                   
                 testResults["effect-size"] = output.rSquared;
                 testResults["method"] = "Linear Regression Model";
-                testResults["equation"] = causalVariable + " = " + output.slope + " x " + predictorVariable + " + " + output.intercept;
+                testResults["equation"] = outcome + " = " + output.slope + " x " + explanatory + " + " + output.intercept;
                 testResults["intercept"] = output.intercept;
                 testResults["slope"] = output.slope;
                 
