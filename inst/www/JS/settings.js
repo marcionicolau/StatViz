@@ -133,8 +133,8 @@ var fullScreenButtonSize = scaleForWindowSize(75);
 var fullScreenButtonOffset = scaleForWindowSize(10);
 
 //Regression
-var viewBoxXForRegressionLine = -scaleForWindowSize(250);
-var viewBoxYForRegressionLine = -scaleForWindowSize(250);
+var viewBoxXForRegressionLine = -scaleForWindowSize(300);
+var viewBoxYForRegressionLine = -scaleForWindowSize(200);
 
 var viewBoxWidthForRegressionLine = canvasWidth+scaleForWindowSize(750);
 var viewBoxHeightForRegressionLine = viewBoxWidthForRegressionLine/2;
