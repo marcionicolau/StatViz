@@ -42,5 +42,5 @@ performMultipleRegression <- function(outcomeVariable, explanatoryVariables, dat
     }
     coefficients = eval(parse(text = pretext));
     
-    list(intercept = intercept, coefficients = coefficients, rSquared = results$r.squared);
+    list(intercept = intercept, coefficients = coefficients, rSquared = results$r.squared, len = length(explanatoryVariables));
 }
