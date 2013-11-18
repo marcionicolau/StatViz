@@ -2,6 +2,8 @@ performMultipleRegression <- function(outcomeVariable, explanatoryVariables, dat
 {
     table <- as.data.frame(dataset);
     
+    explanatoryVariables = c(explanatoryVariables);
+    
     pretext = paste("lm(",outcomeVariable,"~",sep="");
     
     for(i in 1:length(explanatoryVariables))
