@@ -122,7 +122,7 @@ function drawDialogBoxToGetOutcomeVariable()
                 .attr("text-anchor", "middle")
                 .text(currentVariableSelection[i])
                 .attr("font-size", fontSizeVariablePanel)
-                .attr("id", "text")
+                .attr("id", currentVariableSelection[i])
                 .attr("class", "outcomeVariable");
     }
 }
