@@ -106,6 +106,7 @@ function getLinearModelCoefficients(outcome, explanatory)
                     var nCoefficients = levels.length - 1;
                     var coefficients = output.coefficients;
                   
+                    
                     testResults["effect-size"] = output.rSquared;
                     testResults["method"] = "Linear Regression Model";
                     testResults["equation"] = outcome + " = ";
@@ -119,6 +120,7 @@ function getLinearModelCoefficients(outcome, explanatory)
                     }
                     testResults["equation"] = testResults["equation"] + (output.intercept < 0 ? output.intercept : "+" + output.intercept);
                     
+                    testResults["coefficients"] = coefficients;
                     testResults["intercept"] = output.intercept;
                 
                     console.log("intercept=" + output.intercept + ", coefficients=" + output.coefficients);
@@ -130,6 +132,8 @@ function getLinearModelCoefficients(outcome, explanatory)
                     testResults["effect-size"] = output.rSquared;
                     testResults["method"] = "Linear Regression Model";
                     testResults["equation"] = outcome + " = " + coefficients + explanatory + (output.intercept < 0 ? output.intercept : "+" + output.intercept);
+                    testResults["coefficients"] = coefficients;
+                    testResults["intercept"] = output.intercept;
                 
                     console.log("intercept=" + output.intercept + ", coefficients=" + output.coefficients);
                     
