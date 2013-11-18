@@ -9,9 +9,13 @@ getLinearModelCoefficients <- function(outcome, explanatory)
     for(i in 1:length(model$coefficients))
     {   
         if(i == 1)
+        {
             intercept = model$coefficients[[i]];
+        }
         else
+        {
             coefficients = c(coefficients, model$coefficients[[i]]);
+        }
     }
     
     list(intercept = intercept, coefficients = coefficients, rSquared = results$r.squared);
