@@ -162,7 +162,9 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
     var yStep = uniqueDataY.length <= shortNumberOfGrooves ? shortHeight/numberOfGroovesInYAxis : shortHeight/(numberOfGroovesInYAxis - 1);
     
     var xSlice = (maxX - minX)/(shortNumberOfGrooves-1);    
-    var ySlice = (maxY - minY)/(shortNumberOfGrooves-1);   
+    var ySlice = (maxY - minY)/(shortNumberOfGrooves-1);  
+    
+    console.log(xSlice);
     
     if(!isNaN(dataX[0]))
     {
