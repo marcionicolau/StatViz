@@ -798,7 +798,7 @@ function allVariablesAreNumeric()
 
 function calculateOutcome()
 {
-    var ele = document.getElementById("#" + currentVariableSelection[0] + "kachum");
+    var ele = document.getElementById(currentVariableSelection[0] + "kachum");
     
     console.log(ele.value());
 }
