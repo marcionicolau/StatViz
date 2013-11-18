@@ -320,15 +320,15 @@ function toggleFillColorsForVisualizations()
     
     for(var i=0; i<visualizations.length; i++)
     {      
-        console.log("id= " + visualizations[i].getAttribute("id"));
-        if(visualizations[i].getAttribute("id") == currentVisualizationSelection)
-        {
-            visualizations[i].setAttribute("fill", panelColors.active);
-        }
-        else
-        {
-            visualizations[i].setAttribute("fill", panelColors.normal);
-        }
+//         console.log("id= " + visualizations[i].getAttribute("id"));
+//         if(visualizations[i].getAttribute("id") == currentVisualizationSelection)
+//         {
+//             visualizations[i].setAttribute("fill", panelColors.active);
+//         }
+//         else
+//         {
+//             visualizations[i].setAttribute("fill", panelColors.normal);
+//         }
     }
 }
 
