@@ -121,7 +121,7 @@ function makeScatterplotMatrixForMultipleRegression(outcomeVariable)
                             .attr("x", LEFT + ((plotWidth/numberOfVariables) - (2*shortAxesOffset + shortTickTextOffsetYAxis))/2)
                             .attr("y", TOP + (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis) + 2*axesOffset)
                             .attr("text-anchor", "middle")
-                            .attr("font-size", 2fontSizeLabels/3 + "px")
+                            .attr("font-size", 2*fontSizeLabels/3 + "px")
                             .text(explanatoryVariables[i])
                             .attr("fill", "orange");
             }
