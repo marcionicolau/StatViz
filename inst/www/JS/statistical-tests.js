@@ -495,13 +495,13 @@ function drawScales(cx, cy)
     
     
     canvas.append("text")
-                .attr("x", x + scaleForWindowSize(15))
+                .attr("x", x + scaleForWindowSize(35))
                 .attr("y", (yMin + yMax)/2)
                 .attr("fill", meanColors["normal"])
                 .attr("font-size", fontSizeLabels + "px")
                 .attr("id", "tickText")
                 .attr("class", "significanceTest")
-                .text(format(means[1] - means[0]));
+                .text(format(means[means.length-1] - means[0]));
     
     if(cy.length > 2)
     {
