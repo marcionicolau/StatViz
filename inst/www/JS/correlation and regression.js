@@ -155,8 +155,10 @@ function performMultipleRegression(outcomeVariable, explanatoryVariables)
                 }
                 testResults["equation"] = testResults["equation"] + "(" + output.intercept + ")";
                 
+                testResults["coefficients"] = output.coefficients;                
                 testResults["intercept"] = output.intercept;
                 
+                makeScatterplotMatrixForMultipleRegression(outcomeVariable);
                 displayMultipleRegressionResults();
         
       }).fail(function(){

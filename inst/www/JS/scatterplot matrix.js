@@ -104,7 +104,7 @@ function makeScatterplotMatrixForMultipleRegression(outcomeVariable)
     {        
         for(var i=0; i<numberOfVariables; i++)
         {
-            makeScatterPlotAt(LEFT + i*((plotWidth/numberOfVariables) + 2*shortAxesOffset + shortTickTextOffsetYAxis), TOP, (plotWidth/numberOfVariables) - (2*shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), explanatoryVariables[i], outcomeVariable, "true");             
+            makeScatterPlotAt(LEFT + i*((plotWidth/numberOfVariables) + 2*shortAxesOffset + shortTickTextOffsetYAxis), TOP, (plotWidth/numberOfVariables) - (2*shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), explanatoryVariables[i], outcomeVariable, "true", testResults["coefficients"][i]);             
             
             if(i==0)
             {   
@@ -118,7 +118,7 @@ function makeScatterplotMatrixForMultipleRegression(outcomeVariable)
                             .attr("fill", "orange");
                 
                 plotCanvas.append("text")
-                            .attr("x", LEFT + ((plotWidth/numberOfVariables) - (2*shortAxesOffset + shortTickTextOffsetYAxis))/2)
+                            .attr("x", LEFT +  i*((plotWidth/numberOfVariables) + 2*shortAxesOffset + shortTickTextOffsetYAxis) + ((plotWidth/numberOfVariables) - (2*shortAxesOffset + shortTickTextOffsetYAxis))/2)
                             .attr("y", TOP + (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis) + 2*axesOffset)
                             .attr("text-anchor", "middle")
                             .attr("font-size", 2*fontSizeLabels/3 + "px")
@@ -128,7 +128,7 @@ function makeScatterplotMatrixForMultipleRegression(outcomeVariable)
             else
             {
                 plotCanvas.append("text")
-                            .attr("x", LEFT + ((plotWidth/numberOfVariables) - (2*shortAxesOffset + shortTickTextOffsetYAxis))/2)
+                            .attr("x", LEFT +  i*((plotWidth/numberOfVariables) + 2*shortAxesOffset + shortTickTextOffsetYAxis) + ((plotWidth/numberOfVariables) - (2*shortAxesOffset + shortTickTextOffsetYAxis))/2)
                             .attr("y", TOP + (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis) + 2*axesOffset)
                             .attr("text-anchor", "middle")
                             .attr("font-size", 2*fontSizeLabels/3 + "px")
@@ -139,7 +139,7 @@ function makeScatterplotMatrixForMultipleRegression(outcomeVariable)
     }
 }
 
-function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, noColor)
+function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, noColor, slope)
 {
     // make sure that all preprocessing is done in the makeScatterPlotMatrix() function
     var canvas = d3.select("#plotCanvas");
@@ -148,6 +148,23 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
 
     var dataX = variables[variableX]["dataset"];
     var dataY = variables[variableY]["dataset"];
+    
+    var uniqueDataX = dataX.unique();
+    var uniqueDataY = dataY.unique();  
+
+    var minX=0, minY=0, maxX=0, maxY=0;
+    
+    if(!isNaN(dataX[0]))
+    {
+        maxX = MAX[variableX]["dataset"];        
+        minX = MIN[variableX]["dataset"];
+    }
+    
+    if(!isNaN(dataY[0]))
+    {
+        maxY = MAX[variableY]["dataset"];
+        minY = MIN[variableY]["dataset"];
+    }
     
     if(noColor == undefined)
     {
@@ -167,27 +184,63 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
     else
     {
         //multiple regression
+        var intercept = testResults["intercept"];
         
+        var x1, y1, x2, y2;
+    
+        var X1, X2;
+    
+        X1 = minX;
+        X2 = maxX;
+        
+        
+        if(uniqueDataX.length <= numberOfGrooves)
+            x1 = LEFT + uniqueDataX.indexOf(slope*Y1 + intercept)*xStep + xStep/2;    
+        else
+            x1 = x + getValue(X1, minX, maxX)*shortWidth;
+        
+        if(uniqueDataY.length <= numberOfGrooves)
+            y1 = BOTTOM - uniqueDataY.indexOf(Y1)*yStep - yStep/2;
+        else
+            y1 = y - getValue(slope*X1 + intercept, minY, maxY)*shortHeight;
+    
+        if(uniqueDataX.length <= numberOfGrooves)
+            x2 = LEFT + uniqueDataX.indexOf(slope*Y2 + intercept)*xStep + xStep/2;    
+        else
+            x2 = x + getValue(X2, minX, maxX)*shortWidth;
+        
+        if(uniqueDataY.length <= numberOfGrooves)
+            y2 = BOTTOM - uniqueDataY.indexOf(Y2)*yStep - yStep/2;
+        else
+            y2 = y - getValue(slope*X2 + intercept, minY, maxY)*shortHeight;
+            
+    
+        canvas.append("circle")
+                .attr("cx", x + getValue(0, minX, maxX)*shortWidth)
+                .attr("cy", y - getValue(intercept, minY, maxY)*shortHeight)
+                .attr("r", "10px")
+                .attr("fill", "red")
+                .attr("id", "interceptCircle")
+                .attr("class", "regressionLines");
+    
+        canvas.append("line")
+                .attr("x1", x1)
+                .attr("y1", y1)
+                .attr("x2", x2)
+                .attr("y2", y2)
+                .attr("stroke", "magenta")
+                .attr("stroke-width", "10px")
+                .attr("id", "regressionLine");
+            
+        canvas.append("line")
+                .attr("x1", x1)
+                .attr("y1", y1)
+                .attr("x2", x2)
+                .attr("y2", y2)
+                .attr("stroke", "transparent")
+                .attr("stroke-width", "30px")
+                .attr("id", "regressionLine");
     }
-    
-    
-    var uniqueDataX = dataX.unique();
-    var uniqueDataY = dataY.unique();  
-
-    var minX=0, minY=0, maxX=0, maxY=0;
-    
-    if(!isNaN(dataX[0]))
-    {
-        maxX = MAX[variableX]["dataset"];        
-        minX = MIN[variableX]["dataset"];
-    }
-    
-    if(!isNaN(dataY[0]))
-    {
-        maxY = MAX[variableY]["dataset"];
-        minY = MIN[variableY]["dataset"];
-    }
-    
     
     // x-axis
     canvas.append("line")

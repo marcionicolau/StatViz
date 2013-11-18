@@ -397,8 +397,7 @@ function OnMouseDown(e)
                 }
             }
             
-            performMultipleRegression(outcomeVariable, explanatoryVariables)
-            makeScatterplotMatrixForMultipleRegression(outcomeVariable);
+            performMultipleRegression(outcomeVariable, explanatoryVariables);
         }
     }
     
