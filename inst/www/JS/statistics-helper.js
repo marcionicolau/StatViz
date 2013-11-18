@@ -12,7 +12,6 @@ function findCorrelationCoefficient(variableA, variableB)
         
         //2x2 => Phi; Cramer's V otherwise
         console.log("\t\t\tCramer's V");
-        drawButtonInSideBar("CONSTRUCT MODEL", "regression");
         return null;
     }
     else if(((variableDataTypes[variableA] == "binary") || (variableDataTypes[variableB] == "binary")) && ((variableDataTypes[variableA] != "binary") || (variableDataTypes[variableB] != "binary")))
@@ -32,7 +31,6 @@ function findCorrelationCoefficient(variableA, variableB)
             else
             {   
                 console.log("\t\t\tDoing nothing");
-                drawButtonInSideBar("CONSTRUCT MODEL", "regression");
                 return null;
             }
         }
@@ -69,7 +67,6 @@ function findCorrelationCoefficient(variableA, variableB)
         {
             //do nothing
             console.log("\t\t\tDoing nothing");
-            drawButtonInSideBar("CONSTRUCT MODEL", "regression");
             return null;
         }
         else
