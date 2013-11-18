@@ -104,7 +104,7 @@ function makeScatterplotMatrixForMultipleRegression(outcomeVariable)
     {        
         for(var i=0; i<numberOfVariables; i++)
         {
-            makeScatterPlotAt(LEFT + i*((plotWidth/numberOfVariables) + 2*shortAxesOffset + shortTickTextOffsetYAxis), TOP, (plotWidth/numberOfVariables) - (2*shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), explanatoryVariables[i], outcomeVariable, "true", testResults["coefficients"][i]);             
+            makeScatterPlotAt(LEFT + i*((plotWidth/numberOfVariables) + 2*shortAxesOffset + shortTickTextOffsetYAxis), TOP, (plotWidth/numberOfVariables) - (2*shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), explanatoryVariables[i], outcomeVariable, "true", testResults["coefficients"][i], testResults["intercepts"][i]);             
             
             if(i==0)
             {   
@@ -139,7 +139,7 @@ function makeScatterplotMatrixForMultipleRegression(outcomeVariable)
     }
 }
 
-function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, noColor, slope)
+function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, noColor, slope, intercept)
 {
     // make sure that all preprocessing is done in the makeScatterPlotMatrix() function
     var canvas = d3.select("#plotCanvas");
@@ -183,9 +183,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
     }
     else
     {
-        //multiple regression        
-        var intercept = testResults["intercept"];
-        
+        //multiple regression                
         console.log("drawing regression line for..." + variableX + "m=" + slope + ", intercept=" + intercept);
         
         var x1, y1, x2, y2;

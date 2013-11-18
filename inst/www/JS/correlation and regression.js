@@ -148,15 +148,29 @@ function performMultipleRegression(outcomeVariable, explanatoryVariables)
                 testResults["effect-size"] = output.rSquared;
                 testResults["method"] = "Multiple Regression";
                 testResults["equation"] = outcomeVariable + " = ";
+                var intercepts = [];
                 
                 for(var i=0; i<explanatoryVariables.length; i++)
                 {
                     testResults["equation"] = testResults["equation"] + output.coefficients[i] + " x (" + explanatoryVariables[i] + ")  + ";
+                    var sum=output.intercept;
+                    for(var j=0; j<explanatoryVariables.length; j++)
+                    {
+                        if(i != j)
+                        {
+                            sum += mean(variables[explanatoryVariables[j]]["dataset"])*output.coefficients[j];
+                        }
+                    }
+                    
+                    intercepts.push(sum);
                 }
                 testResults["equation"] = testResults["equation"] + "(" + output.intercept + ")";
                 
                 testResults["coefficients"] = output.coefficients;                
                 testResults["intercept"] = output.intercept;
+                testResults["intercepts"] = intercepts;
+                
+                console.log("intercepts = [" + intercepts + "]");
                 
                 makeScatterplotMatrixForMultipleRegression(outcomeVariable);
                 displayMultipleRegressionResults();
