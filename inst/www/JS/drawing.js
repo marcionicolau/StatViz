@@ -95,7 +95,7 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
             .attr("y", centerY - dialogBoxHeight/4)
             .attr("fill", "white")
             .attr("text-anchor", "middle")
-            .attr("font-size", fontSizeLabels + "px")
+            .attr("font-size", fontSizeVariablePanel + "px")
             .text("PLEASE SELECT THE CAUSAL VARIABLE")
             .attr("id", "regression")
             .attr("class", "dialogBox");
@@ -111,8 +111,8 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
                 .attr("y", i*step + yStart)
                 .attr("width", 2*dialogBoxWidth/3)
                 .attr("height", buttHeight)
-                .attr("rx", "5px")
-                .attr("ry", "5px")
+                .attr("rx", scaleForWindowSize(10) + "px")
+                .attr("ry", scaleForWindowSize(10) + "px")
                 .attr("fill", panelColors["normal"])
                 .attr("id", "button")
                 .attr("class", "causalVariable")
@@ -122,6 +122,7 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
                 .attr("y", i*step + yStart + buttHeight/2 + yAxisTickTextOffset)
                 .attr("text-anchor", "middle")
                 .text(currentVariableSelection[i])
+                .attr("font-size", fontSizeVariablePanel)
                 .attr("id", "text")
                 .attr("class", "causalVariable")
                 .attr("data-variable", currentVariableSelection[i]);
@@ -131,6 +132,7 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
 function drawRegressionLine(intercept, slope)
 {
     var canvas = d3.select("#plotCanvas");
+    
 //     canvas.attr("viewBox", viewBoxXForRegressionLine + " " + viewBoxYForRegressionLine + " " + viewBoxWidthForRegressionLine + " " + viewBoxHeightForRegressionLine)
 //           .attr("preserveAspectRatio", "none");
     
@@ -140,8 +142,6 @@ function drawRegressionLine(intercept, slope)
     
     Y1 = 2*(maxs["Y"] - mins["Y"]);
     Y2 = -2*(maxs["Y"] - mins["Y"]);
-    
-    
         
     if(uniqueDataX.length <= numberOfGrooves)
         x1 = LEFT + uniqueDataX.indexOf(slope*Y1 + intercept)*xStep + xStep/2;    
