@@ -1020,7 +1020,7 @@ function OnMouseOver(e)
         
         differenceInMeansText.attr("display", "inline");
         
-        var differenceInMeansLines = document.getElementByClassName("differenceInMeans");
+        var differenceInMeansLines = document.getElementsByClassName("differenceInMeans");
         
         for(var i=0; i<differenceInMeansLines.length; i++)
         {
@@ -1128,7 +1128,7 @@ function OnMouseOut(e)
         
         differenceInMeansText.attr("display", "none");
         
-        var differenceInMeansLines = document.getElementByClassName("differenceInMeans");
+        var differenceInMeansLines = document.getElementsByClassName("differenceInMeans");
         
         for(var i=0; i<differenceInMeansLines.length; i++)
         {

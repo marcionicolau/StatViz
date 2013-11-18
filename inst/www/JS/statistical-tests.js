@@ -495,7 +495,7 @@ function drawScales(cx, cy)
     
     
     canvas.append("text")
-                .attr("x", x + scaleForWindowSize(5))
+                .attr("x", x + scaleForWindowSize(15))
                 .attr("y", (yMin + yMax)/2)
                 .attr("fill", meanColors["normal"])
                 .attr("font-size", fontSizeLabels + "px")
