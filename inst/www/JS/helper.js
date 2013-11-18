@@ -333,12 +333,8 @@ function toggleFillColorsForVisualizations()
 
 function validateAll()
 {
-    var visualizations = d3.selectAll(".invalid");
-    // console.log("attr id = " + visualizations.attr("id"));
-//     var vizText = d3.selectAll("#" + visualizations.attr("id") + ".visualizationHolderText");
-    
+    var visualizations = d3.selectAll(".invalid");    
     visualizations.attr("fill", panelColors.normal).attr("opacity", "0.1").attr("class", "visualizationHolderFront");                     
-//     vizText.attr("fill", "black");
 }
 
 function invalidate(list)
@@ -348,10 +344,7 @@ function invalidate(list)
     for(var i=0; i<list.length; i++)
     {
         var viz = d3.select("#" + list[i] + ".visualizationHolderFront");
-        viz.attr("fill", "black").attr("opacity", "0.9").attr("class", "invalid");
-        
-        var vizText = d3.select("#" + list[i] + ".visualizationHolderText");
-        vizText.attr("fill", "white");        
+        viz.attr("fill", "black").attr("opacity", "0.9").attr("class", "invalid");        
     }
 }
 //Strings/numbers processing
