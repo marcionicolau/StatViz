@@ -780,6 +780,22 @@ function getHeight()
       }
       return y;
 }
+
+function allVariablesAreNumeric()
+{
+    var yeah=true;
+    
+    for(var i=0; i<currentVariableSelection.length; i++)
+    {
+        if(isNaN(variables[currentVariableSelection[i]]["dataset"][0]))
+        {
+            yeah = false;
+        }
+    }
+    
+    return yeah;
+}
+        
             
 
       
