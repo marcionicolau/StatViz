@@ -252,52 +252,55 @@ function drawRegressionLine(intercept, slope)
     Y2 = -2*(maxs["Y"] - mins["Y"]);
     
     console.log("uniqueDataX.length = " + uniqueDataX.length);
+    console.log("LEFT=" + LEFT);
+    console.log("Y1=" + Y1);
+    console.log("getValue term=" + getValue1(slope*Y1 + intercept, mins["X"], maxs["X"]));
         
-    if(uniqueDataX.length <= numberOfGrooves)
-        x1 = LEFT + uniqueDataX.indexOf(slope*Y1 + intercept)*xStep + xStep/2;    
-    else
-        x1 = LEFT + getValue1(slope*Y1 + intercept, mins["X"], maxs["X"])*plotWidth;
-        
-    if(uniqueDataY.length <= numberOfGrooves)
-        y1 = BOTTOM - uniqueDataY.indexOf(Y1)*yStep - yStep/2;
-    else
-        y1 = BOTTOM - getValue1(Y1, mins["Y"], maxs["Y"])*plotHeight;
-    
-    if(uniqueDataX.length <= numberOfGrooves)
-        x2 = LEFT + uniqueDataX.indexOf(slope*Y2 + intercept)*xStep + xStep/2;    
-    else
-        x2 = LEFT + getValue1(slope*Y2 + intercept, mins["X"], maxs["X"])*plotWidth;
-        
-    if(uniqueDataY.length <= numberOfGrooves)
-        y2 = BOTTOM - uniqueDataY.indexOf(Y2)*yStep - yStep/2;
-    else
-        y2 = BOTTOM - getValue1(Y2, mins["Y"], maxs["Y"])*plotHeight;
-            
-    
-    canvas.append("circle")
-            .attr("cx", LEFT + getValue1(0, mins["X"], maxs["X"])*plotWidth)
-            .attr("cy", BOTTOM - getValue1((0 - intercept)/slope, mins["Y"], maxs["Y"])*plotHeight)
-            .attr("r", "10px")
-            .attr("fill", "red")
-            .attr("id", "interceptCircle")
-            .attr("class", "regressionLines");
-    
-    canvas.append("line")
-            .attr("x1", x1)
-            .attr("y1", y1)
-            .attr("x2", x2)
-            .attr("y2", y2)
-            .attr("stroke", "magenta")
-            .attr("stroke-width", "10px")
-            .attr("id", "regressionLine");
-            
-    canvas.append("line")
-            .attr("x1", x1)
-            .attr("y1", y1)
-            .attr("x2", x2)
-            .attr("y2", y2)
-            .attr("stroke", "transparent")
-            .attr("stroke-width", "30px")
-            .attr("id", "regressionLine");
+//     if(uniqueDataX.length <= numberOfGrooves)
+//         x1 = LEFT + uniqueDataX.indexOf(slope*Y1 + intercept)*xStep + xStep/2;    
+//     else
+//         x1 = LEFT + getValue1(slope*Y1 + intercept, mins["X"], maxs["X"])*plotWidth;
+//         
+//     if(uniqueDataY.length <= numberOfGrooves)
+//         y1 = BOTTOM - uniqueDataY.indexOf(Y1)*yStep - yStep/2;
+//     else
+//         y1 = BOTTOM - getValue1(Y1, mins["Y"], maxs["Y"])*plotHeight;
+//     
+//     if(uniqueDataX.length <= numberOfGrooves)
+//         x2 = LEFT + uniqueDataX.indexOf(slope*Y2 + intercept)*xStep + xStep/2;    
+//     else
+//         x2 = LEFT + getValue1(slope*Y2 + intercept, mins["X"], maxs["X"])*plotWidth;
+//         
+//     if(uniqueDataY.length <= numberOfGrooves)
+//         y2 = BOTTOM - uniqueDataY.indexOf(Y2)*yStep - yStep/2;
+//     else
+//         y2 = BOTTOM - getValue1(Y2, mins["Y"], maxs["Y"])*plotHeight;
+//             
+//     
+//     canvas.append("circle")
+//             .attr("cx", LEFT + getValue1(0, mins["X"], maxs["X"])*plotWidth)
+//             .attr("cy", BOTTOM - getValue1((0 - intercept)/slope, mins["Y"], maxs["Y"])*plotHeight)
+//             .attr("r", "10px")
+//             .attr("fill", "red")
+//             .attr("id", "interceptCircle")
+//             .attr("class", "regressionLines");
+//     
+//     canvas.append("line")
+//             .attr("x1", x1)
+//             .attr("y1", y1)
+//             .attr("x2", x2)
+//             .attr("y2", y2)
+//             .attr("stroke", "magenta")
+//             .attr("stroke-width", "10px")
+//             .attr("id", "regressionLine");
+//             
+//     canvas.append("line")
+//             .attr("x1", x1)
+//             .attr("y1", y1)
+//             .attr("x2", x2)
+//             .attr("y2", y2)
+//             .attr("stroke", "transparent")
+//             .attr("stroke-width", "30px")
+//             .attr("id", "regressionLine");
             
 }
