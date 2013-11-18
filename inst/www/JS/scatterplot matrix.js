@@ -55,7 +55,7 @@ function makeScatterplotMatrix()
             }
         }
         
-        alertPossibleRegressionModel();
+        drawButtonInSideBar("PERFORM MULTIPLE REGRESSION", "regression");
     }
 }
 
