@@ -800,8 +800,8 @@ function calculateOutcome()
 {    
     if(currentVariableSelection.length == 2)
     {    
-        var outcomeVariable = document.getElementById("value_" + currentVariableSelection[1]);
-        var predictorVariable = document.getElementById("value_outcome");
+        var outcomeVariable = document.getElementById("value_outcome");
+        var predictorVariable = document.getElementById("value_" + currentVariableSelection[0]);
         
         console.log(outcomeVariable.value + " = " + testResults["coefficients"] + "*" + predictorVariable.value + " + " + testResults["intercept"]);
         
