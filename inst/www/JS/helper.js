@@ -810,11 +810,6 @@ function calculateOutcome()
     }
 }
         
-        
-    
-    
-}
-        
             
 
       
