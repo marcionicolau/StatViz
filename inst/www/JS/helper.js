@@ -319,7 +319,8 @@ function toggleFillColorsForVisualizations()
     var visualizations = document.getElementsByClassName("visualizationHolderBack");
     
     for(var i=0; i<visualizations.length; i++)
-    {        
+    {      
+        console.log("id= " + visualizations[i].getAttribute("id"));
         if(visualizations[i].getAttribute("id") == currentVisualizationSelection)
         {
             visualizations[i].setAttribute("fill", panelColors.active);

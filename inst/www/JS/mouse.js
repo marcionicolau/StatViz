@@ -27,7 +27,7 @@ function OnMouseDown(e)
     {
         setup(e, target);    
         currentVisualizationSelection = target.id;        
-//         toggleFillColorsForVisualizations();        
+        toggleFillColorsForVisualizations();        
         makePlot();
     }
     
