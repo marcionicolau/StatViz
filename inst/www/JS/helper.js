@@ -812,28 +812,20 @@ function calculateOutcome()
         var outcomeVariable = testResults["outcomeVariable"];
         var explanatoryVariables = testResults["explanatoryVariables"];
         
-        var outcomeVariableValue = document.getElementById("value_outcome").innerHTML;
+        var outcomeVariableLabel = document.getElementById("value_outcome");
         
-        // for(var i=0; i<explanatoryVariables.length; i++)
-//         {
-//             if(i == 0)
-//                 testResults["equation"] = testResults["equation"] + output.coefficients[i] + explanatoryVariables[i];
-//             else
-//                 testResults["equation"] = testResults["equation"] + (output.coefficients[i] < 0 ? output.coefficients[i] : "+" + output.coefficients[i]) + explanatoryVariables[i];
-//                 
-//             var sum=output.intercept;
-//             for(var j=0; j<explanatoryVariables.length; j++)
-//             {
-//                 if(i != j)
-//                 {
-//                     sum += mean(variables[explanatoryVariables[j]]["dataset"])*output.coefficients[j];
-//                 }
-//             }
-//             
-//             intercepts.push(sum);
-//         }
+        var outcomeVariableValue = testResults["intercept"];
         
-        outcomeVariableValue = "Am I working?";
+        for(var i=0; i<explanatoryVariables.length; i++)
+        {
+            var valueEnteredForExplanatoryVariable = document.getElementById("value_" + explanatoryVariables[i]).value;
+            var coefficient = testResults["coefficients"][i];
+            
+            console.log(coefficient + "*" + valueEnteredForExplanatoryVariable);
+            outcomeVariableValue += coefficient*valueEnteredForExplanatoryVariable;
+        }
+        
+        outcomeVariableValue.innerHTML = outcomeVariableValue;
     }
 }
         
