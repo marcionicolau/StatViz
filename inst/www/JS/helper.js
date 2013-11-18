@@ -818,14 +818,14 @@ function calculateOutcome()
         
         for(var i=0; i<explanatoryVariables.length; i++)
         {
-            var valueEnteredForExplanatoryVariable = document.getElementById("value_" + explanatoryVariables[i]).value;
+            var valueEnteredForExplanatoryVariable = isNaN(document.getElementById("value_" + explanatoryVariables[i]).value) ? 0 : document.getElementById("value_" + explanatoryVariables[i]).value;
             var coefficient = testResults["coefficients"][i];
             
             console.log(coefficient + "*" + valueEnteredForExplanatoryVariable);
             outcomeVariableValue += coefficient*valueEnteredForExplanatoryVariable;
         }
         
-        outcomeVariableValue.innerHTML = outcomeVariableValue;
+        outcomeVariableLabel.innerHTML = outcomeVariableValue;
     }
 }
         
