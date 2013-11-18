@@ -640,6 +640,27 @@ function displaySimpleRegressionResults()
         divAtBottom.attr("style", "position: absolute; left: " + (width - canvasWidth - sideBarWidth) + "px; top: " + (canvasHeight - bottomDivHeight) + "px; height: " + (bottomDivHeight) + "px; width: " + canvasWidth + "px");
         divAtBottom.append("p").attr("font-size", "24px").text("Hi there!");
     
+    var table = divAtBottom.append("table").attr("border", "1");
+    
+    var tr = table.append("tr");
+    
+    tr.append("td").append("label")
+                .text(currentVariableSelection[1]);
+    tr.append("td").append("label")
+                .attr("id", "outcome")
+                .attr("class", "label");
+    
+    var tr = table.append("tr");
+    
+    tr.append("td").append("label")
+                .text(currentVariableSelection[1]);
+    tr.append("td").append("input")
+                .attr("type", "text")
+                .attr("placeholder", "<Enter value here>") 
+                .attr("onchange", "calculateOutcome()");
+                .attr("id", calculateVariableSelection[0])
+                .attr("class", "textbox");
+    
 }
 
 function displayMultipleRegressionResults()

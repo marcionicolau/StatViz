@@ -795,6 +795,13 @@ function allVariablesAreNumeric()
     
     return yeah;
 }
+
+function calculateOutcome()
+{
+    var ele = d3.select("#" + currentVariableSelection[0] + ".textbox");
+    
+    console.log(ele.attr("value"));
+}
         
             
 
