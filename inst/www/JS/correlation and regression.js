@@ -102,7 +102,7 @@ function getLinearModelCoefficients(outcome, explanatory)
                 {
                     //we have a categorical variable
                     var levels = variables[explanatory]["dataset"].unique().sort();                    
-                    van nCoefficients = levels.length - 1;
+                    var nCoefficients = levels.length - 1;
                     var coefficients = output.coefficients;
                   
                     testResults["effect-size"] = output.rSquared;
