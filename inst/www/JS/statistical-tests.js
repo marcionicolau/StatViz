@@ -464,20 +464,18 @@ function drawScales(cx, cy)
             .attr("class", "significanceTest");            
     
     var x = canvasWidth/2 + plotWidth/2 + significanceTestScaleOffset;
-    if(cx.length < 5)
-    {
-        for(var i=0; i<cx.length; i++)
-        {        
-            canvas.append("line")
-                    .attr("x1", x-5)
-                    .attr("y1", cy[i])
-                    .attr("x2", x)
-                    .attr("y2", cy[i])
-                    .attr("stroke", meanColors["normal"])
-                    .attr("id", "tick")
-                    .attr("class", "significanceTest");       
-        }
-    }  
+    for(var i=0; i<cx.length; i++)
+    {        
+        canvas.append("line")
+                .attr("x1", x-5)
+                .attr("y1", cy[i])
+                .attr("x2", x)
+                .attr("y2", cy[i])
+                .attr("stroke", meanColors["normal"])
+                .attr("id", "tick")
+                .attr("class", "significanceTest");       
+    }
+
     
     var variableList = getSelectedVariables();
     var means = [];
@@ -506,30 +504,17 @@ function drawScales(cx, cy)
                 .attr("class", "significanceTest")
                 .text(format(means[1] - means[0]));
     }    
-    else if(cy.length<5)
+    else
     {
-        for(var i=0; i<cy.length; i++)
+        for(var i=0; i<cy.length-1; i++)
         {   
-            if(i == 0)
-            {
-                canvas.append("text")
-                    .attr("x", x + 5)
-                    .attr("y", cy[i])
-                    .attr("fill", meanColors["normal"])
-                    .attr("id", "tickText")
-                    .attr("class", "significanceTest")
-                    .text(0);
-            }
-            else
-            {
-                canvas.append("text")
-                    .attr("x", x + 5)
-                    .attr("y", cy[i])
-                    .attr("fill", meanColors["normal"])
-                    .attr("id", "tickText")
-                    .attr("class", "significanceTest")
-                    .text(format(means[i] - means[0]));
-            }
+            canvas.append("text")
+                .attr("x", x + 5)
+                .attr("y", (cy[i] + cy[i+1])/2)
+                .attr("fill", meanColors["normal"])
+                .attr("id", "tickText")
+                .attr("class", "significanceTest")
+                .text(format(means[i+1] - means[i]));
         }           
     }
 }
