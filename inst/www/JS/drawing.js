@@ -67,7 +67,7 @@ function drawButtonInSideBar(buttonText, className, offset)
             .attr("class", className); 
 }
 
-function drawDialogBoxToGetCausalAndPredictorVariables()
+function drawDialogBoxToGetOutcomeVariable()
 {
     var canvas = d3.select("#plotCanvas");
     
@@ -96,7 +96,7 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
             .attr("fill", "white")
             .attr("text-anchor", "middle")
             .attr("font-size", fontSizeVariablePanel + "px")
-            .text("SELECT THE CAUSAL VARIABLE")
+            .text("SELECT THE OUTCOME VARIABLE")
             .attr("id", "regression")
             .attr("class", "dialogBox");
             
@@ -115,7 +115,7 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
                 .attr("ry", scaleForWindowSize(10) + "px")
                 .attr("fill", panelColors["normal"])
                 .attr("id", "button")
-                .attr("class", "causalVariable")
+                .attr("class", "outcomeVariable")
                 .attr("data-variable", currentVariableSelection[i]);
         canvas.append("text")
                 .attr("x", centerX)
@@ -124,7 +124,7 @@ function drawDialogBoxToGetCausalAndPredictorVariables()
                 .text(currentVariableSelection[i])
                 .attr("font-size", fontSizeVariablePanel)
                 .attr("id", "text")
-                .attr("class", "causalVariable")
+                .attr("class", "outcomeVariable")
                 .attr("data-variable", currentVariableSelection[i]);
     }
 }

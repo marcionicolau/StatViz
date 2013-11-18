@@ -344,17 +344,17 @@ function OnMouseDown(e)
         setup(e, target);
         removeElementsByClassName("regression");
         
-        drawDialogBoxToGetCausalAndPredictorVariables();
+        drawDialogBoxToGetOutcomeVariable();
     }
     
-    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "causalVariable")
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "outcomeVariable")
     {
         setup(e, target);
         
-        var causalVariableButton = d3.select("#button.causalVariable");
-        var causalVariableText = d3.select("#text.causalVariable");
+        var outcomeVariableButton = d3.select("#button.outcomeVariable");
+        var outcomeVariableText = d3.select("#text.outcomeVariable");
         
-        var choice = causalVariableText.attr("data-variable");
+        var choice = outcomeVariableText.attr("data-variable");
         
         if(currentVisualizationSelection == "Scatterplot")
         {
@@ -369,11 +369,11 @@ function OnMouseDown(e)
         
             var variableList = sort(currentVariableSelection);
         
-                console.log("\n\t\tFinding the regression model between causal variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[1] + ")");
+                console.log("\n\t\tFinding the regression model between outcome variable (" + currentVariableSelection[0] + ") and predictor variable (" + currentVariableSelection[1] + ")");
         
                 //some interaction to get the variables :)
         
-                removeElementsByClassName("causalVariable");
+                removeElementsByClassName("outcomeVariable");
                 removeElementsByClassName("dialogBox");
         
             setTimeout(function(){            
@@ -388,18 +388,18 @@ function OnMouseDown(e)
             drawFullScreenButton();
             
             var predictorVariables = [];
-            var causalVariable = choice;
+            var outcomeVariable = choice;
             
             for(var i=0; i<currentVariableSelection.length; i++)
             {
-                if(currentVariableSelection[i] != causalVariable)
+                if(currentVariableSelection[i] != outcomeVariable)
                 {
                     predictorVariables.push(currentVariableSelection[i]);
                 }
             }
             
-            performMultipleRegression(causalVariable, predictorVariables)
-            makeScatterplotMatrixForMultipleRegression(causalVariable);
+            performMultipleRegression(outcomeVariable, predictorVariables)
+            makeScatterplotMatrixForMultipleRegression(outcomeVariable);
         }
     }
     
@@ -920,14 +920,14 @@ function OnMouseOver(e)
     
     }
     
-    else if(target.className.baseVal == "causalVariable")
+    else if(target.className.baseVal == "outcomeVariable")
     {
         setup(e, target);
         
-        var causalVariableButton = d3.select("#button.causalVariable");
-        var causalVariableText = d3.select("#text.causalVariable");
+        var outcomeVariableButton = d3.select("#button.outcomeVariable");
+        var outcomeVariableText = d3.select("#text.outcomeVariable");
         
-        d3.selectAll(".causalVariable").attr("cursor", "pointer");
+        d3.selectAll(".outcomeVariable").attr("cursor", "pointer");
     }
     
     else if(target.className.baseVal == "tukeyMean")
