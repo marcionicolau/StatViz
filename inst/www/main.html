@@ -87,13 +87,22 @@
                                                     .attr("class", "variableNameHolderBack");
                     
                     variablePanelSVG.append("image")
-                                                    .attr("x", variableNameHolderWidth - flagImageSize - variableNameHolderPadding)
+                                                    .attr("x", variableNameHolderWidth - flagImageSize - variableNameHolderPadding/2)
                                                     .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding) + (variableNameHolderHeight - flagImageSize)/2)                                                   
-                                                    .attr("xlink:href", "images/placeholder.jpg")
+                                                    .attr("xlink:href", "images/black.png")
                                                     .attr("height", flagImageSize)
                                                     .attr("width", flagImageSize)
                                                     .attr("id", variableNames[i])
-                                                    .attr("class", "variableSelectionButton");                                                
+                                                    .attr("class", "variableSelectionButton");  
+                    
+                    variablePanelSVG.append("image")
+                                                    .attr("x", variableNameHolderWidth - flagImageSize - 3*variableNameHolderPadding/2)
+                                                    .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding) + (variableNameHolderHeight - flagImageSize)/2)                                                   
+                                                    .attr("xlink:href", "images/brown.jpg")
+                                                    .attr("height", flagImageSize)
+                                                    .attr("width", flagImageSize)
+                                                    .attr("id", variableNames[i])
+                                                    .attr("class", "variableInformationButton");  
                                                 
                     variablePanelSVG.append("text")
                                                     .attr("x", variableNameHolderPadding + variableNameHolderWidth/3)
