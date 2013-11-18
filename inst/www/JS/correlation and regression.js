@@ -149,7 +149,7 @@ function performMultipleRegression(outcomeVariable, explanatoryVariables)
                 testResults["method"] = "Multiple Regression";
                 testResults["equation"] = outcomeVariable + " = ";
                 
-                for(var i=0; i<predictorVariables.length; i++)
+                for(var i=0; i<explanatoryVariables.length; i++)
                 {
                     testResults["equation"] = testResults["equation"] + output.coefficients[i] + " x (" + explanatoryVariables[i] + ")  + ";
                 }

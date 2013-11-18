@@ -104,34 +104,34 @@ function makeScatterplotMatrixForMultipleRegression(outcomeVariable)
     {        
         for(var i=0; i<numberOfVariables; i++)
         {
-            makeScatterPlotAt(LEFT + i*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis), TOP, (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), explanatoryVariables[i], outcomeVariable, "true");             
+            makeScatterPlotAt(LEFT + i*((plotWidth/numberOfVariables) + 2*shortAxesOffset + shortTickTextOffsetYAxis), TOP, (plotWidth/numberOfVariables) - (2*shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), explanatoryVariables[i], outcomeVariable, "true");             
             
             if(i==0)
             {   
                 plotCanvas.append("text")
                             .attr("x", LEFT - axesOffset - labelOffset)
-                            .attr("y", (TOP + BOTTOM)/2)
+                            .attr("y", (TOP + BOTTOM)/4)
                             .attr("text-anchor", "middle")
-                            .attr("transform", "rotate (-90 " + (LEFT - axesOffset - labelOffset) + " " + ((TOP + BOTTOM)/2) + ")")
-                            .attr("font-size", fontSizeLabels/2 + "px")
+                            .attr("transform", "rotate (-90 " + (LEFT - axesOffset - labelOffset) + " " + ((TOP + BOTTOM)/4) + ")")
+                            .attr("font-size", 2*fontSizeLabels/3 + "px")
                             .text(outcomeVariable)
                             .attr("fill", "orange");
                 
                 plotCanvas.append("text")
-                            .attr("x", (LEFT + i*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis) + (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis))/2)
-                            .attr("y", TOP + (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis) + axesOffset)
+                            .attr("x", LEFT + ((plotWidth/numberOfVariables) - (2*shortAxesOffset + shortTickTextOffsetYAxis))/2)
+                            .attr("y", TOP + (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis) + 2*axesOffset)
                             .attr("text-anchor", "middle")
-                            .attr("font-size", fontSizeLabels/2 + "px")
+                            .attr("font-size", 2fontSizeLabels/3 + "px")
                             .text(explanatoryVariables[i])
                             .attr("fill", "orange");
             }
             else
             {
                 plotCanvas.append("text")
-                            .attr("x", (LEFT + i*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis) + (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis))/2)
-                            .attr("y", TOP + (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis) + axesOffset)
+                            .attr("x", LEFT + ((plotWidth/numberOfVariables) - (2*shortAxesOffset + shortTickTextOffsetYAxis))/2)
+                            .attr("y", TOP + (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis) + 2*axesOffset)
                             .attr("text-anchor", "middle")
-                            .attr("font-size", fontSizeLabels/2 + "px")
+                            .attr("font-size", 2*fontSizeLabels/3 + "px")
                             .text(explanatoryVariables[i])
                             .attr("fill", "orange");
             }    
