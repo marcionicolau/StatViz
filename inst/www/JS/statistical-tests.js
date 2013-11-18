@@ -639,7 +639,7 @@ function displaySimpleRegressionResults()
     var DIVTag = d3.select("body").append("div");
         
     DIVTag.attr("style", "position: absolute; left: " + (width - canvasWidth - sideBarWidth) + "px; top: " + (canvasHeight - bottomDivHeight) + "px; height: " + (bottomDivHeight) + "px; width: " + canvasWidth + "px");    
-    var table = DIVTag.append("table").attr("border", "1").attr("style", "text-align: center");
+    var table = DIVTag.append("table").attr("border", "1").attr("id", "regressionPredictionTable").attr("align", "center");
     
     //predictor variable
     var tr = table.append("tr");
@@ -695,10 +695,10 @@ function displayMultipleRegressionResults()
             .attr("class", "significanceTest"); 
     
     //make div tag at the bottom of the page
-    var DIVTag = d3.select("body").append("div");
+    var DIVTag = d3.select("body").append("div").attr("class", "regressionPrediction");
         
     DIVTag.attr("style", "position: absolute; left: " + (width - canvasWidth - sideBarWidth) + "px; top: " + (canvasHeight - bottomDivHeight) + "px; height: " + (bottomDivHeight) + "px; width: " + canvasWidth + "px");    
-    var table = DIVTag.append("table").attr("border", "1").attr("style", "text-align: center");
+    var table = DIVTag.append("table").attr("border", "1").attr("id", "regressionPredictionTable").attr("align", "center");
     
     var outcomeVariable = testResults["outcomeVariable"];
     var explanatoryVariables = testResults["explanatoryVariables"];

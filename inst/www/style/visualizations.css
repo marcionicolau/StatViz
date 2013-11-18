@@ -38,4 +38,8 @@ th
     background-color: DarkSlateGray;
     color: white;
 }
+#regressionPredictionTable
+{
+    font:1em "Lucida Sans Unicode", "Lucida Grande", sans-serif;   
+}
 
