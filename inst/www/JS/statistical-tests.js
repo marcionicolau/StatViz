@@ -480,7 +480,7 @@ function drawScales(cx, cy)
     var variableList = getSelectedVariables();
     var means = [];
     
-    var levels = variables[variableList["independent"][0]]["dataset"].unique();
+    var levels = variableList["independent-levels"];
     
     for(var i=0; i<variableList["dependent"].length; i++)
     {
