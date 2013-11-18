@@ -254,7 +254,7 @@ function toggleFillColorsForVisualizations()
 {
     var variableList = sort(currentVariableSelection);
     var viz = ["Histogram", "Boxplot", "Scatterplot", "Scatterplot-matrix"];
-    validateAll();
+//     validateAll();
     
     switch(variableList["independent"].length)
     {
