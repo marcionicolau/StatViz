@@ -1,6 +1,7 @@
 var format = d3.format(".1f");
 var format2 = d3.format(".2f");
 var format3 = d3.format(".3f");
+var format5 = d3.format(".5f");
 
 function splitTheData(independentVariable)
 {        
@@ -805,7 +806,7 @@ function calculateOutcome()
         
         console.log(outcomeVariable.innerHTML + " = " + testResults["coefficients"] + "*" + predictorVariable.value + " + " + testResults["intercept"]);
         
-        outcomeVariable.innerHTML = testResults["coefficients"]*predictorVariable.value + testResults["intercept"];
+        outcomeVariable.innerHTML = format5(testResults["coefficients"]*predictorVariable.value + testResults["intercept"]);
     }
     else
     {
@@ -825,7 +826,7 @@ function calculateOutcome()
             outcomeVariableValue += coefficient*valueEnteredForExplanatoryVariable;
         }
         
-        outcomeVariableLabel.innerHTML = outcomeVariableValue;
+        outcomeVariableLabel.innerHTML = format5(outcomeVariableValue);
     }
 }
         
