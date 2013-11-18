@@ -247,10 +247,10 @@ function drawRegressionLine(intercept, slope)
     
     X1 = mins["X"];
     X2 = maxs["X"];
-    Y1 = (slope*X1 + intercept) > maxs["y"] ? maxs["Y"] : (slope*X1 + intercept);
-    Y1 = (slope*X1 + intercept) < mins["X"] ? mins["X"] : (slope*X1 + intercept);
+    Y1 = (slope*X1 + intercept) > maxs["Y"] ? maxs["Y"] : (slope*X1 + intercept);
+    Y1 = (slope*X1 + intercept) < mins["Y"] ? mins["Y"] : (slope*X1 + intercept);
     Y2 = (slope*X2 + intercept) > maxs["Y"] ? maxs["Y"] : (slope*X2 + intercept);
-    Y2 = (slope*X2 + intercept) < mins["X"] ? mins["X"] : (slope*X2 + intercept);
+    Y2 = (slope*X2 + intercept) < mins["Y"] ? mins["Y"] : (slope*X2 + intercept);
         
     if(uniqueDataX.length <= numberOfGrooves)
         x1 = LEFT + uniqueDataX.indexOf(X1)*xStep + xStep/2;    
