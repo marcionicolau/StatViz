@@ -358,6 +358,7 @@ function OnMouseDown(e)
         
         if(currentVisualizationSelection == "Scatterplot")
         {
+            console.log("choice = " + choice + ", currentVariableSelection[1] = " + currentVariableSelection[1]);
             if(choice != currentVariableSelection[1])
             {   
                 console.log("before = " + currentVariableSelection);
