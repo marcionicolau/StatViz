@@ -1019,6 +1019,16 @@ function OnMouseOver(e)
         var differenceInMeansText = d3.select("#" + target.id + ".differenceInMeansText");
         
         differenceInMeansText.attr("display", "inline");
+        
+        var differenceInMeansLines = document.getElementByClassName("differenceInMeans");
+        
+        for(var i=0; i<differenceInMeansLines.length; i++)
+        {
+            if(differenceInMeansLines.getAttribute("id") != target.id)
+            {
+                differenceInMeansLines.setAttribute("opacity", "0.2");
+            }
+        }
     }
 }
 
@@ -1117,6 +1127,16 @@ function OnMouseOut(e)
         var differenceInMeansText = d3.select("#" + target.id + ".differenceInMeansText");
         
         differenceInMeansText.attr("display", "none");
+        
+        var differenceInMeansLines = document.getElementByClassName("differenceInMeans");
+        
+        for(var i=0; i<differenceInMeansLines.length; i++)
+        {
+            if(differenceInMeansLines.getAttribute("id") != target.id)
+            {
+                differenceInMeansLines.setAttribute("opacity", "1.0");
+            }
+        }
     }
 }	
 
