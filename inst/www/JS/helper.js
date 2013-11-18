@@ -803,9 +803,9 @@ function calculateOutcome()
         var outcomeVariable = document.getElementById("value_outcome");
         var predictorVariable = document.getElementById("value_" + currentVariableSelection[0]);
         
-        console.log(outcomeVariable.value + " = " + testResults["coefficients"] + "*" + predictorVariable.value + " + " + testResults["intercept"]);
+        console.log(outcomeVariable.innerHTML + " = " + testResults["coefficients"] + "*" + predictorVariable.value + " + " + testResults["intercept"]);
         
-        outcomeVariable.value = testResults["coefficients"]*predictorVariable.value + testResults["intercept"];
+        outcomeVariable.innerHTML = testResults["coefficients"]*predictorVariable.value + testResults["intercept"];
     }
 }
         
