@@ -195,25 +195,27 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
         X1 = minX;
         X2 = maxX;
         
+        console.log("minX = " + minX + ", maxX = " + maxX);
+        console.log("x = " + x + ", y = " + y);        
         
-        if(uniqueDataX.length <= numberOfGrooves)
-            x1 = LEFT + uniqueDataX.indexOf(slope*Y1 + intercept)*xStep + xStep/2;    
-        else
+//         if(uniqueDataX.length <= numberOfGrooves)
+//             x1 = LEFT + uniqueDataX.indexOf(slope*Y1 + intercept)*xStep + xStep/2;    
+//         else
             x1 = x + getValue(X1, minX, maxX)*shortWidth;
         
-        if(uniqueDataY.length <= numberOfGrooves)
-            y1 = BOTTOM - uniqueDataY.indexOf(Y1)*yStep - yStep/2;
-        else
+//         if(uniqueDataY.length <= numberOfGrooves)
+//             y1 = BOTTOM - uniqueDataY.indexOf(Y1)*yStep - yStep/2;
+//         else
             y1 = y - getValue(slope*X1 + intercept, minY, maxY)*shortHeight;
     
-        if(uniqueDataX.length <= numberOfGrooves)
-            x2 = LEFT + uniqueDataX.indexOf(slope*Y2 + intercept)*xStep + xStep/2;    
-        else
+//         if(uniqueDataX.length <= numberOfGrooves)
+//             x2 = LEFT + uniqueDataX.indexOf(slope*Y2 + intercept)*xStep + xStep/2;    
+//         else
             x2 = x + getValue(X2, minX, maxX)*shortWidth;
         
-        if(uniqueDataY.length <= numberOfGrooves)
-            y2 = BOTTOM - uniqueDataY.indexOf(Y2)*yStep - yStep/2;
-        else
+//         if(uniqueDataY.length <= numberOfGrooves)
+//             y2 = BOTTOM - uniqueDataY.indexOf(Y2)*yStep - yStep/2;
+//         else
             y2 = y - getValue(slope*X2 + intercept, minY, maxY)*shortHeight;
             
     
