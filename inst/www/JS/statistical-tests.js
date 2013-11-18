@@ -510,7 +510,7 @@ function drawScales(cx, cy)
                 .attr("x", x + scaleForWindowSize(5))
                 .attr("y", (parseFloat(cy[i]) + parseFloat(cy[i+1]))/2 + yAxisTickTextOffset)
                 .attr("fill", meanColors["normal"])
-                .attr("id", )
+                .attr("id", "wess")
                 .attr("class", "significanceTest")
                 .text(format(means[i+1] - means[i]));
                 
