@@ -99,7 +99,9 @@ function getLinearModelCoefficients(outcome, explanatory)
                   }, function(output) {          
                   
                   console.log(output.coefficients);
-                  console.log(output.coefficients.length);
+                  
+                  var x = output.coefficients;
+                  console.log(x.length);
                   
                 // testResults["effect-size"] = output.rSquared;
 //                 testResults["method"] = "Linear Regression Model";
