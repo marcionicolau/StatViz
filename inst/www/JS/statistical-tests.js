@@ -511,7 +511,7 @@ function drawScales(cx, cy)
             console.log("cy[i] = " + cy[i] + ", cy[i+1] = " + cy[i+1]);
             canvas.append("text")
                 .attr("x", x + 5)
-                .attr("y", parseFloat(cy[i] + cy[i+1])/2)
+                .attr("y", (parseFloat(cy[i]) + parseFloat(cy[i+1]))/2)
                 .attr("fill", meanColors["normal"])
                 .attr("id", "tickText")
                 .attr("class", "significanceTest")
