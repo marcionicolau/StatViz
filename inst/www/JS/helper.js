@@ -798,9 +798,9 @@ function allVariablesAreNumeric()
 
 function calculateOutcome()
 {
-    var ele = d3.select("#" + currentVariableSelection[0] + ".textbox");
+    var ele = getElementById("#" + currentVariableSelection[0] + "kachum");
     
-    console.log(ele.attr("text"));
+    console.log(ele.value());
 }
         
             

@@ -653,12 +653,12 @@ function displaySimpleRegressionResults()
     var tr = table.append("tr");
     
     tr.append("td").append("label")
-                .text(currentVariableSelection[1]);
+                .text(currentVariableSelection[0]);
     tr.append("td").append("input")
                 .attr("type", "text")
                 .attr("placeholder", "<Enter value here>") 
                 .attr("onchange", "calculateOutcome()")
-                .attr("id", currentVariableSelection[0])
+                .attr("id", currentVariableSelection[0] + "kachum")
                 .attr("class", "textbox");
     
 }
