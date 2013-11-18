@@ -155,7 +155,11 @@ function performMultipleRegression(outcomeVariable, explanatoryVariables)
                 
                 for(var i=0; i<explanatoryVariables.length; i++)
                 {
-                    testResults["equation"] = testResults["equation"] + output.coefficients[i] + " x (" + explanatoryVariables[i] + ")  + ";
+                    if(i == 0)
+                        testResults["equation"] = testResults["equation"] + output.coefficients[i] + explanatoryVariables[i];
+                    else
+                        testResults["equation"] = testResults["equation"] + (output.coefficients[i] < 0 ? output.coefficients[i] : "+" + output.coefficients[i]) + explanatoryVariables[i];
+                        
                     var sum=output.intercept;
                     for(var j=0; j<explanatoryVariables.length; j++)
                     {

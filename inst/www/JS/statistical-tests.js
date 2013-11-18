@@ -628,9 +628,9 @@ function displaySimpleRegressionResults()
     
     plot.append("text")
             .attr("x", canvasWidth/2)
-            .attr("y", canvasHeight + axesOffset)
+            .attr("y", canvasHeight + 2*axesOffset)
             .attr("text-anchor", "middle")
-            .attr("font-size", "22px")
+            .attr("font-size", "32px")
             .attr("fill", "orange")
             .text(testResults["equation"])
             .attr("class", "significanceTest");
@@ -664,9 +664,9 @@ function displayMultipleRegressionResults()
     
     plot.append("text")
             .attr("x", canvasWidth/2)
-            .attr("y", canvasHeight + axesOffset)
+            .attr("y", 3*plotHeight/4)
             .attr("text-anchor", "middle")
-            .attr("font-size", "22px")
+            .attr("font-size", "32px")
             .attr("fill", "orange")
             .text(testResults["equation"])
             .attr("class", "significanceTest"); 
