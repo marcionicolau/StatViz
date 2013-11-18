@@ -98,17 +98,19 @@ function getLinearModelCoefficients(outcome, explanatory)
                     explanatory: variables[explanatory]["dataset"]
                   }, function(output) {          
                   
-                testResults["effect-size"] = output.rSquared;
-                testResults["method"] = "Linear Regression Model";
-                testResults["equation"] = outcome + " = " + output.slope + explanatory + (output.intercept < 0 ? output.intercept : "+" + output.intercept);
-                testResults["intercept"] = output.intercept;
-                testResults["slope"] = output.slope;
-                
-                console.log("intercept=" + output.intercept + ", slope=" + output.slope);
-                
-                drawRegressionLine(output.intercept, output.slope);                
-                
-                displaySimpleRegressionResults();
+                  console.log(output.coefficients);
+                  
+                // testResults["effect-size"] = output.rSquared;
+//                 testResults["method"] = "Linear Regression Model";
+//                 testResults["equation"] = outcome + " = " + output.slope + explanatory + (output.intercept < 0 ? output.intercept : "+" + output.intercept);
+//                 testResults["intercept"] = output.intercept;
+//                 testResults["slope"] = output.slope;
+//                 
+//                 console.log("intercept=" + output.intercept + ", slope=" + output.slope);
+//                 
+//                 drawRegressionLine(output.intercept, output.slope);                
+//                 
+//                 displaySimpleRegressionResults();
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
