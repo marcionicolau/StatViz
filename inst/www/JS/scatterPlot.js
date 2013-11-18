@@ -241,8 +241,8 @@ function drawRegressionLine(intercept, slope)
     console.log("drawing regression line..."); 
     var canvas = d3.select("#plotCanvas");
     
-    canvas.attr("viewBox", viewBoxXForRegressionLine + " " + viewBoxYForRegressionLine + " " + viewBoxWidthForRegressionLine + " " + viewBoxHeightForRegressionLine)
-          .attr("preserveAspectRatio", "none");
+//     canvas.attr("viewBox", viewBoxXForRegressionLine + " " + viewBoxYForRegressionLine + " " + viewBoxWidthForRegressionLine + " " + viewBoxHeightForRegressionLine)
+//           .attr("preserveAspectRatio", "none");
     
     var x1, y1, x2, y2;
     
@@ -250,6 +250,8 @@ function drawRegressionLine(intercept, slope)
     
     Y1 = 2*(maxs["Y"] - mins["Y"]);
     Y2 = -2*(maxs["Y"] - mins["Y"]);
+    
+    console.log("min(y)=" + mins["Y"] + ", max(y)=" + maxs["Y"]);
         
     if(uniqueDataX.length <= numberOfGrooves)
         x1 = LEFT + uniqueDataX.indexOf(slope*Y1 + intercept)*xStep + xStep/2;    
