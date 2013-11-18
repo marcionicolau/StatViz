@@ -12,7 +12,6 @@ getLinearModelCoefficients <- function(outcome, explanatory)
         if(i == 1)
         {
             intercept = model$coefficients[[i]];
-            coefficient
         }
         else
         {
