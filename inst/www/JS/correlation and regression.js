@@ -111,7 +111,7 @@ function getLinearModelCoefficients(outcome, explanatory)
                   
                 testResults["effect-size"] = output.rSquared;
                 testResults["method"] = "Linear Regression Model";
-                testResults["equation"] = outcome + " = " + output.slope + " x " + explanatory + " + " + output.intercept;
+                testResults["equation"] = outcome + " = " + output.slope + " x (" + explanatory + ") + (" + output.intercept + ")";
                 testResults["intercept"] = output.intercept;
                 testResults["slope"] = output.slope;
                 
@@ -134,26 +134,26 @@ function getLinearModelCoefficients(outcome, explanatory)
     });
 }
 
-function performMultipleRegression(causalVariable, predictorVariables)
+function performMultipleRegression(outcomeVariable, explanatoryVariables)
 {
     var req = opencpu.r_fun_json("performMultipleRegression", {
-                    causalVariable: causalVariable,
-                    predictorVariable: predictorVariables,
+                    outcomeVariable: outcomeVariable,
+                    explanatoryVariables: explanatoryVariables,
                     dataset: dataset                
                   }, function(output) {                                                   
                   
-                console.log("Performing Multiple Regression for " + causalVariable + " ~ [" + predictorVariables + "]");
+                console.log("Performing Multiple Regression for " + outcomeVariable + " ~ [" + explanatoryVariables + "]");
                 console.log("Intercept = " + output.intercept + ", coefficients = " + output.coefficients);
                 
                 testResults["effect-size"] = output.rSquared;
                 testResults["method"] = "Multiple Regression";
-                testResults["equation"] = causalVariable + " = ";
+                testResults["equation"] = outcomeVariable + " = ";
                 
                 for(var i=0; i<predictorVariables.length; i++)
                 {
-                    testResults["equation"] = testResults["equation"] + output.coefficients[i] + " x " + predictorVariables[i] + "  + ";
+                    testResults["equation"] = testResults["equation"] + output.coefficients[i] + " x (" + explanatoryVariables[i] + ")  + ";
                 }
-                testResults["equation"] = testResults["equation"] + output.intercept;
+                testResults["equation"] = testResults["equation"] + "(" + output.intercept + ")";
                 
                 testResults["intercept"] = output.intercept;
                 

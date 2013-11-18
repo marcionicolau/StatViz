@@ -1,18 +1,18 @@
-performMultipleRegression <- function(causalVariable, predictorVariables, dataset)
+performMultipleRegression <- function(outcomeVariable, explanatoryVariables, dataset)
 {
     table <- as.data.frame(dataset);
     
-    pretext = paste("lm(",causalVariable,"~",sep="");
+    pretext = paste("lm(",outcomeVariable,"~",sep="");
     
-    for(i in 1:length(predictorVariables))
+    for(i in 1:length(explanatoryVariables))
     {
-        if(i != length(predictorVariables))
+        if(i != length(explanatoryVariables))
         {
-            pretext = paste(pretext,predictorVariables[i]," + ",sep="");
+            pretext = paste(pretext,explanatoryVariables[i]," + ",sep="");
         }
         else
         {
-            pretext = paste(pretext,predictorVariables[i],sep="");
+            pretext = paste(pretext,explanatoryVariables[i],sep="");
         }
     }
     
@@ -26,9 +26,9 @@ performMultipleRegression <- function(causalVariable, predictorVariables, datase
     
     pretext = paste("c(",sep="");
     
-    for(i in 1:length(predictorVariables))
+    for(i in 1:length(explanatoryVariables))
     {
-        if(i != length(predictorVariables))
+        if(i != length(explanatoryVariables))
         {
             pretext = paste(pretext, model$coefficients[[i+1]],",",sep="");
         }

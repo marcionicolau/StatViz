@@ -386,18 +386,18 @@ function OnMouseDown(e)
             resetSVGCanvas();
             drawFullScreenButton();
             
-            var predictorVariables = [];
+            var explanatoryVariables = [];
             var outcomeVariable = choice;
             
             for(var i=0; i<currentVariableSelection.length; i++)
             {
                 if(currentVariableSelection[i] != outcomeVariable)
                 {
-                    predictorVariables.push(currentVariableSelection[i]);
+                    explanatoryVariables.push(currentVariableSelection[i]);
                 }
             }
             
-            performMultipleRegression(outcomeVariable, predictorVariables)
+            performMultipleRegression(outcomeVariable, explanatoryVariables)
             makeScatterplotMatrixForMultipleRegression(outcomeVariable);
         }
     }

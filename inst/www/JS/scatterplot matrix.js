@@ -59,17 +59,17 @@ function makeScatterplotMatrix()
     }
 }
 
-function makeScatterplotMatrixForMultipleRegression(dependentVariable)
+function makeScatterplotMatrixForMultipleRegression(outcomeVariable)
 {
     var variableList = sort(currentVariableSelection);
     
     //any number of dependent variables -> should work
-    var predictorVariables = [];
+    var explanatoryVariables = [];
     for(var i=0; i<currentVariableSelection.length; i++)
     {
-        if(currentVariableSelection[i] != dependentVariable)
+        if(currentVariableSelection[i] != outcomeVariable)
         {
-            predictorVariables.push(currentVariableSelection[i]);
+            explanatoryVariables.push(currentVariableSelection[i]);
         }
     }
     
@@ -93,17 +93,48 @@ function makeScatterplotMatrixForMultipleRegression(dependentVariable)
     {
         shortFontSize = 0;
     }
-        
-    var canvas = d3.select("#plotCanvas");    
+    
+    var plotCanvas = d3.select("#plotCanvas");
     
     var LEFT = canvasWidth/2 - plotWidth/2;
     var TOP = canvasHeight/2 - plotHeight/2;
+    var BOTTOM = canvasHeight/2 + plotHeight/2;
     
     if(numberOfVariables >= 1)
     {        
         for(var i=0; i<numberOfVariables; i++)
         {
-            makeScatterPlotAt(LEFT + i*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis), TOP, (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), dependentVariable, predictorVariables[i], "true");             
+            makeScatterPlotAt(LEFT + i*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis), TOP, (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis), (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis), explanatoryVariables[i], outcomeVariable, "true");             
+            
+            if(i==0)
+            {   
+                plotCanvas.append("text")
+                            .attr("x", LEFT - axesOffset - labelOffset)
+                            .attr("y", (TOP + BOTTOM)/2)
+                            .attr("text-anchor", "middle")
+                            .attr("transform", "rotate (-90 " + (LEFT - axesOffset - labelOffset) + " " + ((TOP + BOTTOM)/2) + ")")
+                            .attr("font-size", fontSizeLabels/2 + "px")
+                            .text(outcomeVariable)
+                            .attr("fill", "orange");
+                
+                plotCanvas.append("text")
+                            .attr("x", (LEFT + i*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis) + (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis))/2)
+                            .attr("y", TOP + (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis) + axesOffset)
+                            .attr("text-anchor", "middle")
+                            .attr("font-size", fontSizeLabels/2 + "px")
+                            .text(explanatoryVariables[i])
+                            .attr("fill", "orange");
+            }
+            else
+            {
+                plotCanvas.append("text")
+                            .attr("x", (LEFT + i*((plotWidth/numberOfVariables) + shortAxesOffset + shortTickTextOffsetYAxis) + (plotWidth/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetYAxis))/2)
+                            .attr("y", TOP + (plotHeight/numberOfVariables) - (shortAxesOffset + shortTickTextOffsetXAxis) + axesOffset)
+                            .attr("text-anchor", "middle")
+                            .attr("font-size", fontSizeLabels/2 + "px")
+                            .text(explanatoryVariables[i])
+                            .attr("fill", "orange");
+            }    
         }
     }
 }
@@ -133,6 +164,12 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
                 .attr("id", getValidId(variableX) + getValidId(variableY))
                 .attr("class", "scatterplotMatrixCellRect");
     }
+    else
+    {
+        //multiple regression
+        
+    }
+    
     
     var uniqueDataX = dataX.unique();
     var uniqueDataY = dataY.unique();  
@@ -170,7 +207,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
             .attr("y2", y - shortHeight)
             .attr("stroke", "black")
             .attr("id", "axis")
-            .attr("class", "yAxis");  
+            .attr("class", "yAxis");
     
     var numberOfGroovesInXAxis = uniqueDataX.length <= shortNumberOfGrooves ? uniqueDataX.length : shortNumberOfGrooves;
     var numberOfGroovesInYAxis = uniqueDataY.length <= shortNumberOfGrooves ? uniqueDataY.length : shortNumberOfGrooves;
