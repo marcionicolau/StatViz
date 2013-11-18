@@ -176,8 +176,6 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
     var xSlice = (maxX - minX)/(shortNumberOfGrooves-1);    
     var ySlice = (maxY - minY)/(shortNumberOfGrooves-1);  
     
-    console.log(xSlice);
-    
     if(noColor == undefined)
     {
         var r = findCorrelationCoefficient(variableX, variableY);
