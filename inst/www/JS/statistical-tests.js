@@ -657,7 +657,7 @@ function displaySimpleRegressionResults()
     tr.append("td").append("input")
                 .attr("type", "text")
                 .attr("placeholder", "<Enter value here>") 
-                .attr("onchange", "calculateOutcome()");
+                .attr("onchange", "calculateOutcome()")
                 .attr("id", calculateVariableSelection[0])
                 .attr("class", "textbox");
     
