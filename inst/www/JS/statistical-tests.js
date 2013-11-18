@@ -498,7 +498,7 @@ function drawScales(cx, cy)
                 .attr("x", x + scaleForWindowSize(35))
                 .attr("y", (yMin + yMax)/2)
                 .attr("fill", meanColors["normal"])
-                .attr("font-size", fontSizeLabels + "px")
+                .attr("font-size", scaleForWindowSize(26) + "px")
                 .attr("id", "tickText")
                 .attr("class", "significanceTest")
                 .text(format(means[means.length-1] - means[0]));
@@ -507,6 +507,7 @@ function drawScales(cx, cy)
     {
         for(var i=0; i<cy.length-1; i++)
         {  
+            console.log("means[i]=" + means[i] + ", \tmeans[i+1]=" + means[i+1]);
             canvas.append("text")
                 .attr("x", x + scaleForWindowSize(5))
                 .attr("y", (parseFloat(cy[i]) + parseFloat(cy[i+1]))/2 + yAxisTickTextOffset)
