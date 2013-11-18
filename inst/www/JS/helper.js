@@ -800,7 +800,7 @@ function calculateOutcome()
 {
     var ele = d3.select("#" + currentVariableSelection[0] + ".textbox");
     
-    console.log(ele.attr("value"));
+    console.log(ele.attr("text"));
 }
         
             
