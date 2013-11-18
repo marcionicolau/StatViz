@@ -25,19 +25,22 @@ findTransform <- function(dependentVariable, independentVariable, dataset)
     		{
     			temp = eval(parse(text = paste("sqrt(level.",levels[k],")",sep="")));
     			
-    			result <- shapiro.test(temp);
-    			if(!is.nan(result$p.value))    
-			    {
-			        if(result$p.value > 0.05)
-			        {
-			            type = "sqrt";
-			        }
-			        else
-			        {
-			        	type = "none";
-			        	break;
-			        }
-			    }
+    			if(length(unique(temp)) != 1)
+    			{
+                    result <- shapiro.test(temp);
+                    if(!is.nan(result$p.value))    
+                    {
+                        if(result$p.value > 0.05)
+                        {
+                            type = "sqrt";
+                        }
+                        else
+                        {
+                            type = "none";
+                            break;
+                        }
+                    }
+                }
     		}
     		
     		if(type!="none")
@@ -48,20 +51,22 @@ findTransform <- function(dependentVariable, independentVariable, dataset)
     		for(k in 1:numberOfLevels)
     		{
     			temp = eval(parse(text = paste("level.",levels[k],"^(1/3)",sep="")));
-    			
-    			result <- shapiro.test(temp);
-    			if(!is.nan(result$p.value))    
-			    {
-			        if(result$p.value > 0.05)
-			        {
-			            type = "cube";
-			        }
-			        else
-			        {
-			        	type = "none";
-			        	break;
-			        }
-			    }
+    			if(length(unique(temp)) != 1)
+    			{
+                    result <- shapiro.test(temp);
+                    if(!is.nan(result$p.value))    
+                    {
+                        if(result$p.value > 0.05)
+                        {
+                            type = "cube";
+                        }
+                        else
+                        {
+                            type = "none";
+                            break;
+                        }
+                    }
+                }
     		}
     		if(type!="none")
     		    break;
@@ -72,19 +77,22 @@ findTransform <- function(dependentVariable, independentVariable, dataset)
     		{
     			temp = eval(parse(text = paste("1/level.",levels[k],sep="")));
     			
-    			result <- shapiro.test(temp);
-    			if(!is.nan(result$p.value))    
-			    {
-			        if(result$p.value > 0.05)
-			        {
-			            type = "reciprocal";
-			        }
-			        else
-			        {
-			        	type = "none";
-			        	break;
-			        }
-			    }
+    			if(length(unique(temp)) != 1)
+    			{
+                    result <- shapiro.test(temp);
+                    if(!is.nan(result$p.value))    
+                    {
+                        if(result$p.value > 0.05)
+                        {
+                            type = "reciprocal";
+                        }
+                        else
+                        {
+                            type = "none";
+                            break;
+                        }
+                    }
+                }
     		}
     		if(type!="none")
     		    break;
@@ -95,19 +103,22 @@ findTransform <- function(dependentVariable, independentVariable, dataset)
     		{
     			temp = eval(parse(text = paste("log10(level.",levels[k],")",sep="")));
     			
-    			result <- shapiro.test(temp);
-    			if(!is.nan(result$p.value))    
-			    {
-			        if(result$p.value > 0.05)
-			        {
-			            type = "log";
-			        }
-			        else
-			        {
-			        	type = "none";
-			        	break;
-			        }
-			    }
+    			if(length(unique(temp)) != 1)
+    			{
+                    result <- shapiro.test(temp);
+                    if(!is.nan(result$p.value))    
+                    {
+                        if(result$p.value > 0.05)
+                        {
+                            type = "log";
+                        }
+                        else
+                        {
+                            type = "none";
+                            break;
+                        }
+                    }
+                }
     		}
     		if(type!="none")
     		    break;
