@@ -635,31 +635,31 @@ function displaySimpleRegressionResults()
             .text(testResults["equation"])
             .attr("class", "significanceTest");
     
-    var divAtBottom = d3.select("body").append("div");
+    //make div tag at the bottom of the page
+    var DIVTag = d3.select("body").append("div");
         
-        divAtBottom.attr("style", "position: absolute; left: " + (width - canvasWidth - sideBarWidth) + "px; top: " + (canvasHeight - bottomDivHeight) + "px; height: " + (bottomDivHeight) + "px; width: " + canvasWidth + "px");
-        divAtBottom.append("p").attr("font-size", "24px").text("Hi there!");
+    DIVTag.attr("style", "position: absolute; left: " + (width - canvasWidth - sideBarWidth) + "px; top: " + (canvasHeight - bottomDivHeight) + "px; height: " + (bottomDivHeight) + "px; width: " + canvasWidth + "px");    
+    var table = DIVTag.append("table").attr("border", "1").attr("style", "text-align: center");
     
-    var table = divAtBottom.append("table").attr("border", "1");
-    
+    //predictor variable
     var tr = table.append("tr");
     
     tr.append("td").append("label")
-                .text(currentVariableSelection[1]);
-    tr.append("td").append("label")
-                .attr("id", "outcome")
-                .attr("class", "label");
-    
-    var tr = table.append("tr");
-    
-    tr.append("td").append("label")
-                .text(currentVariableSelection[0]);
+                .text(currentVariableSelection[0] + ":");
     tr.append("td").append("input")
                 .attr("type", "text")
                 .attr("placeholder", "<Enter value here>") 
                 .attr("onchange", "calculateOutcome()")
-                .attr("id", currentVariableSelection[0] + "kachum")
-                .attr("class", "textbox");
+                .attr("id", "value_" + currentVariableSelection[0]);
+    
+    //outcome variable
+    tr = table.append("tr");
+    
+    tr.append("td").append("label")
+                .text(currentVariableSelection[1] + ":");
+    tr.append("td").append("label")
+                .attr("id", "value_outcome")
+    
     
 }
 

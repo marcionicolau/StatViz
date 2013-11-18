@@ -798,9 +798,21 @@ function allVariablesAreNumeric()
 
 function calculateOutcome()
 {
-    var ele = document.getElementById(currentVariableSelection[0] + "kachum");
     
-    console.log(ele.value);
+    if(currentVariableSelection == 2)
+    {    
+        var outcomeVariable = document.getElementById("value_" + currentVariableSelection[1]);
+        var predictorVariable = document.getElementById("value_outcome");
+        
+        console.log(outcomeVariable.value + " = " + testResults["coefficients"] + "*" + predictorVariable.value + " + " + testResults["intercept"];
+        
+        outcomeVariable.value = testResults["coefficients"]*predictorVariable.value + testResults["intercept"];
+    }
+}
+        
+        
+    
+    
 }
         
             
