@@ -136,6 +136,7 @@ function getLinearModelCoefficients(outcome, explanatory)
                     drawRegressionLine(output.intercept, output.coefficients);                
                 
                     displaySimpleRegressionResults();
+                    
                 }
                 
                 

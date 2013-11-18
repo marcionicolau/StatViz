@@ -16,6 +16,7 @@
     var canvasWidth = width*0.60; 
     
     var sideBarWidth = width*0.20;
+    var bottomDivHeight = height/5;
 
     // Variable panel
         var variableNameHolderPadding = scaleForWindowSize(15);

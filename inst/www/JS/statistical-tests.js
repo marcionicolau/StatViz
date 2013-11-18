@@ -635,6 +635,10 @@ function displaySimpleRegressionResults()
             .text(testResults["equation"])
             .attr("class", "significanceTest");
     
+    var divAtBottom = d3.select("body").append("div");
+        
+        divAtBottom.attr("style", "position: absolute; left: " + (width - canvasWidth - sideBarWidth) + "px; top: " + (canvasHeight - bottomDivHeight) + "px; height: " + (bottomDivHeight) + "px; width: " + canvasWidth + "px");
+        divAtBottom.append("p").attr("font-size", "24px").text("Hi there!");
     
 }
 
