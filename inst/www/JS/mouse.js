@@ -401,53 +401,53 @@ function OnMouseDown(e)
         }
     }
     
-    else if((e.button == 1 && window.event != null || e.button == 0) && target.id == "regressionLine")
-    {
-        //TODO: fade out the datapoints
-        setup(e, target);
-        
-        var canvas = d3.select("#plotCanvas");
-        
-        var mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
-        var mouseY = toModifiedViewBoxForRegressionLineYCoordinate(e.pageY);
-        
-        canvas.append("circle")
-                .attr("cx", mouseX)
-                .attr("cy", mouseY)
-                .attr("r", "7px")
-                .attr("fill", "steelblue")
-                .attr("class", "regressionPredictionInstance");        
-        
-        
-        if(mouseX < toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
-        {
-            console.log("left of x-axis");
-        }
-        if(mouseY > toModifiedViewBoxForRegressionLineXCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset))
-        {
-            console.log("bottom of y-axis");
-        }
-        
-        canvas.append("line")
-                .attr("x1", mouseX)
-                .attr("y1", mouseY)
-                .attr("x2", toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
-                .attr("y2", mouseY)
-                .attr("stroke", "purple")
-                .attr("stroke-dasharray", "5,5")
-                .attr("id", "x")
-                .attr("class", "LineToAxisInstance");
-                    
-        canvas.append("line")
-                .attr("x1", mouseX)
-                .attr("y1", mouseY)
-                .attr("x2", mouseX)
-                .attr("y2", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset))
-                .attr("stroke", "purple")
-                .attr("stroke-dasharray", "5,5")
-                .attr("id", "y")
-                .attr("class", "LineToAxisInstance");
-    }
+//     else if((e.button == 1 && window.event != null || e.button == 0) && target.id == "regressionLine")
+//     {
+//         //TODO: fade out the datapoints
+//         setup(e, target);
+//         
+//         var canvas = d3.select("#plotCanvas");
+//         
+//         var mouseX = toModifiedViewBoxForRegressionLineXCoordinate(e.pageX);
+//         var mouseY = toModifiedViewBoxForRegressionLineYCoordinate(e.pageY);
+//         
+//         canvas.append("circle")
+//                 .attr("cx", mouseX)
+//                 .attr("cy", mouseY)
+//                 .attr("r", "7px")
+//                 .attr("fill", "steelblue")
+//                 .attr("class", "regressionPredictionInstance");        
+//         
+//         
+//         if(mouseX < toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
+//         {
+//             console.log("left of x-axis");
+//         }
+//         if(mouseY > toModifiedViewBoxForRegressionLineXCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset))
+//         {
+//             console.log("bottom of y-axis");
+//         }
+//         
+//         canvas.append("line")
+//                 .attr("x1", mouseX)
+//                 .attr("y1", mouseY)
+//                 .attr("x2", toModifiedViewBoxForRegressionLineXCoordinate(canvasWidth/2 - plotWidth/2 - axesOffset))
+//                 .attr("y2", mouseY)
+//                 .attr("stroke", "purple")
+//                 .attr("stroke-dasharray", "5,5")
+//                 .attr("id", "x")
+//                 .attr("class", "LineToAxisInstance");
+//                     
+//         canvas.append("line")
+//                 .attr("x1", mouseX)
+//                 .attr("y1", mouseY)
+//                 .attr("x2", mouseX)
+//                 .attr("y2", toModifiedViewBoxForRegressionLineYCoordinate(canvasHeight/2 + plotHeight/2 + axesOffset))
+//                 .attr("stroke", "purple")
+//                 .attr("stroke-dasharray", "5,5")
+//                 .attr("id", "y")
+//                 .attr("class", "LineToAxisInstance");
+//     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "interactionEffect")
     {
@@ -477,6 +477,22 @@ function OnMouseDown(e)
             performTukeyHSDTestTwoIndependentVariables(variableList["dependent"][0], variableList["independent"][0], variableList["independent"][1]);
         }
     }
+    
+//     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "outliers")
+//     {
+//         setup(e, target);
+//         
+//         //give two options (remove this outlier, analyse other outliers, cancel)
+//         var canvas = d3.select("#plotCanvas");
+//         
+//         var mouseX = e.pageX - (width - canvasWidth);
+//         var mouseY = e.pageY;
+//         
+//         canvas.append("rect")
+//                 .attr("x", mouseX)
+//                 .attr("y", mouseY)
+//                 .attr("height", 
+//     }
     
     else
     {
@@ -1075,8 +1091,8 @@ function OnMouseOut(e)
     }
     else if((target.id == "regressionLine"))
     {
-        removeElementsByClassName("regressionPrediction");
-        removeElementsByClassName("lineToAxis")
+//         removeElementsByClassName("regressionPrediction");
+//         removeElementsByClassName("lineToAxis")
     }
     
     else if((target.className.baseVal == "tukeyMean") || (target.className.baseVal == "tukeyCI") || (target.className.baseVal == "tukeyCITop") || (target.className.baseVal == "tukeyCIBottom"))
