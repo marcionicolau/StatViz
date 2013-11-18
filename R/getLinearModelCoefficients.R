@@ -5,7 +5,8 @@ getLinearModelCoefficients <- function(outcome, explanatory)
     
     model = lm(outcome ~ explanatory);
     results = summary(model);
-    
+    coefficients = c(1);
+    intercept = 1;
     for(i in 1:length(model$coefficients))
     {   
         if(i == 1)
