@@ -184,6 +184,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
     else
     {
         //multiple regression
+        console.log("drawing regression line for..." + variableX);
         var intercept = testResults["intercept"];
         
         var x1, y1, x2, y2;
