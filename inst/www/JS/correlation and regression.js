@@ -131,11 +131,13 @@ function getLinearModelCoefficients(outcome, explanatory)
                     testResults["equation"] = outcome + " = " + coefficients + explanatory + (output.intercept < 0 ? output.intercept : "+" + output.intercept);
                 
                     console.log("intercept=" + output.intercept + ", coefficients=" + output.coefficients);
+                    
+                    drawRegressionLine(output.intercept, output.coefficients);                
+                
+                    displaySimpleRegressionResults();
                 }
                 
-                drawRegressionLine(output.intercept, output.slope);                
                 
-                displaySimpleRegressionResults();
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
