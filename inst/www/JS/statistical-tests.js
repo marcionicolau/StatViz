@@ -454,26 +454,26 @@ function drawScales(cx, cy)
     var yMax = Array.max(cy);
     
     var canvas = d3.select("#plotCanvas");
-    canvas.append("line")
-            .attr("x1", canvasWidth/2 + plotWidth/2 + significanceTestScaleOffset)
-            .attr("y1", yMin)
-            .attr("x2", canvasWidth/2 + plotWidth/2 + significanceTestScaleOffset)
-            .attr("y2", yMax)
-            .attr("stroke", meanColors["normal"])
-            .attr("id", "mainScale")
-            .attr("class", "significanceTest");            
+//     canvas.append("line")
+//             .attr("x1", canvasWidth/2 + plotWidth/2 + significanceTestScaleOffset)
+//             .attr("y1", yMin)
+//             .attr("x2", canvasWidth/2 + plotWidth/2 + significanceTestScaleOffset)
+//             .attr("y2", yMax)
+//             .attr("stroke", meanColors["normal"])
+//             .attr("id", "mainScale")
+//             .attr("class", "significanceTest");            
     
     var x = canvasWidth/2 + plotWidth/2 + significanceTestScaleOffset;
     for(var i=0; i<cx.length; i++)
     {        
-        canvas.append("line")
-                .attr("x1", x-5)
-                .attr("y1", cy[i])
-                .attr("x2", x)
-                .attr("y2", cy[i])
-                .attr("stroke", meanColors["normal"])
-                .attr("id", "tick")
-                .attr("class", "significanceTest");       
+//         canvas.append("line")
+//                 .attr("x1", x-5)
+//                 .attr("y1", cy[i])
+//                 .attr("x2", x)
+//                 .attr("y2", cy[i])
+//                 .attr("stroke", meanColors["normal"])
+//                 .attr("id", "tick")
+//                 .attr("class", "significanceTest");       
     }
 
     
@@ -493,29 +493,53 @@ function drawScales(cx, cy)
     means = means.sort(function(a,b){return a-b});
     cy = cy.sort(function(a,b){return b-a});
     
-    if(cy.length == 2)
-    {
-        
-        canvas.append("text")
-                .attr("x", x + 5)
+    
+    canvas.append("text")
+                .attr("x", x + scaleForWindowSize(5))
                 .attr("y", (yMin + yMax)/2)
                 .attr("fill", meanColors["normal"])
                 .attr("id", "tickText")
                 .attr("class", "significanceTest")
                 .text(format(means[1] - means[0]));
-    }    
-    else
+    
+    if(cy.length > 2)
     {
         for(var i=0; i<cy.length-1; i++)
         {  
-            console.log("cy[i] = " + cy[i] + ", cy[i+1] = " + cy[i+1]);
             canvas.append("text")
-                .attr("x", x + 5)
-                .attr("y", (parseFloat(cy[i]) + parseFloat(cy[i+1]))/2)
+                .attr("x", x + scaleForWindowSize(5))
+                .attr("y", (parseFloat(cy[i]) + parseFloat(cy[i+1]))/2 + yAxisTickTextOffset)
                 .attr("fill", meanColors["normal"])
-                .attr("id", "tickText")
+                .attr("id", )
                 .attr("class", "significanceTest")
                 .text(format(means[i+1] - means[i]));
+                
+            canvas.append("line")
+                .attr("x1", x-5)
+                .attr("y1", cy[i])
+                .attr("x2", x)
+                .attr("y2", cy[i])
+                .attr("stroke", meanColors["normal"])
+                .attr("id", "tick")
+                .attr("class", "significanceTest");       
+            
+            canvas.append("line")
+                .attr("x1", x-5)
+                .attr("y1", cy[i+1])
+                .attr("x2", x)
+                .attr("y2", cy[i+1])
+                .attr("stroke", meanColors["normal"])
+                .attr("id", "tick")
+                .attr("class", "significanceTest"); 
+            
+            canvas.append("line")
+                .attr("x1", x)
+                .attr("y1", cy[i])
+                .attr("x2", x)
+                .attr("y2", cy[i+1])
+                .attr("stroke", meanColors["normal"])
+                .attr("id", "tick")
+                .attr("class", "significanceTest");       
         }           
     }
 }
