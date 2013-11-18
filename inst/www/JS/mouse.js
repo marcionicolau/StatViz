@@ -1013,7 +1013,13 @@ function OnMouseOver(e)
                 .text(tukeyResults[tCIBottom.attr("data-index1")][tCIBottom.attr("data-index2")]["lower"])
                 .attr("class", "hover");
     }
-
+    
+    else if(target.className.baseVal == "differenceInMeans")
+    {
+        var differenceInMeansText = d3.select("#" + target.id + ".differenceInMeansText");
+        
+        differenceInMeansText.attr("display", "inline");
+    }
 }
 
 function OnMouseOut(e)
@@ -1024,10 +1030,12 @@ function OnMouseOut(e)
     {
         var variableNameHolder = d3.selectAll("#" + target.id + ".variableNameHolder");
     }
+    
     else if(target.className.baseVal == "visualizationHolder")                
     {
         var visualizationHolder = d3.selectAll("#" + target.id + ".visualizationHolder");
     }
+    
     else if(target.className.baseVal == "means")                
     {
         var meanCircle = d3.selectAll("#" + target.id + ".means");
@@ -1050,12 +1058,14 @@ function OnMouseOut(e)
 //             incompleteLines.attr("stroke", meanColors["normal"]);
 //         }   
     }
+    
     else if(target.className.baseVal == "bins")                
     {
         var bins = d3.selectAll(".bins");
         
         unhighlightBins();
     }
+    
     else if(target.className.baseVal == "datapoints")                
     {
         var datapoint = d3.select("#" + target.id + ".datapoints");
@@ -1063,6 +1073,7 @@ function OnMouseOut(e)
         datapoint.transition().duration(300).attr("r", datapointRadius);
         removeElementsByClassName("hoverText");
     }
+    
     else if(target.className.baseVal == "outliers")
     {
         var canvas = d3.select("#plotCanvas");
@@ -1089,6 +1100,7 @@ function OnMouseOut(e)
     {
         removeElementsByClassName("hover");
     }
+    
     else if((target.id == "regressionLine"))
     {
 //         removeElementsByClassName("regressionPrediction");
@@ -1098,6 +1110,13 @@ function OnMouseOut(e)
     else if((target.className.baseVal == "tukeyMean") || (target.className.baseVal == "tukeyCI") || (target.className.baseVal == "tukeyCITop") || (target.className.baseVal == "tukeyCIBottom"))
     {
         removeElementsByClassName("hover");
+    }
+    
+    else if(target.className.baseVal == "differenceInMeans")
+    {
+        var differenceInMeansText = d3.select("#" + target.id + ".differenceInMeansText");
+        
+        differenceInMeansText.attr("display", "none");
     }
 }	
 

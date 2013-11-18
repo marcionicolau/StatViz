@@ -494,13 +494,13 @@ function drawScales(cx, cy)
     cy = cy.sort(function(a,b){return b-a});
     
     
-    canvas.append("text")
-                .attr("x", x + scaleForWindowSize(5))
-                .attr("y", (yMin + yMax)/2)
-                .attr("fill", meanColors["normal"])
-                .attr("id", "tickText")
-                .attr("class", "significanceTest")
-                .text(format(means[1] - means[0]));
+    // canvas.append("text")
+//                 .attr("x", x + scaleForWindowSize(5))
+//                 .attr("y", (yMin + yMax)/2)
+//                 .attr("fill", meanColors["normal"])
+//                 .attr("id", "tickText")
+//                 .attr("class", "significanceTest")
+//                 .text(format(means[1] - means[0]));
     
     if(cy.length > 2)
     {
@@ -510,8 +510,9 @@ function drawScales(cx, cy)
                 .attr("x", x + scaleForWindowSize(5))
                 .attr("y", (parseFloat(cy[i]) + parseFloat(cy[i+1]))/2 + yAxisTickTextOffset)
                 .attr("fill", meanColors["normal"])
-                .attr("id", "wess")
-                .attr("class", "significanceTest")
+                .attr("id", "DIM" + i)
+                .attr("class", "differenceInMeansText")
+                .attr("display", "none")
                 .text(format(means[i+1] - means[i]));
                 
             canvas.append("line")
@@ -520,8 +521,9 @@ function drawScales(cx, cy)
                 .attr("x2", x)
                 .attr("y2", cy[i])
                 .attr("stroke", meanColors["normal"])
-                .attr("id", "tick")
-                .attr("class", "significanceTest");       
+                .attr("stroke-width", scaleForWindowSize(5) + "px")
+                .attr("id", "DIM" + i)
+                .attr("class", "differenceInMeans");       
             
             canvas.append("line")
                 .attr("x1", x-5)
@@ -529,8 +531,9 @@ function drawScales(cx, cy)
                 .attr("x2", x)
                 .attr("y2", cy[i+1])
                 .attr("stroke", meanColors["normal"])
-                .attr("id", "tick")
-                .attr("class", "significanceTest"); 
+                .attr("stroke-width", scaleForWindowSize(5) + "px")
+                .attr("id", "DIM" + i)
+                .attr("class", "differenceInMeans"); 
             
             canvas.append("line")
                 .attr("x1", x)
@@ -538,8 +541,9 @@ function drawScales(cx, cy)
                 .attr("x2", x)
                 .attr("y2", cy[i+1])
                 .attr("stroke", meanColors["normal"])
-                .attr("id", "tick")
-                .attr("class", "significanceTest");       
+                .attr("stroke-width", scaleForWindowSize(5) + "px")
+                .attr("id", "DIM" + i)
+                .attr("class", "differenceInMeans");       
         }           
     }
 }
