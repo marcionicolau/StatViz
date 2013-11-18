@@ -320,21 +320,22 @@ function toggleFillColorsForVisualizations()
     
     for(var i=0; i<visualizations.length; i++)
     {      
-//         console.log("id= " + visualizations[i].getAttribute("id"));
-//         if(visualizations[i].getAttribute("id") == currentVisualizationSelection)
-//         {
-//             visualizations[i].setAttribute("fill", panelColors.active);
-//         }
-//         else
-//         {
-//             visualizations[i].setAttribute("fill", panelColors.normal);
-//         }
+        console.log("id= " + visualizations[i].getAttribute("id"));
+        if(visualizations[i].getAttribute("id") == currentVisualizationSelection)
+        {
+            visualizations[i].setAttribute("fill", panelColors.active);
+        }
+        else
+        {
+            visualizations[i].setAttribute("fill", panelColors.normal);
+        }
     }
 }
 
 function validateAll()
 {
     var visualizations = d3.selectAll(".invalid");
+    console.log("attr id = " + visualizations.attr("id"));
     var vizText = d3.selectAll("#" + visualizations.attr("id") + ".visualizationHolderText");
     
     visualizations.attr("fill", panelColors.normal).attr("opacity", "0.1").attr("class", "visualizationHolderFront");                     
