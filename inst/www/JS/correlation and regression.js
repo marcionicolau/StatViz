@@ -26,11 +26,7 @@ function getCorrelationCoefficient(variableA, variableB, method)
                     
                     displayCorrelationResults();
 
-                    if((output.cor < -0.5) || (output.cor > 0.5))
-                    {                
-                        drawButtonInSideBar("CONSTRUCT MODEL", "regression");
-                    }
-                    
+                    drawButtonInSideBar("CONSTRUCT MODEL", "regression");
                 }
                 else if(method == "kendall")
                 {
@@ -47,11 +43,7 @@ function getCorrelationCoefficient(variableA, variableB, method)
                
                     displayCorrelationResults();
 
-                    if((output.cor < -0.5) || (output.cor > 0.5))
-                    {                
-                        drawButtonInSideBar("CONSTRUCT MODEL", "regression");
-                    }
-                    
+                    drawButtonInSideBar("CONSTRUCT MODEL", "regression");
                 }
         
       }).fail(function(){
@@ -82,11 +74,7 @@ function getBiserialCorrelationCoefficient(continuousVariable, binaryVariable)
                 testResults["effect-size"] = output.cor;               
                 
                 displayCorrelationResults();
-
-                if((output.cor < -0.5) || (output.cor > 0.5))
-                {                
-                    drawButtonInSideBar("CONSTRUCT MODEL", "regression");
-                }               
+                drawButtonInSideBar("CONSTRUCT MODEL", "regression");
             
         
       }).fail(function(){
