@@ -658,7 +658,7 @@ function displaySimpleRegressionResults()
                 .attr("type", "text")
                 .attr("placeholder", "<Enter value here>") 
                 .attr("onchange", "calculateOutcome()")
-                .attr("id", calculateVariableSelection[0])
+                .attr("id", currentVariableSelection[0])
                 .attr("class", "textbox");
     
 }
