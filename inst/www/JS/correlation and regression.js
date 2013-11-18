@@ -146,6 +146,7 @@ function performMultipleRegression(outcomeVariable, explanatoryVariables)
                   
                 console.log("Performing Multiple Regression for " + outcomeVariable + " ~ [" + explanatoryVariables + "]");
                 console.log("Intercept = " + output.intercept + ", coefficients = " + output.coefficients);
+                console.log("Length = " output.length);
                 
                 testResults["effect-size"] = output.rSquared;
                 testResults["method"] = "Multiple Regression";
