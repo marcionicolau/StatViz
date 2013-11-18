@@ -141,7 +141,7 @@ function performMultipleRegression(outcomeVariable, explanatoryVariables)
     var req = opencpu.r_fun_json("performMultipleRegression", {
                     outcomeVariable: outcomeVariable,
                     explanatoryVariables: explanatoryVariables,
-                    dataset: dataset                
+                    dataset: pathToFile                
                   }, function(output) {                                                   
                   
                 console.log("Performing Multiple Regression for " + outcomeVariable + " ~ [" + explanatoryVariables + "]");
