@@ -800,7 +800,7 @@ function calculateOutcome()
 {
     var ele = document.getElementById(currentVariableSelection[0] + "kachum");
     
-    console.log(ele.value());
+    console.log(ele.value);
 }
         
             
