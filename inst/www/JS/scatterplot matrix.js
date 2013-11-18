@@ -55,7 +55,8 @@ function makeScatterplotMatrix()
             }
         }
         
-        drawButtonInSideBar("PERFORM MULTIPLE REGRESSION", "regression");
+        if(allVariablesAreNumeric())
+            drawButtonInSideBar("PERFORM MULTIPLE REGRESSION", "regression");
     }
 }
 
