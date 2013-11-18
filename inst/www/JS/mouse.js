@@ -360,9 +360,12 @@ function OnMouseDown(e)
         {
             if(choice != currentVariableSelection[1])
             {   
+                console.log("before = " + currentVariableSelection);
                 var temp = currentVariableSelection[1];
                 currentVariableSelection[1] = currentVariableSelection[0];
                 currentVariableSelection[0] = temp;
+                
+                console.log("after = " + currentVariableSelection);
             
                 makePlot();  
             }
