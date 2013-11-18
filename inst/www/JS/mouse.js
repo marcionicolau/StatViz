@@ -358,7 +358,7 @@ function OnMouseDown(e)
         
         if(currentVisualizationSelection == "Scatterplot")
         {
-            if(choice != currentVariableSelection[0])
+            if(choice != currentVariableSelection[1])
             {   
                 var temp = currentVariableSelection[1];
                 currentVariableSelection[1] = currentVariableSelection[0];
@@ -379,7 +379,7 @@ function OnMouseDown(e)
             setTimeout(function(){            
                 removeElementsByClassName("regression");
                 removeElementsByClassName("significanceTest");
-                getLinearModelCoefficients(currentVariableSelection[0], currentVariableSelection[1]);
+                getLinearModelCoefficients(currentVariableSelection[1], currentVariableSelection[0]);
             }, 300);  
         }
         else if(currentVisualizationSelection == "Scatterplot-matrix")

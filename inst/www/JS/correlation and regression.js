@@ -102,11 +102,11 @@ function getBiserialCorrelationCoefficient(continuousVariable, binaryVariable)
     });
 }
 
-function getLinearModelCoefficients(causalVariable, predictorVariable)
+function getLinearModelCoefficients(outcome, explanatory)
 {
     var req = opencpu.r_fun_json("getLinearModelCoefficients", {
-                    causal: variables[causalVariable]["dataset"],
-                    predictor: variables[predictorVariable]["dataset"]
+                    outcome: variables[outcome]["dataset"],
+                    explanatory: variables[explanatory]["dataset"]
                   }, function(output) {          
                   
                 testResults["effect-size"] = output.rSquared;
