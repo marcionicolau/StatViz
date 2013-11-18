@@ -507,7 +507,8 @@ function drawScales(cx, cy)
     else
     {
         for(var i=0; i<cy.length-1; i++)
-        {   
+        {  
+            console.log("cy[i] = " + cy[i] + ", cy[i+1] = " + cy[i+1]);
             canvas.append("text")
                 .attr("x", x + 5)
                 .attr("y", (cy[i] + cy[i+1])/2)
