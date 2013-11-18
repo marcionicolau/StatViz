@@ -614,16 +614,6 @@ function displaySimpleRegressionResults()
             .attr("fill", "orange")
             .text(testResults["method"])
             .attr("class", "significanceTest");
-    
-    sideBar.append("text")
-            .attr("x", sideBarWidth/2)
-            .attr("y", canvasHeight/2 + 2*significanceTestResultOffset)
-            .attr("text-anchor", "middle")
-            .attr("font-size", "22px")
-            .attr("fill", "orange")
-            .text(testResults["equation"])
-            .attr("class", "significanceTest");
-    
     //Effect sizes
     sideBar.append("text")
             .attr("x", sideBarWidth/2)
@@ -634,38 +624,50 @@ function displaySimpleRegressionResults()
             .text(testResults["effect-size"])
             .attr("class", "significanceTest");
  
+    var plot = d3.select("#plotCanvas");
+    
+    plot.append("text")
+            .attr("x", canvasWidth/2)
+            .attr("y", canvasHeight + axesOffset)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "22px")
+            .attr("fill", "orange")
+            .text(testResults["equation"])
+            .attr("class", "significanceTest");
+    
+    
 }
 
 function displayMultipleRegressionResults()
 {   
-    var canvas = d3.select("#plotCanvas");
+    var sideBar = d3.select("#sideBarCanvas");    
     
-    canvas.append("text")
-            .attr("x", canvasWidth/2)
-            .attr("y", 3*(TOP+BOTTOM)/4 + significanceTestResultOffset)
+    sideBar.append("text")
+            .attr("x", sideBarWidth/2)
+            .attr("y", canvasHeight/2 + significanceTestResultOffset)
             .attr("text-anchor", "middle")
-            .attr("font-size", "20px")
+            .attr("font-size", "22px")
             .attr("fill", "orange")
             .text(testResults["method"])
             .attr("class", "significanceTest");
-    
-    canvas.append("text")
-            .attr("x", canvasWidth/2)
-            .attr("y", 3*(TOP+BOTTOM)/4 + 2*significanceTestResultOffset)
-            .attr("text-anchor", "middle")
-            .attr("font-size", "20px")
-            .attr("fill", "orange")
-            .text(testResults["equation"])
-            .attr("class", "significanceTest");    
-    
     //Effect sizes
-    canvas.append("text")
-            .attr("x", canvasWidth/2)
-            .attr("y", 3*(TOP+BOTTOM)/4 - 2*significanceTestResultOffset)
+    sideBar.append("text")
+            .attr("x", sideBarWidth/2)
+            .attr("y", canvasHeight/2 - significanceTestResultOffset)
             .attr("text-anchor", "middle")
             .attr("font-size", "24px")
             .attr("fill", "orange")
             .text(testResults["effect-size"])
             .attr("class", "significanceTest");
  
+    var plot = d3.select("#plotCanvas");
+    
+    plot.append("text")
+            .attr("x", canvasWidth/2)
+            .attr("y", canvasHeight + axesOffset)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "22px")
+            .attr("fill", "orange")
+            .text(testResults["equation"])
+            .attr("class", "significanceTest"); 
 }
