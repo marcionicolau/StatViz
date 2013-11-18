@@ -1,6 +1,7 @@
 //drawing
 function resetSVGCanvas()
 {
+    console.log("resetSVGCanvas is called...");
     removeElementsByClassName("regressionPrediction");
     
     if(document.getElementById("plotCanvas") != null)
