@@ -171,7 +171,7 @@ function performMultipleRegression(outcomeVariable, explanatoryVariables)
                     
                     intercepts.push(sum);
                 }
-                testResults["equation"] = testResults["equation"] + "(" + output.intercept + ")";
+                testResults["equation"] = testResults["equation"] + (output.intercept < 0 ? output.intercept : "+" + output.intercept
                 
                 testResults["coefficients"] = output.coefficients;                
                 testResults["intercept"] = output.intercept;
