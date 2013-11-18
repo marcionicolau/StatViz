@@ -115,6 +115,8 @@ function getLinearModelCoefficients(causalVariable, predictorVariable)
                 testResults["intercept"] = output.intercept;
                 testResults["slope"] = output.slope;
                 
+                console.log("intercept=" + output.intercept + ", slope=" + slope);
+                
                 drawRegressionLine(output.intercept, output.slope);                
                 
                 displaySimpleRegressionResults();

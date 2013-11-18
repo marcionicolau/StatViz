@@ -251,7 +251,7 @@ function drawRegressionLine(intercept, slope)
     Y1 = 2*(maxs["Y"] - mins["Y"]);
     Y2 = -2*(maxs["Y"] - mins["Y"]);
     
-    console.log("min(y)=" + mins["Y"] + ", max(y)=" + maxs["Y"]);
+    console.log("uniqueDataX.length = " + uniqueDataX.length);
         
     if(uniqueDataX.length <= numberOfGrooves)
         x1 = LEFT + uniqueDataX.indexOf(slope*Y1 + intercept)*xStep + xStep/2;    
