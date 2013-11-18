@@ -218,6 +218,9 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
 //         else
             y2 = y - getValue(slope*X2 + intercept, minY, maxY)*shortHeight;
             
+        console.log("x1 = " + x1 + ", y1 = " + y1);
+        console.log("x2 = " + x2 + ", y2 = " + y2);
+            
     
         canvas.append("circle")
                 .attr("cx", x + getValue(0, minX, maxX)*shortWidth)
