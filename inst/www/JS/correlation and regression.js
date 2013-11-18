@@ -170,8 +170,6 @@ function performMultipleRegression(outcomeVariable, explanatoryVariables)
                 testResults["intercept"] = output.intercept;
                 testResults["intercepts"] = intercepts;
                 
-                console.log("intercepts = [" + intercepts + "]");
-                
                 makeScatterplotMatrixForMultipleRegression(outcomeVariable);
                 displayMultipleRegressionResults();
         

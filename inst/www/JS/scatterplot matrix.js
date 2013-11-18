@@ -154,6 +154,16 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
 
     var minX=0, minY=0, maxX=0, maxY=0;
     
+    var numberOfGroovesInXAxis = uniqueDataX.length <= shortNumberOfGrooves ? uniqueDataX.length : shortNumberOfGrooves;
+    var numberOfGroovesInYAxis = uniqueDataY.length <= shortNumberOfGrooves ? uniqueDataY.length : shortNumberOfGrooves;
+    
+    //y-axis grooves
+    var xStep = uniqueDataX.length <= shortNumberOfGrooves ? shortWidth/numberOfGroovesInXAxis : shortWidth/(numberOfGroovesInXAxis - 1);
+    var yStep = uniqueDataY.length <= shortNumberOfGrooves ? shortHeight/numberOfGroovesInYAxis : shortHeight/(numberOfGroovesInYAxis - 1);
+    
+    var xSlice = (maxX - minX)/(shortNumberOfGrooves-1);    
+    var ySlice = (maxY - minY)/(shortNumberOfGrooves-1);   
+    
     if(!isNaN(dataX[0]))
     {
         maxX = MAX[variableX]["dataset"];        
@@ -184,10 +194,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
     else
     {
         //multiple regression                
-        console.log("drawing regression line for..." + variableX + "m=" + slope + ", intercept=" + intercept);
-        
-        var x1, y1, x2, y2;
-    
+        var x1, y1, x2, y2;    
         var X1, X2, Y1, Y2;
     
         X1 = minX;
@@ -195,42 +202,26 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
         Y1 = slope*X1 + intercept;
         Y2 = slope*X2 + intercept;
         
-        console.log("minX = " + minX + ", maxX = " + maxX);
-        console.log("x = " + x + ", y = " + y);        
-        console.log("Y1 = " + Y1 + ", Y2 = " + Y2);
-        
-        
-//         if(uniqueDataX.length <= numberOfGrooves)
-//             x1 = LEFT + uniqueDataX.indexOf(slope*Y1 + intercept)*xStep + xStep/2;    
-//         else
+        if(uniqueDataX.length <= shortNumberOfGrooves)
+            x1 = LEFT + uniqueDataX.indexOf(X1)*xStep + xStep/2;    
+        else
             x1 = x + getValue(X1, minX, maxX)*shortWidth;
         
-//         if(uniqueDataY.length <= numberOfGrooves)
-//             y1 = BOTTOM - uniqueDataY.indexOf(Y1)*yStep - yStep/2;
-//         else
+        if(uniqueDataY.length <= shortNumberOfGrooves)
+            y1 = y - uniqueDataY.indexOf(Y1)*yStep - yStep/2;
+        else
             y1 = y - getValue(Y1, minY, maxY)*shortHeight;
     
-//         if(uniqueDataX.length <= numberOfGrooves)
-//             x2 = LEFT + uniqueDataX.indexOf(slope*Y2 + intercept)*xStep + xStep/2;    
-//         else
+        if(uniqueDataX.length <= shortNumberOfGrooves)
+            x2 = x + uniqueDataX.indexOf(X1)*xStep + xStep/2;    
+        else
             x2 = x + getValue(X2, minX, maxX)*shortWidth;
         
-//         if(uniqueDataY.length <= numberOfGrooves)
-//             y2 = BOTTOM - uniqueDataY.indexOf(Y2)*yStep - yStep/2;
-//         else
+        if(uniqueDataY.length <= shortNumberOfGrooves)
+            y2 = y - uniqueDataY.indexOf(Y2)*yStep - yStep/2;
+        else
             y2 = y - getValue(Y2, minY, maxY)*shortHeight;
             
-        console.log("x1 = " + x1 + ", y1 = " + y1);
-        console.log("x2 = " + x2 + ", y2 = " + y2);
-            
-    
-        canvas.append("circle")
-                .attr("cx", x + getValue(0, minX, maxX)*shortWidth)
-                .attr("cy", y - getValue(intercept, minY, maxY)*shortHeight)
-                .attr("r", "10px")
-                .attr("fill", "red")
-                .attr("id", "interceptCircle")
-                .attr("class", "regressionLines");
     
         canvas.append("line")
                 .attr("x1", x1)
@@ -262,15 +253,7 @@ function makeScatterPlotAt(x,y,shortWidth, shortHeight, variableX, variableY, no
             .attr("id", "axis")
             .attr("class", "yAxis");
     
-    var numberOfGroovesInXAxis = uniqueDataX.length <= shortNumberOfGrooves ? uniqueDataX.length : shortNumberOfGrooves;
-    var numberOfGroovesInYAxis = uniqueDataY.length <= shortNumberOfGrooves ? uniqueDataY.length : shortNumberOfGrooves;
-    
-    //y-axis grooves
-    var xStep = uniqueDataX.length <= shortNumberOfGrooves ? shortWidth/numberOfGroovesInXAxis : shortWidth/(numberOfGroovesInXAxis - 1);
-    var yStep = uniqueDataY.length <= shortNumberOfGrooves ? shortHeight/numberOfGroovesInYAxis : shortHeight/(numberOfGroovesInYAxis - 1);
-    
-    var xSlice = (maxX - minX)/(shortNumberOfGrooves-1);    
-    var ySlice = (maxY - minY)/(shortNumberOfGrooves-1);    
+     
     
     //grooves
     
