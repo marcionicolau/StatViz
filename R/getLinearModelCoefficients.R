@@ -6,7 +6,13 @@ getLinearModelCoefficients <- function(outcome, explanatory)
     model = lm(outcome ~ explanatory);
     results = summary(model);
     
-    coefficients = model$coefficients
+    for(i in 1:length(model$coefficients))
+    {   
+        if(i == 1)
+            intercept = model$coefficients[[i]];
+        else
+            coefficients = c(coefficients, model$coefficients[[i]]);
+    }
     
-    list(intercept = model$coefficients[[1]], coefficients = coefficients, rSquared = results$r.squared);
+    list(intercept = intercept, coefficients = coefficients, rSquared = results$r.squared);
 }
