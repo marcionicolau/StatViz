@@ -804,7 +804,7 @@ function calculateOutcome()
         var outcomeVariable = document.getElementById("value_" + currentVariableSelection[1]);
         var predictorVariable = document.getElementById("value_outcome");
         
-        console.log(outcomeVariable.value + " = " + testResults["coefficients"] + "*" + predictorVariable.value + " + " + testResults["intercept"];
+        console.log(outcomeVariable.value + " = " + testResults["coefficients"] + "*" + predictorVariable.value + " + " + testResults["intercept"]);
         
         outcomeVariable.value = testResults["coefficients"]*predictorVariable.value + testResults["intercept"];
     }
