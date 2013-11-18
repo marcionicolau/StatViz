@@ -98,22 +98,44 @@ function getLinearModelCoefficients(outcome, explanatory)
                     explanatory: variables[explanatory]["dataset"]
                   }, function(output) {          
                   
-                  console.log(output.coefficients);
+                if(isNaN(variables[explanatory]["dataset"][0]))
+                {
+                    //we have a categorical variable
+                    var levels = variables[explanatory]["dataset"].unique().sort();                    
+                    van nCoefficients = levels.length - 1;
+                    var coefficients = output.coefficients;
                   
-                  var x = output.coefficients;
-                  console.log(x.length);
+                    testResults["effect-size"] = output.rSquared;
+                    testResults["method"] = "Linear Regression Model";
+                    testResults["equation"] = outcome + " = ";
+                    
+                    for(var i=0; i<nCoefficients; i++)
+                    {
+                        if(i == 0)                        
+                            testResults["equation"] = testResults["equation"] + coefficients[i] + levels[i+1];
+                        else
+                            testResults["equation"] = testResults["equation"] + (coefficients[i] < 0 ? coefficients[i] : "+" + coefficients[i]) + levels[i+1];
+                    }
+                    testResults["equation"] = testResults["equation"] + (output.intercept < 0 ? output.intercept : "+" + output.intercept);
+                    
+                    testResults["intercept"] = output.intercept;
+                
+                    console.log("intercept=" + output.intercept + ", coefficients=" + output.coefficients);
+                }
+                else
+                {  
+                    var coefficients = output.coefficients;
                   
-                // testResults["effect-size"] = output.rSquared;
-//                 testResults["method"] = "Linear Regression Model";
-//                 testResults["equation"] = outcome + " = " + output.slope + explanatory + (output.intercept < 0 ? output.intercept : "+" + output.intercept);
-//                 testResults["intercept"] = output.intercept;
-//                 testResults["slope"] = output.slope;
-//                 
-//                 console.log("intercept=" + output.intercept + ", slope=" + output.slope);
-//                 
-//                 drawRegressionLine(output.intercept, output.slope);                
-//                 
-//                 displaySimpleRegressionResults();
+                    testResults["effect-size"] = output.rSquared;
+                    testResults["method"] = "Linear Regression Model";
+                    testResults["equation"] = outcome + " = " + coefficients + explanatory + (output.intercept < 0 ? output.intercept : "+" + output.intercept);
+                
+                    console.log("intercept=" + output.intercept + ", coefficients=" + output.coefficients);
+                }
+                
+                drawRegressionLine(output.intercept, output.slope);                
+                
+                displaySimpleRegressionResults();
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
