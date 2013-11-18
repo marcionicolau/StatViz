@@ -136,6 +136,8 @@ function getLinearModelCoefficients(outcome, explanatory)
 
 function performMultipleRegression(outcomeVariable, explanatoryVariables)
 {
+    console.log("outcome=" + outcomeVariable + ", explanatory=[" + explanatoryVariables);
+    
     var req = opencpu.r_fun_json("performMultipleRegression", {
                     outcomeVariable: outcomeVariable,
                     explanatoryVariables: explanatoryVariables,
