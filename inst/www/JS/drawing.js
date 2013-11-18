@@ -114,9 +114,8 @@ function drawDialogBoxToGetOutcomeVariable()
                 .attr("rx", scaleForWindowSize(10) + "px")
                 .attr("ry", scaleForWindowSize(10) + "px")
                 .attr("fill", panelColors["normal"])
-                .attr("id", "button")
-                .attr("class", "outcomeVariable")
-                .attr("data-variable", currentVariableSelection[i]);
+                .attr("id", currentVariableSelection[i])
+                .attr("class", "outcomeVariable");
         canvas.append("text")
                 .attr("x", centerX)
                 .attr("y", i*step + yStart + buttHeight/2 + yAxisTickTextOffset)
@@ -124,7 +123,6 @@ function drawDialogBoxToGetOutcomeVariable()
                 .text(currentVariableSelection[i])
                 .attr("font-size", fontSizeVariablePanel)
                 .attr("id", "text")
-                .attr("class", "outcomeVariable")
-                .attr("data-variable", currentVariableSelection[i]);
+                .attr("class", "outcomeVariable");
     }
 }

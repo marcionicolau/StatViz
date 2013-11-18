@@ -351,10 +351,9 @@ function OnMouseDown(e)
     {
         setup(e, target);
         
-        var outcomeVariableButton = d3.select("#button.outcomeVariable");
-        var outcomeVariableText = d3.select("#text.outcomeVariable");
+        var outcomeVariableButton = d3.select("#" + target.id + ".outcomeVariable");
         
-        var choice = outcomeVariableText.attr("data-variable");
+        var choice = target.id;
         
         if(currentVisualizationSelection == "Scatterplot")
         {
