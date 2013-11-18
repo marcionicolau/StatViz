@@ -1024,9 +1024,9 @@ function OnMouseOver(e)
         
         for(var i=0; i<differenceInMeansLines.length; i++)
         {
-            if(differenceInMeansLines.getAttribute("id") != target.id)
+            if(differenceInMeansLines[i].getAttribute("id") != target.id)
             {
-                differenceInMeansLines.setAttribute("opacity", "0.2");
+                differenceInMeansLines[i].setAttribute("opacity", "0.2");
             }
         }
     }
@@ -1132,9 +1132,9 @@ function OnMouseOut(e)
         
         for(var i=0; i<differenceInMeansLines.length; i++)
         {
-            if(differenceInMeansLines.getAttribute("id") != target.id)
+            if(differenceInMeansLines[i].getAttribute("id") != target.id)
             {
-                differenceInMeansLines.setAttribute("opacity", "1.0");
+                differenceInMeansLines[i].setAttribute("opacity", "1.0");
             }
         }
     }
