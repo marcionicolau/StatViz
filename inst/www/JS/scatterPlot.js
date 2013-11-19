@@ -37,6 +37,7 @@ function makeScatterplot()
                 console.dir(currentVariableSelection);
                 
                 var temp = currentVariableSelection[2];
+                console.log(temp);
                 currentVariableSelection[2] = currentVariableSelection[1];
                 currentVariableSelection[1] = temp;
                 
