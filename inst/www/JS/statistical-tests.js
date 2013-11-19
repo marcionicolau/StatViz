@@ -251,12 +251,13 @@ function displayOneSampleTestResults()
     var medians = document.getElementsByClassName("medians");
     var meanRefLines = [];
     
+    var RIGHT = canvasWidth/2 + plotWidth/2;
+    var BOTTOM = canvasHeight/2 + plotHeight/2;
+    
     var canvas = d3.select("#plotCanvas");
     
     if(testResults["type"] == "mean")
-    {   
-        var BOTTOM = canvasHeight/2 + plotHeight/2;
-    
+    {       
         canvas.append("line")
             .attr("x1", means[0].getAttribute("cx"))
             .attr("y1", BOTTOM - getFraction(testResults["estimate"])*plotHeight)
@@ -267,7 +268,7 @@ function displayOneSampleTestResults()
             .attr("class", "significanceTest");
         
         canvas.append("line")
-            .attr("x1", means[0].getAttribute("cx"))
+            .attr("x1", RIGHT)
             .attr("y1", BOTTOM - getFraction(sessionStorage.popMean)*plotHeight)
             .attr("x2", canvasWidth/2-plotWidth/2-axesOffset)
             .attr("y2", BOTTOM - getFraction(sessionStorage.popMean)*plotHeight)
@@ -280,8 +281,6 @@ function displayOneSampleTestResults()
     }
     else
     {
-        var BOTTOM = canvasHeight/2 + plotHeight/2;
-        
         console.log("BOTTOM=" + BOTTOM);
         console.log("median=" + sessionStorage.popMedian);
         console.log("plotHeight=" + plotHeight);
@@ -296,7 +295,7 @@ function displayOneSampleTestResults()
                 .attr("class", "significanceTest");
         
         canvas.append("line")
-                .attr("x1", medians[0].getAttribute("x1"))
+                .attr("x1", RIGHT)
                 .attr("y1", BOTTOM - getFraction(sessionStorage.popMedian)*plotHeight)
                 .attr("x2", canvasWidth/2-plotWidth/2-axesOffset)
                 .attr("y2", BOTTOM - getFraction(sessionStorage.popMedian)*plotHeight)
