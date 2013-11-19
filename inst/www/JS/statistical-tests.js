@@ -490,15 +490,23 @@ function drawScales(cx, cy)
     var variableList = getSelectedVariables();
     var means = [];
     
+    var meanElements = document.getElementsByClassName("means");
+    
     var levels = variableList["independent-levels"];
     
-    for(var i=0; i<variableList["dependent"].length; i++)
+//     for(var i=0; i<variableList["dependent"].length; i++)
+//     {
+//         for(var j=0; j<levels.length; j++)
+//         {
+//             means.push(mean(variables[variableList["dependent"][i]][levels[j]]));
+//         }
+//     }   
+
+    for(var i=0; i<meanElements.length; i++)
     {
-        for(var j=0; j<levels.length; j++)
-        {
-            means.push(mean(variables[variableList["dependent"][i]][levels[j]]));
-        }
-    }   
+        console.log("mean = " + meanElements[i].getAttribute("cy"));
+        means.push(getActualValue(meanElements[i].getAttribute("cy")));
+    }
     
     means = means.sort(function(a,b){return a-b});
     cy = cy.sort(function(a,b){return b-a});
