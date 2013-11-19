@@ -847,6 +847,13 @@ function calculateOutcome()
         outcomeVariableLabel.innerHTML = format5(outcomeVariableValue);
     }
 }
+
+function populationMeanEntered()
+{
+    var populationMean = document.getElementById("populationMean").value;
+    
+    console.log("population mean=" + populationMean);
+}
         
             
 
