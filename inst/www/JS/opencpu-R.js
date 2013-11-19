@@ -221,10 +221,15 @@ function performHomoscedasticityTestNotNormal(dependent, independent)
                 {  
                     if(output.p < 0.05)
                     {
-                        console.log("hey");
                         d3.select("#homogeneity.crosses").attr("display", "inline");                 
-                        
-                        performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE");
+                        if(experimentalDesign == "between-groups")
+                        {                        
+                            performWilcoxonTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]]);
+                        }
+                        else
+                        {
+                            performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE");
+                        }                         
                     }
                     else
                     {   
@@ -325,12 +330,10 @@ function performHomoscedasticityTestNormal(dependent, independent)
                             
                             if(experimentalDesign == "between-groups")
                             {
-                                console.log("hi there!");
                                 performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE", "TRUE");
                             }
                             else
                             {
-                                console.log("hola there!");
                                 performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE", "FALSE");
                             }
                         }
