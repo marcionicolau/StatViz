@@ -23,6 +23,21 @@ function makeScatterplot()
     BOTTOM = canvasHeight/2 + plotHeight/2 - topOffset;
     
     var canvas = d3.select("#plotCanvas");
+    
+    if(currentVariableSelection.length == 3)
+    {
+        var variableList = getSelectedVariables();
+        
+        if(variableList["dependent"].length == 2 && variableList["independent"].length == 1)
+        {
+            if(currentVariableSelection[2] != variableList["independent"][0])
+            {
+                var temp = currentVariableSelection[2];
+                currentVariableSelection[2] = currentVariableSelection[1];
+                currentVariableSelection[1] = temp;
+            }
+        }
+    }   
 
     // getting data
     data["X"] = variables[currentVariableSelection[0]]["dataset"];
