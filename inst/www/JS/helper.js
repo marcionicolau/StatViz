@@ -850,10 +850,18 @@ function calculateOutcome()
 
 function populationMeanEntered()
 {
-    var populationMean = document.getElementById("populationMean").value;
+    var populationValue = document.getElementById("populationValue").value;
     
-    console.log("population mean=" + populationMean);
-    sessionStorage.popMean = parseFloat(populationMean);
+    if(d3.select("#normality.crosses").attr("display") == "inline")
+    {
+        console.log("population mean=" + populationValue);
+        sessionStorage.popMedian = parseFloat(populationValue);
+    }
+    else
+    {
+        console.log("population mean=" + populationValue);
+        sessionStorage.popMean = parseFloat(populationValue);
+    }
     
     compareMeans();
 }

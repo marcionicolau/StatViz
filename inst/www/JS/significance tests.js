@@ -1,13 +1,13 @@
 //Significance Tests
 //0 IV, 1 DV
 function performOneSampleTTest(variable, level)
-{   
+{
+    expectedMean = sessionStorage.popMean;
+    
     if(level == undefined)
         level = "dataset"
     if(expectedMean == undefined)
         expectedMean = "0";
-        
-    expectedMean = mean(variables[variable][level]);
     
     var req = opencpu.r_fun_json("performOneSampleTTest", {
                     distribution: variables[variable][level],
@@ -48,13 +48,13 @@ function performOneSampleTTest(variable, level)
 }
 
 function performOneSampleWilcoxonTest(variable, level)
-{    
+{
+    expectedMean = sessionStorage.popMedian;
+    
     if(level == undefined)
         level = "dataset";
     if(expectedMean == undefined)
         expectedMean = "0";
-    
-    expectedMean = median(variables[variable][level]);
     
     var req = opencpu.r_fun_json("performOneSampleWilcoxonTest", {
                     distribution: variables[variable][level],

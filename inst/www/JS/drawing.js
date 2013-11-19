@@ -157,15 +157,17 @@ function drawDialogBoxToGetPopulationMean()
     
     var divElement = d3.select("body").append("div").attr("style", "position: absolute; left: " + LEFT + "px; top: " + TOP + "px; height: " + dialogBoxHeight + "px; width: " + dialogBoxWidth + "px;");
     
+    var inText = d3.select("#normality.crosses").attr("display") == "inline" ? "POPULATION MEDIAN = " : "POPULATION MEAN = ";
+    
     divElement.append("label")
                 .attr("align", "center")
                 .attr("vertical-align", "middle")
                 .attr("style", "font:1.2em \"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif; color: white;")
-                .text("POPULATION MEAN = ");
+                .text(inText);
     divElement.append("input")
                 .attr("type", "text")
                 .attr("placeholder", "<Enter value>")
-                .attr("id", "populationMean");
+                .attr("id", "populationValue");
     
     divElement.append("input")
                 .attr("type", "button")
