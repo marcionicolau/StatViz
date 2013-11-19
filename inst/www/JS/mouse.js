@@ -415,6 +415,9 @@ function OnMouseDown(e)
             {
                 getLinearModelCoefficients(outcomeVariable, explanatoryVariables[0]);
                 currentVisualizationSelection = "Scatterplot";
+
+                removeElementsByClassName("regression");
+                removeElementsByClassName("significanceTest")
                 toggleFillColorsForVisualizations();        
                 makePlot();
             }
