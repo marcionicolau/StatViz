@@ -281,9 +281,13 @@ function displayOneSampleTestResults()
     else
     {
         var BOTTOM = canvasHeight/2 + plotHeight/2;
+        
+        console.log("BOTTOM=" + BOTTOM);
+        console.log("median=" + sessionStorage.median);
+        console.log("plotHeight=" + plotHeight);
     
         canvas.append("line")
-                .attr("x1", medians[0].getAttribute("cx"))
+                .attr("x1", medians[0].getAttribute("x1"))
                 .attr("y1", BOTTOM - getFraction(testResults["estimate"])*plotHeight)
                 .attr("x2", canvasWidth/2-plotWidth/2-axesOffset)
                 .attr("y2", BOTTOM - getFraction(testResults["estimate"])*plotHeight)
@@ -292,12 +296,12 @@ function displayOneSampleTestResults()
                 .attr("class", "significanceTest");
         
         canvas.append("line")
-                .attr("x1", medians[0].getAttribute("cx"))
+                .attr("x1", medians[0].getAttribute("x1"))
                 .attr("y1", BOTTOM - getFraction(sessionStorage.median)*plotHeight)
                 .attr("x2", canvasWidth/2-plotWidth/2-axesOffset)
                 .attr("y2", BOTTOM - getFraction(sessionStorage.median)*plotHeight)
                 .attr("stroke", "red")
-                .attr("id", "populationMean")
+                .attr("id", "populationLine")
                 .attr("class", "significanceTest");
                 
         cy.push(BOTTOM - getFraction(testResults["estimate"])*plotHeight);
