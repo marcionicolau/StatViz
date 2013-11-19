@@ -259,7 +259,7 @@ function displayOneSampleTestResults()
     if(testResults["type"] == "mean")
     {       
         canvas.append("line")
-            .attr("x1", means[0].getAttribute("cx"))
+            .attr("x1", RIGHT)
             .attr("y1", BOTTOM - getFraction(testResults["estimate"])*plotHeight)
             .attr("x2", canvasWidth/2-plotWidth/2-axesOffset)
             .attr("y2", BOTTOM - getFraction(testResults["estimate"])*plotHeight)
@@ -286,7 +286,7 @@ function displayOneSampleTestResults()
         console.log("plotHeight=" + plotHeight);
     
         canvas.append("line")
-                .attr("x1", medians[0].getAttribute("x1"))
+                .attr("x1", RIGHT)
                 .attr("y1", BOTTOM - getFraction(testResults["estimate"])*plotHeight)
                 .attr("x2", canvasWidth/2-plotWidth/2-axesOffset)
                 .attr("y2", BOTTOM - getFraction(testResults["estimate"])*plotHeight)
