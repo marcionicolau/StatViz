@@ -48,11 +48,6 @@ function compareMeans()
                         alert("Between-groups design was detected but number of samples are different!");
                         return;
                     }                    
-                    else if(sampleSize < 20)
-                    {
-                        console.log("sample size < 20!");
-                        performHomoscedasticityTestNotNormal(variableList["dependent"][0], variableList["independent"][0]);
-                    }
                     else
                     {
                         performNormalityTests(); 
