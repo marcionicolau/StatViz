@@ -227,7 +227,8 @@ function OnMouseDown(e)
         
         //get selected means
         var means = document.getElementsByClassName("means");
-        var selectedMeans = [];        
+        var selectedMeans = []; 
+        var variableList = getSelectedVariables();
         
         for(var i=0; i<means.length; i++)
         {
@@ -238,6 +239,13 @@ function OnMouseDown(e)
         if(selectedMeans.length == 0)
         {
             alert("select one or means and then press compare");
+        }
+        else if(variableList["independent"].length == 0)
+        {
+            if(selectedMeans.length > 1)
+            {
+                alert("select only one mean to compare against population mean!");
+            }
         }
         else
         {
@@ -252,7 +260,7 @@ function OnMouseDown(e)
         var canvas = d3.select("#plotCanvas");
         var variableList = getSelectedVariables();
         
-        var inText = variableList["independent"].length > 0 ? "SELECT TWO OR MORE MEANS" : "SELECT ONE OR MORE MEANS";             
+        var inText = variableList["independent"].length > 0 ? "SELECT TWO OR MORE MEANS" : "SELECT ONE MEAN";             
     
         canvas.append("rect")
                 .attr("x", canvasWidth/2 - 1.5*buttonWidth/2)
