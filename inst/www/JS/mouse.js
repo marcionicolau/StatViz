@@ -411,8 +411,14 @@ function OnMouseDown(e)
                     explanatoryVariables.push(currentVariableSelection[i]);
                 }
             }
-            
-            performMultipleRegression(outcomeVariable, explanatoryVariables);
+            if(explanatoryVariables.length == 1)
+            {
+                getLinearModelCoefficients(outcomeVariable, explanatoryVariables[0]);
+                currentVisualizationSelection = "Scatterplot";
+                makePlot();
+            }
+            else
+                performMultipleRegression(outcomeVariable, explanatoryVariables);
         }
     }
     
