@@ -506,7 +506,9 @@ function applyTransform(dependentVariable, level, last)
                     distribution: variables[dependentVariable][level],
                     type: transformationType
                   }, function(output) {                                                   
-                  
+                
+                console.log("\nvariables[dependentVariable][level]: " + variables[dependentVariable][level]);
+                console.log("output.transformedData: " + output.transformedData);
                 variables[dependentVariable][level] = output.transformedData;
                 MIN[dependentVariable][level] = Array.min(output.transformedData);
                 MAX[dependentVariable][level] = Array.max(output.transformedData);
