@@ -412,6 +412,8 @@ function displaySignificanceTestResults()
             cy.splice(i, 1);								
         }	
     }
+    
+    console.log("cy = " + cy);
     var cyMax = Math.max.apply(Math, cy);
     var cyMin = Math.min.apply(Math, cy);		   	 
 
