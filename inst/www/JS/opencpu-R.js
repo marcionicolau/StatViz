@@ -324,6 +324,7 @@ function performHomoscedasticityTestNormal(dependent, independent)
                             
                             if(experimentalDesign == "between-groups")
                             {
+                                console.log("hi there!");
                                 performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE", "TRUE");
                             }
                             else
