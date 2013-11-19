@@ -251,7 +251,7 @@ function OnMouseDown(e)
             }
             else
             {
-                drawDialogBoxToGetPopulationMean();
+                compareMeans();
             }
         }
         else
