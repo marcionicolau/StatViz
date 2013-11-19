@@ -21,6 +21,7 @@ function performOneSampleTTest(variable, level)
                   console.log("\t\t\t mean = " + output.estimate);
                   console.log("\t\t\t d = " + output.d);
                   
+                  testResults["type"] = "mean";
                   testResults["df"] = output.df;
                   testResults["statistic"] = "t(" + testResults["df"] +") = " + output.t;
                   testResults["p"] = output.p; 
@@ -66,6 +67,7 @@ function performOneSampleWilcoxonTest(variable, level)
                   console.log("\t\t\t median = " + output.estimate);
                   console.log("\t\t\t r = " + output.r);
                   
+                  testResults["type"] = "median";
                   testResults["statistic"] = "V = " + output.V;
                   testResults["p"] = output.p; 
                   testResults["method"] = output.method;
