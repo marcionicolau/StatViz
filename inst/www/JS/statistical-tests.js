@@ -45,7 +45,7 @@ function compareMeans()
                     
                     if(!sampleSizesAreEqual && experimentalDesign=="Between-groups")
                     {
-                        console.log("no valid tests available");
+                        alert("Between-groups design was detected but number of samples are different!");
                         return;
                     }                    
                     else if(sampleSize < 20)
