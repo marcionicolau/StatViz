@@ -54,7 +54,7 @@ function drawInteractionEffectPlot()
                 .attr("y", (TOP + BOTTOM)/2)
                 .attr("text-anchor", "end")
                 .attr("font-size", "24px")
-                .attr("transform", "rotate -90 " + (LEFT - axesOffset - labelOffset) + " " + ((TOP + BOTTOM)/2));
+                .attr("transform", "rotate -90 " + (LEFT - axesOffset - labelOffset) + " " + ((TOP + BOTTOM)/2))
                 .text(dependentVariable)
                 .attr("fill", "orange");
                 
