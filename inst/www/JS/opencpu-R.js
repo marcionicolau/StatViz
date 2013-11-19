@@ -222,14 +222,6 @@ function performHomoscedasticityTestNotNormal(dependent, independent)
                     if(output.p < 0.05)
                     {
                         d3.select("#homogeneity.crosses").attr("display", "inline");                 
-                        if(experimentalDesign == "between-groups")
-                        {                        
-                            performWilcoxonTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]]);
-                        }
-                        else
-                        {
-                            performMannWhitneyTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]]);
-                        }
                         
                         performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE");
                     }
