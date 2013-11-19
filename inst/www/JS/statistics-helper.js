@@ -89,7 +89,7 @@ function testForEvilVariables()
         var uniqueVariableData = variableData.unique();
         console.log("Variable data type=" + variableDataTypes[variable]);
 
-        if((variableDataTypes[variable] == "nominal") || (variableDataTypes[variable] == "ordinal"))
+        if(isNaN(variableData[0]))
         {
             if(uniqueVariableData.length > 15)
             {
