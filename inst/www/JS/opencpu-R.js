@@ -197,10 +197,16 @@ function performHomoscedasticityTestNotNormal(dependent, independent)
                 {
                     if(output.p < 0.05)
                     {
-                      d3.select("#homogeneity.crosses").attr("display", "inline");                  
-                  
-                      //Welch's ANOVA
-                      performWelchANOVA(variableList["dependent"][0], variableList["independent"][0]);
+                        d3.select("#homogeneity.crosses").attr("display", "inline");                  
+                        
+                        if(experimentalDesign == "between-groups")
+                        {
+                            performFriedmanTest(variableList["dependent"][0], variableList["independent"][0]);
+                        }
+                        else
+                        {
+                            performWelchANOVA(variableList["dependent"][0], variableList["independent"][0]);
+                        }                      
                     }
                     else
                     {   
@@ -302,10 +308,15 @@ function performHomoscedasticityTestNormal(dependent, independent)
                     {
                         if(output.p < 0.05)
                         {
-                          d3.select("#homogeneity.crosses").attr("display", "inline");                  
-                  
-                          //Welch's ANOVA
-                          performWelchANOVA(variableList["dependent"][0], variableList["independent"][0]);
+                            d3.select("#homogeneity.crosses").attr("display", "inline");                  
+                            if(experimentalDesign == "between-groups")
+                            {
+                                performOneWayRepeatedMeasuresANOVA(variableList["dependent"][0], variableList["independent"][0]);
+                            }
+                            else
+                            {
+                                performWelchANOVA(variableList["dependent"][0], variableList["independent"][0]);
+                            }  
                         }
                         else
                         {   
