@@ -475,12 +475,13 @@ function performKruskalWallisTest(dependentVariable, independentVariable)
                   console.log("\t\t\t p = " + output.p);
                   console.log("\t\t\t method used = Kruskal-Wallis Test ANOVA");
                   console.log("\t\t\t DF = " + output.DF);
+                  console.log("\t\t\t Eta-squared: " + output.etaSquared);
                   
                   testResults["df"] = output.DF;
                   testResults["statistic"] = "𝝌^2(" + testResults["df"] + ") = " + output.ChiSquared;
                   testResults["p"] = output.p;                  
                   testResults["method"] = "Kruskal-Wallis Test"; 
-                           
+                  testResults["effect-size"] = "η^2 = " + output.etaSquared;         
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines");   
