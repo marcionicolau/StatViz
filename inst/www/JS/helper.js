@@ -851,19 +851,22 @@ function calculateOutcome()
 function populationMeanEntered()
 {
     var populationValue = document.getElementById("populationValue").value;
+    var variableList = getSelectedVariables();
     
     if(d3.select("#normality.crosses").attr("display") == "inline")
     {
         console.log("population mean=" + populationValue);
         sessionStorage.popMedian = parseFloat(populationValue);
+        
+        performOneSampleWilcoxonTest(variableList["dependent"][0]);
     }
     else
     {
         console.log("population mean=" + populationValue);
         sessionStorage.popMean = parseFloat(populationValue);
+        
+        performOneSampleTTest(variableList["dependent"][0]);
     }
-    
-    compareMeans();
 }
         
             

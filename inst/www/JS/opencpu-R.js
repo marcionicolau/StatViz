@@ -390,7 +390,7 @@ function performNormalityTest(dist, dependentVariable, level)
                     if(variableList["independent"].length == 0)
                     {
                         d3.select("#normality.ticks").attr("display", "inline");                          
-                        performOneSampleTTest(variableList["dependent"][0]);
+                        drawDialogBoxToGetPopulationMean();
                     }
                     else
                     {
@@ -467,7 +467,7 @@ function findTransformForDependentVariables(numericVariables)
                 if(output.type == "none")
                 {
                     d3.select("#plotCanvas").transition().delay(3000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
-                    performOneSampleWilcoxonTest(variableList["dependent"][0]);
+                    drawDialogBoxToGetPopulationMean();
                 }
                 else
                 {
@@ -549,7 +549,7 @@ function applyTransform(dependentVariable, level, last)
                         if(variableList["independent"].length > 0)
                             performHomoscedasticityTestNormal(dependentVariable, variableList["independent"][0]);
                         else
-                            performOneSampleTTest(dependentVariable);
+                            drawDialogBoxToGetPopulationMean();
                     }, 1500);
                 }
             
