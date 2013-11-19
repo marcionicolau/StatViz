@@ -249,6 +249,10 @@ function OnMouseDown(e)
             {
                 alert("select only one mean to compare against population mean!");
             }
+            else
+            {
+                compareMeans();
+            }
         }
         else
         {
