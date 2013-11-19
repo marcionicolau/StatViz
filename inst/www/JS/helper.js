@@ -513,6 +513,24 @@ function getSelectedVariables()
             }
         }   
     }
+    else
+    {
+        variableList["dependent"] = [];
+        for(var i=0; i<means.length; i++)
+        {
+            if(means[i].getAttribute("fill") == meanColors["click"])
+            {
+                if(stringForNumber.indexOf(means[i].getAttribute("id")) != -1)
+                {                
+                    variableList["dependent"].push(stringForNumber.indexOf(means[i].getAttribute("id")));
+                }
+                else
+                {
+                    variableList["dependent"].push(means[i].getAttribute("id"));
+                }
+            }
+        }    
+    }
     
     return variableList; 
 }
