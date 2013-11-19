@@ -413,7 +413,7 @@ function displaySignificanceTestResults()
         }	
     }
     
-    console.log("cy = " + cy);
+    console.log("cy = " + cy + " ");
     var cyMax = Math.max.apply(Math, cy);
     var cyMin = Math.min.apply(Math, cy);		   	 
 
