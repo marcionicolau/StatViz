@@ -236,6 +236,9 @@ function OnMouseDown(e)
                 selectedMeans.push(means[i]);
         }
         
+        console.log("selectedMeans:");
+        console.dir(selectedMeans);
+        
         if(selectedMeans.length == 0)
         {
             alert("select one or means and then press compare");
