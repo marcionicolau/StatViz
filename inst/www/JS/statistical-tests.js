@@ -368,6 +368,7 @@ function displayOneSampleTestResults()
   
 function displaySignificanceTestResults()
 {    
+    console.log("oi");
     var cx = [];
     var cy = [];
 
