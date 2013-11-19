@@ -29,6 +29,8 @@ function makeBoxplot()
     var ids = [];
     var widthOfEachBox;
     
+    console.dir(currentVariableSelection);
+    
     //get data
     if(currentVariableSelection.length > 1)
     {
