@@ -221,6 +221,7 @@ function performHomoscedasticityTestNotNormal(dependent, independent)
                 {  
                     if(output.p < 0.05)
                     {
+                        console.log("hey");
                         d3.select("#homogeneity.crosses").attr("display", "inline");                 
                         
                         performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE");
