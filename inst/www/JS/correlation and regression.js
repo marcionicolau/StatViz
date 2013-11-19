@@ -42,8 +42,8 @@ function getCorrelationCoefficient(variableA, variableB, method)
                 
                 displayCorrelationResults();
                 
-                if(allVariablesAreNumeric())
-                    drawButtonInSideBar("CONSTRUCT MODEL", "regression");
+//                 if(allVariablesAreNumeric())
+                drawButtonInSideBar("CONSTRUCT MODEL", "regression");
 
         
       }).fail(function(){
