@@ -299,8 +299,7 @@ function performHomoscedasticityTestNormal(dependent, independent)
                           d3.select("#homogeneity.crosses").attr("display", "inline");                  
                   
                           //Welch's ANOVA
-//                           performWelchANOVA(variableList["dependent"][0], variableList["independent"][0]);
-                            performANOVA(variableList["dependent"][0], variableList["independent"][0]);
+                          performWelchANOVA(variableList["dependent"][0], variableList["independent"][0]);
                         }
                         else
                         {   
@@ -321,9 +320,16 @@ function performHomoscedasticityTestNormal(dependent, independent)
                     {               
                         if(output.p < 0.05)
                         {
-                          d3.select("#homogeneity.crosses").attr("display", "inline");                  
-                  
-                          performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE");
+                            d3.select("#homogeneity.crosses").attr("display", "inline");     
+                            
+                            if(experimentalDesign == "between-groups")
+                            {
+                                performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE", "TRUE");
+                            }
+                            else
+                            {
+                                performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE", "FALSE");
+                            }
                         }
                         else
                         {   

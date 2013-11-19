@@ -109,11 +109,13 @@ function performTTest(groupA, groupB, varianceEqual, paired) //groupA, groupB, p
                   console.log("\t\t\t DOF = " + output.DOF);
                   console.log("\t\t\t p = " + output.p);
                   console.log("\t\t\t t = " + output.t);
+                  console.log("\t\t\t d = " + output.d);
                   
                   testResults["df"] = output.DOF;
                   testResults["statistic"] = "t(" + testResults["df"] +") = " + output.t;
                   testResults["p"] = output.p; 
                   testResults["method"] = output.method;
+                  testResults["effect-size"] = output.d;
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines");
