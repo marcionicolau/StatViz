@@ -3,6 +3,6 @@ performFriedmanTest <- function(dependentVariable, independentVariable, particip
     table <- as.data.frame(dataset);
     
     result = eval(parse(text = paste("friedman.test(",dependentVariable," ~ ",independentVariable," | ",participantVariable,", data = table)",sep="")));
-    list(ChiSquared = result$statistic[["Friedman chi-squared"]], df = result$parameter[["df"]], p = result$p.value, method = result$method)
+    list(chiSquared = result$statistic[["Friedman chi-squared"]], df = result$parameter[["df"]], p = result$p.value, method = result$method)
 }
   
