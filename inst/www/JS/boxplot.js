@@ -314,6 +314,9 @@ function makeBoxplot()
                     .attr("id", ids[i])
                     .attr("class", "BOTTOMFringeConnectors"));
     
+        console.log("BOTTOM = " + BOTTOM);
+        console.log("CIs[i][0] = " + CIs[i][0]);
+        console.log("getFraction = " + getFraction(CIs[i][0]);
         
         
         CILines.push(canvas.append("line")
