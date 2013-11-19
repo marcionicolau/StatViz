@@ -286,6 +286,18 @@ function displayOneSampleTestResults()
             cy.splice(i, 1);								
         }	
     }
+    
+    var BOTTOM = canvasHeight/2 + plotHeight/2;
+    
+    canvas.append("line")
+            .attr("x1", means[0].getAttribute("cx"))
+            .attr("y1", BOTTOM - getFraction(testResults["estimate"])*plotHeight)
+            .attr("x1", canvasWidth/2-plotWidth/2-axesOffset)
+            .attr("y1", BOTTOM - getFraction(testResults["estimate"])*plotHeight)
+            .attr("stroke", "green")
+            .attr("id", "estimateLine")
+            .attr("class", "significanceTest");
+    
     var cyMax = parseFloat(cy[0]);
     var cyMin = parseFloat(cy[0]); 
 

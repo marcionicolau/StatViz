@@ -63,7 +63,7 @@ function performOneSampleWilcoxonTest(variable, level)
                   console.log("\t\t " + output.method);
                   console.log("\t\t\t p = " + output.p);
                   console.log("\t\t\t V = " + output.V);
-                  console.log("\t\t\t mean = " + output.estimate);
+                  console.log("\t\t\t median = " + output.estimate);
                   console.log("\t\t\t r = " + output.r);
                   
                   testResults["statistic"] = "V = " + output.V;
