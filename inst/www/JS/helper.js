@@ -858,12 +858,16 @@ function populationMeanEntered()
         console.log("population median=" + populationValue);
         sessionStorage.popMedian = parseFloat(populationValue);
         
+        removeElementsByClassName("dialogBox");
+        
         performOneSampleWilcoxonTest(variableList["dependent"][0]);
     }
     else
     {
         console.log("population mean=" + populationValue);
         sessionStorage.popMean = parseFloat(populationValue);
+        
+        removeElementsByClassName("dialogBox");
         
         performOneSampleTTest(variableList["dependent"][0]);
     }

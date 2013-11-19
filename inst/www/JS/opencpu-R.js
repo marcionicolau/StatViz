@@ -471,7 +471,7 @@ function findTransformForDependentVariables(numericVariables)
                     setTimeout(
                     function(){
                     drawDialogBoxToGetPopulationMean();
-                    }, 3500);
+                    }, 3800);
                 }
                 else
                 {

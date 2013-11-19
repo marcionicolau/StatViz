@@ -254,42 +254,7 @@ function displayOneSampleTestResults()
     var canvas = d3.select("#plotCanvas");
     
     if(testResults["type"] == "mean")
-    {
-        for(var i=0; i<means.length; i++)
-        {
-            if(means[i].getAttribute("fill") == meanColors["click"])
-            {								
-                cx.push(means[i].getAttribute("cx"));
-                cy.push(means[i].getAttribute("cy"));
-        
-                meanRefLines[i] = canvas.append("line")
-                                     .attr("x1", means[i].getAttribute("cx"))
-                                     .attr("y1", means[i].getAttribute("cy"))
-                                     .attr("x2", canvasWidth/2 + plotWidth/2)
-                                     .attr("y2", means[i].getAttribute("cy"))
-                                     .attr("stroke", meanColors["normal"])
-                                     .attr("stroke-dasharray","5,5")
-                                     .attr("id", "meanrefLine")
-                                     .attr("class", "significanceTest");
-                                 
-                                canvas.append("line")
-                                     .attr("x1", means[i].getAttribute("cx"))
-                                     .attr("y1", means[i].getAttribute("cy"))
-                                     .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
-                                     .attr("y2", means[i].getAttribute("cy"))
-                                     .attr("stroke", meanColors["normal"])
-                                     .attr("opacity", "0.45")
-                                     .attr("stroke-dasharray","5,5")
-                                     .attr("id", "meanrefLine")
-                                     .attr("class", "significanceTest");
-            }
-            else
-            {									
-                cx.splice(i, 1);
-                cy.splice(i, 1);								
-            }	
-        }
-        
+    {   
         var BOTTOM = canvasHeight/2 + plotHeight/2;
     
         canvas.append("line")
@@ -300,45 +265,21 @@ function displayOneSampleTestResults()
             .attr("stroke", "green")
             .attr("id", "estimateLine")
             .attr("class", "significanceTest");
+        
+        canvas.append("line")
+            .attr("x1", means[0].getAttribute("cx"))
+            .attr("y1", BOTTOM - getFraction(sessionStorage.mean)*plotHeight)
+            .attr("x2", canvasWidth/2-plotWidth/2-axesOffset)
+            .attr("y2", BOTTOM - getFraction(sessionStorage.mean)*plotHeight)
+            .attr("stroke", "red")
+            .attr("id", "populationLine")
+            .attr("class", "significanceTest");
+            
         cy.push(BOTTOM - getFraction(testResults["estimate"])*plotHeight);
+        cy.push(BOTTOM - getFraction(sessionStorage.mean)*plotHeight);
     }
     else
     {
-        for(var i=0; i<means.length; i++)
-        {
-            if(means[i].getAttribute("fill") == meanColors["click"])
-            {								
-                cx.push(medians[i].getAttribute("x1"));
-                cy.push(medians[i].getAttribute("y1"));
-        
-                meanRefLines[i] = canvas.append("line")
-                                     .attr("x1", medians[i].getAttribute("x1"))
-                                     .attr("y1", medians[i].getAttribute("y1"))
-                                     .attr("x2", canvasWidth/2 + plotWidth/2)
-                                     .attr("y2", medians[i].getAttribute("y1"))
-                                     .attr("stroke", meanColors["normal"])
-                                     .attr("stroke-dasharray","5,5")
-                                     .attr("id", "meanrefLine")
-                                     .attr("class", "significanceTest");
-                                 
-                                canvas.append("line")
-                                     .attr("x1", medians[i].getAttribute("x1"))
-                                     .attr("y1", medians[i].getAttribute("y1"))
-                                     .attr("x2", canvasWidth/2 - plotWidth/2 - axesOffset)
-                                     .attr("y2", medians[i].getAttribute("y1"))
-                                     .attr("stroke", meanColors["normal"])
-                                     .attr("opacity", "0.45")
-                                     .attr("stroke-dasharray","5,5")
-                                     .attr("id", "meanrefLine")
-                                     .attr("class", "significanceTest");
-            }
-            else
-            {									
-                cx.splice(i, 1);
-                cy.splice(i, 1);								
-            }	
-        }
-        
         var BOTTOM = canvasHeight/2 + plotHeight/2;
     
         canvas.append("line")
@@ -349,8 +290,18 @@ function displayOneSampleTestResults()
                 .attr("stroke", "green")
                 .attr("id", "estimateLine")
                 .attr("class", "significanceTest");
+        
+        canvas.append("line")
+                .attr("x1", medians[0].getAttribute("cx"))
+                .attr("y1", BOTTOM - getFraction(sessionStorage.median)*plotHeight)
+                .attr("x2", canvasWidth/2-plotWidth/2-axesOffset)
+                .attr("y2", BOTTOM - getFraction(sessionStorage.median)*plotHeight)
+                .attr("stroke", "red")
+                .attr("id", "populationMean")
+                .attr("class", "significanceTest");
                 
         cy.push(BOTTOM - getFraction(testResults["estimate"])*plotHeight);
+        cy.push(BOTTOM - getFraction(sessionStorage.median)*plotHeight);
     }
     
     
