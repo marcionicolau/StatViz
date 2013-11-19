@@ -329,6 +329,7 @@ function performHomoscedasticityTestNormal(dependent, independent)
                             }
                             else
                             {
+                                console.log("hola there!");
                                 performTTest(variables[variableList["dependent"][0]][variableList["independent-levels"][0]], variables[variableList["dependent"][0]][variableList["independent-levels"][1]], "FALSE", "FALSE");
                             }
                         }

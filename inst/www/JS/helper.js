@@ -658,11 +658,11 @@ function findExperimentalDesign()
     
     if(participantData.length > participantData.unique().length)
     {
-        return "Between-groups";
+        return "between-groups";
     }
     else
     {
-        return "Within-groups";
+        return "within-groups";
     }
 }
 
