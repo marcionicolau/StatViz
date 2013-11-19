@@ -855,7 +855,7 @@ function populationMeanEntered()
     
     if(d3.select("#normality.crosses").attr("display") == "inline")
     {
-        console.log("population mean=" + populationValue);
+        console.log("population median=" + populationValue);
         sessionStorage.popMedian = parseFloat(populationValue);
         
         performOneSampleWilcoxonTest(variableList["dependent"][0]);

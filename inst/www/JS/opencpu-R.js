@@ -467,7 +467,11 @@ function findTransformForDependentVariables(numericVariables)
                 if(output.type == "none")
                 {
                     d3.select("#plotCanvas").transition().delay(3000).duration(1000).attr("viewBox", "0 0 " + canvasWidth + " " + canvasHeight);
+                    
+                    setTimeout(
+                    function(){
                     drawDialogBoxToGetPopulationMean();
+                    }, 3500);
                 }
                 else
                 {
