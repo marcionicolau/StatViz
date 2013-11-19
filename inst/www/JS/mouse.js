@@ -1045,6 +1045,13 @@ function OnMouseOver(e)
             }
         }
     }
+    
+    else if(target.className.baseVal == "interactionEffect")
+    {
+        setup(e, target);
+        
+        d3.selectAll(".interactionEffect").attr("cursor", "pointer");
+    }
 }
 
 function OnMouseOut(e)
