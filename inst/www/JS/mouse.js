@@ -729,10 +729,13 @@ function OnMouseOver(e)
             }             
         }
         
+        var mouseX = e.pageX - (width - canvasWidth - sideBarWidth);
+        var mouseY = e.pageY;
+        
         var canvas = d3.select("#plotCanvas");
         canvas.append("text")
-                .attr("x", e.pageX + 10 - (width - canvasWidth))
-                .attr("y", e.pageY + 15)
+                .attr("x", mouseX + 10)
+                .attr("y", mouseY + 15)
                 .attr("fill", meanColors["normal"])
                 .text(text[0][removeAlphabetsFromString(datapoint.attr("id"))] + ", " + text[1][removeAlphabetsFromString(datapoint.attr("id"))])
                 .attr("class", "hoverText");
