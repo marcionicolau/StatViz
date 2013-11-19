@@ -266,6 +266,7 @@ function performTwoWayANOVA(dependentVariable, independentVariableA, independent
                   console.log("\t\t\t method used = Two-way ANOVA"); //todo
                   console.log("\t\t\t DF = " + output.numDF + "/" + output.denomDF);
                   console.log("\t\t\t Eta-squared: " + output.etaSquared);
+                  console.log("\t\t\t p-values: " + output.p);
                   
                   testResults["df"] = output.numDF + "/" + output.denomDF;
                   testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;   

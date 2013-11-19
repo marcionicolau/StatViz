@@ -504,7 +504,6 @@ function drawScales(cx, cy)
 
     for(var i=0; i<meanElements.length; i++)
     {
-        console.log("mean = " + meanElements[i].getAttribute("cy"));
         means.push(getActualValue(meanElements[i].getAttribute("cy")));
     }
     
@@ -525,7 +524,6 @@ function drawScales(cx, cy)
     {
         for(var i=0; i<cy.length-1; i++)
         {  
-            console.log("means[i]=" + means[i] + ", \tmeans[i+1]=" + means[i+1]);
             canvas.append("text")
                 .attr("x", x + scaleForWindowSize(5))
                 .attr("y", (parseFloat(cy[i]) + parseFloat(cy[i+1]))/2 + yAxisTickTextOffset)
