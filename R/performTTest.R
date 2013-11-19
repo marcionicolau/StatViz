@@ -17,6 +17,6 @@ performTTest <- function(groupA, groupB, paired = "FALSE", alternative = "two.si
   CI_mean=result$conf.int, 
   method=result$method, 
   alpha = alpha,
-  mean = result$estimate
+  mean = result$estimate,
   d = d);
 }
