@@ -484,29 +484,8 @@ function drawScales(cx, cy)
     var yMin = Array.min(cy);
     var yMax = Array.max(cy);
     
-    var canvas = d3.select("#plotCanvas");
-//     canvas.append("line")
-//             .attr("x1", canvasWidth/2 + plotWidth/2 + significanceTestScaleOffset)
-//             .attr("y1", yMin)
-//             .attr("x2", canvasWidth/2 + plotWidth/2 + significanceTestScaleOffset)
-//             .attr("y2", yMax)
-//             .attr("stroke", meanColors["normal"])
-//             .attr("id", "mainScale")
-//             .attr("class", "significanceTest");            
-    
+    var canvas = d3.select("#plotCanvas");    
     var x = canvasWidth/2 + plotWidth/2 + significanceTestScaleOffset;
-    for(var i=0; i<cx.length; i++)
-    {        
-//         canvas.append("line")
-//                 .attr("x1", x-5)
-//                 .attr("y1", cy[i])
-//                 .attr("x2", x)
-//                 .attr("y2", cy[i])
-//                 .attr("stroke", meanColors["normal"])
-//                 .attr("id", "tick")
-//                 .attr("class", "significanceTest");       
-    }
-
     
     var variableList = getSelectedVariables();
     var means = [];
@@ -534,7 +513,7 @@ function drawScales(cx, cy)
                 .attr("class", "significanceTest")
                 .text(format(means[means.length-1] - means[0]));
     
-    if(cy.length > 2)
+    if(cy.length >= 2)
     {
         for(var i=0; i<cy.length-1; i++)
         {  
