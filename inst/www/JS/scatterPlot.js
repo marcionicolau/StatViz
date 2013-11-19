@@ -32,16 +32,18 @@ function makeScatterplot()
         {
             if(currentVariableSelection[2] != variableList["independent"][0])
             {
-                console.log("swap");
-                
-                console.dir(currentVariableSelection);
-                
-                var temp = currentVariableSelection[2];
-                console.log(temp);
-                currentVariableSelection[2] = currentVariableSelection[1];
-                currentVariableSelection[1] = temp;
-                
-                console.dir(currentVariableSelection);
+                if(currentVariableSelection[1] == variableList["independent"][0])
+                {
+                    var temp = currentVariableSelection[2];
+                    currentVariableSelection[2] = currentVariableSelection[1];
+                    currentVariableSelection[1] = temp;
+                }
+                else
+                {
+                    var temp = currentVariableSelection[2];
+                    currentVariableSelection[2] = currentVariableSelection[0];
+                    currentVariableSelection[0] = temp;
+                }
             }
         }
     }   
