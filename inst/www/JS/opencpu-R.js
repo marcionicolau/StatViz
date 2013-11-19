@@ -268,6 +268,8 @@ function performHomoscedasticityTestNormal(dependent, independent)
                 console.log("\t\t Levene's test for (" + dependent + " ~ " + independent + ")");
                 console.log("\t\t\t p = " + output.p);
                 
+                
+                
                 variableList = sort(currentVariableSelection);
                 
                 if(variableList["independent"].length == 2)
@@ -297,7 +299,8 @@ function performHomoscedasticityTestNormal(dependent, independent)
                           d3.select("#homogeneity.crosses").attr("display", "inline");                  
                   
                           //Welch's ANOVA
-                          performWelchANOVA(variableList["dependent"][0], variableList["independent"][0]);
+//                           performWelchANOVA(variableList["dependent"][0], variableList["independent"][0]);
+                            performANOVA(variableList["dependent"][0], variableList["independent"][0]);
                         }
                         else
                         {   
