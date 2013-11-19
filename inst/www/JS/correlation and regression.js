@@ -120,7 +120,13 @@ function getLinearModelCoefficients(outcome, explanatory)
                     }
                     testResults["equation"] = testResults["equation"] + (output.intercept < 0 ? output.intercept : "+" + output.intercept);
                     
-                    testResults["coefficients"] = coefficients;
+                    testResults["coefficients"] = new Object();
+                    
+                    for(var i=0; i<levels.length; i++)
+                    {
+                        testResults["coefficients"][levels[i]] = coefficients[i];
+                    }
+                    
                     testResults["intercept"] = output.intercept;
                 
                     console.log("intercept=" + output.intercept + ", coefficients=" + output.coefficients);
