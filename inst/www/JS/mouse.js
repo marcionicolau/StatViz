@@ -412,20 +412,10 @@ function OnMouseDown(e)
                 }
             }
             if(explanatoryVariables.length == 1)
-            {                
+            {
+                getLinearModelCoefficients(outcomeVariable, explanatoryVariables[0]);
                 currentVisualizationSelection = "Scatterplot";
-                
-                toggleFillColorsForVisualizations();        
                 makePlot();
-                
-                removeElementsByClassName("outcomeVariable");
-                removeElementsByClassName("dialogBox");
-        
-            setTimeout(function(){            
-                removeElementsByClassName("regression");
-                removeElementsByClassName("significanceTest");
-                getLinearModelCoefficients(currentVariableSelection[1], currentVariableSelection[0]);
-            }, 300);
             }
             else
                 performMultipleRegression(outcomeVariable, explanatoryVariables);
