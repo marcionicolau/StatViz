@@ -292,14 +292,25 @@ function displayOneSampleTestResults()
     canvas.append("line")
             .attr("x1", means[0].getAttribute("cx"))
             .attr("y1", BOTTOM - getFraction(testResults["estimate"])*plotHeight)
-            .attr("x1", canvasWidth/2-plotWidth/2-axesOffset)
-            .attr("y1", BOTTOM - getFraction(testResults["estimate"])*plotHeight)
+            .attr("x2", canvasWidth/2-plotWidth/2-axesOffset)
+            .attr("y2", BOTTOM - getFraction(testResults["estimate"])*plotHeight)
             .attr("stroke", "green")
             .attr("id", "estimateLine")
             .attr("class", "significanceTest");
+    cy.push(BOTTOM - getFraction(testResults["estimate"])*plotHeight);
     
-    var cyMax = parseFloat(cy[0]);
-    var cyMin = parseFloat(cy[0]); 
+    var cyMax = Math.max.apply(Math, cy);
+    var cyMin = Math.min.apply(Math, cy);		   	 
+
+    var differenceLine = canvas.append("line")
+                            .attr("x1", canvasWidth/2 + plotWidth/2)
+                            .attr("y1", cyMin)
+                            .attr("x2", canvasWidth/2 + plotWidth/2)
+                            .attr("y2", cyMax)
+                            .attr("stroke", "red")
+                            .attr("stroke-width", "2px")
+                            .attr("class", "significanceTest");
+
 
     var x = canvasWidth/2 + plotWidth/2;
     var y = cyMin;			 
