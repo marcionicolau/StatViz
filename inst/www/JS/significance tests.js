@@ -1,7 +1,9 @@
 //Significance Tests
 //0 IV, 1 DV
-function performOneSampleTTest(variable, level, expectedMean)
+function performOneSampleTTest(variable, level)
 {
+    expectedMean = sessionStorage.popMean;
+    
     if(level == undefined)
         level = "dataset"
     if(expectedMean == undefined)
@@ -44,8 +46,10 @@ function performOneSampleTTest(variable, level, expectedMean)
     });
 }
 
-function performOneSampleWilcoxonTest(variable, level, expectedMean)
+function performOneSampleWilcoxonTest(variable, level)
 {
+    expectedMean = sessionStorage.popMean;
+    
     if(level == undefined)
         level = "dataset";
     if(expectedMean == undefined)

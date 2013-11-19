@@ -853,6 +853,9 @@ function populationMeanEntered()
     var populationMean = document.getElementById("populationMean").value;
     
     console.log("population mean=" + populationMean);
+    sessionStorage.popMean = parseFloat(populationMean);
+    
+    compareMeans();
 }
         
             
