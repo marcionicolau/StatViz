@@ -31,16 +31,34 @@ function OnMouseDown(e)
         makePlot();
     }
     
-    else if((e.button == 1 && window.event != null || e.button == 0) && (target.className.baseVal == "variableSelectionButton"))
+    else if((e.button == 1 && window.event != null || e.button == 0) && (target.className.baseVal == "variableTypeToggleButton"))
     {
-        setup(e, target);    
-        
-        var variableSelectionButton = d3.selectAll("#" + target.id + ".variableSelectionButton");
-        variableSelectionButton.attr("fill", panelColors["active"]);
-        
-        variableTypes[target.id] = "independent";        
-
-        splitTheData();
+        setup(e, target);
+        var variableNameHolderBack = d3.select("#" + target.id + ".variableNameHolderBack");
+        var toggleButton = d3.select("#" + target.id + ".variableTypeToggleButton");
+        var dependentVariableText = d3.select("#" + target.id + ".dependentVariableText");
+        var independentVariableText = d3.select("#" + target.id + ".independentVariableText");
+        if(toggleButton.attr("xlink:href") == "images/toggle_up.png")
+        {
+            toggleButton.attr("xlink:href","images/toggle_down.png");
+            
+            if(variableNameHolderBack.attr("fill") == "url(#buttonFillNormal)")
+                independentVariableText.attr("fill", "#627bf4");
+            else
+                independentVariableText.attr("fill", "white");
+                
+            dependentVariableText.attr("fill", "#BEC9FC");
+        }
+        else if(toggleButton.attr("xlink:href") == "images/toggle_down.png")
+        {
+            toggleButton.attr("xlink:href","images/toggle_up.png");
+            
+            if(variableNameHolderBack.attr("fill") == "url(#buttonFillNormal)")
+                dependentVariableText.attr("fill", "#627bf4");
+            else
+                dependentVariableText.attr("fill", "white");
+            independentVariableText.attr("fill", "#BEC9FC");
+        }
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && (target.className.baseVal == "disabled"))
@@ -65,165 +83,197 @@ function OnMouseDown(e)
         //get the selected mean
         var meanCircle = d3.selectAll("#" + target.id + ".means");
 
-                
-        if(meanCircle.attr("fill") == meanColors["click"])
+        if(meanCircle.attr("r") == engorgedMeanRadius)             
         {
-            //we are cancelling a mean
-            meanCircle.attr("fill", meanColors["normal"]);
-            
-            //remove all complete lines associated with this and join the missing ones
-            var completeLines = document.getElementsByClassName("completeLines");
-            var lineBefore, lineAfter;
-            
-            for(var i=0; i<completeLines.length; i++)
+            if(meanCircle.attr("fill") == meanColors["click"])
             {
-                if(completeLines[i].getAttribute("x1") == meanCircle.attr("cx"))
+                //we are cancelling a mean
+                meanCircle.attr("fill", meanColors["normal"]);
+            
+                //remove all complete lines associated with this and join the missing ones
+                var completeLines = document.getElementsByClassName("completeLines");
+                var lineBefore, lineAfter;
+            
+                for(var i=0; i<completeLines.length; i++)
                 {
-                    lineAfter = completeLines[i];
+                    if(completeLines[i].getAttribute("x1") == meanCircle.attr("cx"))
+                    {
+                        lineAfter = completeLines[i];
+                    }
+                    if(completeLines[i].getAttribute("x2") == meanCircle.attr("cx"))
+                    {
+                        lineBefore = completeLines[i];
+                    }
                 }
-                if(completeLines[i].getAttribute("x2") == meanCircle.attr("cx"))
+            
+                if(lineBefore == undefined && lineAfter == undefined)
                 {
-                    lineBefore = completeLines[i];
+                    //it was the only mean selected - just remove the existing incomplete line
+//                     console.log("no lines before or after");
+                        removeElementsByClassName("incompleteLines");
                 }
-            }
-            
-            if(lineBefore == undefined && lineAfter == undefined)
-            {
-                //it was the only mean selected - do nothing
-                console.log("no lines before or after");
-            }
-            else if(lineAfter == undefined)
-            {
-                console.log("one line before");
-                
-                removeElementsByClassName("incompleteLines");
-                var canvas = d3.select("#plotCanvas");
-            
-                canvas.append("line")
-                        .attr("x1", lineBefore.getAttribute("x1"))
-                        .attr("y1", lineBefore.getAttribute("y1"))
-                        .attr("x2", lineBefore.getAttribute("x1"))
-                        .attr("y2", lineBefore.getAttribute("y1"))
-                        .attr("stroke", meanColors["normal"])
-                        .attr("stroke-dasharray", "5,5")
-                        .attr("id", meanCircle.attr("id"))
-                        .attr("class", "incompleteLines");
-                
-                lineBefore.parentNode.removeChild(lineBefore);
-            }
-            else if(lineBefore == undefined)
-            {                
-                console.log("one line after");
-                
-                removeElementsByClassName("incompleteLines");
-                var canvas = d3.select("#plotCanvas");
-            
-                canvas.append("line")
-                        .attr("x1", lineAfter.getAttribute("x2"))
-                        .attr("y1", lineAfter.getAttribute("y2"))
-                        .attr("x2", lineAfter.getAttribute("x2"))
-                        .attr("y2", lineAfter.getAttribute("y2"))
-                        .attr("stroke", meanColors["normal"])
-                        .attr("stroke-dasharray", "5,5")
-                        .attr("id", meanCircle.attr("id"))
-                        .attr("class", "incompleteLines");
-                
-                lineAfter.parentNode.removeChild(lineAfter);
-
-            }
-            else
-            {
-                removeElementsByClassName("incompleteLines");
-                
-                var canvas = d3.select("#plotCanvas");
-            
-                canvas.append("line")
-                        .attr("x1", lineAfter.getAttribute("x2"))
-                        .attr("y1", lineAfter.getAttribute("y2"))
-                        .attr("x2", lineAfter.getAttribute("x2"))
-                        .attr("y2", lineAfter.getAttribute("y2"))
-                        .attr("stroke", meanColors["normal"])
-                        .attr("stroke-dasharray", "5,5")
-                        .attr("id", meanCircle.attr("id"))
-                        .attr("class", "incompleteLines");
-                        
-                console.log("lines before and after");
-                lineBefore.setAttribute("x2", lineAfter.getAttribute("x2"));
-                lineBefore.setAttribute("y2", lineAfter.getAttribute("y2"));
-                lineAfter.parentNode.removeChild(lineAfter);
-            }
-        }
-        else
-        {
-            if(document.getElementsByClassName("means").length == 1)
-            {
-                //if there is only mean (one sample tests)
-                if(meanCircle.attr("fill") == meanColors["hover"])
+                else if(lineAfter == undefined)
                 {
-                    meanCircle.attr("fill", meanColors["click"]);
-    //                 compareMeans();
-                }
-                else
-                {
-                    meanCircle.attr("fill", meanColors["normal"]);
-                }
-            }
-            else if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means").length - 1))
-            {
-                //if there are 2+ means            
-                meanCircle.attr("fill", meanColors["click"]);
-        
-                //check if we are finishing an incomplete line here
-                if(document.getElementsByClassName("incompleteLines").length > 0)
-                {
-                    var incompleteLines = d3.selectAll(".incompleteLines");
-            
-                    incompleteLines.attr("x2", meanCircle.attr("cx"))
-                                   .attr("y2", meanCircle.attr("cy"))
-                                   .attr("stroke", meanColors["click"])
-                                   .attr("class", "completeLines");
-                }
-                var means = document.getElementsByClassName("means");
-        
-        
-    //             for(var i=0; i<means.length; i++)
-    //             {
-    //                 if(means[i].getAttribute("fill") == meanColors["normal"])
-    //                 {
-    //                     console.log("starting animation for mean with id = " + means[i].getAttribute("id"));
-    //                     var thisMean = d3.select("#" + means[i].getAttribute("id") + ".means");
-    //                     startLoopAnimation(thisMean);       
-    //                 }
-    //             }
-            //if we still have means to select, start an incomplete line
-                if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means").length - 1))
-                {
+//                     console.log("one line before");
+                
+                    removeElementsByClassName("incompleteLines");
                     var canvas = d3.select("#plotCanvas");
             
                     canvas.append("line")
-                            .attr("x1", meanCircle.attr("cx"))
-                            .attr("y1", meanCircle.attr("cy"))
-                            .attr("x2", meanCircle.attr("cx"))
-                            .attr("y2", meanCircle.attr("cy"))
+                            .attr("x1", lineBefore.getAttribute("x1"))
+                            .attr("y1", lineBefore.getAttribute("y1"))
+                            .attr("x2", lineBefore.getAttribute("x1"))
+                            .attr("y2", lineBefore.getAttribute("y1"))
                             .attr("stroke", meanColors["normal"])
                             .attr("stroke-dasharray", "5,5")
                             .attr("id", meanCircle.attr("id"))
                             .attr("class", "incompleteLines");
+                
+                    lineBefore.parentNode.removeChild(lineBefore);
+                }
+                else if(lineBefore == undefined)
+                {                
+//                     console.log("one line after");
+                
+                    removeElementsByClassName("incompleteLines");
+                    var canvas = d3.select("#plotCanvas");
+                    
+                    if(document.getElementsByClassName("completeLines").length > 0)
+                    {
+                        var endingLine = findEndingLine();
+                        
+                        canvas.append("line")
+                                .attr("x1", endingLine.getAttribute("x2"))
+                                .attr("y1", endingLine.getAttribute("y2"))
+                                .attr("x2", endingLine.getAttribute("x2"))
+                                .attr("y2", endingLine.getAttribute("y2"))
+                                .attr("stroke", meanColors["normal"])
+                                .attr("stroke-dasharray", "5,5")
+                                .attr("id", meanCircle.attr("id"))
+                                .attr("class", "incompleteLines");
+                    }
+                    else
+                    {
+                        canvas.append("line")
+                                .attr("x1", lineAfter.getAttribute("x2"))
+                                .attr("y1", lineAfter.getAttribute("y2"))
+                                .attr("x2", lineAfter.getAttribute("x2"))
+                                .attr("y2", lineAfter.getAttribute("y2"))
+                                .attr("stroke", meanColors["normal"])
+                                .attr("stroke-dasharray", "5,5")
+                                .attr("id", meanCircle.attr("id"))
+                                .attr("class", "incompleteLines");
+                    }
+                
+                    lineAfter.parentNode.removeChild(lineAfter);
+
                 }
                 else
                 {
-                    //we are done
-    //                 compareMeans();
+                    removeElementsByClassName("incompleteLines");
+                
+                    var canvas = d3.select("#plotCanvas");
+            
+                    if(document.getElementsByClassName("completeLines").length > 0)
+                    {
+                        var endingLine = findEndingLine();
+                        
+                        canvas.append("line")
+                                .attr("x1", endingLine.getAttribute("x2"))
+                                .attr("y1", endingLine.getAttribute("y2"))
+                                .attr("x2", endingLine.getAttribute("x2"))
+                                .attr("y2", endingLine.getAttribute("y2"))
+                                .attr("stroke", meanColors["normal"])
+                                .attr("stroke-dasharray", "5,5")
+                                .attr("id", meanCircle.attr("id"))
+                                .attr("class", "incompleteLines");
+                    }
+                    else
+                    {
+                        canvas.append("line")
+                                .attr("x1", lineAfter.getAttribute("x2"))
+                                .attr("y1", lineAfter.getAttribute("y2"))
+                                .attr("x2", lineAfter.getAttribute("x2"))
+                                .attr("y2", lineAfter.getAttribute("y2"))
+                                .attr("stroke", meanColors["normal"])
+                                .attr("stroke-dasharray", "5,5")
+                                .attr("id", meanCircle.attr("id"))
+                                .attr("class", "incompleteLines");
+                    }
+                        
+//                     console.log("lines before and after");
+                    lineBefore.setAttribute("x2", lineAfter.getAttribute("x2"));
+                    lineBefore.setAttribute("y2", lineAfter.getAttribute("y2"));
+                    lineAfter.parentNode.removeChild(lineAfter);
                 }
-            }   
-        }
+            }
+            else
+            {
+                if(document.getElementsByClassName("means").length == 1)
+                {
+                    //if there is only mean (one sample tests)
+                    if(meanCircle.attr("fill") == meanColors["hover"])
+                    {
+                        meanCircle.attr("fill", meanColors["click"]);
+        //                 compareMeans();
+                    }
+                    else
+                    {
+                        meanCircle.attr("fill", meanColors["normal"]);
+                    }
+                }
+                else if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means").length - 1))
+                {
+                    //if there are 2+ means            
+                    meanCircle.attr("fill", meanColors["click"]);
         
-        setCompareNowButtonText();
+                    //check if we are finishing an incomplete line here
+                    if(document.getElementsByClassName("incompleteLines").length > 0)
+                    {
+                        var incompleteLines = d3.selectAll(".incompleteLines");
+                
+                        incompleteLines.attr("x2", meanCircle.attr("cx"))
+                                       .attr("y2", meanCircle.attr("cy"))
+                                       .attr("stroke", meanColors["click"])
+                                       .attr("class", "completeLines");
+                                       
+                        removeElementsByClassName("indicator");
+                        var canvas = d3.select("#plotCanvas");                                             
+                    }
+                    var means = document.getElementsByClassName("means");
+                    
+                    if(document.getElementsByClassName("completeLines").length < (document.getElementsByClassName("means").length - 1))
+                    {
+                        var canvas = d3.select("#plotCanvas");
+            
+                        canvas.append("line")
+                                .attr("x1", meanCircle.attr("cx"))
+                                .attr("y1", meanCircle.attr("cy"))
+                                .attr("x2", meanCircle.attr("cx"))
+                                .attr("y2", meanCircle.attr("cy"))
+                                .attr("stroke", meanColors["normal"])
+                                .attr("stroke-dasharray", "5,5")
+                                .attr("id", meanCircle.attr("id"))
+                                .attr("class", "incompleteLines");
+                    }
+                    else
+                    {
+                        //we are done
+        //                 compareMeans();
+                    }
+                }   
+            }
+        
+            setCompareNowButtonText();
+        }
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "compareNow")
     {
         d3.selectAll(".compareNow").attr("cursor", "pointer");
+        
+        removeElementsByClassName("boxplotLegends");
+        removeElementsByClassName("compareNow");
         
         //get selected means
         var means = document.getElementsByClassName("means");
@@ -264,19 +314,22 @@ function OnMouseDown(e)
     {
         setup(e, target);
         
+        pairwiseComparisons = false;
+        
         var canvas = d3.select("#plotCanvas");
         var variableList = getSelectedVariables();
         
         var inText = variableList["independent"].length > 0 ? "SELECT TWO OR MORE MEANS" : "SELECT ONE MEAN";             
     
         canvas.append("rect")
-                .attr("x", canvasWidth/2 - 1.5*buttonWidth/2)
+                .attr("x", canvasWidth/2 - buttonWidth/2)
                 .attr("y", 0)
-                .attr("width", 1.5*buttonWidth)
+                .attr("width", buttonWidth)
                 .attr("height", buttonHeight)
-                .attr("rx", "5")
-                .attr("ry", "5")
-                .attr("fill", buttonColors["normal"])
+                .attr("rx", scaleForWindowSize(10) + "px")
+                .attr("ry", scaleForWindowSize(10) + "px")
+                .attr("fill", "url(#buttonFillNormal)")
+                .attr("filter", "url(#Bevel)")
                 .attr("stroke", "black")
                 .attr("id", "button")
                 .attr("class", "compareNow");
@@ -287,12 +340,43 @@ function OnMouseDown(e)
                 .attr("text-anchor", "middle")
                 .text(inText)
                 .attr("id", "text")
-                .attr("class", "compareNow");                
+                .attr("class", "compareNow"); 
         
-        setOpacityForElementsWithClassNames(["IQRs","medians", "TOPFringes", "BOTTOMFringes", "TOPFringeConnectors", "BOTTOMFringeConnectors", "outliers", "CIs", "CITopFringes", "CIBottomFringes"], 0.1);
-        d3.selectAll(".means").attr("r", engorgedMeanRadius);
+        d3.selectAll(".IQRs, .medians, .TOPFringes, .BOTTOMFringes, .TOPFringeConnectors, .BOTTOMFringeConnectors, .outliers, .CIs, .CITopFringes, .CIBottomFringes").transition().duration(1000).style("opacity", "0.2");
+        d3.selectAll(".means").transition().delay(1000).duration(800).attr("r", engorgedMeanRadius);
         
         removeElementsByClassName("compareMean");
+    }
+    
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "doPairwiseTest")
+    {
+        d3.selectAll(".doPairwiseTest").attr("cursor", "pointer");
+        
+        removeElementsByClassName("doPairwiseTest");
+        removeElementsByClassName("boxplotLegends");
+        
+        //get selected means
+        var means = document.getElementsByClassName("means");
+        var selectedMeans = []; 
+        var variableList = getSelectedVariables();
+        
+        for(var i=0; i<means.length; i++)
+        {
+            if(means[i].getAttribute("fill") == meanColors["click"])
+                selectedMeans.push(means[i]);
+        }
+        
+        console.log("selectedMeans:");
+        console.dir(selectedMeans);
+        
+        if(selectedMeans.length != 2)
+        {
+            alert("select two means then press compare");
+        }
+        else
+        {
+            compareMeans();
+        }
     }
     
     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "transformToNormal")
@@ -393,6 +477,7 @@ function OnMouseDown(e)
             setTimeout(function(){            
                 removeElementsByClassName("regression");
                 removeElementsByClassName("significanceTest");
+                removeElementsByClassName("effectSize");
                 getLinearModelCoefficients(currentVariableSelection[1], currentVariableSelection[0]);
             }, 300);  
         }
@@ -483,20 +568,67 @@ function OnMouseDown(e)
         drawInteractionEffectPlot();
     }
     
-    else if((e.button == 1 && window.event != null || e.button == 0) && target.id == "tukey")
+    else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "tukey")
     {
-        var variableList = sort(currentVariableSelection);
-        console.dir(variableList);
-        console.log(variableList["independent"].length);
+        setup(e, target);
         
-        if(variableList["independent"].length == 1)
-        {
-            performTukeyHSDTestOneIndependentVariable(variableList["dependent"][0], variableList["independent"][0]);
-        }
-        else if(variableList["independent"].length == 2)
-        {
-            performTukeyHSDTestTwoIndependentVariables(variableList["dependent"][0], variableList["independent"][0], variableList["independent"][1]);
-        }
+        removeElementsByClassName("effectSize");
+        removeElementsByClassName("parameter");
+        removeElementsByClassName("significanceTest");
+        removeElementsByClassName("differenceInMeans");
+        removeElementsByClassName("checkingAssumptions");
+        removeElementsByClassName("assumptions");
+        removeElementsByClassName("ticks");
+        removeElementsByClassName("crosses");
+        removeElementsByClassName("tukey");
+        removeElementsByClassName("loading");
+        
+        pairwiseComparisons = true;
+        
+        var variableList = getSelectedVariables();
+        console.dir(variableList);
+        
+//         drawBoxPlotLegends(variables[variableList["independent"][0]]["dataset"].unique());
+        resetMeans();
+        
+        var canvas = d3.select("#plotCanvas");
+    
+        canvas.append("rect")
+                .attr("x", canvasWidth/2 - buttonWidth/2)
+                .attr("y", 0)
+                .attr("width", buttonWidth)
+                .attr("height", buttonHeight)
+                .attr("rx", scaleForWindowSize(10) + "px")
+                .attr("ry", scaleForWindowSize(10) + "px")
+                .attr("fill", "url(#buttonFillNormal)")
+                .attr("filter", "url(#Bevel)")
+                .attr("stroke", "black")
+                .attr("id", "button")
+                .attr("class", "doPairwiseTest");
+    
+        canvas.append("text")
+                .attr("x", canvasWidth/2)
+                .attr("y", buttonHeight/2 + yAxisTickTextOffset)
+                .attr("text-anchor", "middle")
+                .text("SELECT TWO MEANS TO COMPARE")
+                .attr("id", "text")
+                .attr("class", "doPairwiseTest"); 
+        
+        d3.selectAll(".IQRs, .medians, .TOPFringes, .BOTTOMFringes, .TOPFringeConnectors, .BOTTOMFringeConnectors, .outliers, .CIs, .CITopFringes, .CIBottomFringes").transition().duration(2000).style("opacity", "0.2");
+        d3.selectAll(".means").transition().delay(2000).duration(800).attr("r", engorgedMeanRadius);
+        
+        removeElementsByClassName("compareMean");
+        
+//         var variableList = sort(currentVariableSelection);
+//         
+//         if(variableList["independent"].length == 1)
+//         {
+//             performTukeyHSDTestOneIndependentVariable(variableList["dependent"][0], variableList["independent"][0]);
+//         }
+//         else if(variableList["independent"].length == 2)
+//         {
+//             performTukeyHSDTestTwoIndependentVariables(variableList["dependent"][0], variableList["independent"][0], variableList["independent"][1]);
+//         }
     }
     
 //     else if((e.button == 1 && window.event != null || e.button == 0) && target.className.baseVal == "outliers")
@@ -520,19 +652,19 @@ function OnMouseDown(e)
         //the user clicked outside
         removeElementsByClassName("regressionPrediction");
         
-        if(document.getElementsByClassName("incompleteLines").length > 0)
-        {
-            removeElementsByClassName("incompleteLines");
-            
-            if(document.getElementsByClassName("completeLines").length > 0)
-            {
-                compareMeans();
-            }
-            else
-            {
-                _dragElement.setAttribute("fill", meanColors["normal"]);
-            }
-        }   
+        // if(document.getElementsByClassName("incompleteLines").length > 0)
+//         {
+//             removeElementsByClassName("incompleteLines");
+//             
+//             if(document.getElementsByClassName("completeLines").length > 0)
+//             {
+//                 compareMeans();
+//             }
+//             else
+//             {
+//                 _dragElement.setAttribute("fill", meanColors["normal"]);
+//             }
+//         }   
     }
 }
 
@@ -626,12 +758,45 @@ function OnMouseOver(e)
         visualizationHolder.attr("cursor","pointer");
     }
     
-    else if(target.className.baseVal == "variableSelectionButton")
-    {		
+    else if(target.className.baseVal == "variableTypeToggleButton")
+    {
         setup(e, target);
         
-        var variableSelectionButton = d3.selectAll("#" + target.id + ".variableSelectionButton");
-        variableSelectionButton.attr("cursor","pointer");
+        var toggleButton = d3.select("#" + target.id + ".variableTypeToggleButton");
+        
+        toggleButton.attr("cursor", "pointer");
+    }
+    
+    else if(target.className.baseVal == "dependentVariableButtonFront")
+    {
+        setup(e, target);
+        
+        var variableButton = d3.select("#" + target.id + ".dependentVariableButtonBack");
+        //if not selected
+        if(variableButton.attr("fill") != variableTypeButtonColors["dependent"]["selected"])
+        {
+            d3.select("#" + target.id + "." + target.className.baseVal).attr("cursor", "pointer");
+        }
+        else
+        {
+            d3.select("#" + target.id + "." + target.className.baseVal).attr("cursor", "default");
+        }
+    }
+    
+    else if(target.className.baseVal == "independentVariableButtonFront")
+    {
+        setup(e, target);
+        
+        var variableButton = d3.select("#" + target.id + ".independentVariableButtonBack");
+        //if not selected
+        if(variableButton.attr("fill") != variableTypeButtonColors["independent"]["selected"])
+        {
+            d3.select("#" + target.id + "." + target.className.baseVal).attr("cursor", "pointer");
+        }
+        else
+        {
+            d3.select("#" + target.id + "." + target.className.baseVal).attr("cursor", "default");
+        }
     }
     
     else if(target.className.baseVal == "disabled")
@@ -648,24 +813,57 @@ function OnMouseOver(e)
         
         var meanCircle = d3.select("#" + target.id + ".means");
         
-        if((document.getElementsByClassName("completeLines").length+1 < (document.getElementsByClassName("means").length)) || (document.getElementsByClassName("means").length == 1))
-        {            
-            meanCircle.attr("cursor","pointer");
+        if(meanCircle.attr("r") == meanRadius)
+        {
+            meanCircle.attr("cursor", "default");
+            
+            var plotCanvas = d3.select("#plotCanvas");
+            var L = canvasWidth/2 - plotWidth/2 - axesOffset;
+            
+            var mouseX = e.pageX - (width - canvasWidth - sideBarWidth);
+            var mouseY = e.pageY;
+            
+            plotCanvas.append("line")
+                        .attr("x1", meanCircle.attr("cx"))
+                        .attr("y1", meanCircle.attr("cy"))
+                        .attr("x2", L)
+                        .attr("y2", meanCircle.attr("cy"))
+                        .attr("stroke-dasharray", "5,5")
+                        .attr("stroke", meanColors["normal"])
+                        .attr("class", "hover");
+            
+            plotCanvas.append("text")
+                        .attr("x", mouseX + 10)
+                        .attr("y", mouseY + 15)
+                        .attr("text-anchor", "start")
+                        .text(format2(getActualValue(meanCircle.attr("cy"))))
+                        .attr("fill", meanColors["normal"])
+                        .attr("class", "hover");
+                        
+        }   
+        else
+        {
+            if((document.getElementsByClassName("completeLines").length+1 < (document.getElementsByClassName("means").length)) || (document.getElementsByClassName("means").length == 1))
+            {            
+                meanCircle.attr("cursor","pointer");
         
-            //change color of the mean circle
-            if(meanCircle.attr("fill") == meanColors["normal"])
-                meanCircle.attr("fill", meanColors["hover"]);
+                //change color of the mean circle
+                if(meanCircle.attr("fill") == meanColors["normal"])
+                {
+                    meanCircle.attr("fill", meanColors["hover"]);
             
-            // startLoopAnimation(meanCircle);
+                    // startLoopAnimation(meanCircle);
             
-            var incompleteLines = d3.selectAll(".incompleteLines");
+                    var incompleteLines = d3.selectAll(".incompleteLines");
             
-            if(document.getElementsByClassName("incompleteLines").length > 0)
-            {
-                incompleteLines.attr("x2", meanCircle.attr("cx"))
-                                .attr("y2", meanCircle.attr("cy"))
-                                .attr("display", "inline")
-                                .attr("stroke", meanColors["hover"]);
+                    if(document.getElementsByClassName("incompleteLines").length > 0)
+                    {
+                        incompleteLines.attr("x2", meanCircle.attr("cx"))
+                                        .attr("y2", meanCircle.attr("cy"))
+                                        .attr("display", "inline")
+                                        .attr("stroke", meanColors["hover"]);
+                    }
+                }
             }
         }
     }
@@ -808,6 +1006,9 @@ function OnMouseOver(e)
         var canvas = d3.select("#plotCanvas");
         var outlier = d3.select("#" + target.id + ".outliers");
         
+        var mouseX = e.pageX - (width - canvasWidth - sideBarWidth);
+        var mouseY = e.pageY;
+        
         outlier.attr("r", outlierRadius*2).attr("stroke", "yellow").attr("stroke-width", "2px");
         canvas.append("line")       
                 .attr("x1", outlier.attr("cx"))
@@ -819,8 +1020,8 @@ function OnMouseOver(e)
                 .attr("class", "hover");    
         
         canvas.append("text")
-                .attr("x", e.pageX - (window-canvasWidth) + 9)
-                .attr("y", e.pageY + 9)
+                .attr("x", mouseX + 10)
+                .attr("y", mouseY + 15)
                 .attr("text-anchor", "middle")
                 .text(format(getActualValue(outlier.attr("cy"))))
                 .attr("class", "hover");
@@ -1061,6 +1262,20 @@ function OnMouseOver(e)
         
         d3.selectAll(".interactionEffect").attr("cursor", "pointer");
     }
+    
+    else if(target.className.baseVal == "tukey")
+    {
+        setup(e, target);
+        
+        d3.selectAll(".tukey").attr("cursor", "pointer");
+    }
+    
+    else if(target.className.baseVal == "doPairwiseTest")
+    {
+        setup(e, target);
+        
+        d3.selectAll(".doPairwiseTest").attr("cursor", "pointer");
+    }
 }
 
 function OnMouseOut(e)
@@ -1081,10 +1296,17 @@ function OnMouseOut(e)
     {
         var meanCircle = d3.selectAll("#" + target.id + ".means");
         
-        if(meanCircle.attr("fill") != meanColors["click"])
+        if(meanCircle.attr("r") == engorgedMeanRadius)
         {
-            meanCircle.attr("fill", meanColors["normal"]);
-            var incompleteLine = d3.select(".incompleteLines").attr("display", "none");
+            if(meanCircle.attr("fill") != meanColors["click"])
+            {
+                meanCircle.attr("fill", meanColors["normal"]);
+                var incompleteLine = d3.select(".incompleteLines").attr("display", "none");
+            }
+        }
+        else
+        {
+            removeElementsByClassName("hover");
         }
         
 //         removeElementsByClassName("loops");

@@ -67,8 +67,6 @@ function splitThisLevelBy(independentVariableA, independentVariableB, dependentV
         splitData[indexA][indexB].push(dep[i]);
     }
     
-    console.dir(splitData);
-    
     return splitData;
 }
 
@@ -232,19 +230,28 @@ function toggleFillColorsForVariables(array, element)
 {   
     var variable = d3.select("#" + element + ".variableNameHolderBack");
     var variableText = d3.select("#" + element + ".variableNameHolderText");
+    // var dependentVariableText = d3.select("#" + element + ".dependentVariableText");
+//     var independentVariableText = d3.select("#" + element + ".independentVariableText");
     
     if(array.indexOf(element) == -1)
     {
         array.push(element);
-        variable.attr("fill", panelColors.active);
+        variable.attr("fill", "url(#buttonFillSelected)")
+        variable.attr("filter", "none");
+        variable.attr("stroke", "none");
         variableText.attr("fill", "white");
-    }
-    
+        
+//         dependentVariableText.attr("fill") == "#627bf4" ? dependentVariableText.attr("fill", "white") : independentVariableText.attr("fill", "white"); 
+    }    
     else
     {     
         array.splice(array.indexOf(element), 1);
-        variable.attr("fill", panelColors.normal);    
+        variable.attr("fill", "url(#buttonFillNormal)");  
+        variable.attr("filter", "url(#Bevel)");
+        variable.attr("stroke", "black");
         variableText.attr("fill", "black");
+        
+//         dependentVariableText.attr("fill") == "white" ? dependentVariableText.attr("fill", "#627bf4") : independentVariableText.attr("fill", "#627bf4"); 
     }
 
     return array;
@@ -323,11 +330,17 @@ function toggleFillColorsForVisualizations()
     {      
         if(visualizations[i].getAttribute("id") == currentVisualizationSelection)
         {
-            visualizations[i].setAttribute("fill", panelColors.active);
+            visualizations[i].setAttribute("fill", "url(#buttonFillSelected)");
+            visualizations[i].setAttribute("filter", "none");
+            visualizations[i].setAttribute("stroke", "none");
+            d3.select("#" + visualizations[i].getAttribute("id") + ".visualizationHolderText").attr("fill", "white");
         }
         else
         {
-            visualizations[i].setAttribute("fill", panelColors.normal);
+            visualizations[i].setAttribute("fill", "url(#buttonFillNormal)");
+            visualizations[i].setAttribute("filter", "url(#Bevel)");
+            visualizations[i].setAttribute("stroke", "black");
+            d3.select("#" + visualizations[i].getAttribute("id") + ".visualizationHolderText").attr("fill", "black");
         }
     }
 }
@@ -335,7 +348,7 @@ function toggleFillColorsForVisualizations()
 function validateAll()
 {
     var visualizations = d3.selectAll(".invalid");    
-    visualizations.attr("fill", panelColors.normal).attr("opacity", "0.1").attr("class", "visualizationHolderFront");                     
+    visualizations.attr("fill", "url(#buttonFillNormal)").attr("filter", "url(#Bevel)").attr("opacity", "0.1").attr("class", "visualizationHolderFront");                     
 }
 
 function invalidate(list)
@@ -345,7 +358,7 @@ function invalidate(list)
     for(var i=0; i<list.length; i++)
     {
         var viz = d3.select("#" + list[i] + ".visualizationHolderFront");
-        viz.attr("fill", "black").attr("opacity", "0.9").attr("class", "invalid");        
+        viz.attr("fill", "grey").attr("opacity", "0.75").attr("class", "invalid");        
     }
 }
 //Strings/numbers processing
@@ -597,15 +610,58 @@ function setVariableTypes()
     {
         if(variableTypes[variableNames[i]] == "independent")
         {
-            var variableSelectionButton = d3.select("#" + variableNames[i] + ".variableSelectionButton");
-            variableSelectionButton.attr("fill", buttonColors["independent"]);
+            var toggleButton = d3.select("#" + variableNames[i] + ".variableTypeToggleButton");
+            toggleButton.attr("xlink:href", "images/toggle_down.png");
+            
+            var independentVariableText = d3.select("#" + variableNames[i] + ".independentVariableText");
+            var dependentVariableText = d3.select("#" + variableNames[i] + ".dependentVariableText");
+
+            independentVariableText.attr("fill", "#627bf4");
+            dependentVariableText.attr("fill", "#BEC9FC");
+            
             splitTheData(variableNames[i]);
-//             subsetDataByLevelsOfVariable(dataset, variableNames[i]);
+        }
+        else if(variableTypes[variableNames[i]] == "dependent")
+        {
+            var toggleButton = d3.select("#" + variableNames[i] + ".variableTypeToggleButton");
+            toggleButton.attr("xlink:href", "images/toggle_up.png");
+            
+            var independentVariableText = d3.select("#" + variableNames[i] + ".independentVariableText");
+            var dependentVariableText = d3.select("#" + variableNames[i] + ".dependentVariableText");
+            
+            dependentVariableText.attr("fill", "#627bf4");
+            independentVariableText.attr("fill", "#BEC9FC");
         }
         else if(variableTypes[variableNames[i]] == "participant")
         {
-            var variableSelectionButton = d3.select("#" + variableNames[i] + ".variableSelectionButton");
-            variableSelectionButton.attr("fill", buttonColors["participant"]);
+            d3.select("#" + variableNames[i] + ".variableTypeToggleButton").remove();
+            d3.select("#" + variableNames[i] + ".dependentVariableText").remove();
+            d3.select("#" + variableNames[i] + ".independentVariableText").remove();
+            
+            var variablePanelSVG = d3.select("#variablePanelSVG");
+            var variablePanel = d3.select("#variable.panel");                
+            var variablePanelWidth = removeAlphabetsFromString(variablePanel.style("width"));
+            var variableNameHolderWidth = variablePanelWidth - 2*variableNameHolderPadding;                                     
+            
+//             variablePanelSVG.append("rect")
+//                             .attr("x", variableNameHolderWidth + 2*variableNameHolderPadding - variableTypeSelectionButtonWidth)
+//                             .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding) + scaleForWindowSize(2))                                                   
+//                             .attr("height", variableNameHolderHeight - 2*scaleForWindowSize(2))
+//                             .attr("width", variableTypeSelectionButtonWidth)
+//                             .attr("rx", "5px")
+//                             .attr("ry", "5px")
+//                             .attr("fill", variableTypeButtonColors["participant"])
+//                             .attr("id", variableNames[i])
+//                             .attr("class", "participantVariableButtonBack");
+                                    
+            variablePanelSVG.append("text")
+                            .attr("x", variableNameHolderWidth + 2*variableNameHolderPadding - variableTypeSelectionButtonWidth/2)
+                            .attr("y", variableNameHolderPadding + i*(variableNameHolderHeight + variableNameHolderPadding) + (variableNameHolderHeight)/2 + yAxisTickTextOffset/2)                                                   
+                            .attr("text-anchor", "middle")
+                            .attr("fill", "#627bf4")
+                            .text("SUBJECT")
+                            .attr("id", variableNames[i])
+                            .attr("class", "participantVariableText");
         }
     }
 }
@@ -617,7 +673,7 @@ function setVariableDataTypes()
         if(variables[variableNames[i]]["dataset"].unique().length == 2)
             variableDataTypes[variableNames[i]] = "binary";
         else
-            variableDataTypes[variableNames[i]] = variablesInDatasetDataType[fileName][i];
+            variableDataTypes[variableNames[i]] = variablesInDatasetDataType[sessionStorage.fileName][i];
     }
     
     for(var i=0; i<variableNames.length; i++)
@@ -668,7 +724,7 @@ function findExperimentalDesign()
 
 function scaleForWindowSize(value)
 {
-    return value*(height/1105);
+    return value*(height/1004);
 }
 
 
@@ -729,7 +785,7 @@ function setOpacityForElementsWithClassNames(classNames, opacity)
 {
     for(var i=0; i<classNames.length; i++)
     {
-        d3.selectAll("." + classNames[i]).attr("opacity", opacity);
+        d3.selectAll("." + classNames[i]).transition().duration(1000).delay(500).attr("opacity", opacity);
     }
 }
 
@@ -806,7 +862,7 @@ function allVariablesAreNumeric()
     
     for(var i=0; i<currentVariableSelection.length; i++)
     {
-        if(isNaN(variables[currentVariableSelection[i]]["dataset"][0]))
+        if((isNaN(variables[currentVariableSelection[i]]["dataset"][0])) && (variableDataTypes[currentVariableSelection[i]] == "ordinal"))
         {
             yeah = false;
         }
@@ -872,6 +928,65 @@ function populationMeanEntered()
         performOneSampleTTest(variableList["dependent"][0]);
     }
 }
+
+function getColour(type, value)
+{
+    var interpretations = effectSizeInterpretations[type];
+    
+    if(value < interpretations[0])
+        return effectSizeColors["small"];
+    else if(value >= interpretations[0] && value < interpretations[1])
+        return effectSizeColors["small-medium"];
+    else if(value >= interpretations[1] && value < interpretations[2])
+        return effectSizeColors["medium-large"];
+    else if(value >= interpretations[2])
+        return effectSizeColors["large"];
+}
+
+function findEndingLine()
+{
+    var completeLines = document.getElementsByClassName("completeLines");
+    var means = document.getElementsByClassName("means");
+    
+    var START = [];
+    var END = [];
+    
+    for(var j=0; j<completeLines.length; j++)
+    {
+        for(var i=0; i<means.length; i++)
+        {        
+            if(completeLines[j].getAttribute("x2") == means[i].getAttribute("cx"))
+            {
+                END.push(i);
+            }
+            if(completeLines[j].getAttribute("x1") == means[i].getAttribute("cx"))
+            {
+                START.push(i);
+            }
+        }
+    }
+    
+    for(var i=0; i<means.length; i++)
+    {
+        if(START.indexOf(i) == -1 && END.indexOf(i) != -1)
+        {
+            for(var j=0; j<completeLines.length; j++)
+            {
+                if(completeLines[j].getAttribute("x2") == means[i].getAttribute("cx"))
+                    return completeLines[j];
+            }
+        }
+    }
+    
+    return 0;
+}
+
+function resetMeans()
+{
+    var means = d3.selectAll(".means").attr("fill", meanColors["normal"]);
+}
+
+    
         
             
 

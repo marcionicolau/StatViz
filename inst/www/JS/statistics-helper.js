@@ -30,7 +30,7 @@ function findCorrelationCoefficient(variableA, variableB)
             }
             else
             {   
-                drawButtonInSideBar("CONSTRUCT MODEL", "regression");
+//                 drawButtonInSideBar("CONSTRUCT MODEL", "regression");
                 console.log("\t\t\tDoing nothing");
                 return null;
             }
@@ -47,7 +47,7 @@ function findCorrelationCoefficient(variableA, variableB)
             }
             else
             {
-                drawButtonInSideBar("CONSTRUCT MODEL", "regression");
+//                 drawButtonInSideBar("CONSTRUCT MODEL", "regression");
                 console.log("\t\t\tDoing nothing");
                 return null;
             }            
@@ -68,7 +68,7 @@ function findCorrelationCoefficient(variableA, variableB)
         else if((variableDataTypes[variableA] == "nominal") || (variableDataTypes[variableB] == "nominal"))
         {
             //do nothing
-            drawButtonInSideBar("CONSTRUCT MODEL", "regression");
+//             drawButtonInSideBar("CONSTRUCT MODEL", "regression");
             console.log("\t\t\tDoing nothing");
             return null;
         }
@@ -90,11 +90,10 @@ function testForEvilVariables()
         var variable = variableNames[i];
         var variableData = variables[variable]["dataset"];
         var uniqueVariableData = variableData.unique();
-        console.log("Variable data type=" + variableDataTypes[variable]);
 
-        if(isNaN(variableData[0]))
-        {
-            if(uniqueVariableData.length > 15)
+        if(isNaN(variableData[0]) || variableTypes[variable]=="participant")
+        {            
+            if(uniqueVariableData.length >= 10)
             {
                 console.log("\n\tmaking " + variable + " as an evil variable");
                 setThisVariableEvil(variableNames[i]);
@@ -102,4 +101,54 @@ function testForEvilVariables()
         }
     }
 }
-        
+
+function changePValueNotation(p)
+{
+    if(p<0.001)
+        return "p < 0.001";
+    else
+        return "p = " + p;
+}
+      
+function getSelectedMeansForColourBoxPlotData()
+{
+    var means = document.getElementsByClassName("means");
+    var selectedMeans = [];
+    
+    for(var i=0; i<means.length; i++)
+    {
+        if(means[i].getAttribute("fill") == meanColors["click"])
+        {   
+            selectedMeans.push(means[i]);
+        }
+    }
+    
+    return selectedMeans;
+}
+
+function getSelectedMeanLevelsForColourBoxPlotData()
+{
+    var means = document.getElementsByClassName("means");
+    var selectedMeans = [];
+    
+    for(var i=0; i<means.length; i++)
+    {
+        if(means[i].getAttribute("fill") == meanColors["click"])
+        {   
+            selectedMeans.push(means[i]);
+        }
+    }
+    
+    var selectedMeanLevels = [];
+    
+    for(var i=0; i<selectedMeans.length; i++)
+    {
+        if(selectedMeanLevels[i] == undefined)
+            selectedMeanLevels[i] = []; 
+            
+        selectedMeanLevels[i].push(selectedMeans[i].getAttribute("data-levelA"));
+        selectedMeanLevels[i].push(selectedMeans[i].getAttribute("data-levelB"));
+    }
+    
+    return selectedMeanLevels;
+}

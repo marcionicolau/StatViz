@@ -23,11 +23,15 @@ function performOneSampleTTest(variable, level)
                   
                   testResults["type"] = "mean";
                   testResults["df"] = output.df;
-                  testResults["statistic"] = "t(" + testResults["df"] +") = " + output.t;
-                  testResults["p"] = output.p; 
+                  
+                  testResults["parameter"] = output.t;
+                  testResults["parameter-type"] = "t";
+                  
+                  testResults["p"] = changePValueNotation(output.p); 
                   testResults["method"] = output.method;
                   testResults["estimate"] = output.estimate;
                   testResults["effect-size"] = output.d;
+                  testResults["effect-size-type"] = "d";
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines");
@@ -68,11 +72,15 @@ function performOneSampleWilcoxonTest(variable, level)
                   console.log("\t\t\t r = " + output.r);
                   
                   testResults["type"] = "median";
-                  testResults["statistic"] = "V = " + output.V;
-                  testResults["p"] = output.p; 
+                  
+                  testResults["parameter"] = output.V;
+                  testResults["parameter-type"] = "V";
+                  
+                  testResults["p"] = changePValueNotation(output.p); 
                   testResults["method"] = output.method;
                   testResults["estimate"] = output.estimate;
                   testResults["effect-size"] = output.r;
+                  testResults["effect-size-type"] = "r";
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines");
@@ -90,8 +98,7 @@ function performOneSampleWilcoxonTest(variable, level)
     req.complete(function(){
         
     });
-}
-    
+}  
 
 function performTTest(groupA, groupB, varianceEqual, paired) //groupA, groupB, paired = "FALSE", alternative = "two.sided", alpha = 0.95, var = "FALSE"
 {
@@ -112,10 +119,14 @@ function performTTest(groupA, groupB, varianceEqual, paired) //groupA, groupB, p
                   console.log("\t\t\t d = " + output.d);
                   
                   testResults["df"] = output.DOF;
-                  testResults["statistic"] = "t(" + testResults["df"] +") = " + output.t;
-                  testResults["p"] = output.p; 
+                  
+                  testResults["parameter"] = output.t;
+                  testResults["parameter-type"] = "t";
+                  
+                  testResults["p"] = changePValueNotation(output.p); 
                   testResults["method"] = output.method;
                   testResults["effect-size"] = output.d;
+                  testResults["effect-size-type"] = "d";
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines");
@@ -148,10 +159,13 @@ function performMannWhitneyTest(groupA, groupB)
                   console.log("\t\t\t p = " + output.p);
                   console.log("\t\t\t r = " + output.r);
                   
-                  testResults["statistic"] = "U = " + output.U;
-                  testResults["p"] = output.p;                  
-                  testResults["effect-size"] = "r = " + output.r;
+                  testResults["parameter"] = output.U;
+                  testResults["parameter-type"] = "U";
+                  
+                  testResults["p"] = changePValueNotation(output.p);                  
+                  testResults["effect-size"] = output.r;
                   testResults["method"] = "Mann-Whitney U test";
+                  testResults["effect-size-type"] = "r";
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines");           
@@ -184,10 +198,13 @@ function performWilcoxonTest(groupA, groupB)
                   console.log("\t\t\t p = " + output.p);
                   console.log("\t\t\t r = " + output.r);
                   
-                  testResults["statistic"] = "V = " + output.V;
-                  testResults["p"] = output.p;                  
-                  testResults["effect-size"] = "r = " + output.r;
+                  testResults["parameter"] = output.V;
+                  testResults["parameter-type"] = "V";
+                  
+                  testResults["p"] = changePValueNotation(output.p);                  
+                  testResults["effect-size"] = output.r;
                   testResults["method"] = "Wilcoxon Signed-rank test";
+                  testResults["effect-size-type"] = "r";
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines");           
@@ -224,16 +241,21 @@ function performANOVA(dependentVariable, independentVariable)
                   console.log("\t\t\t Eta-squared: " + output.etaSquared);
                   
                   testResults["df"] = output.DOF;
-                  testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;
-                  testResults["p"] = output.p;   
+                  
+                  testResults["parameter"] = output.F;
+                  testResults["parameter-type"] = "F";
+                  
+                  testResults["p"] = changePValueNotation(output.p);   
                   testResults["method"] = "ANOVA"; //todo
-                  testResults["effect-size"] = "η^2 = " + output.etaSquared;
+                  testResults["effect-size"] = output.etaSquared;
+                  testResults["effect-size-type"] = "eS";
                            
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines");           
 
-                displaySignificanceTestResults();               
+                displaySignificanceTestResults();      
+                drawButtonInSideBar("POST-HOC TESTS", "tukey");
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -247,8 +269,6 @@ function performANOVA(dependentVariable, independentVariable)
         
     });
 }
-
-
 
 function performTwoWayANOVA(dependentVariable, independentVariableA, independentVariableB)
 {
@@ -269,15 +289,19 @@ function performTwoWayANOVA(dependentVariable, independentVariableA, independent
                   console.log("\t\t\t p-values: " + output.p);
                   
                   testResults["df"] = output.numDF + "/" + output.denomDF;
-                  testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;   
+                  
+                  testResults["parameter"] = output.F;
+                  testResults["parameter-type"] = "F";
+                  
                   testResults["method"] = "Two-way ANOVA"; //todo
-                  testResults["effect-size"] = "η^2 = " + output.etaSquared;
+                  testResults["effect-size"] = output.etaSquared;
+                  testResults["effect-size-type"] = "eS";
                            
                   findEffect(dependentVariable, [independentVariableA, independentVariableB]);
                 //drawing stuff
                 removeElementsByClassName("completeLines");           
 
-                displaySignificanceTestResults();               
+                displaySignificanceTestResults();  
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -309,16 +333,21 @@ function performOneWayRepeatedMeasuresANOVA(dependentVariable, independentVariab
                   console.log("\t\t\t Eta-squared: " + output.etaSquared);
                   
                   testResults["df"] = output.numDF + "/" + output.denomDF;
-                  testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;   
-                  testResults["method"] = "Repeated Measures ANOVA ANOVA"; //todo
-                  testResults["effect-size"] = "η^2 = " + output.etaSquared;
-                  testResults["p"] = output.p;
+                  
+                  testResults["parameter"] = output.F;
+                  testResults["parameter-type"] = "F";
+                  
+                  testResults["method"] = "Repeated Measures ANOVA"; //todo
+                  testResults["effect-size"] = output.etaSquared;
+                  testResults["p"] = changePValueNotation(output.p);
+                  testResults["effect-size-type"] = "eS";
                            
                   
                 //drawing stuff
-                removeElementsByClassName("completeLines");           
-
+                removeElementsByClassName("completeLines");
+                
                 displaySignificanceTestResults();               
+                drawButtonInSideBar("POST-HOC TESTS", "tukey");
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -337,11 +366,12 @@ function performFriedmanTest(dependentVariable, independentVariable)
 {
     console.log(dependentVariable);
     console.log(independentVariable);
+    console.log(participants);
     var req = opencpu.r_fun_json("performFriedmanTest", {
                     dependentVariable: dependentVariable,
                     independentVariable: independentVariable,
                     participantVariable: participants,
-                    dataset: dataset
+                    filePath: pathToFile
                   }, function(output) {                                                   
                   
                   console.log("\t\t Friedman's Rank-sum Test for (" + dependentVariable + " ~ " + independentVariable + " + Error(" + participants + "/" + independentVariable + ")");
@@ -351,15 +381,22 @@ function performFriedmanTest(dependentVariable, independentVariable)
                   console.log("\t\t\t p = " + output.p);
                   
                   testResults["df"] = output.df;
-                  testResults["statistic"] = "ChiSquared(" + testResults["df"] + ") = " + output.chiSquared;   
+                  
+                  testResults["parameter"] = output.chiSquared;
+                  testResults["parameter-type"] = "cS";
+                  
                   testResults["method"] = output.method; 
-                  testResults["p"] = output.p;
+                  testResults["p"] = changePValueNotation(output.p);
+                  testResults["effect-size"] = 0;
+                  testResults["effect-size-type"] = "eS";
+//                   testResults["effect-size-type"] = "";
                            
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines");           
 
-                displaySignificanceTestResults();               
+                displaySignificanceTestResults();   
+                drawButtonInSideBar("POST-HOC TESTS", "tukey");
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -383,8 +420,8 @@ function findEffect(dependentVariable, independentVariables)
                   }, function(output) {                                                   
                 var variableList = getSelectedVariables();
                 
-                var levelsA = variables[variableList["independent"][0]]["dataset"].unique().sort();
-                var levelsB = variables[variableList["independent"][1]]["dataset"].unique().sort();
+                var levelsA = variables[variableList["independent"][0]]["dataset"].unique().slice().sort();
+                var levelsB = variables[variableList["independent"][1]]["dataset"].unique().slice().sort();
 
                 for(var i=0; i<levelsB.length; i++)
                 {
@@ -396,6 +433,7 @@ function findEffect(dependentVariable, independentVariables)
                 interactions = output.fit;
                 
                 drawButtonInSideBar("INTERACTION EFFECT", "interactionEffect");
+                drawButtonInSideBar("POST-HOC TESTS", "tukey", 1);
                 //drawing stuff
 //                 removeElementsByClassName("completeLines");           
 // 
@@ -413,9 +451,6 @@ function findEffect(dependentVariable, independentVariables)
         
     });
 }
-
-
-
 
 function performWelchANOVA(dependentVariable, independentVariable)
 {
@@ -437,16 +472,21 @@ function performWelchANOVA(dependentVariable, independentVariable)
                   console.log("\t\t\t Eta-squared: " + output.etaSquared);
                   
                   testResults["df"] = output.numeratorDF + "/" + output.denominatorDF;
-                  testResults["statistic"] = "F(" + testResults["df"] + ") = " + output.F;
-                  testResults["p"] = output.p;
+                  
+                  testResults["parameter"] = output.F;
+                  testResults["parameter-type"] = "F";
+                  
+                  testResults["p"] = changePValueNotation(output.p);
                   testResults["method"] = "Welch's ANOVA"; 
-                  testResults["effect-size"] = "η^2 = " + output.etaSquared;
+                  testResults["effect-size"] = output.etaSquared;
+                  testResults["effect-size-type"] = "eS";
                            
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines"); 
                 
                 displaySignificanceTestResults();
+//                 drawButtonInSideBar("POST-HOC TESTS", "tukey");
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -481,15 +521,20 @@ function performKruskalWallisTest(dependentVariable, independentVariable)
                   console.log("\t\t\t Eta-squared: " + output.etaSquared);
                   
                   testResults["df"] = output.DF;
-                  testResults["statistic"] = "𝝌^2(" + testResults["df"] + ") = " + output.ChiSquared;
-                  testResults["p"] = output.p;                  
+                  
+                  testResults["parameter"] = output.ChiSquared;
+                  testResults["parameter-type"] = "cS";
+                  
+                  testResults["p"] = changePValueNotation(output.p);                  
                   testResults["method"] = "Kruskal-Wallis Test"; 
-                  testResults["effect-size"] = "η^2 = " + output.etaSquared;         
+                  testResults["effect-size"] = output.etaSquared;         
+                  testResults["effect-size-type"] = "eS";
                   
                 //drawing stuff
                 removeElementsByClassName("completeLines");   
                 
                 displaySignificanceTestResults();
+                drawButtonInSideBar("POST-HOC TESTS", "tukey");
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -520,7 +565,7 @@ function performTukeyHSDTestOneIndependentVariable(dependentVariable, independen
                     //make a data structure to hold all this
                     
                     //get levels of the independent variable
-                    var levels = variables[independentVariable]["dataset"].unique();
+                    var levels = variables[independentVariable]["dataset"].unique().slice();
                     //sort it
                     levels = levels.sort();
                     var index = 0;
@@ -561,7 +606,10 @@ function performTukeyHSDTestOneIndependentVariable(dependentVariable, independen
                 //drawing stuff
                 removeElementsByClassName("completeLines");   
                 
-//                 displaySignificanceTestResults();
+                resetSVGCanvas();
+                drawTukeyHSDPlot();
+                
+                displaySignificanceTestResults();
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -596,7 +644,109 @@ function performTukeyHSDTestTwoIndependentVariables(dependentVariable, independe
                 //drawing stuff
                 removeElementsByClassName("completeLines");   
                 
-//                 displaySignificanceTestResults();
+                resetSVGCanvas();
+                drawTukeyHSDPlot();
+                
+                displaySignificanceTestResults();
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+
+//POST-HOC TESTS
+function performPairwiseTTest(varianceEqual, paired) //groupA, groupB, paired = "FALSE", alternative = "two.sided", alpha = 0.95, var = "FALSE"
+{
+    var variableList = getSelectedVariables();
+    
+    var req = opencpu.r_fun_json("performPairwiseTTest", {
+                    dependentVariable: variables[variableList["dependent"][0]]["dataset"],
+                    independentVariable: variables[variableList["independent"][0]]["dataset"],                    
+                    dataset: dataset,
+                    varianceEqual: varianceEqual,
+                    paired: paired,
+                    independentVariableName: variableList["independent"][0], 
+                    dependentVariableName: variableList["dependent"][0], 
+                    levelA: variableList["independent-levels"][0],
+                    levelB: variableList["independent-levels"][1]
+                  }, function(output) {                                                   
+                  
+
+                    console.log("\t\t " + output.method);
+                  console.log("\t\t\t p = " + output.p);
+                  console.log("\t\t\t t = " + output.t);
+                  console.log("\t\t\t d = " + output.d);
+                  
+                  
+                  testResults["parameter"] = output.t;
+                  testResults["parameter-type"] = "t";
+                  
+                  testResults["p"] = changePValueNotation(output.p); 
+                  testResults["method"] = "Pairwise t-test with Bonferroni correction";
+                  testResults["effect-size"] = output.d;
+                  testResults["effect-size-type"] = "d";
+                  
+                //drawing stuff
+                removeElementsByClassName("completeLines");
+                
+                displaySignificanceTestResults();
+        
+      }).fail(function(){
+          alert("Failure: " + req.responseText);
+    });
+
+    //if R returns an error, alert the error message
+    req.fail(function(){
+      alert("Server error: " + req.responseText);
+    });
+    req.complete(function(){
+        
+    });
+}
+
+function performPairwiseWilcoxTest(varianceEqual, paired) //groupA, groupB, paired = "FALSE", alternative = "two.sided", alpha = 0.95, var = "FALSE"
+{
+    var variableList = getSelectedVariables();
+    
+    var req = opencpu.r_fun_json("performPairwiseWilcoxTest", {
+                    dependentVariable: variables[variableList["dependent"][0]]["dataset"],
+                    independentVariable: variables[variableList["independent"][0]]["dataset"],                    
+                    dataset: dataset,
+                    varianceEqual: varianceEqual,
+                    paired: paired,
+                    independentVariableName: variableList["independent"][0], 
+                    dependentVariableName: variableList["dependent"][0], 
+                    levelA: variableList["independent-levels"][0],
+                    levelB: variableList["independent-levels"][1]
+                  }, function(output) {                                                   
+                  
+
+                  console.log("\t\t Pairwise wilcox-test");
+                  console.log("\t\t\t U = " + output.U);
+                  console.log("\t\t\t p = " + output.p);
+                  console.log("\t\t\t r = " + output.r);
+                  
+                  testResults["parameter"] = output.U;
+                  testResults["parameter-type"] = paired == "FALSE" ? "U" : "W";
+                  
+                  testResults["p"] = changePValueNotation(output.p);                  
+                  testResults["effect-size"] = output.r;
+                  testResults["method"] = "Pairwise Wilcox-test";
+                  testResults["effect-size-type"] = "r";
+                  
+                //drawing stuff
+                removeElementsByClassName("completeLines");           
+
+                displaySignificanceTestResults(); 
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -613,28 +763,28 @@ function performTukeyHSDTestTwoIndependentVariables(dependentVariable, independe
 
 // Effect sizes
 
-function getDFromT(n)
-{
-    // Get variable names and their data type
-    var req = opencpu.r_fun_json("getDFromT", {
-                    t: testResults["t"],                   
-                    n1: n,
-                    n2: n
-                  }, function(output) {                                                   
-                  
-                  console.log("Cohen's d: " + output.d);
-                  
-                  testResults["effect-size"] = "Cohen's d = " + output.d;
-        
-      }).fail(function(){
-          alert("Failure: " + req.responseText);
-    });
-
-    //if R returns an error, alert the error message
-    req.fail(function(){
-      alert("Server error: " + req.responseText);
-    });
-    req.complete(function(){
-        
-    });
-}
+// function getDFromT(n)
+// {
+//     // Get variable names and their data type
+//     var req = opencpu.r_fun_json("getDFromT", {
+//                     t: testResults["t"],                   
+//                     n1: n,
+//                     n2: n
+//                   }, function(output) {                                                   
+//                   
+//                   console.log("Cohen's d: " + output.d);
+//                   
+//                   testResults["effect-size"] = "Cohen's d = " + output.d;
+//         
+//       }).fail(function(){
+//           alert("Failure: " + req.responseText);
+//     });
+// 
+//     //if R returns an error, alert the error message
+//     req.fail(function(){
+//       alert("Server error: " + req.responseText);
+//     });
+//     req.complete(function(){
+//         
+//     });
+// }

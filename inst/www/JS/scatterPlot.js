@@ -21,7 +21,7 @@ function makeScatterplot()
 
     TOP = canvasHeight/2 - plotHeight/2 - topOffset;
     BOTTOM = canvasHeight/2 + plotHeight/2 - topOffset;
-    
+
     var canvas = d3.select("#plotCanvas");
     
     if(currentVariableSelection.length == 3)
@@ -44,6 +44,15 @@ function makeScatterplot()
                     currentVariableSelection[2] = currentVariableSelection[0];
                     currentVariableSelection[0] = temp;
                 }
+            }
+        }
+        else if(variableList["independent"].length == 2 && variableList["dependent"].length == 1)
+        {
+            if((currentVariableSelection[2] != variableList["independent"][0]) && (currentVariableSelection[2] != variableList["independent"][1]))
+            {
+                var temp = currentVariableSelection[2];
+                currentVariableSelection[2] = currentVariableSelection[1];
+                currentVariableSelection[1] = temp;
             }
         }
     }   
@@ -102,7 +111,7 @@ function makeScatterplot()
                 .attr("text-anchor", "middle")
                 .attr("font-size", fontSizeLabels + "px")
                 .text(currentVariableSelection[0])
-                .attr("fill", "orange");
+                .attr("fill", "black");
     
     canvas.append("line")
               .attr("x1", LEFT - axesOffset)
@@ -120,7 +129,7 @@ function makeScatterplot()
                 .attr("transform", "rotate (-90 " + (LEFT - axesOffset - 1.5*labelOffset) + " " + ((TOP + BOTTOM)/2) + ")")
                 .attr("font-size", fontSizeLabels + "px")
                 .text(currentVariableSelection[1])
-                .attr("fill", "orange");
+                .attr("fill", "black");
                                     
     
     //grooves
@@ -252,7 +261,7 @@ function drawScatterPlotLegends(varNames)
                 .attr("y", TOP + histLegendOffsetY + i*yStep + 3)
                 .attr("fill", "black")
                 .attr("font-size", fontSizeTicks + "px")
-                .attr("text-anchor", "middle")
+                .attr("text-anchor", "start")
                 .text(varNames[i])
                 .attr("id", "legend" + i)
                 .attr("class", "text");
@@ -264,8 +273,7 @@ function drawRegressionLine(intercept, slope)
 {
     console.log("drawing regression line..."); 
     var canvas = d3.select("#plotCanvas");
-    canvas.attr("viewBox", "0 0 " + canvasWidth + " " + parseFloat(canvasHeight+scaleForWindowSize(400)));
-    
+    canvas.attr("viewBox", "0 0 " + canvasWidth + " " + parseFloat(canvasHeight+scaleForWindowSize(400)));    
     
     var x1, y1, x2, y2;
     
@@ -278,8 +286,6 @@ function drawRegressionLine(intercept, slope)
     Y2 = (slope*X2 + intercept) > maxs["Y"] ? maxs["Y"] : (slope*X2 + intercept);
     Y2 = (slope*X2 + intercept) < mins["Y"] ? mins["Y"] : (slope*X2 + intercept);
     
-    console.log("X1=" + X1 + "Y1=" + Y1 + "X2=" + X2 + "Y2=" + Y2);
-        
     if(uniqueDataX.length <= numberOfGrooves)
         x1 = LEFT + uniqueDataX.indexOf(X1)*xStep + xStep/2;    
     else

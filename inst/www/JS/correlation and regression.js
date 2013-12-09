@@ -23,6 +23,10 @@ function getCorrelationCoefficient(variableA, variableB, method)
                     testResults["method"] = output.method; 
                     testResults["effect-size"] = output.cor;
                     testResults["CI"] = [output.CI_min, output.CI_max];
+                    testResults["effect-size-type"] = "r";
+                    
+                    if(allVariablesAreNumeric())
+                        drawButtonInSideBar("CONSTRUCT MODEL", "regression");
                 }
                 else if(method == "kendall")
                 {
@@ -30,21 +34,16 @@ function getCorrelationCoefficient(variableA, variableB, method)
                     console.log("\t\t\t\t z = " + output.statistic);
                     console.log("\t\t\t\t p = " + output.p);
                     console.log("\t\t\t\t method used = " + output.method);
-                    console.log("\t\t\t\t Tau = " + output.cor);
+                    console.log("\t\t\t\t 𝜏 = " + output.cor);
 
                     testResults["statistic"] = "z = " + output.statistic;
                     testResults["p"] = output.p;                  
                     testResults["method"] = output.method; 
                     testResults["effect-size"] = output.cor;
-               
-                    
+                    testResults["effect-size-type"] = "𝜏";
                 }
                 
                 displayCorrelationResults();
-                
-                if(allVariablesAreNumeric())
-                    drawButtonInSideBar("CONSTRUCT MODEL", "regression");
-
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -71,12 +70,10 @@ function getBiserialCorrelationCoefficient(continuousVariable, binaryVariable)
                 console.log("\t\t\t r = " + output.cor);
 
                 testResults["method"] = "Biserial Correlation-coefficient";
-                testResults["effect-size"] = output.cor;               
+                testResults["effect-size"] = output.cor;  
+                testResults["effect-size-type"] = "r";
                 
-                displayCorrelationResults();
-                if(allVariablesAreNumeric())
-                    drawButtonInSideBar("CONSTRUCT MODEL", "regression");
-            
+                displayBiserialCorrelationResults();            
         
       }).fail(function(){
           alert("Failure: " + req.responseText);
@@ -102,7 +99,7 @@ function getLinearModelCoefficients(outcome, explanatory)
                 if(isNaN(variables[explanatory]["dataset"][0]))
                 {
                     //we have a categorical variable
-                    var levels = variables[explanatory]["dataset"].unique().sort();                    
+                    var levels = variables[explanatory]["dataset"].unique().slice().sort();                    
                     var nCoefficients = levels.length - 1;
                     var coefficients = output.coefficients;
                   
@@ -110,6 +107,7 @@ function getLinearModelCoefficients(outcome, explanatory)
                     testResults["effect-size"] = output.rSquared;
                     testResults["method"] = "Linear Regression Model";
                     testResults["equation"] = outcome + " = ";
+                    testResults["effect-size-type"] = "rS";
                     
                     for(var i=0; i<nCoefficients; i++)
                     {
@@ -136,17 +134,17 @@ function getLinearModelCoefficients(outcome, explanatory)
                     var coefficients = output.coefficients;
                   
                     testResults["effect-size"] = output.rSquared;
+                    testResults["effect-size-type"] = "rS";
                     testResults["method"] = "Linear Regression Model";
                     testResults["equation"] = outcome + " = " + coefficients + explanatory + (output.intercept < 0 ? output.intercept : "+" + output.intercept);
                     testResults["coefficients"] = coefficients;
                     testResults["intercept"] = output.intercept;
                 
                     console.log("intercept=" + output.intercept + ", coefficients=" + output.coefficients);
-                    
+                    removeElementsByClassName("significanceTest");
                     drawRegressionLine(output.intercept, output.coefficients);                
                 
-                    displaySimpleRegressionResults();
-                    
+                    displaySimpleRegressionResults();                    
                 }
                 
                 
@@ -185,6 +183,7 @@ function performMultipleRegression(outcomeVariable, explanatoryVariables)
                 testResults["effect-size"] = output.rSquared;
                 testResults["method"] = "Multiple Regression";
                 testResults["equation"] = outcomeVariable + " = ";
+                testResults["effect-size-type"] = "rS";
                 var intercepts = [];
                 
                 for(var i=0; i<explanatoryVariables.length; i++)

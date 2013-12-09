@@ -1,23 +1,20 @@
-OpenCPU APP: appdemo
-====================
-  
-The sole purpose of this OpenCPU app is to demonstrate how to use the [opencpu.js](http://github.com/jeroenooms/opencpu.js) library to call R functions from Javascript using OpenCPU.  
+StatViz
+=======
 
-Cloud Demo
-----------
+An application that allows users to do basic statistical analysis on-the-fly. 
 
-Try the application online at the OpenCPU apps public demo server: https://public.opencpu.org/apps.html
 
-Use locally
------------
+How to run this application?
+=======
 
-To run the app in your local R session:
+1. Bare-clone this github repository (git clone --bare "https://www.github.com/krishna221/StatViz.git") to your system.
+2. Open R.
+3. Install the following packages using install.packages('package_name') command:
+    i) 'devtools',
+    ii) 'opencpu'.
+4. Load these package libraries using library(package_name) command.
+5. Install the git project using install_git("path to folder cloned in step 1")
+6. Run the opencpu server locally using opencpu$browse("library/StatViz/www")
 
-    #install app
-    library(devtools)
-    install_github("appdemo", "opencpu")
-    
-    #load in opencpu
-    library(opencpu)
-    opencpu$browse("/library/appdemo/www")
+
 
